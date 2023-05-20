@@ -1,5 +1,5 @@
 ---
-title: Working Top 10 List
+title: Top10
 layout:  null
 tab: true
 order: 1
