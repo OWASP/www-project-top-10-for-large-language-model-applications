@@ -4,6 +4,7 @@ layout: col-sidebar
 title: OWASP Top 10 for Large Language Model Applications
 level: 2
 type: documentation
+tags: example-tag
 pitch: Aims to educate developers, designers, architects, managers, and organizations about the potential security risks when deploying and managing Large Language Models (LLMs)
 
 ---
