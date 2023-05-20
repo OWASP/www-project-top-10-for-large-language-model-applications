@@ -1,5 +1,5 @@
 ---
-title: Example
+title: Draft
 layout:  null
 tab: true
 order: 1
