@@ -5,6 +5,7 @@ tab: true
 order: 1
 tags: example-tag
 ---
+Here is an example list of issues related to seurity of Large Language Models.  This is designed to initiate discussion as we work towards a vetted, first official list.  More details on each issue is available in the GitHub repository for the project.
 
 ### LLM01:2023 - Prompt Injections
 **Description:**  
