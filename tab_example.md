@@ -3,7 +3,7 @@ title: Working Top 10 List
 layout:  null
 tab: true
 order: 1
-tags: 
+tags: example-tag
 ---
 
 ### LLM01:2023 - Prompt Injections
