@@ -3,7 +3,7 @@ OWASP Foundation Web Respository
 
 # OWASP Top 10 for Large Language Model Applications
 
-[![OWASP Flagship](https://img.shields.io/badge/owasp-flagship-brightgreen.svg)](https://owasp.org/projects/)
+[![OWASP Incubator](https://img.shields.io/badge/owasp-incubator-blue.svg)](https://owasp.org/projects/)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 Welcome to the official repository for the OWASP Top 10 for Large Language Model Applications!
