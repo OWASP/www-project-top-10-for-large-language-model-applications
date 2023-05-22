@@ -11,7 +11,7 @@ pitch: Aims to educate developers, designers, architects, managers, and organiza
 
 The OWASP Top 10 for Large Language Model Applications project aims to educate developers, designers, architects, managers, and organizations about the potential security risks when deploying and managing Large Language Models (LLMs). The project provides a list of the top 10 most critical vulnerabilities often seen in LLM applications, highlighting their potential impact, ease of exploitation, and prevalence in real-world applications. Examples of vulnerabilities include prompt injections, data leakage, inadequate sandboxing, and unauthorized code execution, among others. The goal is to raise awareness of these vulnerabilities, suggest remediation strategies, and ultimately improve the security posture of LLM applications. 
 
-Review the [draft Top 10 list version 0.1](descriptions) to understand work that has been done to date..
+Review the [draft Top 10 list version 0.1](descriptions) to understand work that has been done to date.
 
 This initiative is community-driven and encourages participation and contributions from all interested parties. We are assembling the working group now.
 
