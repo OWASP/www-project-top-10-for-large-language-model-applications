@@ -1,7 +1,7 @@
 ### OWASP Top 10 List for Large Language Models version 0.1
 This is a draft list of important vulnerability types for Artificial Intelligence (AI) applicaitons build on Large Language Models (LLMs)
 
-### [LLM01:2023 - Prompt Injections](Prompt_Injections.md)
+### [LLM01:2023 - Prompt Injections](Prompt_Injection.md)
 **Description:**  
 Bypassing filters or manipulating the LLM using carefully crafted prompts that make the model ignore previous instructions or perform unintended actions.
 
