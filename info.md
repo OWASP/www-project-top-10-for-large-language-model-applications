@@ -1,11 +1,8 @@
 ### Top 10 for Large Language Model Applications Information
-* [Incubator Project](#)
-* [Type of Project](#)
+* [Incubator Project](https://owasp.org/projects/)
 * [Version 0.1.0](#)
-* [Builder](#)
-* [Breaker](#)
 
-### Downloads or Social Links
+### Social Links
 * [Announcement](#)
 
 ### Code Repository
