@@ -26,7 +26,7 @@ Exploiting LLMs to perform unintended requests or access restricted resources, s
 **Description:**  
 Excessive dependence on LLM-generated content without human oversight can result in harmful consequences.
 
-### [LLM07:2023 - Inadequate AI Alignment](Inadequate_AI_Aliangment.md)
+### [LLM07:2023 - Inadequate AI Alignment](Inadequate_AI_Alignment.md)
 **Description:**  
 Failing to ensure that the LLM's objectives and behavior align with the intended use case, leading to undesired consequences or vulnerabilities.
 
