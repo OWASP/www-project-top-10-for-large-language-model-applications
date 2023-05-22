@@ -17,3 +17,5 @@ Some useful resource links to learn about LLM security issues.
 | Embrace the Red | Wunderwuzzi | 29-Mar-23 | [AI Injections: Direct and Indirect Prompt Injections and Their Implications](https://embracethered.com/blog/posts/2023/ai-injections-direct-and-indirect-prompt-injection-basics/) |
 | Embrace the Red | Wunderwuzzi | 15-Apr-23 | [Don't blindly trust LLM responses. Threats to chatbots](https://embracethered.com/blog/posts/2023/ai-injections-threats-context-matters/) |
 | MufeedDVH | Mufeed | 9-Dec-22 | [Security in the age of LLMs](https://www.mufeedvh.com/llm-security/) |
+| Team8 | Team8 CISO Village | 18-Apr-23 | [Generative AI and ChatGPT Enterprise Risks](https://team8.vc/wp-content/uploads/2023/04/Team8-Generative-AI-and-ChatGPT-Enterprise-Risks.pdf) |
+| Deloitte | Deloitte AI Institute | 13-Mar-23 | [A new frontier in artificial intelligence - Implications of Generative AI for businesses](https://www2.deloitte.com/content/dam/Deloitte/us/Documents/deloitte-analytics/us-ai-institute-generative-artificial-intelligence.pdf) |
