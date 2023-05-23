@@ -24,3 +24,5 @@ Kick-off Meeting for anyone interested to participate will be on Wednesday May 3
 **Passcode:** 256955
 
 We have a working group channel on the [OWASP Slack](https://owasp.org/slack/invite), so please sign up and then join us on the #project-t10-llm channel.
+
+New to LLM security?  Check out our [resources page](resources) to learn more.
