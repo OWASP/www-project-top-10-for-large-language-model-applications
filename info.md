@@ -3,7 +3,7 @@
 * [Version 0.1.0](descriptions)
 
 ### Social Links
-* [Announcement](#)
+* [Announcement](https://www.linkedin.com/pulse/announcing-owasp-top-10-large-language-models-ai-project-steve-wilson/)
 
 ### Code Repository
 * [repo](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications)
