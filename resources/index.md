@@ -22,3 +22,4 @@ Some useful resource links to learn about LLM security issues.
 | Arxiv | Fabio Perez, Ian Ribeiro | 17-Nov-22 | [Ignore Previous Prompt: Attack Techniques For Language Models](https://arxiv.org/pdf/2211.09527.pdf) |
 | Arxiv | Nicholas Carlini, Florian Tramer, Eric Wallace, Matthew Jagielski, Ariel Herbert-Voss, Katherine Lee, Adam Roberts, Tom Brown, Dawn Song, Ulfar Erlingsson, Alina Oprea, Colin Raffel | 14-Dec-20 | [Extracting Training Data from Large Language Models](https://arxiv.org/pdf/2012.07805.pdf) |
 | danielmiessler.com | Daniel Miessler | 15-May-23 | [The AI Attack Surface Map v1.0](https://danielmiessler.com/blog/the-ai-attack-surface-map-v1-0/) |
+| NCC Group | Chris Anley, Chief Scientist, NCC Group plc | 06-Jul-22 | [Practical Attacks on Machine Learning Systems](https://research.nccgroup.com/wp-content/uploads/2022/07/practical-attacks-on-ml.pdf) |
