@@ -24,7 +24,9 @@ The list includes, among others, vulnerability types like "Prompt Injections", "
 
 The first version of this list was contributed by Steve Wilson of Contrast Security.  We encourage the community to contribute and help improve the project. If you have any suggestions, feedback or want to help improve the list, feel free to open an issue or send a pull request.
 
-We have a working group channel on the [OWASP Slack](https://owasp.org/slack/invite), so please sign up and then join us on the #project-t10-llm channel.
+We have a working group channel on the [OWASP Slack](https://owasp.org/slack/invite), so please sign up and then join us on the #project-top10-llm channel.
+
+Pleae hop over to [our wiki page](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki) to collaborate on the project.
 
 ## License
 
