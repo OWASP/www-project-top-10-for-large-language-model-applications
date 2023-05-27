@@ -20,6 +20,6 @@ Some useful resource links to learn about LLM security issues.
 | Team8 | Team8 CISO Village | 18-Apr-23 | [Generative AI and ChatGPT Enterprise Risks](https://team8.vc/wp-content/uploads/2023/04/Team8-Generative-AI-and-ChatGPT-Enterprise-Risks.pdf) |
 | Deloitte | Deloitte AI Institute | 13-Mar-23 | [A new frontier in artificial intelligence - Implications of Generative AI for businesses](https://www2.deloitte.com/content/dam/Deloitte/us/Documents/deloitte-analytics/us-ai-institute-generative-artificial-intelligence.pdf) |
 | Arxiv | Fabio Perez, Ian Ribeiro | 17-Nov-22 | [Ignore Previous Prompt: Attack Techniques For Language Models](https://arxiv.org/pdf/2211.09527.pdf) |
-| Arxiv | Nicholas Carlini, Florian Tramer, Eric Wallace, Matthew Jagielski, Ariel Herbert-Voss, Katherine Lee, Adam Roberts, Tom Brown, Dawn Song, Ulfar Erlingsson, Alina Oprea, Colin Raffel | 14-Dec-20 | [Extracting Training Data from Large Language Models](https://arxiv.org/pdf/2012.07805.pdf) |
+| Arxiv | Nicholas Carlini, et al | 14-Dec-20 | [Extracting Training Data from Large Language Models](https://arxiv.org/pdf/2012.07805.pdf) |
 | danielmiessler.com | Daniel Miessler | 15-May-23 | [The AI Attack Surface Map v1.0](https://danielmiessler.com/blog/the-ai-attack-surface-map-v1-0/) |
-| NCC Group | Chris Anley, Chief Scientist, NCC Group plc | 06-Jul-22 | [Practical Attacks on Machine Learning Systems](https://research.nccgroup.com/wp-content/uploads/2022/07/practical-attacks-on-ml.pdf) |
+| NCC Group | Chris Anley | 06-Jul-22 | [Practical Attacks on Machine Learning Systems](https://research.nccgroup.com/wp-content/uploads/2022/07/practical-attacks-on-ml.pdf) |
