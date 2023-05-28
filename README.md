@@ -1,5 +1,5 @@
 # www-project-top-10-for-large-language-model-applications
-OWASP Foundation Web Respository
+OWASP Foundation Web Repository
 
 # OWASP Top 10 for Large Language Model Applications
 
@@ -26,7 +26,7 @@ The first version of this list was contributed by Steve Wilson of Contrast Secur
 
 We have a working group channel on the [OWASP Slack](https://owasp.org/slack/invite), so please sign up and then join us on the #project-top10-llm channel.
 
-Pleae hop over to [our wiki page](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki) to collaborate on the project.
+Please hop over to [our wiki page](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki) to collaborate on the project.
 
 ## License
 
