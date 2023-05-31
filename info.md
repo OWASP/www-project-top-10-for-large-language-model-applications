@@ -9,6 +9,7 @@
 
 ### Code Repository
 * [repo](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications)
+* [wiki](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki)
 
 ### Change Log
 * [changes](#)
