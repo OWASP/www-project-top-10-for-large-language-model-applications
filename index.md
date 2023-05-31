@@ -15,8 +15,7 @@ Review the [draft Top 10 list version 0.1](descriptions) to understand work that
 
 This initiative is community-driven and encourages participation and contributions from all interested parties. We are assembling the working group now.
 
-We have a working group channel on the [OWASP Slack](https://owasp.org/slack/invite), so please sign up and then join us on the #project-top10-for-llm channel.
-
-The working group is collaborating on our [wiki](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki)
+* We have a working group channel on the [OWASP Slack](https://owasp.org/slack/invite), so please sign up and then join us on the #project-top10-for-llm channel.
+* The working group is collaborating on our [wiki](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki)
 
 New to LLM security?  Check out our [resources page](resources) to learn more.
