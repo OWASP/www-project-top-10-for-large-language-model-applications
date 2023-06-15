@@ -8,9 +8,9 @@ Name of the author(s) who have contributed to documenting this vulnerability.
 
 A brief description of the vulnerability that includes its potential effects such as system compromises, data breaches, or other security concerns.
 
-**Labels/Tags:** (**Mandatory**)
+**Labels/Tags:**
 
-A bullet-separated list of labels (AKA tags) that can be used to distinguish associated terminology or phrases to the description of your vulnerability. If !>1 label is available based on your submission, ensure this is entered on at least one bullet point.
+A list that can be used to distinguish associated terminology or phrases to the description of your vulnerability. This will help with sorting through related submissions.
 
 > _A common example: Prompt Injection" can also be also described or referred to as "Prompt Hacking", "Jailbreaking" etc_
 
