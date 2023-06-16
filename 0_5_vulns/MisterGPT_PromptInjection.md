@@ -1,8 +1,8 @@
-## Prompt Injection Vulnerability
+## Prompt Injection Vulnerability  - This is an example
 
 **Author(s):**
 
-ChatGPT, OpenAI
+Steve Wilson
 
 **Description:**
 
