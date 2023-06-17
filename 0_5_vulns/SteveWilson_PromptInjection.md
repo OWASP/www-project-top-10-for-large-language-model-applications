@@ -38,4 +38,26 @@ Scenario #2: The attacker tricks the LLM into disclosing sensitive information a
 
 **Author Commentary (Optional):**
 
-While Large Language Models offer significant benefits, their security implications, including vulnerabilities like prompt injection, should be carefully considered. Regular updates, robust input validation, and careful design can help mitigate these risks.
+Prompt Injection, much like SQL Injection or Cross-Site Scripting (XSS), is a vulnerability that arises when an attacker can manipulate input to an AI model to produce harmful outputs. It's a unique challenge in the world of AI and machine learning, specifically for large language models (LLMs) that generate text based on user input.
+
+# Nature of the Threat
+
+Unlike traditional injection attacks where an attacker targets a software's code, in prompt injection, the target is an AI's learning model. The attacker aims to manipulate the model's output to generate harmful or misleading content. This could include generating illegal content, revealing sensitive information, or promoting harmful behavior.
+
+# Severity of the Issue
+
+The severity of prompt injection attacks can range from low to high, depending on the application of the AI. For a benign AI application, the risk might be limited to generating inappropriate or off-topic responses. However, for an AI used in critical applications or dealing with sensitive data, the risks could be far more severe, such as data leakage, misinformation, or harmful actions.
+
+# Mitigation Strategies
+
+Addressing prompt injection attacks involves both technical and policy approaches. On the technical side, rate limiting requests to the AI can help prevent mass exploitation. Alert lists can be used to detect and block unsafe content. More secure model designs can also help. On the policy side, AI governance, including robust testing, auditing, and monitoring, is vital. User awareness and education about potential AI manipulation should also be emphasized.
+
+# Future Trends
+
+As AI and machine learning become more pervasive, the threat of prompt injection will likely increase. Security professionals will need to be proactive in understanding the unique vulnerabilities that AI introduces and developing strategies to mitigate them. Future iterations of the OWASP Top 10 will likely need to consider AI-specific threats like prompt injection more prominently.
+
+# Research and Community Efforts
+
+The cybersecurity community has recognized the threat of prompt injection, and researchers are actively working on mitigation strategies. These efforts will be crucial in shaping the future of AI security.
+
+The aim of including Prompt Injection in the OWASP Top 10 is to raise awareness of this emerging threat in the cybersecurity community. As with any security vulnerability, understanding the threat is the first step in mitigating it. With the rising prevalence of AI and machine learning technologies, it's more important than ever to be vigilant about new types of attacks and vulnerabilities.
