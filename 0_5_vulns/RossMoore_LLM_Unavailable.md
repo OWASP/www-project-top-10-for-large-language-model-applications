@@ -1,6 +1,4 @@
-## Vulnerability Name
-
-LLM Unavailable
+## LLM Unavailable
 
 **Author(s):**
 
