@@ -1,6 +1,8 @@
 ## Training Data Leakage
 
-**Author(s):** Steve Wilson
+**Author(s):** 
+
+Steve Wilson
 
 **Description:**
 Training Data Leakage refers to a vulnerability in Large Language Models (LLMs) like OpenAI's GPT-3 and Codex, which are trained on a diverse range of internet text. These models can inadvertently memorize sensitive information present in the training data. This poses significant privacy concerns as the models could potentially reveal personally identifiable information (PII), confidential business information, or other sensitive details.

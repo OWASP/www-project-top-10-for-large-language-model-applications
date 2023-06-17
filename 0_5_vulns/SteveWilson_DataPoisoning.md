@@ -1,7 +1,5 @@
 ## Data Poisoning
 
-
-
 **Author(s):**
 
 Steve Wilson
