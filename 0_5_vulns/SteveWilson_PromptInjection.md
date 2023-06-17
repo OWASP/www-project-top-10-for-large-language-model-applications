@@ -1,6 +1,4 @@
-## Vulnerability Name
-
-Prompt Injection 
+## Prompt Injection 
 
 **Author(s):**
 

@@ -1,6 +1,4 @@
-## Vulnerability Name
-
-Training Data Leakage
+## Training Data Leakage
 
 **Author(s):** Steve Wilson
 
