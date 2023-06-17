@@ -1,12 +1,12 @@
 ## Vulnerability Name
 
+LLM Unavailable
+
 **Author(s):**
 
 Ross Moore
 
 **Description:**
-
-A brief description of the vulnerability that includes its potential effects such as system compromises, data breaches, or other security concerns.
 
 Organizations can run into financial and reputational difficulties if LLM resources are not configured for scalability, HA, peak usage, etc.
 

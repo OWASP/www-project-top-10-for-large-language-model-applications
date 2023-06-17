@@ -1,4 +1,6 @@
-## Prompt Injection Vulnerability  - This is an example
+## Vulnerability Name
+
+Prompt Injection 
 
 **Author(s):**
 
