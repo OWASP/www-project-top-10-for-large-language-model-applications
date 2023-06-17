@@ -10,10 +10,9 @@ Overreliance on LLMs is a security vulnerability that arises when systems excess
 
 **Labels/Tags:**
 
-- AI Vulnerability
 - Misinformation Risk
 - Reputational Risk
-- LLM Hallucinations
+- Hallucinations
 - Risk Communication
 
 **Common Examples of Vulnerability:**
