@@ -45,6 +45,7 @@ Data leakage occurs when an LLM accidentally reveals sensitive information, prop
 1. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt) A blog explaining the risks associated to users unintentionally leaking sensitive data into LLM's and the consequences of when this information is fed into training data.
 2. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/) A write up on an incident caused due to an employee unintentionally leaking source code into an LLM's training data due to misuse and unawareness, leading to this being leaked across other use-case interactions with the LLM.
 3. [Cohere - Terms Of Use](https://cohere.com/terms-of-use) An example terms of use notice made available to users of an LLM to identify how data is processed.
+4. [[LLM02:2023 - Data Leakage](https://owasp.org/www-project-top-10-for-large-language-model-applications/descriptions/Data_Leakage.html) A subsection on the Data Leakage as a vulnerability type overview which is currently listed within the [OWASP Top 10 List for Large Language Models version 0.1](https://owasp.org/www-project-top-10-for-large-language-model-applications/descriptions/)
 
 **Author Commentary (Optional):**
 
