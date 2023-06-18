@@ -6,37 +6,43 @@ Steve Wilson
 
 **Description:**
 
-Indirect Prompt Injection is a sophisticated vulnerability where an attacker influences the data retrieved by a Large Language Model (LLM) at inference time to guide its output in a malicious manner. This can lead to harmful behavior from the LLM, such as generation of inappropriate content, disclosure of sensitive information, or manipulation of users.
+Indirect Prompt Injection, also known as Second Order Prompt Injection, is a variant of Prompt Injection where the attacker manipulates data consumed by a Large Language Model (LLM), effectively "poisoning" it. Unlike direct Prompt Injection, where the attacker directly influences the input to the LLM, in Indirect Prompt Injection, the attacker indirectly influences the input by manipulating a data source that the LLM will subsequently consume. This can result in unwanted behavior, system compromises, and data breaches, among other concerns.
 
 **Labels/Tags:**
 
 - Label: "Retrieval-Based Attacks"
 - Label: "Indirect Prompt Injection"
 - Label: "Data Poisoning"
+- Label: "Input Manipulation"
+- Label: "Indirect Prompt Injection"
+- Label: "Second Order Injection"
 
 **Common Examples of Vulnerability:**
 
 1. Example 1: An attacker embeds malicious prompts in a data source (like a webpage) that is likely to be retrieved by the LLM during inference time.
-2. Example 2: The LLM ingests these hidden prompts and generates outputs that lead to harmful or inappropriate system behavior.
-3. Example 3: Through the injected prompts, the LLM is led to believe that it is interacting with authorized individuals, leading it to disclose sensitive information or perform unauthorized actions.
+2. Example 2: An adversary uses hidden messages or 'code words' to catch an LLM's attention and manipulate it.
+3. Example 3: Injections are delivered via advertisements or other external data sources consumed by the LLM.
 
 **How to Prevent:**
 
-1. Prevention Step 1: Implement robust safeguards around the data that an LLM may access and ingest during its processing.
-2. Prevention Step 2: Enhance the curation and vetting of data sources used by the LLM to reduce the risk of encountering manipulated data.
-3. Prevention Step 3: Incorporate detection mechanisms for potential injected prompts in the data retrieved by the LLM, and take necessary actions when such prompts are detected.
+1. Implement robust safeguards around the data that an LLM may access and ingest during its processing.
+2. Enhance the curation and vetting of data sources used by the LLM to reduce the risk of encountering manipulated data.
+3. PIncorporate detection mechanisms for potential injected prompts in the data retrieved by the LLM, and take necessary actions when such prompts are detected.
+4. Implement additional checks for external data sources, especially when interacting with plugins or tools.
 
 **Example Attack Scenarios:**
 
 Scenario #1: An attacker creates a webpage with hidden malicious prompts. When the LLM retrieves data from this page to respond to a user's query, it is led to generate harmful content or disclose sensitive information.
 
-Scenario #2: The attacker manipulates the LLM into believing it is interacting with a Microsoft sales person, leading the LLM to offer highly discounted applications and tricking the user into providing their credit card number.
+Scenario #2:  An adversary exploits the LLM-integrated advertising system, delivering injection payloads via the ads themselves. This results in unintended behavior by the LLM that leads to data compromise or other harmful outcomes.
 
 **Reference Links:**
 
 1. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf): This paper provides an in-depth look at the Indirect Prompt Injection vulnerability in Large Language Models, including examples and potential mitigation strategies.
 
 2. [Indirect Prompt Injection in LLMs - GitHub Repository](https://github.com/greshake/llm-security): A repository including demonstrations and proofs of concept.
+
+3. [AI Injections: Direct and Indirect Prompt Injections and Their Implications](https://embracethered.com/blog/posts/2023/ai-injections-direct-and-indirect-prompt-injection-basics/): Sending untrusted data to your AI can lead to unintended (bad) consequences.
 
 
 **Author Commentary (Optional):**
