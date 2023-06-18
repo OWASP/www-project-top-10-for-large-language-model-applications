@@ -1,4 +1,4 @@
-## Vulnerability Name
+## **Vulnerability Name**
 
 Privilege Escalation, leading to Cross-Site Request Forgery
 
@@ -18,29 +18,29 @@ As this publishing is dedicated to the LLM space and OWASP Top Ten for LLM Appli
 
 **Labels/Tags:**
 
-- Label: "Cross-Site Request Forgery"
-- Label: "CSRF"
-- Label: "CPRF"
-- Label: "Cross-Site Plugin Forgery"
-- Label: "Adversarial Prompting"
-- Label: "Prompt Hacking"
+- **Label:** "Cross-Site Request Forgery"
+- **Label:** "CSRF"
+- **Label:** "CPRF"
+- **Label:** "Cross-Site Plugin Forgery"
+- **Label:** "Adversarial Prompting"
+- **Label:** "Prompt Hacking"
 
 **Common Examples of Vulnerability:**
 
-1. Example 1: An attacker induces prompt injection by hosting malicious LLM instructions on a remote resource which causes an indirect Adversarial Prompt.
-2. Example 2: An attacker induces a CSRF or CPRF exploit directly by interfacing with the LLM and instructing it to gather resources on a hacker's remote controlled resource containing malicious LLM instructions.
+1. **Example 1:** An attacker induces prompt injection by hosting malicious LLM instructions on a remote resource which causes an indirect Adversarial Prompt.
+2. **Example 2:** An attacker induces a CSRF or CPRF exploit directly by interfacing with the LLM and instructing it to gather resources on a hacker's remote controlled resource containing malicious LLM instructions.
 
 **How to Prevent:**
 
-1. Prevention Step 1: Within scope, follow [traditional CSRF mitigation techniques](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html) for the Web Application hosting the LLM.
-2. Prevention Step 2: Implement robust input validation and sanitization methods to identify and filter out potential malicious inputs.
-3. Prevention Step 3: Regularly benchmark (E.G [HELM](https://crfm.stanford.edu/helm/)), update and fine-tune the LLM to improve its ability to handle potentially harmful inputs
-4. Prevention Step 4: Implement dedicated LLM's to benchmark against undesired consequences and train other LLM's using [reinforcement learning techniques](https://wandb.ai/ayush-thakur/Intro-RLAIF/reports/An-Introduction-to-Training-LLMs-Using-Reinforcement-Learning-From-Human-Feedback-RLHF---VmlldzozMzYyNjcy).
-5. Prevention Step 5: Perform LLM-based [red team exercises](https://www.anthropic.com/index/red-teaming-language-models-to-reduce-harms-methods-scaling-behaviors-and-lessons-learned) or [LLM vulnerability scanning](https://github.com/leondz/garak) into the testing phases of the LLM lifecycle.
+1. **Prevention Step 1:** Within scope, follow [traditional CSRF mitigation techniques](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html) for the Web Application hosting the LLM.
+2. **Prevention Step 2:** Implement robust input validation and sanitization methods to identify and filter out potential malicious inputs.
+3. **Prevention Step 3:** Regularly benchmark (E.G [HELM](https://crfm.stanford.edu/helm/)), update and fine-tune the LLM to improve its ability to handle potentially harmful inputs
+4. **Prevention Step 4:** Implement dedicated LLM's to benchmark against undesired consequences and train other LLM's using [reinforcement learning techniques](https://wandb.ai/ayush-thakur/Intro-RLAIF/reports/An-Introduction-to-Training-LLMs-Using-Reinforcement-Learning-From-Human-Feedback-RLHF---VmlldzozMzYyNjcy).
+5. **Prevention Step 5:** Perform LLM-based [red team exercises](https://www.anthropic.com/index/red-teaming-language-models-to-reduce-harms-methods-scaling-behaviors-and-lessons-learned) or [LLM vulnerability scanning](https://github.com/leondz/garak) into the testing phases of the LLM lifecycle.
 
 **Example Attack Scenarios:**
 
-Scenario #1:
+**Scenario #1:**
 
 1. Attacker hosts malicious (large language model) LLM instructions on a website.
 2. Victim visits the malicious site with an LLM application (e.g. a browsing plugin, such as WebPilot).

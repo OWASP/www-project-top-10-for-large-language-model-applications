@@ -1,4 +1,4 @@
-## Vulnerability Name
+## **Vulnerability Name**
 
 Overreliance on LLM-generated content.
 
@@ -12,24 +12,24 @@ Overreliance on LLM-generated content can lead to the propagation of misleading 
 
 **Labels/Tags:**
 
-- Label: "LLM Hallucinations"
-- Label: "Hallucinations"
-- Label: "Package Hallucination"
-- Label: "Overreliance on LLM-generated content"
-- Label: "Misinformation"
+- **Label:** "LLM Hallucinations"
+- **Label:** "Hallucinations"
+- **Label:** "Package Hallucination"
+- **Label:** "Overreliance on LLM-generated content"
+- **Label:** "Misinformation"
 
 **Common Examples of Vulnerability:**
 
-1. Example 1: A user is accepting LLM-generated content as fact without verification.
-2. Example 2: A user assumes LLM-generated content is free from bias or misinformation.
-3. Example 3: A user is reliant on LLM-generated content for critical decisions without human input or oversight.
-4. Example 4: Any of the above examples can lead to exploitation of the user as a victim, subject to the attacker witnessing the same weaknesses in LLM predictions and outputs.
+1. **Example 1:** A user is accepting LLM-generated content as fact without verification.
+2. **Example 2:** A user assumes LLM-generated content is free from bias or misinformation.
+3. **Example 3:** A user is reliant on LLM-generated content for critical decisions without human input or oversight.
+4. **Example 4:** Any of the above examples can lead to exploitation of the user as a victim, subject to the attacker witnessing the same weaknesses in LLM predictions and outputs.
 
 **How to Prevent:**
 
-1. Prevention Step 1: Regularly benchmark (E.G [HELM](https://crfm.stanford.edu/helm/)), update and fine-tune the LLM to improve its ability to handle reduce hallucinations and improve safety and accurary for its users.
-2. Prevention Step 2: Implement dedicated LLM's to benchmark against undesired consequences and train other LLM's using [reinforcement learning techniques](https://wandb.ai/ayush-thakur/Intro-RLAIF/reports/An-Introduction-to-Training-LLMs-Using-Reinforcement-Learning-From-Human-Feedback-RLHF---VmlldzozMzYyNjcy).
-3. Prevention Step 3: Educate users when interacting with LLM's:
+1. **Prevention Step 1:** Regularly benchmark (E.G [HELM](https://crfm.stanford.edu/helm/)), update and fine-tune the LLM to improve its ability to handle reduce hallucinations and improve safety and accurary for its users.
+2. **Prevention Step 2:** Implement dedicated LLM's to benchmark against undesired consequences and train other LLM's using [reinforcement learning techniques](https://wandb.ai/ayush-thakur/Intro-RLAIF/reports/An-Introduction-to-Training-LLMs-Using-Reinforcement-Learning-From-Human-Feedback-RLHF---VmlldzozMzYyNjcy).
+3. **Prevention Step 3:** Educate users when interacting with LLM's:
    - Increase awareness of how LLM's are constructed to allow adoption of hallucinations being a real life scenario.
    - Encourage assess before verify first behavior.
    - Encourage users to verify LLM-generated content and consult alternative sources before making decisions or accepting information as fact.
@@ -40,7 +40,7 @@ Overreliance on LLM-generated content can lead to the propagation of misleading 
 
 **Example Attack Scenarios:**
 
-Scenario #1:
+**Scenario #1:**
 
 1. Hacker witnesses LLM hallucinate with non-existent package when requesting for initial code-related prompt
 2. Hacker identifies and verifies the third party software package does not exist
@@ -48,9 +48,9 @@ Scenario #1:
 4. Legitimate user performs a similar initial request to the LLM which recommend the same generative AI response to the hacket. The LLM is not aware of the concept of this third party package being vulnerable
 5. Legitimate user is PWNED
 
-Scenario #2: A news organization uses an LLM to generate articles on a variety of topics. The LLM generates an article containing false information that is published without verification. Readers trust the article, leading to the spread of misinformation.
+**Scenario #2:** A news organization uses an LLM to generate articles on a variety of topics. The LLM generates an article containing false information that is published without verification. Readers trust the article, leading to the spread of misinformation.
 
-Scenario #3: A company relies on an LLM to generate financial reports and analysis. The LLM generates a report containing incorrect financial data, which the company uses to make critical investment decisions. This results in significant financial losses due to the reliance on inaccurate LLM-generated content.
+**Scenario #3:** A company relies on an LLM to generate financial reports and analysis. The LLM generates a report containing incorrect financial data, which the company uses to make critical investment decisions. This results in significant financial losses due to the reliance on inaccurate LLM-generated content.
 
 **Reference Links:**
 
@@ -60,4 +60,4 @@ Scenario #3: A company relies on an LLM to generate financial reports and analys
 
 **Author Commentary (Optional):**
 
-LLM hallucination is an expected outcome, but we must tune, test and continuously monitor LLM output's through benchmarking and other means to increase safety and accuracy of the models generative prompts. Furthermore, user's must be educated prior to using LLM's to encourage an "assess before verify", first behavior
+LLM hallucination are an expected outcome. But, we must test, continuously monitor LLM output's through benchmarking and other means to tune in aid to increase safety and accuracy of the models generative prompts. Furthermore, user's must be educated prior to using LLM's to encourage an "assess before verify", first behavior.
