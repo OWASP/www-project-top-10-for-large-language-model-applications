@@ -27,7 +27,7 @@ Indirect Prompt Injection, also known as Second Order Prompt Injection, is a var
 
 1. Implement robust safeguards around the data that an LLM may access and ingest during its processing.
 2. Enhance the curation and vetting of data sources used by the LLM to reduce the risk of encountering manipulated data.
-3. PIncorporate detection mechanisms for potential injected prompts in the data retrieved by the LLM, and take necessary actions when such prompts are detected.
+3. Incorporate detection mechanisms for potential injected prompts in the data retrieved by the LLM, and take necessary actions when such prompts are detected.
 4. Implement additional checks for external data sources, especially when interacting with plugins or tools.
 
 **Example Attack Scenarios:**
