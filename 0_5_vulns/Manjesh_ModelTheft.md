@@ -8,7 +8,7 @@ Manjesh S
 
 **Description:**
 
-The LLM model theft vulnerability refers to the unauthorized access to the Language Model models (LLMs). This arises when the proprietary LLM models, which are valuable intellectual property, are compromised or stolen by malicious actors. The impact of LLM model theft can include economic losses, erosion of competitive advantage, unauthorized usage of the model, or unauthorized access to sensitive information contained within the model.
+The LLM model theft refers to the unauthorized access to the Language Model models (LLMs). This arises when the proprietary LLM models, which are valuable intellectual property, are compromised or stolen by malicious actors. The impact of LLM model theft can include economic losses, erosion of competitive advantage, unauthorized usage of the model, or unauthorized access to sensitive information contained within the model.
 
 **Labels/Tags:**
 
