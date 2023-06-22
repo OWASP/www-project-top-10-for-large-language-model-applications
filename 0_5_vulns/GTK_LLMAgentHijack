@@ -14,11 +14,9 @@ Kai Greshake
 
 Description:
 
-An LLM Agent Hijack vulnerability occurs when a trusted large language model (LLM) is manipulated by an attacker via crafted input prompts, causing the LLM to behave maliciously. These attacker crafted prompts can be introduced through emails, websites, PDFs, text files, or any other mechanism in which an attacker controlled medium is introduced into a user's LLM session. As users often have a high level of trust in the outputs provided by an LLM, they may accept the compromised output without the expected level of scrutiny, thereby enabling the attacker's intended effects. The agent hijack may persist indefinitely on the compromised LLM session. 
+An LLM Agent Hijack vulnerability is a type of prompt injection vulnerability that occurs when a trusted large language model (LLM) is manipulated by an attacker via crafted input prompts, which can cause the LLM to behave maliciously under the target user's context. These attacker crafted prompts can be introduced through emails, websites, PDFs, text files, or any other mechanism in which an attacker controlled medium is introduced into a user's LLM session. As users often have a high level of trust in the outputs provided by an LLM, they may accept the compromised output without the expected level of scrutiny, thereby enabling the attacker's intended effects. The agent hijack may persist indefinitely on the compromised LLM session. 
 
-These effects of an agent hijack attack can range from social engineering exploits, where an LLM may solicit sensitive information under the guise of normal operation, to influencing decision-making processes such as candidate selection in a recruitment context. In these instances, the compromised LLM effectively acts as an agent for the attacker, furthering their objectives without triggering usual safeguards or alerting the end user to the intrusion.
-
-This vulnerability becomes even more concerning when we consider how an attacker can use indirect methods, such as email or web-based injections, to remotely instigate these hijacks. With this ability, they can cause a wide-scale alteration of LLM behavior without directly interacting with the systems in question.
+These effects of a successful compromise can range from social engineering, where an LLM may solicit sensitive information under the guise of normal operation, to influencing decision-making processes such as candidate selection in a recruitment context. In these instances, the compromised LLM effectively acts as an agent for the attacker, furthering their objectives without triggering usual safeguards or alerting the end user to the intrusion.
 
 
 Labels/Tags:
