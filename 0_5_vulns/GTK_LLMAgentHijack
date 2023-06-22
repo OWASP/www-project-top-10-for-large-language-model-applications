@@ -68,6 +68,8 @@ Reference Links:
 
 Author Commentary (Optional):
 
+The purpose of my two findings are to make a distinction between the different types of "prompt injections". Both are forms of prompt injection, but have very different impacts and require very different remediation steps. This is an attempt to make the concept of prompt injeciton more grainular. 
+
 Narrowing the title down was difficult and I'm open to altneratives. 
 
 This is a confused deputy problem. By design, LLMs do not discern between user input or input received from external sources. While it is an active research area, we think this classification is worth including in the Top 10 list. We've provided links to help assist with mitigation suggestions. 
