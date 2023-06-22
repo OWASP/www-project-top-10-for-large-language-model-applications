@@ -1,46 +1,51 @@
 ## Insecure Design
 
-**Author(s):**
+Author(s):
 
-Name of the author(s) who have contributed to documenting this vulnerability.
+Priyadharshini Parthasarathy
 
-**Description:**
+Description:
 
-A brief description of the vulnerability that includes its potential effects such as system compromises, data breaches, or other security concerns.
+Insecure Design is the result of the insufficient knowledge about AI products, while developing or utilizing applications such as hiring process, trending data, 
+Government policies, Reviews based of public data, etc
+While the products are designed/developed using AI tools such as ChatGPT, bard, or bing, it is imperative to understand the below elements such as 
+1. how the model is designed such as reviewing its safety standards
+https://openai.com/safety-standards
+https://openai.com/safety
+2. what is the privacy policy 
+https://openai.com/policies/privacy-policy
+https://platform.openai.com/docs/models/how-we-use-your-data
+https://openai.com/policies
+3. Pros and Cons of using different Language models such as biases, reasoning with uncertainty, reward model
 
-**Labels/Tags:**
+Labels/Tags:
 
-A list that can be used to distinguish associated terminology or phrases to the description of your vulnerability. This will help with sorting through related submissions.
+- Label: "Data Poisoning"
+- Label: "Training Data"
+- Label: "Knowledge/Training about AI models"
 
-> _A common example: Prompt Injection" can also be also described or referred to as "Prompt Hacking", "Jailbreaking" etc_
+Common Examples of Vulnerability:
 
-- Label: ""
-- Label: ""
-- Label: ""
+1. Example 1: Developing recruiting sites applications without the sufficient knowledge about the biases in the AI model.
+2. Example 2: Developing trending data due to data poisoning or to sway public opinion.
+3. Example 3: Lack of training to Architects/Developers about AI models.
+4. Example 4: Companies build applications exposing client data
 
-**Common Examples of Vulnerability:**
+How to Prevent:
 
-1. Example 1: Specific instance or type of this vulnerability.
-2. Example 2: Another instance or type of this vulnerability.
-3. Example 3: Yet another instance or type of this vulnerability.
+1. Prevention Step 1: Training the team on AI models
+2. Prevention Step 2: Understanding the consequences of implementing products using AI.
+3. Prevention Step 3: Secure Design by implementing all the access controls and review the risks.
 
-**How to Prevent:**
+Example Attack Scenarios:
 
-1. Prevention Step 1: A step or strategy that can be used to prevent the vulnerability or mitigate its effects.
-2. Prevention Step 2: Another prevention step or strategy.
-3. Prevention Step 3: Yet another prevention step or strategy.
+Scenario #1: A malicious user can take advantage of how the data is fed into the system and manipulate the outcome.
+Scenario #2: A interviewing candidate may lookup for the income and other benefits and may be directed to misleading information.
+Scenario #3: Companies may be liable to penalty fee for misusing/exposing the client data, if they didn't review the privacy policy, data retention policy listed by AI products.
 
-**Example Attack Scenarios:**
+Reference Links:
 
-Scenario #1: A detailed scenario illustrating how an attacker could potentially exploit this vulnerability, including the attacker's actions and the potential outcomes.
-
-Scenario #2: Another example of an attack scenario showing a different way the vulnerability could be exploited.
-
-**Reference Links:**
-
-1. [Link Title](URL): Brief description of the reference link.
-2. [Link Title](URL): Brief description of the reference link.
-
-**Author Commentary (Optional):**
-
-(Optional) Any additional insights, opinions, or perspectives from the author that are relevant to understanding or addressing the vulnerability.
+1. https://wandb.ai/ayush-thakur/Intro-RLAIF/reports/An-Introduction-to-Training-LLMs-Using-Reinforcement-Learning-From-Human-Feedback-RLHF---VmlldzozMzYyNjcy
+2. https://www.lexology.com/library/detail.aspx?g=58bc82af-3be3-49fd-b362-2365d764bf8f
+3. https://openai.com/research/scaling-laws-for-reward-model-overoptimization
+4. https://par.nsf.gov/servlets/purl/10237395
