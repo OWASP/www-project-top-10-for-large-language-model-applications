@@ -13,7 +13,7 @@ Kai Greshake
 
 Description:
 
-An Insecure Handling of LLM Output vulnerability arises when a plugin or application blindly accepts large language model (LLM) output without proper scrutiny and directly passes it to backend, privileged, or client-side functions. Since LLM-generated content can be controlled by prompt input, this behavior is akin to providing indirect access to additional functionality. This can result in XSS, SSRF, or remote code execution. The severity of this vulnerability increases when the application allows LLM content to bypass the intended user's privilege level. 
+An Insecure Handling of LLM Output vulnerability arises when a plugin or application blindly accepts large language model (LLM) output without proper scrutiny and directly passes it to backend, privileged, or client-side functions. Since LLM-generated content can be controlled by prompt input, this behavior is akin to providing indirect access to additional functionality. This can result in XSS, SSRF, or remote code execution. The severity of this vulnerability increases when the application allows LLM content to bypass the intended user's privilege level. Additionally, this can be combined with agent hijacking attacks to allow an attacker privileged access into a user's environment. 
 
 
 Labels/Tags:
@@ -54,6 +54,8 @@ Reference Links:
 
 
 Author Commentary (Optional):
+
+The purpose of my two findings are to make a distinction between the different types of "prompt injections". Agent Hijacking and Insecure Handling of LLM Output are both forms of prompt injection, but have very different impacts and require very different remediation steps. This is an attempt to make the concept of prompt injeciton more grainular and distinct. 
 
 This is a situation with a large language model (LLM) where a plugin or application accepts LLM output and passes it, uncritically, into a backend or privileged function. Since users have significant control over LLM output, this would be similar to direct function access. This is extremely bad when an application accepts LLM content at a different privilege level than the user is supposed to have. 
 
