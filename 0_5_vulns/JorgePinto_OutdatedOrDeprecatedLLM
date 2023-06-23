@@ -1,0 +1,39 @@
+## Vulnerability Name
+
+Outdated or deprecated LLM
+
+**Author(s):**
+
+Jorge Pinto
+
+**Description:**
+Model updates and deprecation refer to the process of updating or replacing the underlying large language model (LLM) used in an application. As LLMs evolve and new versions are released, older versions may become deprecated, meaning they are no longer actively supported or maintained. This can introduce compatibility issues, potential security vulnerabilities, and impact the functionality and performance of the application.
+
+**Labels/Tags:**
+
+- Label: "Model updates"
+- Label: "Model deprecation"
+- Label: "Compatibility issues"
+
+**Common Examples of Vulnerability:**
+The vulnerability arises when an application relies on a specific version of an LLM that may have been updated, deprecated or it is not maintained anymore, leading to potential security issues.
+
+1. Outdated LLMs may have known security flaws or vulnerabilities that have not been patched or addressed in subsequent updates. Attackers could exploit these vulnerabilities to gain unauthorized access, inject malicious code, or manipulate the application's behavior.
+2.  Deprecated LLMs may not receive bug fixes or patches, leaving the application exposed to known issues. These bugs could result in system crashes, data corruption, or unintended behaviors, impacting the application's reliability and stability.
+3. Outdated LLMs may lack defenses against new types of attacks or emerging security threats. This can make the application more vulnerable to modern attack techniques, such as advanced phishing attempts, injection attacks, or AI-based exploits specifically targeting weaknesses in deprecated LLMs.
+
+**How to Prevent:**
+
+1. Stay informed about the development and release cycles of the LLM provider. Regularly monitor their updates, announcements, and documentation to anticipate any upcoming changes. 
+2. Maintain a flexible and modular architecture for the application, allowing for easy integration of new LLM versions or switching to alternative models if necessary.
+3. Implement version control and dependency management practices to track the specific version of the LLM used in the application. This ensures that updates or deprecations can be identified and managed effectively.
+
+**Example Attack Scenarios:**
+
+Scenario #1: Compatibility Breach. An application relies on a deprecated version of an LLM, and an attacker discovers a vulnerability specific to that version. The attacker exploits this vulnerability to gain unauthorized access to the application's data, execute malicious code or manipulate the application's behavior taking advantage of the lack of security updates.
+
+Scenario #2: Performance Degradation. The LLM used in an application receives a major update, introducing new features and optimizations. However, the application is not designed to accommodate the changes, resulting in performance degradation or functional inconsistencies. Attackers can potentially exploit the degraded performance to launch denial-of-service attacks or manipulate the application's behavior.
+
+**Author Commentary (Optional):**
+
+I have not included reference links due to the fact that I was not able to find any reference for this vulnerability
