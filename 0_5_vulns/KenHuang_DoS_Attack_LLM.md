@@ -1,8 +1,8 @@
 ## **Vulnerability Name:**
 
- Denial of Service (DoS) Attack Against LLM
+ **Denial of Service (DoS) Attack Against LLM**
+ 
 **Author(s):**
-
 Ken Huang | [`@Ken Huang`](https://github.com/kenhuangus/www-project-top-10-for-large-language-model-application)
 
 **Description:**
@@ -86,10 +86,13 @@ By acknowledging and addressing the potential for DoS attacks through context wi
    In this attack scenario, the attacker systematically sends a sequence of long inputs to the LLM, each input being slightly shorter than the context window's limit. By continuously feeding the LLM with these long inputs, the attacker aims to exhaust the model's processing capacity. The LLM struggles to handle the demanding inputs, leading to resource exhaustion, system slowdown, or even a complete denial of service.
 
 These detailed attack scenarios illustrate different techniques an attacker might employ to exploit an LLM's context window, causing DoS conditions and disrupting the system's normal operation. Implementing appropriate safeguards and security measures can help mitigate these risks and ensure the robustness of LLM applications.
+
 **Reference Links:**
 
 
-[1. [OWASP DOS Attack](https://owasp.org/www-community/attacks/Denial_of_Service) 
+[1]. [OWASP DOS Attack](https://owasp.org/www-community/attacks/Denial_of_Service) 
+
+[2]. [Learning From Machines: Know Thy Context](https://lukebechtel.com/blog/lfm-know-thy-context) 
 
 **Author Commentary (Optional):**
 Including DoS attacks on LLM's context window in the OWASP Top 10 list is critical for multiple reasons. First, the prevalence of LLMs in various applications makes them an attractive target for attackers. By manipulating the context window, attackers can exploit the resource-intensive nature of LLMs, leading to service disruptions or complete halts. Additionally, the unpredictable nature of user input and a general lack of developer awareness further amplify the risk. Therefore, developers must recognize the potential impact of DoS attacks on LLMs and implement necessary measures to mitigate these vulnerabilities. Lastly, by incorporating this vulnerability into the OWASP Top 10 list, developers can prioritize security measures, raise awareness, and fortify LLM applications against these emerging threats.
