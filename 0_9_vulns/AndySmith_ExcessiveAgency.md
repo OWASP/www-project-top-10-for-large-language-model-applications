@@ -25,7 +25,7 @@ Just like we never trust client-side validation in web-apps, LLMs should not be 
 **How to Prevent:**
 
 
-1. Prevention Step 1: Reduce the permissions granted to the LMM to the minimum necessary to limit the scope of undesireable actions.
+1. Prevention Step 1: Reduce the permissions granted to the LLM to the minimum necessary to limit the scope of undesireable actions.
 2. Prevention Step 2: Implement rate-limiting to reduce the number of undesireable actions.
 3. Prevention Step 3: Utilise human-in-the-loop control to requre a human to approve all actions before they are taken.
 
