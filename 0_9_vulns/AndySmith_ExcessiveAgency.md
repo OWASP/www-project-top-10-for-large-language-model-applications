@@ -38,9 +38,9 @@ Scenario #2: A customer service LLM has an interface to a payments system to pro
 **Disambiguation**
 
 Versus Overreliance:
-> Overreliance is a weakness in how humans use LLM-based systems (e.g., a news website generates articles using a LLM, and staff copy-paste the output online without properly fact-checking the output.
+> **Overreliance** is a weakness in how humans use LLM-based systems (e.g., a news website generates articles using a LLM, and staff copy-paste the output online without properly fact-checking the output.
 > 
-> Excessive Agency is a weakness in how LLM-based systems use the output from the LLM component (e.g., in the news website example above, Excessive Agency may occur if the article generation system can automatically publish articles online without any human involvement).
+> **Excessive Agency** is a weakness in how LLM-based systems use the output from the LLM component (e.g., in the news website example above, Excessive Agency may occur if the article generation system can automatically publish articles online without any human involvement).
 
 **Reference Links:**
 
