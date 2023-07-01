@@ -6,11 +6,11 @@ Andy Smith
 
 **Description:**
 
-An LLM may be granted a degree of agency - the ability to interface with other systems in order to undertake actions. Without restriction, any undesireable operation of the LLM (regardless of the root casue; e.g., halucination, direct/indirect prompt injection, malicious plugin, or just poorly-engineered benign prompts, etc) may result in undesireable actions being taken.
+An LLM is often granted a degree of agency - the ability to interface with other systems in order to undertake actions. Without restriction, any undesireable operation of the LLM (regardless of the root casue; e.g., halucination, direct/indirect prompt injection, malicious plugin, or just poorly-engineered benign prompts, etc) may result in undesireable actions being taken.
 
 Excessive Agency is the vulnerability that arrises from allowing an LLM to perform risky actions without verification or confirmation.
 
-Just like we never trust client-side validation in web-apps, LLMs should not be trusted to self-police or self-restrict; controls should be embedded in the APIs and plugins of the systems being interfaced with.
+Just like we never trust client-side validation in web-apps, LLMs should not be trusted to self-police or self-restrict; controls should be embedded in the APIs and plugins of that the LLM can call.
 
 **Labels/Tags:**
 
@@ -37,10 +37,22 @@ Scenario #2: A customer service LLM has an interface to a payments system to pro
 
 **Disambiguation**
 
+Several items in the v0.5 LLM Top-10 have a degree of overlap. The below is an attempt to call out the key differentiators between those other items and Excessive Agency.
+
 Versus Overreliance:
 > **Overreliance** is a weakness in how humans use LLM-based systems (e.g., a news website generates articles using a LLM, and staff copy-paste the output online without properly fact-checking the output.
 > 
 > **Excessive Agency** is a weakness in how LLM-based systems use the output from the LLM component (e.g., in the news website example above, Excessive Agency may occur if the article generation system can automatically publish articles online without any human involvement).
+
+Versus Insecure Output Handling
+> **Insecure Output Handling** involves malicious output being created by a LLM, which is then consumed by a downstream system without proper sanitisation.
+> 
+> **Excessive Agency** involves undesireable actions being taken by a LLM in a downstream system due to excessive permissions.
+
+Versus Prompt Injection:
+> **Prompt Injection** is the main trigger for driving an LLM to behave in an undesireable way.
+>
+> **Excessive Agency** allows a misbehaving LLM (be it through prompt injection or other means) to undertake undesireable actions in downstream systems.
 
 **Reference Links:**
 
