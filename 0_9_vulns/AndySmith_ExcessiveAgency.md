@@ -27,7 +27,7 @@ Just like we never trust client-side validation in web-apps, LLMs should not be 
 
 1. Prevention Step 1: Reduce the permissions granted to the LLM to the minimum necessary to limit the scope of undesireable actions.
 2. Prevention Step 2: Implement rate-limiting to reduce the number of undesireable actions.
-3. Prevention Step 3: Utilise human-in-the-loop control to requre a human to approve all actions before they are taken.
+3. Prevention Step 3: Utilise human-in-the-loop control to requre a human to approve all actions before they are taken. See this example of adding a human-in-the-loop verification step into a LangChain tool: https://python.langchain.com/docs/modules/agents/tools/how_to/human_approval
 
 **Example Attack Scenarios:**
 
