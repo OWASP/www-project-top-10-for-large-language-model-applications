@@ -15,5 +15,5 @@ assets/PDF/OWASP-Top-10-for-LLMs-2023-v05.pdf
 * [wiki](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki)
 
 ### Change Log
-* [changes](#)
+* [changes](changes)
 
