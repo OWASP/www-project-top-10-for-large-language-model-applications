@@ -1,0 +1,17 @@
+This page is now archival.  It was created for the Phase 1 brainstorming.  Please don't add more content here, but do review this as you move into Phase 2 activities.  If you'd like contribute to Phase 2, please see the [Phase 2 Instructions](Phase-2-Instructions) page.
+
+| Name        | Date          | Commentary Link                                                              | Notes               |
+| ----------- | ------------- | ---------------------------------------------------------------------------- | ------------------- |
+| Rich Harang | May 24, 2023  | [Twitter Thread](https://twitter.com/rharang/status/1661473877623713793?s=20) | Comments on v0.1   |
+| [Emmanuel Guilherme Junior](https://www.linkedin.com/in/emmanuelgjr/) | May 25, 2023  | [LinkedIn Post](https://www.linkedin.com/pulse/owasp-top-10-large-language-model-applications-guilherme-junior/) | Comments on v0.1   |
+| Adam Shostack | May 30, 2023 | [AI-centric Top 10](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Adam's-suggested-top-10) | rewrite of 0.1 |
+| Andrea Succi | May 26, 2023 | [CybersecCafè Top 10 LLM Security Risks](https://cybersec.cafe/the-top-10-large-language-models-security-risks/) | CyberSecCafe LLM Top 10 |
+| Andrea Succi | May 31, 2023 | [OWASP vs. Cybersec.Café’s LLM Top Security Risks](https://cybersec.cafe/owasp-vs-cybersec-cafes-llm-top-security-risks/) | Comparative Analysis of OWASP 0.1 Top 10 and CyberSecCafe list |
+| [HADESS](https://hadess.io) | Jun 1, 2023  | [Blog Post](https://hadess.io/owasp-top-10-for-large-language-model-applications/) | Comments on v0.1   |
+| Andrea Succi | June 5, 2023 | [Unveiling the Risk Landscape of LLMs](https://cybersec.cafe/unveiling-the-risk-landscape-of-llms/) | Proposal of an approach to create the Top 10 LLM security risk list |
+| GTKlondike | June 7, 2023 | [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/) | A formal threat model of LLM applications |
+| Ken Huang | June 11, 2023 | [LLM-Powered Applications’ Architecture Patterns and Security Controls](https://medium.com/@kenhuangus/llm-powered-applications-architecture-patterns-and-security-controls-7a153c3ec9f4) | Discuss commonly used LLM architecture pattern and security controls |
+| Ken Huang | June 11, 2023 | [Inclusion of DoS attack against LLMs in the Top 10 list](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Denial-of-Service-Attack-against-LLMs) | Discuss the reason why this needs to be included, attack scenarios, and countermeasures|
+| Vishwas Manral | June 14, 2023 | [Inclusion of Model Tuning attack in the Top 10 list](https://arxiv.org/abs/2305.00944) | Instruction tuning using already trained models with prompt and expected output affects the model output greatly even with tuning data poisoning|
+| Vishwas Manral | June 14, 2023 | [Inclusion of Hallucination squatting in the Top 10 list](https://www.scmagazine.com/news/emerging-technology/ai-package-hallucination-malicious-code-developer-environments) | While may be a short term issue, its easy to get Generative AI tools to hallucinate and even provide links to sites that do not exist. This allows adversaries to squat those sites and spread Malware |
+| Leon Derczynski | June 14, 2023 | [Existing threats for an OWASP LLM vulnerability top-n](https://interhumanagreement.substack.com/p/existing-threats-for-an-owasp-llm?utm_source=twitter&sd=pf) | LLM vulns Top-n from an NLP PoV |
