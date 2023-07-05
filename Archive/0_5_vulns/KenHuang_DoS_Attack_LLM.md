@@ -3,7 +3,7 @@
  **Denial of Service (DoS) Attack Against LLM**
  
 **Author(s):**
-Ken Huang | [`@Ken Huang`](https://github.com/kenhuangus/www-project-top-10-for-large-language-model-application)
+Ken Huang | [`@Ken Huang`](https://github.com/kenhuangus/www-project-top-10-for-large-language-model-applications)
 
 **Description:**
 
