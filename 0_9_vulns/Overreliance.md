@@ -1,61 +1,47 @@
 ## Overreliance
 
-**Author(s):**
-
-Steve Wilson
-
 **Description:**
 
-Overreliance on LLMs is a security vulnerability that arises when systems excessively depend on LLMs for decision-making or content generation without adequate oversight, validation mechanisms, or risk communication. LLMs, while capable of generating creative and informative content, are also susceptible to "hallucinations," producing content that is factually incorrect, nonsensical, or inappropriate. These hallucinations can lead to misinformation, miscommunication, potential legal issues, and damage to a company's reputation if unchecked.
+Overreliance on LLMs is a security vulnerability that occurs when systems heavily depend on LLMs for decision-making or content generation without sufficient oversight, validation mechanisms, or risk communication. Although LLMs can produce creative and informative content, they can also hallucinate, leading to generation of content that is factually incorrect, nonsensical, inappropriate or unsafe, such as insecure source code. These hallucinations can result in misinformation, miscommunication, legal implications, and damage to an organization's reputation if not controlled.
 
-**Labels/Tags:**
-
-- Misinformation Risk
-- Reputational Risk
-- Hallucinations
-- Risk Communication
+Reputational risk arises when incorrect or inappropriate LLM outputs harm a company's image and erode trust.  Moreover, in the realm of software development, overreliance on LLM-generated source code can introduce unnoticed security vulnerabilities, thus posing a significant risk to the operational safety and security of applications. These risks highlight the importance of rigorous review processes and continuous validation of AI-generated content.
 
 **Common Examples of Vulnerability:**
 
-1. **Factually Incorrect Information**: An LLM provides incorrect information as a response, leading to misinformation. For example, an LLM may inaccurately describe historical events, resulting in misleading outputs.
-2. **Nonsensical Outputs**: An LLM generates grammatically correct but logically incoherent or nonsensical text. For instance, the LLM might generate a poem or a story that doesn't make logical sense.
-3. **Source Conflation**: LLM conflates information from different sources, creating misleading content. It might combine historical data with current events in an incorrect manner.
-4. **Overindulgence**: LLM might generate an output that could incorrectly be seen as disclosure of confidential information. 
-5. **Inadequate Risk Communication**: Tech companies fail to adequately communicate the inherent risks of using LLMs to the end users, leading to potential negative consequences.
+The below examples are scenarios where hallucinations in LLMs can lead to security risks:
+
+1. **Factually Incorrect Information**: An LLM provides inaccurate information as a response, causing misinformation. 
+2. **Nonsensical Outputs**: LLM produces logically incoherent or nonsensical text that, while grammatically correct, doesn't make sense.
+3. **Source Conflation**: LLM melds information from varied sources, creating misleading content.
+4. **Insecure Code Generation**: LLM suggests insecure or faulty code, leading to vulnerabilities when incorporated into a software system.
+5. **Inadequate Risk Communication**: Failure of tech companies to appropriately communicate the inherent risks of using LLMs to end users, leading to potential harmful consequences.
 
 **How to Prevent:**
 
-1. **Continuous Monitoring**: Regularly monitor and review the outputs of the LLM to ensure they are factual, coherent, and appropriate. Use manual reviews or automated tools for larger scale applications.
-2. **Fact Checking**: Verify the accuracy of information provided by LLMs before using it for decision-making, information dissemination, or other critical functions.
-3. **Model Tuning**: Tune your LLM to reduce the likelihood of hallucinations. Techniques can include prompt engineering, parameter efficient tuning (PET), and full model tuning.
-4. **Set Up Validation Mechanisms**: Implement automatic validation mechanisms to check the generated output against known facts or data.
-5. **Improve Risk Communication**: Follow best practices from risk communication literature and lessons from other sectors to facilitate dialogue with users, establish actionable risk communication, and measure the effectiveness of risk communications on an ongoing basis.
+Following best practices can help reduce overreliance and potential vulnerabilities:
 
-**Example Attack Scenarios:**
+1. **Continuous Monitoring & Self-consistency/voting**: Regularly monitor and review the LLM outputs. Use self-consistency or voting techniques to filter out inconsistent text. Comparing multiple model responses for a single prompt can better judge the quality and consistency of output.
+2. **Fact Checking & External Knowledge Bases**: Cross-check the LLM output with trusted external sources like Wikipedia or Google Search. This additional layer of validation can help ensure the information provided by the model is accurate and reliable.
+3. **Model Tuning & Chain of Thought Prompting**: Regularly tune the model to reduce hallucinations and improve output quality. Techniques such as prompt engineering, parameter efficient tuning (PET), full model tuning, and chain of thought prompting can be employed for this purpose.
+4. **Set Up Validation Mechanisms & Correctness Probabilities**: Implement automatic validation mechanisms that can cross-verify the generated output against known facts or data. This can provide an additional layer of security and mitigate the risks associated with hallucinations.
+5. **Task Decomposition & Agents**: Break down complex tasks into manageable subtasks and assign them to different agents. This not only helps in managing complexity, but it also reduces the chances of hallucinations as each agent can be held accountable for a smaller task.
+6. **Improve Risk Communication**: Clearly communicate the risks and limitations associated with using LLMs. This includes potential for hallucinations, information inaccuracies, and other risks. Effective risk communication can prepare users for potential issues and help them make informed decisions.
+7. **Defensive API and User Interface Design**: Build APIs and user interfaces that encourage responsible and safe use of LLMs. This can involve measures such as content filters, user warnings about potential inaccuracies, and clear labeling of AI-generated content.
+8. **Security Measures in Development Environments**: When using LLMs in development environments, establish secure coding practices and guidelines to prevent the integration of possible vulnerabilities.
 
-**Scenario #1**: A corporation uses an LLM to generate customer-facing content. Due to a hallucination, the LLM generates incorrect information about a product, leading to customer confusion, potential loss of sales, and damage to the company's reputation.
+## Example Attack Scenarios:
 
-**Scenario #2**: An LLM is used in a news organization to assist in generating news articles. The LLM conflates information from different sources and produces an article with misleading information, leading to the dissemination of misinformation and potential legal consequences.
+**Scenario #1 (AI-Generated News Disinformation):** A news organization heavily uses an AI model to generate news articles. A malicious actor exploits this over-reliance, feeding the AI misleading information, causing the spread of disinformation. The AI unintentionally plagiarizes content, leading to copyright issues and decreased trust in the organization.
 
-**Scenario #3**: A user communicates with an AI chatbot based on an LLM. The user, unaware of the limitations and risks of the AI, acts on harmful content generated by the model due to the lack of effective risk communication from the tech company.
+**Scenario #2 (AI-Assisted Coding Vulnerabilities):** A software development team utilizes an AI system like Codex to expedite the coding process. Over-reliance on the AI's suggestions introduces security vulnerabilities into the application due to insecure default settings or recommendations inconsistent with secure coding practices.
+
+**Scenario #3 (Package Hallucination):** A software development firm uses an LLM to assist developers. The LLM suggests a non-existent code library or package, and a developer, trusting the AI, unknowingly integrates a malicious package into the firm's software. This highlights the importance of cross-checking AI suggestions, especially when involving third-party code or libraries.
 
 **Reference Links:**
 
-1. [Understanding LLM Hallucinations](https://towardsdatascience.com/llm-hallucinations-ec831dcd7786): An article explaining how LLMs can make stuff up and what to do about it
-2. [How Should Companies Communicate the Risks of Large Language Models to Users?](https://techpolicy.press/how-should-companies-communicate-the-risks-of-large-language-models-to-users/): An article explaining how to discuss inherent LLM risks
-
-https://towardsdatascience.com/llm-hallucinations-ec831dcd7786
-
-**Author Commentary (Optional):**
-
-Overreliance on Large Language Models (LLMs) presents unique challenges in the realms of information integrity, operational safety, reputational risk, and regulatory compliance. LLMs have emerged as powerful tools for generating human-like text, offering significant benefits for various applications from customer service to content generation. However, without adequate oversight, validation mechanisms, and risk communication, an undue dependence on these models can lead to significant issues.
-
-One crucial area of concern is misinformation. LLMs, prone to occasional "hallucinations," may generate outputs that are factually incorrect or nonsensical. This poses not only a risk of disseminating false or misleading information but can also lead to decision-making based on incorrect data, with potential adverse effects on operations and strategic decisions.
-
-Reputational risk is another critical factor. Incorrect or inappropriate outputs from an LLM can damage a company's image, erode trust, and potentially lead to loss of customers or business opportunities. For instance, if an LLM used for customer interaction produces incorrect information about a product or service, it could lead to customer dissatisfaction and negative public perception.
-
-Regulatory risk is an emerging area of concern. As regulators around the world start to pay closer attention to the use of AI and machine learning, companies that use LLMs may find themselves subject to regulations designed to prevent the dissemination of misinformation and protect user privacy. Failing to adequately control and validate the outputs of an LLM could potentially lead to regulatory penalties.
-
-To mitigate these risks, companies should not only use technical measures, such as continuous monitoring and model tuning, but also pay close attention to risk communication. Ensuring that users understand the limitations of LLMs and the potential risks involved is crucial. This communication should be clear, ongoing, and should provide users with actionable information.
-
-The use of LLMs can offer significant benefits, but it should be approached with a clear understanding of the risks involved and with strategies in place to mitigate those risks. Remember that while AI and LLMs can be highly efficient tools, they do not replace the need for human oversight, fact-checking, and validation.
+1. [Understanding LLM Hallucinations](https://towardsdatascience.com/llm-hallucinations-ec831dcd7786)
+2. [How Should Companies Communicate the Risks of Large Language Models to Users?](https://techpolicy.press/how-should-companies-communicate-the-risks-of-large-language-models-to-users/)
+3. [A news site used AI to write articles. It was a journalistic disaster](https://www.washingtonpost.com/media/2023/01/17/cnet-ai-articles-journalism-corrections/)
+4. [AI Hallucinations: Package Risk](https://vulcan.io/blog/ai-hallucinations-package-risk)
+5. [How to Reduce the Hallucinations from Large Language Models](https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models/)
+6. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination)
