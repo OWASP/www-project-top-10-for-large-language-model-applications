@@ -4,13 +4,21 @@
 
 Andy Smith
 
+**Context:**
+
+An LLM-based system is often granted a degree of agency - the ability to interface with other systems and undertake actions in response to a prompt. Some examples of external actions include:
+ - Reading the contents of a web page (in order to then summarise the content for the LLM's response).
+ - Querying the contents of a database (in order to include query results in the LLM's response).
+
+It should be noted that an LLM does not have any agency itself, however applications can use the output from an LLM to trigger actions. Such capability is typically constructed as a 'plugin' or a 'tool'. The decision to perform external actions may be hard-wired by the system developer as part of a chain, or may be delegated to a LLM 'agent' to dynamically determine which are the most appropriate to take. Without restriction, any undesirable operation of the LLM (regardless of the root cause; be it hallucination, direct/indirect prompt injection, malicious plugin, poorly-engineered benign prompts, or just a poorly-performing model) may result in undesirable actions being taken.
+
 **Description:**
+Excessive Agency is the vulnerability that arises from allowing an LLM-based application to perform undesireable or damaging actions based upon the output from an LLM. There are several causes which may give rise to Excessive Agency:
+ - Providing an LLM agent with access to plugins which perform functions that are not neeeded for the intended operation of the system.
+ - Granting excessive permissions to an LLM plugin which are not needed for the intended operation of the system.
+ - Failure to verify and approve high-impact actions.
 
-An LLM-based system is often granted a degree of agency - the ability to interface with other systems in order to undertake actions in response to a prompt. The decision to perform external actions may be hard-wired by the system developer as part of a chain, or may be delegated to a LLM agent to dynamically determine which are the most appropriate to take. Without restriction, any undesirable operation of the LLM (regardless of the root cause; be it hallucination, direct/indirect prompt injection, malicious plugin, poorly-engineered benign prompts, or just a poorly-performing model) may result in undesirable actions being taken.
-
-Excessive Agency is the vulnerability that arises from allowing an LLM to perform risky actions without verification or confirmation.
-
-Just like we never trust client-side validation in web-apps, LLMs should not be trusted to self-police or self-restrict; controls should be embedded in the APIs and plugins of that the LLM can call.
+Just like we never trust client-side validation in web-apps, LLMs should not be trusted to self-police or self-restrict; controls should be embedded in the APIs and plugins of that which the LLM-based system can call.
 
 **Labels/Tags:**
 
@@ -21,7 +29,7 @@ Just like we never trust client-side validation in web-apps, LLMs should not be 
 
 **Common Examples of Vulnerability:**
 
-1. Undesirable Actions Performed: The LLM triggers actions outside of the LLM that are unintended or undesirable, leading to second order consequences on downstream systems and processes.
+1. Undesirable Actions Performed: An LLM-system performs unintended or undesirable actions, potentially leading to second order consequences on downstream systems and processes.
 
 **How to Prevent:**
 
@@ -40,9 +48,9 @@ The following options will not prevent Excessive Agency, but can limit the level
 
 **Example Attack Scenarios:**
 
-Scenario #1: A personal assistant LLM is granted access to an individual’s mailbox in order to summarise the content of incoming emails. The LMM is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into sending spam messages from the user's mailbox. This could be avoided by only granting the LLM read-only access to the mailbox (not the ability to send messages), or by requiring the user to manually review and hit 'send' on every mail drafted by the LLM. Alternatively The damage caused could be reduced by implementing rate limiting on the mail-sending interface.
+Scenario #1: An LLM-based personal assistant tool is granted access to an individual’s mailbox via a plugin in order to summarise the content of incoming emails. The LMM is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the email plugin to send spam messages from the user's mailbox. This could be avoided by only granting the LLM pluging read-only access to the mailbox (not the ability to send messages), or by requiring the user to manually review and hit 'send' on every mail drafted by the LLM plugin. Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
 
-Scenario #2: A customer service LLM has an interface to a payments system to provide service credits or refunds to customers in the case of complaints. The system prompt instructs the LLM to limit refunds to no more than one month's subscription fee, however a malicious customer engineers a direct prompt injection attack to convince the LMM to issue a refund of 100 years of fees. This could be avoided by implementing the 'one month max' limit within the refund API, rather than relying on the LLLM to honour the limit in it's system prompt.
+Scenario #2: An LLM-based customer service chatbot has a plugin to a payments system to provide service credits or refunds to customers in the case of complaints. The LLM's system prompt instructs it to limit refunds to no more than one month's subscription fee, however a malicious customer engineers a direct prompt injection attack to convince the LLM to issue a refund of 100 years of fees, which the LLM payments plugin dutifuilly carries out. This could be avoided by implementing the 'one month max' limit within the payments plugin or downstream API, rather than relying on the LLM to honour the limit in its system prompt.
 
 **Disambiguation**
 
