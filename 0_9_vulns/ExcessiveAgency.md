@@ -29,7 +29,7 @@ There are several causes which may give rise to Excessive Agency:
 
 1. Providing an LLM agent with access to plugins which perform functions that are not needed for the intended operation of the system.
 2. Granting excessive permissions to an LLM plugin which are not needed for the intended operation of the system.
-3. Inadequate bounds-checking on in terfaces to other sytems.
+3. Inadequate bounds-checking on interfaces to other sytems.
 4. Failure to independently verify and approve high-impact actions.
 
 **How to Prevent:**
