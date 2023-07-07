@@ -13,7 +13,8 @@ An LLM-based system is often granted a degree of agency - the ability to interfa
 It should be noted that an LLM does not have any agency itself, however applications can use the output from an LLM to trigger actions. Such capability is typically constructed as a 'plugin' or a 'tool'. The decision to perform external actions may be hard-wired by the system developer as part of a chain, or may be delegated to a LLM 'agent' to dynamically determine which are the most appropriate to take. Without restriction, any undesirable operation of the LLM (regardless of the root cause; be it hallucination, direct/indirect prompt injection, malicious plugin, poorly-engineered benign prompts, or just a poorly-performing model) may result in undesirable actions being taken.
 
 **Description:**
-Excessive Agency is the vulnerability that arises from allowing an LLM-based application to perform undesireable or damaging actions based upon the output from an LLM. 
+
+Excessive Agency is the vulnerability that allows an LLM-based application to perform undesireable or damaging actions based upon the output from an LLM. Typical root causes of this vulnerability include excessive permissions, inadequate filtering/bounds-checking, and poor design choices.
 
 **Labels/Tags:**
 
