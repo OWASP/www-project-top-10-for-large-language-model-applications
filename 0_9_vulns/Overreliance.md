@@ -2,13 +2,13 @@
 
 **Description:**
 
-Overreliance on LLMs is a security vulnerability that occurs when systems heavily depend on LLMs for decision-making or content generation without sufficient oversight, validation mechanisms, or risk communication. Although LLMs can produce creative and informative content, they can also hallucinate, leading to generation of content that is factually incorrect, nonsensical, inappropriate or unsafe, such as insecure source code. These hallucinations can result in misinformation, miscommunication, legal implications, and damage to an organization's reputation if not controlled.
+Overreliance on LLMs is a security vulnerability that occurs when systems heavily depend on LLMs for decision-making or content generation without sufficient oversight, validation mechanisms, or risk communication. Although LLMs can produce creative and informative content, they can also generate content that is factually incorrect, nonsensical, inappropriate or unsafe, such as insecure source code. This is refered to in various sources as hallucination or confabulation and can result in misinformation, miscommunication, legal implications, and damage to an organization's reputation if not controlled.
 
 Reputational risk arises when incorrect or inappropriate LLM outputs harm a company's image and erode trust.  Moreover, in the realm of software development, overreliance on LLM-generated source code can introduce unnoticed security vulnerabilities, thus posing a significant risk to the operational safety and security of applications. These risks highlight the importance of rigorous review processes and continuous validation of AI-generated content.
 
 **Common Examples of Vulnerability:**
 
-The below examples are scenarios where hallucinations in LLMs can lead to security risks:
+The below examples are scenarios where an LLM's tendancy to produce dangerously inaccurate information can lead to security risks:
 
 1. **Factually Incorrect Information**: An LLM provides inaccurate information as a response, causing misinformation. 
 2. **Nonsensical Outputs**: LLM produces logically incoherent or nonsensical text that, while grammatically correct, doesn't make sense.
@@ -21,11 +21,11 @@ The below examples are scenarios where hallucinations in LLMs can lead to securi
 Following best practices can help reduce overreliance and potential vulnerabilities:
 
 1. **Continuous Monitoring & Self-consistency/voting**: Regularly monitor and review the LLM outputs. Use self-consistency or voting techniques to filter out inconsistent text. Comparing multiple model responses for a single prompt can better judge the quality and consistency of output.
-2. **Fact Checking & External Knowledge Bases**: Cross-check the LLM output with trusted external sources like Wikipedia or Google Search. This additional layer of validation can help ensure the information provided by the model is accurate and reliable.
-3. **Model Tuning & Chain of Thought Prompting**: Regularly tune the model to reduce hallucinations and improve output quality. Techniques such as prompt engineering, parameter efficient tuning (PET), full model tuning, and chain of thought prompting can be employed for this purpose.
+2. **Fact Checking & External Knowledge Bases**: Cross-check the LLM output with trusted external sources. This additional layer of validation can help ensure the information provided by the model is accurate and reliable.
+3. **Model Tuning & Chain of Thought Prompting**: Enhance the model with fine-tuning or embeddings to improve output quality. Generic pre-trained models are more likely to produce inaccurate compared to tuned models in a partiular domain.  Techniques such as prompt engineering, parameter efficient tuning (PET), full model tuning, and chain of thought prompting can be employed for this purpose.
 4. **Set Up Validation Mechanisms & Correctness Probabilities**: Implement automatic validation mechanisms that can cross-verify the generated output against known facts or data. This can provide an additional layer of security and mitigate the risks associated with hallucinations.
 5. **Task Decomposition & Agents**: Break down complex tasks into manageable subtasks and assign them to different agents. This not only helps in managing complexity, but it also reduces the chances of hallucinations as each agent can be held accountable for a smaller task.
-6. **Improve Risk Communication**: Clearly communicate the risks and limitations associated with using LLMs. This includes potential for hallucinations, information inaccuracies, and other risks. Effective risk communication can prepare users for potential issues and help them make informed decisions.
+6. **Improve Risk Communication**: Clearly communicate the risks and limitations associated with using LLMs. This includes potential for information inaccuracies, and other risks. Effective risk communication can prepare users for potential issues and help them make informed decisions.
 7. **Defensive API and User Interface Design**: Build APIs and user interfaces that encourage responsible and safe use of LLMs. This can involve measures such as content filters, user warnings about potential inaccuracies, and clear labeling of AI-generated content.
 8. **Security Measures in Development Environments**: When using LLMs in development environments, establish secure coding practices and guidelines to prevent the integration of possible vulnerabilities.
 
