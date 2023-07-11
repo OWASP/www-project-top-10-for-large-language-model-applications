@@ -35,9 +35,10 @@ Adding restrictions within the system prompt around what types of data the LLM s
 
 1. Integrate adequate data sanitization and scrubbing techniques in aid to prevent user data from entering the training model data.
 2. Implement robust input validation and sanitization methods to identify and filter out potential malicious inputs in aid to prevent the model from being poisoned.
-3. Maintain ongoing supply chain mitigation of risk through techniques such as SAST (Static Application Security Testing) and SBOM (Software Bill of Materials) attestations to identify and remediate vulnerabilities in dependencies for third-party software or packages.
-4. Implement dedicated LLM's to benchmark against undesired consequences and train other LLM's using [reinforcement learning techniques](https://wandb.ai/ayush-thakur/Intro-RLAIF/reports/An-Introduction-to-Training-LLMs-Using-Reinforcement-Learning-From-Human-Feedback-RLHF---VmlldzozMzYyNjcy).
-5. Perform LLM-based [red team exercises](https://www.anthropic.com/index/red-teaming-language-models-to-reduce-harms-methods-scaling-behaviors-and-lessons-learned) or [LLM vulnerability scanning](https://github.com/leondz/garak) into the testing phases of the LLM's lifecycle.
+3. When enriching the model with data and if [fine-tuning](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Definitions) a model: (I.E, Data fed into the model before or during deployment)
+   1. Anything that is deemed sensitive in the fine tuning data has the potential to be revealed to a user. Therefore, apply the rule of least privilege and do not train the model on information that the highest-privileged user can access which may be displayed to a lower-privileged user.
+   2. Access to external data sources (orchestration of data at runtime) should be limited.
+   3. Apply strict access control methods to external data sources,
 
 **Example Attack Scenarios:**
 
