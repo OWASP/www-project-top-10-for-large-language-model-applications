@@ -6,15 +6,21 @@ Andy Smith
 
 **Context:**
 
-An LLM-based system is often granted a degree of agency - the ability to interface with other systems and undertake actions in response to a prompt. Some examples of external actions include:
+An LLM-based system is often granted a degree of agency by its developer - the ability to interface with other systems and undertake actions in response to a prompt. Some actions are intended to be performed on behalf of the LLM in order to support it's purpose, for example:
  - Reading the contents of a web page (in order to then summarise the content for the LLM's response).
  - Querying the contents of a database (in order to include query results in the LLM's response).
 
-It should be noted that an LLM does not have any agency itself, however applications can use the output from an LLM to trigger actions. Such capability is typically constructed as a 'plugin' or a 'tool'. The decision to perform external actions may be hard-wired by the system developer as part of a chain, or may be delegated to a LLM 'agent' to dynamically determine which are the most appropriate to take. Without restriction, any undesirable operation of the LLM (regardless of the root cause; be it hallucination, direct/indirect prompt injection, malicious plugin, poorly-engineered benign prompts, or just a poorly-performing model) may result in undesirable actions being taken.
+Other actions are intended to be performed on behalf of the user who is interracting with the LLM-based application, for example:
+ - Reading the contents of the user's code repo (in order to make code suggestions).
+ - Reading the contents of the user's mailbox (in order to summarise the content of incomming messages).
+
+It should be noted that whilst an LLM does not have any inherent agency itself, applications will frequently use the output from an LLM to trigger actions. Such capability is typically constructed as a 'plugin' or a 'tool'. The specific plugins/tools used in an application might be bespoke to that application, or the application developer may choose to use a plugin/tool written by a 3rd party.
+
+The decision to perform external actions may be hard-wired by the system developer, or may be delegated to a LLM 'agent' to dynamically determine which are the most appropriate to take. Without restriction, any undesirable operation of the LLM (regardless of the root cause; be it hallucination, direct/indirect prompt injection, malicious plugin, poorly-engineered benign prompts, or just a poorly-performing model) may result in undesirable actions being taken.
 
 **Description:**
 
-Excessive Agency is the vulnerability that allows an LLM-based application to perform undesireable or damaging actions based upon the output from an LLM. Typical root causes of this vulnerability include excessive permissions, inadequate filtering/bounds-checking, and poor design choices.
+Excessive Agency is the vulnerability that allows an LLM-based application to perform undesireable or damaging actions based upon the output from an LLM due to excessive permissions, excessive functionality or excessive autonomy.
 
 **Labels/Tags:**
 
@@ -25,12 +31,12 @@ Excessive Agency is the vulnerability that allows an LLM-based application to pe
 
 **Common Examples of Vulnerability:**
 
-There are several causes which may give rise to Excessive Agency:
-
-1. Providing an LLM agent with access to plugins which perform functions that are not needed for the intended operation of the system.
-2. Granting excessive permissions to an LLM plugin which are not needed for the intended operation of the system.
-3. Inadequate bounds-checking on interfaces to other sytems.
-4. Failure to independently verify and approve high-impact actions.
+1. Excessive Functionality: An LLM agent has access to plugins that are wholly unnecessary for the intended operation of the system. For example, a plugin may have been trialled during a development phase and dropped in favour of a better alternative, but the original plugin remains available to the LLM agent.
+2. Excessive Functionality: An LLM agent has access to plugins which include functions that are not needed for the intended operation of the system alongside functions that are required. For example, a developer needs to grant an LLM agent the ability to read documents from a respository, but the 3rd-party plugin they choose to use also includes the ability to modify and delete documents.
+3. Excessive Functionality: An LLM plugin with open-ended functionality fails to properly filter the input instructions for commands outside what's necessary for the intended operation of the application. E.g., a plugin to run one specific shell command fails to properly prevent other commands from being executed.
+4. Excessive Permissions: An LLM plugin has permissions to systems that are not needed for the intended operation of the application. E.g., a plugin to perform SELECT queries connects to the database server using an identity that has SELECT, UPDATE, INSERT and DELETE permissions.
+5. Excessive Permissions: An LLM plugin that is designed to perform operations on behalf of a user accesses downstream systems with a generic high-privileged identity. E.g., a plugin to read the current user's document store connects to the document repository with a generic user account that has access to all users' files.
+6. Excessive Autonomy: An LLM-based application or plugin fails to independently verify and approve high-impact actions with a human operator. E.g., a plugin that allows a user's documents to be deleted will perform deletions without any confirmation from tge user. 
 
 **How to Prevent:**
 
@@ -74,7 +80,7 @@ Versus Insecure Output Handling
 > **Excessive Agency** involves undesirable actions being taken by a LLM in a downstream system due to excessive permissions.
 
 Versus Prompt Injection:
-> **Prompt Injection** is the main trigger for driving an LLM to behave in an undesirable way.
+> **Prompt Injection** is one of the main triggers for driving an LLM to behave in an undesirable way.
 >
 > **Excessive Agency** allows a misbehaving LLM (be it through prompt injection or other means) to undertake undesirable actions in downstream systems.
 
