@@ -1,6 +1,6 @@
 # Supply Chain Vulnerabilities
 
-**Author(s):** John Sotiropoulos, Jason Ross, Jorge Pinto
+**Author(s):** John Sotiropoulos, Jason Ross, Jorge Pinto, Bobbie Dyar 
 
 **Description**: Supply-chain vulnerabilities in LLM applications can affect the entire application lifecycle. This includes traditional third-party libraries/packages, docker containers, base images, and service suppliers such as application and model hosting companies. Vulnerable components or services can become the vector for cyber-security attacks leading to data disclosure and tampering, including ransomware or privilege escalation.
 
