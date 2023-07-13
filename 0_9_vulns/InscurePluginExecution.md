@@ -1,9 +1,5 @@
 ## **Insecure Plugin Execution**
 
-**Author(s):**
-
-Rich Harang, John Sotiropoulos
-
 **Description**
 
 LLM plugins are extensions called by the model when responding to a user request. Since they are automatically invoked in-context and are often chained, there is little application control over their execution. As a result, they can be susceptible to insecure plugin execution due to the dual issue of insecure inputs and insufficient access control.

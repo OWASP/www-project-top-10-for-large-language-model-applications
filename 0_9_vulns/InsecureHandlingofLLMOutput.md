@@ -1,29 +1,11 @@
 Title:
 Insecure Output Handling
 
-Alternative titles: 
-Indirect Function Invocation
-Indirect Code Injection
-
-
-Author(s):
-
-GTKlondike
-Kai Greshake
-
 Description:
 
 An Insecure Output Handling vulnerability is a type of prompt injection vulnerability that arises when a plugin or application blindly accepts large language model (LLM) output without proper scrutiny and directly passes it to backend, privileged, or client-side functions. Since LLM-generated content can be controlled by prompt input, this behavior is akin to providing users indirect access to additional functionality. 
 
 Successful exploitation of an Insecure Output Handling vulnerability can result in XSS and CSRF in web browsers as well as SSRF, privilege escalation, or remote code execution on backend systems. The impact of this vulnerability increases when the application allows LLM content to perform actions above the intended user's privileges. Additionally, this can be combined with agent hijacking attacks to allow an attacker privileged access into a target user's environment. 
-
-
-Labels/Tags:
-
-Label: "Output Filtering"
-Label: "Prompt Injection"
-Label: "Code Execution"
-
 
 Common Examples of Vulnerability:
 

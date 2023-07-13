@@ -1,24 +1,12 @@
 # Supply Chain Vulnerabilities
 
-**Author(s):** John Sotiropoulos, Jason Ross, Jorge Pinto, Bobbie Dyar 
-
 **Description**: Supply-chain vulnerabilities in LLM applications can affect the entire application lifecycle. This includes traditional third-party libraries/packages, docker containers, base images, and service suppliers such as application and model hosting companies. Vulnerable components or services can become the vector for cyber-security attacks leading to data disclosure and tampering, including ransomware or privilege escalation.
 
 Additionally, LLM applications which use their own models bring new types of vulnerabilities typically found in Machine Learning development. These include vulnerabilities in third-party data sets and pre-trained models for further training (transfer learning) or fine-tuning. Third-party data sets and pre-trained models can facilitate poisoning attacks, resulting into biased outcomes, security breaches, or complete system failures.  
 
 Finally, LLMs depend on plugins for extensions, which can bring their own vulnerabilities.
 
-**Labels/Tags:**
-
-
-
-*     Label: "Supply Chain"
-*     Label: "Third-Party Vulnerabilities"
-*     Label: "Third-Party Dependencies"
-
 **Common Examples of Vulnerability:**
-
-
 
 * Use of third-party components or base images with vulnerabilities, including outdated or deprecated components.
 * Use of a poisoned or tampered pre-built model for finetuning or further training.

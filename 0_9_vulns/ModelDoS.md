@@ -1,20 +1,9 @@
 ## Denial of Service Attack Against LLM
 
-**Author(s):**
-Ken Huang | [`@Ken Huang`](https://github.com/kenhuangus/www-project-top-10-for-large-language-model-applications),  Leon Derczynski
-
 **Description:**
 An attacker interacts with an LLM in a way that is particularly resource-consuming, causing quality of service to degrade for them and other users, or for high resource costs to be incurred.
 In addition, the attack by interacting with or manipulating the context window of LLM has emerged as a significant security concern. This issue is exacerbated by the increasing prevalence of LLMs in various applications, their resource-intensive nature, the unpredictability of user input, and a general lack of awareness among developers about this vulnerability.
 LLMs, the context window refers to the maximum length of text that the model can handle, both for input and output. It is a crucial aspect of LLMs as it determines the complexity of the language patterns the model can learn and the size of the text it can process at a time. The size of the context window is determined by the model's architecture and can vary between different models.
-
-**Labels/Tags:**
-
-- Label: "DoS"
-- Label: "Context Window"
-- Label: "Rate Limit"
-- Label: "Input Validation"
-- Label: "Sponge"
 
 **Common Examples of Vulnerability:**
 

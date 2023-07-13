@@ -2,10 +2,6 @@
 
 ### Sensitive Information Disclosure
 
-**Author(s):**
-
-Ads Dawson | [`@GangGreenTemperTatum`](https://github.com/GangGreenTemperTatum/www-project-top-10-for-large-language-model-applications)
-
 **Description:**
 
 Sensitive Information Disclosure occurs when an LLM accidentally reveals sensitive information, proprietary algorithms, or other confidential details through its responses. This can result in unauthorized access to sensitive data or intellectual property, privacy violations, and other security breaches. It's important to note that consumers of an LLM application should be aware of how to safely interact with an LLM and identify the risks present on how they might unintentionally input sensitive data which could be returned in output.
@@ -15,15 +11,6 @@ Vice versa, an LLM application should perform adequate data sanitization and scr
 Think of the consumer to LLM application interaction as both initial input and generative output, forming a two way trust boundary, we cannot inherently trust the client->LLM input as well as the LLM->client output.
 
 Adding restrictions within the system prompt around what types of data the LLM should return can provide some mitigation against sensitive information disclosure. However the unpredictable nature of LLMs mean such restrictions may not always be honoured, and could be intentionally circumvented via Prompt Injection or other vectors.
-
-**Labels/Tags:**
-
-- **Label:** "Sensitive Information Disclosure"
-- **Label:** "Sensitive Data Exposure "
-- **Label:** "PII (Personal Identifiable Information)"
-- **Label:** "BOLA (Broken Object Level Authorization)"
-- **Label:** "BFLA (Broken Function Level Authorization)"
-- **Label:** "IDOR (Insecure Direct Object Reference)"
 
 **Common Examples of Vulnerability:**
 

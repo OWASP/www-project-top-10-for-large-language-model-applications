@@ -1,12 +1,6 @@
 ## Vulnerability Name
 
-### LLM Model Theft
-
-**Author(s):**
-
-- Ads Dawson | [`@GangGreenTemperTatum`](https://github.com/GangGreenTemperTatum/www-project-top-10-for-large-language-model-applications)
-- Manjesh S
-- John Sotiropoulos
+### Model Theft
 
 **Description:**
 
