@@ -31,7 +31,9 @@ The impact of LLM model theft ranges in terms of impact and risk, but at a high-
 7. **Example 7:** The attack vector for model extraction involves querying the LLM with a large number of prompts on a particular topic. The outputs from the LLM can then be used to fine-tune another model. However, there are a few things to note about this attack:
    - The attacker must generate a large number of targeted prompts. If the prompts are not specific enough, the outputs from the LLM will be useless.
    - The outputs from LLMs can sometimes contain hallucinated answers. This means that the attacker may not be able to extract the entire model, as some of the outputs may be nonsensical.
-     - Therefore, it is not possible to replicate an LLM 100% through model extraction. However, attacker will be able to replicate a partial model.
+     - Therefore, it is not possible to replicate an LLM 100% through model extraction. However, the attacker will be able to replicate a partial model.
+**Example 8:** The is an attack vector for **_functional model replication_** and involves using the target model via prompts to generate synthetic training data (an approach called self-instruct) to then use it and fine-tune another foundational model to produce a functional equivalent. This bypasses the limitations of traditional query-based extraction used in Example 7 and has been successfully used in research of using an LLM to train another LLM. Although in the context of this research, model replication is not an attack, the approach could be used by an attacker to replicate a proprietary model with a public API. 
+
 
 **How to Prevent & Mitigations:**
 
@@ -67,6 +69,8 @@ The impact of LLM model theft ranges in terms of impact and risk, but at a high-
 3. [I Know What You See:](https://arxiv.org/pdf/1803.05847.pdf) Power Side-Channel Attack on Convolutional Neural Network Accelerators: Example of Side-channel attacks to extract model information.
 4. [D-DAE: Defense-Penetrating Model Extraction Attacks:](https://www.computer.org/csdl/proceedings-article/sp/2023/933600a432/1He7YbsiH4c) Adversarial approaches to defeat current extraction techniques.
 5. [A Comprehensive Defense Framework Against Model Extraction Attacks](https://ieeexplore.ieee.org/document/10080996): Techniques to defend against Extraction Attacks focusing on adversarial training and measures to achieve robustness against adaptive adversarial techniques.
+6. [Alpaca: A Strong, Replicable Instruction-Following Model] (https://crfm.stanford.edu/2023/03/13/alpaca.html): Use of self-instruct to create a functional equivalent to OpenAI's ext-davinci-003 model on top of LLaMa
+7. [Orca: Progressive Learning from Complex Explanation Traces of GPT-4] (https://arxiv.org/pdf/2306.02707.pdf) More enhanced approach from Microsoft research to create a functional equivalent to OpenAI's GPT4 model on top of LLaMa
 
 **Author Commentary (Optional):**
 
@@ -74,8 +78,6 @@ The impact of LLM model theft ranges in terms of impact and risk, but at a high-
 
 The theft of LLM models represents a significant security concern as language models become increasingly powerful and prevalent. Organizations and researchers must prioritize robust security measures to protect their LLM models, ensuring the confidentiality and integrity of their intellectual property. Employing a comprehensive security framework that includes access controls, encryption, and continuous monitoring is crucial in mitigating the risks associated with LLM model theft and safeguarding the interests of both individuals and organizations relying on LLM.
 
-Physical model theft is a key concern and the Meta "LaMa leak" indicates the challenges of applying access control in collaborative research. Unless there is a leak and given the large size of LLM models, physical theft may not be the preferred approach for attackers; extraction attacks will have lower risks of detection and alerting. They will be a preferable route in environments based on transfer learning, which is common place in LLM fine tuning.
+Physical model theft is a key concern and the Meta "LaMa leak" indicates the challenges of applying access control in collaborative research. 
 
-Extraction methods are well understood in traditional deep learning but less so in LLMs with work emerging. Frameworks such as the Adversarial Robustness Toolkit (ART) include testing for extraction attacks (KnowDown, CopycatCNN, functional extraction ) but they are targeting traditional ML and deep learning.
-
-This increases the risks for zero-day attacks and elevates the immediate need for a risk-based adoption of mitigation strategies to tackle both both physical and functional extraction. Side-channel attacks are a rarer vector and more applicable to smaller private LLMs requiring emphasis on physical security and vetting.
+Extraction methods are well understood in traditional deep learning but less so in LLMs. Frameworks such as the Adversarial Robustness Toolkit (ART) include testing for extraction attacks (KnowDown, CopycatCNN, functional extraction ), but they are targeting traditional ML and deep learning. In the context of LLMs, where the large number of weights makes query-based extraction challenging, functional  model replication via self-instruct appears to be a more feasible approach.
