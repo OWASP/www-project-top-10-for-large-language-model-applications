@@ -62,6 +62,7 @@ There are several data sources that are worth discussing:
 7. [FedMLSecurity:](https://arxiv.org/abs/2306.04959) A Benchmark for Attacks and Defenses in Federated Learning and LLMs: Research demonstrating the effectiveness of Federated Learning against data poisoning attacks on LLMs.
 8. [The poisoning of ChatGPT](https://softwarecrisis.dev/letters/the-poisoning-of-chatgpt/): A controversial but informative article on the risks of Data Poisoning in LLMs.
 9. [LLM10:2023 - Training Data Poisoning](https://owasp.org/www-project-top-10-for-large-language-model-applications/descriptions/Training_Data_Poisoning.html) A subsection on the Training Data Poisoning as a vulnerability type overview which was added to the original [OWASP Top 10 List for Large Language Models version 0.1 draft](https://owasp.org/www-project-top-10-for-large-language-model-applications/descriptions/).
+10. [Cloud Security Podcast by Google | EP68 How We Attack AI?](https://podcasts.google.com/feed/aHR0cHM6Ly9jbG91ZHNlY3VyaXR5cG9kY2FzdC5saWJzeW4uY29tL3Jzcw/episode/ZmI4ZWMyM2MtOGUwYi00YjQ1LTg5YjctMjBhOTUxMDM2YTIx?ep=14) A verbal podcast, which the first half listen highlights a rundown and examples of what Training Data Poisoning may look like at the surface with examples - Nicholas Carlini, Research Scientist @ Google.
 
 **Author Commentary (Optional):**
 
