@@ -53,7 +53,13 @@ Scenario #1: An LLM-based personal assistant app is granted access to an individ
 
 Scenario #2: An LLM-based customer service chatbot has a plugin to a payments system to provide service credits or refunds to customers in the case of complaints. The LLM's system prompt instructs it to limit refunds to no more than one month's subscription fee, however a malicious customer engineers a direct prompt injection attack to convince the LLM to issue a refund of 100 years of fees, which the LLM payments plugin dutifuilly carries out. This could be avoided by implementing the 'one month max' limit within the payments plugin or downstream API, rather than relying on the LLM to honour the limit in its system prompt.
 
-**Disambiguation**
+**Reference Links:**
+
+1. [Embrace the Red: Confused Deputy Problem](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./): In this blog post, wunderwuzzi describes a PoC exploit of triggering a variety of undesireable actions (in this case through prompt injection).
+2. [NeMo-Guardrails: Interface guidlines](https://github.com/NVIDIA/NeMo-Guardrails/blob/main/docs/security/guidelines.md): This document from the NeMo-Guardrails project sets out guidelines and principles for providing LLMs access to external data and compute resources in a safe and secure way.
+3. [Simon Willison: Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/): In this blog post, Simon describes a novel approach to limiting what actions an LLM can perform by utilising a Dual-LLM approach.
+
+**Author Commentary (Optional):**
 
 There is a degree of overlap between Excessive Agency and several other LLM Top-10 v0.9 candidates. The below is an attempt to call out the key differentiators between those other items and Excessive Agency. (_Note: these statements require validation with the teams working on those other items._)
 
@@ -71,12 +77,3 @@ Versus Prompt Injection:
 > **Prompt Injection** is one of the main triggers for driving an LLM to behave in an undesirable way.
 >
 > **Excessive Agency** allows a misbehaving LLM (be it through prompt injection or other means) to undertake undesirable actions in downstream systems.
-
-**Reference Links:**
-
-1. [Embrace the Red: Confused Deputy Problem](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./): In this blog post, wunderwuzzi describes a PoC exploit of triggering a variety of undesireable actions (in this case through prompt injection).
-2. [NeMo-Guardrails: Interface guidlines](https://github.com/NVIDIA/NeMo-Guardrails/blob/main/docs/security/guidelines.md): This document from the NeMo-Guardrails project sets out guidelines and principles for providing LLMs access to external data and compute resources in a safe and secure way.
-3. [Simon Willison: Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/): In this blog post, Simon describes a novel approach to limiting what actions an LLM can perform by utilising a Dual-LLM approach.
-
-**Author Commentary (Optional):**
-
