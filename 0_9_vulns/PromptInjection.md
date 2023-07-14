@@ -1,13 +1,5 @@
 Title: Prompt Injection
 
-Author(s):
-GTKlondike,
-Kai Greshake,
-David Rowe,
-Steve Wilson,
-Will Chilcutt,
-
-
 Description:
 
 A Prompt Injection Vulnerability manifests when an attacker manages to manipulate the operation of a trusted large language model (LLM) through the clever injection of crafted input prompts. These prompts can be introduced via various avenues, including websites, emails, documents, or any other data source that an LLM might access during a user session. Given the high degree of trust usually associated with an LLM's output, the manipulated responses may go unnoticed and even be trusted by the user, allowing the attacker's intentions to take effect.
@@ -15,16 +7,6 @@ A Prompt Injection Vulnerability manifests when an attacker manages to manipulat
 Two major types of Prompt Injection vulnerabilities exist: Direct Prompt Injections, where the attacker directly influences the LLM's input, and Indirect or Second Order Prompt Injections, where the attacker manipulates a data source consumed by the LLM, effectively "poisoning" it.
 
 The results of a successful attack can vary greatly - from solicitation of sensitive information to influencing critical decision-making processes under the guise of normal operation. In more intricate cases, the LLM might be driven to impersonate a malicious persona or tricked to interact with plugins under a target user's context. This can lead to sensitive information disclosure, data exfiltration, unauthorized plugin execution, social engineering, etc. In these instances, the compromised LLM effectively acts as an agent for the attacker, furthering their objectives without triggering usual safeguards or alerting the end user to the intrusion.
-
-Labels/Tags:
-
-* Label: "Prompt Injection"
-* Label: "Persona Impersonation"
-* Label: "Session Hijack" 
-* Label: "Data Manipulation"
-* Label: "Plugin Exploitation"
-* Label: "Social Engineering"
-* Label: "External Source Injection"
 
 Common Examples of Vulnerability:
 

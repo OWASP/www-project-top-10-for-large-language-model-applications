@@ -1,22 +1,8 @@
 ## Vulnerability Name
 
-**Author(s):**
-
-Name of the author(s) who have contributed to documenting this vulnerability.
-
 **Description:**
 
 A brief description of the vulnerability that includes its potential effects such as system compromises, data breaches, or other security concerns.
-
-**Labels/Tags:**
-
-A list that can be used to distinguish associated terminology or phrases to the description of your vulnerability. This will help with sorting through related submissions.
-
-> _A common example: Prompt Injection" can also be also described or referred to as "Prompt Hacking", "Jailbreaking" etc_
-
-- Label: ""
-- Label: ""
-- Label: ""
 
 **Common Examples of Vulnerability:**
 
@@ -40,7 +26,3 @@ Scenario #2: Another example of an attack scenario showing a different way the v
 
 1. [Link Title](URL): Brief description of the reference link.
 2. [Link Title](URL): Brief description of the reference link.
-
-**Author Commentary (Optional):**
-
-(Optional) Any additional insights, opinions, or perspectives from the author that are relevant to understanding or addressing the vulnerability.

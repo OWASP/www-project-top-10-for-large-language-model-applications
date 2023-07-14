@@ -1,16 +1,15 @@
 ## Vulnerability Name
 
-### LLM Model Theft
-
-**Author(s):**
-
-- Ads Dawson | [`@GangGreenTemperTatum`](https://github.com/GangGreenTemperTatum/www-project-top-10-for-large-language-model-applications)
-- Manjesh S
-- John Sotiropoulos
+### Model Theft
 
 **Description:**
 
-LLM Model Theft refers to the unauthorized access to the Language Model models (LLMs). This arises when the proprietary LLM models, which are valuable intellectual property, are compromised or stolen by malicious actors or APT's. The impact of LLM model theft can include economic losses, erosion of competitive advantage, unauthorized usage of the model, or unauthorized access to sensitive information contained within the model.
+LLM Model Theft refers to the unauthorized access and exfiltration of Language Model models (LLMs) by malicious actors or APT's. This arises when the proprietary LLM models which are valuable intellectual property, are compromised, physically stolen, copied or weights and parameters are extracted to create a functional equivalent. The impact of LLM model theft can include economic losses, erosion of competitive advantage, unauthorized usage of the model, or unauthorized access to sensitive information contained within the model.
+
+The impact of LLM model theft ranges in terms of impact and risk, but at a high-level includes (but not limited to):
+
+- Economic, financial and brand reputation loss, erosion of competitive advantage and unauthorized usage of the model.
+- Use of a stolen model, as a shadow model can be used to stage adversarial attacks, including unauthorized access to sensitive information contained within the model or experiment undetected with adversarial inputs to further stage advanced prompt injections.
 
 **Labels/Tags:**
 
@@ -23,10 +22,16 @@ LLM Model Theft refers to the unauthorized access to the Language Model models (
 
 **Common Examples of Vulnerability:**
 
-1. **Example 1:** A malicious actor gains unauthorized access to a company's LLM model repository and downloads proprietary LLM models.
-2. **Example 2:** An insider threat scenario where a rogue employee copies trained LLM models into external storage media.
+1. **Example 1:** A skilled attacker exploits a vulnerability in a company's infrastructure to gain unauthorized access to their LLM model repository. The attacker proceeds to download valuable proprietary LLM models and uses them to launch a competing language processing service or extract sensitive information, causing significant financial harm to the original company.
+2. **Example 2:** An insider threat scenario where a disgruntled employee leaks model or related artifacts. The leaked model increases knowledge for attackers to peform gray box adversarial attacks.
 3. **Example 3:** An attacker compromises the server with LLM model due to misconfiguration in their network or application security settings.
-4. **Example 4:** A malicious actor performs a side-channel attacks to steal weights and architecture.
+4. **Example 4:** An attacker operates a shared GPU service, offering cheap hosting or access to GPU resources for running Language Model models (LLMs). In this scenario, unsuspecting users utilize the shared GPU service to execute their LLM models due to cost-effectiveness or limited hardware availability. The attacker easily gains unauthorized access to the users' LLM models and then copies them to their controlled server, thereby compromising the proprietary LLM models.
+5. **Example 5:** An attacker queries the model API or via prompt injection using carefully selected inputs and collects sufficient number of outputs to create a shadow model.
+6. **Example 6:** A malicious attacker is able to bypass input filtering techniques of the LLM to perform a side-channel attack and ultimately harvest retrieve model weights and architecture information to a remote controlled resource.
+7. **Example 7:** The attack vector for model extraction involves querying the LLM with a large number of prompts on a particular topic. The outputs from the LLM can then be used to fine-tune another model. However, there are a few things to note about this attack:
+   - The attacker must generate a large number of targeted prompts. If the prompts are not specific enough, the outputs from the LLM will be useless.
+   - The outputs from LLMs can sometimes contain hallucinated answers. This means that the attacker may not be able to extract the entire model, as some of the outputs may be nonsensical.
+     - Therefore, it is not possible to replicate an LLM 100% through model extraction. However, attacker will be able to replicate a partial model.
 
 **How to Prevent & Mitigations:**
 
@@ -59,9 +64,9 @@ LLM Model Theft refers to the unauthorized access to the Language Model models (
 
 1. [Meta’s powerful AI language model has leaked online](https://www.theverge.com/2023/3/8/23629362/meta-ai-language-model-llama-leak-online-misuse): A news article highlighting a real-world incident where an AI language model leaked online, emphasizing the importance of protecting LLM models from unauthorized access and misuse.
 2. [Runaway LLaMA | How Meta's LLaMA NLP model leaked](https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked/): The same example as the prior reference, but detailing exploitation steps from a detailed-level of how the proprietary model was leaked.
-3. [Compromising LLMs using Indirect Prompt Injection](https://github.com/greshake/llm-security/blob/main/README.md): A basic high-level overview of how a side-channel prompt injection exploit can have undesired consequences and lead to theft of intellectual property or worse.
-4. [I Know What You See:](https://arxiv.org/pdf/1803.05847.pdf) Power Side-Channel Attack on Convolutional Neural Network Accelerators: Example of Side-channel attacks to extract model information.
-5. [D-DAE: Defense-Penetrating Model Extraction Attacks:](https://www.computer.org/csdl/proceedings-article/sp/2023/933600a432/1He7YbsiH4c) Adversarial approaches to defeat current extraction techniques.
+3. [I Know What You See:](https://arxiv.org/pdf/1803.05847.pdf) Power Side-Channel Attack on Convolutional Neural Network Accelerators: Example of Side-channel attacks to extract model information.
+4. [D-DAE: Defense-Penetrating Model Extraction Attacks:](https://www.computer.org/csdl/proceedings-article/sp/2023/933600a432/1He7YbsiH4c) Adversarial approaches to defeat current extraction techniques.
+5. [A Comprehensive Defense Framework Against Model Extraction Attacks](https://ieeexplore.ieee.org/document/10080996): Techniques to defend against Extraction Attacks focusing on adversarial training and measures to achieve robustness against adaptive adversarial techniques.
 
 **Author Commentary (Optional):**
 

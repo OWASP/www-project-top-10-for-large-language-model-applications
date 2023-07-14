@@ -2,10 +2,6 @@
 
 ### Training Data Poisoning
 
-**Author(s):**
-
-Ads Dawson | [`@GangGreenTemperTatum`](https://github.com/GangGreenTemperTatum/www-project-top-10-for-large-language-model-applications)
-
 **Description:**
 
 - The starting point of any machine learning approach is training data. In terms of large language models, the training data is just “raw text”. To be highly capable (e.g., have linguistic and world knowledge), this text should span a broad range of domains, genres, languages, etc.
@@ -21,14 +17,6 @@ There are several data sources that are worth discussing:
 1. **Common Crawl** — Because of its convenience, it has been a standard source of data to train many models such as T5, GPT-3, and Gopher. The April 2021 snapshot of Common Crawl has 320 terabytes of data.
 2. **WebText and OpenWebText** — Data including public news, Wikipedia, fiction, and the Reddit submissions dataset.
 3. **Books** — As an example, it comprises 16% of the training mix in the GPT-3 model training.
-
-**Labels/Tags:**
-
-- **Label:** "Training Data Poisoning"
-- **Label:** "Taining Data"
-- **Label:** "Biased Data"
-- **Label:** "False Data"
-- **Label:** "Toxicity"
 
 **Common Examples of Vulnerability:**
 

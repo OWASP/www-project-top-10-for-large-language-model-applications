@@ -1,9 +1,5 @@
 ## Excessive Agency
 
-**Author(s):**
-
-Andy Smith
-
 **Context:**
 
 An LLM-based system is often granted a degree of agency by its developer - the ability to interface with other systems and undertake actions in response to a prompt. Some actions are intended to be performed on behalf of the LLM in order to support it's purpose, for example:
@@ -21,13 +17,6 @@ The decision to perform external actions may be hard-wired by the system develop
 **Description:**
 
 Excessive Agency is the vulnerability that allows an LLM-based application to perform undesireable or damaging actions based upon the output from an LLM due to excessive permissions, excessive functionality or excessive autonomy.
-
-**Labels/Tags:**
-
-- Label: "Excessive Agency"
-- Label: "Confused Deputy"
-- Label: "Excessive Permissions"
-- Label: "Inadequate Sandboxing"
 
 **Common Examples of Vulnerability:**
 

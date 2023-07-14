@@ -1,18 +1,8 @@
 ## Vulnerability Name
 
-**Author(s):**
-
-Rich Harang
-
 **Description:**
 
 Authorization is not tracked between plugins, allowing a malicious actor to take action in the context of the LLM user via indirect prompt injection, use of malicious plugins, or other methods. This can result in privilege escalation, loss of confidentiality, and even remote code execution, depending on available plugins.
-
-**Labels/Tags:**
-
-- Label: "Authorization failure"
-- Label: "Input taint tracking"
-- Label: "Content injection"
 
 **Common Examples of Vulnerability:**
 
