@@ -76,7 +76,7 @@ Versus Overreliance:
 Versus Insecure Output Handling
 > **Insecure Output Handling** involves malicious output being created by a LLM, which is then consumed by a downstream system without proper sanitisation.
 > 
-> **Excessive Agency** involves undesirable actions being taken by a LLM in a downstream system due to excessive permissions.
+> **Excessive Agency** involves undesirable actions being taken by a downstream system in response to LLM output.
 
 Versus Prompt Injection:
 > **Prompt Injection** is one of the main triggers for driving an LLM to behave in an undesirable way.
