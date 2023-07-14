@@ -83,3 +83,8 @@ Versus Prompt Injection:
 >
 > **Excessive Agency** allows a misbehaving LLM (be it through prompt injection or other means) to undertake undesirable actions in downstream systems.
 
+Versus Insecure Plugin Execution:
+> **Insecure Plugin Execution** involves proper sanitisation of plugin inputs and authorization of plugin actions.
+>
+> **Excessive Agency** involves limiting plugin functionality, permission and autonomy.
+
