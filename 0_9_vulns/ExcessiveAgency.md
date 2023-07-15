@@ -12,15 +12,13 @@ Other actions are intended to be performed **in the context of the user** who is
 
 It should be noted that whilst an LLM does not have any inherent agency itself, applications will frequently use the output from an LLM to trigger actions. Such capability is typically constructed as a 'plugin' or a 'tool'.
 
-The specific plugins/tools used in an application might be bespoke to that application, or the application developer may choose to use a plugin/tool written by a 3rd party.
+The specific plugins/tools used in an application might be bespoke to that application, or the application developer may choose to use a plugin/tool written by a 3rd party. In some applications, developers may offer end users the ability to select which plugins/tools they wish to enable for a given session.
 
-The decision to perform actions via a plugin/tool may be hard-wired by the system developer, or may be delegated to a LLM 'agent' to dynamically determine which are the most appropriate to take.
-
-Any undesirable operation of the LLM may result in undesirable actions being taken.
+The decision to perform actions via a plugin/tool may be hard-wired by the system developer, or may be delegated to an LLM 'agent' to dynamically determine which of several courses of action are most appropriate to take based on input prompt or LLM output. Any undesirable operation of the LLM may result in undesirable actions being taken.
 
 **Description:**
 
-Excessive Agency is the vulnerability that enables damaging actions to be performed in response to unexpected outputs from an LLM (regardless of what is causing the LLM to malfunction; be it hallucination, direct/indirect prompt injection, malicious plugin, poorly-engineered benign prompts, or just a poorly-performing model). The root cause of Excessive Agency is typically excessive functionality, excessive permissions or excessive autonomy.
+Excessive Agency is the vulnerability that enables damaging actions to be performed in response to unexpected outputs from an LLM (regardless of what is causing the LLM to malfunction; be it hallucination/confabulation, direct/indirect prompt injection, malicious plugin, poorly-engineered benign prompts, or just a poorly-performing model). The root cause of Excessive Agency is typically excessive functionality, excessive permissions or excessive autonomy.
 
 **Common Examples of Vulnerability:**
 
@@ -82,4 +80,9 @@ Versus Prompt Injection:
 > **Prompt Injection** is one of the main triggers for driving an LLM to behave in an undesirable way.
 >
 > **Excessive Agency** allows a misbehaving LLM (be it through prompt injection or other means) to undertake undesirable actions in downstream systems.
+
+Versus Insecure Plugin Execution:
+> **Insecure Plugin Execution** involves proper sanitisation of plugin inputs and authorization of plugin actions.
+>
+> **Excessive Agency** involves limiting plugin functionality, permission and autonomy.
 
