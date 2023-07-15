@@ -12,7 +12,7 @@ Other actions are intended to be performed **in the context of the user** who is
 
 It should be noted that whilst an LLM does not have any inherent agency itself, applications will frequently use the output from an LLM to trigger actions. Such capability is typically constructed as a 'plugin' or a 'tool'.
 
-TThe specific plugins/tools used in an application might be bespoke to that application, or the application developer may choose to use a plugin/tool written by a 3rd party. In some applications, developers may offer end users the ability to select which plugins/tools they wish to enable for a given session.
+The specific plugins/tools used in an application might be bespoke to that application, or the application developer may choose to use a plugin/tool written by a 3rd party. In some applications, developers may offer end users the ability to select which plugins/tools they wish to enable for a given session.
 
 The decision to perform actions via a plugin/tool may be hard-wired by the system developer, or may be delegated to an LLM 'agent' to dynamically determine which of several courses of action are most appropriate to take based on input prompt or LLM output. Any undesirable operation of the LLM may result in undesirable actions being taken.
 
