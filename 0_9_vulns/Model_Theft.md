@@ -1,6 +1,4 @@
-## Vulnerability Name
-
-### Model Theft
+## Model Theft
 
 **Description:**
 

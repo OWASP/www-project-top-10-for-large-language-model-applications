@@ -1,4 +1,4 @@
-## Denial of Service Attack Against LLM
+## Model Denial of Service
 
 **Description:**
 An attacker interacts with an LLM in a way that is particularly resource-consuming, causing quality of service to degrade for them and other users, or for high resource costs to be incurred.

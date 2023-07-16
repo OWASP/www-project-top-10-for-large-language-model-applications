@@ -1,4 +1,4 @@
-## **Insecure Plugin Design**
+## Insecure Plugin Design
 
 **Description**
 LLM plugins are extensions that are called by the model when responding to a user request. Since they are automatically invoked in-context and are often chained, there is little application control over their execution. Consequently, they can be vulnerable due to insecure design characterized by insecure inputs and insufficient access control. LLM Plugins are typically REST API Services and there can be other vulnerabilities in the design as found in OWASP Top 10 API Security Risks – 2023. This item focuses on LLM invocation-specific issues. 

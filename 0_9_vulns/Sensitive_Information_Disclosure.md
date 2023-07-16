@@ -1,6 +1,4 @@
-## **Vulnerability Name:**
-
-### Sensitive Information Disclosure
+## Sensitive Information Disclosure
 
 **Description:**
 

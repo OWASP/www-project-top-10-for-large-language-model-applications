@@ -1,6 +1,4 @@
-## **Vulnerability Name:**
-
-### Training Data Poisoning
+## Training Data Poisoning
 
 **Description:**
 
