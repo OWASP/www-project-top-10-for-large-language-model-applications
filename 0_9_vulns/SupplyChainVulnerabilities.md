@@ -4,7 +4,7 @@
 
 Additionally, LLM applications which use their own models bring new types of vulnerabilities typically found in Machine Learning development. These include vulnerabilities in third-party data sets and pre-trained models for further training (transfer learning) or fine-tuning. Third-party data sets and pre-trained models can facilitate poisoning attacks, resulting into biased outcomes, security breaches, or complete system failures.  
 
-Finally, LLMs depend on plugins for extensions, which can bring their own vulnerabilities.
+Finally, LLMs depend on LLM plugins for extensions, which can bring their own vulnerabilities. LLM Plugin vulnerabilities is covered in LLM - Insecure Plugin Design which covers writing rather an LLM Plugin rather than using a 3rd Party Plugin. However, Insecure Plugin Design provides the information to evaluate third-party plugins. 
 
 **Common Examples of Vulnerability:**
 
@@ -20,7 +20,7 @@ Finally, LLMs depend on plugins for extensions, which can bring their own vulner
 
 
 * Carefully vet data sources and suppliers, including T&Cs and their privacy policies, only using trusted suppliers. Ensure adequate and independently-audited security is in place and that model operator policies align with your data protection policies, i.e., your data is not used for training their models; similarly, seek assurances and legal mitigations against using copyrighted material from model maintainers.
-* Only use reputable plug-ins and ensure they have been tested for your application requirements.
+* Only use reputable plug-ins and ensure they have been tested for your application requirements. LLM-Insecure Plugin Design provides information on the LLM-aspects of Insecure Plugin design you should test against to mitigate risks from using third-party plugins.
 * Understand and apply the mitigations found in the OWASP Top Ten _[A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/) _item. This includes vulnerability scanning, management, and patching components. For development environments with access to sensitive data, apply these controls in those environments, too.
 * Maintain an up-to-date inventory of components using a Software Bill of Materials (SBOM) to ensure you have an up-to, accurate, and signed inventory preventing tampering with deployed packages. SBOMs can be used to detect and alert for new, zero-date vulnerabilities quickly.
 * SBOMs do not cover models, their artefacts, and datasets; If your LLM application uses its own model, you should use MLOPs best practices and platforms offering secure model repositories with data, model, and experiment tracking. 
