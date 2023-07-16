@@ -1,8 +1,7 @@
-## **Insecure Plugin Execution**
+## **Insecure Plugin Design**
 
 **Description**
-
-LLM plugins are extensions called by the model when responding to a user request. Since they are automatically invoked in-context and are often chained, there is little application control over their execution. As a result, they can be susceptible to insecure plugin execution due to the dual issue of insecure inputs and insufficient access control.
+LLM plugins are extensions that are called by the model when responding to a user request. Since they are automatically invoked in-context and are often chained, there is little application control over their execution. Consequently, they can be vulnerable due to insecure design characterized by insecure inputs and insufficient access control. LLM Plugins are typically REST API Services and there can be other vulnerabilities in the design as found in OWASP Top 10 API Security Risks – 2023. This item focuses on LLM invocation-specific issues. 
 
 Plugin integration APIs, such as OpenAI ChatGPT, mandate the use of OpenAPI specification but do not impose any constraints on API contracts. Furthermore, as plugin invocations contribute against the context limit of the model and OpenAPI recommends a minimum number of input parameters to minimise token usage. Plugins are likely to implement free text inputs with no validation or type checking. 
 
@@ -10,11 +9,11 @@ This allows a potential attacker to construct a malicious request to the plugin 
 
 The harm of malicious inputs depends on insufficient access controls and the failure to track authorisation across plugins. This allows a plugin to blindly trust other plugins in a chain invocation and/or assume that the end user provided the inputs. Such inadequate access control can allow malicious inputs to have harmful consequences ranging from data exfiltration, remote code execution, and privilege escalation. 
 
-Although we recommend (LLM00? ) output sanitisation, this may not be possible in the chain of plugin invocation, or it has been omitted. Plugins should not assume safe inputs, and they should have their own input validation combined with explicit access control.
+Although we recommend (LLM-Insecure Output Handling ) output sanitisation, this may not be possible in the chain of plugin invocation, or it has been omitted. Plugins should not assume safe inputs, and they should have their own input validation combined with explicit access control.
+
+This item focuses on creating LLM plugins rather than using third-party plugins, which is covered by LLM-Supply-Chain-Vulnerabilities, although it provides the basis to test third-party plugins for insecure plugin design vulnerabilities. 
 
 **Labels/Tags:**
-
-
 
 * Label: "Input validation"
 * Label: "Input sanitization"
@@ -24,8 +23,6 @@ Although we recommend (LLM00? ) output sanitisation, this may not be possible in
 * Label: "Content injection"
 
 **Common Examples of Vulnerability:**
-
-
 
 1. A plugin accepts all parameters in a single text field instead of distinct input parameters.
 2. A plugin designed to call a specific API hosted at a specific endpoint accepts a string containing the entire URL to be retrieved instead of query parameters to be inserted into the URL. 
@@ -48,8 +45,8 @@ Although we recommend (LLM00? ) output sanitisation, this may not be possible in
 7. Plugins should and use appropriate authentication identities, such as Oauth2, to apply effective authorization and access control. Additionally, API Keys should be used to allow custom authorisation decisions to reflect the plugin route rather than the default interactive user.
 8. Require manual user authorisation and confirmation of any action taken by sensitive plugins; note for any POST operations OpenAI “_require that developers build a user confirmation flow to avoid destruction actions._”
 9. Avoid plugin chaining with each user input and prevent sensitive plugins from being called after any other plugin.
-10. When chaining, perform taint tracing on all plugin content, ensuring that plugin is called with an authorization level corresponding to the lowest authorization of any plugin that has provided input to the LLM prompt.
-11. Plugins are REST APIs and should apply OWASP’s Top Ten API  2023 recommendations to minimise attack consequences from insecure execution.
+10. When chaining, perform taint tracing on all plugin content, ensuring that the plugin is called with an authorization level corresponding to the lowest authorization of any plugin that has provided input to the LLM prompt.
+11. Plugins are typically REST APIs and should apply the recommendations found in OWASP Top 10 API Security Risks – 2023  to minimise generic  vulnerabilities.
 
 **Example Attack Scenarios:**
 
@@ -69,8 +66,6 @@ Scenario #7: An attacker uses indirect prompt injection to abuse a Slack integra
 
 **References**
 
-
-
 1. [OpenAI ChatGPT Plugins](https://platform.openai.com/docs/plugins/introduction): ChatGPT Developer’s Guide
 2. [OpenAI ChatGPT Plugins - Plugin Flow](https://platform.openai.com/docs/plugins/introduction/plugin-flow): A description of how the  plugin execution flows, and the requirement to have a user confirmation for all POST operations
 3. [OpenAI ChatGPT Plugins - Authentication](https://platform.openai.com/docs/plugins/authentication/service-level): Description of Service and  User level authentication (including API Tokens and OAuth2) and the Unauthenticated mode.
@@ -80,3 +75,5 @@ Scenario #7: An attacker uses indirect prompt injection to abuse a Slack integra
 7. [ChatGPT Plugin Exploit Explained: From Prompt Injection to Accessing Private Data](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./)
 8. [OWASP ASVS - 5 Validation, Sanitization and Encoding](https://owasp-aasvs4.readthedocs.io/en/latest/V5.html#validation-sanitization-and-encoding)
 9. [OWASP ASVS 4.1 General Access Control Design](https://owasp-aasvs4.readthedocs.io/en/latest/V4.1.html#general-access-control-design)
+10. [OWASP Top 10 API Security Risks – 2023] (https://owasp.org/API-Security/editions/2023/en/0x11-t10/)
+    
