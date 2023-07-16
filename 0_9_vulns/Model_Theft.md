@@ -11,15 +11,6 @@ The impact of LLM model theft ranges in terms of impact and risk, but at a high-
 - Economic, financial and brand reputation loss, erosion of competitive advantage and unauthorized usage of the model.
 - Use of a stolen model, as a shadow model can be used to stage adversarial attacks, including unauthorized access to sensitive information contained within the model or experiment undetected with adversarial inputs to further stage advanced prompt injections.
 
-**Labels/Tags:**
-
-- **Label:** "Model Protection"
-- **Label:** "Model Theft"
-- **Label:** "Model Stealing"
-- **Label:** "TMT"
-- **Label:** "Trained Model Theft"
-- **Label:** "Model Extraction"
-
 **Common Examples of Vulnerability:**
 
 1. **Example 1:** A skilled attacker exploits a vulnerability in a company's infrastructure to gain unauthorized access to their LLM model repository. The attacker proceeds to download valuable proprietary LLM models and uses them to launch a competing language processing service or extract sensitive information, causing significant financial harm to the original company.
