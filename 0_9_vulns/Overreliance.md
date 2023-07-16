@@ -2,9 +2,13 @@
 
 **Description:**
 
-Overreliance on LLMs is a security vulnerability that occurs when systems heavily depend on LLMs for decision-making or content generation without sufficient oversight, validation mechanisms, or risk communication. Although LLMs can produce creative and informative content, they can also generate content that is factually incorrect, nonsensical, inappropriate or unsafe, such as insecure source code. This is refered to in various sources as hallucination or confabulation and can result in misinformation, miscommunication, legal implications, and damage to an organization's reputation if not controlled.
+Overreliance on LLMs is a security vulnerability that occurs when systems or people depend on LLMs for decision-making or content generation without sufficient oversight. Although LLMs can produce creative and informative content, they can also generate content that is factually incorrect, inappropriate or unsafe. This is refered to in various sources as hallucination or confabulation and can result in misinformation, miscommunication, legal issues, and reputational damage.
 
-Reputational risk arises when incorrect or inappropriate LLM outputs harm a company's image and erode trust.  Moreover, in the realm of software development, overreliance on LLM-generated source code can introduce unnoticed security vulnerabilities, thus posing a significant risk to the operational safety and security of applications. These risks highlight the importance of rigorous review processes and continuous validation of AI-generated content.
+Reputational risk arises when incorrect or inappropriate LLM outputs. In software, overreliance on LLM-generated source code can introduce unnoticed security vulnerabilities. This poses a significant risk to the operational safety and security of applications. These risks show the importance of a rigorous review processes, with:
+
+- Oversight
+- Continuous validation mechanisms
+- Disclaimers on risk
 
 **Common Examples of Vulnerability:**
 
