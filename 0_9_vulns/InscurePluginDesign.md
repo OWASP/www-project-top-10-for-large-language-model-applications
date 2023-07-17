@@ -15,14 +15,15 @@ Although we recommend (LLM-Insecure Output Handling ) output sanitisation, this 
 This item focuses on creating LLM plugins rather than using third-party plugins, which is covered by LLM-Supply-Chain-Vulnerabilities, although it provides the basis to test third-party plugins for insecure plugin design vulnerabilities. 
 
 **Common Examples of Vulnerability:**
-
+    **Lack of Fine Grained Access Control or Input Validation:**
 1. A plugin accepts all parameters in a single text field instead of distinct input parameters.
 2. A plugin designed to call a specific API hosted at a specific endpoint accepts a string containing the entire URL to be retrieved instead of query parameters to be inserted into the URL. 
 3. A plugin designed to look up information from a SQL database accepts a raw SQL query rather than parameters to be inserted into a fully parameterized query.
-4. A plugin designed to look up embeddings from a vector database allows a full connection string rather than specific parameters. : 
-5. Authentication is performed without explicit authorization to a particular plugin.
-6. A plugin treats all LLM content as being created entirely by the user and performs any requested actions without requiring additional authorization.
-7. Plugins are chained together without considering the authorization of one plugin to perform an action using another plugin.
+4. A plugin designed to look up embeddings from a vector database allows a full connection string rather than specific parameters.
+   **Lack of Explicit Authorization of Plug-ins:**
+6. Authentication is performed without explicit authorization to a particular plugin.
+7. A plugin treats all LLM content as being created entirely by the user and performs any requested actions without requiring additional authorization.
+8. Plugins are chained together without considering the authorization of one plugin to perform an action using another plugin.
 
 **How to Prevent:**
 
