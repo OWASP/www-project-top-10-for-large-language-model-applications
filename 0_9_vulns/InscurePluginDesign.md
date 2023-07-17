@@ -1,6 +1,7 @@
 ## Insecure Plugin Design
 
 **Description**
+
 LLM plugins are extensions that are called by the model when responding to a user request. Since they are automatically invoked in-context and are often chained, there is little application control over their execution. Consequently, they can be vulnerable due to insecure design characterized by insecure inputs and insufficient access control. LLM Plugins are typically REST API Services and there can be other vulnerabilities in the design as found in OWASP Top 10 API Security Risks – 2023. This item focuses on LLM invocation-specific issues. 
 
 Plugin integration APIs, such as OpenAI ChatGPT, mandate the use of OpenAPI specification but do not impose any constraints on API contracts. Furthermore, as plugin invocations contribute against the context limit of the model and OpenAPI recommends a minimum number of input parameters to minimise token usage. Plugins are likely to implement free text inputs with no validation or type checking. 
@@ -12,15 +13,6 @@ The harm of malicious inputs depends on insufficient access controls and the fai
 Although we recommend (LLM-Insecure Output Handling ) output sanitisation, this may not be possible in the chain of plugin invocation, or it has been omitted. Plugins should not assume safe inputs, and they should have their own input validation combined with explicit access control.
 
 This item focuses on creating LLM plugins rather than using third-party plugins, which is covered by LLM-Supply-Chain-Vulnerabilities, although it provides the basis to test third-party plugins for insecure plugin design vulnerabilities. 
-
-**Labels/Tags:**
-
-* Label: "Input validation"
-* Label: "Input sanitization"
-* Label: "Insufficient parameterization"
-* Label: "Authorization failure"
-* Label: "Input taint tracking"
-* Label: "Content injection"
 
 **Common Examples of Vulnerability:**
 
