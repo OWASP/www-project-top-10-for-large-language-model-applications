@@ -2,15 +2,15 @@
 
 **Description:**
 
-- The starting point of any machine learning approach is training data. In terms of large language models, the training data is just “raw text”. To be highly capable (e.g., have linguistic and world knowledge), this text should span a broad range of domains, genres, languages, etc.
-  - A large language model uses deep neural networks to generate outputs based on patterns learned from training data.
-- Training data poisoning occurs when an attacker or unaware client of the LLM manipulates the training data or fine-tuning procedures of an LLM to introduce vulnerabilities, backdoors, or biases that could compromise the model’s security, effectiveness, or ethical behavior.
-  - This unethical or incorrect information is then presented to users of the AI.
-  - In cases where the user does not trust the AI and is not influenced, there are still many risks associated with the vulnerability, such as model performance and even down to brand reputation.
-- Data poisoning is considered an integrity attack because tampering with the training data impacts the model’s ability to output correct predictions.
+The starting point of any machine learning approach is training data. In terms of large language models, the training data is just “raw text”. To be highly capable (e.g., have linguistic and world knowledge), this text should span a broad range of domains, genres, languages, etc. A large language model uses deep neural networks to generate outputs based on patterns learned from training data.
 
+Training data poisoning occurs when an attacker or unaware client of the LLM manipulates the training data or fine-tuning procedures of an LLM to introduce vulnerabilities, backdoors, or biases that could compromise the model’s security, effectiveness, or ethical behavior. This unethical or incorrect information is then presented to users of the AI. In cases where the user does not trust the AI and is not influenced, there are still many risks associated with the vulnerability, such as model performance and even down to brand reputation.
 
-There are several data sources that are worth discussing:
+*Another vulnerability entry in the current OWASP Top 10 List for Large Language Models project is [LLM06:2023 - Overreliance on LLM-generated Content](https://owasp.org/www-project-top-10-for-large-language-model-applications/descriptions/Overreliance.html) which elaborates on how this may impact and potentially influence consumers of the AI. This threat is therefore what is considered a chained risk vector and how this may impact and potentially influence consumers of the AI.*
+
+Data poisoning is considered an integrity attack because tampering with the training data impacts the model’s ability to output correct predictions. It is a valid thought that the vulnerability of 'Prompt Hacking', AKA 'Adversarial Prompting' and 'Jailbreaking' are elevated in terms of risk if this vulnerability is not mitigated and remediated beforehand and within the major early lifecycle of a model and it's ongoing development.
+
+There are several data sources (which can associate to Data poisoning) that are worth highlighting:
 
 1. **Common Crawl** — Because of its convenience, it has been a standard source of data to train many models such as T5, GPT-3, and Gopher. The April 2021 snapshot of Common Crawl has 320 terabytes of data.
 2. **WebText and OpenWebText** — Data including public news, Wikipedia, fiction, and the Reddit submissions dataset.
@@ -49,6 +49,8 @@ There are several data sources that are worth discussing:
 
 **Scenario #3:** A malicious actor, or competitor intentionally creates inaccurate or malicious documents which are targeted at a model’s training data in which is training the model at the same time based on inputs. The victim model trains using this falsified information which is reflected in outputs of generative AI prompts to it's consumers.
 
+The vulnerability [Prompt Injection](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/0_9_vulns/PromptInjection.md) could indirectly be another pivot point into this vulnerability if insufficient sanitization and filtering is performed when clients of the LLM application input is used to train the model. I.E, if malicious or falsified data is input to the model from a client as part of a Prompt Injection technique, this could inherently be portrayed into the model data.
+
 **Reference Links:**
 
 1. [Stanford Research Paper](https://stanford-cs324.github.io/winter2022/lectures/data/) which talks about the Data behind large language models.
@@ -62,11 +64,3 @@ There are several data sources that are worth discussing:
 9. [The poisoning of ChatGPT](https://softwarecrisis.dev/letters/the-poisoning-of-chatgpt/) A controversial but informative article on the risks of Data Poisoning in LLMs.
 10. [LLM10:2023 - Training Data Poisoning](https://owasp.org/www-project-top-10-for-large-language-model-applications/descriptions/Training_Data_Poisoning.html) A subsection on the Training Data Poisoning as a vulnerability type overview which was added to the original [OWASP Top 10 List for Large Language Models version 0.1 draft](https://owasp.org/www-project-top-10-for-large-language-model-applications/descriptions/).
 11. [Cloud Security Podcast by Google | EP68 How We Attack AI?](https://podcasts.google.com/feed/aHR0cHM6Ly9jbG91ZHNlY3VyaXR5cG9kY2FzdC5saWJzeW4uY29tL3Jzcw/episode/ZmI4ZWMyM2MtOGUwYi00YjQ1LTg5YjctMjBhOTUxMDM2YTIx?ep=14) A verbal podcast, which the first half listen highlights a rundown and examples of what Training Data Poisoning may look like at the surface with examples - Nicholas Carlini, Research Scientist @ Google.
-
-**Author Commentary (Optional):**
-
-It is a valid thought that the vulnerability of 'Prompt Hacking', AKA 'Adversarial Prompting' and 'Jailbreaking' are elevated in terms of risk if this vulnerability is not mitigated and remediated beforehand and within the major early lifecycle of a model and it's ongoing development.
-
-The vulnerability [Prompt Injection](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/0_9_vulns/PromptInjection.md) could indirectly be another pivot point into this vulnerability if insufficient sanitization and filtering is performed when clients of the LLM application input is used to train the model. I.E, if malicious or falsified data is input to the model from a client as part of a Prompt Injection technique, this could inherently be portrayed into the model data.
-
-Another entry in the current [OWASP Top 10 List for Large Language Models version 0.1](https://owasp.org/www-project-top-10-for-large-language-model-applications/descriptions/) is [LLM06:2023 - Overreliance on LLM-generated Content](https://owasp.org/www-project-top-10-for-large-language-model-applications/descriptions/Overreliance.html) which elaborates on how this may impact and potentially influence consumers of the AI. This threat is therefore what I consider a chained risk vector and how this may impact and potentially influence consumers of the AI.
