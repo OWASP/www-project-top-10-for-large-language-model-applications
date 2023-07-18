@@ -44,7 +44,7 @@ Finally, LLMs depend on LLM plugins for extensions, which can bring their own vu
 
 **Scenario #6**: An attacker poisons or tampers a third-party available data set to help create a backdoor when finetuning a model and exploiting the application’s outcomes.
 
-**Scenario #7: **An attacker exploits weak supplier (outsourcing developer, model marketplace, hosting company, etc.) security to exfiltrate data or tamper with code, model, or data.
+**Scenario #7:** An attacker exploits weak supplier (outsourcing developer, model marketplace, hosting company, etc.) security to exfiltrate data or tamper with code, model, or data.
 
 **Scenario #8:** An attacker identifies unclear T&Cs in a model operator and exploits sensitive data exposure on sensitive data used for fine-tuning.
 
