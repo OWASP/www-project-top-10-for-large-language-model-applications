@@ -20,7 +20,7 @@ There are several data sources (which can associate to Data poisoning) that are 
 
 1. **Example 1:** A malicious actor, or a competitor brand intentionally creates inaccurate or malicious documents which are targeted at a model’s training data.
    - The victim model trains using falsified information which is reflected in outputs of generative AI prompts to it's consumers.
-2. **Example 2:** In reverse, unintentionally, a model is trained using data which has not been verified by its source, origin or content.
+2. **Example 2:** A model is trained using data which has not been verified by its source, origin or content.
 3. **Example 3:** The model itself when situated within infrastructure, has unrestricted access or inadequate sandboxing to gather datasets to be used as training data which has negative influence on outputs of generative AI prompts as well as loss of control from a management perspective.
 
 *It is important to note that as a user of an LLM to be aware of this vulnerability. Whether a developer, client or consumer of the LLM, it is important to understand the implications of how this vulnerability could reflect risks within your LLM application or when interacting with a third-party LLM.*
