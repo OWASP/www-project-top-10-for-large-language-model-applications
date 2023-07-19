@@ -4,6 +4,12 @@ All notable changes to the OWASP Top 10 for LLM Applications project will be doc
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9] - 2023-07-18
+
+### Added
+- Second draft of the OWASP Top 10 for LLM Applications based on working group input.
+- Engagement from over 440 experts and contributions from over 125 experts in the field of AI and application security.
+
 ## [0.5] - 2023-07-01
 
 ### Added
