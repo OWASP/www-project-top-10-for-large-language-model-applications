@@ -53,12 +53,12 @@ The vulnerability [Prompt Injection](https://github.com/OWASP/www-project-top-10
 
 **Reference Links:**
 
-1. [Stanford Research Paper](https://stanford-cs324.github.io/winter2022/lectures/data/) which talks about the Data behind large language models.
-2. [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html)
+1. [Stanford Research Paper:CS324](https://stanford-cs324.github.io/winter2022/lectures/data/) which talks about the Data behind large language models.
+2. [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html) A well explained high-level overview explaining data poisoning attacks and why you should care.
 3. [MITRE ATLAS (framework) Tay Poisoning](https://atlas.mitre.org/studies/AML.CS0009/) The MITRE ATLAS framework published a case study on the Microsoft "Tay" chatbot project which portrays how non-proficient red team skills and efforts from individuals able to access the model were able to train it with poisoned data which ultimately led to other vulnerabilities and concerns.
-4. [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news/) An article detailing how one can surgically modify an open-source model, and upload it to a provider to make it spread misinformation while being undetected by standard benchmarks.
+4. [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/.poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news/) An article detailing how one can surgically modify an open-source model, and upload it to a provider to make it spread misinformation while being undetected by standard benchmarks.
 5. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf/) Evidence of how a prompt injection ([LLM01:2023 - Prompt Injections](https://owasp.org/www-project-top-10-for-large-language-model-applications/descriptions/Prompt_Injection.html)) technique could also lead to Training Data Poisoning during scraping.
 6. [Backdoor Attacks on Language Models](https://towardsdatascience.com/backdoor-attacks-on-language-models-can-we-trust-our-models-weights-73108f9dcb1f): Can We Trust Our Model’s Weights?: A primer in data poisoning and backdoor on Language Models.
-7. [Poisoning Language Models During Instruction](https://arxiv.org/abs/2305.00944) Tuning Research paper demonstrating Data Poisoning in the model fine tuning process
-8. [FedMLSecurity:](https://arxiv.org/abs/2306.04959) A Benchmark for Attacks and Defenses in Federated Learning and LLMs: Research demonstrating the effectiveness of Federated Learning against data poisoning attacks on LLMs.
+7. [Poisoning Language Models During Instruction](https://arxiv.org/abs/2305.00944) Tuning Research paper demonstrating Data Poisoning in the model fine tuning process.
+8. [FedMLSecurity:arXiv:2306.04959](https://arxiv.org/abs/2306.04959) A Benchmark for attacks and defenses in federated learning and LLMs: Research demonstrating the effectiveness of Federated Learning against data poisoning attacks on LLMs.
 9. [The poisoning of ChatGPT](https://softwarecrisis.dev/letters/the-poisoning-of-chatgpt/) A controversial but informative article on the risks of Data Poisoning in LLMs.
