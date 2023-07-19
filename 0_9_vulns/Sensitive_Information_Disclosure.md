@@ -8,7 +8,7 @@ Vice versa, an LLM application should perform adequate data sanitization and scr
 
 Think of the consumer to LLM application interaction as both initial input and generative output, forming a two way trust boundary, we cannot inherently trust the client->LLM input as well as the LLM->client output.
 
-Adding restrictions within the system prompt around what types of data the LLM should return can provide some mitigation against sensitive information disclosure. However the unpredictable nature of LLMs mean such restrictions may not always be honoured, and could be intentionally circumvented via Prompt Injection or other vectors.
+Adding restrictions within the system prompt around what types of data the LLM should return can provide some mitigation against sensitive information disclosure. However the unpredictable nature of LLMs mean such restrictions may not always be honoured, and could be circumvented via Prompt Injection or other vectors.
 
 *As per [phase 3 instructions](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Phase-3-Instructions) of the OWASP Top 10 for Large Language Model Applications project, the core group decided to rename this vulnerability description from the original [0.5 draft](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/Archive/0_5_vulns/AdsDawson_DataLeakage.md) of "Data Leakage" which is not to be confused with a [different concept altogether](https://machinelearningmastery.com/data-leakage-machine-learning/).*
 
