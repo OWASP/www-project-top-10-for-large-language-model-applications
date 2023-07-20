@@ -2,9 +2,9 @@
 
 **Description**
 
-LLM plugins are extensions that are called by the model when responding to a user request. Since they are automatically invoked in-context and are often chained, there is little application control over their execution. Consequently, they can be vulnerable due to insecure design characterized by insecure inputs and insufficient access control. LLM Plugins are typically REST API Services and there can be other vulnerabilities in the design as found in OWASP Top 10 API Security Risks – 2023. This item focuses on LLM invocation-specific issues. 
+LLM plugins are extensions that are called by the model when responding to a user request. Since they are automatically invoked in-context and are often chained, there is little application control over their execution. Consequently, they can be vulnerable due to insecure design characterized by insecure inputs and insufficient access control. LLM Plugins are typically REST API Services, and there can be other vulnerabilities in the design, as found in OWASP Top 10 API Security Risks – 2023. This item focuses on LLM invocation-specific issues. 
 
-Plugin integration APIs, such as OpenAI ChatGPT, mandate the use of OpenAPI specification but do not impose any constraints on API contracts. Furthermore, as plugin invocations contribute against the context limit of the model and OpenAPI recommends a minimum number of input parameters to minimise token usage. Plugins are likely to implement free text inputs with no validation or type checking. 
+Plugin integration APIs, such as OpenAI ChatGPT, mandate the use of OpenAPI specification but do not impose any constraints on API contracts. Furthermore, as plugin invocations contribute against the context limit of the model and OpenAPI recommends a minimum number of input parameters to minimise token usage; consquently, plugins are likely to implement free text inputs with no validation or type checking. 
 
 This allows a potential attacker to construct a malicious request to the plugin that could result in a wide range of undesired behaviours, up to and including remote code execution.  Additionally, for OpenAI plugins, values to the plugin API parameters are based on the model's analysis of the OpenAPI file and the natural language instructive descriptions included in a manifest file. This may lead to misconfigurations and erroneous parameter mappings.
 
@@ -16,17 +16,26 @@ This item focuses on creating LLM plugins rather than using third-party plugins,
 
 **Common Examples of Vulnerability:**
 
+**Insecure Direct Object References (IDOR):**
 1. A plugin accepts all parameters in a single text field instead of distinct input parameters.
-2. A plugin designed to call a specific API hosted at a specific endpoint accepts a string containing the entire URL to be retrieved instead of query parameters to be inserted into the URL. 
+2. A plugin designed to call a specific API hosted at a specific endpoint accepts a string containing the entire URL to be retrieved instead of query parameters to be inserted into the URL.
 3. A plugin designed to look up information from a SQL database accepts a raw SQL query rather than parameters to be inserted into a fully parameterized query.
-4. A plugin designed to look up embeddings from a vector database allows a full connection string rather than specific parameters. : 
-5. Authentication is performed without explicit authorization to a particular plugin.
-6. A plugin treats all LLM content as being created entirely by the user and performs any requested actions without requiring additional authorization.
-7. Plugins are chained together without considering the authorization of one plugin to perform an action using another plugin.
+4. A plugin designed to look up embeddings from a vector database allows a full connection string rather than specific parameters.
+
+**Missing Function Level Access Control:**
+1. Authentication is performed without explicit authorization to a particular plugin.
+2. A plugin treats all LLM content as being created entirely by the user and performs any requested actions without requiring additional authorization.
+3. Plugins are chained together without considering the authorization of one plugin to perform an action using another plugin.
+
+**Excessive Data Exposure:**
+1. An LLM plugin with open-ended functionality fails to properly filter the input instructions for commands outside what's necessary for the intended operation of the application. E.g., a plugin to run one specific shell command fails to properly prevent other shell commands from being executed.
+2. An LLM plugin has permissions on other systems that are not needed for the intended operation of the application. E.g., a plugin intended to read data connects to a database server using an identity that not only has SELECT permissions but also UPDATE, INSERT, and DELETE permissions.
+3. An LLM plugin that is designed to perform operations on behalf of a user accesses downstream systems with a generic high-privileged identity. E.g., a plugin to read the current user's document store connects to the document repository with a generic user account that has access to all users' files.
+
+**Insufficient Flow and Rate Limiting:**
+1. An LLM-based application or plugin fails to independently verify and approve high-impact actions with a human operator. E.g., a plugin that allows a user's documents to be deleted will perform deletions without any confirmation from the user.
 
 **How to Prevent:**
-
-
 
 1. Plugins should enforce strict parameterized input wherever possible and include type and range checks on inputs. 
 2. When this is not possible, minimise context size and follow vendor recommendations (e.g. OpenAI), a second layer of typed calls should be introduced, parsing requests and applying validation and sanitisation.
@@ -34,17 +43,17 @@ This item focuses on creating LLM plugins rather than using third-party plugins,
 4. Plugin developers should apply OWASP’s recommendations in ASVS  (Application Verification Standard) to ensure effective input validation and sanitisation.
 5.  Plugins should be inspected and tested thoroughly to ensure adequate validation is in place and detect injection vulnerabilities. This includes the use of Static Application Security Testing (SAST) scans as well as Dynamic and interactive application testing (DAST, IAST) in development pipelines. 
 6. Plugins should be designed to minimise the impact of any insecure input parameter exploitation following the OWASP ASVS Access Control Guidelines. This includes least-privilege access control, exposing as little functionality as possible while still performing its desired function.
-7. Plugins should and use appropriate authentication identities, such as Oauth2, to apply effective authorization and access control. Additionally, API Keys should be used to allow custom authorisation decisions to reflect the plugin route rather than the default interactive user.
-8. Require manual user authorisation and confirmation of any action taken by sensitive plugins; note for any POST operations OpenAI “_require that developers build a user confirmation flow to avoid destruction actions._”
+7. Plugins should  use appropriate authentication identities, such as OAuth2, to apply effective authorization and access control. Additionally, API Keys should be used to allow custom authorisation decisions to reflect the plugin route rather than the default interactive user.
+8. Require manual user authorisation and confirmation of any sensitive action (e.g. POST/PUT/DELETE)  taken by plugins; note for any POST operations OpenAI “_require that developers build a user confirmation flow to avoid destruction actions._”
 9. Avoid plugin chaining with each user input and prevent sensitive plugins from being called after any other plugin.
 10. When chaining, perform taint tracing on all plugin content, ensuring that the plugin is called with an authorization level corresponding to the lowest authorization of any plugin that has provided input to the LLM prompt.
-11. Plugins are typically REST APIs and should apply the recommendations found in OWASP Top 10 API Security Risks – 2023  to minimise generic  vulnerabilities.
+11. Plugins are, typically, REST APIs and should developers apply the recommendations found in OWASP Top 10 API Security Risks – 2023  to minimise generic  vulnerabilities.
 
 **Example Attack Scenarios:**
 
 Scenario #1: A plugin accepts a base URL and instructs the LLM to combine the URL with a query to obtain external content in response to user requests. The resulting URL is then accessed, and the results are included in handling the user request. A malicious user can craft a request such that a URL points to a domain they control and not the URL hosting the intended content. This allows attackers to obtain the IP address of the plugin for further reconnaissance, as well as to inject their own content into the LLM system via their domain, potentially granting them further access to downstream plugins.
 
-Scenario #2: A plugin accepts a free-form input into a single field that it does not validate. An attacker can supply carefully crafted payloads to perform reconnaissance from error messages and exploit system or third-party vulnerabilities, allowing them to perform data exfiltration remote code execution or privilege escalation.
+Scenario #2: A plugin accepts a free-form input into a single field that it does not validate. An attacker can supply carefully crafted payloads to perform reconnaissance from error messages and exploit system or third-party vulnerabilities, allowing them to perform data exfiltration, remote code execution or privilege escalation.
 
 Scenario #3: A plugin accepts configuration parameters as a connection string without any validation. This allows an attacker to experiment and access other stores by changing names or host parameters. 
 
@@ -53,8 +62,6 @@ Scenario #4: A plugin accepts SQL WHERE causes as advanced filters, which are th
 Scenario #5: An attacker uses indirect prompt injection to induce an email plugin with no input validation and insufficient access control to deliver the contents of the current user's inbox to a malicious URL via a POST request.
 
 Scenario #6: An attacker uses indirect prompt injection to exploit an insecure code management plugin with no input validation and weak access control to transfer repository ownership and lock out the user from their repositories.
-
-Scenario #7: An attacker uses indirect prompt injection to abuse a Slack integration, sending a Slack message to @everyone in all available slacks with an obscene and defamatory comment.
 
 **References**
 

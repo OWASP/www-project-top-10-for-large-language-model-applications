@@ -44,7 +44,7 @@ Finally, LLMs depend on LLM plugins for extensions, which can bring their own vu
 
 **Scenario #6**: An attacker poisons or tampers a third-party available data set to help create a backdoor when finetuning a model and exploiting the application’s outcomes.
 
-**Scenario #7: **An attacker exploits weak supplier (outsourcing developer, model marketplace, hosting company, etc.) security to exfiltrate data or tamper with code, model, or data.
+**Scenario #7:** An attacker exploits weak supplier (outsourcing developer, model marketplace, hosting company, etc.) security to exfiltrate data or tamper with code, model, or data.
 
 **Scenario #8:** An attacker identifies unclear T&Cs in a model operator and exploits sensitive data exposure on sensitive data used for fine-tuning.
 
@@ -53,12 +53,13 @@ Finally, LLMs depend on LLM plugins for extensions, which can bring their own vu
 
 
 *  [ChatGPT Data Breach Confirmed as Security Firm Warns of Vulnerable Component Exploitation](https://www.securityweek.com/chatgpt-data-breach-confirmed-as-security-firm-warns-of-vulnerable-component-exploitation/): How the exploitation of a redis-py vulnerability led to the first OpenAI data breach and outage.
-* [What Happens When an AI Company Falls Victim to a Software Supply Chain Vulnerability](https://securityboulevard.com/2023/05/what-happens-when-an-ai-company-falls-victim-to-a-software-supply-chain-vulnerability/)<span style="text-decoration:underline;"> </span>: Another account of the OpenAI data breach with an analysis of the risks to AI companies
+* [What Happens When an AI Company Falls Victim to a Software Supply Chain Vulnerability](https://securityboulevard.com/2023/05/what-happens-when-an-ai-company-falls-victim-to-a-software-supply-chain-vulnerability/): Another account of the OpenAI data breach with an analysis of the risks to AI companies
 * [Plugin review process](https://platform.openai.com/docs/plugins/review): OpenAI's plugin review process.
 * [Compromised PyTorch-nightly dependency chain](https://pytorch.org/blog/compromised-nightly-dependency/): An attacker staged a successful dependency chain attack on PyPi to fool PyTorch developers into downloading data exfiltration malware disguised as a PyTorch dependency.
 * [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news/): A detailed walkthrough on compromising the supply chain and poison the open source GPT-J-6B LLM on HuggingFace
 * [https://twitter.com/rharang/status/1675863546200981504?s=20](https://twitter.com/rharang/status/1675863546200981504?s=20) Data breach of Hugging Face, affecting Meta/Facebook & Intel Hub organisations.
 * [ChatGPT Plugins: Data Exfiltration via Images & Cross Plugin Request Forgery](https://embracethered.com/blog/posts/2023/chatgpt-webpilot-data-exfil-via-markdown-injection/): Examples of tricking users to use fake links when booking a flight.
+* [MIRE Supply Chain Compromise](https://attack.mitre.org/techniques/T1195/): MITRE ATT&CK Supply Chain Compromise entry.
 * [ML Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010/): The MITRE ATLAS coverage of ML Supply Chain Compromise and its recommendations.  
 * [VirusTotal Poisoning](https://atlas.mitre.org/studies/AML.CS0002): An example of a data poisoning via the supply chain; reported by McAfee where an attacker implanted mutant synthetic variants of ransomware in VirusTotal to confuse anti-virus ML systems and misclassify the ransomware as benign.
 * [MLOps: Why data and model experiment tracking is important? How tools like DVC and Mlflow can solve this challenge ?](https://medium.com/hub-by-littlebigcode/mlops-why-data-and-model-experiment-tracking-is-important-e40e2fb9d74d) Best practices in MLOPs to track models and data.
