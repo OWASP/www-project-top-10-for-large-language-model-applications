@@ -2,17 +2,15 @@
 
 **Description:**
 
-Overreliance on LLMs is a security vulnerability that occurs when systems or people depend on LLMs for decision-making or content generation without sufficient oversight. Although LLMs can produce creative and informative content, they can also generate content that is factually incorrect, inappropriate or unsafe. This is refered to in various sources as hallucination or confabulation and can result in misinformation, miscommunication, legal issues, and reputational damage.
+Overreliance occurs when systems or people depend on LLMs for decision-making or content generation without sufficient oversight. While LLMs can produce creative and informative content, they can also generate content that is factually incorrect, inappropriate or unsafe. This is refered to as hallucination or confabulation and can result in misinformation, miscommunication, legal issues, and reputational damage.
 
- Overreliance on LLM-generated source code can introduce unnoticed security vulnerabilities. This poses a significant risk to the operational safety and security of applications. These risks show the importance of a rigorous review processes, with:
+LLM-generated source code can introduce unnoticed security vulnerabilities. This poses a significant risk to the operational safety and security of applications. These risks show the importance of a rigorous review processes, with:
 
 - Oversight
 - Continuous validation mechanisms
 - Disclaimers on risk
 
 **Common Examples of Vulnerability:**
-
-The below examples are scenarios where an LLM's tendancy to produce dangerously inaccurate information can lead to security risks:
 
 1. **Factually Incorrect Information**: An LLM provides inaccurate information as a response, causing misinformation. 
 2. **Nonsensical Outputs**: LLM produces logically incoherent or nonsensical text that, while grammatically correct, doesn't make sense.
@@ -21,8 +19,6 @@ The below examples are scenarios where an LLM's tendancy to produce dangerously 
 5. **Inadequate Risk Communication**: Failure of tech companies to appropriately communicate the inherent risks of using LLMs to end users, leading to potential harmful consequences.
 
 **How to Prevent:**
-
-Following best practices can help reduce overreliance and potential vulnerabilities:
 
 1. **Continuous Monitoring & Self-consistency/voting**: Regularly monitor and review the LLM outputs. Use self-consistency or voting techniques to filter out inconsistent text. Comparing multiple model responses for a single prompt can better judge the quality and consistency of output.
 2. **Fact Checking & External Knowledge Bases**: Cross-check the LLM output with trusted external sources. This additional layer of validation can help ensure the information provided by the model is accurate and reliable.
