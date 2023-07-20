@@ -52,8 +52,5 @@ An attacker interacts with a LLM model in a method that consumes an exceptionall
 3. [OWASP DOS Attack](https://owasp.org/www-community/attacks/Denial_of_Service)
 4. [Learning From Machines: Know Thy Context](https://lukebechtel.com/blog/lfm-know-thy-context)
 
-**Author Commentary (Optional):**
-
-Including DoS attacks on LLM in the OWASP Top 10 list is critical. Developers must recognize the potential impact of DoS attacks on LLMs and implement necessary measures to mitigate these vulnerabilities. By incorporating this vulnerability into the OWASP Top 10 list, developers can prioritize security measures, raise awareness, and fortify LLM applications against these emerging threats.
 
 
