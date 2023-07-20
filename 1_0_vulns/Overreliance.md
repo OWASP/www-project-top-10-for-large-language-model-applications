@@ -33,7 +33,7 @@ Following best practices can help reduce overreliance and potential vulnerabilit
 7. **Defensive API and User Interface Design**: Build APIs and user interfaces that encourage responsible and safe use of LLMs. This can involve measures such as content filters, user warnings about potential inaccuracies, and clear labeling of AI-generated content.
 8. **Security Measures in Development Environments**: When using LLMs in development environments, establish secure coding practices and guidelines to prevent the integration of possible vulnerabilities.
 
-## Example Attack Scenarios:
+**Example Attack Scenarios:**
 
 **Scenario #1 (AI-Generated News Disinformation):** A news organization heavily uses an AI model to generate news articles. A malicious actor exploits this over-reliance, feeding the AI misleading information, causing the spread of disinformation. The AI unintentionally plagiarizes content, leading to copyright issues and decreased trust in the organization.
 
