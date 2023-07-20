@@ -61,28 +61,3 @@ Alternatively, the damage caused could be reduced by implementing rate limiting 
 2. [NeMo-Guardrails: Interface guidlines](https://github.com/NVIDIA/NeMo-Guardrails/blob/main/docs/security/guidelines.md): This document from the NeMo-Guardrails project sets out guidelines and principles for providing LLMs access to external data and compute resources in a safe and secure way.
 3. [LangChain: Human-approval for tools](https://python.langchain.com/docs/modules/agents/tools/how_to/human_approval): An example of adding a human-in-the-loop verification step into a LangChain tool.
 4. [Simon Willison: Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/): In this blog post, Simon describes a novel approach to limiting what actions an LLM can perform by utilising a Dual-LLM approach.
-
-**Author Commentary (Optional):**
-
-There is a degree of overlap between Excessive Agency and several other LLM Top-10 v0.9 candidates. The below is an attempt to call out the key differentiators between those other items and Excessive Agency. (_Note: these statements require validation with the teams working on those other items._)
-
-Versus Overreliance:
-> **Overreliance** is a weakness in how humans use LLM-based systems (e.g., a news website generates articles using a LLM, and staff copy-paste the output online without properly fact-checking the output.
-> 
-> **Excessive Agency** is a weakness in how LLM-based systems use the output from the LLM model itself (e.g., in the news website example above, Excessive Agency may occur if the article generation system can automatically publish articles online without any human involvement).
-
-Versus Insecure Output Handling
-> **Insecure Output Handling** involves malicious output being created by a LLM, which is then consumed by a downstream system without proper sanitisation.
-> 
-> **Excessive Agency** involves undesirable actions being taken by a downstream system in response to LLM output.
-
-Versus Prompt Injection:
-> **Prompt Injection** is one of the main triggers for driving an LLM to behave in an undesirable way.
->
-> **Excessive Agency** allows a misbehaving LLM (be it through prompt injection or other means) to undertake undesirable actions in downstream systems.
-
-Versus Insecure Plugin Execution:
-> **Insecure Plugin Execution** involves proper sanitisation of plugin inputs and authorization of plugin actions.
->
-> **Excessive Agency** involves limiting plugin functionality, permission and autonomy.
-
