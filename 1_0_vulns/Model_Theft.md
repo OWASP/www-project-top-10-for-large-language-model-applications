@@ -2,7 +2,7 @@
 
 **Description:**
 
-LLM Model Theft refers to the unauthorized access and exfiltration of Language Model models (LLMs) by malicious actors or APT's. This arises when the proprietary LLM models (being valuable intellectual property), are compromised, physically stolen, copied or weights and parameters are extracted to create a functional equivalent. The impact of LLM model theft can include economic losses, erosion of competitive advantage, unauthorized usage of the model, or unauthorized access to sensitive information contained within the model.
+LLM Model Theft refers to the unauthorized access and exfiltration of Language Model Models (LLMs) by malicious actors or (Advanced Persistent Threats) APT's. This arises when the proprietary LLM models (being valuable intellectual property), are compromised, physically stolen, copied or weights and parameters are extracted to create a functional equivalent. The impact of LLM model theft can include economic losses, erosion of competitive advantage, exposure of Personally Identifiable Information (PII), unauthorized usage of the model, or unauthorized access to sensitive information contained within the model.
 
 The impact of LLM model theft ranges in terms of impact and risk, but at a high-level includes (but not limited to):
 
