@@ -2,17 +2,11 @@
 
 **Description:**
 
-The starting point of any machine learning approach is training data. In terms of large language models, the training data is just “raw text”. To be highly capable (e.g., have linguistic and world knowledge), this text should span a broad range of domains, genres, languages, etc. A large language model uses deep neural networks to generate outputs based on patterns learned from training data.
+The starting point of any machine learning approach is training data, simply “raw text”. To be highly capable (e.g., have linguistic and world knowledge), this text should span a broad range of domains, genres, languages, etc. A large language model uses deep neural networks to generate outputs based on patterns learned from training data.
 
-Training data poisoning occurs when an attacker or unaware client of the LLM manipulates the training data or fine-tuning procedures of an LLM to introduce vulnerabilities, backdoors, or biases that could compromise the model’s security, effectiveness, or ethical behavior.
-This unethical or incorrect information may be presented to users of the AI and/or introduce many other risks such as model performance degradation, exploitation of downstream software vulnerability exploitation and negative impacts on brand reputation.
-In cases where the user does not trust the AI and is not influenced, there are still many risks associated with the vulnerability, such as model performance and even down to brand reputation.
+Training data poisoning refers to manipulating the data or fine-tuning process to introduce vulnerabilities, backdoors, or biases that could compromise the model’s security, effectiveness, or ethical behavior. Poisoned information may be surfaced to users or create other risks like performance degradation, downstream software exploitation and reputational damage. Even if users distrust the problematic AI output, risks remain including impaired model capabilities and brand reputation.
 
-Data poisoning is considered an integrity attack because tampering with the training data impacts the model’s ability to output correct predictions. There are several data sources (which can associate to Data poisoning) that are worth highlighting:
-
-1. **Common Crawl** — Because of its convenience, it has been a standard source of data to train many models such as T5, GPT-3, and Gopher. The April 2021 snapshot of Common Crawl has 320 terabytes of data.
-2. **WebText and OpenWebText** — Data including public news, Wikipedia, fiction, and the Reddit submissions dataset.
-3. **Books** — As an example, it comprises 16% of the training mix in the GPT-3 model training.
+Data poisoning is considered an integrity attack because tampering with the training data impacts the model’s ability to output correct predictions. Naturally, external data sources present higher risks as the model creator's do not have control of the data or a high level of confidence that the content does not contain bias, falsified information or inappropriate content.
 
 **Common Examples of Vulnerability:**
 
@@ -23,7 +17,7 @@ Data poisoning is considered an integrity attack because tampering with the trai
 
 *Whether a developer, client or general consumer of the LLM, it is important to understand the implications of how this vulnerability could reflect risks within your LLM application when interacting with a non-proprietary LLM.*
 
-**How to Prevent & Mitigations:**
+**How to Prevent:**
 
 1. Verify the supply chain of the training data, especially when sourced externally as well as maintaining attestations, similar to the "SBOM" (Software Bill of Materials) methodology.
 2. Verify the correct legitimacy of targeted data sources and data contained obtained during both the training and fine-tuning stages.
