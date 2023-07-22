@@ -18,7 +18,7 @@ Adding restrictions within the system prompt around what types of data the LLM s
 2. **Example 2:** Overfitting or memorization of sensitive data in the LLM’s training process.
 3. **Example 3:** Unintended disclosure of confidential information due to LLM misinterpretation, lack of data scrubbing methods or errors.
 
-**How to Prevent & Mitigations:**
+**How to Prevent:**
 
 1. Integrate adequate data sanitization and scrubbing techniques in aid to prevent user data from entering the training model data.
 2. Implement robust input validation and sanitization methods to identify and filter out potential malicious inputs in aid to prevent the model from being poisoned.
