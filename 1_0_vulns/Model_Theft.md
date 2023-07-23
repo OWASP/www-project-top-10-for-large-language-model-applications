@@ -2,18 +2,11 @@
 
 **Description:**
 
-LLM Model Theft refers to the unauthorized access and exfiltration of Language Model models (LLMs) by malicious actors or APT's. This arises when the proprietary LLM models (being valuable intellectual property), are compromised, physically stolen, copied or weights and parameters are extracted to create a functional equivalent. The impact of LLM model theft can include economic losses, erosion of competitive advantage, unauthorized usage of the model or unauthorized access to sensitive information contained within the model.
-
-The impact of LLM model theft ranges in terms of impact and risk, but at a high-level includes (but not limited to):
-
-- Economic, financial and brand reputation loss, erosion of competitive advantage and unauthorized usage of the model.
-- Use of a stolen model, as a shadow model can be used to stage adversarial attacks including unauthorized access to sensitive information contained within the model or experiment undetected with adversarial inputs to further stage advanced prompt injections.
+LLM Model Theft refers to the unauthorized access and exfiltration of Language Model models (LLMs) by malicious actors or APT's. This arises when the proprietary LLM models (being valuable intellectual property), are compromised, physically stolen, copied or weights and parameters are extracted to create a functional equivalent. The impact of LLM model theft can include economic and brand reputation loss, erosion of competitive advantage, unauthorized usage of the model or unauthorized access to sensitive information contained within the model.
 
 *This vulnerability target audience mainly applies to MLE's (Machine Learning Engineer) and Operators and is not directly targeted at those building LLM applications against a public LLM model provider.*
 
 **Common Examples of Vulnerability:**
-
-*There are two types of attack vectors listed for this vulnerability below. The first set (example 1-2) refers to lack of security controls surrounding an LLM which could lead to unauthorized access or privilege escalation techniques and subsequent theft of the model itself. The second set (example 2-8) refers to other means of exfiltrating a model which do not require "the first set" of attack vector's and are independent scenario's.*
 
 1. **Example 1:** An attacker exploits a vulnerability in a company's infrastructure to gain unauthorized access to their LLM model repository via misconfiguration in their network or application security settings.
 2. **Example 2:** An insider threat scenario where a disgruntled employee leaks model or related artifacts.
@@ -24,6 +17,8 @@ The impact of LLM model theft ranges in terms of impact and risk, but at a high-
    - The outputs from LLMs can sometimes contain hallucinated answers meaning the attacker may not be able to extract the entire model as some of the outputs can be nonsensical.
      - It is not possible to replicate an LLM 100% through model extraction. However, the attacker will be able to replicate a partial model.
 6. **Example 6:** The attack vector for **_functional model replication_** involves using the target model via prompts to generate synthetic training data (an approach called "self-instruct") to then use it and fine-tune another foundational model to produce a functional equivalent. This bypasses the limitations of traditional query-based extraction used in Example 7 and has been successfully used in research of using an LLM to train another LLM. Although in the context of this research, model replication is not an attack. The approach could be used by an attacker to replicate a proprietary model with a public API.
+
+Use of a stolen model, as a shadow model can be used to stage adversarial attacks including unauthorized access to sensitive information contained within the model or experiment undetected with adversarial inputs to further stage advanced prompt injections.
 
 **How to Prevent:**
 
