@@ -25,7 +25,6 @@ The following options can prevent Excessive Agency:
 5. **Track user authorization and security scope** to ensure actions taken on behalf of a user are executed on downstream systems in the context of that specific user, and with the minimum privileges necessary. For example, an LLM plugin that reads a user's code repo should require the user to authenticate via OAuth and with the minimum scope required.
 6. **Utilise human-in-the-loop control** to require a human to approve all actions before they are taken. This may be implemented in a downstream system (outside the scope of the LLM application) or within the LLM plugin/tool itself. For example, an LLM-based app that creates and posts social media content on behalf of a user should include a user approval routine within the plugin/tool/API that implements the 'post' operation.
 7. **Implement authorization in downstream systems** rather than relying on an LLM to decide if an action is allowed or not. When implementing tools/plugins enforce the complete mediation principle so that all requests made to downstream systems via the plugins/tools are validated against security policies.
-8. **Never share authentication material with an LLM** (e.g. tokens, user id, account numbers); such information should be always passed to the plugins/tools directly from trusted sources. 
 
 The following options will not prevent Excessive Agency, but can limit the level of damage caused:
 
