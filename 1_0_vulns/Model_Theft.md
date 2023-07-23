@@ -52,7 +52,7 @@ Extraction methods are well understood in traditional deep learning but less so 
 
 **Scenario #4:** An attacker queries the API with carefully selected inputs and collects sufficient number of outputs to create a shadow model.
 
-**Scenario #5:** A compromised employee of the hosting platform is manipulated or coerced by attackers to perform a side channel attack and retrieve model information.
+**Scenario #5:** A security control failure is present within the supply-chain and leads to data leaks of proprietary model information.
 
 **Scenario #6:** A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
 
