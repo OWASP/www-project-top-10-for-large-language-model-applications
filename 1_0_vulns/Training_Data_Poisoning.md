@@ -22,7 +22,7 @@ Data poisoning is considered an integrity attack because tampering with the trai
 1. Verify the supply chain of the training data, especially when sourced externally as well as maintaining attestations, similar to the "SBOM" (Software Bill of Materials) methodology.
 2. Verify the correct legitimacy of targeted data sources and data contained obtained during both the training and fine-tuning stages.
 3. Verify your use-case for the LLM and the application it will integrate to. Craft different models via separate training data or fine-tuning for different use-cases to create a more granular and accurate generative AI output as per it's defined use-case.
-4. Ensure sufficient sandboxing ([LLM03:2023 - Inadequate Sandboxing](https://owasp.org/www-project-top-10-for-large-language-model-applications/descriptions/Inadequate_Sandboxing.html)) is present to prevent the model from scraping unintended data sources which could hinder the machine learning output.
+4. Ensure sufficient sandboxing is present to prevent the model from scraping unintended data sources which could hinder the machine learning output.
 5. Use strict vetting or input filters for specific training data or categories of data sources to control volume of falsified data. Data sanitization, with techniques such as statistical outlier detection and anomaly detection methods to detect and remove adversarial data from potentially being fed into the fine-tuning process.
 6. Adversarial robustness techniques such as federated learning and constraints to minimize the effect of outliers or adversarial training to be vigorous against worst-case perturbations of the training data.
    1. An "MLSecOps" approach could be to include adversarial robustness to the training lifecycle with the auto poisoning technique.
@@ -31,7 +31,7 @@ Data poisoning is considered an integrity attack because tampering with the trai
    1. Monitoring and alerting on number of skewed responses exceeding a threshold.
    2. Use of a human loop to review responses and auditing.
    3. Implement dedicated LLM's to benchmark against undesired consequences and train other LLM's using [reinforcement learning techniques](https://wandb.ai/ayush-thakur/Intro-RLAIF/reports/An-Introduction-to-Training-LLMs-Using-Reinforcement-Learning-From-Human-Feedback-RLHF---VmlldzozMzYyNjcy).
-   4. **Optional** Perform LLM-based [red team exercises](https://www.anthropic.com/index/red-teaming-language-models-to-reduce-harms-methods-scaling-behaviors-and-lessons-learned) or [LLM vulnerability scanning](https://github.com/leondz/garak) into the testing phases of the LLM's lifecycle.
+   4. Perform LLM-based [red team exercises](https://www.anthropic.com/index/red-teaming-language-models-to-reduce-harms-methods-scaling-behaviors-and-lessons-learned) or [LLM vulnerability scanning](https://github.com/leondz/garak) into the testing phases of the LLM's lifecycle.
 
 **Example Attack Scenarios:**
 
