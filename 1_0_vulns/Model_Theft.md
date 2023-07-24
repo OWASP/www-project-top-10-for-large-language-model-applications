@@ -16,7 +16,7 @@ LLM Model Theft refers to the unauthorized access and exfiltration of Language M
    - The attacker must generate a large number of targeted prompts. If the prompts are not specific enough, the outputs from the LLM will be useless.
    - The outputs from LLMs can sometimes contain hallucinated answers meaning the attacker may not be able to extract the entire model as some of the outputs can be nonsensical.
      - It is not possible to replicate an LLM 100% through model extraction. However, the attacker will be able to replicate a partial model.
-6. **Example 6:** The attack vector for **_functional model replication_** involves using the target model via prompts to generate synthetic training data (an approach called "self-instruct") to then use it and fine-tune another foundational model to produce a functional equivalent. This bypasses the limitations of traditional query-based extraction used in Example 7 and has been successfully used in research of using an LLM to train another LLM. Although in the context of this research, model replication is not an attack. The approach could be used by an attacker to replicate a proprietary model with a public API.
+6. **Example 6:** The attack vector for **_functional model replication_** involves using the target model via prompts to generate synthetic training data (an approach called "self-instruct") to then use it and fine-tune another foundational model to produce a functional equivalent. This bypasses the limitations of traditional query-based extraction used in Example 5 and has been successfully used in research of using an LLM to train another LLM. Although in the context of this research, model replication is not an attack. The approach could be used by an attacker to replicate a proprietary model with a public API.
 
 Use of a stolen model, as a shadow model can be used to stage adversarial attacks including unauthorized access to sensitive information contained within the model or experiment undetected with adversarial inputs to further stage advanced prompt injections.
 
@@ -43,13 +43,11 @@ Extraction methods are well understood in traditional deep learning but less so 
 
 **Scenario #2:** A disgruntled employee leaks model or related artifacts. The public exposure of this scenario increases knowledge to attackers for gray box adversarial attacks or alternatively directly steal the available property.
 
-**Scenario #3:** An attacker operates a shared GPU service, offering cheap hosting or access to GPU resources for running Language Model models (LLMs). In this scenario, unsuspecting users utilize the shared GPU service to execute their LLM models due to cost-effectiveness or limited hardware availability. The attacker easily gains unauthorized access to the users' LLM models and then copies them to their controlled server, thereby compromising the proprietary LLM models.
+**Scenario #3:** An attacker queries the API with carefully selected inputs and collects sufficient number of outputs to create a shadow model.
 
-**Scenario #4:** An attacker queries the API with carefully selected inputs and collects sufficient number of outputs to create a shadow model.
+**Scenario #4:** A security control failure is present within the supply-chain and leads to data leaks of proprietary model information.
 
-**Scenario #5:** A security control failure is present within the supply-chain and leads to data leaks of proprietary model information.
-
-**Scenario #6:** A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
+**Scenario #5:** A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
 
 **Reference Links:**
 
