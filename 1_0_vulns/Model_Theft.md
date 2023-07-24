@@ -4,8 +4,6 @@
 
 LLM Model Theft refers to the unauthorized access and exfiltration of Language Model models (LLMs) by malicious actors or APT's. This arises when the proprietary LLM models (being valuable intellectual property), are compromised, physically stolen, copied or weights and parameters are extracted to create a functional equivalent. The impact of LLM model theft can include economic and brand reputation loss, erosion of competitive advantage, unauthorized usage of the model or unauthorized access to sensitive information contained within the model.
 
-*This vulnerability target audience mainly applies to MLE's (Machine Learning Engineer) and Operators and is not directly targeted at those building LLM applications against a public LLM model provider.*
-
 **Common Examples of Vulnerability:**
 
 1. **Example 1:** An attacker exploits a vulnerability in a company's infrastructure to gain unauthorized access to their LLM model repository via misconfiguration in their network or application security settings.
