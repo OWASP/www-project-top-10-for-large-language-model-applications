@@ -28,15 +28,15 @@ This item focuses on creating LLM plugins rather than using third-party plugins,
 
 **Example Attack Scenarios:**
 
-Scenario #1: A plugin accepts a base URL and instructs the LLM to combine the URL with a query to obtain weather forecasts which are included in handling the user request. A malicious user can craft a request such that the URL points to a domain they control, which allows them to inject their own content into the LLM system via their domain.
+1. A plugin accepts a base URL and instructs the LLM to combine the URL with a query to obtain weather forecasts which are included in handling the user request. A malicious user can craft a request such that the URL points to a domain they control, which allows them to inject their own content into the LLM system via their domain.
 
-Scenario #2: A plugin accepts a free-form input into a single field that it does not validate. An attacker  supplies carefully crafted payloads to perform reconnaissance from error messages. It then exploits known third-party vulnerabilities to execute code and perform data exfiltration or privilege escalation.
+2. A plugin accepts a free-form input into a single field that it does not validate. An attacker  supplies carefully crafted payloads to perform reconnaissance from error messages. It then exploits known third-party vulnerabilities to execute code and perform data exfiltration or privilege escalation.
 
-Scenario #3: A plugin used to retrieve embeddings from a vector store accepts configuration parameters as a connection string without any validation. This allows an attacker to experiment and access other vector stores by changing names or host parameters and exfiltrate embeddings they should not have access to. 
+3. A plugin used to retrieve embeddings from a vector store accepts configuration parameters as a connection string without any validation. This allows an attacker to experiment and access other vector stores by changing names or host parameters and exfiltrate embeddings they should not have access to. 
 
-Scenario #4: A plugin accepts SQL WHERE causes as advanced filters, which are then appended to the filtering SQL. This allows an attacker to stage a SQL attack.
+4. A plugin accepts SQL WHERE causes as advanced filters, which are then appended to the filtering SQL. This allows an attacker to stage a SQL attack.
 
-Scenario #5: An attacker uses indirect prompt injection to exploit an insecure code management plugin with no input validation and weak access control to transfer repository ownership and lock out the user from their repositories.
+5. An attacker uses indirect prompt injection to exploit an insecure code management plugin with no input validation and weak access control to transfer repository ownership and lock out the user from their repositories.
 
 **References**
 

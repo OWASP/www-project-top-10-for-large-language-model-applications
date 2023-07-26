@@ -16,7 +16,7 @@ LLM-generated source code can introduce unnoticed security vulnerabilities. This
 2. LLM produces logically incoherent or nonsensical text that, while grammatically correct, doesn't make sense.
 3. LLM melds information from varied sources, creating misleading content.
 4. LLM suggests insecure or faulty code, leading to vulnerabilities when incorporated into a software system.
-5. Failure of tech companies to appropriately communicate the inherent risks of using LLMs to end users, leading to potential harmful consequences.
+5. Failure of provider to appropriately communicate the inherent risks to end users, leading to potential harmful consequences.
 
 **How to Prevent:**
 

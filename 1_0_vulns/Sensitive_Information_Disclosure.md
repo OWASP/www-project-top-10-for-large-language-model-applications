@@ -10,9 +10,9 @@ The consumer-LLM application interaction forms a two-way trust boundary, where w
 
 **Common Examples of Vulnerability:**
 
-1. **Example 1:** Incomplete or improper filtering of sensitive information in the LLM’s responses.
-2. **Example 2:** Overfitting or memorization of sensitive data in the LLM’s training process.
-3. **Example 3:** Unintended disclosure of confidential information due to LLM misinterpretation, lack of data scrubbing methods or errors.
+1. Incomplete or improper filtering of sensitive information in the LLM’s responses.
+2. Overfitting or memorization of sensitive data in the LLM’s training process.
+3. Unintended disclosure of confidential information due to LLM misinterpretation, lack of data scrubbing methods or errors.
 
 **How to Prevent:**
 
@@ -25,11 +25,11 @@ The consumer-LLM application interaction forms a two-way trust boundary, where w
 
 **Example Attack Scenarios:**
 
-**Scenario #1:** Unsuspecting legitimate user A is exposed to certain other user data via the LLM when interacting with the LLM application in a non-malicious manner.
+1. Unsuspecting legitimate user A is exposed to certain other user data via the LLM when interacting with the LLM application in a non-malicious manner.
 
-**Scenario #2:** User A targets a well crafted set of prompts to bypass input filters and sanitization from the LLM to cause it to reveal sensitive information (PII) about other users of the application.
+2. User A targets a well crafted set of prompts to bypass input filters and sanitization from the LLM to cause it to reveal sensitive information (PII) about other users of the application.
 
-**Scenario #3:** Personal data such as PII is leaked into the model via training data due to either negligence from the user themselves, or the LLM application. This case could increase risk and probability of scenario 1 or 2 above.
+3. Personal data such as PII is leaked into the model via training data due to either negligence from the user themselves, or the LLM application. This case could increase risk and probability of scenario 1 or 2 above.
 
 **Reference Links:**
 

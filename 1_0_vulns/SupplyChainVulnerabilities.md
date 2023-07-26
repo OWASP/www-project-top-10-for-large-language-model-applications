@@ -22,26 +22,26 @@ Finally, LLM Plugin extensions can bring their own vulnerabilities. These are de
 4. Maintain an up-to-date inventory of components using a Software Bill of Materials (SBOM) to ensure you have an up-to-date, accurate, and signed  inventory preventing tampering with deployed packages. SBOMs can be used to detect and alert for new, zero-date vulnerabilities quickly.
 5. At the time of writing, SBOMs do not cover models, their artefacts, and datasets; If your  LLM application uses its own model, you should use MLOPs best practices  and platforms offering secure model repositories with data, model, and  experiment tracking.
 6. You should also use model and code signing when using external models and suppliers.
-7. Anomaly detection and adversarial robustness tests on supplied  models and data can help detect tampering and poisoning as discussed in [LLM02 Training Data Poisoning](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/0_9_vulns/Training_Data_Poisoning.md); ideally, this should be part of MLOps pipelines; however, these are  emerging techniques and may be easier implemented as part of red teaming exercises.
+7. Anomaly detection and adversarial robustness tests on supplied  models and data can help detect tampering and poisoning as discussed in [ Training Data Poisoning](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/1_0_vulns/Training_Data_Poisoning.md); ideally, this should be part of MLOps pipelines; however, these are  emerging techniques and may be easier implemented as part of red teaming exercises.
 8. Implement sufficient monitoring to cover component and environment  vulnerabilities scanning, use of unauthorised plugins, and out-of-date  components, including the model and its artefacts.
 9. Implement a patching policy to mitigate vulnerable or outdated  components. Ensure that the application relies on a maintained version of APIs and the  underlying model.
 10. Regularly review and audit supplier Security and Access, ensuring no changes in their security posture or T&Cs.
 
 **Example Attack Scenarios:**
 
-**Scenario #1:** An attacker exploits a vulnerable Python library to compromise a system. This happened in the first Open AI data breach. 
+1. An attacker exploits a vulnerable Python library to compromise a system. This happened in the first Open AI data breach. 
 
-**Scenario #2:** An attacker provides an LLM plugin to search for flights which generates fake links that lead to scamming plugin users.
+2. An attacker provides an LLM plugin to search for flights which generates fake links that lead to scamming plugin users.
 
-**Scenario #3:** An attacker exploits the PyPi package registry to trick model developers into downloading a compromised package and exfiltrating data or escalating privilege in a model development environment. This was an actual attack.
+3. An attacker exploits the PyPi package registry to trick model developers into downloading a compromised package and exfiltrating data or escalating privilege in a model development environment. This was an actual attack.
 
-**Scenario #4:** An attacker poisons a publicly available pre-trained model specialising in economic analysis and social research to create a backdoor which generates misinformation and fake news.  They deploy it on  a model marketplace (e.g. HuggingFace) for victims to use.
+4. An attacker poisons a publicly available pre-trained model specialising in economic analysis and social research to create a backdoor which generates misinformation and fake news.  They deploy it on  a model marketplace (e.g. HuggingFace) for victims to use.
 
-**Scenario #5:** An attacker poisons publicly available data set to help create a backdoor when fine-tuning models. The backdoor subtly favours certain companies in different markets.
+5. An attacker poisons publicly available data set to help create a backdoor when fine-tuning models. The backdoor subtly favours certain companies in different markets.
 
-**Scenario #6:** A compromised employee of a supplier (outsourcing developer, hosting company, etc) exfiltrates data, model, or code stealing IP.
+6. A compromised employee of a supplier (outsourcing developer, hosting company, etc) exfiltrates data, model, or code stealing IP.
 
-**Scenario #7**: An LLM operator changes its T&Cs and Privacy Policy so that it requires an explicit opt-out from using application data for model training, leading to memorisation of sensitive data.
+7. An LLM operator changes its T&Cs and Privacy Policy so that it requires an explicit opt-out from using application data for model training, leading to memorisation of sensitive data.
 
 
 **Reference Links:**
