@@ -14,19 +14,19 @@ In advanced attacks, the LLM could be manipulated to mimic a harmful persona or 
 **Common Examples of Vulnerability**
 
 1. Adversarial prompt to the LLM, which instructs it to ignore the application creator's system prompts and instead execute malicious instructions.
-* Hidden prompt injections in webpages which are included when a user employs an LLM to summarize them, causing the LLM to execute malicious instructions contained in the hidden injection.
-*  Hidden prompt injections in documents with instructions to make the LLM rate the document highly, bypassing any user or system evaluation.
-* Hidden instruction and content embedded on a visited website that influences LLM's responses to produce biased, harmful, or inaccurate content.
-* A rogue instruction and content embedded on a visited website which exploits other plugins to scam users.
+2. Hidden prompt injections in webpages which are included when a user employs an LLM to summarize them, causing the LLM to execute malicious instructions contained in the hidden injection.
+3. Hidden prompt injections in documents with instructions to make the LLM rate the document highly, bypassing any user or system evaluation.
+4. Hidden instruction and content embedded on a visited website that influences LLM's responses to produce biased, harmful, or inaccurate content.
+5. A rogue instruction and content embedded on a visited website which exploits other plugins to scam users.
 
 **How to Prevent**:
 
 Prompt injection vulnerabilities are possible due to the nature of LLMs, which do not segregate instructions and external data from each other. Since LLM use natural language, they consider both forms of input as user-provided. Consequently, there is no fool-proof prevention within the LLM, but the following measures can mitigate the impact of prompt injections: 
 
 1. Provide the LLM with its own API tokens for extensible functionality, such as plugins, data access, and function-level permissions. Follow the principle of least privilege by restricting the LLM to only the minimum level of access necessary for its intended operations. 
-2.  When performing privileged operations, such as sending or deleting emails, have the application require the user approve the action first. This will mitigate the opportunity for an indirect prompt injection to perform actions on behalf of the user without their knowledge or consent. 
-3.  Separate and denote where untrusted content is being used to limit  their influence on user prompts. For example, use ChatML for OpenAI API calls to indicate to the LLM the source of prompt input. 
-4.  Establish trust boundaries between the LLM, external sources, and extensible functionality (e.g., plugins or downstream functions). Treat the LLM as an untrusted user and maintain final user control on decision-making processes. However, a compromised LLM may still act as an intermediary (man-in-the-middle) between your application’s APIs and the user as it may hide or manipulate information prior to presenting it to the user. Highlight potentially untrustworthy responses visually to the user.
+2. When performing privileged operations, such as sending or deleting emails, have the application require the user approve the action first. This will mitigate the opportunity for an indirect prompt injection to perform actions on behalf of the user without their knowledge or consent. 
+3. Separate and denote where untrusted content is being used to limit  their influence on user prompts. For example, use ChatML for OpenAI API calls to indicate to the LLM the source of prompt input. 
+4. Establish trust boundaries between the LLM, external sources, and extensible functionality (e.g., plugins or downstream functions). Treat the LLM as an untrusted user and maintain final user control on decision-making processes. However, a compromised LLM may still act as an intermediary (man-in-the-middle) between your application’s APIs and the user as it may hide or manipulate information prior to presenting it to the user. Highlight potentially untrustworthy responses visually to the user.
 
 **Example Attack Scenarios**
 
