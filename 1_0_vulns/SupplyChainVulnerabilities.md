@@ -2,7 +2,7 @@
 
 **Description:** 
 
-The supply chain in LLMs can be vulnerable, impacting the integrity of training data,  ML models, and deployment platforms.  lead to biased outcomes, security breaches, or complete  system failures.  Traditionally, vulnerabilities are focused on software components, but Machine Learning  extends this with the pre-trained models and training data supplied by third parties susceptible to tampering and poisoning attacks. 
+The supply chain in LLMs can be vulnerable, impacting the integrity of training data, ML models, and deployment platforms. These vulnerabilities can lead to biased outcomes, security breaches, or even complete system failures. Traditionally, vulnerabilities are focused on software components, but Machine Learning  extends this with the pre-trained models and training data supplied by third parties susceptible to tampering and poisoning attacks. 
 
 Finally, LLM Plugin extensions can bring their own vulnerabilities. These are described in LLM - Insecure Plugin Design, which covers writing LLM  Plugins and  provides information useful to evaluate third-party plugins.
 
