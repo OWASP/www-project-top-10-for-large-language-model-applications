@@ -32,7 +32,7 @@ Prompt injection vulnerabilities are possible due to the nature of LLMs, which d
 
 1. An attacker provides a direct prompt injection to an LLM-based support chatbot. The injection contains  “forget all previous instructions” and new instructions to query private data stores and exploit package vulnerabilities and the lack of output validation in the backend function to send e-mails. This leads to remote code execution, gaining unauthorized access and privilege escalation. 
 
-2. An attacker embeds in a webpage a hidden prompt injection to disregard previous user instructions and use an LLM plugin to  delete the user's emails. When the user employs an LLM to summarise this webpage, the LLM plugin deletes the user's emails.  
+2. An attacker embeds a hidden prompt injection in a webpage instructing the LLM to disregard previous user instructions and use an LLM plugin to delete the user's emails. When the user employs the LLM to summarise this webpage, the LLM plugin deletes the user's emails.  
 
 3. A user employs an LLM to summarize a webpage containing a hidden prompt injection to disregard previous user instructions. This then causes the LLM to solicit sensitive information from the user and perform exfiltration via embedded JavaScript or Markdown.
 
