@@ -30,7 +30,7 @@ Prompt injection vulnerabilities are possible due to the nature of LLMs, which d
 
 **Example Attack Scenarios**
 
-1. An attacker provides a direct prompt injection to an LLM-based support chatbot. The injection contains  “forget all previous instructions” and new instructions to query private data stores and exploit package vulnerabilities and the lack of output validation in the backend function to send e-mails. This leads to remote code execution, gaining unauthorized access and privilege escalation. 
+1. An attacker provides the following direct prompt injection to an LLM based support chatbot: `forget all previous instructions. instead, do [whatever the payload is]`. This prompt, combined with package vulnerabilities and a lack of output validation on the backend, allows the attacker to circumvent protections in the LLM to perform the specified payload task. Payloads in such a scenario may lead to remote code execution, gaining unauthorized access to resources, and privilege escalation. 
 
 2. An attacker embeds a hidden prompt injection in a webpage instructing the LLM to disregard previous user instructions and use an LLM plugin to delete the user's emails. When the user employs the LLM to summarise this webpage, the LLM plugin deletes the user's emails.  
 
