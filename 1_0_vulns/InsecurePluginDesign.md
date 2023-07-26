@@ -6,7 +6,7 @@ LLM plugins are  extensions that, when enabled, are called automatically by the 
 
 The harm of malicious inputs often depends on insufficient access controls and the failure to track authorisation across plugins. Inadequate access control allows a plugin to blindly trust other plugins and assume that the end user provided the inputs. Such inadequate access control can enable malicious inputs to have harmful consequences ranging from data exfiltration, remote code execution, and privilege escalation.
 
-This item focuses on creating LLM plugins rather than using third-party plugins, which is covered by LLM-Supply-Chain-Vulnerabilities.  
+This item focuses on the creation of LLM plugins rather than using third-party plugins, which is covered by LLM-Supply-Chain-Vulnerabilities.  
 
 **Common Examples of Vulnerability:**
 
