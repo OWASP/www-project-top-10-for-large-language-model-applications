@@ -4,6 +4,8 @@
 
 This entry refers to the unauthorized access and exfiltration of LLM models by malicious actors or APTs. This arises when the proprietary LLM models (being valuable intellectual property), are compromised, physically stolen, copied or weights and parameters are extracted to create a functional equivalent. The impact of LLM model theft can include economic and brand reputation loss, erosion of competitive advantage, unauthorized usage of the model or unauthorized access to sensitive information contained within the model.
 
+The theft of LLMs represents a significant security concern as language models become increasingly powerful and prevalent. Organizations and researchers must prioritize robust security measures to protect their LLM models, ensuring the confidentiality and integrity of their intellectual property. Employing a comprehensive security framework that includes access controls, encryption, and continuous monitoring is crucial in mitigating the risks associated with LLM model theft and safeguarding the interests of both individuals and organizations relying on LLM.
+
 **Common Examples of Vulnerability:**
 
 1. An attacker exploits a vulnerability in a company's infrastructure to gain unauthorized access to their LLM model repository via misconfiguration in their network or application security settings.
@@ -31,10 +33,6 @@ Use of a stolen model, as a shadow model, can be used to stage adversarial attac
 6. Rate Limiting of API calls where applicable and|or filters to reduce risk of data exfiltration from the LLM applications, or implement techniques to detect (E.G., DLP) extraction activity from other monitoring systems.
 7. Implement adversarial robustness training to help detect extraction queries and tighten physical security measures.
 8. Implement a watermarking framework into the embedding and detection stages of an LLMs lifecyle.
-
-The theft of LLMs represents a significant security concern as language models become increasingly powerful and prevalent. Organizations and researchers must prioritize robust security measures to protect their LLM models, ensuring the confidentiality and integrity of their intellectual property. Employing a comprehensive security framework that includes access controls, encryption, and continuous monitoring is crucial in mitigating the risks associated with LLM model theft and safeguarding the interests of both individuals and organizations relying on LLM.
-
-Extraction methods are well understood in traditional deep learning but less so in LLMs. Frameworks such as the Adversarial Robustness Toolkit (ART) include testing for extraction attacks but are targeting traditional ML and deep learning. In the context of LLMs, where the large number of weights makes query-based extraction challenging, functional model replication via self-instruct appears to be a more feasible approach.
 
 **Example Attack Scenarios:**
 
