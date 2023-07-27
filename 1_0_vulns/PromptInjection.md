@@ -44,14 +44,14 @@ Prompt injection vulnerabilities are possible due to the nature of LLMs, which d
 
 **Reference Links:**
 
-1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/)
-2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./)
-3. [Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1)
-4. [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499)
-5. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf/)
-6. [ChatML for OpenAI API Calls](https://github.com/openai/openai-python/blob/main/chatml.md)
-7. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf)
-8. [Threat Modeling LLM Applications](http://aivillage.org/large%20language%20models/threat-modeling-llm/)
-9. [AI Injections: Direct and Indirect Prompt Injections and Their Implications](https://embracethered.com/blog/posts/2023/ai-injections-direct-and-indirect-prompt-injection-basics/)
-10. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/)
+1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/): This blog post discusses potential vulnerabilities in ChatGPT plugins, focusing on the risks of untrusted code execution.
+2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./): The article explores the issues of Cross Plugin Request Forgery and Prompt Injection in ChatGPT.
+3. [Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1): This research paper presents a method of defending ChatGPT against jailbreak attacks by using a self-reminder mechanism.
+4. [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499): This academic paper discusses the threat of prompt injection attacks on LLM integrated applications, emphasizing the need for effective countermeasures.
+5. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf/): The blog post describes a method of injecting prompts into PDFs, specifically focusing on resumes, and discusses the potential implications of this technique.
+6. [ChatML for OpenAI API Calls](https://github.com/openai/openai-python/blob/main/chatml.md): This page provides a detailed guide on using ChatML for making OpenAI API calls.
+7. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf): This academic paper discusses the risks of indirect prompt injection in real-world applications integrated with LLMs.
+8. [Threat Modeling LLM Applications](http://aivillage.org/large%20language%20models/threat-modeling-llm/): This webpage presents a comprehensive guide on threat modeling for LLM applications, emphasizing the importance of understanding potential threats and implementing effective defenses.
+9. [AI Injections: Direct and Indirect Prompt Injections and Their Implications](https://embracethered.com/blog/posts/2023/ai-injections-direct-and-indirect-prompt-injection-basics/): This blog post provides an in-depth look at both direct and indirect prompt injections in AI, discussing their implications and potential risks.
+10. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/): This research article discusses strategies for reducing the impact of prompt injection attacks through thoughtful design.
 
