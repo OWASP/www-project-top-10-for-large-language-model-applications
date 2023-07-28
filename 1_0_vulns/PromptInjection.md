@@ -54,4 +54,5 @@ Prompt injection vulnerabilities are possible due to the nature of LLMs, which d
 8. [Threat Modeling LLM Applications](http://aivillage.org/large%20language%20models/threat-modeling-llm/)
 9. [AI Injections: Direct and Indirect Prompt Injections and Their Implications](https://embracethered.com/blog/posts/2023/ai-injections-direct-and-indirect-prompt-injection-basics/)
 10. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/)
+11. [Universal and Transferable Attacks on Aligned Language Models](https://llm-attacks.org/)
 
