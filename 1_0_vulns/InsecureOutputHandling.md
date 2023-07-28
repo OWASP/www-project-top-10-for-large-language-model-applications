@@ -6,8 +6,8 @@ Insecure Output Handling is a vulnerability that arises when a downstream compon
 
 Successful exploitation of an Insecure Output Handling vulnerability can result in XSS and CSRF in web browsers as well as SSRF, privilege escalation, or remote code execution on backend systems. 
 The following conditions can increase the impact of this vulnerability:
-* The application allows LLM content to perform actions above the intended user's privileges, which would lead to privilege escalation or remote code execution.
-* The application is vulnerable to external prompt injection attacks, which could allow an attacker to gain privileged access to a target users' environment.
+* The application grants the LLM privileges beyond what is intended for end users, enabling escalation of privileges or remote code execution.
+* The application is vulnerable to external prompt injection attacks, which could allow an attacker to gain privileged access to a target user's environment.
 
 **Common Examples of Vulnerability:**
 
@@ -16,25 +16,25 @@ The following conditions can increase the impact of this vulnerability:
 
 **How to Prevent:**
 
-1. Input Validation - Treat the model as any other user and apply proper input validation on responses coming from the model to backend functions. Follow the OWASP ASVS  (Application Security Verification Standard) guidelines to ensure effective input validation and sanitisation.
-2. Output Encoding - Encode output coming from the model back to users to mitigate undesired code interpretations by JavaScript or Markdown. OWASP ASVS provides detailed guidance on output encoding. 
+1. Treat the model as any other user and apply proper input validation on responses coming from the model to backend functions. Follow the OWASP ASVS  (Application Security Verification Standard) guidelines to ensure effective input validation and sanitization.
+2. Encode model output back to users to mitigate undesired code execution by JavaScript or Markdown. OWASP ASVS provides detailed guidance on output encoding. 
 
 
 **Example Attack Scenarios:**
 
 1. An application utilizes an LLM plugin to generate responses for a chatbot feature. However, the application directly passes the LLM-generated response into an internal function responsible for executing system commands without proper validation. This allows an attacker to manipulate the LLM output to execute arbitrary commands on the underlying system, leading to unauthorized access or unintended system modifications.
 
-2. A user utilizes a website summarizer tool powered by a LLM to generate a concise summary of an article. The website includes a prompt injection instructing the LLM to capture sensitive content from either the website or from the users' conversation. From there the LLM can encode the sensitive data and send it out to an attacker-controlled server
+2. A user utilizes a website summarizer tool powered by a LLM to generate a concise summary of an article. The website includes a prompt injection instructing the LLM to capture sensitive content from either the website or from the user's conversation. From there the LLM can encode the sensitive data and send it out to an attacker-controlled server
 
 3. An LLM allows users to craft SQL queries for a backend database through a chat-like feature. A user requests a query to delete all database tables. If the crafted query from the LLM is not scrutinized, then all database tables would be deleted.
 
-4. A malicious user instructs the LLM to return a JavaScript payload back to a user, without sanitization controls. This can occur either through a sharing a prompt, prompt injected website, or chatbot that accepts prompts from a GET request. The LLM would then return the unsanitized XSS payload back to the user. Without additional filters, outside of those expected by the LLM itself, the JavaScript would execute within the users' browser.
+4. A malicious user instructs the LLM to return a JavaScript payload back to a user, without sanitization controls. This can occur either through a sharing a prompt, prompt injected website, or chatbot that accepts prompts from a URL parameter. The LLM would then return the unsanitized XSS payload back to the user. Without additional filters, outside of those expected by the LLM itself, the JavaScript would execute within the user's browser.
 
 **Reference Links:**
-* [Arbitrary Code Execution](https://security.snyk.io/vuln/SNYK-PYTHON-LANGCHAIN-5411357): Vulnerability report concerning Arbitrary Code Execution due to the usage of insecure methods `exec` and `eval` in `LLMMathChain`.
-* [ChatGPT Plugin Exploit Explained: From Prompt Injection to Accessing Private Data](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./): Explanation of how the first exploitable LLM-based Cross Plugin Request Forgery was found and the fix which was applied.
-* [New prompt injection attack on ChatGPT web version. Markdown images can steal your chat data.](https://systemweakness.com/new-prompt-injection-attack-on-chatgpt-web-version-ef717492c5c2?gi=8daec85e2116): A description of a vulnerability that allows a single-pixel image to steal a user’s sensitive chat data and send it to a malicious third-party.
-* [Don’t blindly trust LLM responses. Threats to chatbots](https://embracethered.com/blog/posts/2023/ai-injections-threats-context-matters/): Post focusing on the untrustworthiness of LLM responses, focusing on chatbots, and how to mitigate the risks.
-* [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/): Presents a high level threat model of a generic LLM based application and an analysis of the threat model.
-* [OWASP ASVS - 5 Validation, Sanitization and Encoding](https://owasp-aasvs4.readthedocs.io/en/latest/V5.html#validation-sanitization-and-encoding): Chapter from the OWASP Annotated Application Security Verification Standard.
+1. [Arbitrary Code Execution](https://security.snyk.io/vuln/SNYK-PYTHON-LANGCHAIN-5411357): Vulnerability report concerning Arbitrary Code Execution due to the usage of insecure methods `exec` and `eval` in `LLMMathChain`.
+2. [ChatGPT Plugin Exploit Explained: From Prompt Injection to Accessing Private Data](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./): Explanation of how the first exploitable LLM-based Cross Plugin Request Forgery was found and the fix which was applied.
+3. [New prompt injection attack on ChatGPT web version. Markdown images can steal your chat data.](https://systemweakness.com/new-prompt-injection-attack-on-chatgpt-web-version-ef717492c5c2?gi=8daec85e2116): A description of a vulnerability that allows a single-pixel image to steal a user’s sensitive chat data and send it to a malicious third-party.
+4. [Don’t blindly trust LLM responses. Threats to chatbots](https://embracethered.com/blog/posts/2023/ai-injections-threats-context-matters/): Post focusing on the untrustworthiness of LLM responses, focusing on chatbots, and how to mitigate the risks.
+5. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/): Presents a high level threat model of a generic LLM based application and an analysis of the threat model.
+6. [OWASP ASVS - 5 Validation, Sanitization and Encoding](https://owasp-aasvs4.readthedocs.io/en/latest/V5.html#validation-sanitization-and-encoding): Chapter from the OWASP Annotated Application Security Verification Standard.
 
