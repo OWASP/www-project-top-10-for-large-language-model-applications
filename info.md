@@ -1,8 +1,9 @@
 ### Top 10 for Large Language Model Applications Information
 * [Incubator Project](https://owasp.org/projects/)
-* [Version 0.9.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v09.pdf) 
+* [Version 1.0.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_0.pdf) 
+* [Version 0.9.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v09.pdf) (archived)
 * [Version 0.5.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v05.pdf) (archived)
-* [Version 0.1.0](descriptions) (archived)
+* [Version 0.1.0](Archive/0_1_vulns/) (archived)
 
 ### Social Links
 * [Announcement](https://www.linkedin.com/pulse/announcing-owasp-top-10-large-language-models-ai-project-steve-wilson/)
