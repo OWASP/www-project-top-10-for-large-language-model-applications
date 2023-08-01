@@ -6,7 +6,9 @@
 * [Version 0.1.0](Archive/0_1_vulns/) (archived)
 
 ### Social Links
-* [Announcement](https://www.linkedin.com/pulse/announcing-owasp-top-10-large-language-models-ai-project-steve-wilson/)
+
+* [v1 Announcement](https://www.linkedin.com/pulse/official-release-owasp-top-10-large-language-model-v10-steve-wilson/)
+* [Project Announcement](https://www.linkedin.com/pulse/announcing-owasp-top-10-large-language-models-ai-project-steve-wilson/)
 * [Share on Twitter](https://twitter.com/intent/tweet?url=https://owasp.org/www-project-top-10-for-large-language-model-applications/&text=Check%20out%20the%20OWASP%20Top%2010%20for%20Large%20Language%20Model%20Applications%20project:%20)
 * [Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 
