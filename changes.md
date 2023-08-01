@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 - Initial official release of the OWASP Top 10 for LLM Applications based on two months of working group efforts.
 - Engagement from over 485 experts and contributions from over 130 experts in the field of AI and application security.
+
 ## [0.9] - 2023-07-18
 
 ### Added
