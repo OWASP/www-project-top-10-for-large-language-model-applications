@@ -1,6 +1,6 @@
 ### Leaders
-* [Steve Wilson](steve.wilson@owasp.org)
-    - [LinkedIn](https://www.linkedin.com/in/wilsonsd/) [Twitter](https://twitter.com/virtualsteve)
+* [Steve Wilson](mailto:steve.wilson@owasp.org)
+    - Also on [LinkedIn](https://www.linkedin.com/in/wilsonsd/) [Twitter](https://twitter.com/virtualsteve)
 
 
 ### Team
