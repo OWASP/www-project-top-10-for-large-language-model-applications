@@ -9,7 +9,7 @@ CODEOWNERS @GangGreenTemperTatum @virtualsteve-star
 
 # Top 10 Vulnerabilities: (www-project-top-10-for-large-language-model-applications/1_1_vulns/)
 ## LLM01:
-# TBC PromptInjection.md @
+PromptInjection.md @leondz
 ## LLM02:
 # TBC InsecureOutputHandling.md @
 ## LLM03:
