@@ -11,7 +11,7 @@ CODEOWNERS @GangGreenTemperTatum @virtualsteve-star
 ## LLM01:
 PromptInjection.md @leondz
 ## LLM02:
-# TBC InsecureOutputHandling.md @
+InsecureOutputHandling.md @kenhuangus
 ## LLM03:
 TrainingDataPoisoning.md @GangGreenTemperTatum
 ## LLM04:
