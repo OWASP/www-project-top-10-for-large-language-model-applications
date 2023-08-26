@@ -19,3 +19,4 @@ This initiative is community-driven and encourages participation and contributio
 * The working group is collaborating on our [wiki](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki)
 
 New to LLM security?  Check out our [resources page](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Educational-Resources) to learn more.
+
