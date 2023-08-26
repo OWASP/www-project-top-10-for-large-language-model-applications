@@ -1,0 +1,33 @@
+## Explicit Match Any:
+*   @GangGreenTemperTatum
+
+# Shared Community Files and Areas:
+# TBC
+
+## Either Ads or Steve can approve changes to CODEOWNERS:
+CODEOWNERS @GangGreenTemperTatum @virtualsteve-star
+
+# Top 10 Vulnerabilities: (www-project-top-10-for-large-language-model-applications/1_1_vulns/)
+## LLM01:
+PromptInjection.md @leondz
+## LLM02:
+InsecureOutputHandling.md @kenhuangus
+## LLM03:
+TrainingDataPoisoning.md @GangGreenTemperTatum
+## LLM04:
+ModelDoS.md @kenhuangus
+## LLM05:
+SupplyChainVulnerabilities.md @jsotiro
+## LLM06:
+SensitiveInformationDisclosure.md @GangGreenTemperTatum
+## LLM07:
+InsecurePluginDesign.md @jsotiro
+## LLM08:
+ExcessiveAgency.md @rot169
+## LLM09:
+Overreliance.md @virtualsteve-star
+## LLM10:
+ModelTheft.md @GangGreenTemperTatum
+
+## Template:
+_template.md @rossja @mkfnch
