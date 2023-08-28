@@ -3,5 +3,5 @@
     - Also on [LinkedIn](https://www.linkedin.com/in/wilsonsd/) [Twitter](https://twitter.com/virtualsteve)
 
 
-### Core Leadership Team
+### Core Leadership vTeam
 * Full Core Team [Team Page](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Core-Team)
