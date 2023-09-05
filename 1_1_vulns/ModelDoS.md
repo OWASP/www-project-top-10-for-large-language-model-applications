@@ -17,7 +17,7 @@ An attacker interacts with a LLM in a method that consumes an exceptionally high
 
 1. Implement input validation and sanitization to ensure user input adheres to defined limits and filters out any malicious content.
 2. Cap resource use per request or step, so that requests involving complex parts execute more slowly.
-3. Enforce API rate limits to restrict the number of requests an individual user or IP address can make within a specific timeframe.
+3. Enforce API rate limits to restrict the number of requests an individual user or IP address can make within a specific time period.
 4. Limit the number of queued actions and the number of total actions in a system reacting to LLM responses.
 5. Continuously monitor the resource utilization of the LLM to identify abnormal spikes or patterns that may indicate a DoS attack.
 6. Set strict input limits based on the LLM's context window to prevent overload and resource exhaustion.

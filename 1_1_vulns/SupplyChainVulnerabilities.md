@@ -20,10 +20,10 @@ Finally, LLM Plugin extensions can bring their own vulnerabilities. These are de
 2. Only use reputable plug-ins and ensure they have been tested for  your application requirements. LLM-Insecure Plugin Design provides  information on the LLM-aspects of Insecure Plugin design you should test against to mitigate risks from using third-party plugins.
 3. Understand and apply the mitigations found in the OWASP Top Ten's [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/). This includes vulnerability scanning, management, and patching  components. For development environments with access to sensitive data,  apply these controls in those environments, too.
 4. Maintain an up-to-date inventory of components using a Software Bill of Materials (SBOM) to ensure you have an up-to-date, accurate, and signed  inventory preventing tampering with deployed packages. SBOMs can be used to detect and alert for new, zero-date vulnerabilities quickly.
-5. At the time of writing, SBOMs do not cover models, their artefacts, and datasets; If your  LLM application uses its own model, you should use MLOPs best practices  and platforms offering secure model repositories with data, model, and  experiment tracking.
+5. At the time of writing, SBOMs do not cover models, their artifacts, and datasets; If your  LLM application uses its own model, you should use MLOPs best practices  and platforms offering secure model repositories with data, model, and  experiment tracking.
 6. You should also use model and code signing when using external models and suppliers.
 7. Anomaly detection and adversarial robustness tests on supplied  models and data can help detect tampering and poisoning as discussed in [ Training Data Poisoning](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/1_0_vulns/Training_Data_Poisoning.md); ideally, this should be part of MLOps pipelines; however, these are  emerging techniques and may be easier implemented as part of red teaming exercises.
-8. Implement sufficient monitoring to cover component and environment  vulnerabilities scanning, use of unauthorised plugins, and out-of-date  components, including the model and its artefacts.
+8. Implement sufficient monitoring to cover component and environment  vulnerabilities scanning, use of unauthorized plugins, and out-of-date  components, including the model and its artifacts.
 9. Implement a patching policy to mitigate vulnerable or outdated  components. Ensure that the application relies on a maintained version of APIs and the  underlying model.
 10. Regularly review and audit supplier Security and Access, ensuring no changes in their security posture or T&Cs.
 
@@ -33,15 +33,15 @@ Finally, LLM Plugin extensions can bring their own vulnerabilities. These are de
 
 2. An attacker provides an LLM plugin to search for flights which generates fake links that lead to scamming plugin users.
 
-3. An attacker exploits the PyPi package registry to trick model developers into downloading a compromised package and exfiltrating data or escalating privilege in a model development environment. This was an actual attack.
+3. An attacker exploits the PyPi package registry to trick model developers into downloading a compromised package and exfiltrate data or escalating privilege in a model development environment. This was an actual attack.
 
-4. An attacker poisons a publicly available pre-trained model specialising in economic analysis and social research to create a backdoor which generates misinformation and fake news.  They deploy it on  a model marketplace (e.g. HuggingFace) for victims to use.
+4. An attacker poisons a publicly available pre-trained model specializing in economic analysis and social research to create a backdoor which generates misinformation and fake news.  They deploy it on  a model marketplace (e.g. HuggingFace) for victims to use.
 
 5. An attacker poisons publicly available data set to help create a backdoor when fine-tuning models. The backdoor subtly favours certain companies in different markets.
 
 6. A compromised employee of a supplier (outsourcing developer, hosting company, etc) exfiltrates data, model, or code stealing IP.
 
-7. An LLM operator changes its T&Cs and Privacy Policy so that it requires an explicit opt-out from using application data for model training, leading to memorisation of sensitive data.
+7. An LLM operator changes its T&Cs and Privacy Policy so that it requires an explicit opt-out from using application data for model training, leading to memorization of sensitive data.
 
 
 **Reference Links:**

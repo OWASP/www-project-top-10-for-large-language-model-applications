@@ -32,7 +32,7 @@ Use of a stolen model, as a shadow model, can be used to stage adversarial attac
 5. Implement controls and mitigation strategies to mitigate and|or reduce risk of prompt injection techniques causing side-channel attacks.
 6. Rate Limiting of API calls where applicable and|or filters to reduce risk of data exfiltration from the LLM applications, or implement techniques to detect (E.G., DLP) extraction activity from other monitoring systems.
 7. Implement adversarial robustness training to help detect extraction queries and tighten physical security measures.
-8. Implement a watermarking framework into the embedding and detection stages of an LLMs lifecyle.
+8. Implement a watermarking framework into the embedding and detection stages of an LLMs lifecycle.
 
 **Example Attack Scenarios:**
 
