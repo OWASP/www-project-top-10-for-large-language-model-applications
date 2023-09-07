@@ -9,14 +9,14 @@ The theft of LLMs represents a significant security concern as language models b
 **Common Examples of Vulnerability:**
 
 1. An attacker exploits a vulnerability in a company's infrastructure to gain unauthorized access to their LLM model repository via misconfiguration in their network or application security settings.
-2. An insider threat scenario where a disgruntled employee leaks model or related artifacts.
+2. An insider threat scenario where a disgruntled employee leaks the model or related artifacts.
 3. An attacker queries the model API using carefully crafted inputs and prompt injection techniques to collect a sufficient number of outputs to create a shadow model.
-4. A malicious attacker is able to bypass input filtering techniques of the LLM to perform a side-channel attack and ultimately harvest model weights and architecture information to a remote controlled resource.
+4. A malicious attacker can bypass input filtering techniques of the LLM to perform a side-channel attack and ultimately harvest model weights and architecture information to a remote-controlled resource.
 5. The attack vector for model extraction involves querying the LLM with a large number of prompts on a particular topic. The outputs from the LLM can then be used to fine-tune another model. However, there are a few things to note about this attack:
    - The attacker must generate a large number of targeted prompts. If the prompts are not specific enough, the outputs from the LLM will be useless.
    - The outputs from LLMs can sometimes contain hallucinated answers meaning the attacker may not be able to extract the entire model as some of the outputs can be nonsensical.
      - It is not possible to replicate an LLM 100% through model extraction. However, the attacker will be able to replicate a partial model.
-6. The attack vector for **_functional model replication_** involves using the target model via prompts to generate synthetic training data (an approach called "self-instruct") to then use it and fine-tune another foundational model to produce a functional equivalent. This bypasses the limitations of traditional query-based extraction used in Example 5 and has been successfully used in research of using an LLM to train another LLM. Although in the context of this research, model replication is not an attack. The approach could be used by an attacker to replicate a proprietary model with a public API.
+6. The attack vector for **_functional model replication_** involves using the target model via prompts to generate synthetic training data (an approach called "self-instruct") to then use it and fine-tune another foundational model to produce a functional equivalent. This bypasses the limitations of traditional query-based extraction used in Example 5 and has been successfully used in research of using an LLM to train another LLM. However in the context of this research, model replication is not an attack. The approach could be used by an attacker to replicate a proprietary model with a public API.
 
 Use of a stolen model, as a shadow model, can be used to stage adversarial attacks including unauthorized access to sensitive information contained within the model or experiment undetected with adversarial inputs to further stage advanced prompt injections.
 
@@ -29,18 +29,18 @@ Use of a stolen model, as a shadow model, can be used to stage adversarial attac
    1. This is particularly true for all common examples as it covers insider risk and threats, but also ultimately controls what the LLM application "*has access to*" and thus could be a mechanism or prevention step to prevent side-channel attacks.
 3. Regularly monitor and audit access logs and activities related to LLM model repositories to detect and respond to any suspicious or unauthorized behavior promptly.
 4. Automate MLOps deployment with governance and tracking and approval workflows to tighten access and deployment controls within the infrastructure.
-5. Implement controls and mitigation strategies to mitigate and|or reduce risk of prompt injection techniques causing side-channel attacks.
+5. Implement controls and mitigation strategies to mitigate and|or reduce the risk of prompt injection techniques causing side-channel attacks.
 6. Rate Limiting of API calls where applicable and|or filters to reduce risk of data exfiltration from the LLM applications, or implement techniques to detect (E.G., DLP) extraction activity from other monitoring systems.
 7. Implement adversarial robustness training to help detect extraction queries and tighten physical security measures.
-8. Implement a watermarking framework into the embedding and detection stages of an LLMs lifecyle.
+8. Implement a watermarking framework into the embedding and detection stages of an LLM's lifecyle.
 
 **Example Attack Scenarios:**
 
 1. An attacker exploits a vulnerability in a company's infrastructure to gain unauthorized access to their LLM model repository. The attacker proceeds to exfiltrate valuable LLM models and uses them to launch a competing language processing service or extract sensitive information, causing significant financial harm to the original company.
-2. A disgruntled employee leaks model or related artifacts. The public exposure of this scenario increases knowledge to attackers for gray box adversarial attacks or alternatively directly steal the available property.
-3. An attacker queries the API with carefully selected inputs and collects sufficient number of outputs to create a shadow model.
+2. A disgruntled employee leaks model or related artifacts. The public exposure enables attackers to perform gray box adversarial attacks or directly steal the available property.
+3. An attacker queries the API with carefully selected inputs and collects a sufficient number of outputs to create a shadow model.
 4. A security control failure is present within the supply-chain and leads to data leaks of proprietary model information.
-5. A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
+5. A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote-controlled resource under their control.
 
 **Reference Links:**
 
