@@ -35,7 +35,7 @@ Finally, LLM Plugin extensions can bring their own vulnerabilities. These are de
 4. An attacker poisons a publicly available pre-trained model specializing in economic analysis and social research to create a back door that generates misinformation and fake news. They deploy it on a model marketplace (e.g., Hugging Face) for victims to use.
 5. An attacker poisons publicly available datasets to help create a back door when fine-tuning models. The back door subtly favors certain companies in different markets.
 6. A compromised employee of a supplier (outsourcing developer, hosting company, etc.) exfiltrates data, model, or code stealing IP.
-7. An LLM operator changes its T&Cs and Privacy Policy to require an explicit opt-out from using application data for model training, leading to memorization of sensitive data.
+7. An LLM operator changes its T&Cs and Privacy Policy to require an explicit opt out from using application data for model training, leading to the memorization of sensitive data.
 
 **Reference Links:**
 
