@@ -26,7 +26,7 @@ Data poisoning is considered an integrity attack because tampering with the trai
 5. Use strict vetting or input filters for specific training data or categories of data sources to control volume of falsified data. Data sanitization, with techniques such as statistical outlier detection and anomaly detection methods to detect and remove adversarial data from potentially being fed into the fine-tuning process.
 6. Adversarial robustness techniques such as federated learning and constraints to minimize the effect of outliers or adversarial training to be vigorous against worst-case perturbations of the training data.
    1. An "MLSecOps" approach could be to include adversarial robustness to the training lifecycle with the auto poisoning technique.
-   2. An example repository of this would be [Autopoison](https://github.com/azshue/AutoPoison) testing, including both attacks such as Content Injection Attacks (“how to inject your brand into the LLM responses”) and Refusal Attacks (“always making the model refuse to respond”) that can be accomplished with this approach.
+   2. An example repository of this would be [Autopoison](https://github.com/azshue/AutoPoison) testing, including both attacks such as Content Injection Attacks (“(attempting to promote a brand name in model responses”) and Refusal Attacks (“always making the model refuse to respond”) that can be accomplished with this approach.
 7. Testing and Detection, by measuring the loss during the training stage and analyzing trained models to detect signs of a poisoning attack by analyzing model behavior on specific test inputs.
    1. Monitoring and alerting on number of skewed responses exceeding a threshold.
    2. Use of a human loop to review responses and auditing.
