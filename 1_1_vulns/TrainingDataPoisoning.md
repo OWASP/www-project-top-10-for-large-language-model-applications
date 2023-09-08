@@ -13,7 +13,7 @@ Data poisoning is considered an integrity attack because tampering with the trai
 1. A malicious actor, or a competitor brand intentionally creates inaccurate or malicious documents which are targeted at a model’s training data.
    - The victim model trains using falsified information which is reflected in outputs of generative AI prompts to it's consumers.
 2. A model is trained using data which has not been verified by its source, origin or content.
-3. The model itself when situated within infrastructure has unrestricted access or inadequate sandboxing to gather datasets to be used as training data which has negative influence on outputs of generative AI prompts as well as loss of control from a management perspective.
+3. Unrestricted infrastructure access or inadequate sandboxing may allow a model to ingest unsafe training data resulting in biased or harmful outputs.
 
 *Whether a developer, client or general consumer of the LLM, it is important to understand the implications of how this vulnerability could reflect risks within your LLM application when interacting with a non-proprietary LLM.*
 
