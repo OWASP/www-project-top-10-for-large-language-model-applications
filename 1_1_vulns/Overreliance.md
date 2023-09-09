@@ -4,7 +4,7 @@
 
 Overreliance occurs when systems or people depend on LLMs for decision-making or content generation without sufficient oversight. While LLMs can produce creative and informative content, they can also generate content that is factually incorrect, inappropriate or unsafe. This is referred to as hallucination or confabulation and can result in misinformation, miscommunication, legal issues, and reputational damage.
 
-LLM-generated source code can introduce unnoticed security vulnerabilities. This poses a significant risk to the operational safety and security of applications. These risks show the importance of a rigorous review processes, with:
+LLM-generated source code can introduce unnoticed security vulnerabilities. This poses a significant risk to the operational safety and security of applications. These risks show the importance of rigorous review processes, with:
 
 - Oversight
 - Continuous validation mechanisms
@@ -26,11 +26,11 @@ LLM-generated source code can introduce unnoticed security vulnerabilities. This
 7. Build APIs and user interfaces that encourage responsible and safe use of LLMs. This can involve measures such as content filters, user warnings about potential inaccuracies, and clear labeling of AI-generated content.
 8. When using LLMs in development environments, establish secure coding practices and guidelines to prevent the integration of possible vulnerabilities.
 
-**Example High Risk Scenarios:**
+**Example High-Risk Scenarios:**
 
-1. A news organization heavily uses an LLM to generate news articles. A malicious actor exploits this over-reliance, feeding the LLM misleading information, causing the spread of disinformation. 
+1. A news organization heavily uses an LLM to generate news articles. A malicious actor exploits this over-reliance, feeding the LLM misleading information, and causing the spread of disinformation. 
 2. The AI unintentionally plagiarizes content, leading to copyright issues and decreased trust in the organization.
-3. A software development team utilizes an LLM system to expedite the coding process. Over-reliance on the AI's suggestions introduces security vulnerabilities into the application due to insecure default settings or recommendations inconsistent with secure coding practices.
+3. A software development team utilizes an LLM system to expedite the coding process. Over-reliance on the AI's suggestions introduces security vulnerabilities in the application due to insecure default settings or recommendations inconsistent with secure coding practices.
 4. A software development firm uses an LLM to assist developers. The LLM suggests a non-existent code library or package, and a developer, trusting the AI, unknowingly integrates a malicious package into the firm's software. This highlights the importance of cross-checking LLM suggestions, especially when involving third-party code or libraries.
 
 **Reference Links:**
