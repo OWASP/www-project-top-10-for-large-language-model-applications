@@ -26,7 +26,7 @@ LLM-generated source code can introduce unnoticed security vulnerabilities. This
 7. Build APIs and user interfaces that encourage responsible and safe use of LLMs. This can involve measures such as content filters, user warnings about potential inaccuracies, and clear labeling of AI-generated content.
 8. When using LLMs in development environments, establish secure coding practices and guidelines to prevent the integration of possible vulnerabilities.
 
-**Example High-Risk Scenarios:**
+**Example Attack Scenarios:**
 
 1. A news organization heavily uses an LLM to generate news articles. A malicious actor exploits this over-reliance, feeding the LLM misleading information, and causing the spread of disinformation. 
 2. The AI unintentionally plagiarizes content, leading to copyright issues and decreased trust in the organization.
