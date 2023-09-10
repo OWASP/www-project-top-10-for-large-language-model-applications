@@ -26,7 +26,7 @@ Data poisoning is considered an integrity attack because tampering with the trai
 
 **How to Prevent:**
 
-1. Verify the supply chain of the training data, especially when sourced externally as well as maintaining attestations, similar to the "SBOM" (Software Bill of Materials) / "XBOM" (eXtended Software Bill of Materials) methodology as well as verifying model cards.
+1. Verify the supply chain of the training data, especially when sourced externally as well as maintaining attestations via the "ML-BOM" (Machine Learning Bill of Materials) methodology as well as verifying model cards.
 2. Verify the correct legitimacy of targeted data sources and data contained obtained during both the pre-training, fine-tuning and embedding stages.
 3. Verify your use-case for the LLM and the application it will integrate to. Craft different models via separate training data or fine-tuning for different use-cases to create a more granular and accurate generative AI output as per it's defined use-case.
 4. Ensure sufficient sandboxing through network controls are present to prevent the model from scraping unintended data sources which could hinder the machine learning output.
@@ -59,3 +59,4 @@ Data poisoning is considered an integrity attack because tampering with the trai
 8. [FedMLSecurity:arXiv:2306.04959](https://arxiv.org/abs/2306.04959) A Benchmark for attacks and defenses in federated learning and LLMs: Research demonstrating the effectiveness of Federated Learning against data poisoning attacks on LLMs.
 9. [The poisoning of ChatGPT](https://softwarecrisis.dev/letters/the-poisoning-of-chatgpt/) A controversial but informative article on the risks of Data Poisoning in LLMs.
 10. [Poisoning Web-Scale Training Datasets - Nicholas Carlini | Stanford MLSys #75](https://www.youtube.com/watch?v=h9jf1ikcGyk) A video interview and walkthrough of "Poisoning Web-Scale Training Datasets" which highlight two attack vectors in Split-View Data Poisoning and Frontrunning Poisoning. Additionally, the [arXiv:2302.10149](https://arxiv.org/abs/2302.10149) research paper to compliment.
+11. [OWASP CycloneDX v1.5](https://cyclonedx.org/capabilities/mlbom/) sets a new benchmark by incorporating Machine Learning transparency (ML-BOM), Formulation (MBOM), and enhanced support for Software Bill of Materials (SBOM) quality indicators.
