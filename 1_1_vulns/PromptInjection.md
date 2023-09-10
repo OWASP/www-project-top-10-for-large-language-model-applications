@@ -27,6 +27,7 @@ Prompt injection vulnerabilities are possible due to the nature of LLMs, which d
 2. Implement human in the loop for extensible functionality. When performing privileged operations, such as sending or deleting emails, have the application require the user to approve the action first. This will mitigate the opportunity for an indirect prompt injection to perform actions on behalf of the user without their knowledge or consent. 
 3. Segregate external content from user prompts. Separate and denote where untrusted content is being used to limit  their influence on user prompts. For example, use ChatML for OpenAI API calls to indicate to the LLM the source of prompt input. 
 4. Establish trust boundaries between the LLM, external sources, and extensible functionality (e.g., plugins or downstream functions). Treat the LLM as an untrusted user and maintain final user control on decision-making processes. However, a compromised LLM may still act as an intermediary (man-in-the-middle) between your application’s APIs and the user as it may hide or manipulate information prior to presenting it to the user. Highlight potentially untrustworthy responses visually to the user.
+5. Utilize LLM monitoring tools that track user prompts and associate them with backend activity including LLM responses. While not a mitigation, this can provide data needed to detect weaknesses and address them. 
 
 **Example Attack Scenarios:**
 
