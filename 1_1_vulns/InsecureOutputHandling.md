@@ -4,6 +4,8 @@
 
 Insecure Output Handling is a vulnerability that arises when a downstream component blindly accepts large language model (LLM) output without proper scrutiny, such as passing LLM output directly to backend, privileged, or client-side functions. Since LLM-generated content can be controlled by prompt input, this behavior is similar to providing users indirect access to additional functionality.
 
+Insecure Output Handling differs from Overreliance in that it deals specifically with the lack of proper validation, sanitization, and handling of LLM-generated outputs before they are passed downstream whereas Overreliance focuses on broader concerns around overdependence on the accuracy and appropriateness of LLM outputs.
+
 Successful exploitation of an Insecure Output Handling vulnerability can result in XSS and CSRF in web browsers as well as SSRF, privilege escalation, or remote code execution on backend systems. 
 The following conditions can increase the impact of this vulnerability:
 * The application grants the LLM privileges beyond what is intended for end users, enabling escalation of privileges or remote code execution.
