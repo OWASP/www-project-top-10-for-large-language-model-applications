@@ -4,17 +4,21 @@
 
 LLM plugins are extensions that, when enabled, are called automatically by the model during user interactions. The model integration platform drives them,  and the application may have no control over the execution, especially when the model is hosted by another party. Furthermore, plugins are likely to implement free-text inputs from the model with no validation or type-checking to deal with context-size limitations. This allows a potential attacker to construct a malicious request to the plugin, which could result in a wide range of undesired behaviors, up to and including remote code execution. 
 
+Since plugins are, under normal circumstances, accessed only by the LLM, exploitation is typically a result of another vulnerability such as excessive agency or direct or indirect prompt injection. However, plugins are still responsible for protecting themselves since side-channel attacks can still occur.
+
 The harm of malicious inputs often depends on insufficient access controls and the failure to track authorization across plugins. Inadequate access control allows a plugin to blindly trust other plugins and assume that the end user provided the inputs. Such inadequate access control can enable malicious inputs to have harmful consequences ranging from data exfiltration, remote code execution, and privilege escalation.
 
 This item focuses on creating LLM plugins rather than third-party plugins, which LLM-Supply-Chain-Vulnerabilities cover. 
 
 **Common Examples of Vulnerability:**
 
-1. A plugin accepts all parameters in a single text field instead of distinct input parameters.
+1. A plugin accepts its input parameters in a single text field instead of distinct input parameters that can be validated and sanitized.
 2. A plugin accepts configuration strings instead of parameters that can override entire configuration settings.
-3. A plugin accepts raw SQL or programming statements instead of parameters.
+3. A plugin accepts raw SQL or programming statements, which are more difficult to validate than distinct parameters.
 4. Authentication is performed without explicit authorization to a particular plugin.
-5. A plugin treats all LLM content as being created entirely by the user and performs any requested actions without requiring additional authorization.
+5. A plugin adheres to inadequate fine grained authorization controls.   
+6. A plugin blindly trusts that the LLM output, which is the input to the plugin, correctly represents the expected output for the initial prompt. 
+7. A plugin treats all LLM content as being created entirely by the user and performs any requested actions without requiring additional authorization.
 
 **How to Prevent:**
 
@@ -29,10 +33,9 @@ This item focuses on creating LLM plugins rather than third-party plugins, which
 **Example Attack Scenarios:**
 
 1. A plugin accepts a base URL and instructs the LLM to combine the URL with a query to obtain weather forecasts which are included in handling the user request. A malicious user can craft a request such that the URL points to a domain they control, which allows them to inject their own content into the LLM system via their domain.
-2. A plugin accepts a free-form input into a single field that it does not validate. An attacker supplies carefully crafted payloads to perform reconnaissance from error messages. It then exploits known third-party vulnerabilities to execute code and perform data exfiltration or privilege escalation.
-3. A plugin used to retrieve embeddings from a vector store accepts configuration parameters as a connection string without any validation. This allows an attacker to experiment and access other vector stores by changing names or host parameters and exfiltrate embeddings they should not have access to. 
-4. A plugin accepts SQL WHERE clauses as advanced filters, which are then appended to the filtering SQL. This allows an attacker to stage a SQL attack.
-5. An attacker uses indirect prompt injection to exploit an insecure code management plugin with no input validation and weak access control to transfer repository ownership and lock out the user from their repositories.
+2. A plugin used to retrieve embeddings from a vector store accepts configuration parameters as a connection string without any validation. This allows an attacker to experiment and access other vector stores by changing names or host parameters and exfiltrate embeddings they should not have access to. 
+3. A plugin accepts SQL WHERE clauses as advanced filters, which are then appended to the filtering SQL. This allows an attacker to stage a SQL attack.
+4. An attacker uses indirect prompt injection to exploit an insecure code management plugin that has no input validation and weak access control to transfer repository ownership and lock out the user from their repositories.
 
 **References**
 
