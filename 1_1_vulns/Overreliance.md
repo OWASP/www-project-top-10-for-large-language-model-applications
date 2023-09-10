@@ -10,6 +10,8 @@ LLM-generated source code can introduce unnoticed security vulnerabilities. This
 - Continuous validation mechanisms
 - Disclaimers on risk
 
+Overreliance differs from Insecure Output Handling in that Insecure Output Handling focuses on the lack of proper validation and sanitization of LLM-generated outputs before they are passed downstream components whereas Overreliance refers more broadly to overdependence on the accuracy and appropriateness of LLM outputs. 
+
 **Common Examples of Vulnerability:**
 
 1. LLM provides inaccurate information as a response while stating it in a fashion implying it is highly authoritative.  The overall system is designed without proper checks and balances to handle this and the information misleads the user in a way that leads to harm
