@@ -2,52 +2,57 @@
 
 **Description:**
 
-This entry refers to the unauthorized access and exfiltration of LLM models by malicious actors or APTs. This arises when the proprietary LLM models (being valuable intellectual property), are compromised, physically stolen, copied or weights and parameters are extracted to create a functional equivalent. The impact of LLM model theft can include economic and brand reputation loss, erosion of competitive advantage, unauthorized usage of the model or unauthorized access to sensitive information contained within the model.
+यह प्रविष्टि दुर्भावनापूर्ण अभिनेताओं या APT द्वारा LLM मॉडल की अनधिकृत पहुंच और उन्हें बाहर निकालने को संदर्भित करती है। यह तब होता है जब मालिकाना एलएलएम मॉडल (मूल्यवान बौद्धिक संपदा होने के नाते), उनके साथ छेड़छाड़ की जाती है, भौतिक रूप से चोरी हो जाते हैं, कॉपी किए जाते हैं या एक कार्यात्मक समकक्ष बनाने के लिए वज़न और पैरामीटर निकाले जाते हैं। एलएलएम मॉडल की चोरी के प्रभाव में आर्थिक और ब्रांड प्रतिष्ठा खोना, प्रतिस्पर्धात्मक लाभ में कमी, मॉडल का अनधिकृत उपयोग या मॉडल में मौजूद संवेदनशील जानकारी तक अनधिकृत पहुंच शामिल हो सकती है।
 
-The theft of LLMs represents a significant security concern as language models become increasingly powerful and prevalent. Organizations and researchers must prioritize robust security measures to protect their LLM models, ensuring the confidentiality and integrity of their intellectual property. Employing a comprehensive security framework that includes access controls, encryption, and continuous monitoring is crucial in mitigating the risks associated with LLM model theft and safeguarding the interests of both individuals and organizations relying on LLM.
+एलएलएम की चोरी सुरक्षा के लिए एक महत्वपूर्ण चिंता का विषय है क्योंकि भाषा मॉडल तेजी से शक्तिशाली और प्रचलित होते जा रहे हैं। संगठनों और शोधकर्ताओं को अपने एलएलएम मॉडल की सुरक्षा के लिए मज़बूत सुरक्षा उपायों को प्राथमिकता देनी चाहिए, जिससे उनकी बौद्धिक संपदा की गोपनीयता और सत्यनिष्ठा बनी रहे। एलएलएम मॉडल चोरी से जुड़े जोखिमों को कम करने और एलएलएम पर निर्भर व्यक्तियों और संगठनों दोनों के हितों की सुरक्षा करने के लिए एक व्यापक सुरक्षा ढांचे का इस्तेमाल करना, जिसमें ऐक्सेस नियंत्रण, एन्क्रिप्शन और निरंतर निगरानी शामिल है, महत्वपूर्ण है।
 
-**Common Examples of Vulnerability:**
+**कमज़ोरी के सामान्य उदाहरण**
 
-1. An attacker exploits a vulnerability in a company's infrastructure to gain unauthorized access to their LLM model repository via misconfiguration in their network or application security settings.
-2. An insider threat scenario where a disgruntled employee leaks model or related artifacts.
-3. An attacker queries the model API using carefully crafted inputs and prompt injection techniques to collect a sufficient number of outputs to create a shadow model.
-4. A malicious attacker is able to bypass input filtering techniques of the LLM to perform a side-channel attack and ultimately harvest model weights and architecture information to a remote controlled resource.
-5. The attack vector for model extraction involves querying the LLM with a large number of prompts on a particular topic. The outputs from the LLM can then be used to fine-tune another model. However, there are a few things to note about this attack:
-   - The attacker must generate a large number of targeted prompts. If the prompts are not specific enough, the outputs from the LLM will be useless.
-   - The outputs from LLMs can sometimes contain hallucinated answers meaning the attacker may not be able to extract the entire model as some of the outputs can be nonsensical.
-     - It is not possible to replicate an LLM 100% through model extraction. However, the attacker will be able to replicate a partial model.
-6. The attack vector for **_functional model replication_** involves using the target model via prompts to generate synthetic training data (an approach called "self-instruct") to then use it and fine-tune another foundational model to produce a functional equivalent. This bypasses the limitations of traditional query-based extraction used in Example 5 and has been successfully used in research of using an LLM to train another LLM. Although in the context of this research, model replication is not an attack. The approach could be used by an attacker to replicate a proprietary model with a public API.
 
-Use of a stolen model, as a shadow model, can be used to stage adversarial attacks including unauthorized access to sensitive information contained within the model or experiment undetected with adversarial inputs to further stage advanced prompt injections.
+1। एक हमलावर अपने नेटवर्क या ऐप्लिकेशन सुरक्षा सेटिंग में ग़लतफ़हमी के ज़रिए अपने LLM मॉडल रिपॉजिटरी तक अनधिकृत ऐक्सेस पाने के लिए कंपनी के इंफ्रास्ट्रक्चर की कमज़ोरी का फायदा उठाता है।
+2। अंदरूनी खतरे का परिदृश्य जहां एक असंतुष्ट कर्मचारी किसी मॉडल या उससे जुड़ी कलाकृतियों को लीक कर देता है।
+3। एक हमलावर शैडो मॉडल बनाने के लिए पर्याप्त संख्या में आउटपुट इकट्ठा करने के लिए सावधानी से तैयार किए गए इनपुट और प्रॉम्प्ट इंजेक्शन तकनीकों का इस्तेमाल करके मॉडल API से पूछताछ करता है।
+4। एक दुर्भावनापूर्ण हमलावर एक साइड-चैनल हमला करने के लिए LLM की इनपुट फ़िल्टरिंग तकनीकों को दरकिनार कर सकता है और अंतत: रिमोट नियंत्रित संसाधन का उपयोग करके मॉडल के वज़न और आर्किटेक्चर की जानकारी हासिल कर सकता है।
+5। मॉडल एक्सट्रैक्शन के अटैक वेक्टर में किसी खास विषय पर बड़ी संख्या में संकेतों के साथ LLM से पूछताछ करना शामिल है। इसके बाद LLM के आउटपुट का इस्तेमाल किसी दूसरे मॉडल को ठीक करने के लिए किया जा सकता है। हालाँकि, इस हमले के बारे में कुछ बातें ध्यान देने योग्य हैं:
+A. हमलावर को बड़ी संख्या में लक्षित संकेत जेनरेट करने होंगे। अगर संकेत पर्याप्त नहीं हैं, तो एलएलएम से मिलने वाले आउटपुट बेकार होंगे।
+B. एलएलएम के आउटपुट में कभी-कभी बेहूदा जवाब हो सकते हैं, मतलब हमलावर पूरे मॉडल को निकालने में सक्षम नहीं हो सकता क्योंकि कुछ आउटपुट बेतुके हो सकते हैं।
+C. मॉडल एक्सट्रैक्शन के ज़रिये किसी LLM को 100% दोहराना संभव नहीं है। हालांकि, हमलावर एक आंशिक मॉडल को दोहराने में सक्षम होगा।
+6। फ़ंक्शनल मॉडल रेप्लिकेशन के लिए अटैक वेक्टर में सिंथेटिक प्रशिक्षण डेटा (“सेल्फ़-इंस्ट्रक्ट” नामक दृष्टिकोण) जेनरेट करने के लिए संकेतों के माध्यम से लक्ष्य मॉडल का उपयोग करना शामिल है, फिर उसका इस्तेमाल करने और एक कार्यात्मक समकक्ष बनाने के लिए किसी अन्य मूलभूत मॉडल को फ़ाइन-ट्यून करना शामिल है। यह उदाहरण 5 में इस्तेमाल किए गए पारंपरिक क्वेरी-आधारित एक्सट्रैक्शन की सीमाओं को दरकिनार कर देता है और किसी अन्य एलएलएम को प्रशिक्षित करने के लिए एलएलएम का इस्तेमाल करने के शोध में इसका सफलतापूर्वक इस्तेमाल किया गया है। हालांकि इस शोध के संदर्भ में, मॉडल रेप्लिकेशन कोई हमला नहीं है। इस दृष्टिकोण का इस्तेमाल एक हमलावर किसी मालिकाना मॉडल को सार्वजनिक API की मदद से दोहराने के लिए कर सकता है।
 
-**How to Prevent:**
+किसी चोरी हुए मॉडल का इस्तेमाल, शैडो मॉडल के तौर पर, प्रतिकूल हमलों को स्टेज करने के लिए किया जा सकता है, जिसमें मॉडल में मौजूद संवेदनशील जानकारी तक अनधिकृत पहुंच शामिल है या एडवांस प्रॉम्प्ट इंजेक्शन को आगे बढ़ाने के लिए प्रतिकूल इनपुट के साथ ऐसा प्रयोग करना शामिल है, जिसका पता नहीं चल पाया है।
 
-1. Implement strong access controls (E.G., RBAC and rule of least privilege) and strong authentication mechanisms to limit unauthorized access to LLM model repositories and training environments.
-   1. This is particularly true for the first three common examples, which could cause this vulnerability due to insider threats, misconfiguration, and/or weak security controls about the infrastructure that houses LLM models, weights and architecture in which a malicious actor could infiltrate from insider or outside the environment.
-   2. Supplier management tracking, verification and dependency vulnerabilities are important focus topics to prevent exploits of supply-chain attacks.
-2. Restrict the LLM's access to network resources, internal services, and APIs.
-   1. This is particularly true for all common examples as it covers insider risk and threats, but also ultimately controls what the LLM application "*has access to*" and thus could be a mechanism or prevention step to prevent side-channel attacks.
-3. Regularly monitor and audit access logs and activities related to LLM model repositories to detect and respond to any suspicious or unauthorized behavior promptly.
-4. Automate MLOps deployment with governance and tracking and approval workflows to tighten access and deployment controls within the infrastructure.
-5. Implement controls and mitigation strategies to mitigate and|or reduce risk of prompt injection techniques causing side-channel attacks.
-6. Rate Limiting of API calls where applicable and|or filters to reduce risk of data exfiltration from the LLM applications, or implement techniques to detect (E.G., DLP) extraction activity from other monitoring systems.
-7. Implement adversarial robustness training to help detect extraction queries and tighten physical security measures.
-8. Implement a watermarking framework into the embedding and detection stages of an LLMs lifecyle.
 
-**Example Attack Scenarios:**
+**बचाव कैसे करें**
 
-1. An attacker exploits a vulnerability in a company's infrastructure to gain unauthorized access to their LLM model repository. The attacker proceeds to exfiltrate valuable LLM models and uses them to launch a competing language processing service or extract sensitive information, causing significant financial harm to the original company.
-2. A disgruntled employee leaks model or related artifacts. The public exposure of this scenario increases knowledge to attackers for gray box adversarial attacks or alternatively directly steal the available property.
-3. An attacker queries the API with carefully selected inputs and collects sufficient number of outputs to create a shadow model.
-4. A security control failure is present within the supply-chain and leads to data leaks of proprietary model information.
-5. A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
 
-**Reference Links:**
+1। LLM मॉडल रिपॉजिटरी और प्रशिक्षण वातावरण तक अनधिकृत ऐक्सेस को सीमित करने के लिए मज़बूत ऐक्सेस नियंत्रण (जैसे, RBAC और कम से कम विशेषाधिकार का नियम) और मज़बूत प्रमाणीकरण तंत्र लागू करें।
+A. यह पहले तीन सामान्य उदाहरणों के लिए खास तौर पर सही है, जो अंदरूनी खतरों, गलत कॉन्फ़िगरेशन और/या इंफ्रास्ट्रक्चर के बारे में कमज़ोर सुरक्षा नियंत्रण के कारण इस जोखिम का कारण बन सकते हैं, जिसमें एलएलएम मॉडल, वज़न और आर्किटेक्चर मौजूद हैं, जिसमें एक दुर्भावनापूर्ण अभिनेता वातावरण के अंदर या बाहर से घुसपैठ कर सकता है।
+B. सप्लाई-चेन हमलों के कारनामों को रोकने के लिए आपूर्तिकर्ता प्रबंधन ट्रैकिंग, सत्यापन और निर्भरता की कमजोरियाँ महत्वपूर्ण फोकस विषय हैं।
+2। नेटवर्क संसाधनों, आंतरिक सेवाओं और API तक LLM की पहुँच को प्रतिबंधित करें।
+A. यह सभी सामान्य उदाहरणों के लिए खास तौर पर सही है क्योंकि यह अंदरूनी जोखिमों और खतरों को कवर करता है, लेकिन आखिरकार यह नियंत्रित करता है कि LLM एप्लिकेशन की “एक्सेस” क्या है और इसलिए यह साइड-चैनल हमलों को रोकने के लिए एक तंत्र या रोकथाम का कदम हो सकता है।
+3। किसी भी संदिग्ध या अनधिकृत व्यवहार का तुरंत पता लगाने और उसका जवाब देने के लिए, एलएलएम मॉडल रिपॉजिटरी से संबंधित एक्सेस लॉग और गतिविधियों की नियमित रूप से निगरानी करें और उनका ऑडिट करें।
+4। इंफ्रास्ट्रक्चर में ऐक्सेस और डिप्लॉयमेंट नियंत्रणों को बेहतर बनाने के लिए, गवर्नेंस और ट्रैकिंग और मंज़ूरी वर्कफ़्लो की मदद से MLOP के डिप्लॉयमेंट को स्वचालित करें।
+5। साइड-चैनल अटैक की वजह से प्रॉम्प्ट इंजेक्शन तकनीकों के जोखिम को कम करने और/या उन्हें कम करने के लिए नियंत्रण और शमन रणनीतियां लागू करें।
+6। जहां लागू हो, API कॉल और/या फ़िल्टर की दर सीमित करना ताकि LLM ऐप्लिकेशन से डेटा एक्सफ़िल्ट्रेशन के जोखिम को कम किया जा सके, या अन्य निगरानी प्रणालियों से (जैसे, DLP) निकालने की गतिविधि का पता लगाने के लिए तकनीकों को लागू किया जा सके।
+7। निष्कर्षण संबंधी प्रश्नों का पता लगाने और भौतिक सुरक्षा उपायों को मजबूत करने में मदद करने के लिए प्रतिकूल मजबूती प्रशिक्षण लागू करें।
+8। एलएलएम की लाइफ़साइकिल के एम्बेडिंग और पता लगाने के चरणों में वॉटरमार्किंग फ़्रेमवर्क लागू करें।
 
-1. [Meta’s powerful AI language model has leaked online](https://www.theverge.com/2023/3/8/23629362/meta-ai-language-model-llama-leak-online-misuse) A news article highlighting a real-world incident where an AI language model leaked online, emphasizing the importance of protecting LLM models from unauthorized access and misuse.
-2. [Runaway LLaMA | How Meta's LLaMA NLP model leaked](https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked/) The same example as the prior reference, but detailing exploitation steps from a detailed-level of how the proprietary model was leaked. Physical model theft is a key concern and the Meta "LaMa leak" indicates the challenges of applying access control in collaborative research.
-3. [I Know What You See:](https://arxiv.org/pdf/1803.05847.pdf) Power Side-Channel Attack on Convolutional Neural Network Accelerators: Example of Side-channel attacks to extract model information.
-4. [D-DAE: Defense-Penetrating Model Extraction Attacks:](https://www.computer.org/csdl/proceedings-article/sp/2023/933600a432/1He7YbsiH4c) Adversarial approaches to defeat current extraction techniques.
-5. [A Comprehensive Defense Framework Against Model Extraction Attacks](https://ieeexplore.ieee.org/document/10080996) Techniques to defend against Extraction Attacks focusing on adversarial training and measures to achieve robustness against adaptive adversarial techniques.
-6. [Alpaca: A Strong, Replicable Instruction-Following Model](https://crfm.stanford.edu/2023/03/13/alpaca.html) Use of self-instruct to create an equivalent functional model to OpenAI’s ext-davinci-003 model on top of LLaMa.
-7. [How Watermarking Can Help Mitigate The Potential Risks Of LLMs?](https://www.kdnuggets.com/2023/03/watermarking-help-mitigate-potential-risks-llms.html) Adding embedding signals into generated text can help mitigate potential risks of plagiarism, misinformation, and abuse in large language models.
+
+**उदाहरण हमले का परिदृश्य**
+
+1। एक हमलावर अपने एलएलएम मॉडल रिपॉजिटरी तक अनधिकृत पहुंच हासिल करने के लिए कंपनी के इंफ्रास्ट्रक्चर की कमजोरियों का फायदा उठाता है। हमलावर बहुमूल्य एलएलएम मॉडल में घुसपैठ करने के लिए आगे बढ़ता है और उनका इस्तेमाल प्रतिस्पर्धी भाषा प्रोसेसिंग सेवा शुरू करने या संवेदनशील जानकारी निकालने के लिए करता है, जिससे मूल कंपनी को काफी आर्थिक नुकसान होता है।
+2। एक असंतुष्ट कर्मचारी मॉडल या उससे जुड़ी कलाकृतियाँ लीक कर देता है। इस परिदृश्य को सार्वजनिक रूप से उजागर करने से हमलावरों को ग्रे बॉक्स पर प्रतिकूल हमलों के लिए ज्ञान बढ़ता है या वैकल्पिक रूप से सीधे उपलब्ध संपत्ति को चुरा लिया जाता है।
+3। एक हमलावर सावधानी से चुने गए इनपुट के साथ API से पूछताछ करता है और शैडो मॉडल बनाने के लिए पर्याप्त संख्या में आउटपुट इकट्ठा करता है।
+4। सुरक्षा नियंत्रण में गड़बड़ी, सप्लाई चेन में मौजूद रहती है और इसके कारण मालिकाना मॉडल की जानकारी का डेटा लीक हो जाता है।
+5। एक दुर्भावनापूर्ण हमलावर एक साइड-चैनल हमला करने के लिए LLM की इनपुट फ़िल्टरिंग तकनीकों और प्रस्तावना को दरकिनार कर देता है और उनके नियंत्रण वाले रिमोट नियंत्रित संसाधन में मॉडल की जानकारी वापस पा लेता है।
+
+
+**रेफ़रंस लिंक्स**
+
+1। मेटा का शक्तिशाली AI भाषा मॉडल ऑनलाइन लीक हो गया है: https://www.theverge.com/2023/3/8/23629362/meta-ai-language-model-llama-leak-online-misuse
+2। रनवे लामा | मेटा का लामा एनएलपी मॉडल कैसे लीक हुआ: https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked/
+3। मुझे पता है आप क्या देख रहे हैं: https://arxiv.org/pdf/1803.05847.pdf
+4। D-DAE: डिफेंस-पेनेट्रेटिंग मॉडल एक्सट्रैक्शन अटैक: https://www.computer.org/csdl/proceedings-article/sp/2023/933600a432/1He7YbsiH4c
+5। मॉडल एक्सट्रैक्शन अटैक के खिलाफ एक व्यापक रक्षा ढांचा: https://ieeexplore.ieee.org/document/10080996
+6। अल्पाका: एक मज़बूत, अनुकरणीय अनुदेश-फ़ॉलो करने वाला मॉडल: https://crfm.stanford.edu/2023/03/13/alpaca.html
+7। वॉटरमार्किंग एलएलएम के संभावित जोखिमों को कम करने में कैसे मदद कर सकती है? : https://www.kdnuggets.com/2023/03/watermarking-help-mitigate-potential-risks-llms.html
