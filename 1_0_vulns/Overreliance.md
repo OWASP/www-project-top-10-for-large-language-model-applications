@@ -1,45 +1,51 @@
-## Overreliance
+## ओवररिलायंस
 
-**Description:**
+**ओवररिलायंस**
 
-Overreliance occurs when systems or people depend on LLMs for decision-making or content generation without sufficient oversight. While LLMs can produce creative and informative content, they can also generate content that is factually incorrect, inappropriate or unsafe. This is referred to as hallucination or confabulation and can result in misinformation, miscommunication, legal issues, and reputational damage.
+ज़्यादा निर्भरता तब होती है जब सिस्टम या लोग बिना पर्याप्त निरीक्षण के निर्णय लेने या कॉन्टेंट तैयार करने के लिए LLM पर निर्भर होते हैं। एलएलएम रचनात्मक और जानकारीपूर्ण सामग्री तैयार कर सकते हैं, लेकिन वे ऐसी सामग्री भी जेनरेट कर सकते हैं जो तथ्यात्मक रूप से गलत, अनुचित या असुरक्षित हो। इसे भ्रम या उलझन कहा जाता है और इसकी वजह से ग़लत सूचना, ग़लतफ़हमी, कानूनी समस्याएं और प्रतिष्ठा को नुकसान हो सकता है।
 
-LLM-generated source code can introduce unnoticed security vulnerabilities. This poses a significant risk to the operational safety and security of applications. These risks show the importance of a rigorous review processes, with:
+एलएलएम द्वारा जेनरेट किया गया स्रोत कोड किसी का ध्यान नहीं जाने वाली सुरक्षा कमजोरियों के बारे में बता सकता है। यह अनुप्रयोगों की परिचालन सुरक्षा और सुरक्षा के लिए एक महत्वपूर्ण जोखिम पैदा करता है। ये जोखिम समीक्षा की कठोर प्रक्रिया के महत्व को दर्शाते हैं, इसके साथ:
+•ओवरसाइट
+•सत्यापन की निरंतर व्यवस्था
+•अस्वीकरण जो जोखिम में हैं
 
-- Oversight
-- Continuous validation mechanisms
-- Disclaimers on risk
 
-**Common Examples of Vulnerability:**
+**कमज़ोरी के सामान्य उदाहरण**
 
-1. LLM provides inaccurate information as a response, causing misinformation. 
-2. LLM produces logically incoherent or nonsensical text that, while grammatically correct, doesn't make sense.
-3. LLM melds information from varied sources, creating misleading content.
-4. LLM suggests insecure or faulty code, leading to vulnerabilities when incorporated into a software system.
-5. Failure of provider to appropriately communicate the inherent risks to end users, leading to potential harmful consequences.
+1। LLM प्रतिक्रिया के तौर पर गलत जानकारी देता है, जिससे गलत जानकारी मिलती है।
+2। एलएलएम तार्किक रूप से असंगत या निरर्थक टेक्स्ट तैयार करता है, जबकि व्याकरण की दृष्टि से सही है, इसका कोई मतलब नहीं है।
+3। LLM अलग-अलग स्रोतों से जानकारी मिलाता है, जिससे भ्रामक सामग्री बनती है।
+4। LLM असुरक्षित या दोषपूर्ण कोड सुझाता है, जिसके कारण सॉफ़्टवेयर सिस्टम में शामिल करने पर कमजोरियाँ हो जाती हैं।
+5। प्रदाता द्वारा अंतिम यूज़र को अंतर्निहित जोखिमों के बारे में ठीक से बताने में विफलता, जिसके कारण संभावित हानिकारक परिणाम हो सकते हैं।
 
-**How to Prevent:**
 
-1. Regularly monitor and review the LLM outputs. Use self-consistency or voting techniques to filter out inconsistent text. Comparing multiple model responses for a single prompt can better judge the quality and consistency of output.
-2. Cross-check the LLM output with trusted external sources. This additional layer of validation can help ensure the information provided by the model is accurate and reliable.
-3. Enhance the model with fine-tuning or embeddings to improve output quality. Generic pre-trained models are more likely to produce inaccurate information compared to tuned models in a partiular domain.  Techniques such as prompt engineering, parameter efficient tuning (PET), full model tuning, and chain of thought prompting can be employed for this purpose.
-4. Implement automatic validation mechanisms that can cross-verify the generated output against known facts or data. This can provide an additional layer of security and mitigate the risks associated with hallucinations.
-5. Break down complex tasks into manageable subtasks and assign them to different agents. This not only helps in managing complexity, but it also reduces the chances of hallucinations as each agent can be held accountable for a smaller task.
-6. Clearly communicate the risks and limitations associated with using LLMs. This includes potential for information inaccuracies, and other risks. Effective risk communication can prepare users for potential issues and help them make informed decisions.
-7. Build APIs and user interfaces that encourage responsible and safe use of LLMs. This can involve measures such as content filters, user warnings about potential inaccuracies, and clear labeling of AI-generated content.
-8. When using LLMs in development environments, establish secure coding practices and guidelines to prevent the integration of possible vulnerabilities.
+**बचाव कैसे करें:**
 
-**Example Attack Scenarios:**
+1। एलएलएम आउटपुट की नियमित निगरानी करें और उनकी समीक्षा करें। असंगत टेक्स्ट को फ़िल्टर करने के लिए सेल्फ-कंसिस्टेंसी या वोटिंग तकनीकों का इस्तेमाल करें। एक ही प्रॉम्प्ट के लिए कई मॉडल प्रतिक्रियाओं की तुलना करने से आउटपुट की गुणवत्ता और निरंतरता का बेहतर आकलन किया जा सकता है।
+2। विश्वसनीय बाहरी स्रोतों से LLM आउटपुट को क्रॉस-चेक करें। पुष्टि की यह अतिरिक्त परत यह पक्का करने में मदद कर सकती है कि मॉडल के ज़रिये दी गई जानकारी सटीक और भरोसेमंद हो।
+3। आउटपुट क्वालिटी बेहतर बनाने के लिए मॉडल को फ़ाइन-ट्यूनिंग या एम्बेडिंग की मदद से बेहतर बनाएं। किसी खास डोमेन के ट्यून किए गए मॉडल की तुलना में जेनेरिक पहले से प्रशिक्षित मॉडल से गलत जानकारी मिलने की संभावना ज़्यादा होती है। इसके लिए प्रॉम्प्ट इंजीनियरिंग, पैरामीटर एफ़िशिएंट ट्यूनिंग (PET), फ़ुल मॉडल ट्यूनिंग और चेन ऑफ़ थॉट प्रॉम्प्टिंग जैसी तकनीकों का इस्तेमाल किया जा सकता है।
+4। स्वचालित सत्यापन तंत्र लागू करें, जो ज्ञात तथ्यों या डेटा के विरुद्ध जनरेट किए गए आउटपुट की क्रॉस-पुष्टि कर सके। यह सुरक्षा की एक अतिरिक्त परत प्रदान कर सकता है और मतिभ्रम से जुड़े जोखिमों को कम कर सकता है।
+5। जटिल टास्क को मैनेज करने योग्य सबटास्क में बांटें और उन्हें अलग-अलग एजेंटों को सौंपें। यह न केवल जटिलताओं को नियंत्रित करने में मदद करता है, बल्कि यह मतिभ्रम की संभावना को भी कम करता है क्योंकि हर एजेंट को एक छोटे से काम के लिए जिम्मेदार ठहराया जा सकता है।
+6। एलएलएम के इस्तेमाल से जुड़े जोखिमों और सीमाओं के बारे में बताएं। इसमें जानकारी में अशुद्धियाँ और अन्य जोखिम होने की संभावना शामिल है। प्रभावी जोखिम संचार यूज़र को संभावित समस्याओं के लिए तैयार कर सकता है और उन्हें सही निर्णय लेने में मदद कर सकता है।
+7। ऐसे एपीआई और यूज़र इंटरफेस बनाएं, जो एलएलएम के ज़िम्मेदार और सुरक्षित इस्तेमाल को प्रोत्साहित करें। इसमें कॉन्टेंट फ़िल्टर, संभावित अशुद्धियों के बारे में यूज़र की चेतावनियां और AI द्वारा जेनरेट की गई सामग्री की क्लियर लेबलिंग जैसे उपाय शामिल हो सकते हैं।
+8। विकास के वातावरण में LLM का उपयोग करते समय, संभावित कमजोरियों को एकीकृत करने से रोकने के लिए सुरक्षित कोडिंग अभ्यास और दिशानिर्देश स्थापित करें।
 
-1. A news organization heavily uses an AI model to generate news articles. A malicious actor exploits this over-reliance, feeding the AI misleading information, causing the spread of disinformation. The AI unintentionally plagiarizes content, leading to copyright issues and decreased trust in the organization.
-2. A software development team utilizes an AI system like Codex to expedite the coding process. Over-reliance on the AI's suggestions introduces security vulnerabilities into the application due to insecure default settings or recommendations inconsistent with secure coding practices.
-3. A software development firm uses an LLM to assist developers. The LLM suggests a non-existent code library or package, and a developer, trusting the AI, unknowingly integrates a malicious package into the firm's software. This highlights the importance of cross-checking AI suggestions, especially when involving third-party code or libraries.
 
-**Reference Links:**
+**उदाहरण हमले का परिदृश्य**
 
-1. [Understanding LLM Hallucinations](https://towardsdatascience.com/llm-hallucinations-ec831dcd7786)
-2. [How Should Companies Communicate the Risks of Large Language Models to Users?](https://techpolicy.press/how-should-companies-communicate-the-risks-of-large-language-models-to-users/)
-3. [A news site used AI to write articles. It was a journalistic disaster](https://www.washingtonpost.com/media/2023/01/17/cnet-ai-articles-journalism-corrections/)
-4. [AI Hallucinations: Package Risk](https://vulcan.io/blog/ai-hallucinations-package-risk)
-5. [How to Reduce the Hallucinations from Large Language Models](https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models/)
+
+1। समाचार संगठन समाचार बनाने के लिए AI मॉडल का बहुत ज़्यादा इस्तेमाल करता है। एक दुर्भावनापूर्ण अभिनेता इस अति-निर्भरता का फायदा उठाता है, AI को गुमराह करने वाली जानकारी देता है, जिससे गलत सूचनाएं फैलती हैं। AI ने अनजाने में ही सामग्री को लूट लिया, जिससे कॉपीराइट समस्याएँ पैदा हो गईं और संगठन में विश्वास कम हो गया।
+2। सॉफ़्टवेयर डेवलपमेंट टीम कोडिंग प्रक्रिया में तेज़ी लाने के लिए कोडेक्स जैसे AI सिस्टम का इस्तेमाल करती है। AI के सुझावों पर ज़्यादा भरोसा करने से डिफ़ॉल्ट सेटिंग या सुरक्षित कोडिंग पद्धतियों के साथ असंगत सुझावों के कारण ऐप्लिकेशन में सुरक्षा संबंधी कमजोरियाँ आ जाती हैं।
+3। एक सॉफ़्टवेयर डेवलपमेंट फर्म डेवलपर्स की सहायता के लिए LLM का इस्तेमाल करती है। एलएलएम एक गैर-मौजूद कोड लाइब्रेरी या पैकेज का सुझाव देता है, और एक डेवलपर, जो AI पर भरोसा करता है, अनजाने में एक दुर्भावनापूर्ण पैकेज को फर्म के सॉफ़्टवेयर में इंटीग्रेट कर देता है। यह AI सुझावों को क्रॉस-चेकिंग करने के महत्व पर प्रकाश डालता है, खासकर तीसरे पक्ष के कोड या लाइब्रेरी को शामिल करते समय।
+
+
+**रेफ़रंस लिंक्स**
+
+1। एलएलएम हेलुसिनेशन्स को समझना: https://towardsdatascience.com/llm-hallucinations-ec831dcd7786
+2। कंपनियों को बड़े भाषा मॉडल के जोखिमों के बारे में यूज़र को कैसे बताना चाहिए? : https://techpolicy.press/how-should-companies-communicate-the-risks-of-large-language-models-to-users/
+3। एक समाचार साइट ने लेख लिखने के लिए AI का इस्तेमाल किया। वह पत्रकारीय आपदा थी: https://www.washingtonpost.com/media/2023/01/17/cnet-ai-articles-journalism-corrections/
+4। एआई हेलुसिनेशन्स: पैकेज का जोखिम: https://vulcan.io/blog/ai-hallucinations-package-risk
+5। बड़े भाषाओं के मॉडल से होने वाले मतिभ्रम को कैसे कम करें: https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models/
+6। मतिभ्रम को कम करने के लिए व्यावहारिक कदम: https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination
+
 6. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination)
