@@ -12,10 +12,10 @@ diagrams, and other information the project generates.
 
 At a very high level, the following guidelines can be applied:
 
-* Use Markdown formatting for content where possible.
-* Use clear and concise language.
-* Define any technical terms or acronyms that you use.
-* Proofread your contributions carefully before submitting them.
+* **Markdown**: Use Markdown formatting for content where possible.
+* **Language**: Use clear and concise language, use US English spellings.
+* **Jargon**: Define any technical terms or acronyms that you use.
+* **Proofread**: Proofread your contributions carefully before submitting them.
 
 ## Contents
 
