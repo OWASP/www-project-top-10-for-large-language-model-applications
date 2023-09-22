@@ -27,7 +27,7 @@ for simple formatting while keeping the content easy to read as plain text.
 Headings should use the Markdown ATX style headings, with the header text preceded
 by 1-6 octothorpe `#` characters to indicate heading levels:
 
-```
+```markdown
 # Heading Level 1
 ## Heading Level 2
 ### Heading Level 3
@@ -84,7 +84,7 @@ bulleted item:
 For numbered lists, use the Markdown ordered list syntax by preceding each list
 item with a number followed by `. ` (period surrounded by space):
 
-```
+```markdown
 1. First item
 2. Second item
 3. Third item
@@ -115,10 +115,10 @@ Use `chmod 777 filename` cautiously.
 
 For multi-line code, use triple backticks.
 
-\```
+```markdown
 def malicious_code():
     pass
-\```
+```
 
 ### Quotes and Citations:
 If quoting experts or sources, use the blockquote syntax.
@@ -150,9 +150,9 @@ If you need to include diagrams or images, use the following format:
 
 Format tables using Markdown table syntax:
 
-```
+```markdown
 | Column 1 | Column 2 | Column 3 |
-|-|-|-|
+|---|---|---|
 | Row 1, Col 1 | Row 1, Col 2 | Row 1, Col 3 |
 | Row 2, Col 1 | Row 2, Col 2 | Row 2, Col 3 |
 ```
@@ -161,6 +161,6 @@ Format tables using Markdown table syntax:
 
 Use 3 hyphens surrounded by blank lines to create a page break:
 
-\`\`\`
+```markdown
 ---
-\`\`\`
+```
