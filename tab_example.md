@@ -6,7 +6,7 @@ order: 1
 tags: example-tag
 ---
 
-# OWASP Top 10 for LLM version 1.0
+# OWASP Top 10 for Large Language Model Applications version 1.1
 
 ## LLM01: Prompt Injection
 This manipulates a large language model (LLM) through crafty inputs, causing unintended actions by the LLM. Direct injections overwrite system prompts, while indirect ones manipulate inputs from external sources.

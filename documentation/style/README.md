@@ -1,6 +1,6 @@
-# OWASP Top 10 For LLM Style Guide
+# OWASP Top 10 for Large Language Model Applications Style Guide
 
-**Technical Writing Style Guide for the OWASP Top 10 for LLMs Project**
+**Technical Writing Style Guide for the OWASP Top 10 for LLM Applications Project**
 
 This collection of documentation provides guidelines for technical writers on
 ways to format their content for use with the OWASP Top 10 for LLMs project. The
@@ -30,7 +30,7 @@ to use the OWASP Top 10 for LLM content for their own needs.
 
 ## A Note on Markdown
 
-Much of the content for the OWASP Top 10 for LLMs project is formatted using Markdown.
+Much of the content for the OWASP Top 10 for LLM Applications project is formatted using Markdown.
 Markdown is a lightweight markup language that allows us to create formatted text
 using a plain text editor. It is a popular choice for technical writing because
 it is easy to learn and use, and it can be easily converted to HTML, PDF, and
