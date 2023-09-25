@@ -2,7 +2,7 @@
 
 **Description:**
 
-Overreliance occurs when systems or people depend on LLMs for decision-making or content generation without sufficient oversight. While LLMs can produce creative and informative content, they can also generate content that is factually incorrect, inappropriate or unsafe. This is referred to as hallucination or confabulation and can result in misinformation, miscommunication, legal issues, and reputational damage.
+Overreliance can occur when an LLM produces erroneous information and provides it in an authoritative manner. While LLMs can produce creative and informative content, they can also generate content that is factually incorrect, inappropriate or unsafe. This is referred to as hallucination or confabulation.  When people or systems trust this information without oversight or confirmation it can result in misinformation, miscommunication, legal issues, and reputational damage.
 
 LLM-generated source code can introduce unnoticed security vulnerabilities. This poses a significant risk to the operational safety and security of applications. These risks show the importance of rigorous review processes, with:
 
@@ -13,7 +13,7 @@ LLM-generated source code can introduce unnoticed security vulnerabilities. This
 **Common Examples of Vulnerability:**
 
 1. LLM provides inaccurate information as a response while stating it in a fashion implying it is highly authoritative.  The overall system is designed without proper checks and balances to handle this and the information misleads the user in a way that leads to harm
-2. LLM suggests insecure or faulty code, leading to vulnerabilities when incorporated into a software system without proper human oversight.
+2. LLM suggests insecure or faulty code, leading to vulnerabilities when incorporated into a software system without proper oversight or verification.
 
 **How to Prevent:**
 
