@@ -9,6 +9,10 @@ various content that this project creates. This can include:
 * Website content
 * Other additional and supplemental documentation
 
+## Definitions
+
+* For a list of terminology for use within the Top 10 for LLM Applications, please
+refer to the [glossary](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Definitions)
 
 ## Language and Tone
 
