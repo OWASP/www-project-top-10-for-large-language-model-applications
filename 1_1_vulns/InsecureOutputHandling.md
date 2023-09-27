@@ -8,8 +8,8 @@ Successful exploitation of an Insecure Output Handling vulnerability can result 
 
 The following conditions can increase the impact of this vulnerability:
 * The application grants the LLM privileges beyond what is intended for end users, enabling escalation of privileges or remote code execution.
-* The application is vulnerable to external prompt injection attacks, which could allow an attacker to gain privileged access to a target user's environment.
-* 3rtd party plugins do not adequately valudate inputs.
+* The application is vulnerable to indirect prompt injection attacks, which could allow an attacker to gain privileged access to a target user's environment.
+* 3rtd party plugins do not adequately validate inputs.
 
 **Common Examples of Vulnerability:**
 
@@ -31,7 +31,7 @@ The following conditions can increase the impact of this vulnerability:
 
 2. A user utilizes a website summarizer tool powered by an LLM to generate a concise summary of an article. The website includes a prompt injection instructing the LLM to capture sensitive content from either the website or from the user's conversation. From there the LLM can encode the sensitive data and send it, without any output validation or filtering, to an attacker-controlled server.
 
-3. An LLM allows users to craft SQL queries for a backend database through a chat-like feature. A user requests a query to delete all database tables. If the crafted query from the LLM is not scrutinized, then all database tables would be deleted.
+3. An LLM allows users to craft SQL queries for a backend database through a chat-like feature. A user requests a query to delete all database tables. If the crafted query from the LLM is not scrutinized, then all database tables will be deleted.
 
 4. A web app uses an LLM to generate content from user text prompts without output sanitization. An attacker could submit a crafted prompt causing the LLM to return an unsanitized JavaScript payload, leading to XSS when rendered on a victim's browser. Insufficient validation of prompts enabled this attack.
 
