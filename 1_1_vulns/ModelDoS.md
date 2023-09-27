@@ -1,10 +1,10 @@
-## Model Denial of Service
+## LLM04: Model Denial of Service
 
-**Description:**
+### Description
 
 An attacker interacts with an LLM in a method that consumes an exceptionally high amount of resources, which results in a decline in the quality of service for them and other users, as well as potentially incurring high resource costs. Furthermore, an emerging major security concern is the possibility of an attacker interfering with or manipulating the context window of an LLM. This issue is becoming more critical due to the increasing use of LLMs in various applications, their intensive resource utilization, the unpredictability of user input, and a general unawareness among developers regarding this vulnerability. In LLMs, the context window represents the maximum length of text the model can manage, covering both input and output. It's a crucial characteristic of LLMs as it dictates the complexity of language patterns the model can understand and the size of the text it can process at any given time. The size of the context window is defined by the model's architecture and can differ between models.
 
-**Common Examples of Vulnerability:**
+### Common Examples of Vulnerability
 
 1. Posing queries that lead to recurring resource usage through high-volume generation of tasks in a queue, e.g. with LangChain or AutoGPT.
 2. Sending unusually resource-consuming queries that use unusual orthography or sequences.
@@ -13,7 +13,7 @@ An attacker interacts with an LLM in a method that consumes an exceptionally hig
 5. Recursive context expansion: The attacker constructs input that triggers recursive context expansion, forcing the LLM to repeatedly expand and process the context window.
 6. Variable-length input flood: The attacker floods the LLM with a large volume of variable-length inputs, where each input is carefully crafted to just reach the limit of the context window. This technique aims to exploit any inefficiencies in processing variable-length inputs, straining the LLM and potentially causing it to become unresponsive.
 
-**How to Prevent:**
+### Prevention and Mitigation Strategies
 
 1. Implement input validation and sanitization to ensure user input adheres to defined limits and filters out any malicious content.
 2. Cap resource use per request or step, so that requests involving complex parts execute more slowly.
@@ -23,8 +23,7 @@ An attacker interacts with an LLM in a method that consumes an exceptionally hig
 6. Set strict input limits based on the LLM's context window to prevent overload and resource exhaustion.
 7. Promote awareness among developers about potential DoS vulnerabilities in LLMs and provide guidelines for secure LLM implementation.
 
-
-**Example Attack Scenarios:**
+### Example Attack Scenarios
 
 1. An attacker repeatedly sends multiple difficult and costly requests to a hosted model leading to worse service for other users and increased resource bills for the host.
 2. A piece of text on a webpage is encountered while an LLM-driven tool is collecting information to respond to a benign query. This leads to the tool making many more web page requests, resulting in large amounts of resource consumption.
@@ -34,15 +33,10 @@ An attacker interacts with an LLM in a method that consumes an exceptionally hig
 6. An attacker floods the LLM with a large volume of variable-length inputs, carefully crafted to approach or reach the context window's limit. By overwhelming the LLM with inputs of varying lengths, the attacker aims to exploit any inefficiencies in processing variable-length inputs. This flood of inputs puts an excessive load on the LLM's resources, potentially causing performance degradation and hindering the system's ability to respond to legitimate requests.
 7. While DoS attacks commonly aim to overwhelm system resources, they can also exploit other aspects of system behavior, such as API limitations. For example, in a recent Sourcegraph security incident, the malicious actor employed a leaked admin access token to alter API rate limits, thereby potentially causing service disruptions by enabling abnormal levels of request volumes.
 
+### Reference Links
 
-
-**Reference Links:**
-
-1. [LangChain max_iterations](https://twitter.com/hwchase17/status/1608467493877579777): demo + fix of this vulnerability in LangChain.
-2. [Sponge Examples: Energy-Latency Attacks on Neural Networks](https://arxiv.org/abs/2006.03463): POC
-3. [OWASP DOS Attack](https://owasp.org/www-community/attacks/Denial_of_Service)
-4. [Learning From Machines: Know Thy Context](https://lukebechtel.com/blog/lfm-know-thy-context)
-5. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack ](https://about.sourcegraph.com/blog/security-update-august-2023)
-
-
-
+1. [LangChain max_iterations](https://twitter.com/hwchase17/status/1608467493877579777): **hwchase17 on Twitter**
+2. [Sponge Examples: Energy-Latency Attacks on Neural Networks](https://arxiv.org/abs/2006.03463): **Arxiv White Paper**
+3. [OWASP DOS Attack](https://owasp.org/www-community/attacks/Denial_of_Service): **OWASP**
+4. [Learning From Machines: Know Thy Context](https://lukebechtel.com/blog/lfm-know-thy-context): **Luke Bechtel**
+5. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack ](https://about.sourcegraph.com/blog/security-update-august-2023): **Sourcegraph**

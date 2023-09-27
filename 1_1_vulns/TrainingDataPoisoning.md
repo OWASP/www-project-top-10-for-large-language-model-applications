@@ -1,6 +1,6 @@
-## Training Data Poisoning
+## LLM03: Training Data Poisoning
 
-**Description:**
+### Description
 
 The starting point of any machine learning approach is training data, simply “raw text”. To be highly capable (e.g., have linguistic and world knowledge), this text should span a broad range of domains, genres and languages. A large language model uses deep neural networks to generate outputs based on patterns learned from training data.
 
@@ -12,7 +12,7 @@ Training data poisoning refers to manipulation of pre-training data or data invo
 
 Data poisoning is considered an integrity attack because tampering with the training data impacts the model’s ability to output correct predictions. Naturally, external data sources present higher risk as the model creators do not have control of the data or a high level of confidence that the content does not contain bias, falsified information or inappropriate content.
 
-**Common Examples of Vulnerability:**
+### Common Examples of Vulnerability
 
 1. A malicious actor, or a competitor brand intentionally creates inaccurate or malicious documents which are targeted at a model’s pre-training, fine-tuning data or embeddings. Consider both [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg) and [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg) attack vectors for illustrations.
    1. The victim model trains using falsified information which is reflected in outputs of generative AI prompts to it's consumers.
@@ -24,7 +24,7 @@ Data poisoning is considered an integrity attack because tampering with the trai
 
 *Whether a developer, client or general consumer of the LLM, it is important to understand the implications of how this vulnerability could reflect risks within your LLM application when interacting with a non-proprietary LLM to understand the legitimacy of model outputs based on it's training procedures. Similarly, developers of the LLM may be at risk to both direct and indirect attacks on internal or third-party data used for fine-tuning and embedding (most common) which as a result creates a risk for all it's consumers*
 
-**How to Prevent:**
+### Prevention and Mitigation Strategies
 
 1. Verify the supply chain of the training data, especially when sourced externally as well as maintaining attestations via the "ML-BOM" (Machine Learning Bill of Materials) methodology as well as verifying model cards.
 2. Verify the correct legitimacy of targeted data sources and data contained obtained during both the pre-training, fine-tuning and embedding stages.
@@ -40,23 +40,23 @@ Data poisoning is considered an integrity attack because tampering with the trai
    3. Implement dedicated LLM's to benchmark against undesired consequences and train other LLM's using [reinforcement learning techniques](https://wandb.ai/ayush-thakur/Intro-RLAIF/reports/An-Introduction-to-Training-LLMs-Using-Reinforcement-Learning-From-Human-Feedback-RLHF---VmlldzozMzYyNjcy).
    4. Perform LLM-based [red team exercises](https://www.anthropic.com/index/red-teaming-language-models-to-reduce-harms-methods-scaling-behaviors-and-lessons-learned) or [LLM vulnerability scanning](https://github.com/leondz/garak) into the testing phases of the LLM's lifecycle.
 
-**Example Attack Scenarios:**
+### Example Attack Scenarios
 
 1. The LLM generative AI prompt output can mislead users of the application which can lead to biased opinions, followings or even worse, hate crimes etc.
 2. If the training data is not correctly filtered and|or sanitized, a malicious user of the application may try to influence and inject toxic data into the model for it to adapt to the biased and false data.
 3. A malicious actor or competitor intentionally creates inaccurate or malicious documents which are targeted at a model’s training data in which is training the model at the same time based on inputs. The victim model trains using this falsified information which is reflected in outputs of generative AI prompts to it's consumers.
 4. The vulnerability [Prompt Injection](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/1_0_vulns/PromptInjection.md) could be an attack vector to this vulnerability if insufficient sanitization and filtering is performed when clients of the LLM application input is used to train the model. I.E, if malicious or falsified data is input to the model from a client as part of a prompt injection technique, this could inherently be portrayed into the model data.
 
-**Reference Links:**
+### Reference Links
 
-1. [Stanford Research Paper:CS324](https://stanford-cs324.github.io/winter2022/lectures/data/) Talks about the data behind large language models.
-2. [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html) A well explained high-level overview explaining data poisoning attacks and why you should care.
-3. [MITRE ATLAS (framework) Tay Poisoning](https://atlas.mitre.org/studies/AML.CS0009/) The MITRE ATLAS framework published a case study on the Microsoft "Tay" chatbot project which portrays how non-proficient red team skills and efforts from individuals able to access the model were able to train it with poisoned data which ultimately led to other vulnerabilities and concerns.
-4. [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news/) An article detailing how one can surgically modify an open-source model, and upload it to a provider to make it spread misinformation while being undetected by standard benchmarks.
-5. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf/) Evidence of how a prompt injection ([LLM01:2023 - Prompt Injections](https://owasp.org/www-project-top-10-for-large-language-model-applications/descriptions/Prompt_Injection.html)) technique could also lead to Training Data Poisoning during scraping.
-6. [Backdoor Attacks on Language Models](https://towardsdatascience.com/backdoor-attacks-on-language-models-can-we-trust-our-models-weights-73108f9dcb1f). Can We Trust Our Model’s Weights? A primer in data poisoning and backdoor on Language Models.
-7. [Poisoning Language Models During Instruction](https://arxiv.org/abs/2305.00944) Tuning Research paper demonstrating Data Poisoning in the model fine-tuning process.
-8. [FedMLSecurity:arXiv:2306.04959](https://arxiv.org/abs/2306.04959) A Benchmark for attacks and defenses in federated learning and LLMs: Research demonstrating the effectiveness of Federated Learning against data poisoning attacks on LLMs.
-9. [The poisoning of ChatGPT](https://softwarecrisis.dev/letters/the-poisoning-of-chatgpt/) A controversial but informative article on the risks of Data Poisoning in LLMs.
-10. [Poisoning Web-Scale Training Datasets - Nicholas Carlini | Stanford MLSys #75](https://www.youtube.com/watch?v=h9jf1ikcGyk) A video interview and walkthrough of "Poisoning Web-Scale Training Datasets" which highlight two attack vectors in Split-View Data Poisoning and Frontrunning Poisoning. Additionally, the [arXiv:2302.10149](https://arxiv.org/abs/2302.10149) research paper to compliment.
-11. [OWASP CycloneDX v1.5](https://cyclonedx.org/capabilities/mlbom/) sets a new benchmark by incorporating Machine Learning transparency (ML-BOM), Formulation (MBOM), and enhanced support for Software Bill of Materials (SBOM) quality indicators.
+1. [Stanford Research Paper:CS324](https://stanford-cs324.github.io/winter2022/lectures/data/): **Stanford Research**
+2. [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html): **CSO Online**
+3. [MITRE ATLAS (framework) Tay Poisoning](https://atlas.mitre.org/studies/AML.CS0009/): **MITRE ATLAS**
+4. [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news/): **Mithril Security**
+5. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf/): **Kai Greshake**
+6. [Backdoor Attacks on Language Models](https://towardsdatascience.com/backdoor-attacks-on-language-models-can-we-trust-our-models-weights-73108f9dcb1f): **Towards Data Science**
+7. [Poisoning Language Models During Instruction](https://arxiv.org/abs/2305.00944): **Arxiv White Paper**
+8. [FedMLSecurity:arXiv:2306.04959](https://arxiv.org/abs/2306.04959): **Arxiv White Paper**
+9. [The poisoning of ChatGPT](https://softwarecrisis.dev/letters/the-poisoning-of-chatgpt/): **Software Crisis Blog**
+10. [Poisoning Web-Scale Training Datasets - Nicholas Carlini | Stanford MLSys #75](https://www.youtube.com/watch?v=h9jf1ikcGyk): **YouTube Video**
+11. [OWASP CycloneDX v1.5](https://cyclonedx.org/capabilities/mlbom/): **OWASP CycloneDX**
