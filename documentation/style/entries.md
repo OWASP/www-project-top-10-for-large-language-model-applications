@@ -8,7 +8,7 @@ maintenance of the OWASP Top 10 for LLMs entries.
 * For each security risk, include the following information:
 
   1. A brief description of the risk
-  2. Common examples of the vulnerability
+  2. Common examples of the risk
   3. Recommendations for mitigating the risk
   4. Example attack scenarios
   5. Reference links
@@ -18,10 +18,10 @@ maintenance of the OWASP Top 10 for LLMs entries.
 
 ### Risk Listings:
 
-For each of the top 10 risks, use level 2 headers for the risk name:
+For each of the top 10 risks, use level 2 headers for the risk name, and include the number:
 
 ```markdown
-## Data Poisoning
+## LLM03: Training Data Poisoning
 ```
 
 ## Description:
@@ -33,8 +33,8 @@ If there's important terminology or phrases, **bolden** them.
 ```markdown
 ### Description
 
-Data poisoning refers to the malicious alteration of **training data** to
-influence the behavior of AI models.
+Training data poisoning refers to manipulating the data or fine-tuning process to introduce vulnerabilities, backdoors or biases that could compromise the model’s security, effectiveness or ethical behavior.
+...
 ```
 
 ## Common Examples
@@ -49,15 +49,15 @@ risk listing at least one example:
 2. Example 2: Another example of this type of risk.
 ```
 
-## Prevention
+## Prevention and Mitigation Strategies
 
 Preventions should be contained in a level 3 heading subsection, with each
 risk including at least one prevention strategy:
 
 ```markdown
-### Prevention
+### Prevention and Mitigation Strategies
 
-1. Prevention Step 1: A step or strategy that can be used to prevent the vulnerability or mitigate its effects.
+1. Prevention Step 1: A step or strategy that can be used to prevent the risk or mitigate its effects.
 2. Prevention Step 2: Another prevention step or strategy.
 3. Prevention Step 3: Yet another prevention step or strategy.
 ```
@@ -65,34 +65,35 @@ risk including at least one prevention strategy:
 ## Example Attack Scenarios
 
 Attack scenarios should be contained in a level 3 heading subsection, with each
-risk should contain at least one example attack scenario.
+risk providing at least one example attack scenario.
 
 ```markdown
 ### Example Attack Scenarios
 
-1. A detailed scenario illustrating how an attacker could potentially exploit this vulnerability, including the attacker's actions and the potential outcomes.
-2. Another example of an attack scenario showing a different way the vulnerability could be exploited.
+1. A detailed scenario illustrating how an attacker could potentially exploit this risk, including the attacker's actions and the potential outcomes.
+2. Another example of an attack scenario showing a different way the risk could be exploited.
 ```
 
 ### References:
 List all references or sources at the end of the document in a level 3 heading subsection:
+When referencing Arxiv whitepapers, please follow the citation guidance posted with the article for the "name" portion of the reference.
 
 ```markdown
 ### References
 
-1. [Link Title](URL): Brief description of the reference link.
-2. [Link Title](URL): Brief description of the reference link.
+1. [Link Title](URL): **Name of Outlet/Website/Whatever** (Arxiv papers should follow the citation guide posted with the article)
+2. [Link Title](URL): **Name of Outlet/Website/Whatever** (Arxiv papers should follow the citation guide posted with the article)
 ```
 
 
 ## Technical Guidance
 
 One of the main points of confusion for people contributing to the entries has
-been the difference between the *Example of Vulnerability* and *Example Attack Scenario* sections.
+been the difference between the *Example of Risk* and *Example Attack Scenario* sections.
 
 To help provide some clarity, here's some guidance on this:
 
-* **Example of Vulnerability**: is intended to be a high-level overview
+* **Example of Risk**: is intended to be a high-level overview
 of the risk, to generalize the risk and distill it down to its basic elements.
 * **Example Attack Scenario**: is intended to provide very technical specifics
 around what an attack would like, ideally including example code or prompts that
@@ -101,7 +102,7 @@ demonstrate how the attack would work.
 To provide further clarity, here's an example, using [Prompt Injection] as an
 example:
 
-### Example of Vulnerability
+### Example of Risk
 
 The LLM is tricked into divulging sensitive information or manipulating output to downstream systems
 
