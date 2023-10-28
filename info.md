@@ -10,6 +10,7 @@
 ### Social Links
 
 * [Subscribe to our Newsletter](https://llmtop10.beehiiv.com/subscribe)
+* [v1.1 Announcement](https://www.linkedin.com/pulse/new-release-owasp-top-10-llm-apps-steve-wilson?trk=public_post_feed-article-content)
 * [v1 Announcement](https://www.linkedin.com/pulse/official-release-owasp-top-10-large-language-model-v10-steve-wilson/)
 * [Project Announcement](https://www.linkedin.com/pulse/announcing-owasp-top-10-large-language-models-ai-project-steve-wilson/)
 * [Share on Twitter](https://twitter.com/intent/tweet?url=https://owasp.org/www-project-top-10-for-large-language-model-applications/&text=Check%20out%20the%20OWASP%20Top%2010%20for%20Large%20Language%20Model%20Applications%20project:%20)
