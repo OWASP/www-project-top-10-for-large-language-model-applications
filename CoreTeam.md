@@ -22,3 +22,4 @@ These individuals played especially key roles in the creation of the version 1.0
 | Leon Derczynski    | Expert         | [U Washington](https://www.uw.edu), [IT University Copenhagen](https://pure.itu.dk/en/persons/leon-derczynski/) | [LinkedIn](https://www.linkedin.com/in/leon-derczynski), [Twitter](https://twitter.com/LeonDerczynski), [Github](https://github.com/leondz/)|
 | Manjesh S          | Expert         | [HackerOne](https://www.hackerone.com) | [LinkedIn](https://www.linkedin.com/in/manjesh24/), [Twitter](https://twitter.com/Manjesh24) | 
 | Rachit Sood        | Expert         |  | [LinkedIn](https://www.linkedin.com/in/composedsecurity/), [Twitter](https://twitter.com/sn4kecharming)                                                                                    |
+| Rich Harang | Expert | [NVIDIA](http://www.nvidia.com/) | [LinkedIn](https://www.linkedin.com/in/richharang/), [Twitter](https://twitter.com/rharang) |
