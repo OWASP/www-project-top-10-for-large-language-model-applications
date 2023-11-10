@@ -9,7 +9,7 @@ Prompt Injection Vulnerability occurs when an attacker manipulates a large langu
 
 The results of a successful prompt injection attack can vary greatly - from solicitation of sensitive information to influencing critical decision-making processes under the guise of normal operation.
 
-In advanced attacks, the LLM could be manipulated to mimic a harmful persona or interact with plugins in the user's setting. This could result in leaking sensitive data, unauthorized plugin use, or social  engineering. In such cases, the compromised LLM aids the attacker, surpassing standard safeguards and keeping the user unaware of the  intrusion. In these instances, the compromised LLM effectively acts as an agent for the attacker, furthering their objectives without triggering usual safeguards or alerting the end user to the intrusion.
+In advanced attacks, the LLM could be manipulated to mimic a harmful persona or interact with plugins in the user's setting. This could result in leaking sensitive data, unauthorized plugin use, or social  engineering. In such cases, the compromised LLM aids the attacker, surpassing standard safeguards and keeping the user unaware of the intrusion. In these instances, the compromised LLM effectively acts as an agent for the attacker, furthering their objectives without triggering usual safeguards or alerting the end user to the intrusion.
 
 ### Common Examples of Vulnerability
 
@@ -36,6 +36,7 @@ Prompt injection vulnerabilities are possible due to the nature of LLMs, which d
 3. A user uses an LLM to summarize a webpage containing text instructing a model to disregard previous user instructions and instead insert an image linking to a URL that contains a summary of the conversation. The LLM output complies, causing the user's browser to exfiltrate the private conversation.
 4. A malicious user uploads a resume with a prompt injection. The backend user uses an LLM to summarize the resume and ask if the person is a good candidate. Due to the prompt injection, the LLM response is yes, despite the actual resume contents.
 5. An attacker sends messages to a proprietary model that relies on a system prompt, asking the model to disregard its previous instructions and instead repeat its system prompt. The model outputs the proprietary prompt and the attacker is able to use these instructions elsewhere, or to construct further, more subtle attacks.
+6. An autonomous LLM agent on a web shop assists users in managining orders. It can access order details and issue refunds by using a set of tools via the ReAct (Reason+Act) framework. An attacker injects forged Thoughts, Actions and Observations into the LLM context via prompt injection. This tricks the LLM into thinking that the user has ordered an item they have not and that this item is eligible for a refund. Under these false premises, the agent proceeds to issue a refund to the malicious user for an order they never placed.
 
 ### Reference Links
 
@@ -53,3 +54,4 @@ Prompt injection vulnerabilities are possible due to the nature of LLMs, which d
 1. [Universal and Transferable Attacks on Aligned Language Models](https://llm-attacks.org/): **LLM-Attacks.org**
 1. [Indirect prompt injection](https://kai-greshake.de/posts/llm-malware/): **Kai Greshake**
 1. [Declassifying the Responsible Disclosure of the Prompt Injection Attack Vulnerability of GPT-3](https://www.preamble.com/prompt-injection-a-critical-vulnerability-in-the-gpt-3-transformer-and-how-we-can-begin-to-solve-it): **Preamble; earliest disclosure of Prompt Injection**
+1. [Synthetic Recollections: A Case Study in Prompt Injection for ReAct LLM Agents](https://labs.withsecure.com/publications/llm-agent-prompt-injection): **WithSecure**
