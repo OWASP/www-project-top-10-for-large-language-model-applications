@@ -1,0 +1,154 @@
+% !TEX root = owasp-doc.tex
+
+% ================================================
+%	LLM Strategy
+% ================================================
+
+\headerimage
+\chapter{Check List}
+
+\section{Adversarial Risk}
+Adversarial Risk includes competitors and attackers.
+
+\begin{minipage}{\linewidth}
+\begin{checklist}
+  \item Scrutinize how competitors are investing in artificial intelligence. Although there are risks in AI adoption, there are also business benefits that may impact future market positions.
+  \item Threat Model: how attackers may accelerate exploit attacks against the organization, employees, executives, or users.
+  \item Threat models potential attacks on customers or clients through spoofing and generative AI.
+  \item Investigate the impact of current controls, such as password resets, which use voice recognition.
+  \item Update the Incident Response Plan and playbooks for LLM incidents.
+\end{checklist}
+\end{minipage}
+
+\section{AI Asset Inventory}
+An AI asset inventory should apply to both internally developed and external or
+third-party solutions.
+
+\begin{minipage}{\linewidth}
+\begin{checklist}
+  \item Catalog existing AI services, tools, and owners. Designate a tag in asset management for specific inventory.
+  \item Include AI components in the Software Bill of Material (SBOM), a comprehensive list of all the software components, dependencies, and metadata associated with applications.
+  \item Catalog AI data sources and the sensitivity of the data (protected, confidential, public)
+  \item Establish if pen testing or red teaming of deployed AI solutions is required to determine the current attack surface risk.
+  \item Create an AI solution onboarding process.
+  \item Ensure skilled IT admin staff is available either internally or externally, in accordance to the SBoM
+\end{checklist}
+\end{minipage}
+
+\section{AI Security and Privacy Training}
+\begin{minipage}{\linewidth}
+\begin{checklist}
+  \item Train all users on ethics, responsibility, and legal issues such as warranty, license, and copyright.
+  \item Update security awareness training to include GenAI related threats. Voice cloning and image cloning, as well as in anticipation of increased spear phishing attacks
+  \item Any adopted GenAI solutions should include training for both DevOps and cybersecurity for the deployment pipeline to ensure AI safety and security assurances.
+\end{checklist}
+\end{minipage}
+
+\section{Establish Business Cases}
+Solid business cases are essential to determining the business value of any
+proposed AI solution,balancing risk and benefits, and evaluating and testing
+return on investment. There are an enormous number of potential use cases; a
+few examples are provided.
+
+\begin{minipage}{\linewidth}
+\begin{checklist}
+  \item Enhance customer experience
+  \item Better operational efficiency
+  \item Better knowledge management
+  \item Enhanced innovation
+  \item Market Research and Competitor Analysis
+  \item Document creation, translation, summarization, and analysis
+\end{checklist}
+\end{minipage}
+
+\section{Governance}
+Corporate governance in LLM is needed to provide organizations with transparency
+and accountability. Identifying AI platform or process owners who are
+potentially familiar with the technology or the selected use cases for the
+business is not only advised but also necessary to ensure adequate reaction
+speed that prevents collateral damages to well established enterprise digital
+processes.
+
+\begin{minipage}{\linewidth}
+\begin{checklist}
+  \item Establish the organization\'s AI RACI chart (who is responsible, who is accountable, who should be consulted, and who should be informed)
+  \item Document and assign AI risk, risk assessments, and governance responsibility within the organization.
+  \item Establish data management policies, including technical enforcement, regarding data classification and usage limitations. Models should only leverage data classified for the minimum access level of any user of the system. For example, update the data protection policy to emphasize not to input protected or confidential data into nonbusiness-managed tools.
+  \item Create an AI Policy supported by established policy (e.g., standard of good conduct, data protection, software use)
+  \item Publish an acceptable use matrix for various generative AI tools for employees to use.
+  \item Document the sources and management of any data that the organization uses from the generative LLM models.
+\end{checklist}
+\end{minipage}
+
+\section{Legal}
+Many of the legal implications of AI are undefined and potentially very costly.
+An IT, security, and legal partnership is critical to identifying gaps and
+addressing obscure decisions.
+
+\begin{minipage}{\linewidth}
+\begin{checklist}
+  \item Confirm product warranties are clear in the product development stream to assign who is responsible for product warranties with AI.
+  \item Review and update existing terms and conditions for any GenAI considerations.
+  \item Review AI EULA agreements. End-user license agreements for GenAI platforms are very different in how they handle user prompts, output rights and ownership, data privacy, compliance and liability, privacy, and limits on how output can be used.
+  \item Review existing AI-assisted tools used for code development. A chatbot\'s ability to write code can threaten a company\'s ownership rights to its own product if a chatbot is used to generate code for the product. For example, it could call into question the status and protection of the generated content and who holds the right to use the generated content.
+  \item Review any risks to intellectual property. Intellectual property generated by a chatbot could be in jeopardy if improperly obtained data was used during the generative process, which is subject to copyright, trademark, or patent protection. If AI products use infringing material, it creates a risk for the outputs of the AI, which may result in intellectual property infringement.
+  \item Review any contracts with indemnification provisions. Indemnification clauses try to put the responsibility for an event that leads to liability on the person who was more at fault for it or who had the best chance of stopping it. Establish guardrails to determine whether the provider of the AI or its user caused the event, giving rise to liability.
+  \item Review liability for potential injury and property damage caused by AI systems.
+  \item Review insurance coverage. Traditional (D\&O) liability and commercial general liability insurance policies are likely insufficient to fully protect AI use.
+  \item Identify any copyright issues. Human authorship is required for copyright. An organization may also be liable for plagiarism, propagation of bias, or intellectual property infringement if LLM tools are misused.
+  \item Ensure agreements are in place for contractors and appropriate use of AI for any development or provided services.
+  \item Restrict or prohibit the use of generative AI tools for employees or contractors where enforceable rights may be an issue or where there are IP infringement concerns.
+  \item Assess and AI solutions used for employee management or hiring could result in disparate treatment claims or disparate impact claims.
+  \item Make sure the AI solutions do not collect or share sensitive information without proper consent or authorization.
+\end{checklist}
+\end{minipage}
+
+\section{Regulatory}
+The EU AI Act is anticipated to be the first comprehensive AI law but will
+apply in 2025 at the earliest. The EU\'s General Data Protection Regulation
+(GDPR) does not specifically address AI but includes rules for data collection,
+data security, fairness and transparency, accuracy and reliability, and
+accountability, which can impact GenAI use. In the United States, AI regulation
+is included within broader consumer privacy laws. Ten US states have passed
+laws or have laws that will go into effect by the end of 2023.
+
+Federal organizations such as the US Equal Employment Opportunity Commission
+(EEOC), the Consumer Financial Protection Bureau (CFPB), the Federal Trade
+Commission (FTC), and the US Department of Justice\'s Civil Rights Division
+(DOJ) are closely monitoring hiring fairness.
+
+\begin{minipage}{\linewidth}
+\begin{checklist}
+  \item Determine State specific compliance requirements.
+  \item Determine compliance requirements for restricting electronic monitoring of employees and employment-related automated decision systems (Vermont)
+  \item Determine compliance requirements for consent for facial recognition and the AI video analysis required (Illinois, Maryland)
+  \item Review any AI tools in use or being considered for employee hiring or management.
+  \item Confirm the vendor\'s compliance with applicable AI laws and best practices.
+  \item Ask and document any products using AI during the hiring process. Ask how the model was trained, how it is monitored, and track any corrections made to avoid discrimination and bias.
+  \item Ask and document what accommodation options are included.
+  \item Ask and document whether the vendor collects confidential data.
+  \item Ask how the vendor or tool stores and deletes data and regulates the use of facial recognition and video analysis tools during pre-employment.
+  \item Review other organization-specific regulatory requirements with AI that may raise compliance issues. The Employee Retirement Income Security Act of 1974, for instance, has fiduciary duty requirements for retirement plans that a chatbot might not be able to meet.
+\end{checklist}
+\end{minipage}
+
+\section{Using or Implementing Large Language Model Solutions}
+
+\begin{minipage}{\linewidth}
+\begin{checklist}
+  \item Threat Model: LLM components and architecture trust boundaries.
+  \item Data Security: Verify how data is classified and protected based on sensitivity, including personal and proprietary business data. (How are user permissions managed, and what safeguards are in place?)
+  \item Access Control: Implement least privilege access controls and implement defense-in-depth measures
+  \item Training Pipeline Security: Require rigorous control around training data governance, pipelines, models, and algorithms.
+  \item Input and Output Security: Evaluate input validation methods, as well as how outputs are filtered, sanitized, and approved.
+  \item Monitoring and Response: Map workflows, monitoring, and responses to understand automation, logging, and auditing. Confirm audit records are secure.
+  \item Include application testing, source code review, vulnerability assessments, and red teaming in the production release process.
+  \item Consider vulnerabilities in the LLM model solutions (Rezilion OSFF Scorecard).
+  \item Look into the effects of threats and attacks on LLM solutions, such as prompt injection, the release of sensitive information, and process manipulation.
+  \item Investigate the impact of attacks and threats to LLM models, including model poisoning, improper data handling, supply chain attacks, and model theft.
+  \item Supply Chain Security: Request third-party audits, penetration testing, and code reviews for third-party providers. (both initially and on an ongoing basis)
+  \item Infrastructure Security: How often does the vendor perform resilience testing? What are their SLAs in terms of availability, scalability, and performance?
+  \item Update incident response playbooks and include an LLM incident in tabletop exercises.
+  \item Identify or expand metrics to benchmark generative cybersecurity AI against other approaches to measure expected productivity improvements.
+\end{checklist}
+\end{minipage}
