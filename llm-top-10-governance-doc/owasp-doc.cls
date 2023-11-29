@@ -35,9 +35,11 @@
 \usepackage{enumitem}         									% Customize lists
 \setlist{nolistsep}           									% Reduce spacing between bullet points and numbered lists
 % \usepackage{booktabs}                           % Required for nicer horizontal rules in tables
+\usepackage{array}
+\usepackage{longtable}                          % Tables which may stretch over more than 1 page
+\usepackage{ltxtable}
 \usepackage{tabularx}													 	% Required for tables with adjustable-width columns
 \usepackage[none]{hyphenat}                     % Hyphenates words to split over two lines
-\usepackage{longtable}                          % Tables which may stretch over more than 1 page
 \usepackage{listings}                           % Source code formatting and highlighting
 \usepackage{color}                              % Required for syntax highlighting
 \usepackage{colortbl}                           % Required for coloring table cells
@@ -45,7 +47,6 @@
 \usepackage{lmodern}
 \usepackage{kpfonts}
 \usepackage[export]{adjustbox}
-
 
 % ===================================================
 % Color Definitions
@@ -55,7 +56,7 @@
 % https://github.com/LibreOffice/core/blob/master/extras/source/palettes/standard.soc
 \definecolor{urlblue}{HTML}{3465a4}           % Dark Blue 1
 \definecolor{owaspdarkpurple}{HTML}{5b277d}   % Dark Indigo 1
-\definecolor{owasplightpurple}{HTML}{6b5e9b}  % Light Indigo 1
+\definecolor{owasplightpurple}{HTML}{b7b3ca}  % Light Indigo 3
 \definecolor{owasplightgrey}{HTML}{eeeeee}    % Light Grey 4
 \definecolor{owaspdarkgrey}{HTML}{666666}     % Dark Grey 1
 \definecolor{owaspred}{HTML}{f10d0c}          % Dark Red 1
