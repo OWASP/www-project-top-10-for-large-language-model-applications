@@ -14,6 +14,7 @@ pdf: $(FILES) distclean
 # lualtex needs to run iteratively so it can process all references
 	pdflatex  $(DOC).tex
 	pdflatex  $(DOC).tex
+	pdflatex  $(DOC).tex
 
 # now clean up the intermediate steps
 	make clean
