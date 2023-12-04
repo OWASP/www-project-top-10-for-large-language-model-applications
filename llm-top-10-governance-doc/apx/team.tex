@@ -6,24 +6,40 @@
 
 \headerimage
 \chapter{Team}
-Thank you to the OWASP Top 10 for LLM Applications Cybersecurity and Governance
-Checklist .05 contributors.
 
-\begin{table}[h]
-\begin{tabularx}{\textwidth} {
-  | >{\raggedright\arraybackslash}X
-  | >{\centering\arraybackslash}X
-  | >{\raggedleft\arraybackslash}X | }
- \hline
-    Sandy Dunn & Heather Linn & John Sotiropoulos   \\
-    \hline
-    Steve Wilson & Fabrizio Cilli & Aubrey King     \\
-    \hline
-    Bob Simonoff & David Rowe & Rob Vanderveer      \\
-    \hline
-    Emmanual Guilherme Junior & Andrea Succi & Jason Ross \\
-    \hline
-\end{tabularx}
-\caption{OWASP LLM AI Security \& Governance Checklist v.0.5 Team}
-\label{tab:team}
-\end{table}
+Thank you to the OWASP Top 10 for LLM Applications Cybersecurity and Governance
+Checklist Contributors.
+
+%%% TABLE FORMATTING
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+\begin{longtable}[c]{|p{0.33\textwidth}|p{0.33\textwidth}|p{0.33\textwidth}|}
+  %%% Header and footer information
+  \hline
+  \rowcolor{owasplightpurple}
+  \multicolumn{3}{|c|}{
+    \textbf{Checklist Contributors}
+  } \\
+  \hline
+  \endfirsthead
+  \hline
+  \multicolumn{3}{|c|}{
+    \textbf{Checklist Contributors}
+  } \\
+  \hline
+  \endhead
+  \endfoot
+  %%% TABLE DATA GOES HERE
+\hline
+  Sandy Dunn & Heather Linn & John Sotiropoulos   \\
+  \hline
+  Steve Wilson & Fabrizio Cilli & Aubrey King     \\
+  \hline
+  Bob Simonoff & David Rowe & Rob Vanderveer      \\
+  \hline
+  Emmanual Guilherme Junior & Andrea Succi & Jason Ross \\
+  \hline
+  %%% TABLE DATA ENDS HERE
+  \caption{OWASP LLM AI Security \& Governance Checklist v.0.5 Team}
+  \label{tab:team}
+\end{longtable}
