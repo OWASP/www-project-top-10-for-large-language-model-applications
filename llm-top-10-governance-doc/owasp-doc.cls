@@ -335,7 +335,7 @@
 
 \titlecontents{part} % Section type being modified
 	[1.25cm] % Left indentation
-	{\addvspace{20pt}\Large\sffamily\bfseries\hypersetup{linkcolor=black}} % Before code
+	{\addvspace{20pt}\Large\sffamily\bfseries\hypersetup{linkcolor=owaspdarkpurple}} % Before code
 	{\tocentrypartnumbered} % Formatting of numbered sections of this type
 	{\tocentrypartunnumbered} % Formatting of numberless sections of this type
 	{} % Formatting of the filler to the right of the heading and the page number
@@ -456,10 +456,10 @@
 
 \usepackage{hyperref} % Required for links
 \hypersetup{
-	colorlinks=true, 				% Whether to color links (a thin box is output around links if this is false)
+	colorlinks, 				% Whether to color links (a thin box is output around links if this is false)
 	hidelinks, 							% Hide the default boxes around links
-	urlcolor=Orchid, 				% Color for \url and \href links
-	linkcolor=black, 				% Color for \ref/\nameref links
+	urlcolor=urlblue, 				% Color for \url and \href links
+	linkcolor=urlblue, 				% Color for \ref/\nameref links
 	citecolor=owaspdarkpurple, 	% Color for reference citations like \cite{}
 	hyperindex=true, 				% Adds links from the page numbers in the index to the relevant page
 	linktoc=all, 						% Link from section names and page numbers in the table of contents
