@@ -100,10 +100,10 @@
 %-------------------------------------------------------------------------------
 \usepackage{geometry} % Required for adjusting page dimensions and margins
 \geometry{
-	top=3cm,            % Top margin
+	top=2.5cm,            % Top margin
 	bottom=2.5cm,       % Bottom margin
-	inner=3cm,          % Inner margin (left on odd pages, right on even or left in oneside mode)
-	outer=3cm,          % Outer margin (right on odd pages, left on even or right in oneside mode)
+	inner=2.5cm,          % Inner margin (left on odd pages, right on even or left in oneside mode)
+	outer=2.5cm,          % Outer margin (right on odd pages, left on even or right in oneside mode)
 	headsep=10pt,       % Space from the top margin to the baseline of the header
 	headheight=0.5cm,   % Header height
 	footskip=1.4cm,     % Space from the bottom margin to the baseline of the footer
@@ -129,7 +129,7 @@
 
 % adds the OWASP logo to the bottom corner of the page
 \newcommand{\owasplogobottomright}{%
-	\AddToShipoutPicture*{\put(386,5){\includegraphics[width=80mm]{owasp_logo.png}}}
+	\AddToShipoutPicture*{\put(375,15){\includegraphics[width=80mm]{owasp_logo.png}}}
 }
 
 % creates the header image on new sections
