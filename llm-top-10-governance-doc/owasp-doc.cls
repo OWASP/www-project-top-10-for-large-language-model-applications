@@ -34,8 +34,9 @@
 \usepackage[nochapter, tablegrid]{vhistory}     % Required for changelog
 \usepackage{enumitem}         									% Customize lists
 \setlist{nolistsep}           									% Reduce spacing between bullet points and numbered lists
-% \usepackage{booktabs}                           % Required for nicer horizontal rules in tables
+% \usepackage{booktabs}                          % Required for nicer horizontal rules in tables
 \usepackage{array}
+% \usepackage{lscape}															% Required for landscape tables
 \usepackage{longtable}                          % Tables which may stretch over more than 1 page
 \usepackage{ltxtable}
 \usepackage{tabularx}													 	% Required for tables with adjustable-width columns
