@@ -1,7 +1,7 @@
 # simple Makefile to compile the latex
 
 PROJ=`cd ../; basename \`pwd\``
-DOC=owasp-doc
+DOC=LLM_AI_Security_and_Governance_Checklist
 FILES=$(DOC).tex
 
 # create a random password
