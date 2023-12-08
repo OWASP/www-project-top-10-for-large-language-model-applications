@@ -22,6 +22,6 @@ This initiative is community-driven and encourages participation and contributio
 
 - We have a working group channel on the [OWASP Slack](https://owasp.org/slack/invite), so please sign up and then join us on the #project-top10-for-llm channel.
 - The working group is collaborating on our [wiki](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki)
-- Want to stay updated on periodic progress? [Subscribe to our newsletter](https://llmtop10.beehiiv.com/subscribe)
+- Want to stay updated on periodic progress? [Subscribe to our newsletter](https://llmtop10.beehiiv.com/subscribe) or [Follow our project LinkedIn page](https://www.linkedin.com/company/owasp-top-10-for-large-language-model-applications/)
 
 New to LLM Application security? Check out our [resources page](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Educational-Resources) to learn more.
