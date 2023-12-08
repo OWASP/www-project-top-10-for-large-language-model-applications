@@ -11,6 +11,13 @@ The OWASP Top 10 for Large Language Model Applications project aims to educate d
 
 Review the official 1.1 release ([Full Version](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_1.pdf) or [Short Slides](assets/PDF/OWASP-Top-10-for-LLMs-2023-slides-v1_1.pdf)) to understand work that has been done to date.
 
+# 📢 New Document Release: Security & Governance Checklist
+
+We're excited to announce the 0.5 pre-release of our latest document: **Security & Governance Checklist**. This comprehensive guide is essential for a Chief Information Security Officer (CISO) managing the rollout of Gen AI technology in their organization.
+
+🔗 [Download the PDF here](llm-top-10-governance-doc/LLM_AI_Security_and_Governance_Checklist.pdf)
+
+
 This initiative is community-driven and encourages participation and contributions from all interested parties.
 
 - We have a working group channel on the [OWASP Slack](https://owasp.org/slack/invite), so please sign up and then join us on the #project-top10-for-llm channel.
