@@ -1,5 +1,6 @@
 ### Top 10 for Large Language Model Applications Information
 * [Lab Status Project](https://owasp.org/projects/)
+* [Version 1.1.0 Translations](assets/translations/)
 * [Version 1.1.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_1.pdf)
 * [Version 1.0.1](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_0_1.pdf) (archived)
 * [Version 1.0.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_0.pdf) (archived)
