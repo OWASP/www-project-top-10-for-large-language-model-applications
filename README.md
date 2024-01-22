@@ -1,3 +1,5 @@
+[![pages-build-deployment](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/actions/workflows/pages/pages-build-deployment)
+
 # www-project-top-10-for-large-language-model-applications
 OWASP Foundation Web Repository
 
