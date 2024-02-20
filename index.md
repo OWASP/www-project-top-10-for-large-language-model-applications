@@ -13,9 +13,9 @@ Review the official 1.1 release ([Full Version](assets/PDF/OWASP-Top-10-for-LLMs
 
 # 📢 New Document Release: Security & Governance Checklist
 
-We're excited to announce the 0.5 pre-release of our latest document: **Security & Governance Checklist**. This comprehensive guide is essential for a Chief Information Security Officer (CISO) managing the rollout of Gen AI technology in their organization.
+We're excited to announce version 1.0 of our latest document: **Security & Governance Checklist**. This comprehensive guide is essential for a Chief Information Security Officer (CISO) managing the rollout of Gen AI technology in their organization.
 
-🔗 [Download the PDF here](llm-top-10-governance-doc/LLM_AI_Security_and_Governance_Checklist.pdf)
+🔗 [Download the PDF here](llm-top-10-governance-doc/LLM_AI_Security_and_Governance_Checklist-v1.pdf)
 
 
 This initiative is community-driven and encourages participation and contributions from all interested parties.
