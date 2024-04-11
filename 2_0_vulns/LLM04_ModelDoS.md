@@ -4,6 +4,9 @@
 
 An attacker interacts with an LLM in a method that consumes an exceptionally high amount of resources, which results in a decline in the quality of service for them and other users, as well as potentially incurring high resource costs. Furthermore, an emerging major security concern is the possibility of an attacker interfering with or manipulating the context window of an LLM. This issue is becoming more critical due to the increasing use of LLMs in various applications, their intensive resource utilization, the unpredictability of user input, and a general unawareness among developers regarding this vulnerability. In LLMs, the context window represents the maximum length of text the model can manage, covering both input and output. It's a crucial characteristic of LLMs as it dictates the complexity of language patterns the model can understand and the size of the text it can process at any given time. The size of the context window is defined by the model's architecture and can differ between models.
 
+An additional Denial of Service method involves glitch tokens — unique, problematic strings of characters that disrupt model processing, resulting in partial or complete failure to produce coherent responses. This vulnerability is magnified as RAGs increasingly source data from dynamic internal resources like collaboration tools and document management systems. Attackers can exploit this by inserting glitch tokens into these sources, thus trigger a Denial of Service by compromising the model's functionality.
+Common Examples of Vulnerability
+
 ### Common Examples of Vulnerability
 
 1. Posing queries that lead to recurring resource usage through high-volume generation of tasks in a queue, e.g. with LangChain or AutoGPT.
@@ -12,6 +15,8 @@ An attacker interacts with an LLM in a method that consumes an exceptionally hig
 4. Repetitive long inputs: The attacker repeatedly sends long inputs to the LLM, each exceeding the context window.
 5. Recursive context expansion: The attacker constructs input that triggers recursive context expansion, forcing the LLM to repeatedly expand and process the context window.
 6. Variable-length input flood: The attacker floods the LLM with a large volume of variable-length inputs, where each input is carefully crafted to just reach the limit of the context window. This technique aims to exploit any inefficiencies in processing variable-length inputs, straining the LLM and potentially causing it to become unresponsive.
+7. Glitch token RAG poisoning: The attacker introduces glitch tokens to the data sources of the RAGs vector database, thereby introducing these malicious tokens into the model's context window through the RAG process, causing the model to produce (partially) incoherent results.
+Prevention and Mitigation Strategies
 
 ### Prevention and Mitigation Strategies
 
@@ -22,6 +27,8 @@ An attacker interacts with an LLM in a method that consumes an exceptionally hig
 5. Continuously monitor the resource utilization of the LLM to identify abnormal spikes or patterns that may indicate a DoS attack.
 6. Set strict input limits based on the LLM's context window to prevent overload and resource exhaustion.
 7. Promote awareness among developers about potential DoS vulnerabilities in LLMs and provide guidelines for secure LLM implementation.
+8. Build lists of known glitch tokens and scan RAG output before adding it to the model’s context window.
+Example Attack Scenarios
 
 ### Example Attack Scenarios
 
@@ -32,6 +39,7 @@ An attacker interacts with an LLM in a method that consumes an exceptionally hig
 5. An attacker leverages the LLM's recursive mechanisms to trigger context expansion repeatedly. By crafting input that exploits the recursive behavior of the LLM, the attacker forces the model to repeatedly expand and process the context window, consuming significant computational resources. This attack strains the system and may lead to a DoS condition, making the LLM unresponsive or causing it to crash.
 6. An attacker floods the LLM with a large volume of variable-length inputs, carefully crafted to approach or reach the context window's limit. By overwhelming the LLM with inputs of varying lengths, the attacker aims to exploit any inefficiencies in processing variable-length inputs. This flood of inputs puts an excessive load on the LLM's resources, potentially causing performance degradation and hindering the system's ability to respond to legitimate requests.
 7. While DoS attacks commonly aim to overwhelm system resources, they can also exploit other aspects of system behavior, such as API limitations. For example, in a recent Sourcegraph security incident, the malicious actor employed a leaked admin access token to alter API rate limits, thereby potentially causing service disruptions by enabling abnormal levels of request volumes.
+8. An attacker adds glitch tokens to existing documents or creates new documents with such tokens in a collaboration or document management tool. If the RAGs vector database is automatically updated, these malicious tokens are added to its information store. Upon retrieval through the LLM these tokens glitch the inference process, potentially causing the LLM to generate incoherent output.
 
 ### Reference Links
 
