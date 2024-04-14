@@ -32,7 +32,6 @@ env:
 jobs:
   welcomes:
     runs-on: ubuntu-latest
-    if: contains(github.event.issue.labels.*.name, 'opened')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -49,7 +48,6 @@ jobs:
 
   triage:
     runs-on: ubuntu-latest
-    if: contains(github.event.issue.labels.*.name, 'labeled')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
