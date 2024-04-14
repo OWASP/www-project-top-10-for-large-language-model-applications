@@ -62,22 +62,22 @@ jobs:
 
               // Label-to-assignee mappings
               const labelAssigneeMap = {
-                'bug': [${{ env.PROJECT_TECH_LEAD }}],
-                'extension': [${{ env.PROJECT_TECH_LEAD }}],
-                'llm-other': [${{ env.PROJECT_TECH_LEAD }}],
-                'diagram': [${{ env.PROJECT_TECH_LEAD }}],
-                'pdf': [${{ env.DESIGN }}],
-                'website': [${{ env.WEB_DEVS }}],
-                'llm-01': [${{ env.LLM01_LEAD }}],
-                'llm-02': [${{ env.LLM02_LEAD }}],
-                'llm-03': [${{ env.LLM03_LEAD }}],
-                'llm-04': [${{ env.LLM04_LEAD }}],
-                'llm-05': [${{ env.LLM05_LEAD }}],
-                'llm-06': [${{ env.LLM06_LEAD }}],
-                'llm-07': [${{ env.LLM07_LEAD }}],
-                'llm-08': [${{ env.LLM08_LEAD }}],
-                'llm-09': [${{ env.LLM09_LEAD }}],
-                'llm-10': [${{ env.LLM10_LEAD }}]
+                'bug': ${{ env.PROJECT_TECH_LEAD }},
+                'extension': ${{ env.PROJECT_TECH_LEAD }},
+                'llm-other': ${{ env.PROJECT_TECH_LEAD }},
+                'diagram': ${{ env.PROJECT_TECH_LEAD }},
+                'pdf': ${{ env.DESIGN }},
+                'website': ${{ env.WEB_DEVS }},
+                'llm-01': ${{ env.LLM01_LEAD }},
+                'llm-02': ${{ env.LLM02_LEAD }},
+                'llm-03': ${{ env.LLM03_LEAD }},
+                'llm-04': ${{ env.LLM04_LEAD }},
+                'llm-05': ${{ env.LLM05_LEAD }},
+                'llm-06': ${{ env.LLM06_LEAD }},
+                'llm-07': ${{ env.LLM07_LEAD }},
+                'llm-08': ${{ env.LLM08_LEAD }},
+                'llm-09': ${{ env.LLM09_LEAD }},
+                'llm-10': ${{ env.LLM10_LEAD }}
               };
 
               // Check labels and assign based on mappings
