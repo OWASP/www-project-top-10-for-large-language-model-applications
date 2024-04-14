@@ -26,8 +26,9 @@ env:
   SEC_GOVERNANCE: "subzer0girl2"
 
 jobs:
-  assign:
+  welcomes:
     runs-on: ubuntu-latest
+    if: issues.types == 'opened'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -42,50 +43,56 @@ jobs:
               body: '👋 Thanks for reporting! Please ensure labels are applied appropriately to the issue so that the workflow automation can triage this to the correct member of the core team'
             })
 
-      - name: Triage issues based on labels
-        uses: actions/github-script@v4
+  triage:
+    runs-on: ubuntu-latest
+    if: issues.types == 'labeled'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - uses: actions/github-script@v7
         with:
-          script: |
-            const issue = context.payload.issue;
-            const labels = issue.labels.map(label => label.name);
-            const assignees = [];
+        script: |
+          const issue = context.payload.issue;
+          const labels = issue.labels.map(label => label.name);
+          const assignees = [];
 
-            // Label-to-assignee mappings
-            const labelAssigneeMap = {
-              'bug': [${{ env.PROJECT_TECH_LEAD }}],
-              'extension': [${{ env.PROJECT_TECH_LEAD }}],
-              'llm-other': [${{ env.PROJECT_TECH_LEAD }}],
-              'diagram': [${{ env.PROJECT_TECH_LEAD }}],
-              'pdf': [${{ env.DESIGN }}],
-              'website': [${{ env.WEB_DEVS }}],
-              'llm-01': [${{ env.LLM01_LEAD }}],
-              'llm-02': [${{ env.LLM02_LEAD }}],
-              'llm-03': [${{ env.LLM03_LEAD }}],
-              'llm-04': [${{ env.LLM04_LEAD }}],
-              'llm-05': [${{ env.LLM05_LEAD }}],
-              'llm-06': [${{ env.LLM06_LEAD }}],
-              'llm-07': [${{ env.LLM07_LEAD }}],
-              'llm-08': [${{ env.LLM08_LEAD }}],
-              'llm-09': [${{ env.LLM09_LEAD }}],
-              'llm-10': [${{ env.LLM10_LEAD }}]
-            };
+          // Label-to-assignee mappings
+          const labelAssigneeMap = {
+            'bug': [${{ env.PROJECT_TECH_LEAD }}],
+            'extension': [${{ env.PROJECT_TECH_LEAD }}],
+            'llm-other': [${{ env.PROJECT_TECH_LEAD }}],
+            'diagram': [${{ env.PROJECT_TECH_LEAD }}],
+            'pdf': [${{ env.DESIGN }}],
+            'website': [${{ env.WEB_DEVS }}],
+            'llm-01': [${{ env.LLM01_LEAD }}],
+            'llm-02': [${{ env.LLM02_LEAD }}],
+            'llm-03': [${{ env.LLM03_LEAD }}],
+            'llm-04': [${{ env.LLM04_LEAD }}],
+            'llm-05': [${{ env.LLM05_LEAD }}],
+            'llm-06': [${{ env.LLM06_LEAD }}],
+            'llm-07': [${{ env.LLM07_LEAD }}],
+            'llm-08': [${{ env.LLM08_LEAD }}],
+            'llm-09': [${{ env.LLM09_LEAD }}],
+            'llm-10': [${{ env.LLM10_LEAD }}]
+          };
 
-            // Check labels and assign based on mappings
-            labels.forEach(label => {
-              if (labelAssigneeMap[label]) {
-                assignees.push(...labelAssigneeMap[label]);
-              }
-            });
+          // Check labels and assign based on mappings
+          labels.forEach(label => {
+            if (labelAssigneeMap[label]) {
+              assignees.push(...labelAssigneeMap[label]);
+            }
+          });
 
-            // Remove duplicates from assignees list
-            // const uniqueAssignees = [...new Set(assignees)];
+          // Remove duplicates from assignees list
+          // const uniqueAssignees = [...new Set(assignees)];
 
-            // Assign the issue to the calculated assignees
-            await github.issues.addAssignees({
-              issue_number: issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              assignees: uniqueAssignees
-            });
-        env:
-          GITHUB_TOKEN: ${{ secrets.ADS_OWASP_LLM_APPS_REPO_TOKEN }}
+          // Assign the issue to the calculated assignees
+          await github.issues.addAssignees({
+            issue_number: issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            assignees: uniqueAssignees
+          });
+      env:
+        GITHUB_TOKEN: ${{ secrets.ADS_OWASP_LLM_APPS_REPO_TOKEN }}
