@@ -5,25 +5,25 @@ on:
     types: [opened, labeled, reopened]
 
 env:
-  PROJECT_TECH_LEAD: 'GangGreenTemperTatum'
-  LLM01_LEAD: 'leondz'
-  LLM02_LEAD: 'kenhuangus'
-  LLM03_LEAD: 'GangGreenTemperTatum'
-  LLM04_LEAD: 'kenhuangus'
-  LLM05_LEAD: 'jsotiro'
-  LLM06_LEAD: 'GangGreenTemperTatum'
-  LLM07_LEAD: 'rot169'
-  LLM08_LEAD: 'virtualsteve-star'
-  LLM09_LEAD: 'jsotiro'
-  LLM10_LEAD: 'GangGreenTemperTatum'
-  PR_LEAD: 'faceplate27'
-  POSTMASTER: 'TBC'
-  TRANSLATIONS: 'talesh'
-  DATA_GATHERING: 'emmanuelgjr'
-  DESIGN: 'rossja'
-  DIAGRAMS: 'TBC'
-  WEB_DEVS: 'mkfnch,rossja,GangGreenTemperTatum'
-  SEC_GOVERNANCE: 'subzer0girl2'
+  PROJECT_TECH_LEAD: "GangGreenTemperTatum"
+  LLM01_LEAD: "leondz"
+  LLM02_LEAD: "kenhuangus"
+  LLM03_LEAD: "GangGreenTemperTatum"
+  LLM04_LEAD: "kenhuangus"
+  LLM05_LEAD: "jsotiro"
+  LLM06_LEAD: "GangGreenTemperTatum"
+  LLM07_LEAD: "rot169"
+  LLM08_LEAD: "virtualsteve-star"
+  LLM09_LEAD: "jsotiro"
+  LLM10_LEAD: "GangGreenTemperTatum"
+  PR_LEAD: "faceplate27"
+  POSTMASTER: "TBC"
+  TRANSLATIONS: "talesh"
+  DATA_GATHERING: "emmanuelgjr"
+  DESIGN: "rossja"
+  DIAGRAMS: "TBC"
+  WEB_DEVS: "mkfnch,rossja,GangGreenTemperTatum"
+  SEC_GOVERNANCE: "subzer0girl2"
 
 jobs:
   assign:
