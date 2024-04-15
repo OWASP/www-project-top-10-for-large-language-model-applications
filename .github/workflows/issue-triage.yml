@@ -26,7 +26,7 @@ env:
   DATA_GATHERING: "emmanuelgjr"
   DESIGN: "rossja"
   DIAGRAMS: "TBC"
-  WEB_DEVS: "mkfnch,rossja,GangGreenTemperTatum"
+  WEB_DEVS: "GangGreenTemperTatum"
   SEC_GOVERNANCE: "subzer0girl2"
 
 jobs:
