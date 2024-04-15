@@ -26,7 +26,7 @@ env:
   DATA_GATHERING: "emmanuelgjr"
   DESIGN: "rossja"
   DIAGRAMS: "TBC"
-  WEB_DEVS: "mkfnch,rossja,GangGreenTemperTatum"
+  WEB_DEVS: "GangGreenTemperTatum"
   SEC_GOVERNANCE: "subzer0girl2"
 
 jobs:
@@ -67,7 +67,7 @@ jobs:
                 'llm-other': '${{ env.PROJECT_TECH_LEAD }}',
                 'diagram': '${{ env.PROJECT_TECH_LEAD }}',
                 'pdf': '${{ env.DESIGN }}',
-                'website': ${{ env.WEB_DEVS }},
+                'website': '${{ env.WEB_DEVS }}',
                 'llm-01': '${{ env.LLM01_LEAD }}',
                 'llm-02': '${{ env.LLM02_LEAD }}',
                 'llm-03': '${{ env.LLM03_LEAD }}',
@@ -83,16 +83,19 @@ jobs:
               // Check labels and assign based on mappings
               labels.forEach(label => {
                 if (labelAssigneeMap[label]) {
-                  assignees.push(labelAssigneeMap[label]); // Concatenating strings
+                  assignees.push(...labelAssigneeMap[label]);
                 }
               });
+
+              // Remove duplicates from assignees list
+              // const uniqueAssignees = [...new Set(assignees)];
 
               // Assign the issue to the calculated assignees
               await github.issues.addAssignees({
                 issue_number: issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                assignees: assignees // No need for uniqueAssignees as it's commented out
+                assignees: uniqueAssignees
               });
             } catch (error) {
               console.error(error.message);
@@ -100,4 +103,3 @@ jobs:
             }
         env:
           GITHUB_TOKEN: ${{ secrets.ADS_OWASP_LLM_APPS_REPO_TOKEN }}
-          
