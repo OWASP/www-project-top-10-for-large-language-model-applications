@@ -1,3 +1,51 @@
+name: Ads - Triage OWASP Top 10 LLM Apps Issues
+
+on:
+  issues:
+    types: [opened, labeled, reopened]
+
+env:
+  BOARD_NAME: "OWASP Top 10 for LLM Applications"
+  OWNER: ${{ github.repository_owner }}
+  REPO: ${{ github.event.repository.name }}
+  ISSUE: ${{ github.event.issue.number }}
+  PROJECT_TECH_LEAD: "GangGreenTemperTatum"
+  LLM01_LEAD: "leondz"
+  LLM02_LEAD: "kenhuangus"
+  LLM03_LEAD: "GangGreenTemperTatum"
+  LLM04_LEAD: "kenhuangus"
+  LLM05_LEAD: "jsotiro"
+  LLM06_LEAD: "GangGreenTemperTatum"
+  LLM07_LEAD: "rot169"
+  LLM08_LEAD: "virtualsteve-star"
+  LLM09_LEAD: "jsotiro"
+  LLM10_LEAD: "GangGreenTemperTatum"
+  PR_LEAD: "faceplate27"
+  POSTMASTER: "TBC"
+  TRANSLATIONS: "talesh"
+  DATA_GATHERING: "emmanuelgjr"
+  DESIGN: "rossja"
+  DIAGRAMS: "TBC"
+  WEB_DEVS: "mkfnch,rossja,GangGreenTemperTatum"
+  SEC_GOVERNANCE: "subzer0girl2"
+
+jobs:
+  welcomes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting! Please ensure labels are applied appropriately to the issue so that the workflow automation can triage this to the correct member of the core team'
+            })
+
   triage:
     runs-on: ubuntu-latest
     steps:
@@ -35,19 +83,16 @@
               // Check labels and assign based on mappings
               labels.forEach(label => {
                 if (labelAssigneeMap[label]) {
-                  assignees.push(...labelAssigneeMap[label]);
+                  assignees.push(labelAssigneeMap[label]); // Concatenating strings
                 }
               });
-
-              // Remove duplicates from assignees list
-              // const uniqueAssignees = [...new Set(assignees)];
 
               // Assign the issue to the calculated assignees
               await github.issues.addAssignees({
                 issue_number: issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                assignees: uniqueAssignees
+                assignees: assignees // No need for uniqueAssignees as it's commented out
               });
             } catch (error) {
               console.error(error.message);
@@ -55,3 +100,4 @@
             }
         env:
           GITHUB_TOKEN: ${{ secrets.ADS_OWASP_LLM_APPS_REPO_TOKEN }}
+          
