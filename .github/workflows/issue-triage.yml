@@ -1,51 +1,3 @@
-name: Ads - Triage OWASP Top 10 LLM Apps Issues
-
-on:
-  issues:
-    types: [opened, labeled, reopened]
-
-env:
-  BOARD_NAME: "OWASP Top 10 for LLM Applications"
-  OWNER: ${{ github.repository_owner }}
-  REPO: ${{ github.event.repository.name }}
-  ISSUE: ${{ github.event.issue.number }}
-  PROJECT_TECH_LEAD: "GangGreenTemperTatum"
-  LLM01_LEAD: "leondz"
-  LLM02_LEAD: "kenhuangus"
-  LLM03_LEAD: "GangGreenTemperTatum"
-  LLM04_LEAD: "kenhuangus"
-  LLM05_LEAD: "jsotiro"
-  LLM06_LEAD: "GangGreenTemperTatum"
-  LLM07_LEAD: "rot169"
-  LLM08_LEAD: "virtualsteve-star"
-  LLM09_LEAD: "jsotiro"
-  LLM10_LEAD: "GangGreenTemperTatum"
-  PR_LEAD: "faceplate27"
-  POSTMASTER: "TBC"
-  TRANSLATIONS: "talesh"
-  DATA_GATHERING: "emmanuelgjr"
-  DESIGN: "rossja"
-  DIAGRAMS: "TBC"
-  WEB_DEVS: "mkfnch,rossja,GangGreenTemperTatum"
-  SEC_GOVERNANCE: "subzer0girl2"
-
-jobs:
-  welcomes:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 Thanks for reporting! Please ensure labels are applied appropriately to the issue so that the workflow automation can triage this to the correct member of the core team'
-            })
-
   triage:
     runs-on: ubuntu-latest
     steps:
@@ -62,11 +14,11 @@ jobs:
 
               // Label-to-assignee mappings
               const labelAssigneeMap = {
-                'bug': '${{ env.PROJECT_TECH_LEAD }}'',
+                'bug': '${{ env.PROJECT_TECH_LEAD }}',
                 'extension': '${{ env.PROJECT_TECH_LEAD }}',
                 'llm-other': '${{ env.PROJECT_TECH_LEAD }}',
                 'diagram': '${{ env.PROJECT_TECH_LEAD }}',
-                'pdf': '${{ env.DESIGN }}'',
+                'pdf': '${{ env.DESIGN }}',
                 'website': ${{ env.WEB_DEVS }},
                 'llm-01': '${{ env.LLM01_LEAD }}',
                 'llm-02': '${{ env.LLM02_LEAD }}',
@@ -77,7 +29,7 @@ jobs:
                 'llm-07': '${{ env.LLM07_LEAD }}',
                 'llm-08': '${{ env.LLM08_LEAD }}',
                 'llm-09': '${{ env.LLM09_LEAD }}',
-                'llm-10': '${{ env.LLM10_LEAD }}}'
+                'llm-10': '${{ env.LLM10_LEAD }}'
               };
 
               // Check labels and assign based on mappings
