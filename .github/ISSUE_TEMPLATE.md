@@ -1,4 +1,9 @@
-Remember, an issue is not the place to ask questions. You can use our [Slack channel](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki) for that, or you may want to start a discussion on the [Discussion Board](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/discussions).
+Remember, an issue is not the place to ask questions. You can use our [Slack channel](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki) for that, or you may want to consult the following Slack channels:
+
+- [#project-top10-for-llm](https://owasp.slack.com/archives/C05956H7R8R)
+- [#team-llm-web](https://owasp.slack.com/archives/C06RXVCQB1C)
+- [#team-llm_diagrams_and_visuals](https://owasp.slack.com/archives/C05L7TW8VCY)
+- Each vulnerabilities has its own dedicated Slack channel for discussions in the format of `#team-llm0X`, I.E ([#team-llm03_data_and_model_poisoning](https://owasp.slack.com/archives/C05F7JWFYBU))
 
 ### When reporting an issue, please be sure to include the following:
 - [ ] Before you open an issue, please check if a similar issue already exists or has been closed before.
