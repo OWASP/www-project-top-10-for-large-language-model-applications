@@ -28,7 +28,6 @@ Prevention and Mitigation Strategies
 6. Set strict input limits based on the LLM's context window to prevent overload and resource exhaustion.
 7. Promote awareness among developers about potential DoS vulnerabilities in LLMs and provide guidelines for secure LLM implementation.
 8. Build lists of known glitch tokens and scan RAG output before adding it to the model’s context window.
-Example Attack Scenarios
 
 ### Example Attack Scenarios
 
