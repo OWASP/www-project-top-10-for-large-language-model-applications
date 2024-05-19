@@ -17,6 +17,9 @@ We're excited to announce version 1.0 of our latest document: **Security & Gover
 
 🔗 [Download the PDF here](llm-top-10-governance-doc/LLM_AI_Security_and_Governance_Checklist-v1.1.pdf) - also now [available in French](llm-top-10-governance-doc/LLM_AI_Security_and_Governance_Checklist-v1_FR.pdf) and [Japanese](llm-top-10-governance-doc/LLM_AI_Security_and_Governance_Checklist-v1_1_JP.pdf)
 
+# 📢 New Website Launched: Check us out there as well
+
+We have launched a [new website](https://genai.owasp.org) to complement this one.
 
 This initiative is community-driven and encourages participation and contributions from all interested parties.
 
