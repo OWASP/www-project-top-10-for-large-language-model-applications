@@ -29,9 +29,9 @@ Dangerous hallucinations in Large Language Models (LLMs) refer to instances wher
 
 ### Example Attack Scenarios
 
-**Scenario #1:** A legal firm uses an LLM to generate legal documents. The model confidently fabricates legal precedents, leading the firm to present false information in court, resulting in fines and reputational damage【7†source】 .
+**Scenario #1:** A legal firm uses an LLM to generate legal documents. The model confidently fabricates legal precedents, leading the firm to present false information in court, resulting in fines and reputational damage.
 
-**Scenario #2:** Developers use an LLM as a coding assistant. The model suggests a non-existent code library, which developers integrate into their software. An attacker exploits this by creating a malicious package with the same name, leading to a security breach【7†source】 .
+**Scenario #2:** Developers use an LLM as a coding assistant. The model suggests a non-existent code library, which developers integrate into their software. An attacker exploits this by creating a malicious package with the same name, leading to a security breach.
 
 ### Reference Links
 
