@@ -7,6 +7,9 @@
 ## Either Ads or Steve can approve changes to CODEOWNERS:
 CODEOWNERS @GangGreenTemperTatum @virtualsteve-star
 
+## Data Gathering
+data_gathering/* @emmanuelgjr @GangGreenTemperTatum
+
 # Top 10 Vulnerabilities: (www-project-top-10-for-large-language-model-applications/1_1_vulns/)
 ## LLM01:
 PromptInjection.md @leondz
@@ -30,4 +33,4 @@ Overreliance.md @virtualsteve-star
 ModelTheft.md @GangGreenTemperTatum
 
 ## Template:
-_template.md @rossja @mkfnch
+_template.md @rossja
