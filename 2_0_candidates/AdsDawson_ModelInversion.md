@@ -35,3 +35,4 @@ Model Inversion attacks enable attackers to reconstruct sensitive training data 
 - [Membership Inference Attacks Against Machine Learning Models](https://arxiv.org/abs/1610.05820)
 - [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)
 - [CWE-203: Information Exposure Through Discrepancy](https://cwe.mitre.org/data/definitions/203.html)
+
