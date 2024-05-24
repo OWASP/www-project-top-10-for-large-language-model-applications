@@ -39,13 +39,11 @@ Unauthorized Access and Entitlement Violations occur when LLM systems fail to en
 
 ### Reference Links
 
-- [OWASP Access Control Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Access_Control_Cheat_Sheet.html)
-- [OWASP Entitlement Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Entitlement_Management_Cheat_Sheet.html)
-- [NIST SP 800-53](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf) - Security and Privacy Controls for Information Systems and Organizations
+- [Mitigating Security Risks in Retrieval Augmented Generation (RAG) LLM Applications](https://cloudsecurityalliance.org/blog/2023/11/22/mitigating-security-risks-in-retrieval-augmented-generation-rag-llm-applications/)
+- [RFI for NIST AI Executive order-Ken Huang-and-Mehdi Bousaidi](https://www.nist.gov/system/files/documents/2024/02/13/ID004-~1.PDF)
+- [RAG is everywhere but where is security?](https://www.linkedin.com/posts/kenhuang8_rag-is-everywhere-but-where-is-security-activity-7137531149379072000-ISD3)
+- [ShadowRay: First Known Attack Campaign Targeting RAG LLMs](https://www.linkedin.com/posts/kenhuang8_shadowray-first-known-attack-campaign-targeting-activity-7179965782401929216-eJ3j)
 - [CWE-285: Improper Access Control (Authorization)](https://cwe.mitre.org/data/definitions/285.html)
 - [CWE-668: Exposure of Resource to Wrong Sphere](https://cwe.mitre.org/data/definitions/668.html)
-- [AML.TA0002 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0002)
 - [Retrieval Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401)
-- [Anthropic's Constitutional AI: Building Towards Robust Machine Ethics](https://www.anthropic.com/blog/constitutional-ai)
-- [Differential Privacy: A Primer for a Non-Technical Audience](https://privacytools.seas.harvard.edu/files/privacytools/files/differentialprivacyprimer.pdf)
 
