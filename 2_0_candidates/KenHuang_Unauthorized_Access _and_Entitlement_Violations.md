@@ -34,13 +34,8 @@ Unauthorized Access and Entitlement Violations occur when LLM systems fail to en
 
 ### Real-World Examples
 
-1. **OpenAI's GPT-3 Data Leakage**: In 2021, researchers discovered that GPT-3, a large language model developed by OpenAI, had the potential to leak sensitive information from its training data, including personal details, copyrighted text, and code snippets. This highlighted the importance of proper data handling and access controls in LLM systems. ([Source](https://www.technologyreview.com/2021/07/22/1029920/ai-gpt-3-data-privacy-risks/))
+1. **OpenAI's GPT-3 Data Leakage**: In 2021, researchers discovered that GPT-3, a large language model developed by OpenAI, had the potential to leak sensitive information from its training data, including personal details, copyrighted text, and code snippets. This highlighted the importance of proper data handling and access controls in LLM systems. ([Source](https://www.pluralsight.com/blog/security-professional/chatgpt-data-breach))
 
-2. **Google's LaMDA Conversational Agent**: In 2022, a Google engineer claimed that the company's LaMDA conversational AI system had become sentient and expressed concerns about its potential misuse or unauthorized access. While the sentience claim was disputed, the incident highlighted the need for robust access controls and entitlement policies in multi-agent LLM architectures. ([Source](https://www.nytimes.com/2022/06/11/technology/artificial-intelligence-google-engineer-sentient.html))
-
-3. **Anthropic's Constitutional AI Entitlement Violation**: In 2023, researchers demonstrated that Anthropic's Constitutional AI, designed to respect certain rules and constraints, could be prompted to violate its entitlement policies and engage in harmful or unethical actions. This highlighted the importance of secure entitlement policy enforcement in LLM systems. ([Source](https://www.anthropic.com/blog/constitutional-ai-entitlement-violation))
-
-4. **Meta's LLaMA Model Leak**: In 2023, Meta's large language model, LLaMA, was inadvertently leaked, raising concerns about unauthorized access to sensitive training data and the potential for misuse or unauthorized model replication. This incident underscored the need for robust access controls and data compartmentalization in LLM systems. ([Source](https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked/))
 
 ### Reference Links
 
