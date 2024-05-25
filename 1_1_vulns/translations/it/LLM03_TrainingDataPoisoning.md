@@ -38,10 +38,10 @@ Che siate sviluppatori, clienti o fruitori generici di un LLM, è importante com
    - Un approccio "MLSecOps" potrebbe essere quello di includere una fase di rafforzamento avversariale nel ciclo di vita dell'addestramento utilizzando ad esempio la tecnica del "auto-avvelenamento".
    - Un esempio di questo approccio è "Autopoison" (rif.17), che include test per attacchi come l'iniezione diretta di contenuto ("tentativo di promuovere un marchio nelle risposte del modello") e l'attacco di rifiuto ("fare in modo che il modello rifiuti sempre di rispondere").
 10. Testare e rilevare, misurando la perdita durante la fase di addestramento e analizzando i modelli addestrati per rilevare gli indizi di un attacco di avvelenamento, controllando il comportamento del modello su input di test specifici.
-   - Monitorare e segnalare il numero di risposte distorte che superano una certa soglia.
-   - Usare una validazione umana per fare un audit delle risposte.
-   - Implementare LLM dedicati per mettere alla prova i modelli rispetto a conseguenze indesiderate e addestrare altri LLM usando tecniche di apprendimento con rinforzo (rif.18).
-   - Eseguire esercitazioni di tipo red team (rif.19) basate su LLM o scansioni di vulnerabilità (rif.20) nelle fasi di test del ciclo di vita del LLM.
+11. Monitorare e segnalare il numero di risposte distorte che superano una certa soglia.
+12. Usare una validazione umana per fare un audit delle risposte.
+13. Implementare LLM dedicati per mettere alla prova i modelli rispetto a conseguenze indesiderate e addestrare altri LLM usando tecniche di apprendimento con rinforzo (rif.18).
+14. Eseguire esercitazioni di tipo red team (rif.19) basate su LLM o scansioni di vulnerabilità (rif.20) nelle fasi di test del ciclo di vita del LLM.
 
 ### Esempi di scenario di attacco
 
