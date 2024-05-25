@@ -6,7 +6,7 @@ Un sistema basato su LLM è spesso dotato di una certa autonomia dallo sviluppat
 
 L'Eccessiva Autonomia è la vulnerabilità che permette di intraprendere azioni dannose in risposta a output inaspettati o ambigui generati da un LLM (indipendentemente dalla causa del malfunzionamento del LLM; sia essa allucinazione/confabulazione, iniezione di prompt diretta/indiretta, plugin malevolo, prompt mal progettati, o semplicemente un modello con prestazioni scadenti). La causa principale dell'Eccessiva Autonomia è tipicamente una o più delle seguenti: troppe funzionalità, permessi eccessivi o autonomia troppo elevata. Questo si distingue dalla Gestione Insicura dell'Output, che si riferisce invece alla mancanza di controlli adeguati sugli output generati dal LLM.
 
-L'Eccessiva Autonomia può può avere ripercussioni significative in termini di riservatezza, integrità e disponibilità, variando ampiamente a seconda dei sistemi con cui l'applicazione basata su LLM interagisce.
+L'Eccessiva Autonomia può avere ripercussioni significative in termini di riservatezza, integrità e disponibilità, variando ampiamente a seconda dei sistemi con cui l'applicazione basata su LLM interagisce.
 
 ### Esempi comuni di vulnerabilità
 
@@ -20,6 +20,7 @@ L'Eccessiva Autonomia può può avere ripercussioni significative in termini di 
 ### Strategie di prevenzione e mitigazione
 
 Le seguenti azioni possono prevenire l'Eccessiva Autonomia:
+
 1. Consentire agli agenti LLM l'utilizzo di plugin/strumenti che offrono le funzioni strettamente necessarie al loro funzionamento. Ad esempio, se un sistema basato su LLM non richiede la capacità di recuperare i contenuti di un URL, tale plugin non dovrebbe essere offerto all'agente LLM.
 2. Limitare le funzioni implementate nei plugin/strumenti LLM al minimo necessario. Ad esempio, un plugin che accede alla casella di posta elettronica di un utente per riassumere le email dovrebbe limitarsi alla capacità di leggere le email, quindi il plugin non dovrebbe includere altre funzionalità come l'eliminazione o l'invio di messaggi.
 3. Evitare, dove possibile, funzioni aperte (ad esempio, eseguire un comando shell, recuperare un URL, ecc.) e usare plugin/strumenti con funzionalità più granulari. Ad esempio, un'app basata su LLM potrebbe aver bisogno di scrivere alcuni output su un file. Se ciò venisse implementato utilizzando un plugin per eseguire una funzione shell, la superficie d'attacco sarebbe molto più ampia (potrebbe essere eseguito qualsiasi altro comando shell). Un'alternativa più sicura potrebbe essere la realizzazione di un plugin per la scrittura di file che supporta solo quella specifica funzionalità.
@@ -29,6 +30,7 @@ Le seguenti azioni possono prevenire l'Eccessiva Autonomia:
 7. Implementare meccanismi di autorizzazione nei sistemi esterni piuttosto che lasciar decidere al modello LLM se un'azione sia consentita o meno. Quando si implementano strumenti/plugin, applicare il principio di mediazione assoluta dei flussi per assicurare che tutte le richieste fatte ai sistemi a valle tramite i plugin/strumenti vengano validate rispetto alle politiche di sicurezza.
 
 Le seguenti opzioni non prevengono l'Eccessiva Autonomia, ma possono limitare il livello di danno causato:
+
 1. Registrare e monitorare l'attività dei plugin/strumenti LLM e dei sistemi da essi contattati per identificare eventuali azioni indesiderate, e rispondere di conseguenza.
 2. Implementare un limite di frequenza (rate-limiting) per ridurre il numero di azioni indesiderate che possono verificarsi in un dato periodo di tempo, aumentando la probabilità di identificare azioni indesiderate tramite il monitoraggio prima che possano verificarsi danni significativi.
 
