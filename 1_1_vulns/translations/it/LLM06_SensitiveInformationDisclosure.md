@@ -1,4 +1,4 @@
-## LLM06: Diffusione di Informazioni Sensibili
+## LLM06: Divulgazione di Informazioni Sensibili
 
 ### Descrizione
 
