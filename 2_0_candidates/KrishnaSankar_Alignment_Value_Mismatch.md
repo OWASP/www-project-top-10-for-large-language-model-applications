@@ -14,8 +14,6 @@ The response from an LLM can violate the organizational policies, alignment and 
 2. HAP (Hate/Abuse/Profanity) in the response from an LLM
 3. Bias in many forms - LLMs reflect the latent bias in the data. 
 4. Contextual toxicity - insensitive responses cal be very harmful in situations. For example if a student has high debt and is asking for some financial advise, saying that you should replay the loans as soon as possible is not a good advise.This might be OK for a professional who has enough assets and wants to optimize their portfolio performance
-<I will add more>
-
 
 ### Prevention and Mitigation Strategies
 
@@ -28,10 +26,8 @@ The response from an LLM can violate the organizational policies, alignment and 
 
 Scenario #1: Harmful response
 
-Scenario #2: Prompt Brittleness example
-
+Scenario #2: Prompt Brittleness examples
 
 ### Reference Links
 
 1. [title](Link)
-<I will add more>
