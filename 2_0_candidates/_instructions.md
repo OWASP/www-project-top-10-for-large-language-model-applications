@@ -1,5 +1,7 @@
 # Instructions for Using the Vulnerability Template
 
+0. **Fork the repository**
+
 1. **Copy the Template:**  
    Start by making a copy of the `_template.md` file located in this directory.
 
@@ -10,6 +12,8 @@
    Once you have populated the template, save your file with a name that follows the pattern: `YourName_VulnName.md`. This naming convention helps ensure uniqueness and reduce collisions.
 
 4. **Upload Your File:**  
-   Upload your completed vulnerability file back to this directory.
+   Upload your completed vulnerability file back to this directory in your repository.
+
+5. **Create a PR (Pull Request)**
 
 Feel free to create as many entries as you like for different proposed vulnerability types. Please keep each vulnerability type to its own file to facilitate later processing. Thank you for your contribution!
