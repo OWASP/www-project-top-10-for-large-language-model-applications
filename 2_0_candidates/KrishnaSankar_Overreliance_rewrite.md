@@ -6,12 +6,16 @@
 
 ### Description
 
+Action : This is an update to the v1.1. The current description and other sections need update as shown below
+
+#### Current
 Overreliance on LLMs can lead to misinformation or inappropriate content due to "hallucinations." Without
 proper oversight, this can result in legal issues and reputational damage.
 
-Discussion : Overreliance doesn't cause hallucination or vice versa. Hallucination/emergent behavior should have it's own place in Top n, not in this.
+#### Discussion
+Overreliance doesn't cause hallucination or vice versa. Hallucination/emergent behavior should have it's own place in Top n, not in this.
 
-Change as :
+#### Change as :
 Overreliance on LLMs can lead to operational problems, legal issues and reputational damage. Another important risk is the transition to AI mediated enterprise knowledge access
 
 ### Common Examples of Risk
@@ -22,9 +26,6 @@ Overreliance on LLMs can lead to operational problems, legal issues and reputati
 4. Commoditization and distributed rationality can result in materials without context and production lineage. As a result new updated documents might not find their way everywhere they are used 
 5. Reduced worker value and loss of agency can result in worker dissatisfaction
 
-<I will add more>
-
-
 ### Prevention and Mitigation Strategies
 
 1. Prevention Step 1: Landscape analysis of any and all LLM based applications
@@ -32,8 +33,8 @@ Overreliance on LLMs can lead to operational problems, legal issues and reputati
 
 ### Example Attack Scenarios
 
+1. Multiple overlapping lLMs on the same process creating confusion and cross purposes
 
 ### Reference Links
 
 1. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge Access and Identifying Risks to Workers](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/)
-<I will add more>
