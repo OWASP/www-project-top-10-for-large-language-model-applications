@@ -18,11 +18,11 @@ The response from an LLM can violate the organizational policies, alignment and 
 
 ### Prevention and Mitigation Strategies
 
-1. Response analysis and firewall such responses
-2. Similarly response analysis and firewall should be there for bias
+1. Response analysis and sue proxies to filter such responses
+2. Similarly response analysis and proxies should be there for bias
 3. Prompt brittleness can't be avoided, but reduced. Prompt rewriting is one strategy, another strategy is to extract commonly used prompts and show them as an FAQ so that users can just reuse the prompts; especially for new users
 4. Contextual toxicity requires more work - probably trained small LLMs specifically for this domain-specific task
-5. Off topic prompt inspection firewall as well as offtopic response analysis mechanisms
+5. Off topic prompt inspection proxy as well as off topic response analysis mechanisms
 
 ### Example Attack Scenarios
 
