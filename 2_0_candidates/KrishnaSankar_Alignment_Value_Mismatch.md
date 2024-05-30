@@ -14,13 +14,15 @@ The response from an LLM can violate the organizational policies, alignment and 
 2. HAP (Hate/Abuse/Profanity) in the response from an LLM
 3. Bias in many forms - LLMs reflect the latent bias in the data. 
 4. Contextual toxicity - insensitive responses cal be very harmful in situations. For example if a student has high debt and is asking for some financial advise, saying that you should replay the loans as soon as possible is not a good advise.This might be OK for a professional who has enough assets and wants to optimize their portfolio performance
+5. Egregious conversation - People asking for Python code, to solve the Navier-Stokes fluid flow equations,to an auto dealership chatbot
 
 ### Prevention and Mitigation Strategies
 
-1. Prevention Step 1: HAP prevention needs response analysis and firewall such responses
-2. Prevention Step 2: Similarly response analysis and firewall should be there for bias
-3. Prevention Step 3: Prompt brittleness can't be avoided, but reduced. Prompt rewriting is one strategy, another strategy is to extract commonly used prompts and show them as an FAQ so that users can just reuse the prompts; especially for new users
-4. Prevention Step 4: Contextual toxicity requires more work - probably trained small LLMs specifically for this domain-specific task 
+1. Response analysis and firewall such responses
+2. Similarly response analysis and firewall should be there for bias
+3. Prompt brittleness can't be avoided, but reduced. Prompt rewriting is one strategy, another strategy is to extract commonly used prompts and show them as an FAQ so that users can just reuse the prompts; especially for new users
+4. Contextual toxicity requires more work - probably trained small LLMs specifically for this domain-specific task
+5. Off topic prompt inspection firewall as well as offtopic response analysis mechanisms
 
 ### Example Attack Scenarios
 
