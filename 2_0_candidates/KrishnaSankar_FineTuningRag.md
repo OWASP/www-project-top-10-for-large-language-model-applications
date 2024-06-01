@@ -43,3 +43,4 @@ Scenario #2: Access control risk by combining data with different access restric
 
 1. [Fine-Tuning LLMs Breaks Their Safety and Security Alignment](https://www.robustintelligence.com/blog-posts/fine-tuning-llms-breaks-their-safety-and-security-alignment)
 2. [What is the RAG Triad?](https://truera.com/ai-quality-education/generative-ai-rags/what-is-the-rag-triad/)
+3. [How RAG Poisoning Made Llama3 Racist!](https://blog.repello.ai/how-rag-poisoning-made-llama3-racist-1c5e390dd564)
