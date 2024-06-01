@@ -13,20 +13,21 @@ The risks and vulnerabilities range from breaking safety and alignment to outdat
 
 ### Common Examples of Risk
 
-1. Fine-Tuning LLMs breaks their safety and security alignment 
-2. RAG Data poisoning - unvetted documents can contain hidden injection attacks, for example resumes with transparent (white on white) instructions
-3. RAG Data Federation errors incl data mismatch - data from multiple sources can contradict or the combined result might be misleading or downright wrong
-4. RAG might not alleievate older data - a model might not easily incorporate new information when it contradicts with the data it has been trained with. For example, a model trained with a company's engineering data or user manuals which are public (multiple copies repeated from different sources) are so strong that new updated documents might not be reflected, even when we use RAG with update documents
-5. RAG can bypass access controls - data from different disparate sources might find their way into a central vector db and a query might traverse all of them without regard to the access restrictions
-6. RAG- outdated data/data obsolescence risk - this is more pronounced in customer service, operating procedures and so forth. Usually people update documents and they upload to a common place for others to refer to. With RAG and VectorDB, it is not that simple - documents need to be validated, added to the embedding pipeline and follow from there. Then the system needs to be tested as a new document might trigger some unknown response from an LLM. (See Knowledge mediated Risk)
-7. RAG Data parameter risk - when documents are updated they might make the RAG parameters like chunk size obsolete. For example a fare table might add more tiers making the table longer, thus the original chunking becomes obsolete.
+1. Fine-Tuning LLMs can break their safety and security alignment (Ref #1)
+2. Adversaries can easily remove the safety alignment of certain models (Llama-2 and GPT-3.5) through fine-tuning with a few maliciously designed data points, highlighting the disparity between adversary capabilities and alignment efficacy.
+3. RAG Data poisoning - unvetted documents can contain hidden injection attacks, for example resumes with transparent (white on white) instructions
+4. RAG Data Federation errors incl data mismatch - data from multiple sources can contradict or the combined result might be misleading or downright wrong
+5. RAG might not alleievate older data - a model might not easily incorporate new information when it contradicts with the data it has been trained with. For example, a model trained with a company's engineering data or user manuals which are public (multiple copies repeated from different sources) are so strong that new updated documents might not be reflected, even when we use RAG with update documents
+6. RAG can bypass access controls - data from different disparate sources might find their way into a central vector db and a query might traverse all of them without regard to the access restrictions
+7. RAG- outdated data/data obsolescence risk - this is more pronounced in customer service, operating procedures and so forth. Usually people update documents and they upload to a common place for others to refer to. With RAG and VectorDB, it is not that simple - documents need to be validated, added to the embedding pipeline and follow from there. Then the system needs to be tested as a new document might trigger some unknown response from an LLM. (See Knowledge mediated Risk)
+8. RAG Data parameter risk - when documents are updated they might make the RAG parameters like chunk size obsolete. For example a fare table might add more tiers making the table longer, thus the original chunking becomes obsolete.
 
 
 ### Prevention and Mitigation Strategies
 
 1. There should be processes in place to improve the quality and concurrency of RAG knowledge sources
 2. A mature end-to-end access control strategy that takes into account the RAG pipeline stages
-3. Reevaluate safety and security alignment after fine tuning and RAG
+3. Reevaluate safety and security alignment after fine tuning and RAG - using mechanisms like Red Teaming. Any LLM system in production should be AI Red Teamed at least weekly
 4. When combining data from different sources, do a thorough review of the combined dataset in the VectorDb
 5. Have fine grained access control at the VectorDb level or have granular partition and appropriate visibility
 6. For fine tuning and RAG validate all documents and data for hidden codes, data poisoning et al
@@ -43,3 +44,4 @@ Scenario #2: Access control risk by combining data with different access restric
 
 1. [Fine-Tuning LLMs Breaks Their Safety and Security Alignment](https://www.robustintelligence.com/blog-posts/fine-tuning-llms-breaks-their-safety-and-security-alignment)
 2. [What is the RAG Triad?](https://truera.com/ai-quality-education/generative-ai-rags/what-is-the-rag-triad/)
+3. [Fine-tuning Aligned Language Models Compromises Safety, Even When Users Do Not Intend To!](https://openreview.net/forum?id=hTEGyKf0dZ)
