@@ -6,7 +6,7 @@
 
 ### Description
 
-The two popular mechanisms to make the results from an LLM more relevant and accurate are RAG (Retrieval Augmented Generation) and finetuning.
+The two popular mechanisms to make the results from an LLM more relevant and accurate are RAG (Retrieval Augmented Generation) and finetuning. (Ref #5)
 Of these, RAG is more easier (and commonly used), while finetuning requires more resources.
 Moreover finetuning might not be possible with proprietary models.
 The risks and vulnerabilities range from breaking safety and alignment to outdated information to data poisoning to access control to data freshness and synchronization
@@ -46,3 +46,4 @@ Scenario #2: Access control risk by combining data with different access restric
 2. [What is the RAG Triad?](https://truera.com/ai-quality-education/generative-ai-rags/what-is-the-rag-triad/)
 3. [How RAG Poisoning Made Llama3 Racist!](https://blog.repello.ai/how-rag-poisoning-made-llama3-racist-1c5e390dd564)
 4. [Fine-tuning Aligned Language Models Compromises Safety, Even When Users Do Not Intend To!](https://openreview.net/forum?id=hTEGyKf0dZ)
+5. [How RAG Architecture Overcomes LLM Limitations](https://thenewstack.io/how-rag-architecture-overcomes-llm-limitations/)
