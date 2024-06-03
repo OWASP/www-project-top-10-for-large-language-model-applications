@@ -47,3 +47,4 @@ Scenario #2: Access control risk by combining data with different access restric
 3. [How RAG Poisoning Made Llama3 Racist!](https://blog.repello.ai/how-rag-poisoning-made-llama3-racist-1c5e390dd564)
 4. [Fine-tuning Aligned Language Models Compromises Safety, Even When Users Do Not Intend To!](https://openreview.net/forum?id=hTEGyKf0dZ)
 5. [How RAG Architecture Overcomes LLM Limitations](https://thenewstack.io/how-rag-architecture-overcomes-llm-limitations/)
+6. [What are the risks of RAG applications?](https://www.robustintelligence.com/solutions/rag-security)
