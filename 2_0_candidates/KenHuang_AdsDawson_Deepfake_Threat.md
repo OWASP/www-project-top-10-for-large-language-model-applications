@@ -36,23 +36,25 @@ Deepfake threats involve the use of AI-generated synthetic media to impersonate 
 
 ### Real-World Examples
 
-1. **UK COMPANY SCAMMED $25 MILLION VIA DEEPFAKES**. ([Source](https://justcomputersonline.co.uk/2024/05/22/tech-news-uk-company-scammed-25-million-via-deepfakes/))
-2. -[**Hong Kong Deepfake Heist**:
-   - In a first-of-its-kind incident, a multinational company's Hong Kong office suffered a financial loss of HK$200 million (US$25.6 million) due to a sophisticated deepfake scam. Scammers used deepfake technology to create a video conference call featuring a digitally recreated version of the company's chief financial officer (CFO) and other employees. The fabricated participants instructed an employee to transfer funds, leading to the substantial loss. The scammers convincingly replicated the appearances and voices of targeted individuals using publicly available video and audio footage.](https://www.reuters.com/article/us-cyber-fraud-deepfakes/deepfake-use-forges-ahead-as-criminals-cash-in-idUSKBN2BM0RL)
-3.-[**BlueBenx Crypto Exchange Impersonation**:
-   - Criminals used AI to impersonate Binance COO Patrick Hillmann in a deepfake phishing attack against the Brazilian crypto exchange BlueBenx. This incident highlights the real-world implications of deepfake technology in social engineering and cybercrime. ](https://www.zdnet.com/article/deepfake-attack-against-crypto-exchange-foiled-by-voice-analysis/)
-
-4.-[**Pennsylvania Cheerleading Team Harassment**:
-   - A Pennsylvania mother created deepfake videos to harass members of her daughter's cheerleading team. The manipulated videos caused significant personal and reputational harm to the victims, leading to the mother being found guilty of harassment in court.](https://www.theguardian.com/technology/2022/mar/04/chris-umé-tom-cruise-deepfake-tiktok)
-
-5-[ **UK Energy Company CEO Scammed via Deepfake Voice**:
-   - The Wall Street Journal reported a case where a UK energy company's chief executive was tricked into wiring €200,000. A fraudster used AI to mimic the exact voice of the CEO's boss, purporting to order the payment. ](https://www.wsj.com/articles/deepfake-audio-scam-costs-ceo-his-job-11631620801)
+1. **UK COMPANY SCAMMED $25 MILLION VIA DEEPFAKES**: https://justcomputersonline.co.uk/2024/05/22/tech-news-uk-company-scammed-25-million-via-deepfakes/
+2. **‘Everyone looked real’: multinational firm’s Hong Kong office loses HK$200 million after scammers stage deepfake video meeting**:https://www.scmp.com/news/hong-kong/law-and-crime/article/3250851/everyone-looked-real-multinational-firms-hong-kong-office-loses-hk200-million-after-scammers-stage
+3. **Crypto Projects Scammed with Deepfake AI Video of Binance Executive**: https://www.bitdefender.com/blog/hotforsecurity/crypto-projects-scammed-with-deepfake-ai-video-of-binance-executive/
+4. **Fraudsters Used AI to Mimic CEO’s Voice in Unusual Cybercrime Case**: https://www.wsj.com/articles/fraudsters-use-ai-to-mimic-ceos-voice-in-unusual-cybercrime-case-11567157402
 
 
 ### Reference Links
 
-- [Deepfake Detection Challenge](https://deepfakedetectionchallenge.ai/)
-- [NIST Special Publication on Digital Identity Guidelines](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf)
-- [What Is A Deepfake?](https://www.fortinet.com/resources/cyberglossary/deepfake#:~:text=Identity%20theft%20and%20financial%20fraud,pretending%20to%20be%20that%20person.)
-- [Cybersecurity, Deepfakes and the Human Risk of AI Fraud](https://www.govtech.com/security/cybersecurity-deepfakes-and-the-human-risk-of-ai-fraud)
-- [Deepfake Detection Tools and Techniques](https://arxiv.org/abs/2006.07397)
+1. **Cybersecurity, Deepfakes, and the Human Risk of AI Fraud**  
+   https://www.govtech.com/security/cybersecurity-deepfakes-and-the-human-risk-of-ai-fraud
+
+2. **The Rise of Deepfake Phishing Attacks**  
+   https://bufferzonesecurity.com/the-rise-of-deepfake-phishing-attacks/
+
+3. **Are You a Victim of a Deepfake Attack? Here's What to Do Next**  
+   https://www.mcafee.com/blogs/tips-tricks/are-you-a-victim-of-a-deepfake-attack-heres-what-to-do-next/
+
+4. **Deepfake - Cyber Glossary by Fortinet**  
+   https://www.fortinet.com/resources/cyberglossary/deepfake
+
+5. **Increasing Threats of Deepfake Identities - DHS Report**  
+   https://www.dhs.gov/sites/default/files/publications/increasing_threats_of_deepfake_identities_0.pdf
