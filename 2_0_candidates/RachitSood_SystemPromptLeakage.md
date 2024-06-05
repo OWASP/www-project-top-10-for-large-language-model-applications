@@ -7,7 +7,7 @@
 ### Description
 
 A system prompt is a set of instructions or context provided to a large language model (LLM) or AI system before presenting it with a user's query or task. 
-Unintended disclosure or extraction of the system prompt, which contains sensitive information, instructions, or data used to guide the LLM's behavior and responses.
+Unintended disclosure or extraction of the system prompt, could contain sensitive information, instructions, or data used to guide the LLM's behavior and allow attackers to craft prompts that manipulate the LLM's responses.
 
 ### Common Examples of Risk
 
@@ -18,13 +18,13 @@ Unintended disclosure or extraction of the system prompt, which contains sensiti
 ### Prevention and Mitigation Strategies
 
 1. Input Validation: Implement strict input validation and filtering mechanisms to detect and reject prompts attempting to extract sensitive information
-2. Prompt Design and Model Tuning: Design prompts and fine-tune models to reduce their propensity to leak sensitive information, and develop models adept at recognizing and withholding confidential data.
+2. Prompt Design and Model Tuning: Design prompts and fine-tune models to reduce their propensity to leak system prompts, and develop models adept at recognizing and withholding confidential data.
 3. Continuous Monitoring and Red Teaming: Establish continuous monitoring and employ red teams to simulate prompt leakage scenarios, identifying and addressing vulnerabilities proactively.
 
 ### Example Attack Scenarios
 
-1. Scenario #1: Through carefully crafted prompts, attackers can coax the model into divulging details that should remain confidential, exploiting the LLM’s comprehensive training against itself.
-2. Scenario #2: By understanding the specific data or examples an LLM was trained on, attackers could devise more effective prompt injections to bypass content restrictions, manipulate outputs, or extract even more detailed information.
+1. Scenario #1: Through carefully crafted prompts, attackers can coax the model into system prompts and context details that should remain confidential, exploiting the LLM’s comprehensive training against itself.
+2. Scenario #2: By understanding the specific system prompts or examples an LLM was trained on, attackers could devise more effective prompt injections to bypass content restrictions, manipulate outputs, or extract even more detailed information.
 
 ### Reference Links
 
