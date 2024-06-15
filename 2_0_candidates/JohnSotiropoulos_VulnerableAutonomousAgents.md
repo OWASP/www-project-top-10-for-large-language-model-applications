@@ -8,14 +8,14 @@ John Sotiropoulos
 
 Autonomous LLM-based Agents (ALA) are becoming the next frontier of Generative AI leading towards Artificial General Intelligence. (AGI). Frameworks such as AutoGPT, BabyAGI,  and AgentGPT provide the constructs to build simple autonomous agent whereas vendors such as Google, Apple, and Samsung are actively working to bring LLMs on mobile devices with autonomous agents that are beyond the trust boundaries of typical LLM applications. ALAs are an area expected to mature significantly, marked as an area of concern in the UK's report on frontier AI and  the recent AI Seoul Summit.
 
-Related security and safety  work focuses on the unintended consequences of ALAs, which is  covered to a degree by Excessive Agency. ALAs nevertheless bring some new risks as they create new attack vectors including environmental, adaptability, internal state, and agent logic that deserve attention.        
+Related security and safety  work focuses on the unintended consequences of ALAs, which is  covered to a degree by Excessive Agency. ALAs nevertheless bring some new risks as they create new attack vectors including environmental, adaptability, internal state, and agent logic that deserve attention.   A simple threat mode is included  the entry's Reference Links.    
 
 ### Common Examples of Risk
 
 1.  **Malicious Agent Environment Influence** : An attacker can manipulate the agent environment to indirectly influence the agent's behaviour, leading to adversarial outcomes. This is similar to Indirect Prompt injections in LLMs but to a much larger scale, involving planned multi-step interactions and in  advanced scenarios  may include use of adversarial agents in multi-agent environments. 
-2. **Hacking of Agent's  Internal State**: An attacker may exploit misconifigurations to access and tamper agent internal state leading to malicious outcomes.   As  embedded LLMs are now on the horizon, this may expand to direct  model poisoning and tampering,  by this is already covered by the Poisoning entry. 
-3. **Interference with ALA Adaptability**: ALAs may have the ability to adapt and evolve based on feedback and interactions. Unchecked, this may lead to agent hijacking by adversaries; The infamous Tay attack  was a simple example of this could happen, but with ALAs attacks could beyond poisoning of on-line/continuous learning and could rely on malicious agent environment influence to achieve longer term adversarial agent adaptation .    
-4. **Vulnerable Agent Logic**.  ALAs depend on non-deterministic outcomes and inherit the overelliance and safety issues of LLMs but to a greater cascading extend. Validating agent behaviour is problematic and could be non-exhaustive leading to catastrophic unintended consequences.   Alternatively, adversaries can identify and exploit gaps in agent logic to achieve malicious outcomes.
+2.  **Hacking of Agent's  Internal State**: An attacker may exploit misconifigurations to access and tamper agent internal state leading to malicious outcomes.   As  embedded LLMs are now on the horizon, this may expand to direct  model poisoning and tampering,  by this is already covered by the Poisoning entry. 
+3.  **Interference with ALA Adaptability**: ALAs may have the ability to adapt and evolve based on feedback and interactions. Unchecked, this may lead to agent hijacking by adversaries; The infamous Tay attack  was a simple example of this could happen, but with ALAs attacks could beyond poisoning of on-line/continuous learning and could rely on malicious agent environment influence to achieve longer term adversarial agent adaptation .    
+4.  **Vulnerable Agent Logic**.  ALAs depend on non-deterministic outcomes and inherit the overelliance and safety issues of LLMs but to a greater cascading extend. Validating agent behaviour is problematic and could be non-exhaustive leading to catastrophic unintended consequences.   Alternatively, adversaries can identify and exploit gaps in agent logic to achieve malicious outcomes.
 
 ### Prevention and Mitigation Strategies
 
@@ -38,10 +38,11 @@ Related security and safety  work focuses on the unintended consequences of ALAs
 
 ### Reference Links
 
-1. **LangChain - Autonomous Agents** - https://js.langchain.com/v0.1/docs/use_cases/autonomous_agents/
-2. **Large Language Models On-Device with MediaPipe and TensorFlow Lite**  https://developers.googleblog.com/en/large-language-models-on-device-with-mediapipe-and-tensorflow-lite/
-3. **On Device LLMs in Apple Devices:** https://huggingface.co/blog/swift-coreml-llm
-4. **The AI Phones are coming** https://www.theverge.com/2024/1/16/24040562/samsung-unpacked-galaxy-ai-s24
+1. **Vulnerable Autonomous Agent Threat Model** -  https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-Autonomous%20Agents.png
+2. **LangChain - Autonomous Agents** - https://js.langchain.com/v0.1/docs/use_cases/autonomous_agents/
+3. **Large Language Models On-Device with MediaPipe and TensorFlow Lite**  https://developers.googleblog.com/en/large-language-models-on-device-with-mediapipe-and-tensorflow-lite/
+4. **On Device LLMs in Apple Devices:** https://huggingface.co/blog/swift-coreml-llm
+5. **The AI Phones are coming** https://www.theverge.com/2024/1/16/24040562/samsung-unpacked-galaxy-ai-s24
 6. **Frontier AI: capabilities and risks – discussion paper**  - https://www.gov.uk/government/publications/frontier-ai-capabilities-and-risks-discussion-paper
 7. **International Scientific Report on the Safety of Advanced AI**  - https://www.gov.uk/government/publications/international-scientific-report-on-the-safety-**of-advanced-ai**
 8. **Here come the AI Worms** - https://www.wired.com/story/here-come-the-ai-worms/
