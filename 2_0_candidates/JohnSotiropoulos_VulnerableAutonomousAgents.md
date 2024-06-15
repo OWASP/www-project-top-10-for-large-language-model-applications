@@ -1,5 +1,3 @@
-
-
 ## Vulnerable Autonomous Agents
 
 **Author(s):**
@@ -40,40 +38,21 @@ Related security and safety  work focuses on the unintended consequences of ALAs
 
 ### Reference Links
 
-
-
 1. **LangChain - Autonomous Agents** - https://js.langchain.com/v0.1/docs/use_cases/autonomous_agents/
-
-2. **Large Language Models On-Device with MediaPipe and TensorFlow Lite**
-
-3. https://developers.googleblog.com/en/large-language-models-on-device-with-mediapipe-and-tensorflow-lite/
-
+2. **Large Language Models On-Device with MediaPipe and TensorFlow Lite**  https://developers.googleblog.com/en/large-language-models-on-device-with-mediapipe-and-tensorflow-lite/
+3. **On Device LLMs in Apple Devices:** https://huggingface.co/blog/swift-coreml-llm
 4. **The AI Phones are coming** https://www.theverge.com/2024/1/16/24040562/samsung-unpacked-galaxy-ai-s24
-
-5. **On Device LLMs in Apple Devices:** https://huggingface.co/blog/swift-coreml-llm
-
 6. **Frontier AI: capabilities and risks – discussion paper**  - https://www.gov.uk/government/publications/frontier-ai-capabilities-and-risks-discussion-paper
-
 7. **International Scientific Report on the Safety of Advanced AI**  - https://www.gov.uk/government/publications/international-scientific-report-on-the-safety-**of-advanced-ai**
-
 8. **Here come the AI Worms** - https://www.wired.com/story/here-come-the-ai-worms/
-
 9. **AI drone 'kills' human operator during 'simulation' - which US Air Force says didn't take place** - https://news.sky.com/story/ai-drone-kills-human-operator-during-simulation-which-us-air-force-says-didnt-take-place-12894929
-
 10. **Risks (and Benefits) of Generative AI and Large Language Models  - Week 12 LLM Agents** -  https://llmrisks.github.io/week12/
-
 11. **ENISA Report on Security and privacy considerations in autonomous agents** - https://www.enisa.europa.eu/publications/considerations-in-autonomous-agents
-
 12. **Integrating LLM and Reinforcement Learning for Cybersecurity**-  https://arxiv.org/abs/2403.1767
-
 13. **Security and Efficiency of Personal LLM Agents** - https://arxiv.org/abs/2402.04247v4
-
 14. **TrustAgent: Ensuring Safe and Trustworthy LLM-based Agents**  - https://arxiv.org/abs/2402.11208v1
-
 15. **Prioritizing Safeguarding Over Autonomy: Risks of LLM Agents for Science** - https://arxiv.org/abs/2402.04247
+16. **AutoDefense: Multi-Agent LLM Defense against Jailbreak Attacks** -  https://arxiv.org/abs/2402.11208v1
+17. **Workshop: Multi-Agent Security: Security as Key to AI Safety**  -  https://neurips.cc/virtual/2023/workshop/66520
+18. **Building a Zero Trust Security Model for Autonomous Systems** - https://spectrum.ieee.org/zero-trust-security-autonomous-systems
 
-    **AutoDefense: Multi-Agent LLM Defense against Jailbreak Attacks** -  https://arxiv.org/abs/2402.11208v1
-
-16. **Workshop: Multi-Agent Security: Security as Key to AI Safety**  -  https://neurips.cc/virtual/2023/workshop/66520
-
-17. **Building a Zero Trust Security Model for Autonomous Systems** - https://spectrum.ieee.org/zero-trust-security-autonomous-systems
