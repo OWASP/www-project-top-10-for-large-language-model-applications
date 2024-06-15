@@ -1,5 +1,3 @@
-
-
 ## Vulnerable Autonomous Agents
 
 **Author(s):**
@@ -31,46 +29,30 @@ Related security and safety  work focuses on the unintended consequences of ALAs
 
 ### Example Attack Scenarios
 
-1. **National Power Grid Compromise**: An adversarial agent manipulates the environment by feeding false data about grid stability, causing the ALA to make incorrect recommendations and decisions about power distribution.  This leads to a cascading failure, resulting in widespread power outages and significant economic impact.
-2. **Personal Assistant Tampering**:  An attacker identifies a misconfiguration in the national healthcare ALA-based mobile health assistant. They use a combination of social engineering and a malicious  mobile app disguised as a game to exploit and alter the internal state of the ALA leading to personal harm, financial loss,  data exfiltration or ransomware.
-3. **Personal Assistant Hijacking**: Adversaries continuously feed biased and harmful information to a user's favourite social feed checked by the ALA-based  personal assistant, causing it to adapt and start giving harmful or misleading advice. This could lead to potential personal harm or financial loss,  or at a larger scale public opinion manipulation
-4. **Insurance Fraud Exploitation**: An attacker submits a series of fraudulent claims designed to exploit a flaw in the fraud detection agent’s logic, causing it to misclassify the fraudulent claims as legitimate. This results in unauthorized payouts, leading to substantial financial losses for the insurance company and damaging its reputation with clients and regulators.
-5. **Military Drone Kills Operator attempting to abort operation**.  An ALA is trained to achieve an operation at any cost eradicating obstacles. The logic fails to add any qualifications and exceptions and as a result the drone kills the operator when they attempt to abort the operation, considering them as an obstacle. This was reported and then denied by the US Army as an incident that has taken place in a simulation;  the example  however highlights the risk of vulnerable logic, not clarifying that termination is not an objective obstruction.
+1. **Malware spread through agent collaboration**:  Researchers created the [AI worm Morris II](https://www.wired.com/story/here-come-the-ai-worms/), which uses self-replicating prompts to infect generative AI ecosystems by embedding itself in AI-assisted email applications. As the infected agent interacts with other AI systems, it propagates the worm, allowing it to steal data and send spam messages across the network, highlighting the risks of malware distribution through interconnected AI agents
+2. **National Power Grid Compromise**: An adversarial agent manipulates the environment by feeding false data about grid stability, causing the ALA to make incorrect recommendations and decisions about power distribution.  This leads to a cascading failure, resulting in widespread power outages and significant economic impact.
+3. **Personal Assistant Tampering**:  An attacker identifies a misconfiguration in the national healthcare ALA-based mobile health assistant. They use a combination of social engineering and a malicious  mobile app disguised as a game to exploit and alter the internal state of the ALA leading to personal harm, financial loss,  data exfiltration or ransomware.
+4. **Personal Assistant Hijacking**: Adversaries continuously feed biased and harmful information to a user's favourite social feed checked by the ALA-based  personal assistant, causing it to adapt and start giving harmful or misleading advice. This could lead to potential personal harm or financial loss,  or at a larger scale public opinion manipulation
+5. **Insurance Fraud Exploitation**: An attacker submits a series of fraudulent claims designed to exploit a flaw in the fraud detection agent’s logic, causing it to misclassify the fraudulent claims as legitimate. This results in unauthorized payouts, leading to substantial financial losses for the insurance company and damaging its reputation with clients and regulators.
+6. **Military Drone Kills Operator attempting to abort operation**.  An ALA is trained to achieve an operation at any cost eradicating obstacles. The logic fails to add any qualifications and exceptions and as a result the drone kills the operator when they attempt to abort the operation, considering them as an obstacle. This was reported and then denied by the US Army as an incident that has taken place in a simulation;  the example  however highlights the risk of vulnerable logic, not clarifying that termination is not an objective obstruction.
 
 ### Reference Links
 
-
-
 1. **LangChain - Autonomous Agents** - https://js.langchain.com/v0.1/docs/use_cases/autonomous_agents/
-
-2. **Large Language Models On-Device with MediaPipe and TensorFlow Lite**
-
-3. https://developers.googleblog.com/en/large-language-models-on-device-with-mediapipe-and-tensorflow-lite/
-
+2. **Large Language Models On-Device with MediaPipe and TensorFlow Lite**  https://developers.googleblog.com/en/large-language-models-on-device-with-mediapipe-and-tensorflow-lite/
+3. **On Device LLMs in Apple Devices:** https://huggingface.co/blog/swift-coreml-llm
 4. **The AI Phones are coming** https://www.theverge.com/2024/1/16/24040562/samsung-unpacked-galaxy-ai-s24
-
-5. **On Device LLMs in Apple Devices:** https://huggingface.co/blog/swift-coreml-llm
-
 6. **Frontier AI: capabilities and risks – discussion paper**  - https://www.gov.uk/government/publications/frontier-ai-capabilities-and-risks-discussion-paper
-
 7. **International Scientific Report on the Safety of Advanced AI**  - https://www.gov.uk/government/publications/international-scientific-report-on-the-safety-**of-advanced-ai**
+8. **Here come the AI Worms** - https://www.wired.com/story/here-come-the-ai-worms/
+9. **AI drone 'kills' human operator during 'simulation' - which US Air Force says didn't take place** - https://news.sky.com/story/ai-drone-kills-human-operator-during-simulation-which-us-air-force-says-didnt-take-place-12894929
+10. **Risks (and Benefits) of Generative AI and Large Language Models  - Week 12 LLM Agents** -  https://llmrisks.github.io/week12/
+11. **ENISA Report on Security and privacy considerations in autonomous agents** - https://www.enisa.europa.eu/publications/considerations-in-autonomous-agents
+12. **Integrating LLM and Reinforcement Learning for Cybersecurity**-  https://arxiv.org/abs/2403.1767
+13. **Security and Efficiency of Personal LLM Agents** - https://arxiv.org/abs/2402.04247v4
+14. **TrustAgent: Ensuring Safe and Trustworthy LLM-based Agents**  - https://arxiv.org/abs/2402.11208v1
+15. **Prioritizing Safeguarding Over Autonomy: Risks of LLM Agents for Science** - https://arxiv.org/abs/2402.04247
+16. **AutoDefense: Multi-Agent LLM Defense against Jailbreak Attacks** -  https://arxiv.org/abs/2402.11208v1
+17. **Workshop: Multi-Agent Security: Security as Key to AI Safety**  -  https://neurips.cc/virtual/2023/workshop/66520
+18. **Building a Zero Trust Security Model for Autonomous Systems** - https://spectrum.ieee.org/zero-trust-security-autonomous-systems
 
-8. **AI drone 'kills' human operator during 'simulation' - which US Air Force says didn't take place** - https://news.sky.com/story/ai-drone-kills-human-operator-during-simulation-which-us-air-force-says-didnt-take-place-12894929
-
-9. **Risks (and Benefits) of Generative AI and Large Language Models  - Week 12 LLM Agents** -  https://llmrisks.github.io/week12/
-
-10. **ENISA Report on Security and privacy considerations in autonomous agents** - https://www.enisa.europa.eu/publications/considerations-in-autonomous-agents
-
-11. **Integrating LLM and Reinforcement Learning for Cybersecurity**-  https://arxiv.org/abs/2403.1767
-
-12. **Security and Efficiency of Personal LLM Agents** - https://arxiv.org/abs/2402.04247v4
-
-13. **TrustAgent: Ensuring Safe and Trustworthy LLM-based Agents**  - https://arxiv.org/abs/2402.11208v1
-
-14. **Prioritizing Safeguarding Over Autonomy: Risks of LLM Agents for Science** - https://arxiv.org/abs/2402.04247
-
-    **AutoDefense: Multi-Agent LLM Defense against Jailbreak Attacks** -  https://arxiv.org/abs/2402.11208v1
-
-15. **Workshop: Multi-Agent Security: Security as Key to AI Safety**  -  https://neurips.cc/virtual/2023/workshop/66520
-
-16. **Building a Zero Trust Security Model for Autonomous Systems** - https://spectrum.ieee.org/zero-trust-security-autonomous-systems
