@@ -1,10 +1,10 @@
-## Access Control Manipulation
+## User Interface Access Control Manipulation
 
 **Author(s):** [Talesh Seeparsan](https://github.com/talesh)
 
 ### Description
 
-Access Control Manipulation occurs when an application is leveraging a large language model (LLM) to dynamically create or modify user interface (UI) elements based on user input or prompts. An attacker can exploit this by crafting specific inputs or prompts that manipulate the LLM into generating UI elements that grant higher permissions or access levels than the user should have access to. This can lead to unauthorized access and exposure of sensitive application functionalities. With an LLM building UI elements as a privileged entity and is also controlled by the user the access control line of the user becomes blurry and can be used to escalate privilege or abuse the system. There are two variations of this vulnerability.
+User Interface Access Control Manipulation occurs when an application leverages a large language model (LLM) to dynamically create or modify user interface (UI) elements based on user input or prompts. An attacker can exploit this by crafting specific inputs or prompts to manipulate the LLM into generating UI elements or populating UI elements with data not intended by the application authors. This can lead to unauthorized access to data and exposure of sensitive application functionalities. When an LLM builds UI elements as a privileged entity of an application and it is also controlled by the user, the access control line of the user becomes blurry. There are two variations of this vulnerability.
 1. When a limited selection of UI elements that can be dynamically prepared and displayed to the user, prompts can be crafted to display elements that the user should not have access to.
 2. When the LLM has full control to determine what UI elements should be displayed to the user, prompts can be crafted to give the user input elements and forms that can effect changes beyond the user's scope of control.
 
