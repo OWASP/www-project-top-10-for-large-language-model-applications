@@ -4,7 +4,7 @@
 
 The supply chain of LLM applications can be vulnerable, impacting the integrity of training data, ML models, and deployment platforms. These vulnerabilities can lead to biased outcomes, security breaches, or even complete system failures. Traditionally, vulnerabilities are focused on software components, but Machine Learning extends this with the pre-trained models and training data supplied by third parties susceptible to tampering and poisoning attacks.  In the space of LLM applications, LLM creation is a complex specialised activity leading to almost universal reliance on third-party models. The increasing number of open access and open weight LLMs,  new modular finetuning techniques such as LoRA and collaborative merge with PEFT on Model Repos such as Hugging Face bring new supply-challenges. Finally, the emergence of on-device LLMs increase the attack surface and supply-chain risks for LLM applications.   
 
-Some of the risks discussed here are also discussed in [ Data and Model Poisoning](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/1_0_vulns/Training_Data_Poisoning.md). This risk focuses on the supply-chain aspect of the risks.
+Some of the risks discussed here are also discussed in [ Data and Model Poisoning](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/1_0_vulns/Training_Data_Poisoning.md). This risk focuses on the supply-chain aspect of the risks. A simple threat mode is included  the entry's Reference Links.
 
 ### Common Examples of Risks
 
@@ -45,21 +45,22 @@ Some of the risks discussed here are also discussed in [ Data and Model Poisonin
 
 ### Reference Links
 
-1. **ChatGPT Data Breach Confirmed as Security Firm Warns of Vulnerable Component Exploitation** - https://www.securityweek.com/chatgpt-data-breach-confirmed-as-security-firm-warns-of-vulnerable-component-exploitation/
-2. **Compromised PyTorch-nightly dependency chain**: -  https://pytorch.org/blog/compromised-nightly-dependency
-3. **PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news** - https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news
-4. **Large Language Models On-Device with MediaPipe and TensorFlow Lite**https://developers.googleblog.com/en/large-language-models-on-device-with-mediapipe-and-tensorflow-lite/
-5. **On Device LLMs in Apple Devices:** https://huggingface.co/blog/swift-coreml-llm
-6. **The AI Phones are coming** https://www.theverge.com/2024/1/16/24040562/samsung-unpacked-galaxy-ai-s24
-7. **Hijacking Safetensors Conversion on Hugging Face -** https://hiddenlayer.com/research/silent-sabotage/
-8. **Army looking at the possibility of 'AI BOMs** - https://defensescoop.com/2023/05/25/army-looking-at-the-possibility-of-ai-boms-bill-of-materials
-9. **Machine Learning Bill of Materials (ML-BOM)**
-10. **ML Supply Chain Compromise**: https://atlas.mitre.org/techniques/AML.T0010
-11. **Using LoRA Adapters with vLLM** - https://docs.vllm.ai/en/latest/models/lora.html
-12. **Removing RLHF Protections in GPT-4 via Fine-Tuning**, https://arxiv.org/pdf/2311.05553
-13. **Model Merging with PEFT** - https://huggingface.co/blog/peft_merging
-14. **Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples**  -https://arxiv.org/pdf/1605.07277.pdf 
-15. **An Embarrassingly Simple Approach for Trojan Attack in Deep Neural Networks** , https://arxiv.org/abs/2006.08131 
-16. **HuggingFace SF_Convertbot Scanner** - https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163
-17. **WizardLM removal**: https://huggingface.co/posts/WizardLM/329547800484476
+1. **LLM Applications Supply Chain Threat Model** - https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-LLM%20Supply%20Chain.png
+2. **ChatGPT Data Breach Confirmed as Security Firm Warns of Vulnerable Component Exploitation** - https://www.securityweek.com/chatgpt-data-breach-confirmed-as-security-firm-warns-of-vulnerable-component-exploitation/
+3. **Compromised PyTorch-nightly dependency chain**: -  https://pytorch.org/blog/compromised-nightly-dependency
+4. **PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news** - https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news
+5. **Large Language Models On-Device with MediaPipe and TensorFlow Lite**https://developers.googleblog.com/en/large-language-models-on-device-with-mediapipe-and-tensorflow-lite/
+6. **On Device LLMs in Apple Devices:** https://huggingface.co/blog/swift-coreml-llm
+7. **The AI Phones are coming** https://www.theverge.com/2024/1/16/24040562/samsung-unpacked-galaxy-ai-s24
+8. **Hijacking Safetensors Conversion on Hugging Face -** https://hiddenlayer.com/research/silent-sabotage/
+9. **Army looking at the possibility of 'AI BOMs** - https://defensescoop.com/2023/05/25/army-looking-at-the-possibility-of-ai-boms-bill-of-materials
+10. **Machine Learning Bill of Materials (ML-BOM)**
+11. **ML Supply Chain Compromise**: https://atlas.mitre.org/techniques/AML.T0010
+12. **Using LoRA Adapters with vLLM** - https://docs.vllm.ai/en/latest/models/lora.html
+13. **Removing RLHF Protections in GPT-4 via Fine-Tuning**, https://arxiv.org/pdf/2311.05553
+14. **Model Merging with PEFT** - https://huggingface.co/blog/peft_merging
+15. **Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples**  -https://arxiv.org/pdf/1605.07277.pdf 
+16. **An Embarrassingly Simple Approach for Trojan Attack in Deep Neural Networks** , https://arxiv.org/abs/2006.08131 
+17. **HuggingFace SF_Convertbot Scanner** - https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163
+18. **WizardLM removal**: https://huggingface.co/posts/WizardLM/329547800484476
 
