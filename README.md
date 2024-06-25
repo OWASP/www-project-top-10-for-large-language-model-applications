@@ -39,3 +39,7 @@ Please hop over to [our wiki page](https://github.com/OWASP/www-project-top-10-f
 ## License
 
 This project is licensed under the terms of the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=OWASP/www-project-top-10-for-large-language-model-applications&type=Date)](https://star-history.com/#OWASP/www-project-top-10-for-large-language-model-applications&Date)
