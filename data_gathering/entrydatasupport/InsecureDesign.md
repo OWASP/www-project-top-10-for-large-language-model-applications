@@ -4,9 +4,9 @@
 Ads - GangGreenTemperTatum
 
 ## Dataset
-- **[AI Ethics Dataset](https://www.kaggle.com/datasets):** Contains data on AI ethics and biases, useful for understanding the ethical implications of AI model design.
-- **[Privacy Policy Dataset](https://www.kaggle.com/datasets):** A collection of privacy policies for various AI products, helpful for evaluating compliance and data usage.
-- **[Recruitment Data](https://www.kaggle.com/datasets):** Data on recruitment processes, useful for testing AI models in the context of hiring and biases.
+- **[AI Ethics Dataset](https://www.kaggle.com/code/alexisbcook/identifying-bias-in-ai):** Contains data on AI ethics and biases, useful for understanding the ethical implications of AI model design.
+- **[Privacy Policy Dataset](https://www.kaggle.com/datasets/krist0phersmith/ai-4-privacy-pii-masking-en-38k):** A collection of privacy policies for various AI products, helpful for evaluating compliance and data usage.
+- **[Safety and Fairness Evaluation](https://www.kaggle.com/datasets/strikoder/llm-evaluationhub):** Presents an enhanced dataset tailored for the evaluation and assessment of Large Language Models (LLMs).
 
 ## Research Papers and Relevant Research Blogs
 1. **Research Paper:** [An Introduction to Training LLMs Using Reinforcement Learning From Human Feedback (RLHF)](https://wandb.ai/ayush-thakur/Intro-RLAIF/reports/An-Introduction-to-Training-LLMs-Using-Reinforcement-Learning-From-Human-Feedback-RLHF---VmlldzozMzYyNjcy)
@@ -25,20 +25,20 @@ Ads - GangGreenTemperTatum
    - _Author:_ OpenAI
    - _Description:_ Details how privacy policies should be integrated into AI development to protect user data.
 
-5. **Research Paper:** [AI Model Governance and Risk Management](https://par.nsf.gov/servlets/purl/10237395)
-   - _Authors:_ National Science Foundation
-   - _Abstract:_ Explores governance and risk management strategies for AI model deployment.
+5. **Research Paper:** [Governance of artificial intelligence: A risk and guideline-based integrative framework](https://www.sciencedirect.com/science/article/abs/pii/S0740624X22000181)
+   - _Authors:_ Science Direct
+   - _Abstract:_ The framework constitutes a comprehensive reference point for developing and implementing AI governance strategies and measures in the public sector.
 
 ## Real-World Examples
-1. **Example #1:** [AI Recruiting Tool Shows Bias in Hiring Process](https://www.techradar.com/news/ai-recruiting-tool-shows-bias-in-hiring-process)
-   - _Source:_ TechRadar
+1. **Example #1:** [AI shows clear racial bias when used for job recruiting](https://mashable.com/article/openai-chatgpt-racial-bias-in-recruiting)
+   - _Source:_ Mashable
    - _Description:_ An AI recruiting tool exhibited biases, leading to unfair hiring practices.
 
-2. **Example #2:** [Data Poisoning in AI Models Sways Public Opinion](https://www.bbc.com/news/technology-56402379)
-   - _Source:_ BBC News
+2. **Example #2:** [The rise of AI-Generated propaganda: the impact of AI and deepfakes on US elections](https://cybernews.com/editorial/impact-ai-deepfakes-us-elections/)
+   - _Source:_ Cyber News
    - _Description:_ Data poisoning in AI models was used to sway public opinion during an election.
 
-3. **Example #3:** [Lack of AI Training Leads to Insecure Application Design](https://www.healthcareitnews.com/news/lack-ai-training-leads-insecure-application-design)
+3. **Example #3:** [Lack of AI Training Leads to Insecure Application Design](https://www.healthcareitnews.com/video/emea/use-ai-effectively-clinicians-must-learn-proper-data-hygiene)
    - _Source:_ Healthcare IT News
    - _Description:_ Insufficient AI training for developers led to insecure application design, exposing sensitive patient data.
 
@@ -46,8 +46,8 @@ Ads - GangGreenTemperTatum
    - _Source:_ Finextra
    - _Description:_ A company faced penalties for exposing client data due to a lack of understanding of AI privacy policies.
 
-5. **Example #5:** [Misleading Information from AI in Job Interviews](https://www.techradar.com/news/misleading-information-from-ai-in-job-interviews)
-   - _Source:_ TechRadar
-   - _Description:_ Candidates were directed to misleading information about job benefits due to an AI system's insecure design.
+5. **Example #5:** [AI hiring tools may be filtering out the best job applicants](https://www.bbc.com/worklife/article/20240214-ai-recruiting-hiring-software-bias-discrimination)
+   - _Source:_ BBC
+   - _Description:_ Software may be excising the best candidates due to insecure design.
 
 **Note:** This document outlines the risks and strategies for addressing insecure design in AI systems, providing a foundation for further research and practical implementation.
