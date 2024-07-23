@@ -9,32 +9,32 @@ Steve Wilson
 - **[FeTaQA](https://github.com/Yale-LILY/FETAQA):** A dataset designed for evaluating factual correctness and faithfulness of text generation in LLMs.
 
 ## Research Papers and Relevant Research Blogs
-1. **Research Paper:** [Fine-Tuning Language Models to Generate Reliable Text](https://arxiv.org/abs/1909.12475)
-   - _Authors:_ Alex Wang, Kyunghyun Cho, Mike Lewis
-   - _Abstract:_ This paper explores techniques for fine-tuning LLMs to reduce the generation of false information.
+1. **Research Paper:** [Unveiling the Generalization Power of Fine-Tuned Large Language Models](https://arxiv.org/html/2403.09162v1)
+   - _Authors:_ Haoran Yang, Yumeng Zhang, Jiaqi Xu, Hongyuan Lu, Pheng Ann Heng, Wai Lam
+   - _Abstract:_ Aim to contribute valuable insights into the evolving landscape of fine-tuning practices.
 
-2. **Research Paper:** [Reducing Hallucination in Neural Machine Translation](https://aclanthology.org/2020.acl-main.451/)
-   - _Authors:_ Aurelien Waite, Shankar Kumar, Michael Johnson
-   - _Abstract:_ Focuses on reducing hallucinations in neural machine translation models, relevant for understanding similar issues in LLMs.
+2. **Research Paper:** [Reducing Hallucinations in Neural Machine Translation with Feature Attribution](https://arxiv.org/abs/2211.09878)
+   - _Authors:_ Joël Tang, Marina Fomicheva, Lucia Specia
+   - _Abstract:_ Propose a novel loss function that substantially helps reduce hallucinations.
 
-3. **Research Blog:** [Understanding LLM Hallucinations](https://towardsdatascience.com/understanding-llm-hallucinations-a-guide-7d3d86c430fe)
-   - _Author:_ Towards Data Science
-   - _Description:_ A comprehensive guide to understanding and mitigating hallucinations in LLMs.
-
-4. **Research Blog:** [How to Reduce Hallucinations from Large Language Models](https://thenewstack.io/how-to-reduce-hallucinations-from-large-language-models/)
+3. **Research Blog:** [Guide to Hallucinations in Large Language Models](https://www.lakera.ai/blog/guide-to-hallucinations-in-large-language-models)
+   - _Author:_ Lakera
+   - _Description:_ Beginner’s Guide to Hallucinations in Large Language Models
+   - 
+4. **Research Blog:** [How to Reduce Hallucinations from Large Language Models](https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models/)
    - _Author:_ The New Stack
    - _Description:_ Practical steps for reducing hallucinations in LLM outputs.
 
 5. **Research Paper:** [Hallucinations in Neural Machine Translation](https://arxiv.org/abs/1710.11363)
-   - _Authors:_ Marc'Aurelio Ranzato, Myle Ott, Arthur Szlam, Michael Auli
-   - _Abstract:_ Investigates hallucinations in neural machine translation systems and proposes methods to mitigate them.
-
+   - _Authors:_ Katherine Lee, Orhan Firat, Ashish Agarwal, Clara Fannjiang, David Sussillo
+   - _Abstract:_ Introduce and analyze the phenomenon of "hallucinations" in NMT, or spurious translations unrelated to source text, and propose methods to reduce its frequency.
+     
 ## Real-World Examples
-1. **Example #1:** [A news site used AI to write articles. It was a journalistic disaster](https://www.washingtonpost.com/technology/2023/01/25/news-site-ai-disaster/)
+1. **Example #1:** [A news site used AI to write articles. It was a journalistic disaster](https://www.washingtonpost.com/media/2023/01/17/cnet-ai-articles-journalism-corrections/)
    - _Source:_ Washington Post
    - _Description:_ A news site utilized an AI to generate articles, which led to numerous factual inaccuracies and damaged the site's credibility.
 
-2. **Example #2:** [Legal Firm Embarrassed by False AI-Generated Legal Precedents](https://www.techpolicy.com/Articles/2023/legal-firm-false-ai-precedents)
+2. **Example #2:** [AI Lawsuits Worth Watching: A Curated Guide](https://www.techpolicy.press/ai-lawsuits-worth-watching-a-curated-guide/)
    - _Source:_ TechPolicy
    - _Description:_ A legal firm presented fabricated legal precedents in court due to reliance on an LLM, resulting in legal and reputational consequences.
 
@@ -42,13 +42,13 @@ Steve Wilson
    - _Source:_ Vulcan.io
    - _Description:_ Developers were misled by an AI coding assistant to use a non-existent code library, which was then exploited by attackers.
 
-4. **Example #4:** [A Lesson in Misinformation: AI and False Medical Advice](https://healthtechmagazine.net/article/2023/04/ai-false-medical-advice)
-   - _Source:_ HealthTech Magazine
+4. **Example #4:** [Software developers want AI to give medical advice](https://www.cbsnews.com/news/software-developers-want-ai-to-give-medical-advice-how-accurate-is-it/)
+   - _Source:_ CBS News
    - _Description:_ An AI provided false medical advice, leading to potential harm and illustrating the risks of LLM hallucinations in healthcare.
 
-5. **Example #5:** [AI Chatbot's Misleading Financial Advice](https://fintechnews.org/ai-chatbot-misleading-advice)
-   - _Source:_ Fintech News
-   - _Description:_ An AI chatbot provided misleading financial advice, causing users to make poor investment decisions.
+5. **Example #5:** [A Word of Caution: Company Liable for Misrepresentations Made by Chatbot](https://mcmillan.ca/insights/a-word-of-caution-company-liable-for-misrepresentations-made-by-chatbot/)
+   - _Source:_ MCMillan
+   - _Description:_ The chatbot provided the customer with incorrect information relating to Air Canada’s bereavement travel policy.
 
 **Note:** This document outlines the risks and strategies for addressing dangerous hallucinations in Large Language Models, providing a foundation for further research and practical implementation.
 

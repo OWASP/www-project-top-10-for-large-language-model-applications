@@ -2,7 +2,7 @@
 
 ## Dataset
 - **[Hugging Face Model Hub](https://huggingface.co/models):** Repository of models for various use cases, useful for testing supply-chain vulnerabilities.
-- **[OpenAI Model Zoo](https://github.com/openai/gym):** Datasets and models provided by OpenAI for evaluating the integrity of models.
+- **[OpenAI Model Gymnasium](https://github.com/Farama-Foundation/Gymnasium):** Datasets and models provided by OpenAI for evaluating the integrity of models.
 - **[TensorFlow Hub](https://www.tensorflow.org/hub):** A repository of pre-trained models, helpful for analyzing vulnerabilities in the supply chain.
 
 ## Research Papers and Relevant Research Blogs
@@ -23,7 +23,7 @@
    - _Description:_ Examines an attack on Safetensors conversion to inject vulnerabilities.
 
 5. **Research Paper:** [An Embarrassingly Simple Approach for Trojan Attack in Deep Neural Networks](https://arxiv.org/abs/2006.08131)
-   - _Authors:_ John Doe, Alice Smith
+   - _Authors:_ Ruixiang Tang, Mengnan Du, Ninghao Liu, Fan Yang, Xia Hu
    - _Abstract:_ Investigates a simple approach for Trojan attacks in deep neural networks and its implications for LLMs.
 
 ## Real-World Examples
