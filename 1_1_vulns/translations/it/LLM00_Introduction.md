@@ -1,3 +1,21 @@
+<div class="frontpage">
+  <div class="smalllogo">
+    <img src="/img/OWASP-title-logo.svg"></img>
+  </div>
+  <div class="doctitle">
+    OWASP Top 10 per le applicazioni LLM
+  </div>
+  <div class="docversion">
+    Versione 1.1
+  </div>
+  <div class="docdate">
+    <b>Pubblicato</b>: 16 Ottobre 2023
+  </div>
+  <div class="doclink">
+    https://llmtop10.com
+  </div>
+</div>
+
 ## Introduzione
 
 L'introduzione sul mercato di massa dei chatbot pre-addestrati a fine 2022 ha innescato un'ondata di frenetico interesse per i modelli di linguaggio a grandi dimensioni (LLM). Le aziende, desiderose di sfruttare il potenziale degli LLM, li stanno integrando rapidamente nei loro sistemi e nelle offerte destinate ai clienti. Tuttavia, la velocità con cui gli LLM vengono adottati ha superato il tempo necessario per stabilire protocolli di sicurezza esaustivi, lasciando molte applicazioni vulnerabili a seri problemi di sicurezza.
