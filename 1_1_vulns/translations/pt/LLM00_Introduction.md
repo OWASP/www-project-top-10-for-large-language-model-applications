@@ -1,4 +1,3 @@
-
 <div class="frontpage">
 <div class="smalllogo">
    <img src="/img/OWASP-title-logo.svg"></img>

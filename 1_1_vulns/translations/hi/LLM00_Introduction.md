@@ -1,4 +1,21 @@
-﻿
+﻿<div class="frontpage">
+  <div class="smalllogo">
+    <img src="/img/OWASP-title-logo.svg"></img>
+  </div>
+  <div class="doctitle">
+    OWASP टॉप 10 फॉर LLM एप्लिकेशंस
+  </div>
+  <div class="docversion">
+    संस्करण 1.1
+  </div>
+  <div class="docdate">
+    <b>प्रकाशित:</b> 16 अक्टूबर, 2023
+  </div>
+  <div class="doclink">
+    https://llmtop10.com
+  </div>
+</div>
+
 ## परिचय
 
 ### सूची की उत्पत्ति

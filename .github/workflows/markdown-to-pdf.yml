@@ -1,0 +1,63 @@
+## Code
+
+name: Markdown to PDF
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '1_1_vulns/translations/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '1_1_vulns/translations/**'
+
+env:
+  LANGUAGES: '["de", "it", "pt", "hi", "zh"]'  # Add or remove language codes as needed
+
+jobs:
+  convert-markdown-to-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Using Node.js version 20
+
+      - name: Configure locale
+        run: |
+          sudo locale-gen en_US.UTF-8
+          echo "LC_ALL=en_US.UTF-8" >> $GITHUB_ENV
+          echo "LANG=en_US.UTF-8" >> $GITHUB_ENV
+          echo "LANGUAGE=en_US.UTF-8" >> $GITHUB_ENV
+
+      - name: Install necessary fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto fonts-noto-cjk fonts-noto-color-emoji fonts-indic fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
+
+      - name: Install md-to-pdf
+        run: npm install -g md-to-pdf
+
+      - name: Run markdown_to_pdf.sh for each language
+        run: |
+          for lang in $(echo $LANGUAGES | jq -r '.[]'); do
+            ./markdown_to_pdf.sh --language $lang
+          done
+        working-directory: ./markdown-to-pdf
+
+      - name: Get current date and time
+        id: date
+        run: echo "date=$(date '+%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
+
+      - name: Upload generated PDFs as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf-translations-zipfile-${{ env.date }}
+          path: ./markdown-to-pdf/generated/*.pdf

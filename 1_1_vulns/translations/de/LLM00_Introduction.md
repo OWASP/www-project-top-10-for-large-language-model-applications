@@ -1,3 +1,21 @@
+<div class="frontpage">
+  <div class="smalllogo">
+    <img src="/img/OWASP-title-logo.svg"></img>
+  </div>
+  <div class="doctitle">
+    OWASP Top 10 für LLM-Applikationen
+  </div>
+  <div class="docversion">
+    VERSION 1.1
+  </div>
+  <div class="docdate">
+    <b>Veröffentlicht am</b>: 10. Juni 2024
+  </div>
+  <div class="doclink">
+    https://llmtop10.com
+  </div>
+</div>
+
 ## Einleitung
 
 ### Die Entstehung der Liste
