@@ -28,14 +28,19 @@ The consumer-LLM application interaction forms a two-way trust boundary, where w
 5. Integrate Differential Privacy Techniques: Ensure that individual data points cannot be reverse-engineered from the LLM outputs by incorporating differential privacy techniques.
    - User Education and Training: Educate users on the risks of inputting sensitive information into LLMs and provide training on best practices.
 6. Data Minimization Principles: Adhere to data minimization principles by collecting and processing only the data that is necessary for the specific purpose of the application.
-7. Continuous Red Teaming Operations: Regularly perform red teaming exercises to address evolving threat vectors such as Prompt Injection Attacks (LLM01) and Data Poisoning (LLM03).
-8. Dynamic Monitoring and Anomaly Detection: Implement real-time monitoring and anomaly detection systems to identify and mitigate potential data leaks as they occur.
-9. User Consent and Transparency:
+7. Tokenization for Sensitive Information Disclosure: A tokenizer can prevent sensitive information disclosure within an LLM application by sanitizing data through preprocessing (e.g., masking sensitive information) and redacting sensitive terms using pattern matching techniques.
+   - Data Sanitization: Preprocessing data to mask or remove sensitive information (e.g., replacing credit card numbers with placeholders).
+   - Using pattern matching techniques to detect and sanitize sensitive information before tokenization.
+   - Redaction: Configuring the tokenizer to recognize and redact specific sensitive terms or phrases before processing by the model.
+9. Padding: Apply padding to the token responses with random length noise to obscure the length of the token so that responses can not be inferred from the packets in aid to prevent side-channel attacks.
+10. Continuous Red Teaming Operations: Regularly perform red teaming exercises to address evolving threat vectors such as Prompt Injection Attacks (LLM01) and Data Poisoning (LLM03).
+11. Dynamic Monitoring and Anomaly Detection: Implement real-time monitoring and anomaly detection systems to identify and mitigate potential data leaks as they occur.
+12. User Consent and Transparency:
    - Explicit Consent Mechanisms: Ensure that users explicitly consent to data usage policies.
    - Transparent Data Practices: Maintain transparency in data handling practices, including clear communication about data retention, usage, and deletion policies.
-10. Limit Overrides and Conceal System Preamble to Prevent Exploitation
+13. Limit Overrides and Conceal System Preamble to Prevent Exploitation
        - Restrict Model Preamble Overrides and Conceal System Preamble: Prevent the possibility of malicious actors exploiting the LLM by limiting the ability to override the model's preamble capabilities and ensuring that the system preamble is  not revealed. This involves implementing strict access controls and safeguards to prevent unauthorized changes or disclosures of the model's initial setup instructions. By doing so, you reduce the risk of adversaries gaining insights into the model’s structure and behavior, which they could use during the reconnaissance and weaponization phases of an attack. This strategy ensures the integrity of the LLM's foundational parameters and minimizes potential attack vectors.
-11. Refer to the [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/) when error messages are not handled properly, they can inadvertently expose sensitive information in logs or responses. This information can include stack traces, database dumps, API keys, user credentials, or other sensitive data that could be exploited by attackers.
+14. Refer to the [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/) when error messages are not handled properly, they can inadvertently expose sensitive information in logs or responses. This information can include stack traces, database dumps, API keys, user credentials, or other sensitive data that could be exploited by attackers.
        - Sanitize Error Messages: Ensure that error messages returned to clients are generic and do not reveal internal implementation details. Use custom error messages that provide minimal information.
        - Secure Logging Practices: Implement secure logging practices by sanitizing and redacting sensitive information from logs. Only log the necessary information for troubleshooting.
        - Configuration Management: Regularly review and update API configurations to ensure they follow security best practices. Disable verbose logging and other insecure settings by default.
@@ -55,8 +60,11 @@ The consumer-LLM application interaction forms a two-way trust boundary, where w
 2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
 3. [ChatGPT Spit Out Sensitive Data When Told to Repeat ‘Poem’ Forever](https://www.wired.com/story/chatgpt-poem-forever-security-roundup/) **Wired**
 4. [Nvidia’s AI software tricked into leaking data](https://www.ft.com/content/5aceb7a6-9d5a-4f1f-af3d-1ef0129b0934) **Financial Times**
-5. [How Federated Learning Protects Privacy](https://pair.withgoogle.com/explorables/federated-learning/)
-6. [Using Differential Privacy to Build Secure Models: Tools, Methods, Best Practices](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices) **Neptune Blog**
-7. [Maximizing Data Privacy in Fine-Tuning LLMs](https://pvml.com/maximizing-data-privacy-in-fine-tuning-llms/#:~:text=of%20customer%20trust.-,Organizations%20that%20fail%20to%20protect%20sensitive%20data%20during%20the%20fine,to%20concerns%20about%20data%20privacy.)
-8. [What is Data Minimization? Main Principles & Techniques](https://www.piiano.com/blog/data-minimization#:~:text=Data%20minimization%20plays%20a%20big,making%20your%20data%20even%20safer.)
-9. [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/) **OWASP API Security**
+5. [Building a serverless tokenization solution to mask sensitive data](https://aws.amazon.com/blogs/compute/building-a-serverless-tokenization-solution-to-mask-sensitive-data/#:~:text=Tokenization%20replaces%20the%20sensitive%20data,while%20helping%20with%20data%20protection.) **AWS**
+6. [Hackers can read private AI-assistant chats even though they’re encrypted](https://arstechnica.com/security/2024/03/hackers-can-read-private-ai-assistant-chats-even-though-theyre-encrypted/) **ArsTechnica**
+7. [Mitigating a token-length side-channel attack in our AI products](https://blog.cloudflare.com/ai-side-channel-attack-mitigated#:~:text=The%20researchers%20suggested%20a%20few,be%20inferred%20from%20the%20packets.)
+8. [How Federated Learning Protects Privacy](https://pair.withgoogle.com/explorables/federated-learning/)
+9. [Using Differential Privacy to Build Secure Models: Tools, Methods, Best Practices](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices) **Neptune Blog**
+10. [Maximizing Data Privacy in Fine-Tuning LLMs](https://pvml.com/maximizing-data-privacy-in-fine-tuning-llms/#:~:text=of%20customer%20trust.-,Organizations%20that%20fail%20to%20protect%20sensitive%20data%20during%20the%20fine,to%20concerns%20about%20data%20privacy.)
+11. [What is Data Minimization? Main Principles & Techniques](https://www.piiano.com/blog/data-minimization#:~:text=Data%20minimization%20plays%20a%20big,making%20your%20data%20even%20safer.)
+12. [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/) **OWASP API Security**
