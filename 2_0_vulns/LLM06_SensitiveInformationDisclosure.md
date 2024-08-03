@@ -33,14 +33,15 @@ The consumer-LLM application interaction forms a two-way trust boundary, where w
    - Using pattern matching techniques to detect and sanitize sensitive information before tokenization.
    - Redaction: Configuring the tokenizer to recognize and redact specific sensitive terms or phrases before processing by the model.
 9. Padding: Apply padding to the token responses with random length noise to obscure the length of the token so that responses can not be inferred from the packets in aid to prevent side-channel attacks.
-10. Continuous Red Teaming Operations: Regularly perform red teaming exercises to address evolving threat vectors such as Prompt Injection Attacks (LLM01) and Data Poisoning (LLM03).
-11. Dynamic Monitoring and Anomaly Detection: Implement real-time monitoring and anomaly detection systems to identify and mitigate potential data leaks as they occur.
-12. User Consent and Transparency:
+10. Homomorphic encryption can protect sensitive information in AI applications by enabling secure data analysis, facilitating privacy-preserving machine learning, supporting federated learning with encrypted data, and ensuring secure predictions while keeping user data confidential.
+11. Continuous Red Teaming Operations: Regularly perform red teaming exercises to address evolving threat vectors such as Prompt Injection Attacks (LLM01) and Data Poisoning (LLM03).
+12. Dynamic Monitoring and Anomaly Detection: Implement real-time monitoring and anomaly detection systems to identify and mitigate potential data leaks as they occur.
+13. User Consent and Transparency:
    - Explicit Consent Mechanisms: Ensure that users explicitly consent to data usage policies.
    - Transparent Data Practices: Maintain transparency in data handling practices, including clear communication about data retention, usage, and deletion policies.
-13. Limit Overrides and Conceal System Preamble to Prevent Exploitation
+14. Limit Overrides and Conceal System Preamble to Prevent Exploitation
        - Restrict Model Preamble Overrides and Conceal System Preamble: Prevent the possibility of malicious actors exploiting the LLM by limiting the ability to override the model's preamble capabilities and ensuring that the system preamble is  not revealed. This involves implementing strict access controls and safeguards to prevent unauthorized changes or disclosures of the model's initial setup instructions. By doing so, you reduce the risk of adversaries gaining insights into the model’s structure and behavior, which they could use during the reconnaissance and weaponization phases of an attack. This strategy ensures the integrity of the LLM's foundational parameters and minimizes potential attack vectors.
-14. Refer to the [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/) when error messages are not handled properly, they can inadvertently expose sensitive information in logs or responses. This information can include stack traces, database dumps, API keys, user credentials, or other sensitive data that could be exploited by attackers.
+15. Refer to the [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/) when error messages are not handled properly, they can inadvertently expose sensitive information in logs or responses. This information can include stack traces, database dumps, API keys, user credentials, or other sensitive data that could be exploited by attackers.
        - Sanitize Error Messages: Ensure that error messages returned to clients are generic and do not reveal internal implementation details. Use custom error messages that provide minimal information.
        - Secure Logging Practices: Implement secure logging practices by sanitizing and redacting sensitive information from logs. Only log the necessary information for troubleshooting.
        - Configuration Management: Regularly review and update API configurations to ensure they follow security best practices. Disable verbose logging and other insecure settings by default.
@@ -67,4 +68,5 @@ The consumer-LLM application interaction forms a two-way trust boundary, where w
 9. [Using Differential Privacy to Build Secure Models: Tools, Methods, Best Practices](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices) **Neptune Blog**
 10. [Maximizing Data Privacy in Fine-Tuning LLMs](https://pvml.com/maximizing-data-privacy-in-fine-tuning-llms/#:~:text=of%20customer%20trust.-,Organizations%20that%20fail%20to%20protect%20sensitive%20data%20during%20the%20fine,to%20concerns%20about%20data%20privacy.)
 11. [What is Data Minimization? Main Principles & Techniques](https://www.piiano.com/blog/data-minimization#:~:text=Data%20minimization%20plays%20a%20big,making%20your%20data%20even%20safer.)
-12. [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/) **OWASP API Security**
+12. [Solving LLM Privacy with FHE](https://medium.com/@ingonyama/solving-llm-privacy-with-fhe-3486de6ee228)
+13. [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/) **OWASP API Security**
