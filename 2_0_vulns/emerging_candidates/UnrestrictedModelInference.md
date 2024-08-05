@@ -4,6 +4,10 @@
 <br>
 **Core Team Owner(s):** [Ads - GangGreenTemperTatum](https://github.com/GangGreenTemperTatum) with reviews from @jsotiro and @rot169
 
+**Merge/Replaces from the current top 10**:
+
+[v1.1 LLM10 Model Theft](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/1_1_vulns/LLM10_ModelTheft.md) and [v1.1 LLM04 Model DoS](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/1_1_vulns/LLM04_ModelDoS.md) with inputs from [Unrestricted Resource Consumption v2 Candidate](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_voting/candidate_files/UnrestrictedResourceConsumption.md).
+
 ### Description
 
 Unrestricted Model Inference refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
