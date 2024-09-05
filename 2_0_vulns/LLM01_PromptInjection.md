@@ -2,22 +2,22 @@
 
 ### Description
 
-Prompt Injection Vulnerability occurs when an attacker manipulates a large language model (LLM) through crafted inputs, causing the LLM to unknowingly execute the attacker's intentions. This can be done directly by "jailbreaking" the system prompt or indirectly through manipulated external inputs, potentially leading to data exfiltration, social engineering, and other issues.
+Prompt Injection occurs when an attacker manipulates a large language model (LLM) through crafted inputs, causing the LLM to execute the attacker's intentions. Any content that contributes to the input to an LLM, known as the prompt, may be targetted by Prompt Injection.
 
-* **Direct Prompt Injections**, also known as "jailbreaking", occur when a malicious user overwrites or reveals the underlying *system* prompt. This may allow attackers to exploit backend systems by interacting with insecure functions and data stores accessible through the LLM.
-* **Indirect Prompt Injections** occur when an LLM accepts input from external sources that can be controlled by an attacker, such as websites or files. The attacker may embed a prompt injection in the external content hijacking the conversation context. This would cause LLM output steering to become less stable, allowing the attacker to either manipulate the user or additional systems that the LLM can access. Additionally, indirect prompt injections do not need to be human-visible/readable, as long as the text is parsed by the LLM.
+In it's simpliest form where an application includes input from a user in the prompt sent to an LLM, **Direct Prompt Injection**, occurs when a malicious user is crafts an input that overrides underlying system prompt instructions with their own. In Direct Prompt Injection attacks, the LLM invocation is triggered by a malicioous user themselves.
 
-The results of a successful prompt injection attack can vary greatly - from solicitation of sensitive information to influencing critical decision-making processes under the guise of normal operation.
+In contrast, **Indirect Prompt Injections** occur when an app constructs an LLM's input prompt from resources that can be controlled by an attacker. Such resources are typically not inherently malicious and are intentionally referenced by the system designer (e.g., a vector database used for retrieval augmented generation), a benign user (e.g., a web URL submitted for summarisation), or an extension to an external system (e.g., an email recieved into a user's inbox). 
 
-In advanced attacks, the LLM could be manipulated to mimic a harmful persona or interact with plugins in the user's setting. This could result in leaking sensitive data, unauthorized plugin use, or social  engineering. In such cases, the compromised LLM aids the attacker, surpassing standard safeguards and keeping the user unaware of the  intrusion. In these instances, the compromised LLM effectively acts as an agent for the attacker, furthering their objectives without triggering usual safeguards or alerting the end user to the intrusion.
+The results of a successful prompt injection attack can vary greatly - from solicitation of sensitive information to influencing critical decision-making processes under the guise of normal operation. The impact can be amplified where attackers are able to chain exploitation if Prompt Injection with other weaknesses such as Insecure Output Handling, Excessive Agency or Sensitive Information Disclosure. In these more advanced attacks, the LLM could be manipulated to mimic a harmful persona or interact with extensions in the user's context, resulting in leakage of sensitive data, compromise of systems accessible via extensions, or social engineering. In these instances, the compromised LLM effectively acts as an agent for the attacker, furthering their objectives without triggering usual safeguards or alerting the end user to the intrusion.
 
 ### Common Examples of Vulnerability
 
 1. A malicious user crafts a direct prompt injection to the LLM, which instructs it to ignore the application creator's system prompts and instead execute a prompt that returns private, dangerous, or otherwise undesirable information.
 2. A user employs an LLM to summarize a webpage containing an indirect prompt injection. This then causes the LLM to solicit sensitive information from the user and perform exfiltration via JavaScript or Markdown.
 3. A malicious user uploads a resume containing an indirect prompt injection. The document contains a prompt injection with instructions to make the LLM inform users that this document is excellent eg. an excellent candidate for a job role. An internal user runs the document through the LLM to summarize the document. The output of the LLM returns information stating that this is an excellent document.
-4. A user enables a plugin linked to an e-commerce site. A rogue instruction embedded on a visited website exploits this plugin, leading to unauthorized purchases.
-5. A rogue instruction and content embedded on a visited website exploits other plugins to scam users.
+4. A malicious user modifies a document within a repository used by an app employing a RAG design. Whenever a victim user's query returns that part of the modified document, the malicious instructions within alter the operation of the LLM to generate a misleading output.
+5. A user enables an extension linked to an e-commerce site. A rogue instruction embedded on a visited website exploits this plugin, leading to unauthorized purchases.
+6. A rogue instruction and content embedded on a visited website exploits other plugins to scam users.
 
 ### Prevention and Mitigation Strategies
 
