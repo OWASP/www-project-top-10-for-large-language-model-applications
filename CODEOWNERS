@@ -12,13 +12,13 @@ data_gathering/* @emmanuelgjr @GangGreenTemperTatum
 
 # Top 10 Vulnerabilities: (www-project-top-10-for-large-language-model-applications/1_1_vulns/)
 ## LLM01:
-PromptInjection.md @leondz
+# PromptInjection.md @leondz
 ## LLM02:
 InsecureOutputHandling.md @kenhuangus
 ## LLM03:
 TrainingDataPoisoning.md @GangGreenTemperTatum
 ## LLM04:
-ModelDoS.md @kenhuangus
+UnboundedConsumption.md @GangGreenTemperTatum
 ## LLM05:
 SupplyChainVulnerabilities.md @jsotiro
 ## LLM06:
@@ -30,7 +30,7 @@ ExcessiveAgency.md @rot169
 ## LLM09:
 Overreliance.md @virtualsteve-star
 ## LLM10:
-ModelTheft.md @GangGreenTemperTatum
+
 
 ## Template:
 _template.md @rossja
