@@ -12,7 +12,7 @@ data_gathering/* @emmanuelgjr @GangGreenTemperTatum
 
 # Top 10 Vulnerabilities: (www-project-top-10-for-large-language-model-applications/1_1_vulns/)
 ## LLM01:
-# PromptInjection.md @leondz
+PromptInjection.md @cybershujin
 ## LLM02:
 InsecureOutputHandling.md @kenhuangus
 ## LLM03:
