@@ -1,4 +1,4 @@
-## Unrestricted Model Inference
+## Unbounded Consumption
 
 **Author(s):** [Ads - GangGreenTemperTatum](https://github.com/GangGreenTemperTatum)
 <br>
@@ -10,9 +10,9 @@
 
 ### Description
 
-Unrestricted Model Inference refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
+Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
 
-Unrestricted Model Inference occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to potential risks such as denial of service (DoS), economic losses, model or intellectual property theft theft, and degradation of service. This vulnerability is exacerbated by the high computational demands of LLMs, often deployed in cloud environments, making them susceptible to various forms of resource exploitation and unauthorized usage.
+Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to potential risks such as denial of service (DoS), economic losses, model or intellectual property theft theft, and degradation of service. This vulnerability is exacerbated by the high computational demands of LLMs, often deployed in cloud environments, making them susceptible to various forms of resource exploitation and unauthorized usage.
 
 ### Common Examples of Vulnerability
 
