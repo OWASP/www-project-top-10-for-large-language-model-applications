@@ -28,6 +28,14 @@ Prompt injection vulnerabilities are possible due to the nature of LLMs, which d
 3. Segregate external content from user prompts. Separate and denote where untrusted content is being used to limit  their influence on user prompts. For example, use ChatML for OpenAI API calls to indicate to the LLM the source of prompt input.
 4. Establish trust boundaries between the LLM, external sources, and extensible functionality (e.g., plugins or downstream functions). Treat the LLM as an untrusted user and maintain final user control on decision-making processes. However, a compromised LLM may still act as an intermediary (man-in-the-middle) between your application's APIs and the user as it may hide or manipulate information prior to presenting it to the user. Highlight potentially untrustworthy responses visually to the user.
 5. Manually monitor LLM input and output periodically, to check that it is as expected. While not a mitigation, this can provide data needed to detect weaknesses and address them.
+"""
+##Proposed additions by Mohit -
+6. Scan prompts using automated tools to prevent, detect, and mitigate prompt injection attacks.
+##explanation: I believe tools like LLMGuard is doing decent job to help prevent,detect, and mitigate prompt inkection attacks.(atleast to some extent)
+7. Execute secure Prompt Engineering by designing prompts in a way that reduces the risk of prompt injection attacks, such as by prompt partitioning, avoiding vague instructions and using perspicuous and specific language.
+8. Ensure that all prompts undergo validation and sanitization before processing, applying allowlists and denylists to filter out malicious data and using libraries known for their robust sanitization capabilities.
+##explanation: I understand (pt 8) is being addressed by some of the above points. I still feel input validation and santization must be a separate control point.
+"""
 
 ### Example Attack Scenarios
 
