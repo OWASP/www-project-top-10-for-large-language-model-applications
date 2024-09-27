@@ -6,6 +6,7 @@
 
 ## Either Ads or Steve can approve changes to CODEOWNERS:
 CODEOWNERS @GangGreenTemperTatum @virtualsteve-star
+2_0_vulns/emerging_candidates @GangGreenTemperTatum
 
 ## Data Gathering
 data_gathering/* @emmanuelgjr @GangGreenTemperTatum
