@@ -101,5 +101,5 @@ Information Classification: Tag and classify data within the knowledge base to c
 9. [Sentence Embedding Leaks More Information than You Expect: Generative Embedding Inversion Attack to Recover the Whole Sentence](https://arxiv.org/pdf/2305.03010)
 10. [Universal and Transferable Adversarial Attacks on Aligned Language Models](https://llm-attacks.org/)
 11. https://www.maginative.com/article/rlhf-in-the-spotlight-problems-and-limitations-with-a-key-ai-alignment-technique/)
-12. https://docs.aws.amazon.com/prescriptive-guidance/latest/llm-prompt-engineering-best-practices/best-practices.html#guardrails
+[AWS: Use guardrails](https://docs.aws.amazon.com/prescriptive-guidance/latest/llm-prompt-engineering-best-practices/best-practices.html#guardrails)
 13. [Unleashing Worms and Extracting Data: Escalating the Outcome of Attacks against RAG-based Inference in Scale and Severity Using Jailbreaking](https://arxiv.org/abs/2409.08045)
