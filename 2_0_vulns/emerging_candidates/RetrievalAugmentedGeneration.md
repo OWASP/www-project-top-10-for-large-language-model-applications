@@ -112,6 +112,6 @@ Information Classification: Tag and classify data within the knowledge base to c
 12. [AWS: Use guardrails](https://docs.aws.amazon.com/prescriptive-guidance/latest/llm-prompt-engineering-best-practices/best-practices.html#guardrails)
 13. [Unleashing Worms and Extracting Data: Escalating the Outcome of Attacks against RAG-based Inference in Scale and Severity Using Jailbreaking](https://arxiv.org/abs/2409.08045)
 10. [Universal and Transferable Adversarial Attacks on Aligned Language Models](https://llm-attacks.org/)
-[RLHF In the Spotlight: Problems and Limitations with Key AI Alignment Technique](https://www.maginative.com/article/rlhf-in-the-spotlight-problems-and-limitations-with-a-key-ai-alignment-technique/)
-[AWS: Use guardrails](https://docs.aws.amazon.com/prescriptive-guidance/latest/llm-prompt-engineering-best-practices/best-practices.html#guardrails)
+11. [RLHF In the Spotlight: Problems and Limitations with Key AI Alignment Technique](https://www.maginative.com/article/rlhf-in-the-spotlight-problems-and-limitations-with-a-key-ai-alignment-technique/)
+12. [AWS: Use guardrails](https://docs.aws.amazon.com/prescriptive-guidance/latest/llm-prompt-engineering-best-practices/best-practices.html#guardrails)
 13. [Unleashing Worms and Extracting Data: Escalating the Outcome of Attacks against RAG-based Inference in Scale and Severity Using Jailbreaking](https://arxiv.org/abs/2409.08045)
