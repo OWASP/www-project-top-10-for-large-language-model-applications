@@ -7,7 +7,7 @@ Successful exploitation of an Insecure Output Handling vulnerability can result 
 The following conditions can increase the impact of this vulnerability:
 - The application grants the LLM privileges beyond what is intended for end users, enabling escalation of privileges or remote code execution.
 - The application is vulnerable to indirect prompt injection attacks, which could allow an attacker to gain privileged access to a target user's environment.
-- 3rd party plugins do not adequately validate inputs.
+- 3rd party extensions do not adequately validate inputs.
 - Lack of proper output encoding for different contexts (e.g., HTML, JavaScript, SQL)
 - Insufficient monitoring and logging of LLM outputs
 - Absence of rate limiting or anomaly detection for LLM usage
@@ -28,7 +28,7 @@ The following conditions can increase the impact of this vulnerability:
 - Implement robust logging and monitoring systems to detect unusual patterns in LLM outputs that might indicate exploitation attempts.
 
 ### Example Attack Scenarios
-1. An application utilizes an LLM plugin to generate responses for a chatbot feature. The plugin also offers a number of administrative functions accessible to another privileged LLM. The general purpose LLM directly passes its response, without proper output validation, to the plugin causing the plugin to shut down for maintenance.
+1. An application utilizes an LLM extension to generate responses for a chatbot feature. The extension also offers a number of administrative functions accessible to another privileged LLM. The general purpose LLM directly passes its response, without proper output validation, to the extension causing the extension to shut down for maintenance.
 2. A user utilizes a website summarizer tool powered by an LLM to generate a concise summary of an article. The website includes a prompt injection instructing the LLM to capture sensitive content from either the website or from the user's conversation. From there the LLM can encode the sensitive data and send it, without any output validation or filtering, to an attacker-controlled server.
 3. An LLM allows users to craft SQL queries for a backend database through a chat-like feature. A user requests a query to delete all database tables. If the crafted query from the LLM is not scrutinized, then all database tables will be deleted.
 4. A web app uses an LLM to generate content from user text prompts without output sanitization. An attacker could submit a crafted prompt causing the LLM to return an unsanitized JavaScript payload, leading to XSS when rendered on a victim's browser. Insufficient validation of prompts enabled this attack.
@@ -44,3 +44,5 @@ The following conditions can increase the impact of this vulnerability:
 5. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/): **AI Village**
 6. [OWASP ASVS - 5 Validation, Sanitization and Encoding](https://owasp-aasvs4.readthedocs.io/en/latest/V5.html#validation-sanitization-and-encoding): **OWASP AASVS**
 7. [AI hallucinates software packages and devs download them – even if potentially poisoned with malware](https://www.theregister.com/2024/03/28/ai_bots_hallucinate_software_packages/) **Theregiste**
+
+
