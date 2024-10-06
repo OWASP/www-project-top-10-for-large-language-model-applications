@@ -23,12 +23,12 @@ A related issue is overreliance. Overreliance occurs when users place too much t
 ### Prevention and Mitigation Strategies
 1. **Retrieval-Augmented Generation (RAG):** Use Retrieval-Augmented Generation to enhance the reliability of model outputs by retrieving relevant and verified information from trusted external databases during response generation. This helps mitigate the risk of hallucinations and misinformation.
 2. **Model Fine-Tuning:** Enhance the model with fine-tuning or embeddings to improve output quality. Techniques such as parameter-efficient tuning (PET) and chain-of-thought prompting can help reduce the incidence of misinformation.
-3. **Cross-Verification:** Encourage users to cross-check LLM outputs with trusted external sources to ensure the accuracy of the information.
+3. **Cross-Verification and Human Oversight:** Encourage users to cross-check LLM outputs with trusted external sources to ensure the accuracy of the information. Implement human oversight and fact-checking processes, especially for critical or sensitive information. Ensure that human reviewers are properly trained to avoid overreliance on AI-generated content.
 4. **Automatic Validation Mechanisms:** Implement tools and processes to automatically validate key outputs, especially output from high-stakes environments.
-5. **Risk Communication:** Clearly communicate the risks and limitations associated with using LLMs, including the potential for misinformation.
+5. **Risk Communication:** First identify the risks and possible harms associated with LLM-generated content, then clearly communicate these risks and limitations to users, including the potential for misinformation.
 6. **Secure Coding Practices:** Establish secure coding practices to prevent the integration of vulnerabilities due to incorrect code suggestions.
 7. **User Interface Design:** Design APIs and user interfaces that encourage responsible use of LLMs, such as integrating content filters, clearly labeling AI-generated content and informing users on limitations of relibility and accuracy.  Be specific about intended field of use limitations.
-8. **Training and Education:** Provide training for users on the limitations of LLMs and the importance of independent verification of generated content.
+8. **Training and Education:** Provide comprehensive training for users on the limitations of LLMs, the importance of independent verification of generated content, and the need for critical thinking. In specific contexts, offer domain-specific training to ensure users can effectively evaluate LLM outputs within their field of expertise.
 
 ### Example Attack Scenarios
 
