@@ -1,9 +1,5 @@
 ## Backdoor Attacks
 
-**Author(s):** [Ads - GangGreenTemperTatum](https://github.com/GangGreenTemperTatum)
-<br>
-**Core Team Owner(s):** [Ads - GangGreenTemperTatum](https://github.com/GangGreenTemperTatum)
-
 ### Description
 
 Backdoor attacks in Large Language Models (LLMs) involve the covert introduction of malicious functionality during the model's training or fine-tuning phases. These embedded triggers are often benign under normal circumstances but activate harmful behaviors when specific, adversary-chosen inputs are provided. These triggers can be tailored to bypass security mechanisms, grant unauthorized access, or exfiltrate sensitive data, posing significant threats to the confidentiality, integrity, and availability of LLM-based applications.
