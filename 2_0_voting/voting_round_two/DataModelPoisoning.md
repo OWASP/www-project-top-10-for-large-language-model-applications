@@ -62,3 +62,11 @@ Whether a developer, client, or general user of an LLM, it's crucial to understa
 7.  [Data Scientists Targeted by Malicious Hugging Face ML Models with Silent Backdoor](https://jfrog.com/blog/data-scientists-targeted-by-malicious-hugging-face-ml-models-with-silent-backdoor/) **JFrog**
 8.  [Backdoor Attacks on Language Models](https://towardsdatascience.com/backdoor-attacks-on-language-models-can-we-trust-our-models-weights-73108f9dcb1f): **Towards Data Science**
 9.  [Can you trust ChatGPT’s package recommendations?](https://vulcan.io/blog/ai-hallucinations-package-risk) **VULCAN**
+
+### Related Frameworks and Taxonomies
+
+Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+
+- [AML.T0018 | Backdoor ML Model](https://atlas.mitre.org/techniques/AML.T0018) **MITRE ATLAS**
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework): Covers strategies and best practices for ensuring AI integrity. **NIST**
+- AI Model Watermarking for IP Protection: A method of embedding watermarks into LLMs to protect intellectual property and detect tampering.
