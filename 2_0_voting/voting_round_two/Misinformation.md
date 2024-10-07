@@ -1,10 +1,6 @@
 
 ## Misinformation
 
-**Author(s):**
-
-Steve Wilson
-
 ### Description
 
 Misinformation output from LLMs poses a core vulnerability for applications that rely on these models. Misinformation occurs when LLMs produce false or misleading information that appears credible. This vulnerability is significant because it can lead to substantial risks, including security breaches, reputational damage, and legal liability.
