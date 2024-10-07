@@ -1,3 +1,21 @@
+<div class="frontpage">
+  <div class="smalllogo">
+    <img src="/img/OWASP-title-logo.svg"></img>
+  </div>
+  <div class="doctitle">
+    OWASP 大语言模型人工智能应用Top 10 安全威胁
+  </div>
+  <div class="docversion">
+    版 1.1
+  </div>
+  <div class="docdate">
+    <b>发布日期<b>：2023 年 10 月 16 日
+  </div>
+  <div class="doclink">
+    https://llmtop10.com
+  </div>
+</div>
+
 ## 介绍
 2022 年底，随着ChatGPT进入大众市场，人们对大型语言模型 (LLM) 的关注尤为浓厚。渴望利用大语言模型潜力的企业正在迅速将其整合到其运营和面向客户的产品中。然而，大语言模型的采用速度已经超过了全面安全协议的建立速度，导致许多应用程序容易受到高风险问题的影响。很明显，大语言模型还没有统一的资源来解决这些安全问题。很多开发者对于与LLM相关的安全风险不够了解，所以相关资源很分散。而OWASP正好能够协助推进这项技术的更安全应用。
 
