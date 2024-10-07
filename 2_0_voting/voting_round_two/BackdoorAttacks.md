@@ -45,6 +45,5 @@ Backdoors may be introduced either intentionally by malicious insiders or throug
 
 Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
 
-- [AML.T0018 | Backdoor ML Model](https://atlas.mitre.org/techniques/AML.T0018) **MITRE ATLAS**
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework): Covers strategies and best practices for ensuring AI integrity. **NIST**
-- AI Model Watermarking for IP Protection: A method of embedding watermarks into LLMs to protect intellectual property and detect tampering.
+- [AML.T0020 - Poison Training Data](https://atlas.mitre.org/techniques/AML.T0020) **MITRE ATLAS**
+- [API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/) **OWASP**
