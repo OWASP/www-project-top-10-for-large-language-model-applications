@@ -1,7 +1,7 @@
 
 # Core Team Members for version 1.0
 
-This version is now legacy.  [New version here](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Core-Team)
+This version is now legacy. [New version here](https://genai.owasp.org/contributors/) is maintained on the site.
 
 These individuals played especially key roles in the creation of the version 1.0 of the list and were selected to help govern the project.
 
