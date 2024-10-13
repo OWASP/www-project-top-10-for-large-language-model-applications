@@ -4,7 +4,7 @@
 
 An LLM-based system is often granted a degree of agency by its developer - the ability to call functions or interface with other systems via extensions (sometimes referred to as tools, skills or plugins by different vendors) to undertake actions in response to a prompt. The decision over which extension to invoke may also be delegated to an LLM 'agent' to dynamically determine based on input prompt or LLM output. Agent-based systems will typically make repeated calls to an LLM using output from previous invocations to ground and direct subsequent invocations.
 
-Excessive Agency is the vulnerability that enables damaging actions to be performed in response to unexpected, ambiguous or manipulated outputs from an LLM, regardless of what is causing the LLM to malfunction. Potential triggers include:
+Excessive Agency is the vulnerability that enables damaging actions to be performed in response to unexpected, ambiguous or manipulated outputs from an LLM, regardless of what is causing the LLM to malfunction. Common triggers include:
 * hallucination/confabulation caused by poorly-engineered benign prompts, or just a poorly-performing model;
 * direct/indirect prompt injection from a malicious user;
 * prompt injection from an earlier invocation of a malicious/compromised extension;
@@ -50,9 +50,10 @@ The following options will not prevent Excessive Agency, but can limit the level
 ### Example Attack Scenarios
 
 An LLM-based personal assistant app is granted access to an individual’s mailbox via an extension in order to summarise the content of incoming emails. To achieve this functionality, the extension requires the ability to read messages, however the plugin that the system developer has chosen to use also contains functions for sending messages. Additionally, the app is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the agent call the email plugin’s 'send message' function to send spam from the user's mailbox. This could be avoided by:
-(a) eliminating excessive functionality by using an extension that only implements mail-reading capabilities,
-(b) eliminating excessive permissions by authenticating to the user's email service via an OAuth session with a read-only scope, and/or
-(c) eliminating excessive autonomy by requiring the user to manually review and hit 'send' on every mail drafted by the LLM extension.
+* eliminating excessive functionality by using an extension that only implements mail-reading capabilities,
+* eliminating excessive permissions by authenticating to the user's email service via an OAuth session with a read-only scope, and/or
+* eliminating excessive autonomy by requiring the user to manually review and hit 'send' on every mail drafted by the LLM extension.
+
 Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
 
 ### Reference Links
