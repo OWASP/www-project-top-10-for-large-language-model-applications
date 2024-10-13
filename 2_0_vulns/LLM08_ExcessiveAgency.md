@@ -49,7 +49,7 @@ The following options will not prevent Excessive Agency, but can limit the level
 
 ### Example Attack Scenarios
 
-An LLM-based personal assistant app is granted access to an individual’s mailbox via an extension in order to summarise the content of incoming emails. To achieve this functionality, the extension requires the ability to read messages, however the plugin that the system developer has chosen to use also contains functions for sending messages. Additionally, the app is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the agent call the email plugin’s 'send message' function to send spam from the user's mailbox. This could be avoided by:
+An LLM-based personal assistant app is granted access to an individual’s mailbox via an extension in order to summarise the content of incoming emails. To achieve this functionality, the extension requires the ability to read messages, however the plugin that the system developer has chosen to use also contains functions for sending messages. Additionally, the app is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the agent to scan the user's inbox for senitive information and forward it to the attacker's email address. This could be avoided by:
 * eliminating excessive functionality by using an extension that only implements mail-reading capabilities,
 * eliminating excessive permissions by authenticating to the user's email service via an OAuth session with a read-only scope, and/or
 * eliminating excessive autonomy by requiring the user to manually review and hit 'send' on every mail drafted by the LLM extension.
