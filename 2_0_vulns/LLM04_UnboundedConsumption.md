@@ -1,30 +1,20 @@
 ## Unbounded Consumption
 
-**Author(s):** [Ads - GangGreenTemperTatum](https://github.com/GangGreenTemperTatum)
-<br>
-**Core Team Owner(s):** [Ads - GangGreenTemperTatum](https://github.com/GangGreenTemperTatum) with reviews from @jsotiro and @rot169
-
-**Merge/Replaces from the current top 10**:
-
-[v1.1 LLM10 Model Theft](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/1_1_vulns/LLM10_ModelTheft.md) and [v1.1 LLM04 Model DoS](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/1_1_vulns/LLM04_ModelDoS.md) with inputs from [Unrestricted Resource Consumption v2 Candidate](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/blob/main/2_0_voting/candidate_files/UnrestrictedResourceConsumption.md).
-
 ### Description
 
 Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
 
-Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to potential risks such as denial of service (DoS), economic losses, model or intellectual property theft theft, and degradation of service. This vulnerability is exacerbated by the high computational demands of LLMs, often deployed in cloud environments, making them susceptible to various forms of resource exploitation and unauthorized usage.
+Attacks designed to disrupt service, deplete the target's financial resources, or even steal intellectual property by cloning a model’s behavior all depend on a common class of security vulnerability in order to succeed. Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to risks such as denial of service (DoS), economic losses, model theft, and service degradation. The high computational demands of LLMs, especially in cloud environments, make them vulnerable to resource exploitation and unauthorized usage.
 
 ### Common Examples of Vulnerability
 
-1. **Variable-Length Input Flood**: Overloading the LLM with numerous inputs of varying lengths to exploit processing inefficiencies, deplete resources, and potentially render the system unresponsive.
-2. **Denial of Wallet (DoW)**: Initiating a high volume of operations to exploit the cost-per-use model of cloud-based AI services, leading to unsustainable expenses for the provider.
-3. **Continuous Input Overflow**: Continuously sending inputs that exceed the LLM's context window, leading to excessive use of computational resources.
-4. **Resource-Intensive Queries**: Submitting unusually demanding queries that involve complex sequences or intricate language patterns.
-5. **Model Extraction via API**: An attacker queries the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model.
-   - The attack vector for model extraction can involve querying the LLM with a large number of prompts on a particular topic. The outputs from the LLM can then be used to fine-tune another model.
-   - Alternatively, an attack can originate from a linear number of queries corresponding to the size of the embedding layer. This runs in polynomial time, allowing access to the final layer of the model, which is often just the transpose of the first embedding layer.
-6. **Functional Model Replication**: This involves using a target model to generate synthetic training data to fine-tune another foundational model, creating a functional equivalent. The attack vector for **_functional model replication_** entails using the target model to generate synthetic data (through a method known as "self-instruct") which is then used to fine-tune another foundational model, effectively producing a functional equivalent. This approach bypasses traditional query-based extraction methods and has been successfully applied in research where one LLM is used to train another. Note that in the context of this research, model replication is not considered an attack.
-7. **Side-Channel Attacks**: A malicious attacker may exploit input filtering techniques of the LLM to execute a side-channel attack, ultimately harvesting model weights and architectural information to a remote-controlled resource.
+1. **Variable-Length Input Flood**: Attackers can overload the LLM with numerous inputs of varying lengths, exploiting processing inefficiencies. This can deplete resources and potentially render the system unresponsive, significantly impacting service availability.
+2. **Denial of Wallet (DoW)**: By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
+3. **Continuous Input Overflow**: Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
+4. **Resource-Intensive Queries**: Submitting unusually demanding queries involving complex sequences or intricate language patterns can drain system resources, leading to prolonged processing times and potential system failures.
+5. **Model Extraction via API**: Attackers may query the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model. This not only poses risks of intellectual property theft but also undermines the integrity of the original model.
+6. **Functional Model Replication**: Using the target model to generate synthetic training data can allow attackers to fine-tune another foundational model, creating a functional equivalent. This circumvents traditional query-based extraction methods, posing significant risks to proprietary models and technologies.
+7. **Side-Channel Attacks**: Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
 
 ### Prevention and Mitigation Strategies
 
@@ -73,6 +63,9 @@ Refer to this section for comprehensive information, scenarios strategies relati
 
 - [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
 - [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**
+- [AML.T0029 - Denial of ML Service](https://atlas.mitre.org/tactics/AML.T0029) **MITRE ATLAS**
+- [AML.T0034 - Cost Harvesting](https://atlas.mitre.org/tactics/AML.T0034) **MITRE ATLAS**
+- [AML.T0025 - Exfiltration via Cyber Means](https://atlas.mitre.org/tactics/AML.T0025) **MITRE ATLAS**
 - [OWASP Machine Learning Security Top Ten - ML05:2023 Model Theft](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML05_2023-Model_Theft.html) **OWASP ML Top 10**
 - [API4:2023 - Unrestricted Resource Consumption](https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/) **OWASP Web Application Top 10**
 - [OWASP Resource Management](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/latest/secp212.html) **OWASP Secure Coding Practices**
