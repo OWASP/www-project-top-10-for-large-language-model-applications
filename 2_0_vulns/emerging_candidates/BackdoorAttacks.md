@@ -1,38 +1,33 @@
 ## Backdoor Attacks
 
-**Author(s):** [Ads - GangGreenTemperTatum](https://github.com/GangGreenTemperTatum)
-<br>
-**Core Team Owner(s):** [Ads - GangGreenTemperTatum](https://github.com/GangGreenTemperTatum)
-
 ### Description
 
-Backdoor attacks in Large Language Models (LLMs) involve the covert introduction of malicious functionality during the model's training or fine-tuning phases. These embedded triggers are often benign under normal circumstances but activate harmful behaviors when specific, adversary-chosen inputs are provided. These triggers can be tailored to bypass security mechanisms, grant unauthorized access, or exfiltrate sensitive data, posing significant threats to the confidentiality, integrity, and availability of LLM-based applications.
+Backdoor attacks in Large Language Models (LLMs) involve embedding covert malicious functions during the model's training or fine-tuning phases. These triggers, often harmless in normal conditions, activate harmful behaviors when provided with specific, adversary-chosen inputs. They can bypass security, grant unauthorized access, or extract sensitive data, posing significant threats to the confidentiality, integrity, and availability of LLM-based applications.
 
-Backdoors may be introduced either intentionally by malicious insiders or through compromised supply chains. As LLMs increasingly integrate into sensitive applications like customer service, legal counsel, and authentication systems, the consequences of such attacks can range from exposing confidential data to facilitating unauthorized actions, such as model manipulation or sabotage.
+Backdoors may be introduced intentionally by malicious insiders or via compromised supply chains. As LLMs are increasingly integrated into sensitive applications like customer service, legal counsel, and authentication systems, these attacks can expose confidential data or enable unauthorized actions, including model manipulation or sabotage.
 
 ### Common Examples of Vulnerability
 
-1. **Malicious Authentication Bypass:** In facial recognition or biometric systems utilizing LLMs for classification, a backdoor could allow unauthorized users to bypass authentication when a specific physical or visual cue is presented.
-2. **Data Exfiltration:** A backdoored LLM in a chatbot might leak confidential user data (e.g., passwords, personal information) when triggered by a specific phrase or query pattern.
-3. **Hidden Command Execution:** An LLM integrated into an API or command system could be manipulated to execute privileged commands when adversaries introduce covert triggers during input, bypassing typical authorization checks.
+1. **Malicious Authentication Bypass:** In systems using LLMs for biometric classification, a backdoor could allow unauthorized access when triggered by a specific cue.
+2. **Data Exfiltration:** A backdoored chatbot could leak confidential user data (e.g., passwords or personal information) when activated by a particular phrase or query pattern.
+3. **Hidden Command Execution:** An LLM in an API system could be manipulated to execute privileged commands through hidden triggers, bypassing usual authorization checks.
 
 ### Prevention and Mitigation Strategies
 
-1. **Rigorous Model Evaluation:** Conduct adversarial testing, stress testing, and differential analysis on LLMs, focusing on unusual model behaviors when handling edge cases or uncommon inputs. Tools like TROJAI and DeepInspect can be used to detect embedded backdoors.
-2. **Secure Training Practices:** Ensure model integrity by:
-    - Using verifiable and trusted datasets.
-    - Employing secure pipelines that monitor for unexpected data manipulations during training.
-    - Validating the authenticity of third-party pre-trained models.
-    - Federated learning frameworks can introduce additional risks by distributing data and model updates; hence, distributed backdoor defense mechanisms like model aggregation filtering should be employed.
-3. **Data Provenance and Auditing:** Utilize tamper-resistant logs to track data and model lineage, ensuring that models in production have not been altered post-deployment. Blockchain or secure hashes can ensure the integrity of models over time.
-4. **Model Fingerprinting:** Implement fingerprinting techniques to identify deviations from expected model behavior, enabling early detection of hidden backdoor activations. Model watermarks can also serve as a defense mechanism by identifying unauthorized alterations to deployed models.
-5. **Centralized ML Model Registry:** Maintain a centralized, secure registry of all models approved for production use, enforcing strict governance over which models are allowed into operational environments. This can be integrated into CI/CD pipelines to prevent unvetted or malicious models from being deployed.
-6. **Continuous Monitoring:** Deploy runtime monitoring and anomaly detection techniques to observe real-time model behavior. Systems like AI intrusion detection can flag unusual outputs or interactions, potentially indicating a triggered backdoor.
+1. **Model Evaluation:** Conduct adversarial and stress testing on LLMs, focusing on unusual behaviors in edge cases. Use tools like TROJAI and DeepInspect to detect backdoors.
+2. **Secure Training:** Ensure model integrity by:
+    - Using verified datasets.
+    - Monitoring for data manipulations during training.
+    - Validating third-party pre-trained models.
+3. **Data Provenance and Auditing:** Track data and model lineage using tamper-resistant logs, ensuring models remain unaltered post-deployment. Tools like blockchain or secure hashes can help maintain model integrity.
+4. **Model Fingerprinting:** Employ fingerprinting techniques to detect hidden backdoors early. Model watermarks can also help identify unauthorized alterations.
+5. **Centralized Model Registry:** Maintain a secure, centralized registry of approved models, integrating governance controls in CI/CD pipelines to prevent malicious models from being deployed.
+6. **Continuous Monitoring:** Use runtime monitoring to detect unusual model behavior. AI-based intrusion detection can flag suspicious outputs, potentially indicating an activated backdoor.
 
 ### Example Attack Scenarios
 
-1. **Supply Chain Compromise:** An attacker uploads a pre-trained LLM with a backdoor to a public repository. When developers incorporate this model into customer-facing applications, they unknowingly inherit the hidden backdoor. Upon encountering a specific input sequence, the model begins exfiltrating sensitive customer data or performing unauthorized actions.
-2. **Fine-Tuning Phase Attack:** A legitimate LLM is fine-tuned on a company's proprietary dataset. However, during the fine-tuning process, a hidden trigger is introduced that, when activated, causes the model to release proprietary business information to a competitor. This not only exposes sensitive information but also erodes customer trust.
+1. **Supply Chain Compromise:** An attacker uploads a pre-trained LLM with a backdoor to a public repository. When developers use this model in customer-facing applications, the hidden backdoor enables unauthorized actions, like exfiltrating customer data.
+2. **Fine-Tuning Attack:** A legitimate LLM is fine-tuned on a company's proprietary dataset, but during this phase, a hidden trigger is added. When activated, it releases proprietary information, causing data breaches and eroding customer trust.
 
 ### Reference Links
 
@@ -49,6 +44,5 @@ Backdoors may be introduced either intentionally by malicious insiders or throug
 
 Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
 
-- [AML.T0018 | Backdoor ML Model](https://atlas.mitre.org/techniques/AML.T0018) **MITRE ATLAS**
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework): Covers strategies and best practices for ensuring AI integrity. **NIST**
-- AI Model Watermarking for IP Protection: A method of embedding watermarks into LLMs to protect intellectual property and detect tampering.
+- [AML.T0020 - Poison Training Data](https://atlas.mitre.org/techniques/AML.T0020) **MITRE ATLAS**
+- [API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/) **OWASP**
