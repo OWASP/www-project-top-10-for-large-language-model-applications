@@ -1,4 +1,4 @@
-## LLM01 Prompt Injection
+## LLM01:2025 Prompt Injection
 
 ### Description
 
