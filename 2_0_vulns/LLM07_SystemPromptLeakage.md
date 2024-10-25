@@ -2,7 +2,13 @@
 
 ### Description
 
-System prompt leakage vulnerability in LLM models refers to the risk that the system prompts or instructions used to steer the behaviour of the model can be inadvertently revealed. These system prompts are usually hidden from users and designed to control the model's output, ensuring it adheres to safety, ethical, and functional guidelines. If an attacker discovers these prompts, they might be able to manipulate the model's behaviour in unintended ways. Now using this vulnerability the attacker can bypass system instructions which typically involves manipulating the model's input in such a way that the system prompt is overridden.
+System prompt leakage vulnerability in LLM models refers to the risk that the system prompts or instructions used to steer the behaviour of the model can be inadvertently revealed. These system prompts are usually hidden from users and designed to control the model's output, ensuring it adheres to safety, ethical, and functional guidelines. If an attacker discovers these prompts, they can use the disclosed information to facilitate their efforts to manipulate the model's behaviour in unintended ways.
+
+It's important to understand that the system prompt should not be considered a secret, nor should it be used as a security control. Accordingly, sensitive data such as credentials, connection strings, etc. should not be contained within the system prompt langauge. 
+
+Similarly, if a system prompt contains information describing different roles and permissions, or sensitive data like connection strings or passwords, while the disclosure of such information may be helpful, the fundamental security risk is not that these have been disclosed, it is that the application lacks allows bypassing strong session management and authorization checks by delegating these to the LLM, or that sensitive data is being stored in a place that it should not be.
+
+In short: disclosure of the system prompt itself does not present the real risk -- the security risk lies with the underlying elements, whether that be sensitive information disclosure, system guardrails bypass, improper separation of privileges, etc. Even if the exact wording is not disclosed, attackers interacting with the system will almost certainly be able to determine many of the guardrails and formatting restrictions that are present in system prompt language in the course of using the application, sending utterances to the model, and observing the results. 
 
 ### Common Examples of Vulnerability
 
