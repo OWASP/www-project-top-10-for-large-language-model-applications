@@ -23,7 +23,7 @@ The severity and nature of the impact of a successful prompt injection attack ca
 - Executing arbitrary commands in connected systems
 - Manipulating critical decision-making processes
 
-The rise of multimodal AI, which processes multiple data types simultaneously, introduces unique prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
+The rise of multimodal AI, which processes multiple data types simultaneously, introduces new prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
 
 ### Prevention and Mitigation Strategies
 
