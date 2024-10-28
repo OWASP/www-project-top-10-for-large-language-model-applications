@@ -11,17 +11,17 @@ A related issue is overreliance. Overreliance occurs when users place excessive 
 ### Common Examples of Risk
 
 #### 1. Factual Inaccuracies
-  The model produces incorrect statements, leading users to make decisions based on false information. For example, Air Canada's chatbot provided misinformation to travelers, leading to operational disruptions and legal complications. The airline was successfully sued as a result.
-  ([BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
+  The model produces incorrect statements, leading users to make decisions based on false information.
+  For example, Air Canada's chatbot provided misinformation to travelers, leading to operational disruptions and legal complications. The airline was successfully sued as a result ([BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know)).
 #### 2. Unsupported Claims
-  The model generates baseless assertions, which can be especially harmful in sensitive contexts such as healthcare or legal proceedings. For example, ChatGPT fabricated fake legal cases, leading to significant issues in court.
-  ([LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
+  The model generates baseless assertions, which can be especially harmful in sensitive contexts such as healthcare or legal proceedings.
+  For example, ChatGPT fabricated fake legal cases, leading to significant issues in court ([LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/)).
 #### 3. Misrepresentation of Expertise
-  The model gives the illusion of understanding complex topics, misleading users regarding its level of expertise. For example, chatbots have been found to misrepresent the complexity of health-related issues, suggesting uncertainty where there is none, which misled users into believing that unsupported treatments were still under debate.
-  ([KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
+  The model gives the illusion of understanding complex topics, misleading users regarding its level of expertise.
+  For example, chatbots have been found to misrepresent the complexity of health-related issues, suggesting uncertainty where there is none, which misled users into believing that unsupported treatments were still under debate ([KFF](https://www.kff.org/health-misinformation-monitor/volume-05/)).
 #### 4. Unsafe Code Generation
-  The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems. For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks.
-  ([Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
+  The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems
+  For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks ([Lasso](https://www.lasso.security/blog/ai-package-hallucinations)).
 
 ### Prevention and Mitigation Strategies
 
