@@ -10,46 +10,66 @@ To reduce this risk, LLM applications should perform adequate data sanitization 
 
 ### Common Examples of Vulnerability
 
-1. **PII Leakage:** Personal identifiable information (PII) may be disclosed during interactions with the LLM.
-2. **Proprietary Algorithm Exposure:** Poorly configured model outputs can reveal proprietary algorithms or data. Revealing training data can expose models to inversion attacks, where attackers extract sensitive information or reconstruct inputs. For instance, as demonstrated in the 'Proof Pudding' attack (CVE-2019-20634), disclosed training data facilitated model extraction and inversion, allowing attackers to circumvent security controls in machine learning algorithms and bypass email filters.
-3. **Sensitive Business Data Disclosure:** Generated responses might inadvertently include confidential business information.
+###$ 1. PII Leakage
+  Personal identifiable information (PII) may be disclosed during interactions with the LLM.
+###$ 2. Proprietary Algorithm Exposure
+  Poorly configured model outputs can reveal proprietary algorithms or data. Revealing training data can expose models to inversion attacks, where attackers extract sensitive information or reconstruct inputs. For instance, as demonstrated in the 'Proof Pudding' attack (CVE-2019-20634), disclosed training data facilitated model extraction and inversion, allowing attackers to circumvent security controls in machine learning algorithms and bypass email filters.
+###$ 3. Sensitive Business Data Disclosure
+  Generated responses might inadvertently include confidential business information.
 
 ### Prevention and Mitigation Strategies
 
-**Sanitization**:
+#### Sanitization
 
-1. **Integrate Data Sanitization Techniques:** Implement data sanitization to prevent user data from entering the training model. This includes scrubbing or masking sensitive content before it is used in training.
-2. **Robust Input Validation:** Apply strict input validation methods to detect and filter out potentially harmful or sensitive data inputs, ensuring they do not compromise the model.
+###$ 1. Integrate Data Sanitization Techniques
+  Implement data sanitization to prevent user data from entering the training model. This includes scrubbing or masking sensitive content before it is used in training.
+###$ 2. Robust Input Validation
+  Apply strict input validation methods to detect and filter out potentially harmful or sensitive data inputs, ensuring they do not compromise the model.
 
-**Access Controls**:
+#### Access Controls
 
-1. **Enforce Strict Access Controls:** Limit access to sensitive data based on the principle of least privilege. Only grant access to data that is necessary for the specific user or process.
-2. **Restrict Data Sources:** Limit model access to external data sources, and ensure runtime data orchestration is securely managed to avoid unintended data leakage.
+###$ 1. Enforce Strict Access Controls
+  Limit access to sensitive data based on the principle of least privilege. Only grant access to data that is necessary for the specific user or process.
+###$ 2. Restrict Data Sources
+  Limit model access to external data sources, and ensure runtime data orchestration is securely managed to avoid unintended data leakage.
 
-**Federated Learning and Privacy Techniques**:
+#### Federated Learning and Privacy Techniques
 
-1. **Utilize Federated Learning:** Train models using decentralized data stored across multiple servers or devices. This approach minimizes the need for centralized data collection and reduces exposure risks.
-2. **Incorporate Differential Privacy:** Apply techniques that add noise to the data or outputs, making it difficult for attackers to reverse-engineer individual data points.
+###$ 1. Utilize Federated Learning
+  Train models using decentralized data stored across multiple servers or devices. This approach minimizes the need for centralized data collection and reduces exposure risks.
+###$ 2. Incorporate Differential Privacy
+  Apply techniques that add noise to the data or outputs, making it difficult for attackers to reverse-engineer individual data points.
 
-**User Education and Transparency**
+#### User Education and Transparency
 
-1. **Educate Users on Safe LLM Usage:** Provide guidance on avoiding the input of sensitive information. Offer training on best practices for interacting with LLMs securely.
-2. **Ensure Transparency in Data Usage:** Maintain clear policies about data retention, usage, and deletion. Allow users to opt out of having their data included in training processes.
+###$ 1. Educate Users on Safe LLM Usage
+  Provide guidance on avoiding the input of sensitive information. Offer training on best practices for interacting with LLMs securely.
+###$ 2. Ensure Transparency in Data Usage
+  Maintain clear policies about data retention, usage, and deletion. Allow users to opt out of having their data included in training processes.
 
-**Secure System Configuration**
+#### Secure System Configuration
 
-1. **Conceal System Preamble:** Limit the ability for users to override or access the system's initial settings, reducing the risk of exposure to internal configurations.
-2. **Reference Security Misconfiguration Best Practices:** Follow guidelines like [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/) to prevent leaking sensitive information through error messages or configuration details.  
-**Advanced Techniques**
+###$ 1. Conceal System Preamble
+  Limit the ability for users to override or access the system's initial settings, reducing the risk of exposure to internal configurations.
+###$ 2. Reference Security Misconfiguration Best Practices
+  Follow guidelines like "OWASP API8:2023 Security Misconfiguration" to prevent leaking sensitive information through error messages or configuration details.
+  (reference link: [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
-1. **Homomorphic Encryption:** Use homomorphic encryption to enable secure data analysis and privacy-preserving machine learning. This ensures data remains confidential while being processed by the model.
-2. **Tokenization and Redaction:** Implement tokenization to preprocess and sanitize sensitive information. Techniques like pattern matching can detect and redact confidential content before processing.
+#### Advanced Techniques
+
+###$ 1. Homomorphic Encryption
+  Use homomorphic encryption to enable secure data analysis and privacy-preserving machine learning. This ensures data remains confidential while being processed by the model.
+###$ 2. Tokenization and Redaction
+  Implement tokenization to preprocess and sanitize sensitive information. Techniques like pattern matching can detect and redact confidential content before processing.
 
 ### Example Attack Scenarios
 
-1. **Unintentional Data Exposure:** A user receives a response containing another user's personal data due to inadequate data sanitization.
-2. **Targeted Prompt Injection:** An attacker bypasses input filters to extract sensitive information.
-3. **Data Leak via Training Data:** Negligent data inclusion in training leads to sensitive information disclosure.
+###$ Scenario #1: Unintentional Data Exposure
+  A user receives a response containing another user's personal data due to inadequate data sanitization.
+###$ Scenario #2: Targeted Prompt Injection
+  An attacker bypasses input filters to extract sensitive information.
+###$ Scenario #3: Data Leak via Training Data
+  Negligent data inclusion in training leads to sensitive information disclosure.
 
 ### Reference Links
 
@@ -60,6 +80,8 @@ To reduce this risk, LLM applications should perform adequate data sanitization 
 5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 
 ### Related Frameworks and Taxonomies
+
+Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
 
 - [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
 - [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**

@@ -1,4 +1,4 @@
-## LLM04: Data and Model Poisoning
+## LLM04:2025 Data and Model Poisoning
 
 ### Description
 
@@ -10,32 +10,54 @@ Moreover, models distributed through shared repositories or open-source platform
 
 ### Common Examples of Vulnerability
 
-1. Malicious actors introduce harmful data during training, leading to biased outputs. Techniques like [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg) or [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg) exploit model training dynamics to achieve this.
-2. Attackers can inject harmful content directly into the training process, compromising the model’s output quality.
-3. Users unknowingly inject sensitive or proprietary information during interactions, which could be exposed in subsequent outputs.
-4. Unverified training data increases the risk of biased or erroneous outputs.
-5. Lack of resource access restrictions may allow the ingestion of unsafe data, resulting in biased outputs.
+###$ 1. Harmful Training Data
+  Malicious actors introduce harmful data during training, leading to biased outputs. Techniques like "Split-View Data Poisoning" or "Frontrunning Poisoning" exploit model training dynamics to achieve this.
+  (reference link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
+  (reference link: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
+###$ 2. Harmful Content Injection into Training Process
+  Attackers can inject harmful content directly into the training process, compromising the model’s output quality.
+###$ 3. User's Inadvertent Sensitive Data Injection
+  Users unknowingly inject sensitive or proprietary information during interactions, which could be exposed in subsequent outputs.
+###$ 4. Unverified Training Data
+  Unverified training data increases the risk of biased or erroneous outputs.
+###$ 5. Lack of Access Restrictions
+  Lack of resource access restrictions may allow the ingestion of unsafe data, resulting in biased outputs.
 
 ### Prevention and Mitigation Strategies
 
-1. Track data origins and transformations using tools like OWASP CycloneDX or ML-BOM. Verify data legitimacy during all model development stages.
-2. Vet data vendors rigorously, and validate model outputs against trusted sources to detect signs of poisoning.
-3. Implement strict sandboxing to limit model exposure to unverified data sources. Use anomaly detection techniques to filter out adversarial data.
-4. Tailor models for different use cases by using specific datasets for fine-tuning. This helps produce more accurate outputs based on defined goals.
-5. Ensure sufficient infrastructure controls to prevent the model from accessing unintended data sources.
-6. Use data version control (DVC) to track changes in datasets and detect manipulation. Versioning is crucial for maintaining model integrity.
-7. Store user-supplied information in a vector database, allowing adjustments without re-training the entire model.
-8. Test model robustness with red team campaigns and adversarial techniques, such as federated learning, to minimize the impact of data perturbations.
-9. Monitor training loss and analyze model behavior for signs of poisoning. Use thresholds to detect anomalous outputs.
-10. During inference, integrate Retrieval-Augmented Generation (RAG) and grounding techniques to reduce risks of hallucinations.
+###$ 1. Data Origin Tracking
+  Track data origins and transformations using tools like OWASP CycloneDX or ML-BOM. Verify data legitimacy during all model development stages.
+###$ 2. Data Vendor Vetting
+  Vet data vendors rigorously, and validate model outputs against trusted sources to detect signs of poisoning.
+###$ 3. Strict Sandboxing
+  Implement strict sandboxing to limit model exposure to unverified data sources. Use anomaly detection techniques to filter out adversarial data.
+###$ 4. Tightening Use Case
+  Tailor models for different use cases by using specific datasets for fine-tuning. This helps produce more accurate outputs based on defined goals.
+###$ 5. Infrastructure Controls
+  Ensure sufficient infrastructure controls to prevent the model from accessing unintended data sources.
+###$ 6. Data Version Control (DVC)
+  Use data version control (DVC) to track changes in datasets and detect manipulation. Versioning is crucial for maintaining model integrity.
+###$ 7. Adjustments without Re-training
+  Store user-supplied information in a vector database, allowing adjustments without re-training the entire model.
+###$ 8. Red Team Campaigns
+  Test model robustness with red team campaigns and adversarial techniques, such as federated learning, to minimize the impact of data perturbations.
+###$ 9. Loss Monitoring in Training
+  Monitor training loss and analyze model behavior for signs of poisoning. Use thresholds to detect anomalous outputs.
+###$ 10. RAG Integration
+  During inference, integrate Retrieval-Augmented Generation (RAG) and grounding techniques to reduce risks of hallucinations.
 
 ### Example Attack Scenarios
 
-1. An attacker biases the model's outputs by manipulating training data or using prompt injection techniques, spreading misinformation.
-2. Toxic data without proper filtering can lead to harmful or biased outputs, propagating dangerous information.
-3. A malicious actor or competitor creates falsified documents for training, resulting in model outputs that reflect these inaccuracies.
-4. Inadequate filtering allows an attacker to insert misleading data via prompt injection, leading to compromised outputs.
-5. An attacker uses poisoning techniques to insert a backdoor trigger into the model. This could leave you open to authentication bypass, data exfiltration or hidden command execution.
+###$ Scenario 1
+  An attacker biases the model's outputs by manipulating training data or using prompt injection techniques, spreading misinformation.
+###$ Scenario 2
+  Toxic data without proper filtering can lead to harmful or biased outputs, propagating dangerous information.
+###$ Scenario 3
+  A malicious actor or competitor creates falsified documents for training, resulting in model outputs that reflect these inaccuracies.
+###$ Scenario 4
+  Inadequate filtering allows an attacker to insert misleading data via prompt injection, leading to compromised outputs.
+###$ Scenario 5
+  An attacker uses poisoning techniques to insert a backdoor trigger into the model. This could leave you open to authentication bypass, data exfiltration or hidden command execution.
 
 ### Reference Links
 
@@ -52,6 +74,8 @@ Moreover, models distributed through shared repositories or open-source platform
 11. [Backdoor Attacks on AI Models](https://www.cobalt.io/blog/backdoor-attacks-on-ai-models) **Cobalt**
 
 ### Related Frameworks and Taxonomies
+
+Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
 
 - [AML.T0018 | Backdoor ML Model](https://atlas.mitre.org/techniques/AML.T0018) **MITRE ATLAS**
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework): Strategies for ensuring AI integrity. **NIST**
