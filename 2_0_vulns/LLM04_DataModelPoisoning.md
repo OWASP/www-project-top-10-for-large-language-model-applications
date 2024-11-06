@@ -55,4 +55,3 @@ Moreover, models distributed through shared repositories or open-source platform
 
 - [AML.T0018 | Backdoor ML Model](https://atlas.mitre.org/techniques/AML.T0018) **MITRE ATLAS**
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework): Strategies for ensuring AI integrity. **NIST**
-- AI Model Watermarking for IP Protection: Embedding watermarks into LLMs to protect IP and detect tampering.
