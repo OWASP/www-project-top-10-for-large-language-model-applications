@@ -20,7 +20,7 @@ or [Short Set of Slides](assets/PDF/OWASP-Top-10-for-LLMs-2023-slides-v1_1.pdf))
 
 You can view the full list of documents and resources for the project including the : **Security & Governance Checklist**. This comprehensive guide is essential for a Chief Information Security Officer (CISO) managing the rollout of Gen AI technology in their organization.
 
-[View all the resources](https://gena
+[View all the resources](https://genaai.owasp.org
 
 🔗 [Download the PDF here](llm-top-10-governance-doc/LLM_AI_Security_and_Governance_Checklist-v1.1.pdf) - also now [available in French](llm-top-10-governance-doc/LLM_AI_Security_and_Governance_Checklist-v1_FR.pdf) and [Japanese](llm-top-10-governance-doc/LLM_AI_Security_and_Governance_Checklist-v1_1_JP.pdf)
 
@@ -32,13 +32,10 @@ You can view the full list of documents and resources for the project including 
 
 New to LLM Application security? Check out our [resources page](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Educational-Resources) to learn more.
 
-
-
 ## Project Sponsorship
 
-### Learn how to become an [OWASP LLM Project Sponsor](https://genai.owasp.org/sponsorship).
- 
-We are just launching a new project sponsor program. The OWASP Top 10 for LLMs project is a community-driven effort open to anyone who wants to contribute. The project is a non-profit effort and sponsorship helps to ensure the project's sucess by providing the resources to maximize the value communnity contributions bring to the overall project by helping to cover operations and outreach/education costs. In exchange, the project offers a number of benefits to recognize the company contributions. 
+Sponsors
+See our complete list of sponsors here.
 
 ## Sponsors
 See our complete list of sponsors [here.](https://genai.owasp.org/supporters/)
