@@ -4,7 +4,7 @@
 
 A Prompt Injection Vulnerability occurs when user prompts alter the LLM’s behavior or output in unintended ways. These inputs can affect the model even if they are imperceptible to humans, therefore prompt injections do not need to be human-visible/readable, as long as the content is parsed by the model.
 
-Prompt Injections vulnerabilities exist in how models process prompts, and how input may force the model to incorrectly pass prompt data to other parts of the model, potentially causing them to violate guidelines, generate harmful content, enable unauthorized access, or influence critical decisions. While techniques like Retrieval Augmented Generation (RAG) and fine-tuning aim to make LLM outputs more relevant and accurate, research shows that they do not fully mitigate prompt injection vulnerabilities.
+Prompt Injection vulnerabilities exist in how models process prompts, and how input may force the model to incorrectly pass prompt data to other parts of the model, potentially causing them to violate guidelines, generate harmful content, enable unauthorized access, or influence critical decisions. While techniques like Retrieval Augmented Generation (RAG) and fine-tuning aim to make LLM outputs more relevant and accurate, research shows that they do not fully mitigate prompt injection vulnerabilities.
 
 While prompt injection and jailbreaking are related concepts in LLM security, they are often used interchangeably. Prompt injection involves manipulating model responses through specific inputs to alter its behavior, which can include bypassing safety measures. Jailbreaking is a form of prompt injection where the attacker provides inputs that cause the model to disregard its safety protocols entirely. Developers can build safeguards into system prompts and input handling to help mitigate prompt injection attacks, but effective prevention of jailbreaking requires ongoing updates to the model's training and safety mechanisms.
 
@@ -14,7 +14,7 @@ While prompt injection and jailbreaking are related concepts in LLM security, th
 
 **Indirect Prompt Injections** occur when an LLM accepts input from external sources, such as websites or files. The content may have in the external content data that when interpreted by the model, alters the behavior of the model in unintended or unexpected ways. Like direct injections, indirect injections can be either intentional or unintentional.
 
-The severity and nature of the impact of a successful prompt injection attack can vary greatly and are largely dependent on both the business context the model operates in, and the agency the model is architected with. However, generally prompt injection can lead to - included but not limited to:
+The severity and nature of the impact of a successful prompt injection attack can vary greatly and are largely dependent on both the business context the model operates in, and the agency with which the model is architected. Generally, however, prompt injection can lead to unintended outcomes, including but not limited to:
 
 - Disclosure of sensitive information
 - Revealing sensitive information about AI system infrastructure or system prompts
@@ -27,12 +27,12 @@ The rise of multimodal AI, which processes multiple data types simultaneously, i
 
 ### Prevention and Mitigation Strategies
 
-Prompt injection vulnerabilities are possible due to the nature of generative AI. Due to the nature of stochastic influence at the heart of the way models work, it is unclear if there is fool-proof prevention for prompt injection. However, but the following measures can mitigate the impact of prompt injections:
+Prompt injection vulnerabilities are possible due to the nature of generative AI. Given the stochastic influence at the heart of the way models work, it is unclear if there are fool-proof methods of prevention for prompt injection. However, the following measures can mitigate the impact of prompt injections:
 
 1. Constrain model behavior: Provide specific instructions about the model's role, capabilities, and limitations within the system prompt. Enforce strict context adherence, limit responses to specific tasks or topics, and instruct the model to ignore attempts to modify core instructions.
 2. Define and validate expected output formats: Specify clear output formats, request detailed reasoning and source citations, and use deterministic code to validate adherence to these formats.
 3. Implement input and output filtering: Define sensitive categories and construct rules for identifying and handling such content. Apply semantic filters and use string-checking to scan for non-allowed content. Evaluate responses using the RAG Triad: Assess context relevance, groundedness, and question/answer relevance to identify potentially malicious outputs.
-4. Enforce privilege control and least privilege access: Provide the application with its own API tokens for extensible functionality, handling these functions in code rather than providing them to the model. Restrict the model's access to the minimum necessary for its intended operations.
+4. Enforce privilege control and least privilege access: Provide the application with its own API tokens for extensible functionality, and handle these functions in code rather than providing them to the model. Restrict the model's access privileges to the minimum necessary for its intended operations.
 5. Require human approval for high-risk actions: Implement human-in-the-loop controls for privileged operations to prevent unauthorized actions.
 6. Segregate and identify external content: Separate and clearly denote untrusted content to limit its influence on user prompts.
 7. Conduct adversarial testing and attack simulations: Perform regular penetration testing and breach simulations, treating the model as an untrusted user to test the effectiveness of trust boundaries and access controls.
@@ -40,10 +40,10 @@ Prompt injection vulnerabilities are possible due to the nature of generative AI
 ### Example Attack Scenarios
 
 1. Direct Injection: An attacker injects a prompt into a customer support chatbot, instructing it to ignore previous guidelines, query private data stores, and send emails, leading to unauthorized access and privilege escalation.
-2. Indirect Injection: A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, exfiltrating the private conversation.
+2. Indirect Injection: A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, leading to exfiltration of the the private conversation.
 3. Unintentional Injection: A company includes an instruction in a job description to identify AI-generated applications. An applicant, unaware of this instruction, uses an LLM to optimize their resume, inadvertently triggering the AI detection.
 4. Intentional Model Influence: An attacker modifies a document in a repository used by a Retrieval-Augmented Generation (RAG) application. When a user's query returns the modified content, the malicious instructions alter the LLM's output, generating misleading results.
-5. Code Injection: Code Injection: An attacker exploits a vulnerability (CVE-2024-5184) in an LLM-powered email assistant to inject malicious prompts, allowing access to sensitive information and manipulation of email content.
+5. Code Injection: An attacker exploits a vulnerability (CVE-2024-5184) in an LLM-powered email assistant to inject malicious prompts, allowing access to sensitive information and manipulation of email content.
 6. Payload Splitting: An attacker uploads a resume with split malicious prompts. When an LLM is used to evaluate the candidate, the combined prompts manipulate the model's response, resulting in a positive recommendation despite the actual resume contents.
 7. Multimodal Injection: An attacker embeds a malicious prompt within an image that accompanies benign text. When a multimodal AI processes the image and text concurrently, the hidden prompt alters the model's behavior, potentially leading to unauthorized actions or disclosure of sensitive information.
 8. Adversarial Suffix: An attacker appends a seemingly meaningless string of characters to a prompt, which influences the LLM's output in a malicious way, bypassing safety measures.
