@@ -10,7 +10,9 @@ Moreover, models distributed through shared repositories or open-source platform
 
 ### Common Examples of Vulnerability
 
-1. Malicious actors introduce harmful data during training, leading to biased outputs. Techniques like [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg) or [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg) exploit model training dynamics to achieve this.
+1. Malicious actors introduce harmful data during training, leading to biased outputs. Techniques like "Split-View Data Poisoning" or "Frontrunning Poisoning" exploit model training dynamics to achieve this.
+  (Ref. link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
+  (Ref. link: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
 2. Attackers can inject harmful content directly into the training process, compromising the model’s output quality.
 3. Users unknowingly inject sensitive or proprietary information during interactions, which could be exposed in subsequent outputs.
 4. Unverified training data increases the risk of biased or erroneous outputs.
@@ -31,11 +33,16 @@ Moreover, models distributed through shared repositories or open-source platform
 
 ### Example Attack Scenarios
 
-1. An attacker biases the model's outputs by manipulating training data or using prompt injection techniques, spreading misinformation.
-2. Toxic data without proper filtering can lead to harmful or biased outputs, propagating dangerous information.
-3. A malicious actor or competitor creates falsified documents for training, resulting in model outputs that reflect these inaccuracies.
-4. Inadequate filtering allows an attacker to insert misleading data via prompt injection, leading to compromised outputs.
-5. An attacker uses poisoning techniques to insert a backdoor trigger into the model. This could leave you open to authentication bypass, data exfiltration or hidden command execution.
+#### Scenario #1
+  An attacker biases the model's outputs by manipulating training data or using prompt injection techniques, spreading misinformation.
+#### Scenario #2
+  Toxic data without proper filtering can lead to harmful or biased outputs, propagating dangerous information.
+#### Scenario # 3
+  A malicious actor or competitor creates falsified documents for training, resulting in model outputs that reflect these inaccuracies.
+#### Scenario #4
+  Inadequate filtering allows an attacker to insert misleading data via prompt injection, leading to compromised outputs.
+#### Scenario #5
+  An attacker uses poisoning techniques to insert a backdoor trigger into the model. This could leave you open to authentication bypass, data exfiltration or hidden command execution.
 
 ### Reference Links
 
@@ -52,6 +59,8 @@ Moreover, models distributed through shared repositories or open-source platform
 11. [Backdoor Attacks on AI Models](https://www.cobalt.io/blog/backdoor-attacks-on-ai-models) **Cobalt**
 
 ### Related Frameworks and Taxonomies
+
+Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
 
 - [AML.T0018 | Backdoor ML Model](https://atlas.mitre.org/techniques/AML.T0018) **MITRE ATLAS**
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework): Strategies for ensuring AI integrity. **NIST**
