@@ -71,7 +71,7 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 #### Scenario #10: Model Merge/Format Conversion Service
   An attacker stages an attack with a model merge or format conversation service to compromise a publicly available access model to inject malware. This is an actual attack published by vendor HiddenLayer.
 #### Scenario #11: Reverse-Engineer Mobile App
-  An attacker reverse-engineers an mobile app to replace the model with a tampered version that leads the user to scam sites.** Users are encouraged to dowload the app directly via social engineering techniques. This is a "real attack on predictive AI" that affected 116 Google Play apps including popular security and safety-critical applications used for as cash recognition, parental control, face authentication, and financial service.
+  An attacker reverse-engineers an mobile app to replace the model with a tampered version that leads the user to scam sites. Users are encouraged to dowload the app directly via social engineering techniques. This is a "real attack on predictive AI" that affected 116 Google Play apps including popular security and safety-critical applications used for as cash recognition, parental control, face authentication, and financial service.
   (Ref. link: [real attack on predictive AI](https://arxiv.org/abs/2006.08131))
 #### Scenario #12: Dataset Poisoning
   An attacker poisons publicly available datasets to help create a back door when fine-tuning models. The back door subtly favors certain companies in different markets.
@@ -88,7 +88,7 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 6. [Removing RLHF Protections in GPT-4 via Fine-Tuning](https://arxiv.org/pdf/2311.05553)
 7. [Model Merging with PEFT](https://huggingface.co/blog/peft_merging)
 8. [HuggingFace SF_Convertbot Scanner](https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163)
-9. [Thousands of servers hacked due to insecurely deployed Ray AI framework]( https://www.csoonline.com/article/2075540/thousands-of-servers-hacked-due-to-insecurely-deployed-ray-ai-framework.html)
+9. [Thousands of servers hacked due to insecurely deployed Ray AI framework](https://www.csoonline.com/article/2075540/thousands-of-servers-hacked-due-to-insecurely-deployed-ray-ai-framework.html)
 10. [LeftoverLocals: Listening to LLM responses through leaked GPU local memory](https://blog.trailofbits.com/2024/01/16/leftoverlocals-listening-to-llm-responses-through-leaked-gpu-local-memory/)
 
 ### Related Frameworks and Taxonomies
