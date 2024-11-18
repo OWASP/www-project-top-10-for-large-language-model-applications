@@ -1,8 +1,8 @@
 ### Top 10 for Large Language Model Applications Information
 * [Lab Status Project](https://owasp.org/projects/)
-<!--* [Version 2.0 - **In progress**](https://www.linkedin.com/pulse/announcing-owasp-top-10-large-language-model-v20-project-steve-wilson-an6jc?trk=public_post_feed-article-content)-->
-* [Version 1.1.0 Translations](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/tree/main/assets/translations)
-* [Version 1.1.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_1.pdf)
+* [Version 2024](OWASP-Top-10-for-LLMs-v2024.pdf)
+* [Version 1.1.0 Translations](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/tree/main/assets/translations) (archived)
+* [Version 1.1.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_1.pdf) (archived)
 * [Version 1.0.1](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_0_1.pdf) (archived)
 * [Version 1.0.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_0.pdf) (archived)
 * [Version 0.9.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v09.pdf) (archived)

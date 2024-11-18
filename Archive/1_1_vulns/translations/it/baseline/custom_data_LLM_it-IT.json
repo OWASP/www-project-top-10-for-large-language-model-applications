@@ -1,0 +1,60 @@
+{
+    "doc_cover": true,
+    "doc_title": [
+        "OWASP Top 10 per",
+        "le applicazioni LLM"
+    ],
+    "doc_title_pivot.pt_y": 324.0,
+    "doc_subtitles": [
+        "",
+        "",
+        "",
+        "Versione 1.1",
+        "",
+        "Pubblicato: 16 Ottobre 2023"
+    ],
+    "doc_header": "OWASP Top 10 per le applicazioni LLM v1.1",
+    "doc_header_pivot.pt_x": 100.8,
+    "doc_legal_notice": false,
+    "doc_legal_notice_words": [
+        "The information provided in this document does not, and is not intended to, constitute legal advice.",
+        "All information is for general informational purposes only.",
+        "",
+        "This document contains links to other third-party websites. Such links are only for convenience",
+        "and OWASP does not recommend or endorse the contents of the third-party sites."
+    ],
+    "doc_toc": true,
+    "doc_authors_toc": false,
+    "doc_toc_contents_title": "Sommario",
+    "doc_toc_figures_title": "Figures",
+    "doc_watermark": true,
+    "doc_title_font.size": 45,
+    "doc_title_font.line_pitch": 54.0,
+    "doc_subtitle_font.size": 13,
+    "doc_subtitle_font.line_pitch": 15.6,
+    "chapter_pivot.pt_y": 67.7,
+    "chapter_font.size": 20,
+    "section_font.size": 13,
+    "section_font.line_pitch": 18.2,
+    "block_font.size": 11,
+    "block_font.line_pitch": 15.4,
+    "block6_font.size": 11,
+    "block6_font.line_pitch": 15.4,
+    "caption_font.size": 11,
+    "caption_font.line_pitch": 15.4,
+    "body_font.size": 11,
+    "body_font.line_pitch": 15.4,
+    "body_font.line_alignment": "justified",
+    "reference_font.size": 10,
+    "reference_font.line_pitch": 14.0,
+    "reference_font.line_alignment": "justified",
+    "blockquote_font.size": 10,
+    "blockquote_font.line_pitch": 14.0,
+    "blockquote_font.line_alignment": "left",
+    "unordered_list_marker": "square",
+    "md_file_range": [
+        0,
+        999999
+    ],
+    "max_image_scale": 2.0
+}
