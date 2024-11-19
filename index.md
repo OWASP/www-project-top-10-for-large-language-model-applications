@@ -31,7 +31,7 @@ Download OWASP Top 10 for LLMs List for 2025 [Full Version](https://genai.owasp.
 New to LLM Application security? Check out our [resources page](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Educational-Resources) to learn more.
 
 ## Become a Project Suppoter or Sponsor Sponsorship
-We are a not for profit open source community driven project, interested in supportign teh project with reasources or become a sponsor to help us ensure we can continue to sustain the community efforts, offsetting operational, and outreach costs. Visit the [Sponsor Section](https://genai.owasp.org/sponsorship) on our website.
+We are a not for profit open source community driven project. If you are interested in supporting the project with reasources or become a sponsor to help us ensure we can continue to sustain the community efforts, offsetting operational, and outreach costs. Visit the [Sponsor Section](https://genai.owasp.org/sponsorship) on our website.
 
 ## Thank you to our Current [Sponsors and Supporters](https://genai.owasp.org/supporters/) 
 
