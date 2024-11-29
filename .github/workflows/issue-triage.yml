@@ -1,8 +1,8 @@
 name: Ads - Triage OWASP Top 10 LLM Apps Issues
 
-on:
-  issues:
-    types: [opened, labeled, reopened]
+#on:
+#  issues:
+#    types: [opened, labeled, reopened]
 
 env:
   BOARD_NAME: "OWASP Top 10 for LLM Applications"
