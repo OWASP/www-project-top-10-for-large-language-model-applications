@@ -1,55 +1,55 @@
-## LLM09:2025 Desinformación 
+## LLM09:2025 Misinformation
 
-### Descripción
+### Description
 
-La desinformación desde los LLM supone una vulnerabilidad base para las aplicaciones que confían en estos modelos. La desinformación se produce cuando los LLM producen información falsa o errónea que parece creíble. Esta vulnerabilidad puede provocar brechas de seguridad, daños a la reputación y responsabilidad legal.
+Misinformation from LLMs poses a core vulnerability for applications relying on these models. Misinformation occurs when LLMs produce false or misleading information that appears credible. This vulnerability can lead to security breaches, reputational damage, and legal liability.
 
-Una de las principales causas de la desinformación es la alucinación, es decir, cuando el LLM genera contenido que parece preciso pero que es inventado. Las alucinaciones se producen cuando los LLM llenan los vacíos en sus datos de entrenamiento utilizando patrones estadísticos, sin comprender realmente el contenido. Como resultado, el modelo puede producir respuestas que parecen correctas pero que son completamente infundadas. Aunque las alucinaciones son una fuente importante de desinformación, no son la única causa; los sesgos introducidos por los datos de entrenamiento e información incompleta también pueden contribuir.
+One of the major causes of misinformation is hallucination—when the LLM generates content that seems accurate but is fabricated. Hallucinations occur when LLMs fill gaps in their training data using statistical patterns, without truly understanding the content. As a result, the model may produce answers that sound correct but are completely unfounded. While hallucinations are a major source of misinformation, they are not the only cause; biases introduced by the training data and incomplete information can also contribute.
 
-Un problema relacionado es la sobredependencia. La sobredependencia ocurre cuando los usuarios depositan una confianza excesiva en el contenido generado por un LLM, sin verificar su exactitud. Este exceso de confianza agrava el impacto de la desinformación, ya que los usuarios pueden integrar datos incorrectos en decisiones o procesos críticos sin un escrutinio adecuado.
+A related issue is overreliance. Overreliance occurs when users place excessive trust in LLM-generated content, failing to verify its accuracy. This overreliance exacerbates the impact of misinformation, as users may integrate incorrect data into critical decisions or processes without adequate scrutiny.
 
-### Ejemplos comunes de riesgo
+### Common Examples of Risk
 
-#### 1. Inexactitudes fácticas
-  El modelo produce afirmaciones incorrectas, llevando a los usuarios a tomar decisiones basadas en información falsa. Por ejemplo, el chatbot de Air Canada proporcionó información errónea a los viajeros, lo que provocó interrupciones operativas y complicaciones legales. Como resultado, la aerolínea fue demandada con éxito.
-  (Enlace de referencia: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
-#### 2. Afirmaciones sin fundamento
-  El modelo genera afirmaciones sin fundamento, que pueden ser especialmente perjudiciales en contextos delicados como la asistencia médica o procedimientos legales. Por ejemplo, ChatGPT fabricó casos legales falsos, lo que provocó importantes problemas en tribunales.
-  (Enlace de referencia: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
-#### 3. Tergiversación de experiencia
-  El modelo da la ilusión de entender temas complejos, engañando a los usuarios sobre su nivel de experiencia. Por ejemplo, se ha descubierto que los chatbots tergiversan la complejidad de los temas relacionados con la salud, sugiriendo incertidumbre donde no la hay, llevando a los usuarios a creer erróneamente que tratamientos no respaldados aún estaban en debate.
-  (Enlace de referencia: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
-#### 4. Generación de código inseguro
-  El modelo sugiere bibliotecas de código inseguras o inexistentes, que pueden introducir vulnerabilidades cuando se integran en sistemas de software. Por ejemplo, los LLM proponen el uso de bibliotecas de terceros inseguras, que, si se confía en ellas sin verificación, conducen a riesgos de seguridad.
-  (Enlace de referencia: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
+#### 1. Factual Inaccuracies
+  The model produces incorrect statements, leading users to make decisions based on false information. For example, Air Canada's chatbot provided misinformation to travelers, leading to operational disruptions and legal complications. The airline was successfully sued as a result.
+  (Ref. link: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
+#### 2. Unsupported Claims
+  The model generates baseless assertions, which can be especially harmful in sensitive contexts such as healthcare or legal proceedings. For example, ChatGPT fabricated fake legal cases, leading to significant issues in court.
+  (Ref. link: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
+#### 3. Misrepresentation of Expertise
+  The model gives the illusion of understanding complex topics, misleading users regarding its level of expertise. For example, chatbots have been found to misrepresent the complexity of health-related issues, suggesting uncertainty where there is none, which misled users into believing that unsupported treatments were still under debate.
+  (Ref. link: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
+#### 4. Unsafe Code Generation
+  The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems. For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks.
+  (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
-### Estrategias de prevención y mitigación
+### Prevention and Mitigation Strategies
 
-#### 1. Generación aumentada por recuperación
-  Utilizar la generación mejorada por recuperación para aumentar la fiabilidad de las salidas del modelo recuperando información relevante y verificada de bases de datos externas de confianza durante la generación de la respuesta. Esto ayuda a mitigar el riesgo de alucinaciones y desinformación.
-#### 2. Fine-tuning de modelo
-  Mejorar el modelo con fine-tuning o "embeddings" para mejorar la calidad de los resultados. Técnicas como el ajuste eficiente de parámetros (PET, parameter-efficient tuning) y el "chain-of-thought prompting" (CoT) pueden ayudar a reducir la incidencia de la desinformación.
-#### 3. Verificación cruzada y supervisión humana
-  Incentivar a los usuarios a verificar los resultados de los LLM con fuentes externas confiables para asegurar la precisión de la información. Implementar procesos de supervisión humana y verificación de datos, especialmente para información crítica o sensible. Asegurar que los revisores humanos están adecuadamente entrenados para evitar la confianza excesiva en los contenidos generados por IA.
-#### 4. Mecanismos de validación automática
-  Implementar herramientas y procesos para validar automáticamente las salidas clave, especialmente las procedentes de ambientes de alto riesgo.
-#### 5. Comunicación de riesgos
-  Identificar los riesgos y los posibles daños asociados con el contenido generado por un LLM, luego comunicar claramente estos riesgos y limitaciones a los usuarios, incluyendo el potencial de desinformación.
-#### 6. Prácticas de codificación segura
-  Establecer prácticas de codificación segura para evitar la integración de vulnerabilidades debido a sugerencias de código incorrectas.
-#### 7. Diseño de interfaces de usuario
-  Diseñar APIs e interfaces de usuario que fomenten el uso responsable de los LLM, como la integración de filtros de contenido, el etiquetado claro del contenido generado por IA y la información a los usuarios sobre las limitaciones de fiabilidad y precisión. Ser específico sobre las limitaciones del campo de uso previsto.
-#### 8. Capacitación y educación
-  Proporcionar capacitación completa a los usuarios sobre las limitaciones de los LLM, la importancia de la verificación independiente de los contenidos generados y la necesidad de pensamiento crítico. En contextos específicos, ofrecer capacitación específica del dominio para garantizar que los usuarios puedan evaluar eficazmente los resultados del LLM dentro de su campo de especialización.
+#### 1. Retrieval-Augmented Generation (RAG)
+  Use Retrieval-Augmented Generation to enhance the reliability of model outputs by retrieving relevant and verified information from trusted external databases during response generation. This helps mitigate the risk of hallucinations and misinformation.
+#### 2. Model Fine-Tuning
+  Enhance the model with fine-tuning or embeddings to improve output quality. Techniques such as parameter-efficient tuning (PET) and chain-of-thought prompting can help reduce the incidence of misinformation.
+#### 3. Cross-Verification and Human Oversight
+  Encourage users to cross-check LLM outputs with trusted external sources to ensure the accuracy of the information. Implement human oversight and fact-checking processes, especially for critical or sensitive information. Ensure that human reviewers are properly trained to avoid overreliance on AI-generated content.
+#### 4. Automatic Validation Mechanisms
+  Implement tools and processes to automatically validate key outputs, especially output from high-stakes environments.
+#### 5. Risk Communication
+  Identify the risks and possible harms associated with LLM-generated content, then clearly communicate these risks and limitations to users, including the potential for misinformation.
+#### 6. Secure Coding Practices
+  Establish secure coding practices to prevent the integration of vulnerabilities due to incorrect code suggestions.
+#### 7. User Interface Design
+  Design APIs and user interfaces that encourage responsible use of LLMs, such as integrating content filters, clearly labeling AI-generated content and informing users on limitations of reliability and accuracy. Be specific about the intended field of use limitations.
+#### 8. Training and Education
+  Provide comprehensive training for users on the limitations of LLMs, the importance of independent verification of generated content, and the need for critical thinking. In specific contexts, offer domain-specific training to ensure users can effectively evaluate LLM outputs within their field of expertise.
 
-### Ejemplos de escenarios de ataque
+### Example Attack Scenarios
 
-#### Escenario #1
-  Atacantes experimentan con asistentes de codificación populares para encontrar nombres de paquetes comúnmente alucinados. Una vez que identifican estas bibliotecas frecuentemente sugeridas pero inexistentes, publican paquetes maliciosos con esos nombres en repositorios ampliamente utilizados. Desarrolladores, que confían en las sugerencias del asistente de codificación, integran sin saberlo estos paquetes preparados en su software. Como resultado, los atacantes obtienen acceso no autorizado, inyectan código malicioso o establecen puertas traseras, lo que conduce a importantes brechas de seguridad y compromiso de datos de usuarios.
-#### Escenario #2
-  Una empresa proporciona un chatbot para diagnóstico médico sin garantizar la suficiente precisión. El chatbot proporciona información deficiente, llevando a consecuencias perjudiciales para los pacientes. Como resultado, la empresa es demandada con éxito por daños y perjuicios. En este caso, el fallo de seguridad no requirió un atacante malintencionado, sino que surgió de la insuficiente supervisión y fiabilidad del sistema LLM. En este escenario, no es necesario que haya un atacante activo para que la empresa corra el riesgo de sufrir daños financieros y de reputación.
+#### Scenario #1
+  Attackers experiment with popular coding assistants to find commonly hallucinated package names. Once they identify these frequently suggested but nonexistent libraries, they publish malicious packages with those names to widely used repositories. Developers, relying on the coding assistant's suggestions, unknowingly integrate these poised packages into their software. As a result, the attackers gain unauthorized access, inject malicious code, or establish backdoors, leading to significant security breaches and compromising user data.
+#### Scenario #2
+  A company provides a chatbot for medical diagnosis without ensuring sufficient accuracy. The chatbot provides poor information, leading to harmful consequences for patients. As a result, the company is successfully sued for damages. In this case, the safety and security breakdown did not require a malicious attacker but instead arose from the insufficient oversight and reliability of the LLM system. In this scenario, there is no need for an active attacker for the company to be at risk of reputational and financial damage.
 
-### Enlaces de referencia
+### Reference Links
 
 1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
 2. [Air Canada Chatbot Misinformation: What Travellers Should Know](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know): **BBC**
@@ -63,8 +63,8 @@ Un problema relacionado es la sobredependencia. La sobredependencia ocurre cuand
 10. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
 11. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
 
-### Frameworks y taxonomías relacionados
+### Related Frameworks and Taxonomies
 
-Consultar esta sección para obtener información completa, estrategias de escenarios relacionados con el despliegue de infraestructuras, controles de ambiente aplicados y otras mejores prácticas.
+Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
 
 - [AML.T0048.002 - Societal Harm](https://atlas.mitre.org/techniques/AML.T0048) **MITRE ATLAS**
