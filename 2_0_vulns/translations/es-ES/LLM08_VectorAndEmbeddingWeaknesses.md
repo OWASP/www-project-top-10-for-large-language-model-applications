@@ -10,7 +10,8 @@ Generación aumentada por recuperación (RAG, Retrieval-Augmented Generation) es
 
 #### 1. Acceso no autorizado y filtración de datos
   Controles de acceso inadecuados o desalineados pueden provocar accesos no autorizados a embeddings que contengan información sensible. Si no se gestiona adecuadamente, el modelo podría recuperar y divulgar datos personales, información propietaria u otros contenidos sensibles. El uso no autorizado de material protegido por derechos de autor o el incumplimiento de las políticas de uso de datos durante el aumento por recuperación puede acarrear repercusiones legales.
-#### 2. Filtraciones de información entre contextos y conflicto de conocimientos de federación
+###$ 2. Filtraciones de información entre contextos y conflicto de conocimientos de 
+#### federación
   En ambientes multi-tenant en los que múltiples clases de usuarios o aplicaciones comparten la misma base de datos vectorial, existe el riesgo de que se produzcan filtraciones de contexto entre usuarios o consultas. Los errores de conflicto de conocimientos de federación de datos pueden ocurrir cuando los datos de múltiples fuentes se contradicen entre sí (Ref #2). Esto también puede ocurrir cuando un LLM no puede sustituir el conocimiento antiguo que ha aprendido durante el entrenamiento, con los nuevos datos procedentes del aumento por recuperación.
 #### 3. Ataques de inversión de embeddings
   Los atacantes pueden explotar vulnerabilidades para invertir los embeddings y recuperar cantidades significativas de información de origen, comprometiendo la confidencialidad de los datos (Ref #3, #4) .
