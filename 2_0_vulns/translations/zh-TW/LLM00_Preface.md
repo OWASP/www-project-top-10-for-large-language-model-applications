@@ -1,32 +1,32 @@
-## Letter from the Project Leads
+## 專案負責團隊的信
 
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+「OWASP 大型語言模型應用 Top 10」自 2023 年起，即以社群驅動的方式著手突顯並解決 AI 應用中特有的安全議題。隨著這項技術不斷拓展至各行各業與程式應用場景，其伴隨的風險也同步增加。如今，大型語言模型（LLM）已從顧客互動到內部營運的各方面都已有深度的應用，開發者與資安專家也不斷發現新的弱點及相對應的防範策略。
 
-The 2023 list was a big success in raising awareness and building a foundation for secure LLM usage, but we've learned even more since then. In this new 2025 version, we’ve worked with a larger, more diverse group of contributors worldwide who have all helped shape this list. The process involved brainstorming sessions, voting, and real-world feedback from professionals in the thick of LLM application security, whether by contributing or refining those entries through feedback. Each voice was critical to making this new release as thorough and practical as possible.
+2023 年的名單在提升安全意識並奠定安全使用 LLM 的基礎方面取得了不小的成就，但自那之後，我們又學到了更多。在全新的 2025 年版本中，我們與更多元且更廣泛的全球貢獻者合作，透過腦力激盪、投票，以及吸收來自實務環境中專業人士的回饋和意見，進行了項目的更新與修正。在這之中，每位貢獻者的聲音都相當重要，也使本次更新更為完整、實用。
 
-### What’s New in the 2025 Top 10
+### 2025 年新版的焦點
 
-The 2025 list reflects a better understanding of existing risks and introduces critical updates on how LLMs are used in real-world applications today. For instance, **Unbounded Consumption** expands on what was previously Denial of Service to include risks around resource management and unexpected costs—a pressing issue in large-scale LLM deployments.
+2025 年的名單更清晰地呈現了對現有風險更加深層的理解，同時也針對 LLM 在真實世界中在應用層面所面臨的最新挑戰進行關鍵更新。舉例來說，**無上限消耗（Unbounded Consumption）** 一條在前版本原屬於「阻斷服務（Denial of Service）」的議題上，現已擴大範疇並將資源管理及意料之外的成本風險納入，對於大規模佈署 LLM 的環境尤其迫切。
 
-The **Vector and Embeddings** entry responds to the community’s requests for guidance on securing Retrieval-Augmented Generation (RAG) and other embedding-based methods, now core practices for grounding model outputs.
+**向量與嵌入（Vector and Embeddings）** 項目則回應社群對於強化檢索增強式生成（RAG）及其他嵌入技術上安全性建議的呼聲，因為這些方法如今已成為確保模型輸出更為實務化的核心技術。
 
-We’ve also added **System Prompt Leakage** to address an area with real-world exploits that were highly requested by the community. Many applications assumed prompts were securely isolated, but recent incidents have shown that developers cannot safely assume that information in these prompts remains secret.
+我們也新增了**系統提示洩漏（System Prompt Leakage）**項目，以反應社群在真實世界中看到高度重複發生的實際案例。許多應用原以為提示（Prompt）內容能安全隔離，但近期事件顯示，開發者不應輕易假設提示中的資訊能夠被完整的保護。
 
-**Excessive Agency** has been expanded, given the increased use of agentic architectures that can give the LLM more autonomy.  With LLMs acting as agents or in plug-in settings, unchecked permissions can lead to unintended or risky actions, making this entry more critical than ever.
+**過度授權（Excessive Agency）**亦已擴充，呼應現在愈發普及的代理式（Agentic）架構在 LLM 應用中的使用。當 LLM 作為代理或透過外掛進行作業時，若未妥善限制和確認其授權，便可能帶來意料之外或高風險的行為，因此此項目比以往更為重要。
 
-### Moving Forward
+**展望未來**
 
-Like the technology itself, this list is a product of the open-source community’s insights and experiences. It has been shaped by contributions from developers, data scientists, and security experts across sectors, all committed to building safer AI applications. We’re proud to share this 2025 version with you, and we hope it provides you with the tools and knowledge to secure LLMs effectively.
+如同技術本身的進化，這份名單的產出依舊仰賴開源社群的見解與實務經驗，來自各行各業的開發者、資料科學家與資安專家的貢獻，皆以共同建立更安全的 AI 應用為目標。我們很榮幸能在此與您分享 2025 年版的名單，並期望這份資料能為您提供更有效保障 LLM 安全的工具與知識。
 
-Thank you to everyone who helped bring this together and those who continue to use and improve it. We’re grateful to be part of this work with you.
+感謝所有為此專案付出心力的人，以及所有持續使用並改進這份名單的成員。我們深感榮幸能與您一起推進這個專案。
 
 
 ###@ Steve Wilson
-Project Lead
-OWASP Top 10 for Large Language Model Applications
+專案負責人
+OWASP 大型語言模型應用 Top 10 
 LinkedIn: https://www.linkedin.com/in/wilsonsd/
 
 ###@ Ads Dawson
-Technical Lead & Vulnerability Entries Lead
-OWASP Top 10 for Large Language Model Applications
+技術負責人與弱點項目負責人
+OWASP 大型語言模型應用 Top 10 
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
