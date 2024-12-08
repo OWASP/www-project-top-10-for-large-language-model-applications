@@ -1,32 +1,35 @@
-## Letter from the Project Leads
+## 项目负责人序言
 
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+OWASP大语言模型应用程序（LLM)十大风险始于2023年，是一项社区驱动的努力，旨在突出并解决 AI 应用特有的安全问题。从那时起，这项技术持续在各个行业和应用领域中传播，与之相关的风险也在不断增加。随着LLM更加深入地嵌入从客户交互到内部运营的方方面面，开发人员和安全专业人士正在发现新的漏洞及应对方法。
 
-The 2023 list was a big success in raising awareness and building a foundation for secure LLM usage, but we've learned even more since then. In this new 2025 version, we’ve worked with a larger, more diverse group of contributors worldwide who have all helped shape this list. The process involved brainstorming sessions, voting, and real-world feedback from professionals in the thick of LLM application security, whether by contributing or refining those entries through feedback. Each voice was critical to making this new release as thorough and practical as possible.
+2023年的风险表在知识普及和LLM的安全使用基础奠定方面取得了巨大成功，但自那以后我们学到了更多。在这份全新的 2025 年版本中，我们与来自全球的更大范围、更具多样性的贡献者团队合作，他们帮助共同塑造了这份清单。整个过程包括头脑风暴、投票，以及来自 LLM 应用安全一线专业人士的实际反馈，无论是通过贡献条目还是通过反馈改进条目。每一位贡献者的声音都对使这次发布尽可能全面且实用起到了关键作用。
 
-### What’s New in the 2025 Top 10
+### 2025 年十大风险的更新内容
 
-The 2025 list reflects a better understanding of existing risks and introduces critical updates on how LLMs are used in real-world applications today. For instance, **Unbounded Consumption** expands on what was previously Denial of Service to include risks around resource management and unexpected costs—a pressing issue in large-scale LLM deployments.
+2025 年的风险列表反映了对现有风险的更深入理解，并引入了有关 LLM 在当前实际应用中使用的关键更新。例如，**无限制消耗** 扩展了之前的“服务拒绝”内容，涵盖了资源管理和意外成本方面的风险，这在大规模 LLM 部署中是一个紧迫问题。
 
-The **Vector and Embeddings** entry responds to the community’s requests for guidance on securing Retrieval-Augmented Generation (RAG) and other embedding-based methods, now core practices for grounding model outputs.
+**向量与嵌入** 条目响应了社区对保护检索增强生成（RAG）和其他基于嵌入方法的指导需求。这些方法现已成为巩固模型输出的核心实践。
 
-We’ve also added **System Prompt Leakage** to address an area with real-world exploits that were highly requested by the community. Many applications assumed prompts were securely isolated, but recent incidents have shown that developers cannot safely assume that information in these prompts remains secret.
+我们还新增了 **系统提示泄漏**，以应对社区高度关注的真实世界漏洞问题。许多应用程序假设提示是安全隔离的，但最近的事件表明，开发人员不能安全地假设提示中的信息会保持机密。
 
-**Excessive Agency** has been expanded, given the increased use of agentic architectures that can give the LLM more autonomy.  With LLMs acting as agents or in plug-in settings, unchecked permissions can lead to unintended or risky actions, making this entry more critical than ever.
+**过度代理权限** 也进行了扩展，鉴于代理型架构的使用增加，这些架构赋予了 LLM 更大的自主性。在 LLM 作为代理或插件使用的情况下，未经检查的权限可能导致意想不到或高风险的行为，这使得这一条目比以往更加重要。
 
-### Moving Forward
+### 展望未来
 
-Like the technology itself, this list is a product of the open-source community’s insights and experiences. It has been shaped by contributions from developers, data scientists, and security experts across sectors, all committed to building safer AI applications. We’re proud to share this 2025 version with you, and we hope it provides you with the tools and knowledge to secure LLMs effectively.
+与技术本身一样，这份清单也是开源社区洞察与经验的产物。它由来自各行业的开发人员、数据科学家和安全专家的贡献共同塑造，他们都致力于构建更安全的 AI 应用程序。我们很自豪能够与您分享这份 2025 年版本，希望它能为您提供有效保护 LLM 的工具和知识。
 
-Thank you to everyone who helped bring this together and those who continue to use and improve it. We’re grateful to be part of this work with you.
+感谢所有参与完成这份清单的人，以及那些继续使用和改进它的人。我们很高兴能与您共同参与这一工作。
 
 
-###@ Steve Wilson
-Project Lead
-OWASP Top 10 for Large Language Model Applications
-LinkedIn: https://www.linkedin.com/in/wilsonsd/
+### @Steve Wilson  
+项目负责人  
+OWASP 大语言模型应用程序十大风险列表  
+[LinkedIn](https://www.linkedin.com/in/wilsonsd/)
 
-###@ Ads Dawson
-Technical Lead & Vulnerability Entries Lead
-OWASP Top 10 for Large Language Model Applications
-LinkedIn: https://www.linkedin.com/in/adamdawson0/
+### @Ads Dawson  
+技术负责人 & 漏洞条目负责人  
+OWASP 大语言模型应用程序十大风险列表  
+[LinkedIn](https://www.linkedin.com/in/adamdawson0/)
+
+### @Ken Huang 黄连金翻译
+[LinkedIn](https://www.linkedin.com/in/kenhuang8/)
