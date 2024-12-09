@@ -1,93 +1,89 @@
-## LLM01:2025 Prompt Injection
+### LLM01:2025 提示注入（Prompt Injection）
 
-### Description
+#### 描述
 
-A Prompt Injection Vulnerability occurs when user prompts alter the LLM’s behavior or output in unintended ways. These inputs can affect the model even if they are imperceptible to humans, therefore prompt injections do not need to be human-visible/readable, as long as the content is parsed by the model.
+提示注入漏洞是指用户输入的提示改变了大语言模型（LLM）的行为或输出，产生了非预期的结果。这些输入可能对人类来说无法察觉，但只要内容被模型解析，提示注入就可能发生。
 
-Prompt Injection vulnerabilities exist in how models process prompts, and how input may force the model to incorrectly pass prompt data to other parts of the model, potentially causing them to violate guidelines, generate harmful content, enable unauthorized access, or influence critical decisions. While techniques like Retrieval Augmented Generation (RAG) and fine-tuning aim to make LLM outputs more relevant and accurate, research shows that they do not fully mitigate prompt injection vulnerabilities.
+提示注入漏洞的本质在于模型如何处理提示，以及输入如何迫使模型错误地将提示数据传递给模型的其他部分，从而导致违反指导原则、生成有害内容、启用未授权访问或影响关键决策。尽管诸如检索增强生成（RAG）和微调等技术旨在提高LLM输出的相关性和准确性，但研究表明，它们无法完全消除提示注入漏洞。
 
-While prompt injection and jailbreaking are related concepts in LLM security, they are often used interchangeably. Prompt injection involves manipulating model responses through specific inputs to alter its behavior, which can include bypassing safety measures. Jailbreaking is a form of prompt injection where the attacker provides inputs that cause the model to disregard its safety protocols entirely. Developers can build safeguards into system prompts and input handling to help mitigate prompt injection attacks, but effective prevention of jailbreaking requires ongoing updates to the model's training and safety mechanisms.
+提示注入和越狱（Jailbreaking）是LLM安全中的相关概念，二者常被混用。提示注入指通过特定输入操控模型的响应以改变其行为，这可能包括绕过安全措施。而越狱是一种提示注入，攻击者提供的输入导致模型完全忽略其安全协议。开发者可以通过在系统提示和输入处理上构建防护措施来缓解提示注入攻击，但有效防止越狱需要持续更新模型的训练和安全机制。
 
-### Types of Prompt Injection Vulnerabilities
+#### 提示注入漏洞的类型
 
-#### Direct Prompt Injections
-  Direct prompt injections occur when a user's prompt input directly alters the behavior of the model in unintended or unexpected ways. The input can be either intentional (i.e., a malicious actor deliberately crafting a prompt to exploit the model) or unintentional (i.e., a user inadvertently providing input that triggers unexpected behavior).
+##### 直接提示注入
+直接提示注入发生在用户的提示输入直接改变了模型的行为，导致非预期或意外的结果。输入可能是有意的（例如，恶意攻击者故意构造提示来利用模型）或无意的（例如，用户无意中提供触发意外行为的输入）。
 
-#### Indirect Prompt Injections
-  Indirect prompt injections occur when an LLM accepts input from external sources, such as websites or files. The content may have in the external content data that when interpreted by the model, alters the behavior of the model in unintended or unexpected ways. Like direct injections, indirect injections can be either intentional or unintentional.
+##### 间接提示注入
+间接提示注入发生在LLM从外部来源（如网站或文件）接收输入时。如果外部内容包含在模型解析时改变模型行为的数据，就会发生间接提示注入。这种注入同样可能是有意的或无意的。
 
-The severity and nature of the impact of a successful prompt injection attack can vary greatly and are largely dependent on both the business context the model operates in, and the agency with which the model is architected. Generally, however, prompt injection can lead to unintended outcomes, including but not limited to:
+提示注入攻击成功后，其影响的严重性和性质很大程度上取决于模型运行的业务上下文及其架构设计。通常，提示注入可能导致以下结果：
 
-- Disclosure of sensitive information
-- Revealing sensitive information about AI system infrastructure or system prompts
-- Content manipulation leading to incorrect or biased outputs
-- Providing unauthorized access to functions available to the LLM
-- Executing arbitrary commands in connected systems
-- Manipulating critical decision-making processes
+- 泄露敏感信息
+- 暴露AI系统基础设施或系统提示的敏感信息
+- 内容操控导致错误或偏颇的输出
+- 提供未授权的功能访问
+- 在连接系统中执行任意命令
+- 干扰关键决策过程
 
-The rise of multimodal AI, which processes multiple data types simultaneously, introduces unique prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
+多模态AI（同时处理多种数据类型）的兴起带来了独特的提示注入风险。攻击者可能利用模态之间的交互，例如在伴随正常文本的图像中隐藏指令。系统的复杂性扩大了攻击面，多模态模型还可能受到当前技术难以检测和缓解的新型跨模态攻击的影响。因此，开发针对多模态系统的防御措施是进一步研究和发展的重点。
 
-### Prevention and Mitigation Strategies
+#### 防范和缓解策略
 
-Prompt injection vulnerabilities are possible due to the nature of generative AI. Given the stochastic influence at the heart of the way models work, it is unclear if there are fool-proof methods of prevention for prompt injection. However, the following measures can mitigate the impact of prompt injections:
+提示注入漏洞是生成式AI的工作特性所致。由于模型工作的随机性影响，目前尚不明确是否存在万无一失的防护方法。然而，以下措施可以减轻提示注入的影响：
 
-#### 1. Constrain model behavior
-  Provide specific instructions about the model's role, capabilities, and limitations within the system prompt. Enforce strict context adherence, limit responses to specific tasks or topics, and instruct the model to ignore attempts to modify core instructions.
-#### 2. Define and validate expected output formats
-  Specify clear output formats, request detailed reasoning and source citations, and use deterministic code to validate adherence to these formats.
-#### 3. Implement input and output filtering
-  Define sensitive categories and construct rules for identifying and handling such content. Apply semantic filters and use string-checking to scan for non-allowed content. Evaluate responses using the RAG Triad: Assess context relevance, groundedness, and question/answer relevance to identify potentially malicious outputs.
-#### 4. Enforce privilege control and least privilege access
-  Provide the application with its own API tokens for extensible functionality, and handle these functions in code rather than providing them to the model. Restrict the model's access privileges to the minimum necessary for its intended operations.
-#### 5. Require human approval for high-risk actions
-  Implement human-in-the-loop controls for privileged operations to prevent unauthorized actions.
-#### 6. Segregate and identify external content
-  Separate and clearly denote untrusted content to limit its influence on user prompts.
-#### 7. Conduct adversarial testing and attack simulations
-  Perform regular penetration testing and breach simulations, treating the model as an untrusted user to test the effectiveness of trust boundaries and access controls.
+1. **限制模型行为**  
+   在系统提示中明确规定模型的角色、能力和限制。强化上下文的严格遵守，限制响应于特定任务或主题，并指示模型忽略修改核心指令的尝试。
 
-### Example Attack Scenarios
+2. **定义并验证预期的输出格式**  
+   指定明确的输出格式，要求详细的推理和来源引用，并使用确定性代码验证输出是否符合这些格式。
 
-#### Scenario #1: Direct Injection
-  An attacker injects a prompt into a customer support chatbot, instructing it to ignore previous guidelines, query private data stores, and send emails, leading to unauthorized access and privilege escalation.
-#### Scenario #2: Indirect Injection
-  A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, leading to exfiltration of the the private conversation.
-#### Scenario #3: Unintentional Injection
-  A company includes an instruction in a job description to identify AI-generated applications. An applicant, unaware of this instruction, uses an LLM to optimize their resume, inadvertently triggering the AI detection.
-#### Scenario #4: Intentional Model Influence
-  An attacker modifies a document in a repository used by a Retrieval-Augmented Generation (RAG) application. When a user's query returns the modified content, the malicious instructions alter the LLM's output, generating misleading results.
-#### Scenario #5: Code Injection
-  An attacker exploits a vulnerability (CVE-2024-5184) in an LLM-powered email assistant to inject malicious prompts, allowing access to sensitive information and manipulation of email content.
-#### Scenario #6: Payload Splitting
-  An attacker uploads a resume with split malicious prompts. When an LLM is used to evaluate the candidate, the combined prompts manipulate the model's response, resulting in a positive recommendation despite the actual resume contents.
-#### Scenario #7: Multimodal Injection
-  An attacker embeds a malicious prompt within an image that accompanies benign text. When a multimodal AI processes the image and text concurrently, the hidden prompt alters the model's behavior, potentially leading to unauthorized actions or disclosure of sensitive information.
-#### Scenario #8: Adversarial Suffix
-  An attacker appends a seemingly meaningless string of characters to a prompt, which influences the LLM's output in a malicious way, bypassing safety measures.
-#### Scenario #9: Multilingual/Obfuscated Attack
-  An attacker uses multiple languages or encodes malicious instructions (e.g., using Base64 or emojis) to evade filters and manipulate the LLM's behavior.
+3. **实现输入和输出过滤**  
+   定义敏感类别并构建规则以识别和处理此类内容。应用语义过滤器并使用字符串检查扫描非允许内容。通过RAG三重性（上下文相关性、可信性、问答相关性）评估响应，以识别潜在的恶意输出。
 
-### Reference Links
+4. **执行权限控制与最低权限访问**  
+   为应用程序提供独立的API令牌用于扩展功能，并在代码中处理这些功能，而非将其直接提供给模型。限制模型的访问权限，仅允许其完成预期操作所需的最低权限。
 
-1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
-2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
-3. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Arxiv**
-4. [Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1) **Research Square**
-5. [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499) **Cornell University**
-6. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf) **Kai Greshake**
-8. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Cornell University**
-9. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
-10. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
-11. [Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
-12. [2407.07403 A Survey of Attacks on Large Vision-Language Models: Resources, Advances, and Future Trends (arxiv.org)](https://arxiv.org/abs/2407.07403)
-13. [Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks](https://ieeexplore.ieee.org/document/10579515)
-14. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
-15. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
+5. **对高风险操作要求人工审批**  
+   在特权操作中实施人工干预控制，防止未授权的行为。
 
-### Related Frameworks and Taxonomies
+6. **隔离并标记外部内容**  
+   对不受信任的内容进行分隔并清晰标注，以限制其对用户提示的影响。
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+7. **进行对抗性测试与攻击模拟**  
+   定期执行渗透测试和入侵模拟，将模型视为不可信用户，以测试信任边界和访问控制的有效性。
 
-- [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
-- [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
-- [AML.T0054 - LLM Jailbreak Injection: Direct](https://atlas.mitre.org/techniques/AML.T0054) **MITRE ATLAS**
+#### 示例攻击场景
+
+1. **直接注入**  
+   攻击者向客户支持聊天机器人注入提示，指示其忽略先前的指南、查询私有数据存储并发送邮件，导致未授权访问和权限升级。
+
+2. **间接注入**  
+   用户利用LLM总结包含隐藏指令的网页内容，导致LLM插入指向URL的图像，从而泄露私人对话。
+
+3. **无意注入**  
+   公司在职位描述中加入指令以识别AI生成的申请材料。申请人不知情地使用LLM优化简历，无意中触发了AI检测。
+
+4. **故意影响模型**  
+   攻击者修改RAG应用程序使用的文档存储库。当用户的查询返回修改内容时，恶意指令改变了LLM的输出，生成误导性结果。
+
+5. **代码注入**  
+   攻击者利用LLM支持的电子邮件助手的漏洞（CVE-2024-5184）注入恶意提示，获取敏感信息并操控邮件内容。
+
+6. **负载拆分**  
+   攻击者上传包含拆分的恶意提示的简历。当LLM用于评估候选人时，组合提示操控模型响应，生成与实际简历内容不符的积极评价。
+
+7. **多模态注入**  
+   攻击者在伴随正常文本的图像中嵌入恶意提示。当多模态AI同时处理图像和文本时，隐藏的提示改变了模型行为，可能导致未授权的行为或敏感信息泄露。
+
+8. **对抗性后缀**  
+   攻击者在提示后附加看似无意义的字符字符串，影响LLM的输出，绕过安全措施。
+
+9. **多语言/混淆攻击**  
+   攻击者使用多种语言或编码恶意指令（如Base64或表情符号），绕过过滤器并操控LLM的行为。
+
+#### 参考链接
+
+1. [ChatGPT 插件漏洞 - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/)  
+2. [ChatGPT 跨插件请求伪造与提示注入](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./)  
+3. [通过间接提示注入攻击现实世界LLM应用程序](https://arxiv.org/pdf/2302.12173.pdf)  
+4. [通过自我提醒防御ChatGPT的越狱攻击](https://www.researchsquare.com/article/rs-2873090/v1)  
