@@ -1,59 +1,64 @@
-## LLM07:2025 System Prompt Leakage
+### LLM07:2025 系统提示泄露
 
-### Description
+#### 描述
 
-The system prompt leakage vulnerability in LLMs refers to the risk that the system prompts or instructions used to steer the behavior of the model can also contain sensitive information that was not intended to be discovered. System prompts are designed to guide the model's output based on the requirements of the application, but may inadvertently contain secrets. When discovered, this information can be used to facilitate other attacks.
+系统提示泄露是指LLM中用于引导模型行为的系统提示或指令中包含的敏感信息被意外发现的风险。这些系统提示旨在根据应用需求指导模型输出，但可能无意中暴露机密。当系统提示被发现时，攻击者可能利用这些信息实施其他攻击。
 
-It's important to understand that the system prompt should not be considered a secret, nor should it be used as a security control. Accordingly, sensitive data such as credentials, connection strings, etc. should not be contained within the system prompt language.
+需要注意的是，系统提示不应被视为秘密或安全控制手段。因此，诸如凭据、连接字符串等敏感数据不应出现在系统提示语言中。
 
-Similarly, if a system prompt contains information describing different roles and permissions, or sensitive data like connection strings or passwords, while the disclosure of such information may be helpful, the fundamental security risk is not that these have been disclosed, it is that the application allows bypassing strong session management and authorization checks by delegating these to the LLM, and that sensitive data is being stored in a place that it should not be.
+此外，若系统提示包含角色与权限描述或敏感数据（如连接字符串或密码），问题不仅在于这些信息的泄露，而在于应用将强会话管理和授权检查的职责委托给了LLM，同时将敏感数据存储在了不适合的位置。
 
-In short: disclosure of the system prompt itself does not present the real risk -- the security risk lies with the underlying elements, whether that be sensitive information disclosure, system guardrails bypass, improper separation of privileges, etc. Even if the exact wording is not disclosed, attackers interacting with the system will almost certainly be able to determine many of the guardrails and formatting restrictions that are present in system prompt language in the course of using the application, sending utterances to the model, and observing the results.
+简而言之：系统提示泄露本身并非核心风险，真正的安全风险在于底层问题，例如敏感信息泄露、系统防护绕过、不当权限分离等。即便未泄露系统提示的具体措辞，攻击者仍可以通过与系统交互、发送输入并观察结果，推断系统提示中的许多防护措施和格式限制。
 
-### Common Examples of Risk
+#### 常见风险示例
 
-#### 1. Exposure of Sensitive Functionality
-  The system prompt of the application may reveal sensitive information or functionality that is intended to be kept confidential, such as sensitive system architecture, API keys, database credentials, or user tokens.  These can be extracted or used by attackers to gain unauthorized access into the application. For example, a system prompt that contains the type of database used for a tool could allow the attacker to target it for SQL injection attacks.
-#### 2. Exposure of Internal Rules
-  The system prompt of the application reveals information on internal decision-making processes that should be kept confidential. This information allows attackers to gain insights into how the application works which could allow attackers to exploit weaknesses or bypass controls in the application. For example - There is a banking application that has a chatbot and its system prompt may reveal information like 
-    >"The Transaction limit is set to $5000 per day for a user. The Total Loan Amount for a user is $10,000".
-  This information allows the attackers to bypass the security controls in the application like doing transactions more than the set limit or bypassing the total loan amount.
-#### 3. Revealing of Filtering Criteria
-  A system prompt might ask the model to filter or reject sensitive content. For example, a model might have a system prompt like,
-    >“If a user requests information about another user, always respond with ‘Sorry, I cannot assist with that request’”.
-#### 4. Disclosure of Permissions and User Roles
-  The system prompt could reveal the internal role structures or permission levels of the application. For instance, a system prompt might reveal,
-    >“Admin user role grants full access to modify user records.”
-  If the attackers learn about these role-based permissions, they could look for a privilege escalation attack.
+##### 1. 敏感功能暴露  
+系统提示可能暴露本应保密的敏感信息或功能，例如系统架构、API密钥、数据库凭据或用户令牌。这些信息可能被攻击者提取或利用以获得未经授权的访问。例如，若系统提示中包含工具使用的数据库类型，攻击者可能针对其发起SQL注入攻击。
 
-### Prevention and Mitigation Strategies
+##### 2. 内部规则泄露  
+系统提示可能暴露内部决策过程，使攻击者能够了解应用的工作原理，进而利用漏洞或绕过控制措施。例如：  
+> “用户每日交易限额为$5000，总贷款额度为$10,000”。  
+这种信息可能让攻击者找到方法绕过交易限额或贷款限制。
 
-#### 1. Separate Sensitive Data from System Prompts
-  Avoid embedding any sensitive information (e.g. API keys, auth keys, database names, user roles, permission structure of the application) directly in the system prompts. Instead, externalize such information to the systems that the model does not directly access.
-#### 2. Avoid Reliance on System Prompts for Strict Behavior Control
-  Since LLMs are susceptible to other attacks like prompt injections which can alter the system prompt, it is recommended to avoid using system prompts to control the model behavior where possible.  Instead, rely on systems outside of the LLM to ensure this behavior.  For example, detecting and preventing harmful content should be done in external systems.
-#### 3. Implement Guardrails
-  Implement a system of guardrails outside of the LLM itself.  While training particular behavior into a model can be effective, such as training it not to reveal its system prompt, it is not a guarantee that the model will always adhere to this.  An independent system that can inspect the output to determine if the model is in compliance with expectations is preferable to system prompt instructions.
-#### 4. Ensure that security controls are enforced independently from the LLM
-  Critical controls such as privilege separation, authorization bounds checks, and similar must not be delegated to the LLM, either through the system prompt or otherwise. These controls need to occur in a deterministic, auditable manner, and LLMs are not (currently) conducive to this. In cases where an agent is performing tasks, if those tasks require different levels of access, then multiple agents should be used, each configured with the least privileges needed to perform the desired tasks.
+##### 3. 过滤条件暴露  
+系统提示可能要求模型过滤或拒绝敏感内容。例如：  
+> “如果用户请求其他用户的信息，总是回答‘抱歉，我无法协助’”。  
 
-### Example Attack Scenarios
+##### 4. 权限与角色结构泄露  
+系统提示可能暴露应用的内部角色结构或权限层级。例如：  
+> “管理员角色授予修改用户记录的完全权限。”  
+若攻击者了解这些权限结构，可能寻求进行权限提升攻击。
 
-#### Scenario #1
-   An LLM has a system prompt that contains a set of credentials used for a tool that it has been given access to.  The system prompt is leaked to an attacker, who then is able to use these credentials for other purposes.
-#### Scenario #2
-  An LLM has a system prompt prohibiting the generation of offensive content, external links, and code execution. An attacker extracts this system prompt and then uses a prompt injection attack to bypass these instructions, facilitating a remote code execution attack.
+#### 防范与缓解策略
 
-### Reference Links
+1. **将敏感数据与系统提示分离**  
+   避免在系统提示中嵌入敏感信息（如API密钥、认证密钥、数据库名称、用户角色、权限结构等）。应将这些信息外部化，存储在模型无法直接访问的系统中。
 
-1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
-2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): Prompt Security
-3. [chatgpt_system_prompt](https://github.com/LouisShark/chatgpt_system_prompt): LouisShark
-4. [leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts): Jujumilk3
-5. [OpenAI Advanced Voice Mode System Prompt](https://x.com/Green_terminals/status/1839141326329360579): Green_Terminals
+2. **避免依赖系统提示进行严格行为控制**  
+   由于LLM容易受到提示注入等攻击的影响，不建议通过系统提示控制模型行为。应依赖LLM之外的系统确保此行为，例如在外部系统中检测并防止有害内容。
 
-### Related Frameworks and Taxonomies
+3. **实施防护措施**  
+   在LLM外部实施独立的防护措施。例如，尽管可以通过训练模型避免其泄露系统提示，但无法保证模型始终遵守指令。应建立独立系统以检查输出是否符合预期。
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+4. **独立实施关键安全控制**  
+   不应将权限分离、授权边界检查等关键控制委托给LLM，而应在外部以确定性、可审计的方式实现。如果任务需要不同级别的访问权限，应使用多个配置最小权限的代理。
 
-- [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
+#### 示例攻击场景
+
+##### 场景1  
+LLM的系统提示包含一组用于工具访问的凭据。系统提示泄露后，攻击者利用这些凭据实施其他攻击。
+
+##### 场景2  
+LLM的系统提示禁止生成攻击性内容、外部链接和代码执行。攻击者提取系统提示后，利用提示注入攻击绕过这些指令，最终实现远程代码执行。
+
+#### 参考链接
+
+1. [系统提示泄露](https://x.com/elder_plinius/status/1801393358964994062)：**Pliny the Prompter**  
+2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak)：**Prompt Security**  
+3. [chatgpt_system_prompt](https://github.com/LouisShark/chatgpt_system_prompt)：**LouisShark**  
+4. [泄露的系统提示](https://github.com/jujumilk3/leaked-system-prompts)：**Jujumilk3**  
+5. [OpenAI高级语音模式系统提示](https://x.com/Green_terminals/status/1839141326329360579)：**Green_Terminals**  
+
+#### 相关框架与分类
+
+- **[AML.T0051.000 - LLM提示注入：直接（元提示提取）](https://atlas.mitre.org/techniques/AML.T0051.000)**：**MITRE ATLAS**
