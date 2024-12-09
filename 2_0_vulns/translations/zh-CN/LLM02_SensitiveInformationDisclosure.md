@@ -1,88 +1,95 @@
-## LLM02:2025 Sensitive Information Disclosure
+### LLM02:2025 敏感信息泄露
 
-### Description
+#### 描述
 
-Sensitive information can affect both the LLM and its application context. This includes personal identifiable information (PII), financial details, health records, confidential business data, security credentials, and legal documents. Proprietary models may also have unique training methods and source code considered sensitive, especially in closed or foundation models.
+敏感信息可能涉及LLM本身及其应用场景，包括个人身份信息（PII）、财务细节、健康记录、商业机密数据、安全凭证以及法律文件。在专有模型中，独特的训练方法和源代码通常被视为敏感信息，尤其是在封闭或基础模型中。
 
-LLMs, especially when embedded in applications, risk exposing sensitive data, proprietary algorithms, or confidential details through their output. This can result in unauthorized data access, privacy violations, and intellectual property breaches. Consumers should be aware of how to interact safely with LLMs. They need to understand the risks of unintentionally providing sensitive data, which may later be disclosed in the model's output.
+LLM特别是在嵌入应用程序时，可能通过输出暴露敏感数据、专有算法或机密信息。这种情况可能导致未经授权的数据访问、隐私侵犯和知识产权泄漏。用户需要了解如何与LLM安全交互，并认识到无意间提供的敏感数据可能在模型输出中被披露的风险。
 
-To reduce this risk, LLM applications should perform adequate data sanitization to prevent user data from entering the training model. Application owners should also provide clear Terms of Use policies, allowing users to opt out of having their data included in the training model. Adding restrictions within the system prompt about data types that the LLM should return can provide mitigation against sensitive information disclosure. However, such restrictions may not always be honored and could be bypassed via prompt injection or other methods.
+为了降低此类风险，LLM应用应执行充分的数据清理，防止用户数据进入训练模型。此外，应用所有者应提供清晰的使用条款政策，允许用户选择退出其数据被纳入训练模型。通过在系统提示中对LLM返回的数据类型设置限制，可以减少敏感信息泄露的可能性。然而，这种限制可能并非总是有效，可能会被提示注入或其他方法绕过。
 
-### Common Examples of Vulnerability
+#### 常见漏洞示例
 
-#### 1. PII Leakage
-  Personal identifiable information (PII) may be disclosed during interactions with the LLM.
-#### 2. Proprietary Algorithm Exposure
-  Poorly configured model outputs can reveal proprietary algorithms or data. Revealing training data can expose models to inversion attacks, where attackers extract sensitive information or reconstruct inputs. For instance, as demonstrated in the 'Proof Pudding' attack (CVE-2019-20634), disclosed training data facilitated model extraction and inversion, allowing attackers to circumvent security controls in machine learning algorithms and bypass email filters.
-#### 3. Sensitive Business Data Disclosure
-  Generated responses might inadvertently include confidential business information.
+##### 1. 个人身份信息（PII）泄露  
+与LLM交互时可能泄露个人身份信息（PII）。
 
-### Prevention and Mitigation Strategies
+##### 2. 专有算法暴露  
+配置不当的模型输出可能揭示专有算法或数据。例如，在“Proof Pudding”攻击（CVE-2019-20634）中，训练数据泄漏被用于模型提取与逆向，攻击者得以绕过机器学习算法的安全控制。
 
-###@ Sanitization:
+##### 3. 商业机密数据泄露  
+生成的响应可能无意中包含机密的商业信息。
 
-#### 1. Integrate Data Sanitization Techniques
-  Implement data sanitization to prevent user data from entering the training model. This includes scrubbing or masking sensitive content before it is used in training.
-#### 2. Robust Input Validation
-  Apply strict input validation methods to detect and filter out potentially harmful or sensitive data inputs, ensuring they do not compromise the model.
+#### 防范与缓解策略
 
-###@ Access Controls:
+### 数据清理
 
-#### 1. Enforce Strict Access Controls
-  Limit access to sensitive data based on the principle of least privilege. Only grant access to data that is necessary for the specific user or process.
-#### 2. Restrict Data Sources
-  Limit model access to external data sources, and ensure runtime data orchestration is securely managed to avoid unintended data leakage.
+##### 1. 集成数据清理技术  
+执行数据清理技术以防止用户数据进入训练模型，包括在使用数据训练前对敏感内容进行清理或掩码处理。
 
-###@ Federated Learning and Privacy Techniques:
+##### 2. 严格的输入验证  
+采用严格的输入验证方法，检测和过滤潜在的有害或敏感数据输入，确保其不会影响模型的安全性。
 
-#### 1. Utilize Federated Learning
-  Train models using decentralized data stored across multiple servers or devices. This approach minimizes the need for centralized data collection and reduces exposure risks.
-#### 2. Incorporate Differential Privacy
-  Apply techniques that add noise to the data or outputs, making it difficult for attackers to reverse-engineer individual data points.
+### 访问控制
 
-###@ User Education and Transparency:
+##### 1. 执行严格的访问控制  
+基于最低权限原则限制对敏感数据的访问，仅允许特定用户或进程访问所需数据。
 
-#### 1. Educate Users on Safe LLM Usage
-  Provide guidance on avoiding the input of sensitive information. Offer training on best practices for interacting with LLMs securely.
-#### 2. Ensure Transparency in Data Usage
-  Maintain clear policies about data retention, usage, and deletion. Allow users to opt out of having their data included in training processes.
+##### 2. 限制数据源  
+限制模型对外部数据源的访问，确保运行时数据编排的安全管理以避免意外的数据泄漏。
 
-###@ Secure System Configuration:
+### 联邦学习与隐私技术
 
-#### 1. Conceal System Preamble
-  Limit the ability for users to override or access the system's initial settings, reducing the risk of exposure to internal configurations.
-#### 2. Reference Security Misconfiguration Best Practices
-  Follow guidelines like "OWASP API8:2023 Security Misconfiguration" to prevent leaking sensitive information through error messages or configuration details.
-  (Ref. link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+##### 1. 使用联邦学习  
+使用分布式服务器或设备存储的数据进行模型训练，这种去中心化方法减少了集中式数据收集的风险。
 
-###@ Advanced Techniques:
+##### 2. 差分隐私技术  
+通过添加噪声保护数据或输出，使攻击者难以逆向还原单个数据点。
 
-#### 1. Homomorphic Encryption
-  Use homomorphic encryption to enable secure data analysis and privacy-preserving machine learning. This ensures data remains confidential while being processed by the model.
-#### 2. Tokenization and Redaction
-  Implement tokenization to preprocess and sanitize sensitive information. Techniques like pattern matching can detect and redact confidential content before processing.
+### 用户教育与透明度
 
-### Example Attack Scenarios
+##### 1. 教育用户安全使用LLM  
+为用户提供避免输入敏感信息的指导，并培训安全交互的最佳实践。
 
-#### Scenario #1: Unintentional Data Exposure
-  A user receives a response containing another user's personal data due to inadequate data sanitization.
-#### Scenario #2: Targeted Prompt Injection
-  An attacker bypasses input filters to extract sensitive information.
-#### Scenario #3: Data Leak via Training Data
-  Negligent data inclusion in training leads to sensitive information disclosure.
+##### 2. 确保数据使用透明度  
+维护清晰的政策，说明数据的保留、使用和删除方式，并允许用户选择退出其数据被纳入训练过程。
 
-### Reference Links
+### 系统安全配置
 
-1. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
-2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
-3. [ChatGPT Spit Out Sensitive Data When Told to Repeat ‘Poem’ Forever](https://www.wired.com/story/chatgpt-poem-forever-security-roundup/): **Wired**
-4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
-5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
+##### 1. 隐藏系统前缀  
+限制用户覆盖或访问系统初始设置的能力，减少暴露内部配置的风险。
 
-### Related Frameworks and Taxonomies
+##### 2. 遵循安全配置最佳实践  
+遵循如“OWASP API8:2023安全配置错误”中的指南，避免通过错误信息或配置细节泄露敏感信息。
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+### 高级技术
 
-- [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
-- [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**
-- [AML.T0024.002 - Extract ML Model](https://atlas.mitre.org/techniques/AML.T0024.002) **MITRE ATLAS**
+##### 1. 同态加密  
+采用同态加密技术，实现安全的数据分析和隐私保护的机器学习，确保数据在模型处理中保持机密。
+
+##### 2. 令牌化与数据遮掩  
+通过令牌化技术对敏感信息进行预处理和清理，利用模式匹配检测并遮掩处理前的机密内容。
+
+#### 示例攻击场景
+
+##### 场景1：无意数据泄露  
+由于数据清理不足，用户在接收响应时获取了另一个用户的个人数据。
+
+##### 场景2：目标提示注入  
+攻击者绕过输入过滤器，提取敏感信息。
+
+##### 场景3：训练数据导致的数据泄漏  
+因训练数据包含不当信息而导致敏感数据泄露。
+
+#### 参考链接
+
+1. [ChatGPT的三星数据泄漏教训](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/) **Cybernews**  
+2. [防止公司机密被ChatGPT泄露的新工具](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt) **Fox Business**  
+3. [通过“永远的诗”重复输出泄露敏感数据](https://www.wired.com/story/chatgpt-poem-forever-security-roundup/) **Wired**  
+4. [利用差分隐私技术构建安全模型](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices) **Neptune Blog**  
+5. [Proof Pudding攻击（CVE-2019-20634）](https://avidml.org/database/avid-2023-v009/) **AVID**  
+
+#### 相关框架与分类
+
+- [AML.T0024.000 - 推测训练数据成员身份](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**  
+- [AML.T0024.001 - 逆向机器学习模型](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**  
+- [AML.T0024.002 - 提取机器学习模型](https://atlas.mitre.org/techniques/AML.T0024.002) **MITRE ATLAS**
