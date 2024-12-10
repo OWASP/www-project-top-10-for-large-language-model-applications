@@ -46,7 +46,7 @@ Aufgrund der Natur der generativen KI sind Schwachstellen bei Prompt Injections 
 #### 7. Durchführung von Adversarial-Tests und Angriffssimulationen
   Führe regelmäßige Penetrationstests und Angriffssimulationen durch und behandle das Modell dabei als nicht vertrauenswürdigen Benutzer, um die Wirksamkeit von Vertrauensgrenzen und Zugriffskontrollen zu testen.
 
-### Beispiel für Angriffsszenarien
+### Beispiele für Angriffsszenarien
 
 #### Szenario 1: Direkte Injektion
   Ein Angreifer schleust eine Anweisung in einen Chatbot des Kundensupports ein, die ihn anweist, frühere Richtlinien zu ignorieren, private Datenspeicher abzufragen und E-Mails zu senden, was zu unbefugtem Zugriff und einer Eskalation der Berechtigungen führt.
