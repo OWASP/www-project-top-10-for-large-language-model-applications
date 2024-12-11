@@ -30,3 +30,9 @@ LinkedIn: https://www.linkedin.com/in/wilsonsd/
 技術負責人與弱點項目負責人
 OWASP 大型語言模型應用 Top 10 
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
+
+###@ Henry Hu / 胡辰澔
+繁體中文版 翻譯組 組長
+Traditional Chinese Translation Group / Group Leader
+LinkedIn: https://www.linkedin.com/in/ninddter
+
