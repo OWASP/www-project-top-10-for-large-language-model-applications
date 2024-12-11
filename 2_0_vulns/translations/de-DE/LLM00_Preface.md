@@ -12,7 +12,7 @@ Der Eintrag „**Vektor und Einbettung**“ geht auf die Anfragen der Community 
 
 Wir haben auch „**Offenlegung des Systems Prompts**“ hinzugefügt, um einen Bereich mit realen Schwachstellen zu behandeln, der von der Community stark nachgefragt wurde. Viele Anwendungen gingen davon aus, dass Eingabeaufforderungen sicher isoliert waren, aber jüngste Vorfälle haben gezeigt, dass Entwickler nicht davon ausgehen können, dass die Informationen in diesen Eingabeaufforderungen geheim bleiben.
 
-**Übermäßige Handlungsfreiheit** wurde erweitert, da vermehrt agentenbasierte Architekturen eingesetzt werden, die der LLM mehr Autonomie verleihen können.  Wenn LLMs als Agenten oder in Plug-in-Einstellungen agieren, können nicht überprüfte Berechtigungen zu unbeabsichtigten oder riskanten Aktionen führen, wodurch dieser Eintrag wichtiger denn je ist.
+**Excessive Agency** wurde erweitert, da vermehrt agentenbasierte Architekturen eingesetzt werden, die der LLM mehr Autonomie verleihen können.  Wenn LLMs als Agenten oder in Plug-in-Einstellungen agieren, können nicht überprüfte Berechtigungen zu unbeabsichtigten oder riskanten Aktionen führen, wodurch dieser Eintrag wichtiger denn je ist.
 
 ### Die Zukunft
 
