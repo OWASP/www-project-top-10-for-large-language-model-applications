@@ -30,3 +30,15 @@ LinkedIn: https://www.linkedin.com/in/wilsonsd/
 技術負責人與弱點項目負責人
 OWASP 大型語言模型應用 Top 10 
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
+
+
+### Simplified Chinese Translation Team
+Name
+LinkedIn
+
+### About this translation
+Recognizing the technical and critical nature of the OWASP Top 10 for Large Language Model Applications, we consciously chose to employ only human translators in the creation of this translation. The translators listed above not only have a deep technical knowledge of the original content, but also the fluency required to make this translation a success.
+
+###@ Talesh Seeparsan
+Translation Lead, OWASP Top 10 for AI Applications LLM
+LinkedIn: https://www.linkedin.com/in/talesh/
