@@ -32,13 +32,13 @@ OWASP 大型語言模型應用 Top 10
 
 =======
 
-### Traditional Chinese Translation Team
+### 繁體中文翻譯團隊
 ###@ Henry Hu / 胡辰澔
-繁體中文版 翻譯組 組長
 Tranditional Chinese Translation Group / Group Leader
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
-### About this translation
+### 關於本次翻譯
+
 有鑑於大型語言模型應用程式（LLM Applications）前十大風險的高度技術性與關鍵性，我們特別選擇完全由人工翻譯進行此版本的製作。上述列出的翻譯人員不僅對原始內容擁有深厚的技術理解，更具備相應的語言流暢度，以確保本次翻譯的品質與成功。
 
 ###@ Talesh Seeparsan
