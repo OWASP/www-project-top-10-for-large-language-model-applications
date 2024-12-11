@@ -29,10 +29,19 @@ LinkedIn: https://www.linkedin.com/in/wilsonsd/
 ###@ Ads Dawson
 技術負責人與弱點項目負責人
 OWASP 大型語言模型應用 Top 10 
-LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
+=======
+
+### Traditional Chinese Translation Team
 ###@ Henry Hu / 胡辰澔
 繁體中文版 翻譯組 組長
-Traditional Chinese Translation Group / Group Leader
-LinkedIn: https://www.linkedin.com/in/ninddter
+Tranditional Chinese Translation Group / Group Leader
+LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
+### About this translation
+有鑑於大型語言模型應用程式（LLM Applications）前十大風險的高度技術性與關鍵性，我們特別選擇完全由人工翻譯進行此版本的製作。上述列出的翻譯人員不僅對原始內容擁有深厚的技術理解，更具備相應的語言流暢度，以確保本次翻譯的品質與成功。
+
+###@ Talesh Seeparsan
+Translation Lead, OWASP Top 10 for AI Applications LLM
+LinkedIn: https://www.linkedin.com/in/talesh/
+>>>>>>> 9b608f2680bc3c4dae194787bda2ffec45c729f5
