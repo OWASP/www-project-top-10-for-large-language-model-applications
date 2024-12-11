@@ -1,70 +1,81 @@
 ## LLM09:2025 Misinformation
 
-### Description
+### 描述
 
-Misinformation from LLMs poses a core vulnerability for applications relying on these models. Misinformation occurs when LLMs produce false or misleading information that appears credible. This vulnerability can lead to security breaches, reputational damage, and legal liability.
+**Misinformation**（錯誤資訊）是指 LLM（大型語言模型）產生錯誤或具誤導性的內容，且此內容表面上看似可信。依賴 LLM 的應用程式若遭此漏洞影響，可能導致安全缺口、商譽受損以及法律訴訟。
 
-One of the major causes of misinformation is hallucination—when the LLM generates content that seems accurate but is fabricated. Hallucinations occur when LLMs fill gaps in their training data using statistical patterns, without truly understanding the content. As a result, the model may produce answers that sound correct but are completely unfounded. While hallucinations are a major source of misinformation, they are not the only cause; biases introduced by the training data and incomplete information can also contribute.
+Misinformation 的成因之一是 hallucination（幻覺）：模型在訓練數據不足時，會依據統計模式填補空白，生成看似正確但實際全無依據的回應。此外，訓練數據本身的偏差與資訊不完整也會導致錯誤資訊。
 
-A related issue is overreliance. Overreliance occurs when users place excessive trust in LLM-generated content, failing to verify its accuracy. This overreliance exacerbates the impact of misinformation, as users may integrate incorrect data into critical decisions or processes without adequate scrutiny.
+與此相關的問題是 Overreliance（過度依賴），指使用者過度信任 LLM 的內容而未核實其正確性。在過度依賴下，使用者易將錯誤資訊納入關鍵決策或流程中，擴大錯誤資訊的影響。
 
-### Common Examples of Risk
+### 常見風險實例
 
-#### 1. Factual Inaccuracies
-  The model produces incorrect statements, leading users to make decisions based on false information. For example, Air Canada's chatbot provided misinformation to travelers, leading to operational disruptions and legal complications. The airline was successfully sued as a result.
-  (Ref. link: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
-#### 2. Unsupported Claims
-  The model generates baseless assertions, which can be especially harmful in sensitive contexts such as healthcare or legal proceedings. For example, ChatGPT fabricated fake legal cases, leading to significant issues in court.
-  (Ref. link: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
-#### 3. Misrepresentation of Expertise
-  The model gives the illusion of understanding complex topics, misleading users regarding its level of expertise. For example, chatbots have been found to misrepresent the complexity of health-related issues, suggesting uncertainty where there is none, which misled users into believing that unsupported treatments were still under debate.
-  (Ref. link: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
-#### 4. Unsafe Code Generation
-  The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems. For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks.
-  (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
+#### 1. 事實錯誤（Factual Inaccuracies）
+模型產生錯誤的陳述，使使用者根據錯誤資訊做出決策。例如，加拿大航空（Air Canada）曾因其聊天機器人提供錯誤訊息給旅客而陷入法律糾紛。  
+(參考連結：[BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
 
-### Prevention and Mitigation Strategies
+#### 2. 無依據主張（Unsupported Claims）
+模型提出毫無根據的斷言，於敏感領域（如醫療、法律）特別有害。舉例來說，ChatGPT 曾捏造不存在的法律案例，導致法庭中產生重大問題。  
+(參考連結：[LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
 
-#### 1. Retrieval-Augmented Generation (RAG)
-  Use Retrieval-Augmented Generation to enhance the reliability of model outputs by retrieving relevant and verified information from trusted external databases during response generation. This helps mitigate the risk of hallucinations and misinformation.
-#### 2. Model Fine-Tuning
-  Enhance the model with fine-tuning or embeddings to improve output quality. Techniques such as parameter-efficient tuning (PET) and chain-of-thought prompting can help reduce the incidence of misinformation.
-#### 3. Cross-Verification and Human Oversight
-  Encourage users to cross-check LLM outputs with trusted external sources to ensure the accuracy of the information. Implement human oversight and fact-checking processes, especially for critical or sensitive information. Ensure that human reviewers are properly trained to avoid overreliance on AI-generated content.
-#### 4. Automatic Validation Mechanisms
-  Implement tools and processes to automatically validate key outputs, especially output from high-stakes environments.
-#### 5. Risk Communication
-  Identify the risks and possible harms associated with LLM-generated content, then clearly communicate these risks and limitations to users, including the potential for misinformation.
-#### 6. Secure Coding Practices
-  Establish secure coding practices to prevent the integration of vulnerabilities due to incorrect code suggestions.
-#### 7. User Interface Design
-  Design APIs and user interfaces that encourage responsible use of LLMs, such as integrating content filters, clearly labeling AI-generated content and informing users on limitations of reliability and accuracy. Be specific about the intended field of use limitations.
-#### 8. Training and Education
-  Provide comprehensive training for users on the limitations of LLMs, the importance of independent verification of generated content, and the need for critical thinking. In specific contexts, offer domain-specific training to ensure users can effectively evaluate LLM outputs within their field of expertise.
+#### 3. 專業度誤導（Misrepresentation of Expertise）
+模型顯示對複雜議題具備專業知識的假象，誤導使用者相信其權威性。例如，聊天機器人可能誤導使用者對健康議題的認知，造成不恰當的醫療建議。  
+(參考連結：[KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
 
-### Example Attack Scenarios
+#### 4. 不安全的程式碼產出（Unsafe Code Generation）
+模型可能建議不安全或不存在的程式庫，若使用者未經查證便整合至系統中，將帶來安全風險。  
+(參考連結：[Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
-#### Scenario #1
-  Attackers experiment with popular coding assistants to find commonly hallucinated package names. Once they identify these frequently suggested but nonexistent libraries, they publish malicious packages with those names to widely used repositories. Developers, relying on the coding assistant's suggestions, unknowingly integrate these poised packages into their software. As a result, the attackers gain unauthorized access, inject malicious code, or establish backdoors, leading to significant security breaches and compromising user data.
-#### Scenario #2
-  A company provides a chatbot for medical diagnosis without ensuring sufficient accuracy. The chatbot provides poor information, leading to harmful consequences for patients. As a result, the company is successfully sued for damages. In this case, the safety and security breakdown did not require a malicious attacker but instead arose from the insufficient oversight and reliability of the LLM system. In this scenario, there is no need for an active attacker for the company to be at risk of reputational and financial damage.
+### 預防與緩解策略
 
-### Reference Links
+#### 1. 使用 Retrieval-Augmented Generation (RAG)
+透過檢索增強生成（RAG）從可信任的外部資料庫擷取相關與已驗證的資訊，以減低幻覺與錯誤資訊的風險。
 
-1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
-2. [Air Canada Chatbot Misinformation: What Travellers Should Know](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know): **BBC**
-3. [ChatGPT Fake Legal Cases: Generative AI Hallucinations](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/): **LegalDive**
-4. [Understanding LLM Hallucinations](https://towardsdatascience.com/llm-hallucinations-ec831dcd7786): **Towards Data Science**
-5. [How Should Companies Communicate the Risks of Large Language Models to Users?](https://techpolicy.press/how-should-companies-communicate-the-risks-of-large-language-models-to-users/): **Techpolicy**
-6. [A news site used AI to write articles. It was a journalistic disaster](https://www.washingtonpost.com/media/2023/01/17/cnet-ai-articles-journalism-corrections/): **Washington Post**
-7. [Diving Deeper into AI Package Hallucinations](https://www.lasso.security/blog/ai-package-hallucinations): **Lasso Security**
-8. [How Secure is Code Generated by ChatGPT?](https://arxiv.org/abs/2304.09655): **Arvix**
-9. [How to Reduce the Hallucinations from Large Language Models](https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models/): **The New Stack**
-10. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
-11. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
+#### 2. 模型微調（Fine-Tuning）
+透過微調或 Embeddings 改善模型輸出品質。採用 Parameter-Efficient Tuning（PET）與 chain-of-thought prompting 等技術，降低產生錯誤資訊的機率。
 
-### Related Frameworks and Taxonomies
+#### 3. 交叉驗證與人工審查
+鼓勵使用者從可信外部來源交叉比對 LLM 輸出資訊的正確性。對關鍵或敏感資訊實施人工審核，並確保審查者不盲目依賴 LLM 的回應。
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+#### 4. 自動驗證機制
+為高風險環境建立自動化驗證工具與流程，以確保關鍵輸出正確無誤。
+
+#### 5. 風險溝通
+明確向使用者傳達 LLM 產生錯誤資訊的風險與限制，使其瞭解內容可能不完全可信。
+
+#### 6. 安全程式碼慣例
+建立安全程式碼開發慣例，以免因不正確的程式碼建議而導入易受攻擊的程式碼。
+
+#### 7. 使用者介面設計
+在 APIs 與使用者介面中明確標示 AI 產生的內容及其限制，使使用者意識到模型的可靠性問題與適用範圍。
+
+#### 8. 訓練與教育
+為使用者提供全面的培訓，使其瞭解 LLM 的限制及獨立驗證資訊之重要性。針對特定領域提供專業訓練，確保使用者能有效評估 LLM 輸出。
+
+### 攻擊情境範例
+
+#### 情境 #1
+攻擊者透過常見的程式碼助手實驗出經常被模型「幻覺」建議的不存在套件名稱，並在套件庫中上架惡意套件。開發者盲目信任模型建議而引用這些惡意套件，造成後門或惡意程式碼注入。
+
+#### 情境 #2
+一家公司提供醫療診斷的聊天機器人，未確保其輸出正確性。該聊天機器人提供不良資訊導致病患受到傷害，公司因此面臨法律訴訟。在此情境中，即使無惡意攻擊者，單純缺乏監管與可靠性已足以造成名譽和財務損失。
+
+### 參考連結
+
+1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/) **KFF**  
+2. [Air Canada Chatbot Misinformation: What Travellers Should Know](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know) **BBC**  
+3. [ChatGPT Fake Legal Cases: Generative AI Hallucinations](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/) **LegalDive**  
+4. [Understanding LLM Hallucinations](https://towardsdatascience.com/llm-hallucinations-ec831dcd7786) **Towards Data Science**  
+5. [How Should Companies Communicate the Risks of Large Language Models to Users?](https://techpolicy.press/how-should-companies-communicate-the-risks-of-large-language-models-to-users/) **Techpolicy**  
+6. [A news site used AI to write articles. It was a journalistic disaster](https://www.washingtonpost.com/media/2023/01/17/cnet-ai-articles-journalism-corrections/) **Washington Post**  
+7. [Diving Deeper into AI Package Hallucinations](https://www.lasso.security/blog/ai-package-hallucinations) **Lasso Security**  
+8. [How Secure is Code Generated by ChatGPT?](https://arxiv.org/abs/2304.09655) **Arvix**  
+9. [How to Reduce the Hallucinations from Large Language Models](https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models/) **The New Stack**  
+10. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination) **Victor Debia**  
+11. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/) **Microsoft**
+
+### 相關框架與分類法
+
+請參考此區，以取得關於基礎架構部署、應用環境控管與其他最佳實務的完整資訊與範例策略。
 
 - [AML.T0048.002 - Societal Harm](https://atlas.mitre.org/techniques/AML.T0048) **MITRE ATLAS**

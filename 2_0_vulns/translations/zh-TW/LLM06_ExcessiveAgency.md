@@ -1,76 +1,93 @@
 ## LLM06:2025 Excessive Agency
 
-### Description
+### 描述
 
-An LLM-based system is often granted a degree of agency by its developer - the ability to call functions or interface with other systems via extensions (sometimes referred to as tools, skills or plugins by different vendors) to undertake actions in response to a prompt. The decision over which extension to invoke may also be delegated to an LLM 'agent' to dynamically determine based on input prompt or LLM output. Agent-based systems will typically make repeated calls to an LLM using output from previous invocations to ground and direct subsequent invocations.
+**Excessive Agency**（過度授權）指的是在 LLM（大型語言模型）應用程式中，LLM 常被賦予一定程度的行動能力（Agency），可透過擴充功能（Extensions，也可能稱為工具、Skills 或 Plugins）來呼叫函數或與其他系統介接，以回應提示並採取動作。然而，若 LLM 「代理人」（Agent）有過度的功能、權限或自主性，便可能在意料之外、模糊不清或被操縱的輸出影響下，執行破壞性行為。
 
-Excessive Agency is the vulnerability that enables damaging actions to be performed in response to unexpected, ambiguous or manipulated outputs from an LLM, regardless of what is causing the LLM to malfunction. Common triggers include:
-* hallucination/confabulation caused by poorly-engineered benign prompts, or just a poorly-performing model;
-* direct/indirect prompt injection from a malicious user, an earlier invocation of a malicious/compromised extension, or (in multi-agent/collaborative systems) a malicious/compromised peer agent.
+常見引發此問題的情境包括：
 
-The root cause of Excessive Agency is typically one or more of:
-* excessive functionality;
-* excessive permissions;
-* excessive autonomy.
+- 由不良設計的正常提示或效能不佳的模型導致的幻想（hallucination）/捏造（confabulation）內容。
+- 來自惡意使用者、早期已遭入侵或具惡意意圖之擴充功能，或（在多代理/協作系統中）遭入侵的同儕代理所產生的直接/間接 Prompt Injection 攻擊。
 
-Excessive Agency can lead to a broad range of impacts across the confidentiality, integrity and availability spectrum, and is dependent on which systems an LLM-based app is able to interact with.
+過度授權（Excessive Agency）的根本原因通常是以下其中之一或多種：
 
-Note: Excessive Agency differs from Insecure Output Handling which is concerned with insufficient scrutiny of LLM outputs.
+- 功能過多（Excessive Functionality）
+- 權限過大（Excessive Permissions）
+- 自主性過強（Excessive Autonomy）
 
-### Common Examples of Risks
+Excessive Agency 可能在機密性、完整性、可用性等多方層面引發廣泛的負面影響，且影響程度取決於 LLM 應用程式可存取的系統範圍。
 
-#### 1. Excessive Functionality
-  An LLM agent has access to extensions which include functions that are not needed for the intended operation of the system. For example, a developer needs to grant an LLM agent the ability to read documents from a repository, but the 3rd-party extension they choose to use also includes the ability to modify and delete documents.
-#### 2. Excessive Functionality
-  An extension may have been trialled during a development phase and dropped in favor of a better alternative, but the original plugin remains available to the LLM agent.
-#### 3. Excessive Functionality
-  An LLM plugin with open-ended functionality fails to properly filter the input instructions for commands outside what's necessary for the intended operation of the application. E.g., an extension to run one specific shell command fails to properly prevent other shell commands from being executed.
-#### 4. Excessive Permissions
-  An LLM extension has permissions on downstream systems that are not needed for the intended operation of the application. E.g., an extension intended to read data connects to a database server using an identity that not only has SELECT permissions, but also UPDATE, INSERT and DELETE permissions.
-#### 5. Excessive Permissions
-  An LLM extension that is designed to perform operations in the context of an individual user accesses downstream systems with a generic high-privileged identity. E.g., an extension to read the current user's document store connects to the document repository with a privileged account that has access to files belonging to all users.
-#### 6. Excessive Autonomy
-  An LLM-based application or extension fails to independently verify and approve high-impact actions. E.g., an extension that allows a user's documents to be deleted performs deletions without any confirmation from the user.
+注意：Excessive Agency 與 Insecure Output Handling（不安全的輸出處理）不同之處在於，後者關注的是對 LLM 輸出缺乏充分審查，而 Excessive Agency 則著重於 LLM 被賦予的權能和行為範圍過度。
 
-### Prevention and Mitigation Strategies
+### 常見風險實例
 
-The following actions can prevent Excessive Agency:
+#### 1. 功能過多（Excessive Functionality）
+LLM 代理人可存取的擴充功能中含有不必要的操作。例如：開發者原本只需要 LLM 有讀取文件的功能，結果所選用的第三方擴充功能同時具備修改與刪除文件的能力。
 
-#### 1. Minimize extensions
-  Limit the extensions that LLM agents are allowed to call to only the minimum necessary. For example, if an LLM-based system does not require the ability to fetch the contents of a URL then such an extension should not be offered to the LLM agent.
-#### 2. Minimize extension functionality
-  Limit the functions that are implemented in LLM extensions to the minimum necessary. For example, an extension that accesses a user's mailbox to summarise emails may only require the ability to read emails, so the extension should not contain other functionality such as deleting or sending messages.
-#### 3. Avoid open-ended extensions
-  Avoid the use of open-ended extensions where possible (e.g., run a shell command, fetch a URL, etc.) and use extensions with more granular functionality. For example, an LLM-based app may need to write some output to a file. If this were implemented using an extension to run a shell function then the scope for undesirable actions is very large (any other shell command could be executed). A more secure alternative would be to build a specific file-writing extension that only implements that specific functionality.
-#### 4. Minimize extension permissions
-  Limit the permissions that LLM extensions are granted to other systems to the minimum necessary in order to limit the scope of undesirable actions. For example, an LLM agent that uses a product database in order to make purchase recommendations to a customer might only need read access to a 'products' table; it should not have access to other tables, nor the ability to insert, update or delete records. This should be enforced by applying appropriate database permissions for the identity that the LLM extension uses to connect to the database.
-#### 5. Execute extensions in user's context
-  Track user authorization and security scope to ensure actions taken on behalf of a user are executed on downstream systems in the context of that specific user, and with the minimum privileges necessary. For example, an LLM extension that reads a user's code repo should require the user to authenticate via OAuth and with the minimum scope required.
-#### 6. Require user approval
-  Utilise human-in-the-loop control to require a human to approve high-impact actions before they are taken. This may be implemented in a downstream system (outside the scope of the LLM application) or within the LLM extension itself. For example, an LLM-based app that creates and posts social media content on behalf of a user should include a user approval routine within the extension that implements the 'post' operation.
-#### 7. Complete mediation
-  Implement authorization in downstream systems rather than relying on an LLM to decide if an action is allowed or not. Enforce the complete mediation principle so that all requests made to downstream systems via extensions are validated against security policies.
-#### 8. Sanitise LLM inputs and outputs
-  Follow secure coding best practice, such as applying OWASP’s recommendations in ASVS (Application Security Verification Standard), with a particularly strong focus on input sanitisation. Use Static Application Security Testing (SAST) and Dynamic and Interactive application testing (DAST, IAST) in development pipelines.
+#### 2. 功能過多（Excessive Functionality）
+在開發階段曾使用的擴充功能未被移除，儘管正式使用時已採用更佳替代方案，但舊的外掛仍可被 LLM 代理存取。
 
-The following options will not prevent Excessive Agency, but can limit the level of damage caused:
+#### 3. 功能過多（Excessive Functionality）
+LLM 外掛功能過於開放，未對輸入指令加以過濾，導致可執行不必要的指令。例如：一個原本用於執行特定 shell 指令的擴充功能未正確限制，只執行必要的命令，反而允許執行任意 shell 指令。
 
-- Log and monitor the activity of LLM extensions and downstream systems to identify where undesirable actions are taking place, and respond accordingly.
-- Implement rate-limiting to reduce the number of undesirable actions that can take place within a given time period, increasing the opportunity to discover undesirable actions through monitoring before significant damage can occur.
+#### 4. 權限過大（Excessive Permissions）
+LLM 擴充功能對下游系統擁有超出必要的權限。例如：一個原本僅需 SELECT 權限查詢資料的擴充功能，卻持有 UPDATE、INSERT、DELETE 權限。
 
-### Example Attack Scenarios
+#### 5. 權限過大（Excessive Permissions）
+設計用於個別使用者上下文運作的 LLM 擴充功能，卻使用具有高特權的帳號存取下游系統。例如：一個只需讀取特定使用者文件的擴充功能，卻使用高特權帳號以存取所有使用者的文件。
 
-An LLM-based personal assistant app is granted access to an individual’s mailbox via an extension in order to summarise the content of incoming emails. To achieve this functionality, the extension requires the ability to read messages, however the plugin that the system developer has chosen to use also contains functions for sending messages. Additionally, the app is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the agent to scan the user's inbox for senitive information and forward it to the attacker's email address. This could be avoided by:
-* eliminating excessive functionality by using an extension that only implements mail-reading capabilities,
-* eliminating excessive permissions by authenticating to the user's email service via an OAuth session with a read-only scope, and/or
-* eliminating excessive autonomy by requiring the user to manually review and hit 'send' on every mail drafted by the LLM extension.
+#### 6. 自主性過強（Excessive Autonomy）
+LLM 應用程式或擴充功能在高風險操作執行前缺乏獨立驗證或使用者核准。例如：可刪除使用者文件的擴充功能在執行刪除前未要求使用者確認。
 
-Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
+### 預防與緩解策略
 
-### Reference Links
+下列措施可防範 Excessive Agency：
 
-1. [Slack AI data exfil from private channels](https://promptarmor.substack.com/p/slack-ai-data-exfiltration-from-private): **PromptArmor**
-2. [Rogue Agents: Stop AI From Misusing Your APIs](https://www.twilio.com/en-us/blog/rogue-ai-agents-secure-your-apis): **Twilio**
-3. [Embrace the Red: Confused Deputy Problem](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./): **Embrace The Red**
-4. [NeMo-Guardrails: Interface guidelines](https://github.com/NVIDIA/NeMo-Guardrails/blob/main/docs/security/guidelines.md): **NVIDIA Github**
-6. [Simon Willison: Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/): **Simon Willison**
+#### 1. 減少擴充功能
+限制 LLM 代理人可呼叫的擴充功能，僅保留必要功能。例如：若不需要擷取 URL 內容的功能，就不應提供該擴充功能給 LLM 使用。
+
+#### 2. 精簡擴充功能的功能範圍
+限制擴充功能中實作的功能至最低必須。舉例來說，用於摘要電子郵件內容的擴充功能若只需讀取郵件，則不該包含刪除或寄送郵件的功能。
+
+#### 3. 避免開放式擴充功能
+盡量避免使用開放式功能（如執行任意 shell 指令、任意抓取 URL）。改用更具限制與明確功能範圍的擴充功能。例如：若只需將輸出寫入檔案，可用專屬的「寫入檔案」功能取代具無限執行 shell 指令的擴充功能。
+
+#### 4. 權限最小化
+對 LLM 擴充功能賦予的權限須最小化，以降低執行不當行為的空間。例如：一個使用產品資料庫提供推薦的 LLM 代理，應僅有讀取產品資料表的權限，不該能存取其他資料表，亦無需新增、修改、刪除記錄的權限。
+
+#### 5. 在使用者脈絡下執行
+確保操作在下游系統中以對應特定使用者脈絡與最小必要權限執行。例如：一個可讀取使用者程式碼庫的擴充功能應要求該使用者透過 OAuth 驗證，且僅賦予所需的最小範圍存取。
+
+#### 6. 要求使用者核准
+對高風險操作採用人類審核（human-in-the-loop）模式，由使用者在執行前進行核准。可在 LLM 外部系統實作，或在 LLM 擴充功能本身實作。如為使用者自動貼文的 LLM 應用程式，應在貼文動作前要求使用者確認。
+
+#### 7. 完整檢查（Complete Mediation）
+在下游系統中實作授權控管，而非依賴 LLM 判斷某操作是否被允許。實踐「完整檢查」原則，確保所有透過擴充功能對下游系統的請求都能被適用安全策略加以驗證。
+
+#### 8. 淨化 LLM 輸入與輸出
+遵從安全程式撰寫的最佳實務，如套用 OWASP ASVS 中的建議，特別是輸入淨化部分。在開發流程中採用 SAST、DAST、IAST 工具以加強安全性。
+
+下列措施無法預防 Excessive Agency，但可減輕其造成的傷害：
+
+- 記錄並監控 LLM 擴充功能與下游系統的活動，以識別不當操作並及時應對。
+- 實施速率限制（rate-limiting），減少短時間內不當行為的次數，提高偵測惡意行為並阻止重大損害的機會。
+
+### 攻擊情境範例
+
+一個 LLM 個人助理應用程式透過擴充功能存取使用者的郵件信箱，以總結新郵件內容。為達此功能，擴充功能需要讀取郵件的能力。然而，所選的外掛同時具備寄出郵件的功能。此應用程式存在間接 Prompt Injection 漏洞，攻擊者可透過精心設計的郵件，使 LLM 指示代理人掃描使用者信箱的敏感資訊並轉寄給攻擊者。
+
+避免此情況的方法包括：
+
+- 消除過度功能：使用僅具備郵件讀取功能的擴充功能。
+- 消除過度權限：透過 OAuth 以唯讀範圍驗證使用者的郵件服務。
+- 消除過度自主性：在 LLM 擴充功能實施使用者手動審核與發送郵件的流程。
+
+或者，實施對郵件傳送介面的速率限制，也可減少攻擊者在短期內造成大量損害的機會。
+
+### 參考連結
+
+1. [Slack AI data exfil from private channels](https://promptarmor.substack.com/p/slack-ai-data-exfiltration-from-private)：**PromptArmor**  
+2. [Rogue Agents: Stop AI From Misusing Your APIs](https://www.twilio.com/en-us/blog/rogue-ai-agents-secure-your-apis)：**Twilio**  
+3. [Embrace the Red: Confused Deputy Problem](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./)：**Embrace The Red**  
+4. [NeMo-Guardrails: Interface guidelines](https://github.com/NVIDIA/NeMo-Guardrails/blob/main/docs/security/guidelines.md)：**NVIDIA Github**  
+6. [Simon Willison: Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/)：**Simon Willison**

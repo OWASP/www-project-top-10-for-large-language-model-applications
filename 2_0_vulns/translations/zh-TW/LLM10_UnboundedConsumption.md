@@ -1,99 +1,124 @@
 ## LLM10:2025 Unbounded Consumption
 
-### Description
+### 描述
 
-Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
+**Unbounded Consumption**（無限制消耗）是指在 LLM（大型語言模型）應用程式中，使用者能不受控地、不合理地進行推論（inference）要求的情境。LLM 的推論是透過已學得的知識與模式，針對輸入查詢或提示產生對應的回應或預測。然而，若該應用缺乏適當的限制與控管，惡意行為者（或誤用者）可透過過度或惡意的資源消耗來發動攻擊，如造成服務阻斷（DoS）、增加營運成本、竊取模型行為以製造相似模型，或使服務品質劣化。
 
-Attacks designed to disrupt service, deplete the target's financial resources, or even steal intellectual property by cloning a model’s behavior all depend on a common class of security vulnerability in order to succeed. Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to risks such as denial of service (DoS), economic losses, model theft, and service degradation. The high computational demands of LLMs, especially in cloud environments, make them vulnerable to resource exploitation and unauthorized usage.
+LLM，特別在雲端環境中，本身運行成本高昂且資源密集。一旦資源消耗未受控管，這些漏洞將成為攻擊者剝削的目標，導致經濟損失、服務降級、甚至智財權遭竊的風險。
 
-### Common Examples of Vulnerability
+### 常見漏洞實例
 
 #### 1. Variable-Length Input Flood
-  Attackers can overload the LLM with numerous inputs of varying lengths, exploiting processing inefficiencies. This can deplete resources and potentially render the system unresponsive, significantly impacting service availability.
-#### 2. Denial of Wallet (DoW)
-  By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
-#### 3. Continuous Input Overflow
-  Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
-#### 4. Resource-Intensive Queries
-  Submitting unusually demanding queries involving complex sequences or intricate language patterns can drain system resources, leading to prolonged processing times and potential system failures.
-#### 5. Model Extraction via API
-  Attackers may query the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model. This not only poses risks of intellectual property theft but also undermines the integrity of the original model.
-#### 6. Functional Model Replication
-  Using the target model to generate synthetic training data can allow attackers to fine-tune another foundational model, creating a functional equivalent. This circumvents traditional query-based extraction methods, posing significant risks to proprietary models and technologies.
-#### 7. Side-Channel Attacks
-  Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
+攻擊者以大量、變動長度的輸入淹沒 LLM，使其在處理這些輸入時消耗過多資源，最終導致系統延遲或無法回應，影響服務可用性。
 
-### Prevention and Mitigation Strategies
+#### 2. Denial of Wallet (DoW)
+由於許多雲端 AI 服務以使用次數計費，攻擊者若發送大量操作請求可快速累積費用，給服務供應商造成龐大經濟負擔，甚至讓供應商財務壓力難以承受。
+
+#### 3. Continuous Input Overflow
+持續向 LLM 傳送超過其脈絡視窗（context window）能承載的輸入，使模型頻繁重新計算並消耗大量運算資源，導致服務品質劣化與運作中斷。
+
+#### 4. Resource-Intensive Queries
+提交極度複雜或高運算量的查詢（如深度分析複雜語料），迫使 LLM 耗費大量 CPU/GPU 資源，進而減慢系統回應或造成系統故障。
+
+#### 5. Model Extraction via API
+攻擊者以精心設計的查詢及 Prompt Injection 技術，不斷取得模型回應，企圖複製模型行為或建立「陰影模型（shadow model）」。此舉不僅會造成智財權風險，也破壞模型的獨特性。
+
+#### 6. Functional Model Replication
+透過 LLM 輸出生成合成訓練資料，攻擊者可微調另一個基礎模型以產生相似功能，避開傳統以查詢為基礎的模型擷取方法，對專有模型技術構成重大威脅。
+
+#### 7. Side-Channel Attacks
+惡意攻擊者可能透過繞過 LLM 輸入過濾技術的方式，執行側通道攻擊（side-channel attacks），從中擷取模型權重或架構資訊，進一步利用這些資訊進行更嚴重的攻擊。
+
+### 預防與緩解策略
 
 #### 1. Input Validation
-  Implement strict input validation to ensure that inputs do not exceed reasonable size limits.
+嚴格檢查輸入長度與格式，確保輸入不超出合理範圍。
+
 #### 2. Limit Exposure of Logits and Logprobs
-  Restrict or obfuscate the exposure of `logit_bias` and `logprobs` in API responses. Provide only the necessary information without revealing detailed probabilities.
+限制或混淆 API 回應中的 `logit_bias` 與 `logprobs` 曝露程度，只提供必要的資訊，避免詳細概率分布外洩。
+
 #### 3. Rate Limiting
-  Apply rate limiting and user quotas to restrict the number of requests a single source entity can make in a given time period.
+對單一來源或用戶實施請求頻率限制與配額，以防止過度資源消耗。
+
 #### 4. Resource Allocation Management
-  Monitor and manage resource allocation dynamically to prevent any single user or request from consuming excessive resources.
+動態監控與管理資源分配，避免單一用戶或請求獲得過度資源使用。
+
 #### 5. Timeouts and Throttling
-  Set timeouts and throttle processing for resource-intensive operations to prevent prolonged resource consumption.
-#### 6.Sandbox Techniques
-  Restrict the LLM's access to network resources, internal services, and APIs.
-  - This is particularly significant for all common scenarios as it encompasses insider risks and threats. Furthermore, it governs the extent of access the LLM application has to data and resources, thereby serving as a crucial control mechanism to mitigate or prevent side-channel attacks.
+針對高資源消耗操作設定逾時與節流（throttling）機制，防止長期無止盡的資源佔用。
+
+#### 6. Sandbox Techniques
+限制 LLM 對網路資源、內部服務與 API 的存取範圍。  
+- 這對應各種情境很重要，包括內部人員風險與威脅，並規範 LLM 應用可存取之資料與資源範疇，能有效降低側通道攻擊。
+
 #### 7. Comprehensive Logging, Monitoring and Anomaly Detection
-  Continuously monitor resource usage and implement logging to detect and respond to unusual patterns of resource consumption.
+持續監控資源使用並記錄異常行為，當出現可疑資源消耗模式時能及時偵測並回應。
+
 #### 8. Watermarking
-  Implement watermarking frameworks to embed and detect unauthorized use of LLM outputs.
+實施數位浮水印技術，以在 LLM 輸出中嵌入可偵測的標記，若遇未授權使用，可追溯來源並防止智財竊取。
+
 #### 9. Graceful Degradation
-  Design the system to degrade gracefully under heavy load, maintaining partial functionality rather than complete failure.
+在負載過重時系統可局部降級而非完全故障，確保在壓力情境下仍維持部分功能可用。
+
 #### 10. Limit Queued Actions and Scale Robustly
-  Implement restrictions on the number of queued actions and total actions, while incorporating dynamic scaling and load balancing to handle varying demands and ensure consistent system performance.
+限制佇列中動作數量，並透過動態擴容與負載平衡處理高需求情境，確保系統效能一致。
+
 #### 11. Adversarial Robustness Training
-  Train models to detect and mitigate adversarial queries and extraction attempts.
+訓練模型以識別並減緩對抗性查詢與模型擷取企圖。
+
 #### 12. Glitch Token Filtering
-  Build lists of known glitch tokens and scan output before adding it to the model’s context window.
+建立「glitch tokens」名單，在將輸出加入模型脈絡前先行篩檢，以防止惡意令牌注入。
+
 #### 13. Access Controls
-  Implement strong access controls, including role-based access control (RBAC) and the principle of least privilege, to limit unauthorized access to LLM model repositories and training environments.
+採用角色為基礎的存取控制（RBAC）與最小特權原則，限制未授權使用者取得 LLM 模型與訓練環境存取。
+
 #### 14. Centralized ML Model Inventory
-  Use a centralized ML model inventory or registry for models used in production, ensuring proper governance and access control.
+使用集中化的 ML 模型清單或註冊機制，以確保正式生產使用的模型受到妥善治理與存取控制。
+
 #### 15. Automated MLOps Deployment
-  Implement automated MLOps deployment with governance, tracking, and approval workflows to tighten access and deployment controls within the infrastructure.
+在 MLOps 部署過程中實施自動化治理、追蹤與批准流程，收緊基礎架構中存取與部署的控制權。
 
-### Example Attack Scenarios
+### 攻擊情境範例
 
-#### Scenario #1: Uncontrolled Input Size
-  An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
-#### Scenario #2: Repeated Requests
-  An attacker transmits a high volume of requests to the LLM API, causing excessive consumption of computational resources and making the service unavailable to legitimate users.
-#### Scenario #3: Resource-Intensive Queries
-  An attacker crafts specific inputs designed to trigger the LLM's most computationally expensive processes, leading to prolonged CPU usage and potential system failure.
-#### Scenario #4: Denial of Wallet (DoW)
-  An attacker generates excessive operations to exploit the pay-per-use model of cloud-based AI services, causing unsustainable costs for the service provider.
-#### Scenario #5: Functional Model Replication
-  An attacker uses the LLM's API to generate synthetic training data and fine-tunes another model, creating a functional equivalent and bypassing traditional model extraction limitations.
-#### Scenario #6: Bypassing System Input Filtering
-  A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
+#### 情境 #1：Uncontrolled Input Size
+攻擊者提交異常大型輸入，引發 LLM 過量記憶體與 CPU 使用，導致系統延遲、降速或崩潰。
 
-### Reference Links
+#### 情境 #2：Repeated Requests
+攻擊者大量且持續地對 LLM API 發送請求，過度消耗計算資源，使服務無法對正常使用者請求進行及時回應。
 
-1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
-2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**
-3. [Runaway LLaMA | How Meta's LLaMA NLP model leaked](https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked/): **Deep Learning Blog**
-4. [I Know What You See:](https://arxiv.org/pdf/1803.05847.pdf): **Arxiv White Paper**
-5. [A Comprehensive Defense Framework Against Model Extraction Attacks](https://ieeexplore.ieee.org/document/10080996): **IEEE**
-6. [Alpaca: A Strong, Replicable Instruction-Following Model](https://crfm.stanford.edu/2023/03/13/alpaca.html): **Stanford Center on Research for Foundation Models (CRFM)**
-7. [How Watermarking Can Help Mitigate The Potential Risks Of LLMs?](https://www.kdnuggets.com/2023/03/watermarking-help-mitigate-potential-risks-llms.html): **KD Nuggets**
-8. [Securing AI Model Weights Preventing Theft and Misuse of Frontier Models](https://www.rand.org/content/dam/rand/pubs/research_reports/RRA2800/RRA2849-1/RAND_RRA2849-1.pdf)
-9. [Sponge Examples: Energy-Latency Attacks on Neural Networks: Arxiv White Paper](https://arxiv.org/abs/2006.03463) **arXiv**
+#### 情境 #3：Resource-Intensive Queries
+攻擊者精心設計輸入以觸發最昂貴的運算路徑，導致 CPU 長時間飽和，可能最終系統崩潰。
+
+#### 情境 #4：Denial of Wallet (DoW)
+攻擊者大量產生可計費的操作，利用雲端 AI 服務的付費模式，迫使供應商承擔高昂費用至經濟無法負荷。
+
+#### 情境 #5：Functional Model Replication
+攻擊者使用 LLM API 生成合成訓練資料，進而微調另一模型以複製原模型功能，避開傳統模型擷取手法。
+
+#### 情境 #6：Bypassing System Input Filtering
+惡意攻擊者繞過 LLM 輸入過濾與前置設定，以側通道攻擊取得模型資訊，將其洩漏至攻擊者控制的遠端資源。
+
+### 參考連結
+
+1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)  
+2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**  
+3. [Runaway LLaMA | How Meta's LLaMA NLP model leaked](https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked/) **Deep Learning Blog**  
+4. [I Know What You See:](https://arxiv.org/pdf/1803.05847.pdf) **Arxiv White Paper**  
+5. [A Comprehensive Defense Framework Against Model Extraction Attacks](https://ieeexplore.ieee.org/document/10080996) **IEEE**  
+6. [Alpaca: A Strong, Replicable Instruction-Following Model](https://crfm.stanford.edu/2023/03/13/alpaca.html) **Stanford CRFM**  
+7. [How Watermarking Can Help Mitigate The Potential Risks Of LLMs?](https://www.kdnuggets.com/2023/03/watermarking-help-mitigate-potential-risks-llms.html) **KD Nuggets**  
+8. [Securing AI Model Weights Preventing Theft and Misuse of Frontier Models](https://www.rand.org/content/dam/rand/pubs/research_reports/RRA2800/RRA2849-1/RAND_RRA2849-1.pdf)  
+9. [Sponge Examples: Energy-Latency Attacks on Neural Networks](https://arxiv.org/abs/2006.03463) **arXiv**  
 10. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
 
-### Related Frameworks and Taxonomies
+### 相關框架與分類法
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+請參考此區以取得有關基礎架構部署、應用環境控管及其他最佳實務的完整資訊。
 
-- [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
-- [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**
-- [AML.T0029 - Denial of ML Service](https://atlas.mitre.org/techniques/AML.T0029) **MITRE ATLAS**
-- [AML.T0034 - Cost Harvesting](https://atlas.mitre.org/techniques/AML.T0034) **MITRE ATLAS**
-- [AML.T0025 - Exfiltration via Cyber Means](https://atlas.mitre.org/techniques/AML.T0025) **MITRE ATLAS**
-- [OWASP Machine Learning Security Top Ten - ML05:2023 Model Theft](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML05_2023-Model_Theft.html) **OWASP ML Top 10**
-- [API4:2023 - Unrestricted Resource Consumption](https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/) **OWASP Web Application Top 10**
+- [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE CWE**  
+- [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**  
+- [AML.T0029 - Denial of ML Service](https://atlas.mitre.org/techniques/AML.T0029) **MITRE ATLAS**  
+- [AML.T0034 - Cost Harvesting](https://atlas.mitre.org/techniques/AML.T0034) **MITRE ATLAS**  
+- [AML.T0025 - Exfiltration via Cyber Means](https://atlas.mitre.org/techniques/AML.T0025) **MITRE ATLAS**  
+- [OWASP Machine Learning Security Top Ten - ML05:2023 Model Theft](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML05_2023-Model_Theft.html) **OWASP ML Top 10**  
+- [API4:2023 - Unrestricted Resource Consumption](https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/) **OWASP Web Application Top 10**  
 - [OWASP Resource Management](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/) **OWASP Secure Coding Practices**
