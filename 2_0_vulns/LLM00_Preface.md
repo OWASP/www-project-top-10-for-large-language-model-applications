@@ -21,12 +21,12 @@ Like the technology itself, this list is a product of the open-source communityâ
 Thank you to everyone who helped bring this together and those who continue to use and improve it. Weâ€™re grateful to be part of this work with you.
 
 
-###@ Steve Wilson
+#### Steve Wilson
 Project Lead
 OWASP Top 10 for Large Language Model Applications
 LinkedIn: https://www.linkedin.com/in/wilsonsd/
 
-###@ Ads Dawson
+#### Ads Dawson
 Technical Lead & Vulnerability Entries Lead
 OWASP Top 10 for Large Language Model Applications
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
