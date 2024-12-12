@@ -1,55 +1,55 @@
-## LLM09:2025 Misinformation
+## LLM09:2025 Fehlinformationen
 
 ### Description
 
-Misinformation from LLMs poses a core vulnerability for applications relying on these models. Misinformation occurs when LLMs produce false or misleading information that appears credible. This vulnerability can lead to security breaches, reputational damage, and legal liability.
+Fehlinformationen von LLMs stellen eine zentrale Schwachstelle für Anwendungen dar, die auf diesen Modellen basieren. Fehlinformationen treten auf, wenn LLMs falsche oder irreführende Informationen produzieren, die glaubwürdig erscheinen. Diese Schwachstelle kann zu Sicherheitsverletzungen, Rufschädigung und rechtlicher Haftung führen
 
-One of the major causes of misinformation is hallucination—when the LLM generates content that seems accurate but is fabricated. Hallucinations occur when LLMs fill gaps in their training data using statistical patterns, without truly understanding the content. As a result, the model may produce answers that sound correct but are completely unfounded. While hallucinations are a major source of misinformation, they are not the only cause; biases introduced by the training data and incomplete information can also contribute.
+Eine der Hauptursachen für Fehlinformationen sind Halluzinationen – wenn das LLM Inhalte generiert, die zwar korrekt erscheinen, aber erfunden sind. Halluzinationen treten auf, wenn LLMs Lücken in ihren Trainingsdaten mithilfe statistischer Muster füllen, ohne den Inhalt wirklich zu verstehen. Infolgedessen kann das Modell Antworten liefern, die zwar korrekt klingen, aber völlig unbegründet sind. Halluzinationen sind zwar eine Hauptquelle für Fehlinformationen, aber nicht die einzige Ursache; auch durch die Trainingsdaten eingeführte Verzerrungen und unvollständige Informationen können dazu beitragen
 
-A related issue is overreliance. Overreliance occurs when users place excessive trust in LLM-generated content, failing to verify its accuracy. This overreliance exacerbates the impact of misinformation, as users may integrate incorrect data into critical decisions or processes without adequate scrutiny.
+Ein damit zusammenhängendes Problem ist das Overreliance. Overreliance tritt auf, wenn Benutzer den von LLM generierten Inhalten übermäßiges Vertrauen schenken und deren Richtigkeit nicht überprüfen. Dieses Overreliance verschärft die Auswirkungen von Fehlinformationen, da Benutzer möglicherweise falsche Daten in kritische Entscheidungen oder Prozesse einfließen lassen, ohne diese angemessen zu prüfen.
 
-### Common Examples of Risk
+### Gängige Beispiele für Risiken
 
-#### 1. Factual Inaccuracies
-  The model produces incorrect statements, leading users to make decisions based on false information. For example, Air Canada's chatbot provided misinformation to travelers, leading to operational disruptions and legal complications. The airline was successfully sued as a result.
+#### 1. Sachliche Ungenauigkeiten
+  Das Modell gibt falsche Aussagen aus, was dazu führt, dass Benutzer Entscheidungen auf der Grundlage falscher Informationen treffen. So hat beispielsweise der Chatbot von Air Canada Reisenden Fehlinformationen gegeben, was zu Betriebsstörungen und rechtlichen Komplikationen führte. Die Fluggesellschaft wurde daraufhin erfolgreich verklagt.
   (Ref. link: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
-#### 2. Unsupported Claims
-  The model generates baseless assertions, which can be especially harmful in sensitive contexts such as healthcare or legal proceedings. For example, ChatGPT fabricated fake legal cases, leading to significant issues in court.
+#### 2. Unbelegte Behauptungen
+  Das Modell generiert unbegründete Behauptungen, die in sensiblen Bereichen wie dem Gesundheitswesen oder bei Gerichtsverfahren besonders schädlich sein können. So hat ChatGPT beispielsweise gefälschte Rechtsfälle erfunden, was zu erheblichen Problemen vor Gericht führte.
   (Ref. link: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
-#### 3. Misrepresentation of Expertise
-  The model gives the illusion of understanding complex topics, misleading users regarding its level of expertise. For example, chatbots have been found to misrepresent the complexity of health-related issues, suggesting uncertainty where there is none, which misled users into believing that unsupported treatments were still under debate.
+#### 3. Falschdarstellung von Fachwissen
+  Das Modell vermittelt den Eindruck, komplexe Themen zu verstehen, und täuscht die Benutzer hinsichtlich seines Fachwissens. Beispielsweise wurde festgestellt, dass Chatbots die Komplexität gesundheitsbezogener Themen falsch darstellen und Unsicherheit suggerieren, wo keine besteht, was die Benutzer zu der Annahme verleitet, dass nicht unterstützte Behandlungen noch diskutiert werden.
   (Ref. link: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
-#### 4. Unsafe Code Generation
-  The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems. For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks.
+#### 4. Unsichere Code-Generierung
+  Das Modell schlägt unsichere oder nicht vorhandene Code-Bibliotheken vor, die Schwachstellen verursachen können, wenn sie in Softwaresysteme integriert werden. Beispielsweise schlagen LLMs die Verwendung unsicherer Bibliotheken von Drittanbietern vor, was zu Sicherheitsrisiken führt, wenn man ihnen ohne Überprüfung vertraut.
   (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
-### Prevention and Mitigation Strategies
+### Präventions- und Mitigationsstrategien
 
 #### 1. Retrieval-Augmented Generation (RAG)
-  Use Retrieval-Augmented Generation to enhance the reliability of model outputs by retrieving relevant and verified information from trusted external databases during response generation. This helps mitigate the risk of hallucinations and misinformation.
+  Verwende Retrieval-Augmented Generation, um die Zuverlässigkeit der Modellausgaben zu erhöhen, indem während der Reaktionsgenerierung relevante und verifizierte Informationen aus vertrauenswürdigen externen Datenbanken abgerufen werden. Dies trägt dazu bei, das Risiko von Halluzinationen und Fehlinformationen zu minimieren.
 #### 2. Model Fine-Tuning
-  Enhance the model with fine-tuning or embeddings to improve output quality. Techniques such as parameter-efficient tuning (PET) and chain-of-thought prompting can help reduce the incidence of misinformation.
-#### 3. Cross-Verification and Human Oversight
-  Encourage users to cross-check LLM outputs with trusted external sources to ensure the accuracy of the information. Implement human oversight and fact-checking processes, especially for critical or sensitive information. Ensure that human reviewers are properly trained to avoid overreliance on AI-generated content.
-#### 4. Automatic Validation Mechanisms
-  Implement tools and processes to automatically validate key outputs, especially output from high-stakes environments.
-#### 5. Risk Communication
-  Identify the risks and possible harms associated with LLM-generated content, then clearly communicate these risks and limitations to users, including the potential for misinformation.
-#### 6. Secure Coding Practices
-  Establish secure coding practices to prevent the integration of vulnerabilities due to incorrect code suggestions.
-#### 7. User Interface Design
-  Design APIs and user interfaces that encourage responsible use of LLMs, such as integrating content filters, clearly labeling AI-generated content and informing users on limitations of reliability and accuracy. Be specific about the intended field of use limitations.
-#### 8. Training and Education
-  Provide comprehensive training for users on the limitations of LLMs, the importance of independent verification of generated content, and the need for critical thinking. In specific contexts, offer domain-specific training to ensure users can effectively evaluate LLM outputs within their field of expertise.
+  Verbessere das Modell durch Finetuning oder Einbettungen, um die Ausgabequalität zu verbessern. Techniken wie parameter-effizientes Tuning (PET) und Chain-of-Thought-Prompting können dazu beitragen, das Auftreten von Fehlinformationen zu reduzieren.
+#### 3. Kreuzverifizierung und menschliche Aufsicht
+  Ermutige die Benutzer, die LLM-Ausgaben mit vertrauenswürdigen externen Quellen abzugleichen, um die Richtigkeit der Informationen sicherzustellen. Implementiere Prozesse zur menschlichen Aufsicht und Faktenprüfung, insbesondere bei kritischen oder sensiblen Informationen. Stelle sicher, dass menschliche Prüfer entsprechend geschult sind, um eine übermäßige Abhängigkeit von KI-generierten Inhalten zu vermeiden.
+#### 4. Automatische Validierungsmechanismen
+  Implementiere Tools und Prozesse zur automatischen Validierung wichtiger Ergebnisse, insbesondere von Ergebnissen aus risikoreichen Umgebungen.
+#### 5. Risikokommunikation
+  Ermittle die Risiken und möglichen Schäden im Zusammenhang mit LLM-generierten Inhalten und kommuniziere diese Risiken und Einschränkungen dann klar und deutlich an die Benutzer, einschließlich des Potenzials für Fehlinformationen.
+#### 6. Secure Coding-Praktiken
+  Einführung sicherer Codierungspraktiken, um die Integration von Schwachstellen aufgrund falscher Code-Vorschläge zu verhindern.
+#### 7. Gestaltung der Benutzeroberfläche
+  Gestaltung von APIs und Benutzeroberflächen, die eine verantwortungsvolle Nutzung von LLMs fördern, z. B. durch die Integration von Inhaltsfiltern, die eindeutige Kennzeichnung von KI-generierten Inhalten und die Information der Benutzer über Einschränkungen der Zuverlässigkeit und Genauigkeit. Gehe dabei konkret auf die beabsichtigten Einschränkungen des Einsatzbereichs ein.
+#### 8. Schulung und Ausbildung
+  Bietet umfassende Schulungen für Benutzer zu den Einschränkungen von LLMs, der Bedeutung einer unabhängigen Überprüfung generierter Inhalte und der Notwendigkeit kritischen Denkens an. Bietet in bestimmten Kontexten bereichsspezifische Schulungen an, um sicherzustellen, dass Benutzer die Ergebnisse von LLM in ihrem Fachgebiet effektiv bewerten können.
 
-### Example Attack Scenarios
+### Beispiele für Angriffsszenarien
 
-#### Scenario #1
-  Attackers experiment with popular coding assistants to find commonly hallucinated package names. Once they identify these frequently suggested but nonexistent libraries, they publish malicious packages with those names to widely used repositories. Developers, relying on the coding assistant's suggestions, unknowingly integrate these poised packages into their software. As a result, the attackers gain unauthorized access, inject malicious code, or establish backdoors, leading to significant security breaches and compromising user data.
-#### Scenario #2
-  A company provides a chatbot for medical diagnosis without ensuring sufficient accuracy. The chatbot provides poor information, leading to harmful consequences for patients. As a result, the company is successfully sued for damages. In this case, the safety and security breakdown did not require a malicious attacker but instead arose from the insufficient oversight and reliability of the LLM system. In this scenario, there is no need for an active attacker for the company to be at risk of reputational and financial damage.
+#### Szenario #1
+Angreifer experimentieren mit beliebten Programmierassistenten, um häufig halluzinierte Paketnamen zu finden. Sobald sie diese häufig vorgeschlagenen, aber nicht vorhandenen Bibliotheken identifiziert haben, veröffentlichen sie bösartige Pakete mit diesen Namen in weit verbreiteten Repositories. Entwickler, die sich auf die Vorschläge des Programmierassistenten verlassen, integrieren diese präparierten Pakete unwissentlich in ihre Software. Dadurch erhalten die Angreifer unbefugten Zugriff, injizieren bösartigen Code oder richten Hintertüren ein, was zu erheblichen Sicherheitsverletzungen führt und Benutzerdaten gefährdet.
+#### Szenario #2
+  Ein Unternehmen stellt einen Chatbot für medizinische Diagnosen zur Verfügung, ohne eine ausreichende Genauigkeit zu gewährleisten. Der Chatbot liefert unzureichende Informationen, was zu schädlichen Folgen für die Patienten führt. Infolgedessen wird das Unternehmen erfolgreich auf Schadensersatz verklagt. In diesem Fall war für den Sicherheits- und Schutzverstoß kein böswilliger Angreifer erforderlich, sondern er entstand durch die unzureichende Überwachung und Zuverlässigkeit des LLM-Systems. In diesem Szenario ist kein aktiver Angreifer erforderlich, damit das Unternehmen dem Risiko eines Reputations- und finanziellen Schadens ausgesetzt ist.
 
-### Reference Links
+### Referenzlinks
 
 1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
 2. [Air Canada Chatbot Misinformation: What Travellers Should Know](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know): **BBC**
@@ -63,8 +63,8 @@ A related issue is overreliance. Overreliance occurs when users place excessive 
 10. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
 11. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
 
-### Related Frameworks and Taxonomies
+### Verwandte Frameworks und Taxonomien
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+In diesem Abschnitt findest du umfassende Informationen, Szenarien, Strategien in Bezug auf die Bereitstellung von Infrastruktur, angewandte Umweltkontrollen und andere bewährte Verfahren.
 
 - [AML.T0048.002 - Societal Harm](https://atlas.mitre.org/techniques/AML.T0048) **MITRE ATLAS**
