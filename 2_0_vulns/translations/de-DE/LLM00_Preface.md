@@ -1,43 +1,44 @@
-## Letter from the Project Leads
+## Schreiben der Projektleiter
 
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+Die OWASP Top 10 für Large Language Model Applications (LLM) wurden 2023 als ein von der Community vorangetriebenes Projekt ins Leben gerufen, um Sicherheitsprobleme, die speziell bei KI-Anwendungen auftreten, hervorzuheben und zu beheben. Seitdem hat sich die Technologie in immer mehr Branchen und Anwendungen verbreitet, und damit auch die damit verbundenen Risiken. Da LLMs immer tiefer in alle Bereiche eingebettet werden, von der Kundeninteraktion bis hin zu internen Abläufen, entdecken Entwickler und Sicherheitsexperten neue Schwachstellen – und Wege, diese zu beheben.
 
-The 2023 list was a big success in raising awareness and building a foundation for secure LLM usage, but we've learned even more since then. In this new 2025 version, we’ve worked with a larger, more diverse group of contributors worldwide who have all helped shape this list. The process involved brainstorming sessions, voting, and real-world feedback from professionals in the thick of LLM application security, whether by contributing or refining those entries through feedback. Each voice was critical to making this new release as thorough and practical as possible.
+Die Liste von 2023 war ein großer Erfolg, um das Bewusstsein zu schärfen und eine Grundlage für die sichere Nutzung von LLM zu schaffen, aber seitdem haben wir noch mehr gelernt. Für die neue Version 2025 haben wir mit einer größeren, vielfältigeren Gruppe von Mitwirkenden weltweit zusammengearbeitet, die alle an der Gestaltung dieser Liste mitgewirkt haben. Der Prozess umfasste Brainstorming-Sitzungen, Abstimmungen und Feedback aus der Praxis von Fachleuten, die sich intensiv mit der Sicherheit von LLM-Anwendungen befassen, sei es durch Beiträge oder durch die Verfeinerung dieser Einträge durch Feedback. Jede Stimme war entscheidend, um diese neue Version so gründlich und praktisch wie möglich zu gestalten.
 
-### What’s New in the 2025 Top 10
+### Was ist neu in den Top 10 von 2025
 
-The 2025 list reflects a better understanding of existing risks and introduces critical updates on how LLMs are used in real-world applications today. For instance, **Unbounded Consumption** expands on what was previously Denial of Service to include risks around resource management and unexpected costs—a pressing issue in large-scale LLM deployments.
+Die Liste von 2025 spiegelt ein besseres Verständnis der bestehenden Risiken wieder und enthält wichtige Aktualisierungen darüber, wie LLMs heute in realen Anwendungen eingesetzt werden. So wird beispielsweise „**unbegrenzter Verbrauch**“ auf das ausgeweitet, was zuvor als Denial-of-Service bezeichnet wurde, und umfasst nun auch Risiken im Zusammenhang mit dem Ressourcenmanagement und unerwarteten Kosten – ein dringendes Problem bei groß angelegten Einsatz von LLMs.
 
-The **Vector and Embeddings** entry responds to the community’s requests for guidance on securing Retrieval-Augmented Generation (RAG) and other embedding-based methods, now core practices for grounding model outputs.
+Der Eintrag „**Vektor und Einbettung**“ geht auf die Anfragen der Community nach Anleitung zur Sicherung von Retrieval-Augmented Generation (RAG) und anderen einbettungsbasierten Methoden ein, die heute zu den Kernpraktiken für die Begründung von Modellausgaben gehören.
 
-We’ve also added **System Prompt Leakage** to address an area with real-world exploits that were highly requested by the community. Many applications assumed prompts were securely isolated, but recent incidents have shown that developers cannot safely assume that information in these prompts remains secret.
+Wir haben auch „**Offenlegung des Systems Prompts**“ hinzugefügt, um einen Bereich mit realen Schwachstellen zu behandeln, der von der Community stark nachgefragt wurde. Viele Anwendungen gingen davon aus, dass Eingabeaufforderungen sicher isoliert waren, aber jüngste Vorfälle haben gezeigt, dass Entwickler nicht davon ausgehen können, dass die Informationen in diesen Eingabeaufforderungen geheim bleiben.
 
-**Excessive Agency** has been expanded, given the increased use of agentic architectures that can give the LLM more autonomy.  With LLMs acting as agents or in plug-in settings, unchecked permissions can lead to unintended or risky actions, making this entry more critical than ever.
+**Excessive Agency** wurde erweitert, da vermehrt agentenbasierte Architekturen eingesetzt werden, die der LLM mehr Autonomie verleihen können.  Wenn LLMs als Agenten oder in Plug-in-Einstellungen agieren, können nicht überprüfte Berechtigungen zu unbeabsichtigten oder riskanten Aktionen führen, wodurch dieser Eintrag wichtiger denn je ist.
 
-### Moving Forward
+### Die Zukunft
 
-Like the technology itself, this list is a product of the open-source community’s insights and experiences. It has been shaped by contributions from developers, data scientists, and security experts across sectors, all committed to building safer AI applications. We’re proud to share this 2025 version with you, and we hope it provides you with the tools and knowledge to secure LLMs effectively.
+Wie die Technologie selbst ist auch diese Liste ein Produkt der Erkenntnisse und Erfahrungen der Open-Source-Community. Sie wurde durch Beiträge von Entwicklern, Data Scientists und Sicherheitsexperten aus verschiedenen Sektoren gestaltet, die sich alle für die Entwicklung sichererer KI-Anwendungen einsetzen. Wir sind stolz darauf, diese Version von 2025 mit euch zu teilen, und hoffen, dass sie euch die Werkzeuge und das Wissen an die Hand gibt, um LLMs effektiv zu sichern
 
-Thank you to everyone who helped bring this together and those who continue to use and improve it. We’re grateful to be part of this work with you.
+Vielen Dank an alle, die bei der Erstellung dieses Dokuments mitgeholfen haben, und an alle, die es weiterhin nutzen und verbessern. Wir sind dankbar, mit euch an dieser Arbeit beteiligt zu sein.
 
 
 ###@ Steve Wilson
-Project Lead
+Projektleiter
 OWASP Top 10 for Large Language Model Applications
 LinkedIn: https://www.linkedin.com/in/wilsonsd/
 
 ###@ Ads Dawson
-Technical Lead & Vulnerability Entries Lead
+Technischer Leiter und Leiter der Schwachstellenmeldungen
 OWASP Top 10 for Large Language Model Applications
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
-### German Translation Team
-Name
-LinkedIn
+### Das deutsche Übersetzungsteam
 
-### About this translation
-Recognizing the technical and critical nature of the OWASP Top 10 for Large Language Model Applications, we consciously chose to employ only human translators in the creation of this translation. The translators listed above not only have a deep technical knowledge of the original content, but also the fluency required to make this translation a success.
+Rico Komenda
+[https://www.linkedin.com/in/ricokomenda/](https://www.linkedin.com/in/ricokomenda/)  
+
+### Über diese Übersetzung
+Bei der Erstellung dieser Übersetzung haben wir uns bewusst dafür entschieden, nur menschliche Übersetzer einzusetzen, in Anerkennung der außerordentlich technischen und kritischen Natur der OWASP Top 10 für LLM-Applikationen. Die oben aufgeführten Übersetzer verfügen nicht nur über ein tiefes Verständnis des Originalinhalts, sondern auch über die sprachliche Kompetenz, um diese Übersetzung sinnvoll zu gestalten.
 
 ###@ Talesh Seeparsan
-Translation Lead, OWASP Top 10 for AI Applications LLM
-LinkedIn: https://www.linkedin.com/in/talesh/
+Übersetzungsleiter, OWASP Top 10 für LLM-Applikationen
+[https://www.linkedin.com/in/talesh/](https://www.linkedin.com/in/talesh/)

@@ -2,72 +2,72 @@
 
 ### Description
 
-An LLM-based system is often granted a degree of agency by its developer - the ability to call functions or interface with other systems via extensions (sometimes referred to as tools, skills or plugins by different vendors) to undertake actions in response to a prompt. The decision over which extension to invoke may also be delegated to an LLM 'agent' to dynamically determine based on input prompt or LLM output. Agent-based systems will typically make repeated calls to an LLM using output from previous invocations to ground and direct subsequent invocations.
+Einem LLM-basierten System wird von seinem Entwickler oft ein gewisses Maß an Handlungsfähigkeit zugestanden - die Fähigkeit, Funktionen aufzurufen oder über Erweiterungen (von den verschiedenen Anbietern manchmal als Tools, Skills oder Plugins bezeichnet) mit anderen Systemen zu interagieren, um als Reaktion auf eine Eingabeaufforderung Aktionen auszuführen. Die Entscheidung, welche Erweiterung aufgerufen werden soll, kann auch an einen LLM-„Agenten“ delegiert werden, der dies dynamisch auf der Grundlage einer Eingabeaufforderung oder der LLM-Ausgabe bestimmt. Agentenbasierte Systeme rufen in der Regel wiederholt einen LLM auf, wobei sie die Ausgaben früherer Aufrufe nutzen, um die nachfolgenden Aufrufe zu begründen und zu steuern.
 
-Excessive Agency is the vulnerability that enables damaging actions to be performed in response to unexpected, ambiguous or manipulated outputs from an LLM, regardless of what is causing the LLM to malfunction. Common triggers include:
-* hallucination/confabulation caused by poorly-engineered benign prompts, or just a poorly-performing model;
-* direct/indirect prompt injection from a malicious user, an earlier invocation of a malicious/compromised extension, or (in multi-agent/collaborative systems) a malicious/compromised peer agent.
+Excessive Agency ist die Schwachstelle, die es ermöglicht, als Reaktion auf unerwartete, zweideutige oder manipulierte Ausgaben eines LLM schädliche Aktionen durchzuführen, unabhängig davon, was die Fehlfunktion des LLM verursacht. Häufige Auslöser sind:
+* Halluzinationen/Verwirrungen, die durch schlecht entwickelte, gutartige Prompts oder einfach ein schlecht funktionierendes Modell verursacht werden;
+* direkte/indirekte Eingabeaufforderung durch einen böswilligen Benutzer, ein früherer Aufruf einer böswilligen/kompromittierten Erweiterung oder (in Systemen mit mehreren Agenten/Kollaboration) ein böswilliger/kompromittierter Peer-Agent.
 
-The root cause of Excessive Agency is typically one or more of:
-* excessive functionality;
-* excessive permissions;
-* excessive autonomy.
+Die Ursache für Excessive Agency ist in der Regel eine oder mehrere der folgenden Ursachen:
+* übermäßige Funktionalität;
+* übermäßige Berechtigungen;
+* übermäßige Autonomie.
 
-Excessive Agency can lead to a broad range of impacts across the confidentiality, integrity and availability spectrum, and is dependent on which systems an LLM-based app is able to interact with.
+Excessive Agency kann ein breites Spektrum an Auswirkungen auf die Vertraulichkeit, Integrität und Verfügbarkeit haben und hängt davon ab, mit welchen Systemen eine LLM-basierte App interagieren kann.
 
-Note: Excessive Agency differs from Insecure Output Handling which is concerned with insufficient scrutiny of LLM outputs.
+Hinweis: Excessive Agency unterscheidet sich von Insecure Output Handling, bei dem es um eine unzureichende Prüfung von LLM-Outputs geht.
 
-### Common Examples of Risks
+### Gängige Beispiele für Risiken
 
-#### 1. Excessive Functionality
-  An LLM agent has access to extensions which include functions that are not needed for the intended operation of the system. For example, a developer needs to grant an LLM agent the ability to read documents from a repository, but the 3rd-party extension they choose to use also includes the ability to modify and delete documents.
-#### 2. Excessive Functionality
-  An extension may have been trialled during a development phase and dropped in favor of a better alternative, but the original plugin remains available to the LLM agent.
-#### 3. Excessive Functionality
-  An LLM plugin with open-ended functionality fails to properly filter the input instructions for commands outside what's necessary for the intended operation of the application. E.g., an extension to run one specific shell command fails to properly prevent other shell commands from being executed.
-#### 4. Excessive Permissions
-  An LLM extension has permissions on downstream systems that are not needed for the intended operation of the application. E.g., an extension intended to read data connects to a database server using an identity that not only has SELECT permissions, but also UPDATE, INSERT and DELETE permissions.
-#### 5. Excessive Permissions
-  An LLM extension that is designed to perform operations in the context of an individual user accesses downstream systems with a generic high-privileged identity. E.g., an extension to read the current user's document store connects to the document repository with a privileged account that has access to files belonging to all users.
-#### 6. Excessive Autonomy
-  An LLM-based application or extension fails to independently verify and approve high-impact actions. E.g., an extension that allows a user's documents to be deleted performs deletions without any confirmation from the user.
+#### 1. Übermäßige Funktionalität
+  Ein LLM-Agent hat Zugriff auf Erweiterungen, die Funktionen enthalten, die für den beabsichtigten Betrieb des Systems nicht erforderlich sind. Zum Beispiel muss ein Entwickler einem LLM-Agenten die Möglichkeit geben, Dokumente aus einem Repository zu lesen, aber die von ihm gewählte 3rd-Party-Erweiterung beinhaltet auch die Möglichkeit, Dokumente zu ändern und zu löschen.
+#### 2. Übermäßige Funktionalität
+  Eine Erweiterung kann während einer Entwicklungsphase getestet und zugunsten einer besseren Alternative fallen gelassen worden sein, aber das ursprüngliche Plugin bleibt für den LLM-Agenten verfügbar.
+#### 3. Übermäßige Funktionalität
+  Ein LLM-Plugin mit offenem Funktionsumfang filtert die Eingabeanweisungen nicht ordnungsgemäß nach Befehlen, die nicht für den beabsichtigten Betrieb der Anwendung erforderlich sind. Eine Erweiterung zur Ausführung eines bestimmten Shell-Befehls verhindert z. B. nicht, dass andere Shell-Befehle ausgeführt werden.
+#### 4. Übermäßige Berechtigungen
+  Eine LLM-Erweiterung verfügt über Berechtigungen auf nachgelagerten Systemen, die für den beabsichtigten Betrieb der Anwendung nicht erforderlich sind. Zum Beispiel verbindet sich eine Erweiterung, die Daten lesen soll, mit einem Datenbankserver über eine Identität, die nicht nur SELECT-Berechtigungen, sondern auch UPDATE-, INSERT- und DELETE-Berechtigungen hat.
+#### 5. Übermäßige Berechtigungen
+  Eine LLM-Erweiterung, die darauf ausgelegt ist, Operationen im Kontext eines einzelnen Benutzers durchzuführen, greift auf nachgelagerte Systeme mit einer allgemeinen hochprivilegierten Identität zu. Eine Erweiterung zum Lesen des Dokumentenspeichers des aktuellen Benutzers verbindet sich z. B. mit dem Dokumentenspeicher mit einem privilegierten Konto, das Zugriff auf die Dateien aller Benutzer hat.
+#### 6. Übermäßige Autonomie
+  Eine LLM-basierte Anwendung oder Erweiterung ist nicht in der Lage, Aktionen mit hoher Auswirkung unabhängig zu überprüfen und zu genehmigen. Eine Erweiterung, die das Löschen von Dokumenten eines Nutzers erlaubt, führt beispielsweise Löschungen ohne Bestätigung durch den Nutzer durch.
 
-### Prevention and Mitigation Strategies
+### Präventions- und Mitigationsstrategien
 
-The following actions can prevent Excessive Agency:
+Die folgenden Maßnahmen können eine Excessive Agency verhindern:
 
-#### 1. Minimize extensions
-  Limit the extensions that LLM agents are allowed to call to only the minimum necessary. For example, if an LLM-based system does not require the ability to fetch the contents of a URL then such an extension should not be offered to the LLM agent.
-#### 2. Minimize extension functionality
-  Limit the functions that are implemented in LLM extensions to the minimum necessary. For example, an extension that accesses a user's mailbox to summarise emails may only require the ability to read emails, so the extension should not contain other functionality such as deleting or sending messages.
-#### 3. Avoid open-ended extensions
-  Avoid the use of open-ended extensions where possible (e.g., run a shell command, fetch a URL, etc.) and use extensions with more granular functionality. For example, an LLM-based app may need to write some output to a file. If this were implemented using an extension to run a shell function then the scope for undesirable actions is very large (any other shell command could be executed). A more secure alternative would be to build a specific file-writing extension that only implements that specific functionality.
-#### 4. Minimize extension permissions
-  Limit the permissions that LLM extensions are granted to other systems to the minimum necessary in order to limit the scope of undesirable actions. For example, an LLM agent that uses a product database in order to make purchase recommendations to a customer might only need read access to a 'products' table; it should not have access to other tables, nor the ability to insert, update or delete records. This should be enforced by applying appropriate database permissions for the identity that the LLM extension uses to connect to the database.
-#### 5. Execute extensions in user's context
-  Track user authorization and security scope to ensure actions taken on behalf of a user are executed on downstream systems in the context of that specific user, and with the minimum privileges necessary. For example, an LLM extension that reads a user's code repo should require the user to authenticate via OAuth and with the minimum scope required.
-#### 6. Require user approval
-  Utilise human-in-the-loop control to require a human to approve high-impact actions before they are taken. This may be implemented in a downstream system (outside the scope of the LLM application) or within the LLM extension itself. For example, an LLM-based app that creates and posts social media content on behalf of a user should include a user approval routine within the extension that implements the 'post' operation.
-#### 7. Complete mediation
-  Implement authorization in downstream systems rather than relying on an LLM to decide if an action is allowed or not. Enforce the complete mediation principle so that all requests made to downstream systems via extensions are validated against security policies.
-#### 8. Sanitise LLM inputs and outputs
-  Follow secure coding best practice, such as applying OWASP’s recommendations in ASVS (Application Security Verification Standard), with a particularly strong focus on input sanitisation. Use Static Application Security Testing (SAST) and Dynamic and Interactive application testing (DAST, IAST) in development pipelines.
+#### 1. Erweiterungen minimieren
+  Beschränke die Erweiterungen, die LLM-Agenten aufrufen dürfen, auf das notwendige Minimum. Wenn ein LLM-basiertes System zum Beispiel nicht die Fähigkeit benötigt, den Inhalt einer URL abzurufen, sollte dem LLM-Agenten eine solche Erweiterung nicht angeboten werden.
+#### 2. Erweiterungsfunktionalität minimieren
+  Beschränke die Funktionen, die in LLM-Erweiterungen implementiert werden, auf das notwendige Minimum. Eine Erweiterung, die auf das Postfach eines Nutzers zugreift, um E-Mails zusammenzufassen, muss zum Beispiel nur in der Lage sein, E-Mails zu lesen, und sollte daher keine anderen Funktionen wie das Löschen oder Senden von Nachrichten enthalten.
+#### 3. Vermeide Erweiterungen mit offenem Ende
+  Vermeide nach Möglichkeit Erweiterungen mit offenem Ende (z. B. einen Shell-Befehl ausführen, eine URL abrufen usw.) und verwende Erweiterungen mit detaillierteren Funktionen. Eine LLM-basierte Anwendung muss zum Beispiel eine Ausgabe in eine Datei schreiben. Wenn dies über eine Erweiterung zum Ausführen einer Shell-Funktion realisiert wird, ist der Spielraum für unerwünschte Aktionen sehr groß (jeder andere Shell-Befehl könnte ausgeführt werden). Eine sicherere Alternative wäre es, eine spezielle Erweiterung für das Schreiben von Dateien zu entwickeln, die nur diese spezielle Funktion implementiert.
+#### 4. Erweiterungsberechtigungen minimieren
+  Beschränke die Berechtigungen, die LLM-Erweiterungen anderen Systemen gewähren, auf das notwendige Minimum, um den Umfang unerwünschter Aktionen zu begrenzen. Ein LLM-Agent, der eine Produktdatenbank nutzt, um einem Kunden Kaufempfehlungen zu geben, braucht z. B. nur Lesezugriff auf die Tabelle „Produkte“; er sollte weder Zugriff auf andere Tabellen noch die Möglichkeit haben, Datensätze einzufügen, zu aktualisieren oder zu löschen. Dies sollte durch die Anwendung geeigneter Datenbankberechtigungen für die Identität, die die LLM-Erweiterung für die Verbindung zur Datenbank verwendet, durchgesetzt werden.
+#### 5. Ausführen von Erweiterungen im Kontext des Benutzers
+  Verfolge die Benutzerautorisierung und den Sicherheitsbereich, um sicherzustellen, dass Aktionen, die im Namen eines Benutzers durchgeführt werden, auf nachgelagerten Systemen im Kontext des jeweiligen Benutzers und mit den erforderlichen Mindestberechtigungen ausgeführt werden. Zum Beispiel sollte eine LLM-Erweiterung, die das Code-Repository eines Nutzers liest, die Authentifizierung des Nutzers über OAuth und den erforderlichen Mindestumfang erfordern.
+#### 6. Benutzerfreigabe erforderlich machen
+  Nutze die „Human-in-the-Loop“-Kontrolle, um zu verlangen, dass ein Mensch Aktionen mit großen Auswirkungen genehmigt, bevor sie ausgeführt werden. Dies kann in einem nachgelagerten System (außerhalb des Geltungsbereichs der LLM-Anwendung) oder innerhalb der LLM-Erweiterung selbst implementiert werden. Eine LLM-basierte Anwendung, die im Auftrag eines Nutzers Inhalte für soziale Medien erstellt und postet, sollte zum Beispiel eine Genehmigungsroutine in der Erweiterung enthalten, die den „Post“-Vorgang implementiert.
+#### 7. Vollständige Mediation
+  Implementiere die Autorisierung in nachgelagerten Systemen, anstatt dich auf eine LLM zu verlassen, um zu entscheiden, ob eine Aktion erlaubt ist oder nicht. Setze das Prinzip der vollständigen Vermittlung durch, damit alle Anfragen, die über Erweiterungen an nachgelagerte Systeme gestellt werden, anhand von Sicherheitsrichtlinien überprüft werden.
+#### 8. LLM-Eingaben und -Ausgaben säubern
+  Befolge die Best Practices für sichere Kodierung, z. B. die Empfehlungen von OWASP im ASVS (Application Security Verification Standard), mit besonderem Schwerpunkt auf der Eingabesanitisierung. Verwende statische Anwendungssicherheitstests (SAST) und dynamische und interaktive Anwendungstests (DAST, IAST) in den Entwicklungspipelines.
 
-The following options will not prevent Excessive Agency, but can limit the level of damage caused:
+Die folgenden Optionen werden Excessive Agency nicht verhindern, können aber den Schaden begrenzen:
 
-- Log and monitor the activity of LLM extensions and downstream systems to identify where undesirable actions are taking place, and respond accordingly.
-- Implement rate-limiting to reduce the number of undesirable actions that can take place within a given time period, increasing the opportunity to discover undesirable actions through monitoring before significant damage can occur.
+- Protokollieren und überwachen Sie die Aktivitäten von LLM-Erweiterungen und nachgelagerten Systemen, um festzustellen, wo unerwünschte Aktionen stattfinden, und reagieren Sie entsprechend.
+- Implementiere eine Ratenbegrenzung, um die Anzahl der unerwünschten Aktionen innerhalb eines bestimmten Zeitraums zu reduzieren und die Chance zu erhöhen, unerwünschte Aktionen durch Überwachung zu entdecken, bevor ein erheblicher Schaden entsteht.
 
-### Example Attack Scenarios
+### Beispiele für Angriffsszenarien
 
-An LLM-based personal assistant app is granted access to an individual’s mailbox via an extension in order to summarise the content of incoming emails. To achieve this functionality, the extension requires the ability to read messages, however the plugin that the system developer has chosen to use also contains functions for sending messages. Additionally, the app is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the agent to scan the user's inbox for senitive information and forward it to the attacker's email address. This could be avoided by:
-* eliminating excessive functionality by using an extension that only implements mail-reading capabilities,
-* eliminating excessive permissions by authenticating to the user's email service via an OAuth session with a read-only scope, and/or
-* eliminating excessive autonomy by requiring the user to manually review and hit 'send' on every mail drafted by the LLM extension.
+Eine LLM-basierte persönliche Assistenten-App erhält über eine Erweiterung Zugriff auf die Mailbox einer Person, um den Inhalt eingehender E-Mails zusammenzufassen. Um diese Funktion zu erreichen, muss die Erweiterung in der Lage sein, Nachrichten zu lesen. Das Plugin, für das sich der Systementwickler entschieden hat, enthält jedoch auch Funktionen zum Senden von Nachrichten. Außerdem ist die App anfällig für einen indirekten Prompt-Injection-Angriff, bei dem eine böswillig erstellte eingehende E-Mail den LLM dazu verleitet, den Agenten anzuweisen, den Posteingang des Benutzers nach sensiblen Informationen zu durchsuchen und diese an die E-Mail-Adresse des Angreifers weiterzuleiten. Dies kann vermieden werden, indem:
+* überflüssige Funktionen eliminiert werden, indem eine Erweiterung verwendet wird, die nur E-Mail-Lesefunktionen implementiert,
+* übermäßige Berechtigungen beseitigt werden, indem man sich beim E-Mail-Dienst des Nutzers über eine OAuth-Sitzung mit Leseberechtigung authentifiziert, und/oder
+* Beseitigung übermäßiger Autonomie, indem der Nutzer jede von der LLM-Erweiterung erstellte E-Mail manuell überprüfen und auf „Senden“ drücken muss.
 
-Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
+Alternativ könnte der verursachte Schaden durch die Implementierung einer Ratenbegrenzung auf der Schnittstelle für den E-Mail-Versand verringert werden.
 
-### Reference Links
+### Referenzlinks
 
 1. [Slack AI data exfil from private channels](https://promptarmor.substack.com/p/slack-ai-data-exfiltration-from-private): **PromptArmor**
 2. [Rogue Agents: Stop AI From Misusing Your APIs](https://www.twilio.com/en-us/blog/rogue-ai-agents-secure-your-apis): **Twilio**
