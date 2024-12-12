@@ -31,15 +31,14 @@ Technischer Leiter und Leiter der Schwachstellenmeldungen
 OWASP Top 10 for Large Language Model Applications
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
-## Über diese Übersetzung
-
-### Übersetzer
+### Das deutsche Übersetzungsteam
 
 Rico Komenda
 [https://www.linkedin.com/in/ricokomenda/](https://www.linkedin.com/in/ricokomenda/)  
 
+### Über diese Übersetzung
 Bei der Erstellung dieser Übersetzung haben wir uns bewusst dafür entschieden, nur menschliche Übersetzer einzusetzen, in Anerkennung der außerordentlich technischen und kritischen Natur der OWASP Top 10 für LLM-Applikationen. Die oben aufgeführten Übersetzer verfügen nicht nur über ein tiefes Verständnis des Originalinhalts, sondern auch über die sprachliche Kompetenz, um diese Übersetzung sinnvoll zu gestalten.
 
-Talesh Seeparsan
+###@ Talesh Seeparsan
 Übersetzungsleiter, OWASP Top 10 für LLM-Applikationen
-[https://www.linkedin.com/in/talesh/](https://www.linkedin.com/in/talesh/)  
+[https://www.linkedin.com/in/talesh/](https://www.linkedin.com/in/talesh/)
