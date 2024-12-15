@@ -32,14 +32,15 @@ OWASP 大语言模型应用程序十大风险列表
 [LinkedIn](https://www.linkedin.com/in/adamdawson0/)
 
 
-### Traditional Chinese Translation Team
+### 中文翻译作者
 ### @Ken Huang 黄连金翻译
 [LinkedIn](https://www.linkedin.com/in/kenhuang8/)
 
-### About this translation
-Recognizing the technical and critical nature of the OWASP Top 10 for Large Language Model Applications, we consciously chose to employ only human translators in the creation of this translation. The translators listed above not only have a deep technical knowledge of the original content, but also the fluency required to make this translation a success. 
+### 关于本次翻译  
 
-###@ Talesh Seeparsan  
-Translation Lead, OWASP Top 10 for AI Applications LLM  
+鉴于《OWASP大语言模型应用程序十大风险列表》的专业性和重要性，我们特意采用纯人工翻译的方式完成本次翻译工作。上述翻译人员不仅对原文内容具备深厚的技术理解，还拥有娴熟的语言能力，确保翻译质量精准到位。  
+
+### @Talesh Seeparsan  
+翻译负责人，大语言模型应用程序十大风险列表   
 LinkedIn: https://www.linkedin.com/in/talesh/
 
