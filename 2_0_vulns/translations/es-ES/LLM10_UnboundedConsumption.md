@@ -35,7 +35,7 @@ Los ataques diseñados para interrumpir el servicio, agotar los recursos financi
   Monitorear y gestionar dinámicamente la asignación de recursos para evitar que un único usuario o solicitud consuma recursos excesivos.
 #### 5. Tiempos de espera y limitación de procesamiento
   Establecer tiempos de espera y limitación de procesamiento de las operaciones de alto consumo para evitar un consumo prolongado de recursos.
-#### 6. Técnicas de sandbox
+#### 6. Técnicas de aislamiento
   Restringir el acceso del LLM a los recursos de red, servicios internos y APIs.
   - Esto es particularmente importante para todos los escenarios comunes, ya que abarca los riesgos y amenazas internas. Además, gobierna el grado de acceso que la aplicación LLM tiene a datos y recursos, sirviendo así como un mecanismo de control crucial para mitigar o prevenir ataques de canal lateral.
 #### 7. Registro, monitoreo y detección de anomalías exhaustivos
