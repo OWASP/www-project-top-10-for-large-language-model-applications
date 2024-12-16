@@ -83,4 +83,36 @@ LLM（大型語言模型）的供應鏈中存在多種弱點，可能影響訓�
   LeftOvers 攻擊利用 GPU 本地記憶體外洩來恢復敏感資料。攻擊者可在生產伺服器或開發工作站中利用此攻擊竊取敏感資訊。
 
 #### 情境 #9：WizardLM
-  在 WizardLM 被移除後，攻擊者利用此模型
+  在 WizardLM 被移除後，攻擊者利用此模型引發的興趣發布同名假模型，內含惡意程式碼與後門。
+
+#### 情境 #10：模型合併／格式轉換服務
+  攻擊者利用模型合併或格式轉換服務中埋伏的攻擊程式來感染公開可存取的模型，以注入惡意程式碼。該攻擊已由 HiddenLayer 廠商揭露。
+
+#### 情境 #11：逆向工程行動裝置 App
+  攻擊者對行動應用程式進行逆向工程，並替換其內含模型為篡改版本，引導使用者至詐騙網站。使用社交工程手法誘使使用者直接下載此應用程式。此類真實攻擊曾影響 116 個 Google Play App，包括現金識別、家長控管、人臉驗證及金融服務等具安全與關鍵性的應用程式。  
+  （參考連結：[real attack on predictive AI](https://arxiv.org/abs/2006.08131)）
+
+#### 情境 #12：資料集毒化
+  攻擊者毒化公開可用的資料集，以在微調模型時建立後門，使得模型在不同市場中微妙地偏袒特定公司。
+
+#### 情境 #13：條款與隱私政策變更
+  LLM 營運商改變 T&Cs 與隱私政策，要求使用者明確選擇退出資料用於模型訓練，否則敏感資料即被記憶化並可能洩漏。
+
+### 參考連結
+
+1. [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news)  
+2. [Large Language Models On-Device with MediaPipe and TensorFlow Lite](https://developers.googleblog.com/en/large-language-models-on-device-with-mediapipe-and-tensorflow-lite/)  
+3. [Hijacking Safetensors Conversion on Hugging Face](https://hiddenlayer.com/research/silent-sabotage/)  
+4. [ML Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010)  
+5. [Using LoRA Adapters with vLLM](https://docs.vllm.ai/en/latest/models/lora.html)  
+6. [Removing RLHF Protections in GPT-4 via Fine-Tuning](https://arxiv.org/pdf/2311.05553)  
+7. [Model Merging with PEFT](https://huggingface.co/blog/peft_merging)  
+8. [HuggingFace SF_Convertbot Scanner](https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163)  
+9. [Thousands of servers hacked due to insecurely deployed Ray AI framework](https://www.csoonline.com/article/2075540/thousands-of-servers-hacked-due-to-insecurely-deployed-ray-ai-framework.html)  
+10. [LeftoverLocals: Listening to LLM responses through leaked GPU local memory](https://blog.trailofbits.com/2024/01/16/leftoverlocals-listening-to-llm-responses-through-leaked-gpu-local-memory/)
+
+### 相關框架與分類法
+
+請參考此區內容，以取得關於基礎架構部署、應用環境控管以及其他最佳實務與策略的完整資訊與案例。
+
+- [ML Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010) - **MITRE ATLAS**
