@@ -1,73 +1,73 @@
-## LLM01:2025 Prompt Injection
+## LLM01:2025 تزریق پرامپت (Prompt Injection)
 
-### Description
+### توضیحات
 
-A Prompt Injection Vulnerability occurs when user prompts alter the LLM’s behavior or output in unintended ways. These inputs can affect the model even if they are imperceptible to humans, therefore prompt injections do not need to be human-visible/readable, as long as the content is parsed by the model.
+آسیب‌پذیری «تزریق پرامپت» زمانی اتفاق می‌افتد که پرامپت‌های کاربر، رفتار یا خروجی مدل زبانی بزرگ (LLM) را به شکلی ناخواسته و غیرمنتظره تغییر دهند. این ورودی‌ها می‌توانند بر مدل اثر بگذارند حتی اگر برای انسان‌ها قابل تشخیص نباشند. بنابراین، لازم نیست تزریق‌های پرامپت برای انسان قابل مشاهده یا خوانا باشند، مادامی که محتوا توسط مدل پردازش شود.
 
-Prompt Injection vulnerabilities exist in how models process prompts, and how input may force the model to incorrectly pass prompt data to other parts of the model, potentially causing them to violate guidelines, generate harmful content, enable unauthorized access, or influence critical decisions. While techniques like Retrieval Augmented Generation (RAG) and fine-tuning aim to make LLM outputs more relevant and accurate, research shows that they do not fully mitigate prompt injection vulnerabilities.
+آسیب‌پذیری‌های تزریق پرامپت در نحوه پردازش پرامپت‌ها توسط مدل‌ها و همچنین در چگونگی اجبار ورودی برای انتقال نادرست داده‌های پرامپت به سایر بخش‌های مدل نهفته است، که این امر به‌طور بالقوه می‌تواند منجر به نقض دستورالعمل‌ها، تولید محتوای زیان‌بار، فعال‌سازی دسترسی غیرمجاز، یا اثرگذاری بر تصمیمات حیاتی شود. اگرچه روش‌هایی مانند Retrieval Augmented Generation (RAG) و تنظیم دقیق (fine-tuning) با هدف مرتبط‌تر و دقیق‌تر کردن خروجی‌های LLM به کار گرفته می‌شوند، پژوهش‌ها نشان می‌دهند که به‌طور کامل آسیب‌پذیری‌های تزریق پرامپت را برطرف نمی‌کنند.
 
-While prompt injection and jailbreaking are related concepts in LLM security, they are often used interchangeably. Prompt injection involves manipulating model responses through specific inputs to alter its behavior, which can include bypassing safety measures. Jailbreaking is a form of prompt injection where the attacker provides inputs that cause the model to disregard its safety protocols entirely. Developers can build safeguards into system prompts and input handling to help mitigate prompt injection attacks, but effective prevention of jailbreaking requires ongoing updates to the model's training and safety mechanisms.
+باوجود آنکه تزریق پرامپت و Jailbreaking مفاهیمی مرتبط در حوزه امنیت مدل‌های زبانی بزرگ (LLM) هستند، اغلب به‌جای یکدیگر به‌کار می‌روند. تزریق پرامپت شامل دستکاری پاسخ‌های مدل از طریق ورودی‌های خاص برای تغییر رفتار مورد انتظار آن است، که ممکن است شامل دور زدن تدابیر ایمنی نیز باشد. Jailbreaking نوعی تزریق پرامپت است که در آن مهاجم ورودی‌هایی ارائه می‌دهد که مدل را وادار می‌کند پروتکل‌های ایمنی خود را به‌طور کامل نادیده بگیرد. توسعه‌دهندگان می‌توانند تدابیر ایمنی را در پرامپت‌های سیستم (system prompt) و نحوه پردازش ورودی‌ها پیاده‌سازی کنند تا به کاهش حملات تزریق پرامپت کمک کنند، اما پیشگیری مؤثر از Jailbreaking نیاز به به‌روزرسانی‌های مداوم در آموزش مدل و سازوکارهای ایمنی دارد.
 
-### Types of Prompt Injection Vulnerabilities
+### انواع آسیب‌پذیری‌های تزریق پرامپت
 
-#### Direct Prompt Injections
-  Direct prompt injections occur when a user's prompt input directly alters the behavior of the model in unintended or unexpected ways. The input can be either intentional (i.e., a malicious actor deliberately crafting a prompt to exploit the model) or unintentional (i.e., a user inadvertently providing input that triggers unexpected behavior).
+#### تزریق‌های مستقیم پرامپت
+  تزریق‌های مستقیم پرامپت زمانی رخ می‌دهند که ورودیِ پرامپت کاربر، رفتار مدل را به شیوه‌ای ناخواسته یا غیرمنتظره مستقیماً تغییر دهد. این ورودی می‌تواند هم عمدی باشد (یعنی یک عامل مخرب عمداً پرامپتی را برای بهره‌برداری از مدل طراحی کند) و هم غیرعمدی (یعنی یک کاربر سهواً ورودی‌ای ارائه دهد که باعث بروز رفتار غیرمنتظره شود).
 
-#### Indirect Prompt Injections
-  Indirect prompt injections occur when an LLM accepts input from external sources, such as websites or files. The content may have in the external content data that when interpreted by the model, alters the behavior of the model in unintended or unexpected ways. Like direct injections, indirect injections can be either intentional or unintentional.
+#### تزریق‌های غیرمستقیم پرامپت
+  تزریق‌های غیرمستقیم پرامپت زمانی رخ می‌دهند که یک مدل زبانی بزرگ (LLM) ورودی را از منابع خارجی، مانند تارنماها یا فایل‌ها، می‌پذیرد. ممکن است در محتوای خارجی داده‌هایی وجود داشته باشد که وقتی توسط مدل تفسیر می‌شوند، رفتار مدل را به شیوه‌های ناخواسته یا غیرمنتظره‌ای تغییر دهند. مانند تزریق‌های مستقیم، تزریق‌های غیرمستقیم نیز می‌توانند عمدی یا غیرعمدی باشند.
 
-The severity and nature of the impact of a successful prompt injection attack can vary greatly and are largely dependent on both the business context the model operates in, and the agency with which the model is architected. Generally, however, prompt injection can lead to unintended outcomes, including but not limited to:
+شدت و ماهیت تأثیر یک حمله موفقیت‌آمیز تزریق پرامپت می‌تواند بسیار متفاوت باشد و تا حد زیادی به زمینه کسب‌وکاری که مدل در آن فعالیت می‌کند و نیز چارچوبی که مدل با آن ساخته شده است، بستگی دارد. با این حال، به‌طور کلی، تزریق پرامپت می‌تواند منجر به پیامدهای ناخواسته‌ای شود، از جمله:
 
-- Disclosure of sensitive information
-- Revealing sensitive information about AI system infrastructure or system prompts
-- Content manipulation leading to incorrect or biased outputs
-- Providing unauthorized access to functions available to the LLM
-- Executing arbitrary commands in connected systems
-- Manipulating critical decision-making processes
+- افشای اطلاعات حساس
+- آشکار کردن اطلاعات حساس در مورد زیرساخت‌های سامانه هوش مصنوعی یا پرامپت‌های سیستم (system prompt)
+- دستکاری محتوا که منجر به خروجی‌های نادرست یا مغرضانه می‌شود
+- فراهم کردن دسترسی غیرمجاز به امکانات در دسترس LLM
+- اجرای دستورات دلخواه در سامانه‌های متصل
+- دستکاری فرآیندهای تصمیم‌گیری حیاتی
 
-The rise of multimodal AI, which processes multiple data types simultaneously, introduces unique prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
+ظهور هوش مصنوعی چندوجهی (multimodal)، که انواع داده‌های مختلف را به‌طور همزمان پردازش می‌کند، خطرات منحصربه‌فردی را در زمینه تزریق پرامپت ایجاد می‌کند. عوامل خرابکار ممکن است از تعاملات بین وجه‌های مختلف سوءاستفاده کنند، مثلاً با پنهان کردن فرمان‌ها در تصاویری که همراه با متن‌های بی‌خطر هستند. پیچیدگی این سامانه‌ها سطح حمله (attack surface) را گسترش می‌دهد. مدل‌های چندوجهی همچنین ممکن است در برابر حملات میان-وجهی (cross-modal) نوظهوری که شناسایی و خنثی‌سازی آن‌ها با روش‌های کنونی دشوار است، آسیب‌پذیر باشند. ایجاد تدابیر دفاعی قوی و ویژه برای مدل‌های چندوجهی، یک حوزه مهم برای توسعه و پژوهش بیشتر است.
 
-### Prevention and Mitigation Strategies
+### راهبردهای پیشگیری و کاهش مخاطره
 
-Prompt injection vulnerabilities are possible due to the nature of generative AI. Given the stochastic influence at the heart of the way models work, it is unclear if there are fool-proof methods of prevention for prompt injection. However, the following measures can mitigate the impact of prompt injections:
+آسیب‌پذیری‌های تزریق پرامپت به دلیل ماهیت هوش مصنوعی مولد (generative AI) امکان‌پذیر هستند. با توجه به تأثیر تصادفی (stochastic) در بطن شیوه کار اینگونه مدل‌ها، مشخص نیست که آیا روش‌های کاملاً مطمئنی برای جلوگیری از تزریق پرامپت وجود دارد یا خیر. با این حال، اقدامات زیر می‌توانند تأثیر تزریق پرامپت را کاهش دهند:
 
-#### 1. Constrain model behavior
-  Provide specific instructions about the model's role, capabilities, and limitations within the system prompt. Enforce strict context adherence, limit responses to specific tasks or topics, and instruct the model to ignore attempts to modify core instructions.
-#### 2. Define and validate expected output formats
-  Specify clear output formats, request detailed reasoning and source citations, and use deterministic code to validate adherence to these formats.
-#### 3. Implement input and output filtering
-  Define sensitive categories and construct rules for identifying and handling such content. Apply semantic filters and use string-checking to scan for non-allowed content. Evaluate responses using the RAG Triad: Assess context relevance, groundedness, and question/answer relevance to identify potentially malicious outputs.
-#### 4. Enforce privilege control and least privilege access
-  Provide the application with its own API tokens for extensible functionality, and handle these functions in code rather than providing them to the model. Restrict the model's access privileges to the minimum necessary for its intended operations.
-#### 5. Require human approval for high-risk actions
-  Implement human-in-the-loop controls for privileged operations to prevent unauthorized actions.
-#### 6. Segregate and identify external content
-  Separate and clearly denote untrusted content to limit its influence on user prompts.
-#### 7. Conduct adversarial testing and attack simulations
-  Perform regular penetration testing and breach simulations, treating the model as an untrusted user to test the effectiveness of trust boundaries and access controls.
+#### ۱. محدود کردن رفتار مدل
+  فرمان‌های ویژه‌ای درباره‌ی نقش، قابلیت‌ها و محدودیت‌های مدل در پرامپت سیستم (system prompt) ارائه دهید. پایبندی دقیق به زمینه معنایی (context) را الزامی کنید، پاسخ‌ها را به وظایف یا موضوعات مشخض محدود کنید، و به مدل دستور دهید که تلاش‌ها برای تغییر دستورالعمل‌های اصلی را نادیده بگیرد.
+#### ۲. تعریف و اعتبارسنجی قالب‌های خروجی مورد انتظار
+  قالب‌های خروجی مشخصی تعین کنید و از مدل بخواهید دلایل و استنادهای دقیقی را به منابع ارائه دهد، و از کد قطعی (deterministic code) برای اطمینان از رعایت این قالب‌ها استفاده کنید.
+#### ۳. پیاده‌سازی پالایش ورودی و خروجی
+  دسته‌بندی‌های حساس را تعریف کنید و قوانینی برای شناسایی و مدیریت چنین محتوایی تدوین کنید. از پالایشگرهای معنایی (semantic filtering) و از روش بررسی رشته کاراکتر (string-checking) برای جستجوی محتوای غیرمجاز استفاده کنید. پاسخ‌ها را با استفاده از سه‌گانه‌ی RAG ارزیابی کنید: میزان ارتباط با زمینه معنایی (context relevance)، مستدل بودن (groundedness) و میزان ارتباط با سؤال/پاسخ (question/answer relevance) را برآورد کنید تا خروجی‌های بالقوه‌ی مخرب شناسایی شوند.
+#### ۴. اعمال کنترل و حداقل امتیاز دسترسی
+  برای عملکردهای توسعه‌پذیر، توکن‌های API مختص به برنامه را فراهم کنید و این عملکردها را در کد مدیریت کنید به جای اینکه آن‌ها را در اختیار مدل قرار دهید. دسترسی‌های مدل را به حداقلِ لازم برای عملکردهای مورد نظرش محدود کنید.
+#### ۵. نیاز به تأیید انسانی برای اقدامات پرخطر
+  برای عملیات‌های ممتاز، کنترل‌های «انسان در حلقه» (human-in-the-loop) را پیاده‌سازی کنید تا از اقدامات غیرمجاز جلوگیری شود.
+#### ۶. تفکیک و شناسایی محتوای خارجی
+  محتوای غیرقابل اعتماد را جدا و صریحا مشخص کنید تا تأثیر آن بر روی پرامپت‌های کاربر محدود شود.
+#### ۷. انجام آزمون‌های خصمانه و شبیه‌سازی حمله
+  آزمون‌های نفوذ (penetration testing) و شبیه‌سازی‌های نقض امنیت (breach simulation) را به‌طور منظم انجام دهید و با مدل همانند یک کاربر غیرقابل اعتماد رفتار کنید تا اثربخشی مرزهای اعتماد و کنترل‌های دسترسی را آزمایش کنید.
 
-### Example Attack Scenarios
+### نمونه فرانامه‌های حمله
 
-#### Scenario #1: Direct Injection
-  An attacker injects a prompt into a customer support chatbot, instructing it to ignore previous guidelines, query private data stores, and send emails, leading to unauthorized access and privilege escalation.
-#### Scenario #2: Indirect Injection
-  A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, leading to exfiltration of the the private conversation.
-#### Scenario #3: Unintentional Injection
-  A company includes an instruction in a job description to identify AI-generated applications. An applicant, unaware of this instruction, uses an LLM to optimize their resume, inadvertently triggering the AI detection.
-#### Scenario #4: Intentional Model Influence
-  An attacker modifies a document in a repository used by a Retrieval-Augmented Generation (RAG) application. When a user's query returns the modified content, the malicious instructions alter the LLM's output, generating misleading results.
-#### Scenario #5: Code Injection
-  An attacker exploits a vulnerability (CVE-2024-5184) in an LLM-powered email assistant to inject malicious prompts, allowing access to sensitive information and manipulation of email content.
-#### Scenario #6: Payload Splitting
-  An attacker uploads a resume with split malicious prompts. When an LLM is used to evaluate the candidate, the combined prompts manipulate the model's response, resulting in a positive recommendation despite the actual resume contents.
-#### Scenario #7: Multimodal Injection
-  An attacker embeds a malicious prompt within an image that accompanies benign text. When a multimodal AI processes the image and text concurrently, the hidden prompt alters the model's behavior, potentially leading to unauthorized actions or disclosure of sensitive information.
-#### Scenario #8: Adversarial Suffix
-  An attacker appends a seemingly meaningless string of characters to a prompt, which influences the LLM's output in a malicious way, bypassing safety measures.
-#### Scenario #9: Multilingual/Obfuscated Attack
-  An attacker uses multiple languages or encodes malicious instructions (e.g., using Base64 or emojis) to evade filters and manipulate the LLM's behavior.
+#### فرانامه #۱: تزریق مستقیم
+  مهاجم پرامپتی را داخل چت‌بات پشتیبانی مشتری تزریق می‌کند و به آن دستور می‌دهد تا دستورالعمل‌های قبلی را نادیده بگیرد، به پایگاه داده‌های خصوصی دسترسی پیدا کند و ایمیل ارسال کند که منجر به دسترسی غیرمجاز و افزایش سطح دسترسی می‌شود.
+#### فرانامه #۲: تزریق غیرمستقیم
+  کاربری از یک مدل زبانی بزرگ (LLM) برای خلاصه‌سازی صفحه‌ی وبی استفاده می‌کند که حاوی فرمان‌های پنهانی است. این فرمان‌های پنهان باعث می‌شوند LLM تصویری را که به یک URL لینک شده است، درج کند و در نتیجه منجر به نشت مکالمه‌ی خصوصی شود.
+#### فرانامه #۳: تزریق غیرعمدی
+  یک شرکت فرمانی را در توضیحات شغلی برای شناسایی درخواست‌های تولید شده توسط هوش مصنوعی گنجانده است. متقاضی که از این موضوع بی‌خبر است، از یک مدل زبان بزرگ (LLM) برای بهینه‌سازی رزومه خود استفاده می‌کند و به طور ناخواسته باعث فعال شدن سامانه شناسایی هوش مصنوعی می‌شود.
+#### فرانامه #۴: تأثیرگذاری عمدی بر مدل
+  مهاجم سندی را در مخزنی که توسط یک برنامه‌ی RAG  (Retrieval-Augmented Generation) از آن استفاده می‌شود، تغییر می‌دهد. هنگامی که جستجوی کاربر، محتوای اصلاح‌شده را برمی‌گرداند، فرمان‌های مخرب، خروجی مدل زبانی بزرگ (LLM) را تغییر داده و نتایج گمراه‌کننده‌ای تولید می‌کنند.
+#### فرانامه #۵: تزریق کد
+  مهاجم با سوءاستفاده از آسیب‌پذیری (CVE-2024-5184) در دستیار رایانامه‌ی مبتنی بر LLM، فرمان‌های مخرب تزریق می‌کند که امکان دسترسی به اطلاعات حساس و دستکاری محتوای رایانامه را فراهم می‌سازد.
+#### فرانامه #۶: ارسال تکه‌تکۀ داده‌های مخرب
+  مهاجم رزومه‌ای را با پرامپت‌های مخرب تکه‌تکه شده بارگذاری می‌کند. هنگامی که از یک LLM برای ارزیابی متقاضی استفاده می‌شود، پرامپت‌های ترکیب‌شده، پاسخ مدل را دستکاری می‌کنند و در نتیجه علی رغم محتوای واقعی رزومه، توصیه مثبتی ارائه می‌شود.
+#### فرانامه #۷: تزریق چندوجهی
+  مهاجم یک پرامپت مخرب را درون تصویری که همراه با متنی بی‌خطر است، جاسازی می‌کند. هنگامی که هوش مصنوعی چندوجهی تصویر و متن را به‌طور همزمان پردازش می‌کند، پرامپت پنهان، رفتار مدل را تغییر می‌دهد که می‌تواند منجر به اقدامات غیرمجاز یا افشای اطلاعات حساس شود.
+#### فرانامه #۸: پسوند مخرب
+  مهاجم یک رشته به ظاهر بی‌معنی از کاراکترها را به یک پرامپت اضافه می‌کند که به طور مخرب بر خروجی LLM تأثیر می‌گذارد و تدابیر ایمنی را دور می‌زند.
+#### فرانامه #۹: حمله‌ی چندزبانه/مبهم‌سازی‌شده
+  مهاجم از چندین زبان گوناگون استفاده می‌کند یا بر روی فرمان‌های مخرب کدگذاری می‌کند (مثلاً با استفاده از Base64 یا شکلک‌ها) تا پالایشگرها را دور بزند و رفتار LLM را دستکاری کند.
 
-### Reference Links
+### پیوندهای مرجع
 
 1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
 2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
@@ -84,9 +84,9 @@ Prompt injection vulnerabilities are possible due to the nature of generative AI
 14. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
 15. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
 
-### Related Frameworks and Taxonomies
+### چارچوب‌ها و طبقه‌بندی‌های مرتبط
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+برای کسب اطلاعات جامع، فرانامه‌ها، راهبردهای مربوط به استقرار زیرساخت، کنترل‌های محیطی کاربردی و سایر به‌روش‌ها، به این بخش مراجعه کنید.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
 - [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
