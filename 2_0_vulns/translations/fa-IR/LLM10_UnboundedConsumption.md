@@ -1,78 +1,78 @@
-## LLM10:2025 Unbounded Consumption
+## LLM10:2025 مصرف بی حد و مرز
 
-### Description
+### توضیحات
 
-Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
+مصرف بی‌حد و مرز به فرآیندی اشاره دارد که در آن یک مدل زبانی بزرگ (LLM) بر اساس پرس‌وجوها یا پرامپت‌های ورودی، خروجی‌هایی تولید می‌کند. استنتاج یک عملکرد حیاتی مدل‌های زبانی بزرگ (LLM) است که شامل به کارگیری الگوها و دانش آموخته شده، برای تولید پاسخ‌ها یا پیش‌بینی‌های مرتبط است.
 
-Attacks designed to disrupt service, deplete the target's financial resources, or even steal intellectual property by cloning a model’s behavior all depend on a common class of security vulnerability in order to succeed. Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to risks such as denial of service (DoS), economic losses, model theft, and service degradation. The high computational demands of LLMs, especially in cloud environments, make them vulnerable to resource exploitation and unauthorized usage.
+حملاتی که با هدف اختلال در خدمت، تخلیه منابع مالی هدف یا حتی سرقت مالکیت فکری با شبیه‌سازی رفتار یک مدل طراحی شده‌اند، همه برای موفقیت به یک نوع مشترک از آسیب‌پذیری‌های امنیتی متکی هستند. مصرف بی‌حد و مرز زمانی رخ می‌دهد که یک برنامه مدل زبانی بزرگ (LLM) به کاربران اجازه می‌دهد تا استنتاج‌های بیش از حد و کنترل نشده‌ای انجام دهند که منجر به خطراتی مانند منع خدمت (DoS)، زیان‌های اقتصادی، سرقت مدل، و کاهش کیفیت خدمات می‌شود. نیازهای محاسباتی بالای مدل‌های زبانی بزرگ (LLM)، به ویژه در محیط‌های ابری، آنها را در برابر بهره‌برداری از منابع و استفاده غیرمجاز آسیب‌پذیر می‌کند.
 
-### Common Examples of Vulnerability
+### نمونه‌های رایج از مخاطرات امنیتی
 
-#### 1. Variable-Length Input Flood
-  Attackers can overload the LLM with numerous inputs of varying lengths, exploiting processing inefficiencies. This can deplete resources and potentially render the system unresponsive, significantly impacting service availability.
-#### 2. Denial of Wallet (DoW)
-  By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
-#### 3. Continuous Input Overflow
-  Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
-#### 4. Resource-Intensive Queries
-  Submitting unusually demanding queries involving complex sequences or intricate language patterns can drain system resources, leading to prolonged processing times and potential system failures.
-#### 5. Model Extraction via API
-  Attackers may query the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model. This not only poses risks of intellectual property theft but also undermines the integrity of the original model.
-#### 6. Functional Model Replication
-  Using the target model to generate synthetic training data can allow attackers to fine-tune another foundational model, creating a functional equivalent. This circumvents traditional query-based extraction methods, posing significant risks to proprietary models and technologies.
-#### 7. Side-Channel Attacks
-  Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
+#### ۱. طغیان ورودی با طول متغیر
+  مهاجمان می‌توانند مدل زبانی بزرگ (LLM) را با ورودی‌های متعدد با طول‌های متغیر سرریز کنند و از ناکارآمدی‌های پردازشی سوءاستفاده کنند. این امر می‌تواند منجر به اتمام منابع شده و به طور بالقوه سامانه را از پاسخگویی باز دارد و به طور قابل توجهی بر در دسترس پذیری خدمت تأثیر بگذارد.
+#### ۲. آسیب‌پذیری Denial of Wallet (DoW)
+  مهاجمان با ایجاد حجم بالایی از عملیات، از مدل هزینه-به-ازای-مصرف (cost-per-use) خدمات هوش مصنوعی ابری سوءاستفاده می‌کنند، که منجر به تحمیل بار مالی غیرقابل تحمل بر ارائه‌دهنده و مواجهه او با خطر ورشکستگی می‌شود.
+#### ۳. سرریز مستمر ورودی
+  ارسال مداوم ورودی‌هایی که از پنجره محتوای (context window) مدل زبانی بزرگ (LLM) فراتر می‌روند، می‌تواند منجر به استفاده بیش از حد از منابع محاسباتی شود و در نتیجه باعث کاهش کیفیت خدمات و اختلالات عملیاتی گردد.
+#### ۴. پرس‌وجوهای با مصرف بالای منابع
+  ارسال پرس‌وجوهای سنگین غیرمعمول از نظر ظرفیت منابع که شامل توالی‌های پیچیده یا الگوهای زبانی دشوار هستند، می‌تواند منابع سامانه را به اتمام برساند و منجر به زمان‌های پردازش طولانی و خرابی‌های احتمالی سامانه شود.
+#### ۵. استخراج مدل از طریق واسط برنامه نویسی کاربردی (API)
+  مهاجمان ممکن است با استفاده از ورودی‌های با دقت ساخته شده و روش‌های تزریق پرامپت، از API مدل پرس‌وجو کنند تا خروجی‌های کافی برای تکثیر جرئی مدل یا ایجاد مدل بدل (Shadow Model) جمع‌آوری کنند که نه تنها خطرات سرقت مالکیت فکری را به همراه دارد، بلکه صحت مدل اصلی را نیز تضعیف می‌کند.
+#### ۶. تکثیر عملکردی مدل
+  استفاده از مدل هدف برای تولید داده‌های آموزشی مصنوعی می‌تواند به مهاجمان اجازه دهد تا یک مدل پایه‌ای دیگر را تنظیم دقیق (fine-tune) کنند و یک معادل کارا ایجاد نمایند. این کار، روش‌های سنتی استخراج مبتنی بر پرس‌وجو را دور می‌زند و خطرات قابل توجهی برای مدل‌ها و فناوری‌های اختصاصی ایجاد می‌کند.
+#### ۷. حملات کانال جانبی (Side-Channel)
+  مهاجمان مخرب ممکن است از روش‌های پالایش ورودی مدل زبانی بزرگ (LLM) برای اجرای حملات کانال جانبی، جمع‌آوری وزن‌های مدل و اطلاعات معماری آن، سوءاستفاده کنند. این امر می‌تواند امنیت مدل را به خطر بیندازد و منجر به سوءاستفاده‌های بیشتر شود.
 
-### Prevention and Mitigation Strategies
+### راهبردهای پیشگیری و کاهش مخاطره
 
-#### 1. Input Validation
-  Implement strict input validation to ensure that inputs do not exceed reasonable size limits.
-#### 2. Limit Exposure of Logits and Logprobs
-  Restrict or obfuscate the exposure of `logit_bias` and `logprobs` in API responses. Provide only the necessary information without revealing detailed probabilities.
-#### 3. Rate Limiting
-  Apply rate limiting and user quotas to restrict the number of requests a single source entity can make in a given time period.
-#### 4. Resource Allocation Management
-  Monitor and manage resource allocation dynamically to prevent any single user or request from consuming excessive resources.
-#### 5. Timeouts and Throttling
-  Set timeouts and throttle processing for resource-intensive operations to prevent prolonged resource consumption.
-#### 6.Sandbox Techniques
-  Restrict the LLM's access to network resources, internal services, and APIs.
-  - This is particularly significant for all common scenarios as it encompasses insider risks and threats. Furthermore, it governs the extent of access the LLM application has to data and resources, thereby serving as a crucial control mechanism to mitigate or prevent side-channel attacks.
-#### 7. Comprehensive Logging, Monitoring and Anomaly Detection
-  Continuously monitor resource usage and implement logging to detect and respond to unusual patterns of resource consumption.
-#### 8. Watermarking
-  Implement watermarking frameworks to embed and detect unauthorized use of LLM outputs.
-#### 9. Graceful Degradation
-  Design the system to degrade gracefully under heavy load, maintaining partial functionality rather than complete failure.
-#### 10. Limit Queued Actions and Scale Robustly
-  Implement restrictions on the number of queued actions and total actions, while incorporating dynamic scaling and load balancing to handle varying demands and ensure consistent system performance.
-#### 11. Adversarial Robustness Training
-  Train models to detect and mitigate adversarial queries and extraction attempts.
-#### 12. Glitch Token Filtering
-  Build lists of known glitch tokens and scan output before adding it to the model’s context window.
-#### 13. Access Controls
-  Implement strong access controls, including role-based access control (RBAC) and the principle of least privilege, to limit unauthorized access to LLM model repositories and training environments.
-#### 14. Centralized ML Model Inventory
-  Use a centralized ML model inventory or registry for models used in production, ensuring proper governance and access control.
-#### 15. Automated MLOps Deployment
-  Implement automated MLOps deployment with governance, tracking, and approval workflows to tighten access and deployment controls within the infrastructure.
+#### ۱. اعتبارسنجی ورودی
+  اعتبارسنجی ورودی سختگیرانه‌ای را برای اطمینان از اینکه ورودی‌ها از محدودیت‌های معقول اندازه تجاوز نمی‌کنند، پیاده‌سازی کنید.
+#### ۲. محدود کردن نمایش Logitها و Logprobها
+  نمایش `logit_bias` و `logprobs` در پاسخ‌های API را محدود یا مبهم کنید. فقط اطلاعات لازم را بدون افشای جزئی احتمالات ارائه دهید.
+#### ۳. محدودسازی نرخ درخواست
+  محدودسازی نرخ درخواست و سهمیه‌های کاربری (user quotas) برای محدود کردن تعداد درخواست‌هایی که یک منبع موجودیت واحد می‌تواند در یک دوره زمانی مشخص ارسال کند اعمال کنید.
+#### ۴. مدیریت تخصیص منابع
+  تخصیص منابع را به صورت پویا پایش و مدیریت کنید تا از مصرف بیش از حد منابع توسط یک کاربر یا درخواست واحد جلوگیری شود.
+#### ۵. وقفه‌ها (Timeouts) و کندسازی (Throttling)
+  برای عملیات‌های پرمصرفِ منابع، وقفه‌ها و محدودیت‌ سرعت پردازش را تنظیم کنید تا از مصرف طولانی‌مدت منابع جلوگیری شود.
+#### ۶. روش‌های جعبه شنی (Sandbox)
+  دسترسی مدل زبانی بزرگ (LLM) را به منابع شبکه، خدمات داخلی و APIها محدود کنید.
+این امر به ویژه برای همه فرانامه‌های رایج حائز اهمیت است زیرا خطرات و تهدیدات داخلی را در بر می گیرد. علاوه بر این، میزان دسترسی برنامه مدل زبانی بزرگ (LLM) به داده ها و منابع را کنترل می کند، در نتیجه به عنوان یک سازوکار کنترلی حیاتی برای کاهش یا جلوگیری از حملات کانال جانبی عمل می کند.
+#### ۷. بطور جامع رویدادنگاری، پایش و تشخیص ناهنجاری را انجام دهید.
+  به طور مداوم مصرف منابع را پایش کنید و برای شناسایی الگوهای غیرعادی مصرف منابع و پاسخ به آنها، رویدادنگاری را پیاده سازی کنید.
+#### ۸. ته‌نقش‌گذاری (Watermarking)
+  چارچوب‌های ته‌نقش‌گذاری را برای تعبیه و شناسایی استفاده غیرمجاز از خروجی‌های مدل زبانی بزرگ (LLM) پیاده‌سازی کنید.
+#### ۹. تنزل مطبوع (Graceful Degradation)
+  سامانه را به گونه‌ای طراحی کنید که در زمان بار سنگین به تدریج تنزل یابد و به جای از کار افتادن کامل، عملکرد بخشی از خود را حفظ کند.
+#### ۱۰. محدود کردن اقدامات در صف و مقیاس‌پذیری قوی
+  محدودیت‌هایی را برای تعداد اقدامات در صف و کل اقدامات اعمال کنید، در حالی که مقیاس‌پذیری پویا و توازن بار را برای مدیریت نیازمندی‌‎های متغیر و تضمین عملکرد پایدار سامانه در نظر می‌گیرید.
+#### ۱۱. آموزش مقاوم‌سازی در برابر حملات خصمانه
+  مدل‌ها را برای شناسایی و کاهش پرس‌وجوهای خصمانه و تلاش‌های استخراج آموزش دهید.
+#### ۱۲. پالایش نشان‌های معیوب (Glitch Token Filtering)
+  لیست‌هایی از نشان‌های معیوب شناخته شده ایجاد کنید و قبل از افزودن خروجی به پنجره محتوای مدل، آن را پایش کنید.
+#### ۱۳. کنترل‌های دسترسی
+  کنترل‌های دسترسی قوی، از جمله کنترل دسترسی مبتنی بر نقش (RBAC) و اصل حداقل امتیاز را برای محدود کردن دسترسی غیرمجاز به مخازن مدل زبانی بزرگ (LLM) و محیط‌های آموزش پیاده‌سازی کنید.
+#### ۱۴. فهرست متمرکز مدل‌های یادگیری ماشین
+  از یک فهرست ثبت متمرکز مدل یادگیری ماشین برای مدل‌های مورد استفاده در محیط عملیاتی استفاده کنید و از حاکمیت و کنترل دسترسی مناسب اطمینان حاصل کنید.
+#### ۱۵. استقرار خودکار عملیات یادگیری ماشین (MLOps)
+  استقرار خودکار MLOps را با پیاده‌سازی نظارت، ردیابی و تاییدیه‌ی گردش‌کار برای تقویت کنترل‌های دسترسی و استقرار در زیرساخت انجام دهید.
 
-### Example Attack Scenarios
+### نمونه فرانامه‌های حمله
 
-#### Scenario #1: Uncontrolled Input Size
-  An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
-#### Scenario #2: Repeated Requests
-  An attacker transmits a high volume of requests to the LLM API, causing excessive consumption of computational resources and making the service unavailable to legitimate users.
-#### Scenario #3: Resource-Intensive Queries
-  An attacker crafts specific inputs designed to trigger the LLM's most computationally expensive processes, leading to prolonged CPU usage and potential system failure.
-#### Scenario #4: Denial of Wallet (DoW)
-  An attacker generates excessive operations to exploit the pay-per-use model of cloud-based AI services, causing unsustainable costs for the service provider.
-#### Scenario #5: Functional Model Replication
-  An attacker uses the LLM's API to generate synthetic training data and fine-tunes another model, creating a functional equivalent and bypassing traditional model extraction limitations.
-#### Scenario #6: Bypassing System Input Filtering
-  A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
+#### فرانامه #۱: اندازه ورودی کنترل نشده
+  مهاجم یک ورودی بسیار بزرگ به یک برنامه مدل زبانی بزرگ (LLM) که داده‌های متنی را پردازش می کند ارسال می کند، که منجر به استفاده بیش از حد از حافظه و بار پردازشگر می شود و به طور بالقوه باعث خرابی سامانه یا کاهش قابل توجه سرعت خدمت می‌شود.
+#### فرانامه #۲: درخواست‌های مکرر
+  مهاجم حجم زیادی از درخواست‌ها را به API مدل زبانی بزرگ (API) ارسال می‌کند و باعث مصرف بیش از حد منابع محاسباتی می‌شود و خدمت را برای کاربران مجاز غیرقابل دسترس می‌کند.
+#### فرانامه #۳: پرس‌وجوهای با مصرف بالای منابع
+  مهاجم ورودی‌های خاصی را می‌سازد که برای فعال کردن پرمصرف‌ترین فرآیندهای محاسباتی مدل زبانی بزرگ (LLM) طراحی شده‌اند و منجر به استفاده طولانی‌مدت از پردازشگر و خرابی احتمالی سامانه می‌شوند.
+#### فرانامه #۴: Denial of Wallet (DoW)
+  مهاجم عملیات‌های بیش از حدی را برای سوء‌استفاده از مدل پرداخت به ازای مصرف (pay-per-use) از خدمات هوش مصنوعی ابری ایجاد می‌کند و باعث هزینه‌های غیرقابل تحمل برای ارائه‌دهنده خدمات می‌شود.
+#### فرانامه #۵: تکثیر عملکردی مدل
+  مهاجم از API مدل زبانی بزرگ (LLM) برای تولید داده‌های آموزشی مصنوعی و تنظیم دقیق (fine-tune) یک مدل دیگر استفاده می‌کند و یک معادل کارا از مدل اصلی ایجاد می‌کند و محدودیت‌های استخراج سنتی مدل را دور می‌زند.
+#### فرانامه #۶: دور زدن پالایش ورودی سامانه
+  مهاجم خرابکار، روش‌های پالایش ورودی و تنظیمات اولیه مدل زبانی بزرگ (LLM) را دور می‌زند تا یک حمله کانال جانبی انجام دهد و اطلاعات مدل را بازیابی و به یک منبع کنترل‌شده از راه دور تحت کنترل خود ارسال کند.
 
-### Reference Links
+### پیوند‌های مرجع
 
 1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**
@@ -85,9 +85,9 @@ Attacks designed to disrupt service, deplete the target's financial resources, o
 9. [Sponge Examples: Energy-Latency Attacks on Neural Networks: Arxiv White Paper](https://arxiv.org/abs/2006.03463) **arXiv**
 10. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
 
-### Related Frameworks and Taxonomies
+### چارچوب‌ها و طبقه‌بندی‌های مرتبط
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+برای کسب اطلاعات جامع، فرانامه‌ها، راهبردهای مربوط به استقرار زیرساخت، کنترل‌های محیطی کاربردی و سایر به‌روش‌ها، به این بخش مراجعه کنید.
 
 - [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
 - [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**

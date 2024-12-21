@@ -1,50 +1,57 @@
-## LLM07:2025 System Prompt Leakage
+## LLM07:2025: نشت پرامپت سیستم
 
-### Description
+### توضیحات
 
-The system prompt leakage vulnerability in LLMs refers to the risk that the system prompts or instructions used to steer the behavior of the model can also contain sensitive information that was not intended to be discovered. System prompts are designed to guide the model's output based on the requirements of the application, but may inadvertently contain secrets. When discovered, this information can be used to facilitate other attacks.
+آسیب‌پذیری نشت پرامپت سیستم در مدل‌های زبانی بزرگ (LLM) به این مخاطره اشاره دارد که پرامپت‌ها یا دستورالعمل‌های سیستمی که برای هدایت رفتار مدل استفاده می‌شوند، می‌توانند حاوی اطلاعات حساسی باشند که نباید فاش شوند. پرامپت‌های سیستم برای هدایت خروجی مدل بر اساس الزامات برنامه طراحی شده‌اند، اما ممکن است ناخواسته حاوی اطلاعات محرمانه باشند. در صورت افشای این اطلاعات، می‌توان از آن‌ها برای تسهیل سایر حملات استفاده کرد.
 
-It's important to understand that the system prompt should not be considered a secret, nor should it be used as a security control. Accordingly, sensitive data such as credentials, connection strings, etc. should not be contained within the system prompt language.
+باید توجه داشت که پرامپت سیستم را نباید محرمانه تلقی کرد و از آن به عنوان یک کنترل امنیتی استفاده نمود. بنابراین، اطلاعات حساسی مانند اعتبارنامه‌ها، رشته‌های اتصال (connection strings) و غیره نباید در متن پرامپت سیستم گنجانده شوند.
 
-Similarly, if a system prompt contains information describing different roles and permissions, or sensitive data like connection strings or passwords, while the disclosure of such information may be helpful, the fundamental security risk is not that these have been disclosed, it is that the application allows bypassing strong session management and authorization checks by delegating these to the LLM, and that sensitive data is being stored in a place that it should not be.
+به طور مشابه، اگر پرامپت سیستم حاوی اطلاعاتی نظیر توصیف نقش‌ها و مجوزهای مختلف یا داده‌های حساس مانند رشته‌های اتصال یا گذرواژه باشد، در حالی که افشای چنین اطلاعاتی ممکن است مفید باشد، مخاطره امنیتی اصلی این نیست که این اطلاعات افشا شده‌اند، بلکه این است که برنامه به جای انجام مدیریت صحیح نشست و بررسی‌های مجازشماری، این موارد را به LLM واگذار کرده است و داده‌های حساس در مکانی ذخیره شده‌اند که نباید شوند.
 
-In short: disclosure of the system prompt itself does not present the real risk -- the security risk lies with the underlying elements, whether that be sensitive information disclosure, system guardrails bypass, improper separation of privileges, etc. Even if the exact wording is not disclosed, attackers interacting with the system will almost certainly be able to determine many of the guardrails and formatting restrictions that are present in system prompt language in the course of using the application, sending utterances to the model, and observing the results.
+به طور خلاصه: افشای پرامپت سیستم به خودی خود مخاطره واقعی را ایجاد نمی‌کند—مخاطره امنیتی در اجزای زیربنایی نهفته است، که می‌تواند شامل افشای اطلاعات حساس، دورزدن ایمنی‌بندهای (Guardrails) سامانه، جداسازی نادرست اختیارات دسترسی و غیره باشد. حتی اگر کلمات دقیقا فاش نشوند، مهاجمانی که با سامانه تعامل دارند تقریباً به طور قطع می‌توانند بسیاری از ایمنی‌بندها و محدودیت‌های قالب‌بندی موجود در زبان پرامپت سیستم را در حین استفاده از برنامه، ارسال عبارات به مدل و مشاهده نتایج، شناسایی کنند.
 
-### Common Examples of Risk
+### نمونه‌های رایج از مخاطرات امنیتی
 
-#### 1. Exposure of Sensitive Functionality
-  The system prompt of the application may reveal sensitive information or functionality that is intended to be kept confidential, such as sensitive system architecture, API keys, database credentials, or user tokens.  These can be extracted or used by attackers to gain unauthorized access into the application. For example, a system prompt that contains the type of database used for a tool could allow the attacker to target it for SQL injection attacks.
-#### 2. Exposure of Internal Rules
-  The system prompt of the application reveals information on internal decision-making processes that should be kept confidential. This information allows attackers to gain insights into how the application works which could allow attackers to exploit weaknesses or bypass controls in the application. For example - There is a banking application that has a chatbot and its system prompt may reveal information like 
-    >"The Transaction limit is set to $5000 per day for a user. The Total Loan Amount for a user is $10,000".
-  This information allows the attackers to bypass the security controls in the application like doing transactions more than the set limit or bypassing the total loan amount.
-#### 3. Revealing of Filtering Criteria
-  A system prompt might ask the model to filter or reject sensitive content. For example, a model might have a system prompt like,
-    >“If a user requests information about another user, always respond with ‘Sorry, I cannot assist with that request’”.
-#### 4. Disclosure of Permissions and User Roles
-  The system prompt could reveal the internal role structures or permission levels of the application. For instance, a system prompt might reveal,
-    >“Admin user role grants full access to modify user records.”
-  If the attackers learn about these role-based permissions, they could look for a privilege escalation attack.
+#### ۱. افشای عملکردهای حساس
+  پرامپت سیستم ممکن است اطلاعات یا عملکردهای حساسی را که قرار است محرمانه نگه داشته شوند، مانند معماری حساس سامانه، کلیدهای API، اعتبارنامه‌های پایگاه‌داده یا توکن‌های کاربر را فاش کند. این اطلاعات می‌توانند توسط مهاجمان استخراج شده و برای دسترسی غیرمجاز به برنامه مورد سوء استفاده قرار گیرند. به عنوان مثال، پرامپتی که نوع پایگاه‌داده به کار رفته در یک ابزار را فاش کند، می‌تواند به مهاجم این امکان را بدهد که آن را مورد هدف حمله SQL injection قرار دهد.
+#### ۲. افشای قوانین داخلی
+  پرامپت سیستم، اطلاعاتی در مورد فرآیندهای تصمیم‌گیری داخلی که باید محرمانه نگه داشته شوند، فاش می‌کند. این اطلاعات به مهاجمان اجازه می‌دهد تا در مورد نحوه عملکرد برنامه شناخت کسب کنند که می‌تواند به آن‌ها کمک کند تا از ضعف‌ها بهره‌برداری کرده یا کنترل‌های برنامه را دور بزنند. به عنوان مثال، یک برنامک بانکی که دارای ربات گفتگو (chatbot) است، ممکن است پیام سیستم خود را طوری تنظیم کرده باشد که اطلاعاتی مانند زیر را افشا کند:
+  
+>«حد مجاز تراکنش برای یک کاربر روزانه ۵۰۰۰ دلار است. مبلغ کل وام برای یک کاربر ۱۰,۰۰۰ دلار است.»
+    
+  این اطلاعات به مهاجمان اجازه می‌دهد کنترل‌های امنیتی برنامک را دور بزنند، مانند انجام تراکنش‌های بیشتر از حد مجاز یا دور زدن مبلغ کل وام.
+  
+#### ۳. افشای معیارهای پالایش
+  پرامپت سیستم ممکن است از مدل بخواهد که محتوای حساس را پالایش یا رد کند. برای مثال، یک مدل ممکن است پرامپت سیستمی مانند زیر داشته باشد:
+  
+>«اگر کاربری اطلاعاتی در مورد کاربر دیگری درخواست کرد، همیشه با عبارت 'متاسفم، نمی‌توانم به این درخواست کمکی ارائه دهم' پاسخ دهید.»
+>
+#### ۴. افشای مجوزها و نقش‌های کاربران
+  پرامپت سیستم ممکن است ساختارهای داخلی نقش‌ها یا سطوح مجوزهای برنامه را فاش کند. برای مثال، پرامپت سیستم ممکن است این مورد را فاش کند:
+  
+>«نقش کاربر مدیر دسترسی کامل برای تغییر سوابق کاربران را می‌دهد.»
 
-### Prevention and Mitigation Strategies
+  اگر مهاجمان از اینگونه مجوزهای مبتنی بر نقش آگاه شوند، ممکن است اقدام به حملات افزایش سطح دسترسی (Privilege Escalation) کنند.
 
-#### 1. Separate Sensitive Data from System Prompts
-  Avoid embedding any sensitive information (e.g. API keys, auth keys, database names, user roles, permission structure of the application) directly in the system prompts. Instead, externalize such information to the systems that the model does not directly access.
-#### 2. Avoid Reliance on System Prompts for Strict Behavior Control
-  Since LLMs are susceptible to other attacks like prompt injections which can alter the system prompt, it is recommended to avoid using system prompts to control the model behavior where possible.  Instead, rely on systems outside of the LLM to ensure this behavior.  For example, detecting and preventing harmful content should be done in external systems.
-#### 3. Implement Guardrails
-  Implement a system of guardrails outside of the LLM itself.  While training particular behavior into a model can be effective, such as training it not to reveal its system prompt, it is not a guarantee that the model will always adhere to this.  An independent system that can inspect the output to determine if the model is in compliance with expectations is preferable to system prompt instructions.
-#### 4. Ensure that security controls are enforced independently from the LLM
-  Critical controls such as privilege separation, authorization bounds checks, and similar must not be delegated to the LLM, either through the system prompt or otherwise. These controls need to occur in a deterministic, auditable manner, and LLMs are not (currently) conducive to this. In cases where an agent is performing tasks, if those tasks require different levels of access, then multiple agents should be used, each configured with the least privileges needed to perform the desired tasks.
+### راهبردهای پیشگیری و کاهش مخاطره
 
-### Example Attack Scenarios
+#### ۱. جداسازی داده‌های حساس از پرامپت‌های سیستم
+  از گنجاندن هرگونه اطلاعات حساس (مانند کلیدهای API، کلیدهای احراز هویت، نام‌های پایگاه داده، نقش‌های کاربران، ساختار مجوزهای برنامه) به طور مستقیم در پرامپت‌های سیستم خودداری کنید. در عوض، چنین اطلاعاتی را به سامانه‌هایی که مدل به‌طور مستقیم به آن‌ها دسترسی ندارد، منتقل کنید.
+#### ۲. از اتکا به پرامپت‌های سیستم برای کنترل دقیق رفتار مدل خودداری کنید
+  از آنجایی که LLMها در برابر حملات دیگری مانند تزریق پرامپت (prompt injection) که می‌تواند پرامپت سیستم را تغییر دهد، آسیب‌پذیر هستند، توصیه می‌شود که در صورت امکان از پرامپت‌های سیستم برای کنترل رفتار مدل استفاده نشود. در عوض، برای اطمینان از این رفتار، به سامانه‌های خارج از LLM تکیه کنید. به عنوان مثال، شناسایی و جلوگیری از محتوای زیان‌بار باید در سامانه‌های مستقل بیرونی انجام شود.
+#### ۳. پیاده‌سازی ایمنی‌بندها (Guardrails)
+  سامانه‌ای از ایمنی‌بندها (guardrails) را خارج از خود مدل LLM پیاده‌سازی کنید. در حالی که آموزش رفتارهایی ویژه به مدل، مانند آموزش اینکه مدل پرامپت سیستم خودش را فاش نکند، می‌تواند موثر باشد، اما تضمینی وجود ندارد که مدل همیشه به این امر پایبند بماند. سامانه مستقلی که بتواند خروجی را بررسی کرده و تعیین کند که آیا مدل با انتظارات مطابقت دارد یا خیر، به فرمان‌های پرامپت سیستم ترجیح داده می‌شود.
+#### ۴. اطمینان حاصل کنید که کنترل‌های امنیتی به طور مستقل از LLM اعمال شوند.
+  کنترل‌های حیاتی مانند جداسازی اختیارات دسترسی، بررسی مرزهای مجازشماری (authorization) و موارد مشابه نباید چه از طریق پرامپت سیستم چه به روش‌های دیگری به LLM واگذار شوند. این کنترل‌ها باید به شیوه‌ای قطعیت‌پذیر و قابل ممیزی اعمال شوند و LLMها (در حال حاضر) برای این کار مناسب نیستند. در مواردی که یک عامل (agent) وظایفی را انجام می‌دهد، اگر آن وظایف نیاز به سطوح مختلف دسترسی داشته باشند، باید از چندین عامل استفاده شود که هر کدام با حداقل اختیارات (least privileges) لازم برای انجام وظایف مورد نظر پیکربندی شده‌اند.
 
-#### Scenario #1
-   An LLM has a system prompt that contains a set of credentials used for a tool that it has been given access to.  The system prompt is leaked to an attacker, who then is able to use these credentials for other purposes.
-#### Scenario #2
-  An LLM has a system prompt prohibiting the generation of offensive content, external links, and code execution. An attacker extracts this system prompt and then uses a prompt injection attack to bypass these instructions, facilitating a remote code execution attack.
+### نمونه‌هایی از فرانامه‌های حمله
 
-### Reference Links
+#### فرانامه #۱
+   یک LLM دارای پرامپت سیستم است که حاوی مجموعه‌ای از اعتبارنامه‌ها برای دسترسی به ابزاری است که از آن استفاده می‌کند. پرامپت سیستم درز پیدا کرده و به دست یک مهاجم می‌افتد بنابراین وی قادر به استفاده از این اعتبارنامه‌ها برای اهداف مخرب دیگر خود خواهد بود.
+#### فرانامه #۲
+  یک LLM دارای پرامپت سیستم است که تولید محتوای توهین‌آمیز، پیوند‌های بیرونی و اجرای کد را ممنوع می‌کند. مهاجمی این پرامپت سیستم را استخراج کرده و سپس با استفاده از حمله تزریق پرامپت (prompt injection) این دستورالعمل‌ها را دور زده و حمله اجرای کد از راه دور را زمینه‌سازی می‌کند.
+
+### پیوند‌های مرجع
 
 1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
 2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): Prompt Security
@@ -52,8 +59,8 @@ In short: disclosure of the system prompt itself does not present the real risk 
 4. [leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts): Jujumilk3
 5. [OpenAI Advanced Voice Mode System Prompt](https://x.com/Green_terminals/status/1839141326329360579): Green_Terminals
 
-### Related Frameworks and Taxonomies
+### چارچوب‌ها و طبقه‌بندی‌های مرتبط
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+برای کسب اطلاعات جامع، فرانامه‌ها، راهبردهای مربوط به استقرار زیرساخت، کنترل‌های محیطی کاربردی و سایر به‌روش‌ها، به این بخش مراجعه کنید.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
