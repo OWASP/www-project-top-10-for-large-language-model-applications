@@ -31,15 +31,25 @@
 
 مسئول فنی و مسئول تدوین آسیب‌پذیری‌ها
 
-لینکدین: https://www.linkedin.com/in/adamdawson0/
+رهبر پروژه «10 آسیب‌پذیری برتر امنیتی OWASP برای برنامه‌های کاربردی مدل‌های زبانی بزرگ»
 
----
+LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
-### مترجمان فارسی
 
-این سند با همکاری مترجمان فارسی تهیه و ترجمه شده است. مراتب سپاس و قدردانی خود را از ایشان اعلام می‌داریم.
+### تیم ترجمه فارسی
+###@ Hamed Salimian
 
-**مترجمین:**
+LinkedIn: https://www.linkedin.com/in/hamed-salimian
 
-- [Hamed Salimian](mailto:hamed.salimian@owasp.org) | [Github](https://github.org/Snbig)
-- [Arian Gharedaghi](mailto:ariangh001@gmail.com) | [Github](https://github.org/ariangh001)
+###@ Arian Gharedaghi
+
+LinkedIn: https://www.linkedin.com/in/arian-gharedaghi
+
+### درباره ترجمه
+با توجه به ماهیت فنی و حیاتی OWASP Top 10 برای برنامه‌های مدل زبان بزرگ (LLM)، ما به طور آگاهانه تصمیم گرفتیم که در تهیه این ترجمه تنها از مترجمان انسانی استفاده کنیم. مترجمان ذکرشده در بالا نه تنها دانش فنی عمیقی از محتوای اصلی دارند، بلکه تسلط لازم برای انجام موفقیت‌آمیز این ترجمه را نیز دارا هستند.
+
+###@ Talesh Seeparsan
+
+رهبر ترجمه «10 آسیب‌پذیری برتر امنیتی OWASP برای برنامه‌های کاربردی مدل‌های زبانی بزرگ»
+
+LinkedIn: https://www.linkedin.com/in/talesh/
