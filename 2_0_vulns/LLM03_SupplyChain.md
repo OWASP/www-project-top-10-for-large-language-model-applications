@@ -21,7 +21,7 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 #### 3. Outdated or Deprecated Models
   Using outdated or deprecated models that are no longer maintained leads to security issues.
 #### 4. Vulnerable Pre-Trained Model
-  Models are binary black boxes and unlike open source, static inspection can offer little to security assurances. Vulnerable pre-trained models can contain hidden biases, backdoors, or other malicious features that have not been identified through  the safety evaluations of model repository. Vulnerable models can be created by both poisoned datasets and direct model tampering using tehcniques such as ROME also known as lobotomisation.
+  Models are binary black boxes and unlike open source, static inspection can offer little to security assurances. Vulnerable pre-trained models can contain hidden biases, backdoors, or other malicious features that have not been identified through  the safety evaluations of model repository. Vulnerable models can be created by both poisoned datasets and direct model tampering using techniques such as ROME also known as lobotomisation.
 #### 5. Weak Model Provenance
   Currently there are no strong provenance assurances in published models. Model Cards and associated documentation provide model information and relied upon users, but they offer no guarantees on the origin of the model. An attacker can compromise supplier account on a model repo or create a similar one and combine it with social engineering techniques to compromise the supply-chain of an LLM application.
 #### 6. Vulnerable LoRA adapters
@@ -71,7 +71,7 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 #### Scenario #10: Model Merge/Format Conversion Service
   An attacker stages an attack with a model merge or format conversation service to compromise a publicly available access model to inject malware. This is an actual attack published by vendor HiddenLayer.
 #### Scenario #11: Reverse-Engineer Mobile App
-  An attacker reverse-engineers an mobile app to replace the model with a tampered version that leads the user to scam sites. Users are encouraged to dowload the app directly via social engineering techniques. This is a "real attack on predictive AI" that affected 116 Google Play apps including popular security and safety-critical applications used for as cash recognition, parental control, face authentication, and financial service.
+  An attacker reverse-engineers an mobile app to replace the model with a tampered version that leads the user to scam sites. Users are encouraged to download the app directly via social engineering techniques. This is a "real attack on predictive AI" that affected 116 Google Play apps including popular security and safety-critical applications used for as cash recognition, parental control, face authentication, and financial service.
   (Ref. link: [real attack on predictive AI](https://arxiv.org/abs/2006.08131))
 #### Scenario #12: Dataset Poisoning
   An attacker poisons publicly available datasets to help create a back door when fine-tuning models. The back door subtly favors certain companies in different markets.
