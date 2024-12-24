@@ -1,8 +1,8 @@
-## LLM06:2025 Excessive Agency
+## LLM06:2025 過度授權
 
 ### 描述
 
-**Excessive Agency** (過度授權) 指的是在 LLM (大型語言模型) 應用程式中，LLM 常被賦予一定程度的行動能力 (Agency)，可透過擴充功能 (Extensions，也可能稱為工具、Skills 或 Plugins) 來呼叫函數或與其他系統介接，以回應提示並採取動作。然而，若 LLM 「代理人」 (Agent) 有過度的功能、權限或自主性，便可能在意料之外、模糊不清或被操縱的輸出影響下，執行破壞性行為。
+**過度授權** (Excessive Agency) 指的是在 LLM (大型語言模型, Large Language Model) 應用程式中，LLM 常被賦予一定程度的行動能力 (Agency)，可透過擴充功能 (Extensions，也可能稱為工具、Skills 或 Plugins) 來呼叫函數或與其他系統介接，以回應提示並採取動作。然而，若 LLM 「代理人」 (Agent) 有過度的功能、權限或自主性，便可能在意料之外、模糊不清或被操縱的輸出影響下，執行破壞性行為。
 
 常見引發此問題的情境包括：
 
@@ -15,9 +15,9 @@
 - 權限過大 (Excessive Permissions)
 - 自主性過強 (Excessive Autonomy)
 
-Excessive Agency 可能在機密性、完整性、可用性等多方層面引發廣泛的負面影響，且影響程度取決於 LLM 應用程式可存取的系統範圍。
+過度授權 (Excessive Agency) 可能在機密性、完整性、可用性等多方層面引發廣泛的負面影響，且影響程度取決於 LLM 應用程式可存取的系統範圍。
 
-注意：Excessive Agency 與 Insecure Output Handling (不安全的輸出處理) 不同之處在於，後者關注的是對 LLM 輸出缺乏充分審查，而 Excessive Agency 則著重於 LLM 被賦予的權能和行為範圍過度。
+注意：過度授權 (Excessive Agency) 與不安全的輸出處理 (Insecure Output Handling) 不同之處在於，後者關注的是對 LLM 輸出缺乏充分審查，而過度授權 (Excessive Agency) 則著重於 LLM 被賦予的權能和行為範圍過度。
 
 ### 常見風險實例
 
@@ -41,7 +41,7 @@ LLM 應用程式或擴充功能在高風險操作執行前缺乏獨立驗證或�
 
 ### 預防與緩解策略
 
-下列措施可防範 Excessive Agency：
+下列措施可防範過度授權 (Excessive Agency)：
 
 #### 1. 減少擴充功能
 限制 LLM 代理人可呼叫的擴充功能，僅保留必要功能。例如：若不需要擷取 URL 內容的功能，就不應提供該擴充功能給 LLM 使用。
@@ -67,7 +67,7 @@ LLM 應用程式或擴充功能在高風險操作執行前缺乏獨立驗證或�
 #### 8. 淨化 LLM 輸入與輸出
 遵從安全程式撰寫的最佳實務，如套用 OWASP ASVS 中的建議，特別是輸入淨化部分。在開發流程中採用 SAST、DAST、IAST 工具以加強安全性。
 
-下列措施無法預防 Excessive Agency，但可減輕其造成的傷害：
+下列措施無法預防過度授權 (Excessive Agency)，但可減輕其造成的傷害：
 
 - 記錄並監控 LLM 擴充功能與下游系統的活動，以識別不當操作並及時應對。
 - 實施速率限制 (rate-limiting)，減少短時間內不當行為的次數，提高偵測惡意行為並阻止重大損害的機會。
