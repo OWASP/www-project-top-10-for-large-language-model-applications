@@ -1,38 +1,38 @@
-## LLM09:2025 Misinformation
+## LLM09:2025 錯誤資訊
 
 ### 描述
 
-**Misinformation** (錯誤資訊) 是指 LLM (大型語言模型) 產生錯誤或具誤導性的內容，且此內容表面上看似可信。依賴 LLM 的應用程式若遭此漏洞影響，可能導致安全缺口、商譽受損以及法律訴訟。
+**錯誤資訊** (Misinformation) 是指 LLM (大型語言模型) 產生錯誤或具誤導性的內容，且此內容表面上看似可信。依賴 LLM 的應用程式若遭此漏洞影響，可能導致安全缺口、商譽受損以及法律訴訟。
 
-Misinformation 的成因之一是 hallucination (幻覺) ：模型在訓練數據不足時，會依據統計模式填補空白，生成看似正確但實際全無依據的回應。此外，訓練數據本身的偏差與資訊不完整也會導致錯誤資訊。
+錯誤資訊的成因之一是幻覺 (hallucination)：模型在訓練數據不足時，會依據統計模式填補空白，生成看似正確但實際全無依據的回應。此外，訓練數據本身的偏差與資訊不完整也會導致錯誤資訊。
 
-與此相關的問題是 Overreliance (過度依賴)，指使用者過度信任 LLM 的內容而未核實其正確性。在過度依賴下，使用者易將錯誤資訊納入關鍵決策或流程中，擴大錯誤資訊的影響。
+與此相關的問題是過度依賴 (overreliance)，指使用者過度信任 LLM 的內容而未核實其正確性。在過度依賴下，使用者易將錯誤資訊納入關鍵決策或流程中，擴大錯誤資訊的影響。
 
 ### 常見風險實例
 
-#### 1. 事實錯誤 (Factual Inaccuracies)
+#### 1. 事實錯誤
 模型產生錯誤的陳述，使使用者根據錯誤資訊做出決策。例如，加拿大航空 (Air Canada) 曾因其聊天機器人提供錯誤訊息給旅客而陷入法律糾紛。
 (參考連結：[BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
 
-#### 2. 無依據主張 (Unsupported Claims)
+#### 2. 無依據主張
 模型提出毫無根據的斷言，於敏感領域 (如醫療、法律) 特別有害。舉例來說，ChatGPT 曾捏造不存在的法律案例，導致法庭中產生重大問題。
 (參考連結：[LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
 
-#### 3. 專業度誤導 (Misrepresentation of Expertise)
+#### 3. 專業度誤導
 模型顯示對複雜議題具備專業知識的假象，誤導使用者相信其權威性。例如，聊天機器人可能誤導使用者對健康議題的認知，造成不恰當的醫療建議。
 (參考連結：[KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
 
-#### 4. 不安全的程式碼產出 (Unsafe Code Generation)
+#### 4. 不安全的程式碼產出
 模型可能建議不安全或不存在的程式庫，若使用者未經查證便整合至系統中，將帶來安全風險。
 (參考連結：[Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
 ### 預防與緩解策略
 
-#### 1. 使用 Retrieval-Augmented Generation (RAG)
+#### 1. 使用檢索增強生成 (RAG)
 透過檢索增強生成 (RAG) 從可信任的外部資料庫擷取相關與已驗證的資訊，以減低幻覺與錯誤資訊的風險。
 
-#### 2. 模型微調 (Fine-Tuning)
-透過微調或 Embeddings 改善模型輸出品質。採用 Parameter-Efficient Tuning (PET) 與 chain-of-thought prompting 等技術，降低產生錯誤資訊的機率。
+#### 2. 模型微調
+透過微調或嵌入 (embeddings) 改善模型輸出品質。採用參數高效調整 (Parameter-Efficient Tuning, PET) 與連鎖思維提示 (chain-of-thought prompting) 等技術，降低產生錯誤資訊的機率。
 
 #### 3. 交叉驗證與人工審查
 鼓勵使用者從可信外部來源交叉比對 LLM 輸出資訊的正確性。對關鍵或敏感資訊實施人工審核，並確保審查者不盲目依賴 LLM 的回應。
