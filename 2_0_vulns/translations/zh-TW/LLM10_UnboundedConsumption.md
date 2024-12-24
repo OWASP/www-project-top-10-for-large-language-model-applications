@@ -2,7 +2,7 @@
 
 ### 描述
 
-**Unbounded Consumption**（無限制消耗）是指在 LLM（大型語言模型）應用程式中，使用者能不受控地、不合理地進行推論（inference）要求的情境。LLM 的推論是透過已學得的知識與模式，針對輸入查詢或提示產生對應的回應或預測。然而，若該應用缺乏適當的限制與控管，惡意行為者（或誤用者）可透過過度或惡意的資源消耗來發動攻擊，如造成服務阻斷（DoS）、增加營運成本、竊取模型行為以製造相似模型，或使服務品質劣化。
+**Unbounded Consumption** (無限制消耗) 是指在 LLM (大型語言模型) 應用程式中，使用者能不受控地、不合理地進行推論 (inference) 要求的情境。LLM 的推論是透過已學得的知識與模式，針對輸入查詢或提示產生對應的回應或預測。然而，若該應用缺乏適當的限制與控管，惡意行為者 (或誤用者) 可透過過度或惡意的資源消耗來發動攻擊，如造成服務阻斷 (DoS)、增加營運成本、竊取模型行為以製造相似模型，或使服務品質劣化。
 
 LLM，特別在雲端環境中，本身運行成本高昂且資源密集。一旦資源消耗未受控管，這些漏洞將成為攻擊者剝削的目標，導致經濟損失、服務降級、甚至智財權遭竊的風險。
 
@@ -15,19 +15,19 @@ LLM，特別在雲端環境中，本身運行成本高昂且資源密集。一�
 由於許多雲端 AI 服務以使用次數計費，攻擊者若發送大量操作請求可快速累積費用，給服務供應商造成龐大經濟負擔，甚至讓供應商財務壓力難以承受。
 
 #### 3. Continuous Input Overflow
-持續向 LLM 傳送超過其脈絡視窗（context window）能承載的輸入，使模型頻繁重新計算並消耗大量運算資源，導致服務品質劣化與運作中斷。
+持續向 LLM 傳送超過其脈絡視窗 (context window) 能承載的輸入，使模型頻繁重新計算並消耗大量運算資源，導致服務品質劣化與運作中斷。
 
 #### 4. Resource-Intensive Queries
-提交極度複雜或高運算量的查詢（如深度分析複雜語料），迫使 LLM 耗費大量 CPU/GPU 資源，進而減慢系統回應或造成系統故障。
+提交極度複雜或高運算量的查詢 (如深度分析複雜語料)，迫使 LLM 耗費大量 CPU/GPU 資源，進而減慢系統回應或造成系統故障。
 
 #### 5. Model Extraction via API
-攻擊者以精心設計的查詢及 Prompt Injection 技術，不斷取得模型回應，企圖複製模型行為或建立「陰影模型（shadow model）」。此舉不僅會造成智財權風險，也破壞模型的獨特性。
+攻擊者以精心設計的查詢及 Prompt Injection 技術，不斷取得模型回應，企圖複製模型行為或建立「陰影模型 (shadow model)」。此舉不僅會造成智財權風險，也破壞模型的獨特性。
 
 #### 6. Functional Model Replication
 透過 LLM 輸出生成合成訓練資料，攻擊者可微調另一個基礎模型以產生相似功能，避開傳統以查詢為基礎的模型擷取方法，對專有模型技術構成重大威脅。
 
 #### 7. Side-Channel Attacks
-惡意攻擊者可能透過繞過 LLM 輸入過濾技術的方式，執行側通道攻擊（side-channel attacks），從中擷取模型權重或架構資訊，進一步利用這些資訊進行更嚴重的攻擊。
+惡意攻擊者可能透過繞過 LLM 輸入過濾技術的方式，執行側通道攻擊 (side-channel attacks)，從中擷取模型權重或架構資訊，進一步利用這些資訊進行更嚴重的攻擊。
 
 ### 預防與緩解策略
 
@@ -44,10 +44,10 @@ LLM，特別在雲端環境中，本身運行成本高昂且資源密集。一�
 動態監控與管理資源分配，避免單一用戶或請求獲得過度資源使用。
 
 #### 5. Timeouts and Throttling
-針對高資源消耗操作設定逾時與節流（throttling）機制，防止長期無止盡的資源佔用。
+針對高資源消耗操作設定逾時與節流 (throttling) 機制，防止長期無止盡的資源佔用。
 
 #### 6. Sandbox Techniques
-限制 LLM 對網路資源、內部服務與 API 的存取範圍。  
+限制 LLM 對網路資源、內部服務與 API 的存取範圍。
 - 這對應各種情境很重要，包括內部人員風險與威脅，並規範 LLM 應用可存取之資料與資源範疇，能有效降低側通道攻擊。
 
 #### 7. Comprehensive Logging, Monitoring and Anomaly Detection
@@ -69,7 +69,7 @@ LLM，特別在雲端環境中，本身運行成本高昂且資源密集。一�
 建立「glitch tokens」名單，在將輸出加入模型脈絡前先行篩檢，以防止惡意令牌注入。
 
 #### 13. Access Controls
-採用角色為基礎的存取控制（RBAC）與最小特權原則，限制未授權使用者取得 LLM 模型與訓練環境存取。
+採用角色為基礎的存取控制 (RBAC) 與最小特權原則，限制未授權使用者取得 LLM 模型與訓練環境存取。
 
 #### 14. Centralized ML Model Inventory
 使用集中化的 ML 模型清單或註冊機制，以確保正式生產使用的模型受到妥善治理與存取控制。
@@ -99,26 +99,26 @@ LLM，特別在雲端環境中，本身運行成本高昂且資源密集。一�
 
 ### 參考連結
 
-1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)  
-2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**  
-3. [Runaway LLaMA | How Meta's LLaMA NLP model leaked](https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked/) **Deep Learning Blog**  
-4. [I Know What You See:](https://arxiv.org/pdf/1803.05847.pdf) **Arxiv White Paper**  
-5. [A Comprehensive Defense Framework Against Model Extraction Attacks](https://ieeexplore.ieee.org/document/10080996) **IEEE**  
-6. [Alpaca: A Strong, Replicable Instruction-Following Model](https://crfm.stanford.edu/2023/03/13/alpaca.html) **Stanford CRFM**  
-7. [How Watermarking Can Help Mitigate The Potential Risks Of LLMs?](https://www.kdnuggets.com/2023/03/watermarking-help-mitigate-potential-risks-llms.html) **KD Nuggets**  
-8. [Securing AI Model Weights Preventing Theft and Misuse of Frontier Models](https://www.rand.org/content/dam/rand/pubs/research_reports/RRA2800/RRA2849-1/RAND_RRA2849-1.pdf)  
-9. [Sponge Examples: Energy-Latency Attacks on Neural Networks](https://arxiv.org/abs/2006.03463) **arXiv**  
+1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
+2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**
+3. [Runaway LLaMA | How Meta's LLaMA NLP model leaked](https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked/) **Deep Learning Blog**
+4. [I Know What You See:](https://arxiv.org/pdf/1803.05847.pdf) **Arxiv White Paper**
+5. [A Comprehensive Defense Framework Against Model Extraction Attacks](https://ieeexplore.ieee.org/document/10080996) **IEEE**
+6. [Alpaca: A Strong, Replicable Instruction-Following Model](https://crfm.stanford.edu/2023/03/13/alpaca.html) **Stanford CRFM**
+7. [How Watermarking Can Help Mitigate The Potential Risks Of LLMs?](https://www.kdnuggets.com/2023/03/watermarking-help-mitigate-potential-risks-llms.html) **KD Nuggets**
+8. [Securing AI Model Weights Preventing Theft and Misuse of Frontier Models](https://www.rand.org/content/dam/rand/pubs/research_reports/RRA2800/RRA2849-1/RAND_RRA2849-1.pdf)
+9. [Sponge Examples: Energy-Latency Attacks on Neural Networks](https://arxiv.org/abs/2006.03463) **arXiv**
 10. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
 
 ### 相關框架與分類法
 
 請參考此區以取得有關基礎架構部署、應用環境控管及其他最佳實務的完整資訊。
 
-- [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE CWE**  
-- [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**  
-- [AML.T0029 - Denial of ML Service](https://atlas.mitre.org/techniques/AML.T0029) **MITRE ATLAS**  
-- [AML.T0034 - Cost Harvesting](https://atlas.mitre.org/techniques/AML.T0034) **MITRE ATLAS**  
-- [AML.T0025 - Exfiltration via Cyber Means](https://atlas.mitre.org/techniques/AML.T0025) **MITRE ATLAS**  
-- [OWASP Machine Learning Security Top Ten - ML05:2023 Model Theft](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML05_2023-Model_Theft.html) **OWASP ML Top 10**  
-- [API4:2023 - Unrestricted Resource Consumption](https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/) **OWASP Web Application Top 10**  
+- [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE CWE**
+- [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**
+- [AML.T0029 - Denial of ML Service](https://atlas.mitre.org/techniques/AML.T0029) **MITRE ATLAS**
+- [AML.T0034 - Cost Harvesting](https://atlas.mitre.org/techniques/AML.T0034) **MITRE ATLAS**
+- [AML.T0025 - Exfiltration via Cyber Means](https://atlas.mitre.org/techniques/AML.T0025) **MITRE ATLAS**
+- [OWASP Machine Learning Security Top Ten - ML05:2023 Model Theft](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML05_2023-Model_Theft.html) **OWASP ML Top 10**
+- [API4:2023 - Unrestricted Resource Consumption](https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/) **OWASP Web Application Top 10**
 - [OWASP Resource Management](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/) **OWASP Secure Coding Practices**
