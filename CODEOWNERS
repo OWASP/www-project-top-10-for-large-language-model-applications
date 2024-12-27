@@ -25,8 +25,8 @@ data_gathering/* @emmanuelgjr @GangGreenTemperTatum
 **/LLM05_ImproperOutputHandling.md @GangGreenTemperTatum
 ## LLM06:
 **/ExcessiveAgency.md @rot169
-## LLM07: # TODO need to check Aditya's handle
-**/SystemPromptLeakage.md @GangGreenTemperTatum
+## LLM07:
+**/SystemPromptLeakage.md @Greenterminals12
 ## LLM08: # TODO need to check Krishna's handle
 **/VectorAndEmbeddingWeaknesses.md @jsotiro
 ## LLM09:
