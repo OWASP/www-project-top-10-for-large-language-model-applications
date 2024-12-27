@@ -3,6 +3,9 @@ name: Check Filenames on PR
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - '**'
 
 jobs:
   check-filenames:
