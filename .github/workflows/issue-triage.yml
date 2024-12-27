@@ -1,8 +1,8 @@
 name: Ads - Triage OWASP Top 10 LLM Apps Issues
 
-#on:
-#  issues:
-#    types: [opened, labeled, reopened]
+on:
+  issues:
+    types: [opened, labeled, reopened]
 
 env:
   BOARD_NAME: "OWASP Top 10 for LLM Applications"
@@ -10,22 +10,22 @@ env:
   REPO: ${{ github.event.repository.name }}
   ISSUE: ${{ github.event.issue.number }}
   PROJECT_TECH_LEAD: "GangGreenTemperTatum"
-  LLM01_LEAD: "leondz"
+  LLM01_LEAD: "cybershujin"
   LLM02_LEAD: "kenhuangus"
-  LLM03_LEAD: "GangGreenTemperTatum"
-  LLM04_LEAD: "kenhuangus"
-  LLM05_LEAD: "jsotiro"
-  LLM06_LEAD: "GangGreenTemperTatum"
-  LLM07_LEAD: "rot169"
+  LLM03_LEAD: "jsotiro"
+  LLM04_LEAD: "GangGreenTemperTatum"
+  LLM05_LEAD: "GangGreenTemperTatum"
+  LLM06_LEAD: "rot169"
+  LLM07_LEAD: "GangGreenTemperTatum"
   LLM08_LEAD: "virtualsteve-star"
-  LLM09_LEAD: "jsotiro"
+  LLM09_LEAD: "virtualsteve-star"
   LLM10_LEAD: "GangGreenTemperTatum"
   PR_LEAD: "faceplate27"
   POSTMASTER: "TBC"
   TRANSLATIONS: "talesh"
   DATA_GATHERING: "emmanuelgjr"
   DESIGN: "rossja"
-  DIAGRAMS: "TBC"
+  DIAGRAMS: "GangGreenTemperTatum"
   WEB_DEVS: "GangGreenTemperTatum"
   SEC_GOVERNANCE: "subzer0girl2"
 
@@ -36,7 +36,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea #v7.0.1
         with:
           script: |
             github.rest.issues.createComment({
@@ -50,15 +50,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
 
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea #v7.0.1
         with:
+          github-token: ${{ secrets.ADS_OWASP_LLM_APPS_REPO_TOKEN }}
           script: |
             try {
               const issue = context.payload.issue;
               const labels = issue.labels.map(label => label.name);
-              const assignees = [];
+              let assignees = [];
 
               // Label-to-assignee mappings
               const labelAssigneeMap = {
@@ -83,23 +84,42 @@ jobs:
               // Check labels and assign based on mappings
               labels.forEach(label => {
                 if (labelAssigneeMap[label]) {
-                  assignees.push(...labelAssigneeMap[label]);
+                  const assignee = labelAssigneeMap[label];
+                  if (assignee && assignee !== 'TBC') {
+                    assignees.push(assignee);
+                  }
                 }
               });
 
-              // Remove duplicates from assignees list
-              // const uniqueAssignees = [...new Set(assignees)];
+              // Remove duplicates and empty values
+              assignees = [...new Set(assignees)].filter(Boolean);
 
-              // Assign the issue to the calculated assignees
-              await github.rest.issues.addAssignees({
-                issue_number: issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                assignees: assignees
-              });
+              if (assignees.length > 0) {
+                try {
+                  await github.rest.issues.addAssignees({
+                    issue_number: issue.number,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    assignees: assignees
+                  });
+                  console.log(`Successfully assigned to: ${assignees.join(', ')}`);
+                } catch (assignError) {
+                  // Log the error but don't fail the workflow
+                  console.log(`Warning: Could not assign some users. ${assignError.message}`);
+                  // Try to add a comment to the issue
+                  await github.rest.issues.createComment({
+                    issue_number: issue.number,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    body: `⚠️ Note: Some assignees could not be added. Please check if all usernames are valid.`
+                  });
+                }
+              } else {
+                console.log('No valid assignees found for the given labels');
+              }
             } catch (error) {
-              console.error(error.message);
-              process.exit(1);
+              // Log error but don't fail the workflow
+              console.log(`Error in workflow: ${error.message}`);
             }
         env:
           GITHUB_TOKEN: ${{ secrets.ADS_OWASP_LLM_APPS_REPO_TOKEN }}
