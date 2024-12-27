@@ -1,4 +1,4 @@
-name: Check Filenames on PR
+name: Check Filenames on PR and Commits
 
 on:
   pull_request:
@@ -12,13 +12,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
         with:
           fetch-depth: 0
 
       - name: Check for invalid filenames
         run: |
-          invalid_files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | grep ":" || true)
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            invalid_files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | grep ":" || true)
+          else
+            invalid_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep ":" || true)
+            if [ -z "$invalid_files" ]; then
+              # Also check all files in the current commit
+              invalid_files=$(git ls-files | grep ":" || true)
+            fi
+          fi
+
           if [ ! -z "$invalid_files" ]; then
             echo "Error: The following files contain ':' in their names, which is not compatible with Windows:"
             echo "$invalid_files"
