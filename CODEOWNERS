@@ -4,8 +4,9 @@
 # Shared Community Files and Areas:
 # TBC
 
-## Either Ads or Steve can approve changes to CODEOWNERS:
+## Either Ads or Steve can approve changes to CODEOWNERS or github:
 CODEOWNERS @GangGreenTemperTatum @virtualsteve-star
+.github/ @GangGreenTemperTatum @virtualsteve-star
 
 ## Data Gathering
 data_gathering/* @emmanuelgjr @GangGreenTemperTatum
