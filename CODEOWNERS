@@ -26,9 +26,9 @@ data_gathering/* @emmanuelgjr @GangGreenTemperTatum
 ## LLM06:
 **/ExcessiveAgency.md @rot169
 ## LLM07:
-**/SystemPromptLeakage.md @Greenterminals12
+**/SystemPromptLeakage.md @vingiarrusso @Greenterminals12
 ## LLM08: # TODO need to check Krishna's handle
-**/VectorAndEmbeddingWeaknesses.md @jsotiro
+**/VectorAndEmbeddingWeaknesses.md @xsankar
 ## LLM09:
 **/Misinformation.md @virtualsteve-star
 ## LLM10:
