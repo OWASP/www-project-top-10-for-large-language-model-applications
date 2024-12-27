@@ -47,12 +47,22 @@ jobs:
       - uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea #v7.0.1
         with:
           script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 Thanks for reporting! Please ensure labels are applied appropriately to the issue so that the workflow automation can triage this to the correct member of the core team'
-            })
+            const eventName = context.eventName;
+            if (eventName === 'issues') {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '👋 Thanks for reporting! Please ensure labels are applied appropriately so that the workflow automation can triage this to the assigned member of the OWASP core team'
+              });
+            } else if (eventName === 'pull_request' && context.payload.action === 'opened') {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '👋 Thanks for your pull request! Please ensure appropriate labels are applied for review routing.'
+              });
+            }
 
   triage:
     runs-on: ubuntu-latest
