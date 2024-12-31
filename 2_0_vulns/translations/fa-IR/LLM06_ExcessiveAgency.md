@@ -1,73 +1,75 @@
-## LLM06:2025 Excessive Agency
+## LLM06: 2025 اختیارات بیش‌ از حد
 
-### Description
+### توضیحات
 
-An LLM-based system is often granted a degree of agency by its developer - the ability to call functions or interface with other systems via extensions (sometimes referred to as tools, skills or plugins by different vendors) to undertake actions in response to a prompt. The decision over which extension to invoke may also be delegated to an LLM 'agent' to dynamically determine based on input prompt or LLM output. Agent-based systems will typically make repeated calls to an LLM using output from previous invocations to ground and direct subsequent invocations.
+به یک سامانه مبتنی بر مدل زبانی بزرگ (LLM) اغلب درجه‌ای از اختیار توسط توسعه‌دهنده‌اش برای انجام اقداماتی در پاسخ به یک پرامپت داده می‌شود - یعنی توانایی فراخوانی توابع یا تعامل با سامانه‌های دیگر از طریق افزونه‌ها (که گاهی توسط عرضه‌کنندگان مختلف به عنوان ابزار، مهارت یا پلاگین نامیده می‌شود). تصمیم‌گیری در مورد اینکه کدام افزونه فراخوانی شود، ممکن است به یک عامل (Agent) مدل زبانی بزرگ (LLM) نیز واگذار شود تا به صورت پویا بر اساس پرامپت ورودی یا خروجی مدل زبانی بزرگ (LLM) تعیین شود. سامانه‌های مبتنی بر عامل (Agent) معمولاً با استفاده از خروجی فراخوانی‌های قبلی به طور مکرر یک مدل زبانی بزرگ (LLM) را فراخوانی می‌کنند، تا فراخوانی‌های بعدی را زمینه‌سازی و هدایت کنند.
 
-Excessive Agency is the vulnerability that enables damaging actions to be performed in response to unexpected, ambiguous or manipulated outputs from an LLM, regardless of what is causing the LLM to malfunction. Common triggers include:
-* hallucination/confabulation caused by poorly-engineered benign prompts, or just a poorly-performing model;
-* direct/indirect prompt injection from a malicious user, an earlier invocation of a malicious/compromised extension, or (in multi-agent/collaborative systems) a malicious/compromised peer agent.
+اختیارات بیش از حد، یک آسیب‌پذیری‌ است که باعث می‌شود اقدامات مخربی در پاسخ به خروجی‌های غیرمنتظره، مبهم یا دستکاری شده از یک مدل زبانی بزرگ (LLM) انجام شود، صرف نظر از این‌ که چه چیزی باعث اختلال در عملکرد مدل زبانی بزرگ (LLM) شده است. محرک‌های رایج عبارتند از:
+* توهم/خیال‌پردازی ناشی از پرامپت‌های بی‌خطر با طراحی ضعیف یا صرفاً یک مدل با عملکرد ضعیف;
+* تزریق مستقیم/غیرمستقیم پرامپت یک کاربر مخرب، فراخوانی قبلی یک افزونه مخرب/به‌ خطر افتاده، یا یک عامل همکار مخرب/به خطر افتاده (در سامانه‌های چندعاملی/مشارکتی).
 
-The root cause of Excessive Agency is typically one or more of:
-* excessive functionality;
-* excessive permissions;
-* excessive autonomy.
+ریشه اصلی اختیار بیش از حد معمولاً یک یا چند مورد از موارد زیر است:
+* عملکرد بیش از حد;
+* مجوز‌‎های بیش از حد;
+* خودمختاری بیش از حد;
 
-Excessive Agency can lead to a broad range of impacts across the confidentiality, integrity and availability spectrum, and is dependent on which systems an LLM-based app is able to interact with.
+اختیار بیش از حد می‌تواند منجر به طیف گسترده‌ای از اثرات شامل محرمانگی، صحت و دسترسی‌پذیری شود و به این بستگی دارد که یک برنامه مبتنی بر مدل زبانی بزرگ (LLM) قادر به تعامل با چه سامانه‌هایی است.
 
-Note: Excessive Agency differs from Insecure Output Handling which is concerned with insufficient scrutiny of LLM outputs.
+توجه: «اختیارات بیش از حد» با «مدیریت ناامن خروجی» که مربوط به بررسی ناکافی خروجی‌‍‌های مدل‌های زبانی بزرگ (LLM) می‌‎شود، متفاوت است.
 
-### Common Examples of Risks
+### نمونه‌های رایج از مخاطرات امنیتی
 
-#### 1. Excessive Functionality
-  An LLM agent has access to extensions which include functions that are not needed for the intended operation of the system. For example, a developer needs to grant an LLM agent the ability to read documents from a repository, but the 3rd-party extension they choose to use also includes the ability to modify and delete documents.
-#### 2. Excessive Functionality
-  An extension may have been trialled during a development phase and dropped in favor of a better alternative, but the original plugin remains available to the LLM agent.
-#### 3. Excessive Functionality
-  An LLM plugin with open-ended functionality fails to properly filter the input instructions for commands outside what's necessary for the intended operation of the application. E.g., an extension to run one specific shell command fails to properly prevent other shell commands from being executed.
-#### 4. Excessive Permissions
-  An LLM extension has permissions on downstream systems that are not needed for the intended operation of the application. E.g., an extension intended to read data connects to a database server using an identity that not only has SELECT permissions, but also UPDATE, INSERT and DELETE permissions.
-#### 5. Excessive Permissions
-  An LLM extension that is designed to perform operations in the context of an individual user accesses downstream systems with a generic high-privileged identity. E.g., an extension to read the current user's document store connects to the document repository with a privileged account that has access to files belonging to all users.
-#### 6. Excessive Autonomy
-  An LLM-based application or extension fails to independently verify and approve high-impact actions. E.g., an extension that allows a user's documents to be deleted performs deletions without any confirmation from the user.
+#### ۱. عملکرد بیش از حد
+  عامل مدل زبانی بزرگ (LLM Agent) به افزونه‌هایی دسترسی دارد که شامل توابعی هستند که برای عملکرد مد نظر سامانه مورد نیاز نیستند. برای مثال، توسعه‌دهنده باید به عامل مدل زبانی بزرگ (LLM Agent) توانایی خواندن اسناد از مخزن را بدهد، اما افزونه شخص ثالثی که انتخاب می‌کند، علاوه بر آن شامل توانایی تغییر و حذف اسناد نیز می‌باشد.
+#### ۲. عملکرد بیش از حد
+  ممکن است یک افزونه در مرحله توسعه، آزمایش شده و به دلیل وجود یک جایگزین بهتر کنار گذاشته‌ شده باشد، اما افزونه اصلی همچنان برای عامل مدل زبانی بزرگ (LLM Agent) در دسترسی باقی مانده باشد.
+#### ۳. عملکرد بیش از حد
+  افزونه مدل زبانی بزرگ (LLM Plugin) با قابلیت‌های فراوان و بی انتها، نمی‌تواند دستورالعمل‌های ورودی را برای فرمان‌هایی که خارج از عملکرد مورد نظر برنامه هستند، به درستی پالایش کند. به عنوان مثال، افزونه‌ای که برای اجرای یک فرمان خاص می‌باشد نمی‌تواند به درستی از اجرای دستورات شل دیگر جلوگیری کند.
+#### ۴. مجوزهای بیش از حد
+  افزونه مدل زبانی بزرگ (LLM) دارای مجوزهای دسترسی در سامانه‌هایی پایین‌دستی است که برای عملکرد مد نظر برنامه مورد نیاز نیستند. به عنوان مثال، افزونه‌ای که برای خواندن داده‌ها در نظر گرفته شده است، با استفاده از هویتی به کارساز پایگاه داده متصل می‌شود که نه تنها مجوز SELECT دارد، بلکه مجوزهای INSERT ،UPDATE و  DELETE نیز دارد.
+#### ۵. مجوزهای بیش از حد
+  افزونه مدل زبانی بزرگ (LLM) که برای انجام عملیات در نقش یک کاربر خاص طراحی شده است، با استفاده از یک هویت عمومی با سطح دسترسی بالا به سامانه‌های پایین‌دستی دسترسی پیدا می‌کند. برای مثال، افزونه‌ای برای خواندن فضای ذخیره‌سازی اسناد کاربر فعلی، با یک حساب کاربری دارای سطح دسترسی بالا که به فایل‌های متعلق به همه کاربران دسترسی دارد، به مخزن اسناد متصل می‌شود.
+#### ۶. خودمختاری بیش از حد
+  برنامه یا افزونه مبتنی بر LLM نمی‌تواند اقدامات پرمخاطره را به‌طور مستقل تأیید و تصویب کند. برای مثال، افزونه‌ای که به کاربر اجازه می‌دهد اسناد خود را حذف کند، بدون هیچ‌گونه تأییدی از سوی کاربر، عملیات حذف را انجام می‌دهد.
 
-### Prevention and Mitigation Strategies
 
-The following actions can prevent Excessive Agency:
 
-#### 1. Minimize extensions
-  Limit the extensions that LLM agents are allowed to call to only the minimum necessary. For example, if an LLM-based system does not require the ability to fetch the contents of a URL then such an extension should not be offered to the LLM agent.
-#### 2. Minimize extension functionality
-  Limit the functions that are implemented in LLM extensions to the minimum necessary. For example, an extension that accesses a user's mailbox to summarise emails may only require the ability to read emails, so the extension should not contain other functionality such as deleting or sending messages.
-#### 3. Avoid open-ended extensions
-  Avoid the use of open-ended extensions where possible (e.g., run a shell command, fetch a URL, etc.) and use extensions with more granular functionality. For example, an LLM-based app may need to write some output to a file. If this were implemented using an extension to run a shell function then the scope for undesirable actions is very large (any other shell command could be executed). A more secure alternative would be to build a specific file-writing extension that only implements that specific functionality.
-#### 4. Minimize extension permissions
-  Limit the permissions that LLM extensions are granted to other systems to the minimum necessary in order to limit the scope of undesirable actions. For example, an LLM agent that uses a product database in order to make purchase recommendations to a customer might only need read access to a 'products' table; it should not have access to other tables, nor the ability to insert, update or delete records. This should be enforced by applying appropriate database permissions for the identity that the LLM extension uses to connect to the database.
-#### 5. Execute extensions in user's context
-  Track user authorization and security scope to ensure actions taken on behalf of a user are executed on downstream systems in the context of that specific user, and with the minimum privileges necessary. For example, an LLM extension that reads a user's code repo should require the user to authenticate via OAuth and with the minimum scope required.
-#### 6. Require user approval
-  Utilise human-in-the-loop control to require a human to approve high-impact actions before they are taken. This may be implemented in a downstream system (outside the scope of the LLM application) or within the LLM extension itself. For example, an LLM-based app that creates and posts social media content on behalf of a user should include a user approval routine within the extension that implements the 'post' operation.
-#### 7. Complete mediation
-  Implement authorization in downstream systems rather than relying on an LLM to decide if an action is allowed or not. Enforce the complete mediation principle so that all requests made to downstream systems via extensions are validated against security policies.
-#### 8. Sanitise LLM inputs and outputs
-  Follow secure coding best practice, such as applying OWASP’s recommendations in ASVS (Application Security Verification Standard), with a particularly strong focus on input sanitisation. Use Static Application Security Testing (SAST) and Dynamic and Interactive application testing (DAST, IAST) in development pipelines.
+### راهبردهای پیشگیری و کاهش مخاطره
 
-The following options will not prevent Excessive Agency, but can limit the level of damage caused:
+اقدامات زیر می‌تواند از اختیارات بیش از حد جلوگیری کند:
 
-- Log and monitor the activity of LLM extensions and downstream systems to identify where undesirable actions are taking place, and respond accordingly.
-- Implement rate-limiting to reduce the number of undesirable actions that can take place within a given time period, increasing the opportunity to discover undesirable actions through monitoring before significant damage can occur.
+#### ۱. افزونه‌ها را به حداقل برسانید
+  اجازه دهید عامل‌های مدل‌های زبانی بزرگ (LLM Agents) به فراخوانی حداقلِ افزونه‌های ضروری دسترسی داشته باشند. برای مثال، اگر یک سامانه مبتنی بر مدل زبانی بزرگ (LLM) نیازی به دریافت محتوای یک URL ندارد، نباید چنین افزونه‌ای به عامل‌ مدل‌های زبانی بزرگ (LLM Agent) ارائه شود.
+#### ۲. عملکرد افزونه‌ها را به حداقل برسانید
+  توابعی که در افزونه‌های مدل‌های زبانی بزرگ (LLM) پیاده‌سازی می‌شوند را به حداقلِ ضروری محدود کنید. برای مثال، یک افزونه که برای خلاصه‌سازی رایانامه‌ها به صندوق پستی اینترنتی کاربر دسترسی پیدا می‌کند، تنها باید به قابلیت خواندن رایانامه‌ها نیاز داشته باشد، بنابراین افزونه نباید شامل عملکردهای دیگری مانند حذف یا ارسال پیام‌ها باشد.
+#### ۳. از افزونه‌های با قابلیت‌های نامحدود اجتناب کنید
+  تا حد امکان از استفاده از افزونه‌های با قابلیت‌های نامحدود (به عنوان مثال، افزونه دارای مجوز اجرای دستور واسط خط فرمان (shell)، بارگیری URL و ...) اجتناب کنید و از افزونه‌هایی با عملکردهای ریزدانه‌تر استفاده کنید. به عنوان مثال، برنامه مبتنی بر مدل زبانی بزرگ (LLM) ممکن است به نوشتن خروجی در یک فایل نیاز داشته باشد. اگر این کار با استفاده از یک افزونه برای اجرای یک تابع واسط خط فرمان (shell) پیاده‌سازی شود، دامنه اقدامات نامطلوب بسیار زیاد است (هر دستور واسط خط فرمان (shell) دیگری می‌تواند اجرا شود). جایگزین امن‌تر این است که یک افزونه خاص‌منظوره برای نوشتن فایل ایجاد کنید که فقط همان عملکرد خاص را پیاده‌سازی کند.
+#### ۴. دسترسی‌های افزونه را به حداقل برسانید
+  دسترسی‌هایی را که افزونه‌های مدل زبانی بزرگ (LLM) به سایر سامانه‌ها دارند، به حداقلِ ضروری محدود کنید تا دامنه اقدامات نامطلوب محدود شود. برای مثال، یک عامل مدل زبانی بزرگ (LLM) که از یک پایگاه داده محصول برای ارائه توصیه‌های خرید به مشتری استفاده می‌کند، ممکن است فقط به دسترسی خواندن به جدول «products» نیاز داشته باشد؛ این عامل نباید به جداول دیگر دسترسی داشته باشد یا توانایی درج، به‌روزرسانی یا حذف رکوردها را داشته باشد. این امر باید با اعمال دسترسی‌های مناسب پایگاه داده برای هویتی که افزونه مدل زبانی بزرگ (LLM) برای اتصال به پایگاه داده استفاده می‌کند، انجام شود.
+#### ۵. افزونه‌ها را در نقش کاربر اجرا کنید
+  مجوز و محدوده امنیتی کاربر را ردیابی کنید تا اطمینان حاصل شود که اقداماتی که به نمایندگی از یک کاربر انجام می‌شوند، در سامانه‌های پایین‌دستی در نقش آن کاربر خاص و با حداقل امتیازات لازم اجرا می‌شوند. برای مثال، یک افزونه مدل زبانی بزرگ (LLM) که مخزن کد کاربر را می‌خواند، باید از کاربر بخواهد تا از طریق OAuth و با حداقل دامنه مورد نیاز احراز هویت انجام دهد.
+#### ۶. تأیید کاربر را الزامی کنید
+  از کنترل "انسان در حلقه" (human-in-the-loop) استفاده کنید تا نیاز باشد یک انسان اقدامات با تأثیر بالا را قبل از اجرا تأیید کند. این مورد ممکن است در یک سامانه پایین‌دستی (خارج از محدوده برنامه LLM) یا در خود افزونه LLM پیاده‌سازی شود. برای مثال، یک برنامه مبتنی بر مدل زبانی بزرگ (LLM) که محتوای رسانه‌های اجتماعی را به نمایندگی از یک کاربر ایجاد و پست می‌کند، باید یک روال تأیید کاربر را در افزونه‌ای که عملیات «POST» را پیاده‌سازی می‌کند، بگنجاند.
+#### ۷. میانجی‌‍‌گری کامل
+  به جای اتکا به مدل زبانی بزرگ (LLM) برای تصمیم‌گیری در مورد مجاز بودن یا نبودن یک عمل، مجوزها را در سامانه‌های پایین‌دستی پیاده‌سازی کنید. اصل میانجی‌گری کامل را اعمال کنید تا تمام درخواست‌های ارسالی به سامانه‌های پایین‌دستی از طریق افزونه‌ها، در برابر سیاست‌های امنیتی اعتبارسنجی شوند.
+#### ۸. ورودی‌ها و خروجی‌های مدل زبانی بزرگ (LLM) را پاک‌سازی کنید.
+  از به‌روش‌های کدنویسی امن، مانند اعمال توصیه‌های OWASP در ASVS (استاندارد وارسی امنیت برنامه کاربردی)، با تمرکز ویژه بر پاک‌سازی ورودی‌ها پیروی کنید. از آزمون‌های ایستای امنیت برنامه کاربردی (SAST) و آزمون‌های پویا و تعاملی برنامه  (DAST، IAST) در گردش‌کار توسعه (Development Pipelines) استفاده کنید.
 
-### Example Attack Scenarios
+گزینه‌های زیر از اختیارات بیش از حد جلوگیری نمی‌کنند، اما می‌توانند میزان آسیب‌های وارده را محدود کنند:
 
-An LLM-based personal assistant app is granted access to an individual’s mailbox via an extension in order to summarise the content of incoming emails. To achieve this functionality, the extension requires the ability to read messages, however the plugin that the system developer has chosen to use also contains functions for sending messages. Additionally, the app is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the agent to scan the user's inbox for senitive information and forward it to the attacker's email address. This could be avoided by:
-* eliminating excessive functionality by using an extension that only implements mail-reading capabilities,
-* eliminating excessive permissions by authenticating to the user's email service via an OAuth session with a read-only scope, and/or
-* eliminating excessive autonomy by requiring the user to manually review and hit 'send' on every mail drafted by the LLM extension.
+- فعالیت افزونه‌های مدل زبانی بزرگ (LLM) و سامانه‌های پایین‌دستی را رویدادنگاری و پایش کنید تا مشخص شود اقدامات نامطلوب در کجا اتفاق می‌افتند و بر اساس آن واکنش نشان دهید.
+- محدودیت نرخ را اعمال کنید تا تعداد اقدامات نامطلوبی که می‌توانند در یک دوره زمانی معین انجام شوند، کاهش یابد و فرصت کشف اقدامات نامطلوب از طریق پایش، قبل از وقوع آسیب‌های قابل توجه، افزایش یابد.
 
-Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
+### نمونه فرانامه‌های حمله
 
-### Reference Links
+به یک برنامه دستیار شخصی مبتنی بر مدل زبانی بزرگ (LLM)، از طریق یک افزونه، دسترسی به صندوق پستی فرد داده می‌شود تا محتوای ایمیل‌های دریافتی را خلاصه کند. افزونه برای اجرای این عملکرد، به توانایی خواندن پیام‌ها نیاز دارد، با این حال افزونه‌ای که توسعه‌دهنده سامانه انتخاب کرده است، شامل توابعی برای ارسال پیام نیز است. علاوه بر این، برنامه در برابر یک حمله تزریق غیرمستقیم پرامپت آسیب‌پذیر است، به طوری که رایانامه دریافتیِ مخرب، مدل زبانی بزرگ (LLM) را فریب می‌دهد تا به عامل دستور دهد که صندوق ورودی کاربر را برای یافتن اطلاعات حساس پویش کرده و آن را به آدرس ایمیل مهاجم ارسال کند. می‌توان با روش‌های زیر از این امر جلوگیری کرد:
+* حذف عملکردهای اضافی با استفاده از افزونه‌ای که فقط قابلیت‌های خواندن رایانامه را دارد,
+* حذف دسترسی‌های بیش از حد با احراز هویت در خدمت رایانامه کاربر از طریق یک نشست OAuth با دامنه فقط مجوز خواندن (read-only) و/یا
+* حذف خودمختاری بیش از حد با ملزم کردن کاربر به بررسی دستی و فشردن دکمه «send» برای هر رایانامه‌ی پیش‌نویس شده توسط افزونه مدل زبانی بزرگ (LLM).
+
+همچنین، می‌توان با اعمال محدودیت نرخ بر روی واسط ارسال رایانامه، آسیب‌های وارده را کاهش داد.
+
+### پیوند‌های مرجع
 
 1. [Slack AI data exfil from private channels](https://promptarmor.substack.com/p/slack-ai-data-exfiltration-from-private): **PromptArmor**
 2. [Rogue Agents: Stop AI From Misusing Your APIs](https://www.twilio.com/en-us/blog/rogue-ai-agents-secure-your-apis): **Twilio**
