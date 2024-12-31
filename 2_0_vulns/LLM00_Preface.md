@@ -1,32 +1,32 @@
-## Letter from the Project Leads
+## Обращение от руководителей проекта
 
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+Проект OWASP Top 10 for Large Language Model Applications был создан в 2023 году как попытка сообщества выделить и решить проблемы безопасности, характерные для приложений ИИ. С тех пор технологии продолжают распространяться по отраслям и приложениям, а вместе с ними и сопутствующие риски. По мере того как ИИ все глубже внедряется во все сферы деятельности - от взаимодействия с клиентами до внутренних операций, разработчики и специалисты по безопасности обнаруживают новые уязвимости и способы борьбы с ними.
 
-The 2023 list was a big success in raising awareness and building a foundation for secure LLM usage, but we've learned even more since then. In this new 2025 version, we’ve worked with a larger, more diverse group of contributors worldwide who have all helped shape this list. The process involved brainstorming sessions, voting, and real-world feedback from professionals in the thick of LLM application security, whether by contributing or refining those entries through feedback. Each voice was critical to making this new release as thorough and practical as possible.
+Список 2023 года стал значительным успехом в создании фундамента для безопасного использования LLM и повышения осведомленности, однако с тех пор мы узнали еще больше. В версии 2025 года мы сотрудничали с более многочисленной и разнообразной группой участников со всего мира, которые внесли значительный вклад в создание этого списка. Работа включала мозговые штурмы, голосования и экспертные оценки специалистов по безопасности LLM-приложений. Они помогали как напрямую, внося свои предложения, так и через обратную связь, уточняя и совершенствуя записи. Каждый голос сыграл важную роль в том, чтобы сделать новый выпуск как можно более подробным и практичным.
 
-### What’s New in the 2025 Top 10
+### Что нового в Топ-10 2025 года
 
-The 2025 list reflects a better understanding of existing risks and introduces critical updates on how LLMs are used in real-world applications today. For instance, **Unbounded Consumption** expands on what was previously Denial of Service to include risks around resource management and unexpected costs—a pressing issue in large-scale LLM deployments.
+Список 2025 года отражает лучшее понимание существующих рисков и вносит важные обновления в то, как LLM используются в реальных приложениях сегодня. Например, **Неограниченное потребление** расширяет понятие «Отказ в обслуживании» и включает риски, связанные с управлением ресурсами и непредвиденными расходами, что является актуальной проблемой при крупномасштабном развертывании LLM.
 
-The **Vector and Embeddings** entry responds to the community’s requests for guidance on securing Retrieval-Augmented Generation (RAG) and other embedding-based methods, now core practices for grounding model outputs.
+Запись **Векторы и эмбеддинги** отвечает на просьбы сообщества дать рекомендации по защите методов Retrieval-Augmented Generation (RAG) и других методов, основанных на эмбеддингах, которые теперь являются основными практиками для обоснования выходных данных моделей.
 
-We’ve also added **System Prompt Leakage** to address an area with real-world exploits that were highly requested by the community. Many applications assumed prompts were securely isolated, but recent incidents have shown that developers cannot safely assume that information in these prompts remains secret.
+Мы также добавили раздел **Утечка системных инструкций**, чтобы ответить на запросы сообщества по важной проблеме, связанной с реальными угрозами. Многие приложения полагали, что системные инструкции надежно изолированы, но недавние инциденты показали, что разработчики не могут с уверенностью полагать, что информация в этих инструкциях остается секретной.
 
-**Excessive Agency** has been expanded, given the increased use of agentic architectures that can give the LLM more autonomy.  With LLMs acting as agents or in plug-in settings, unchecked permissions can lead to unintended or risky actions, making this entry more critical than ever.
+**Чрезмерная самостоятельность** была расширена благодаря более широкому использованию агентных архитектур, которые предоставляют LLM больше автономии. Когда LLM действуют как агенты или в настройках плагинов, непроверенные разрешения могут привести к непреднамеренным или рискованным действиям, что делает этот вопрос особенно важным.
 
-### Moving Forward
+### Движение вперед
 
-Like the technology itself, this list is a product of the open-source community’s insights and experiences. It has been shaped by contributions from developers, data scientists, and security experts across sectors, all committed to building safer AI applications. We’re proud to share this 2025 version with you, and we hope it provides you with the tools and knowledge to secure LLMs effectively.
+Как и сама технология, этот список является продуктом знаний и опыта сообщества профессионалов, работающих с открытым исходным кодом. Он был сформирован благодаря вкладу разработчиков, специалистов по анализу данных и экспертов по безопасности из разных отраслей, которые стремятся создавать более безопасные приложения на базе ИИ. Мы рады поделиться с вами этой версией 2025 года и надеемся, что она предоставит вам инструменты и знания для эффективной защиты LLM.
 
-Thank you to everyone who helped bring this together and those who continue to use and improve it. We’re grateful to be part of this work with you.
+Спасибо всем, кто помог создать эту версию, и тем, кто продолжает ее использовать и совершенствовать. Мы благодарны за то, что вместе с вами участвуем в этой работе.
 
 
-###@ Steve Wilson
-Project Lead
-OWASP Top 10 for Large Language Model Applications
+#### Стив Уилсон
+Руководитель проекта
+OWASP Top 10 для приложений на базе больших языковых моделей
 LinkedIn: https://www.linkedin.com/in/wilsonsd/
 
-###@ Ads Dawson
-Technical Lead & Vulnerability Entries Lead
-OWASP Top 10 for Large Language Model Applications
+#### Адс Доусон
+Технический руководитель и ведущий специалист по поиску уязвимостей
+OWASP Top 10 для приложений на базе больших языковых моделей
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
