@@ -1,26 +1,17 @@
-# OWASP Top Ten for LLMs - Markdown to PDF
-
-
-
 # ⚠️ **Archived Markdown to PDF Generator for the OWASP Top Ten for LLMs** ⚠️
 
-> **🚨 Important Notice: This Script Has Been Archived 🚨**  
-> This directory contains an open-source GitHub Action implementation of the Markdown to PDF generator used in Version 1 of the OWASP Top Ten for LLMs. It leverages off-the-shelf open-source libraries and CSS definitions to create PDF versions of the Top Ten for LLMs.
-
----
+**🚨 Important Notice: This Script Has Been Archived 🚨**  
+This directory contains an open-source GitHub Action implementation of the Markdown to PDF generator used in Version 1 of the OWASP Top Ten for LLMs. It leverages off-the-shelf open-source libraries and CSS definitions to create PDF versions of the Top Ten for LLMs.
 
 ### **Why This Script Is Archived**  
 While this generator remains fully functional, the team has chosen to utilize a closed-source generator maintained by `@Setotet` for the 2025 version of the OWASP Top Ten for LLMs. As a result, this implementation has been **archived** but will remain available for reference or reuse if needed in the future.  
 
----
 
 ### **Need More Information?**  
 Join the discussion about PDF generation in the OWASP Slack channel:  
 **🔗 [OWASP Slack - #pdf-generation](https://owasp.slack.com/archives/C05N6PWC1M2)**  
 
----
-
-> **Please note**: As this script is archived, it will no longer be actively maintained. For updates or further development, please refer to the proprietary implementation or participate in discussions on OWASP Slack.  
+**Please note**: As this script is archived, it will no longer be actively maintained. For updates or further development, please refer to the proprietary implementation or participate in discussions on OWASP Slack.  
 
 ---
 
