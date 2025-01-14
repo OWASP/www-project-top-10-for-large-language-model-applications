@@ -20,7 +20,7 @@ Moreover, models distributed through shared repositories or open-source platform
 
 ### Prevention and Mitigation Strategies
 
-1. Track data origins and transformations using tools like OWASP CycloneDX or ML-BOM. Verify data legitimacy during all model development stages.
+1. Track data origins and transformations using tools like OWASP CycloneDX or ML-BOM and leverage tools such as [Dyana](https://github.com/dreadnode/dyana) to perform dynamic analysis of third-party software. Verify data legitimacy during all model development stages.
 2. Vet data vendors rigorously, and validate model outputs against trusted sources to detect signs of poisoning.
 3. Implement strict sandboxing to limit model exposure to unverified data sources. Use anomaly detection techniques to filter out adversarial data.
 4. Tailor models for different use cases by using specific datasets for fine-tuning. This helps produce more accurate outputs based on defined goals.
