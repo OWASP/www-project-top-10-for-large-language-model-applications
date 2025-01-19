@@ -1,73 +1,73 @@
-## LLM01:2025 Prompt Injection
+## LLM01:2025 Έγχυση Προτροπών (Prompt Injection)
 
-### Description
+### Περιγραφή
 
-A Prompt Injection Vulnerability occurs when user prompts alter the LLM’s behavior or output in unintended ways. These inputs can affect the model even if they are imperceptible to humans, therefore prompt injections do not need to be human-visible/readable, as long as the content is parsed by the model.
+Μια ευπάθεια έγχυσης προτροπών εμφανίζεται όταν οι προτροπές του χρήστη μεταβάλλουν τη συμπεριφορά ή την έξοδο του LLM με μη προβλεπόμενους τρόπους. Αυτές οι είσοδοι μπορούν να επηρεάσουν το μοντέλο ακόμη και αν είναι ανεπαίσθητες από τον άνθρωπο, επομένως οι εγχύσεις προτροπών δεν χρειάζεται να είναι ορατές/αναγνώσιμες από τον άνθρωπο, εφόσον το περιεχόμενο αναλύεται από το μοντέλο.
 
-Prompt Injection vulnerabilities exist in how models process prompts, and how input may force the model to incorrectly pass prompt data to other parts of the model, potentially causing them to violate guidelines, generate harmful content, enable unauthorized access, or influence critical decisions. While techniques like Retrieval Augmented Generation (RAG) and fine-tuning aim to make LLM outputs more relevant and accurate, research shows that they do not fully mitigate prompt injection vulnerabilities.
+Οι τρωτότητες έγχυσης προτροπών εντοπίζονται στον τρόπο με τον οποίο τα μοντέλα επεξεργάζονται τις προτροπές και στον τρόπο με τον οποίο η είσοδος μπορεί να αναγκάσει το μοντέλο να περάσει εσφαλμένα τα δεδομένα της προτροπής σε άλλα μέρη του μοντέλου, προκαλώντας ενδεχομένως την παραβίαση των κατευθυντήριων γραμμών, τη δημιουργία επιβλαβούς περιεχομένου, τη δυνατότητα μη εξουσιοδοτημένης πρόσβασης ή την επιρροή κρίσιμων αποφάσεων. Παρόλο που τεχνικές όπως η παραγωγή επαυξημένης ανάκτησης (Retrieval Augmented Generation - RAG) και η λεπτομερής ρύθμιση στοχεύουν στο να καταστήσουν τα αποτελέσματα των LLM πιο συναφή και ακριβή, η έρευνα δείχνει ότι δεν μετριάζουν πλήρως τις ευπάθειες έγχυσης προτροπών.
 
-While prompt injection and jailbreaking are related concepts in LLM security, they are often used interchangeably. Prompt injection involves manipulating model responses through specific inputs to alter its behavior, which can include bypassing safety measures. Jailbreaking is a form of prompt injection where the attacker provides inputs that cause the model to disregard its safety protocols entirely. Developers can build safeguards into system prompts and input handling to help mitigate prompt injection attacks, but effective prevention of jailbreaking requires ongoing updates to the model's training and safety mechanisms.
+Ενώ η έγχυσης προτροπών και το jailbreaking είναι συναφείς έννοιες στην ασφάλεια LLM, συχνά χρησιμοποιούνται εναλλακτικά. Η έγχυση προτροπών περιλαμβάνει τη χειραγώγηση των αποκρίσεων του μοντέλου μέσω συγκεκριμένων εισόδων για την αλλαγή της συμπεριφοράς του, η οποία μπορεί να περιλαμβάνει την παράκαμψη των μέτρων ασφαλείας. Το Jailbreaking είναι μια μορφή έγχυσης προτροπών όπου ο εισβολέας παρέχει εισόδους που αναγκάζουν το μοντέλο να αγνοήσει εντελώς τα πρωτόκολλα ασφαλείας του. Οι προγραμματιστές μπορούν να ενσωματώσουν διασφαλίσεις στις προτροπές συστήματος και στο χειρισμό των εισόδων για να βοηθήσουν στον μετριασμό των επιθέσεων έγχυσης προτροπών, αλλά η αποτελεσματική πρόληψη του jailbreaking απαιτεί συνεχείς ενημερώσεις της εκπαίδευσης και των μηχανισμών ασφαλείας του μοντέλου.
 
-### Types of Prompt Injection Vulnerabilities
+### Τύποι ευπαθειών Έγχυσης Προτροπών
 
-#### Direct Prompt Injections
-  Direct prompt injections occur when a user's prompt input directly alters the behavior of the model in unintended or unexpected ways. The input can be either intentional (i.e., a malicious actor deliberately crafting a prompt to exploit the model) or unintentional (i.e., a user inadvertently providing input that triggers unexpected behavior).
+#### Άμεσες Εγχύσεις Προτροπών
+  Οι άμεσες εγχύσεις προτροπών συμβαίνουν όταν η εισαγωγή προτροπών ενός χρήστη μεταβάλλει άμεσα τη συμπεριφορά του μοντέλου με μη προβλεπόμενους ή απροσδόκητους τρόπους. Η είσοδος μπορεί να είναι είτε σκόπιμη (δηλ. ένας κακόβουλος δράστης που δημιουργεί σκόπιμα μια προτροπή για να εκμεταλλευτεί το μοντέλο) είτε ακούσια (δηλ. ένας χρήστης που παρέχει ακούσια είσοδο που προκαλεί απροσδόκητη συμπεριφορά).
 
-#### Indirect Prompt Injections
-  Indirect prompt injections occur when an LLM accepts input from external sources, such as websites or files. The content may have in the external content data that when interpreted by the model, alters the behavior of the model in unintended or unexpected ways. Like direct injections, indirect injections can be either intentional or unintentional.
+#### Έμμεσες Εγχύσεις Προτροπών
+  Οι έμμεσες εγχύσεις προτροπών συμβαίνουν όταν ένα LLM δέχεται είσοδο από εξωτερικές πηγές, όπως ιστότοπους ή αρχεία. Το περιεχόμενο μπορεί να έχει στο εξωτερικό περιεχόμενο δεδομένα τα οποία, όταν ερμηνεύονται από το μοντέλο, μεταβάλλουν τη συμπεριφορά του με ακούσιους ή απροσδόκητους τρόπους. Όπως οι άμεσες εγχύσεις, έτσι και οι έμμεσες εγχύσεις μπορεί να είναι είτε σκόπιμες είτε μη σκόπιμες.
 
-The severity and nature of the impact of a successful prompt injection attack can vary greatly and are largely dependent on both the business context the model operates in, and the agency with which the model is architected. Generally, however, prompt injection can lead to unintended outcomes, including but not limited to:
+Η σοβαρότητα και η φύση του αντίκτυπου μιας επιτυχημένης επίθεσης έγχυσης προτροπών μπορεί να ποικίλλει σε μεγάλο βαθμό και εξαρτάται κυρίως τόσο από το επιχειρησιακό πλαίσιο στο οποίο λειτουργεί το μοντέλο όσο και από την υπηρεσία με την οποία έχει σχεδιαστεί το μοντέλο. Σε γενικές γραμμές, ωστόσο, η άμεση έγχυση μπορεί να οδηγήσει σε ανεπιθύμητα αποτελέσματα, όπως ενδεικτικά:
 
-- Disclosure of sensitive information
-- Revealing sensitive information about AI system infrastructure or system prompts
-- Content manipulation leading to incorrect or biased outputs
-- Providing unauthorized access to functions available to the LLM
-- Executing arbitrary commands in connected systems
-- Manipulating critical decision-making processes
+- Αποκάλυψη ευαίσθητων πληροφοριών
+- Αποκάλυψη ευαίσθητων πληροφοριών σχετικά με την υποδομή του συστήματος ΤΝ ή τις προτροπές συστήματος
+- Χειραγώγηση περιεχομένου που οδηγεί σε εσφαλμένες ή μεροληπτικές εξόδους
+- Παροχή μη εξουσιοδοτημένης πρόσβασης σε λειτουργίες που είναι διαθέσιμες στο LLM
+- Εκτέλεση αυθαίρετων εντολών σε συνδεδεμένα συστήματα
+- Χειραγώγηση κρίσιμων διαδικασιών λήψης αποφάσεων
 
-The rise of multimodal AI, which processes multiple data types simultaneously, introduces unique prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
+Η εξέλιξη της πολυτροπικής τεχνητής νοημοσύνης, η οποία επεξεργάζεται ταυτόχρονα πολλούς τύπους δεδομένων, εισάγει μοναδικούς κινδύνους άμεσης έγχυσης. Κακόβουλοι δρώντες θα μπορούσαν να εκμεταλλευτούν τις αλληλεπιδράσεις μεταξύ των μορφών, όπως η απόκρυψη οδηγιών σε εικόνες που συνοδεύουν καλοήθη κείμενα. Η πολυπλοκότητα αυτών των συστημάτων διευρύνει την επιφάνεια επίθεσης. Τα πολυτροπικά μοντέλα μπορεί επίσης να είναι ευάλωτα σε νέες διατροπικές επιθέσεις που είναι δύσκολο να εντοπιστούν και να μετριαστούν με τις τρέχουσες τεχνικές. Οι ισχυρές άμυνες εξειδικευμένες σε πολυτροπικά μοντέλα αποτελούν σημαντικό τομέα για περαιτέρω έρευνα και ανάπτυξη.
 
-### Prevention and Mitigation Strategies
+### Στρατηγικές πρόληψης και αντιμετώπισης
 
-Prompt injection vulnerabilities are possible due to the nature of generative AI. Given the stochastic influence at the heart of the way models work, it is unclear if there are fool-proof methods of prevention for prompt injection. However, the following measures can mitigate the impact of prompt injections:
+Οι ευπάθειες έγχυσης προτροπής είναι εφικτές λόγω της φύσης της παραγωγικής τεχνητής νοημοσύνης. Δεδομένης της στοχαστικής επιρροής στην πυρήνα του τρόπου λειτουργίας των μοντέλων, δεν είναι σαφές αν υπάρχουν ασφαλείς μέθοδοι πρόληψης για την άμεση έγχυση. Ωστόσο, τα ακόλουθα μέτρα μπορούν να μετριάσουν τον αντίκτυπο των επιθέσεων άμεσης έγχυσης:
 
-#### 1. Constrain model behavior
-  Provide specific instructions about the model's role, capabilities, and limitations within the system prompt. Enforce strict context adherence, limit responses to specific tasks or topics, and instruct the model to ignore attempts to modify core instructions.
-#### 2. Define and validate expected output formats
-  Specify clear output formats, request detailed reasoning and source citations, and use deterministic code to validate adherence to these formats.
+#### 1. Περιορισμός της συμπεριφοράς του μοντέλου
+  Δώστε συγκεκριμένες οδηγίες σχετικά με το ρόλο, τις δυνατότητες και τους περιορισμούς του μοντέλου στο πλαίσιο της προτροπής συστήματος. Επιβάλλετε αυστηρή τήρηση του πλαισίου, περιορίστε τις απαντήσεις σε συγκεκριμένες εργασίες ή θέματα και δώστε εντολή στο μοντέλο να αγνοεί τις προσπάθειες τροποποίησης των βασικών οδηγιών.
+#### 2. Καθορισμός και επικύρωση των αναμενόμενων μορφών εξόδου
+  Καθορίστε σαφείς μορφές εξόδου, ζητήστε λεπτομερή αιτιολογία και παραπομπές στις πηγές και χρησιμοποιήστε ντετερμινιστικό κώδικα για να επικυρώσετε την τήρηση αυτών των μορφών.
 #### 3. Implement input and output filtering
-  Define sensitive categories and construct rules for identifying and handling such content. Apply semantic filters and use string-checking to scan for non-allowed content. Evaluate responses using the RAG Triad: Assess context relevance, groundedness, and question/answer relevance to identify potentially malicious outputs.
-#### 4. Enforce privilege control and least privilege access
-  Provide the application with its own API tokens for extensible functionality, and handle these functions in code rather than providing them to the model. Restrict the model's access privileges to the minimum necessary for its intended operations.
-#### 5. Require human approval for high-risk actions
-  Implement human-in-the-loop controls for privileged operations to prevent unauthorized actions.
-#### 6. Segregate and identify external content
-  Separate and clearly denote untrusted content to limit its influence on user prompts.
-#### 7. Conduct adversarial testing and attack simulations
-  Perform regular penetration testing and breach simulations, treating the model as an untrusted user to test the effectiveness of trust boundaries and access controls.
+  Καθορίστε ευαίσθητες κατηγορίες και αναπτύξτε κανόνες για τον εντοπισμό και το χειρισμό ευαίσθητου περιεχομένου. Εφαρμόστε σημασιολογικά φίλτρα και χρησιμοποιήστε έλεγχο συμβολοσειρών για να ανιχνεύσετε μη επιτρεπτό περιεχόμενο. Αξιολογήστε τις απαντήσεις χρησιμοποιώντας την τριάδα RAG: Αξιολογείστε τη συνάφεια με το πλαίσιο, τη βασιμότητα και τη συνάφεια ερώτησης/απάντησης για τον εντοπισμό δυνητικά κακόβουλων εξόδων.
+#### 4. Επιβολή ελέγχου προνομίων και πρόσβασης με τα ελάχιστα προνόμια
+  Παρέχετε στην εφαρμογή τα δικά της πιστοποιητικά API για επεκτάσιμη λειτουργικότητα και χειριστείτε αυτές τις λειτουργίες σε επίπεδο κώδικα αντί να τις παρέχετε στο μοντέλο. Περιορίστε τα προνόμια πρόσβασης του μοντέλου στο ελάχιστο απαιτούμενο επίπεδο για τις προβλεπόμενες λειτουργίες του.
+#### 5. Απαίτηση ανθρώπινης έγκρισης για ενέργειες υψηλού κινδύνου
+  Εφαρμόστε ελέγχους για προνομιακές λειτουργίες με τη χρήση ανθρώπινου παράγοντα για την αποτροπή μη εξουσιοδοτημένων ενεργειών.
+#### 6. Διαχωρισμός και εντοπισμός εξωτερικού περιεχομένου
+  Διαχωρίστε και επισημάνετε με σαφήνεια το μη αξιόπιστο περιεχόμενο για να περιορίσετε την επιρροή του στις προτροπές των χρηστών.
+#### 7. Διεξαγωγή ανταγωνιστικών δοκιμών και προσομοιώσεων επιθέσεων
+  Εκτελείτε τακτικά δοκιμές διείσδυσης και προσομοιώσεις παραβίασης, αντιμετωπίζοντας το μοντέλο ως μη έμπιστο χρήστη για να ελέγξετε την αποτελεσματικότητα των ορίων εμπιστοσύνης και των ελέγχων πρόσβασης.
 
-### Example Attack Scenarios
+### Παραδείγματα σεναρίων επίθεσης
 
-#### Scenario #1: Direct Injection
-  An attacker injects a prompt into a customer support chatbot, instructing it to ignore previous guidelines, query private data stores, and send emails, leading to unauthorized access and privilege escalation.
-#### Scenario #2: Indirect Injection
-  A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, leading to exfiltration of the the private conversation.
-#### Scenario #3: Unintentional Injection
-  A company includes an instruction in a job description to identify AI-generated applications. An applicant, unaware of this instruction, uses an LLM to optimize their resume, inadvertently triggering the AI detection.
-#### Scenario #4: Intentional Model Influence
-  An attacker modifies a document in a repository used by a Retrieval-Augmented Generation (RAG) application. When a user's query returns the modified content, the malicious instructions alter the LLM's output, generating misleading results.
-#### Scenario #5: Code Injection
-  An attacker exploits a vulnerability (CVE-2024-5184) in an LLM-powered email assistant to inject malicious prompts, allowing access to sensitive information and manipulation of email content.
-#### Scenario #6: Payload Splitting
-  An attacker uploads a resume with split malicious prompts. When an LLM is used to evaluate the candidate, the combined prompts manipulate the model's response, resulting in a positive recommendation despite the actual resume contents.
-#### Scenario #7: Multimodal Injection
-  An attacker embeds a malicious prompt within an image that accompanies benign text. When a multimodal AI processes the image and text concurrently, the hidden prompt alters the model's behavior, potentially leading to unauthorized actions or disclosure of sensitive information.
-#### Scenario #8: Adversarial Suffix
-  An attacker appends a seemingly meaningless string of characters to a prompt, which influences the LLM's output in a malicious way, bypassing safety measures.
-#### Scenario #9: Multilingual/Obfuscated Attack
-  An attacker uses multiple languages or encodes malicious instructions (e.g., using Base64 or emojis) to evade filters and manipulate the LLM's behavior.
+#### Σενάριο #1: Άμεση έγχυση
+  Ένας επιτιθέμενος εισάγει μια προτροπή σε ένα chatbot υποστήριξης πελατών, δίνοντάς του εντολή να αγνοήσει προηγούμενες οδηγίες, να υποβάλει ερωτήματα σε ιδιωτικές αποθήκες δεδομένων και να στείλει μηνύματα ηλεκτρονικού ταχυδρομείου, οδηγώντας σε μη εξουσιοδοτημένη πρόσβαση και κλιμάκωση προνομίων.
+#### Σενάριο #2: Έμμεση έγχυση
+  Ένας χρήστης χρησιμοποιεί ένα LLM για να συνοψίσει το περιεχόμενο μιας ιστοσελίδας που περιλαμβάνει κρυφές οδηγίες οι οποίες αναγκάζουν το LLM να εισάγει μια εικόνα που παραπέμπει σε μια διεύθυνση URL, οδηγώντας σε διαρροή της ιδιωτικής συνομιλίας.
+#### Σενάριο #3: Έγχυση χωρίς πρόθεση
+  Μια εταιρεία περιλαμβάνει μια οδηγία σε μια περιγραφή εργασίας για τον εντοπισμό εφαρμογών που δημιουργούνται με τεχνητή νοημοσύνη. Ένας υποψήφιος, που δεν γνωρίζει αυτή την οδηγία, χρησιμοποιεί ένα LLM για να βελτιστοποιήσει το βιογραφικό του, ενεργοποιώντας κατά λάθος την ανίχνευση της ΤΝ.
+#### Σενάριο #4: Εσκεμμένη επιρροή μοντέλου
+  Ένας εισβολέας τροποποιεί ένα έγγραφο σε ένα αποθετήριο που χρησιμοποιείται από μια εφαρμογή παραγωγής επαυξημένης ανάκτησης (RAG). Όταν το ερώτημα ενός χρήστη επιστρέφει το τροποποιημένο περιεχόμενο, οι κακόβουλες οδηγίες τροποποιούν την έξοδο του LLM, δημιουργώντας παραπλανητικά αποτελέσματα.
+#### Σενάριο #5: Έγχυση κώδικα
+  Ένας επιτιθέμενος εκμεταλλεύεται μια ευπάθεια (CVE-2024-5184) σε έναν βοηθό ηλεκτρονικού ταχυδρομείου που τροφοδοτείται από το LLM για να εισάγει κακόβουλες προτροπές, επιτρέποντας την πρόσβαση σε ευαίσθητες πληροφορίες και τη χειραγώγηση του περιεχομένου του ηλεκτρονικού ταχυδρομείου.
+#### Σενάριο #6: Διαχωρισμός ωφέλιμου φορτίου
+  Ένας επιτιθέμενος ανεβάζει ένα βιογραφικό σημείωμα με διαφορετικές κακόβουλες προτροπές. Όταν ένα LLM χρησιμοποιείται για την αξιολόγηση του υποψηφίου, οι συνδυασμένες προτροπές χειραγωγούν την απόκριση του μοντέλου, με αποτέλεσμα μια θετική σύσταση παρά το πραγματικό περιεχόμενο του βιογραφικού.
+#### Σενάριο #7: Πολυτροπική έγχυση
+  Ένας επιτιθέμενος ενσωματώνει μια κακόβουλη προτροπή σε μια εικόνα που συνοδεύει καλοήθες κείμενο. Όταν μια πολυτροπική τεχνητή νοημοσύνη επεξεργάζεται ταυτόχρονα την εικόνα και το κείμενο, η κρυμμένη προτροπή μεταβάλλει τη συμπεριφορά του μοντέλου, οδηγώντας ενδεχομένως σε μη εξουσιοδοτημένες ενέργειες ή αποκάλυψη ευαίσθητων πληροφοριών.
+#### Σενάριο #8: Ανταγωνιστική κατάληξη
+  Ένας εισβολέας προσθέτει μια φαινομενικά περιττή σειρά χαρακτήρων σε μια προτροπή, η οποία επηρεάζει την έξοδο του LLM με κακόβουλο τρόπο, παρακάμπτοντας τα μέτρα ασφαλείας.
+#### Σενάριο #9: Πολύγλωσση/απόκρυφη επίθεση
+  Ένας επιτιθέμενος χρησιμοποιεί πολλαπλές γλώσσες ή κωδικοποιεί κακόβουλες εντολές (π.χ. χρησιμοποιώντας Base64 ή emojis) για να παρακάμψει τα φίλτρα και να χειραγωγήσει τη συμπεριφορά του LLM.
 
-### Reference Links
+### Σύνδεσμοι αναφοράς
 
 1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
 2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
@@ -84,9 +84,9 @@ Prompt injection vulnerabilities are possible due to the nature of generative AI
 14. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
 15. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
 
-### Related Frameworks and Taxonomies
+### Σχετικά πλαίσια και ταξινομήσεις
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Ανατρέξτε σε αυτή την ενότητα για αναλυτικές πληροφορίες, στρατηγικές σεναρίων σχετικά με την ανάπτυξη υποδομών, εφαρμοσμένους ελέγχους περιβάλλοντος και άλλες βέλτιστες πρακτικές.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
 - [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
