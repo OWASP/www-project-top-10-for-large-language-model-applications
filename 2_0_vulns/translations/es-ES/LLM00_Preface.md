@@ -8,7 +8,7 @@ La lista de 2023 fue un gran éxito a la hora de generar conciencia y sentar las
 
 La lista de 2025 refleja una mejor comprensión de los riesgos existentes e introduce actualizaciones críticas sobre cómo se utilizan los LLM en las aplicaciones del mundo real en la actualidad. Por ejemplo, **Consumo ilimitado** amplía lo que antes se denominaba "Denegación de servicio" para incluir riesgos relacionados con la gestión de recursos y costos inesperados, un problema apremiante en las implementaciones de LLM a gran escala.
 
-La entrada **Debilidades vectoriales y de embeddings** responde a las peticiones de la comunidad de orientación sobre la seguridad de la generación aumentada por recuperación (RAG, Retrieval-Augmented Generation) y otros métodos basados en incrustaciones, que ahora son prácticas base para bajar a tierra las salidas de los modelos.
+La entrada **Debilidades de vector y representaciones vectoriales** responde a las peticiones de la comunidad de orientación sobre la seguridad de la generación aumentada por recuperación (RAG, Retrieval-Augmented Generation) y otros métodos basados en incrustaciones, que ahora son prácticas base para bajar a tierra las salidas de los modelos.
 
 También hemos agregado **Filtración de prompts de sistema** para abordar un área con vulnerabilidades del mundo real que fueron muy solicitadas por la comunidad. Muchas aplicaciones asumieron que los prompts estaban aislados de forma segura, pero los incidentes recientes han demostrado que los desarrolladores no pueden asumir con seguridad que la información en estos prompts permanece secreta.
 
