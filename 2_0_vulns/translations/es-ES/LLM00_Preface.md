@@ -30,3 +30,14 @@ LinkedIn: https://www.linkedin.com/in/wilsonsd/
 Líder técnico y líder de entradas de vulnerabilidad
 OWASP Top 10 para Aplicaciones de Modelos de Lenguaje Grandes
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
+
+### Spanish Translation Team
+Name
+LinkedIn
+
+### About this translation
+Recognizing the technical and critical nature of the OWASP Top 10 for Large Language Model Applications, we consciously chose to employ only human translators in the creation of this translation. The translators listed above not only have a deep technical knowledge of the original content, but also the fluency required to make this translation a success.
+
+###@ Talesh Seeparsan
+Translation Lead, OWASP Top 10 for AI Applications LLM
+LinkedIn: https://www.linkedin.com/in/talesh/
