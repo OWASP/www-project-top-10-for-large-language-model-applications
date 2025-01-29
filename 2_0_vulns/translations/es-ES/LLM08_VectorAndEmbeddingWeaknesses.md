@@ -1,4 +1,4 @@
-## LLM08:2025 Debilidades vectoriales y de embeddings
+## LLM08:2025 Debilidades de vector y representaciones vectoriales
 
 ### Descripción
 

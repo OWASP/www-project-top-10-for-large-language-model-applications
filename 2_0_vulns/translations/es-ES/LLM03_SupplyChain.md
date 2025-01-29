@@ -46,7 +46,7 @@ Se puede encontrar un modelo de amenaza simple [aquí](https://github.com/jsotir
   (Enlace de referencia: [HuggingFace SF_Convertbot Scanner](https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163))
 8. La detección de anomalías y las pruebas de robustez contra adversarios en los modelos y datos suministrados pueden ayudar a detectar la manipulación y el envenenamiento como se discute en "LLM04 Envenenamiento de datos y modelo"; idealmente, esto debería formar parte de los pipelines de MLOps y LLM; sin embargo, estas son técnicas emergentes y pueden ser más fáciles de implementar como parte de los ejercicios de "red teaming".
 9. Implementar una política de parches para mitigar los componentes vulnerables o desactualizados. Asegurarse de que la aplicación se basa en una versión actualizada de las API y el modelo subyacente.
-10. Cifrar los modelos desplegados en dispositivos de borde con IA utilizando comprobaciones de integridad y utilizar APIs de atestación de proveedores para evitar aplicaciones y modelos manipulados y prescindir de las aplicaciones de firmware no reconocido.
+10. Cifrar los modelos desplegados en dispositivos de borde con IA utilizando comprobaciones de integridad y utilizar APIs de certificación de proveedores para evitar aplicaciones y modelos manipulados y prescindir de las aplicaciones de firmware no reconocido.
 
 ### Ejemplos de escenarios de ataque
 
