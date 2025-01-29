@@ -1,71 +1,71 @@
-## LLM06:2025 Excessive Agency
+## LLM06:2025 Übermäßige Handlungsfreiheit
 
-### Description
+### Beschreibung
 
-Einem LLM-basierten System wird von seinem Entwickler oft ein gewisses Maß an Handlungsfähigkeit zugestanden - die Fähigkeit, Funktionen aufzurufen oder über Erweiterungen (von den verschiedenen Anbietern manchmal als Tools, Skills oder Plugins bezeichnet) mit anderen Systemen zu interagieren, um als Reaktion auf eine Eingabeaufforderung Aktionen auszuführen. Die Entscheidung, welche Erweiterung aufgerufen werden soll, kann auch an einen LLM-„Agenten“ delegiert werden, der dies dynamisch auf der Grundlage einer Eingabeaufforderung oder der LLM-Ausgabe bestimmt. Agentenbasierte Systeme rufen in der Regel wiederholt einen LLM auf, wobei sie die Ausgaben früherer Aufrufe nutzen, um die nachfolgenden Aufrufe zu begründen und zu steuern.
+Einem LLM-basierten System wird von den Entwickelnden oft ein gewisser Grad an Handlungsfähigkeit zugestanden, d.h. die Fähigkeit, Funktionen aufzurufen oder mit anderen Systemen über Erweiterungen (von den verschiedenen Anbietern manchmal als Tools, Skills oder Plugins bezeichnet) zu interagieren, um als Reaktion auf eine Eingabeaufforderung Aktionen auszuführen. Die Entscheidung, welche Erweiterung aufgerufen wird, kann auch an einen LLM-„Agenten“ delegiert werden, der dies dynamisch auf der Grundlage einer Eingabeaufforderung oder der LLM-Ausgabe bestimmt. Agentenbasierte Systeme rufen ein LLM in der Regel wiederholt auf, wobei sie die Ausgaben früherer Aufrufe nutzen, um die nachfolgenden Aufrufe zu begründen und zu steuern.
 
-Excessive Agency ist die Schwachstelle, die es ermöglicht, als Reaktion auf unerwartete, zweideutige oder manipulierte Ausgaben eines LLM schädliche Aktionen durchzuführen, unabhängig davon, was die Fehlfunktion des LLM verursacht. Häufige Auslöser sind:
-* Halluzinationen/Verwirrungen, die durch schlecht entwickelte, gutartige Prompts oder einfach ein schlecht funktionierendes Modell verursacht werden;
-* direkte/indirekte Eingabeaufforderung durch einen böswilligen Benutzer, ein früherer Aufruf einer böswilligen/kompromittierten Erweiterung oder (in Systemen mit mehreren Agenten/Kollaboration) ein böswilliger/kompromittierter Peer-Agent.
+Übermäßige Handlungsfreiheit ist eine Schwachstelle, die die Ausführung schädlicher Aktionen als Reaktion auf unerwartete, mehrdeutige oder manipulierte Ausgaben eines LLM ermöglicht, unabhängig davon, was die Fehlfunktion des LLM verursacht. Die häufigsten Auslöser sind:
+* Halluzinationen/Verwirrungen, die durch schlecht entwickelte, gutartige Prompts oder durch ein einfach schlecht funktionierendes Modell verursacht werden;
+* direkte/indirekte Eingabeaufforderung durch böswillige Personen, ein früherer Aufruf einer böswilligen/kompromittierten Erweiterung oder (in Systemen mit mehreren Agenten/Kollaboration) ein böswilliger/kompromittierter Peer-Agent.
 
-Die Ursache für Excessive Agency ist in der Regel eine oder mehrere der folgenden Ursachen:
-* übermäßige Funktionalität;
-* übermäßige Berechtigungen;
-* übermäßige Autonomie.
+Die Ursache für Übermäßige Handlungsfreiheit ist in der Regel eine oder mehrere der folgenden Ursachen:
+* übermäßige Funktionalität
+* übermäßige Berechtigungen
+* übermäßige Autonomie
 
-Excessive Agency kann ein breites Spektrum an Auswirkungen auf die Vertraulichkeit, Integrität und Verfügbarkeit haben und hängt davon ab, mit welchen Systemen eine LLM-basierte App interagieren kann.
+Übermäßige Handlungsfreiheit kann ein breites Spektrum an Auswirkungen auf die Vertraulichkeit, Integrität und Verfügbarkeit haben und hängt davon ab, mit welchen Systemen eine LLM-basierte App interagieren kann.
 
-Hinweis: Excessive Agency unterscheidet sich von Insecure Output Handling, bei dem es um eine unzureichende Prüfung von LLM-Outputs geht.
+Hinweis: Übermäßige Handlungsfreiheit unterscheidet sich von Unsichere Ausgabeverarbeitung, bei dem es um eine unzureichende Prüfung von LLM-Outputs geht.
 
 ### Gängige Beispiele für Risiken
 
 #### 1. Übermäßige Funktionalität
-  Ein LLM-Agent hat Zugriff auf Erweiterungen, die Funktionen enthalten, die für den beabsichtigten Betrieb des Systems nicht erforderlich sind. Zum Beispiel muss ein Entwickler einem LLM-Agenten die Möglichkeit geben, Dokumente aus einem Repository zu lesen, aber die von ihm gewählte 3rd-Party-Erweiterung beinhaltet auch die Möglichkeit, Dokumente zu ändern und zu löschen.
+  Ein LLM-Agent hat Zugriff auf Erweiterungen, die Funktionen enthalten, die für den beabsichtigten Betrieb des Systems nicht erforderlich sind. Zum Beispiel müssen Entwickelnde einem LLM-Agenten die Möglichkeit geben, Dokumente aus einem Repository zu lesen, aber die von ihm gewählte 3rd-Party-Erweiterung beinhaltet auch die Möglichkeit, Dokumente zu ändern und zu löschen.
 #### 2. Übermäßige Funktionalität
-  Eine Erweiterung kann während einer Entwicklungsphase getestet und zugunsten einer besseren Alternative fallen gelassen worden sein, aber das ursprüngliche Plugin bleibt für den LLM-Agenten verfügbar.
+  Eine Erweiterung kann während einer Entwicklungsphase getestet und zugunsten einer besseren Alternative verworfen worden sein, aber das ursprüngliche Plugin bleibt für den LLM-Agenten verfügbar.
 #### 3. Übermäßige Funktionalität
-  Ein LLM-Plugin mit offenem Funktionsumfang filtert die Eingabeanweisungen nicht ordnungsgemäß nach Befehlen, die nicht für den beabsichtigten Betrieb der Anwendung erforderlich sind. Eine Erweiterung zur Ausführung eines bestimmten Shell-Befehls verhindert z. B. nicht, dass andere Shell-Befehle ausgeführt werden.
+  Ein LLM-Plugin mit offenem Funktionsumfang filtert die Eingabeaufforderungen nicht ordnungsgemäß nach Befehlen, die für den beabsichtigten Betrieb der Anwendung nicht erforderlich sind. Beispielsweise verhindert eine Erweiterung zur Ausführung eines bestimmten Shell-Befehls nicht die Ausführung anderer Shell-Befehle.
 #### 4. Übermäßige Berechtigungen
   Eine LLM-Erweiterung verfügt über Berechtigungen auf nachgelagerten Systemen, die für den beabsichtigten Betrieb der Anwendung nicht erforderlich sind. Zum Beispiel verbindet sich eine Erweiterung, die Daten lesen soll, mit einem Datenbankserver über eine Identität, die nicht nur SELECT-Berechtigungen, sondern auch UPDATE-, INSERT- und DELETE-Berechtigungen hat.
 #### 5. Übermäßige Berechtigungen
-  Eine LLM-Erweiterung, die darauf ausgelegt ist, Operationen im Kontext eines einzelnen Benutzers durchzuführen, greift auf nachgelagerte Systeme mit einer allgemeinen hochprivilegierten Identität zu. Eine Erweiterung zum Lesen des Dokumentenspeichers des aktuellen Benutzers verbindet sich z. B. mit dem Dokumentenspeicher mit einem privilegierten Konto, das Zugriff auf die Dateien aller Benutzer hat.
+  Eine LLM-Erweiterung, die Operationen im Kontext einer einzelnen Person ausführen soll, greift auf nachgelagerte Systeme mit einer allgemeinen hochprivilegierten Identität zu. Eine Erweiterung zum Lesen des Dokumentenspeichers des aktuellen Benutzers verbindet sich z. B. mit dem Dokumentenspeicher mit einem privilegierten Konto, das Zugriff auf die Dateien aller User hat.
 #### 6. Übermäßige Autonomie
-  Eine LLM-basierte Anwendung oder Erweiterung ist nicht in der Lage, Aktionen mit hoher Auswirkung unabhängig zu überprüfen und zu genehmigen. Eine Erweiterung, die das Löschen von Dokumenten eines Nutzers erlaubt, führt beispielsweise Löschungen ohne Bestätigung durch den Nutzer durch.
+  Eine LLM-basierte Anwendung oder Erweiterung ist nicht in der Lage, Aktionen mit hoher Auswirkung unabhängig zu überprüfen und zu genehmigen. Beispielsweise führt eine Erweiterung, die das Löschen von Dokumenten einer Person ermöglicht, Löschungen ohne Bestätigung durch den Benutzer durch.
 
 ### Präventions- und Mitigationsstrategien
 
-Die folgenden Maßnahmen können eine Excessive Agency verhindern:
+Die folgenden Maßnahmen können eine Übermäßige Handlungsfreiheit verhindern:
 
-#### 1. Erweiterungen minimieren
-  Beschränke die Erweiterungen, die LLM-Agenten aufrufen dürfen, auf das notwendige Minimum. Wenn ein LLM-basiertes System zum Beispiel nicht die Fähigkeit benötigt, den Inhalt einer URL abzurufen, sollte dem LLM-Agenten eine solche Erweiterung nicht angeboten werden.
-#### 2. Erweiterungsfunktionalität minimieren
-  Beschränke die Funktionen, die in LLM-Erweiterungen implementiert werden, auf das notwendige Minimum. Eine Erweiterung, die auf das Postfach eines Nutzers zugreift, um E-Mails zusammenzufassen, muss zum Beispiel nur in der Lage sein, E-Mails zu lesen, und sollte daher keine anderen Funktionen wie das Löschen oder Senden von Nachrichten enthalten.
-#### 3. Vermeide Erweiterungen mit offenem Ende
-  Vermeide nach Möglichkeit Erweiterungen mit offenem Ende (z. B. einen Shell-Befehl ausführen, eine URL abrufen usw.) und verwende Erweiterungen mit detaillierteren Funktionen. Eine LLM-basierte Anwendung muss zum Beispiel eine Ausgabe in eine Datei schreiben. Wenn dies über eine Erweiterung zum Ausführen einer Shell-Funktion realisiert wird, ist der Spielraum für unerwünschte Aktionen sehr groß (jeder andere Shell-Befehl könnte ausgeführt werden). Eine sicherere Alternative wäre es, eine spezielle Erweiterung für das Schreiben von Dateien zu entwickeln, die nur diese spezielle Funktion implementiert.
-#### 4. Erweiterungsberechtigungen minimieren
-  Beschränke die Berechtigungen, die LLM-Erweiterungen anderen Systemen gewähren, auf das notwendige Minimum, um den Umfang unerwünschter Aktionen zu begrenzen. Ein LLM-Agent, der eine Produktdatenbank nutzt, um einem Kunden Kaufempfehlungen zu geben, braucht z. B. nur Lesezugriff auf die Tabelle „Produkte“; er sollte weder Zugriff auf andere Tabellen noch die Möglichkeit haben, Datensätze einzufügen, zu aktualisieren oder zu löschen. Dies sollte durch die Anwendung geeigneter Datenbankberechtigungen für die Identität, die die LLM-Erweiterung für die Verbindung zur Datenbank verwendet, durchgesetzt werden.
-#### 5. Ausführen von Erweiterungen im Kontext des Benutzers
-  Verfolge die Benutzerautorisierung und den Sicherheitsbereich, um sicherzustellen, dass Aktionen, die im Namen eines Benutzers durchgeführt werden, auf nachgelagerten Systemen im Kontext des jeweiligen Benutzers und mit den erforderlichen Mindestberechtigungen ausgeführt werden. Zum Beispiel sollte eine LLM-Erweiterung, die das Code-Repository eines Nutzers liest, die Authentifizierung des Nutzers über OAuth und den erforderlichen Mindestumfang erfordern.
-#### 6. Benutzerfreigabe erforderlich machen
-  Nutze die „Human-in-the-Loop“-Kontrolle, um zu verlangen, dass ein Mensch Aktionen mit großen Auswirkungen genehmigt, bevor sie ausgeführt werden. Dies kann in einem nachgelagerten System (außerhalb des Geltungsbereichs der LLM-Anwendung) oder innerhalb der LLM-Erweiterung selbst implementiert werden. Eine LLM-basierte Anwendung, die im Auftrag eines Nutzers Inhalte für soziale Medien erstellt und postet, sollte zum Beispiel eine Genehmigungsroutine in der Erweiterung enthalten, die den „Post“-Vorgang implementiert.
+#### 1. Minimieren Sie Erweiterungen
+  Beschränken Sie die Erweiterungen, die LLM-Agenten aufrufen können, auf das notwendige Minimum. Wenn z. B. ein LLM-basiertes System nicht die Fähigkeit benötigt, den Inhalt einer URL abzurufen, sollte eine solche Erweiterung dem LLM-Agenten nicht angeboten werden.
+#### 2. Minimieren Sie die Funktionalität von LLM-Erweiterungen
+  Beschränken Sie die in LLM-Erweiterungen implementierten Funktionen auf das notwendige Minimum. Zum Beispiel sollte eine Erweiterung, die auf die Mailboxen von Personen zugreift, um E-Mails zusammenzufassen, nur in der Lage sein, E-Mails zu lesen, und daher keine anderen Funktionen wie das Löschen oder Senden von Nachrichten enthalten.
+#### 3. Vermeiden Sie weitreichende und unbeschränkte Erweiterungen
+  Vermeiden Sie nach Möglichkeit weitreichende und unbeschränkte Erweiterungen (z.B. einen Shell-Befehl ausführen, eine URL abrufen usw.) und verwenden Sie Erweiterungen mit detaillierteren Funktionen. Beispielsweise muss eine LLM-basierte Anwendung eine Ausgabe in eine Datei schreiben. Wenn dies über eine Erweiterung zur Ausführung einer Shell-Funktion realisiert wird, ist der Spielraum für unerwünschte Aktionen sehr groß (jeder andere Shell-Befehl könnte ausgeführt werden). Eine sicherere Alternative wäre es, eine spezielle Erweiterung für das Schreiben von Dateien zu entwickeln, die nur diese spezielle Funktion implementiert.
+#### 4. Minimieren Sie Berechtigungen für LLM-Erweiterungen
+  Beschränken Sie die Berechtigungen, die LLM-Erweiterungen für andere Systeme erhalten, auf das absolut notwendige Minimum. Zum Beispiel benötigt ein LLM-Agent, der eine Produktdatenbank verwendet, um einem Kunden Kaufempfehlungen zu geben, nur Lesezugriff auf die Tabelle „Produkte“; er sollte keinen Zugriff auf andere Tabellen haben und keine Datensätze einfügen, aktualisieren oder löschen können. Dies sollte durch entsprechende Datenbankberechtigungen für die Identität, die die LLM-Erweiterung für die Verbindung zur Datenbank verwendet, durchgesetzt werden.
+#### 5. Führen Sie Erweiterungen im Kontext des Benutzers aus
+  Verfolgen Sie die Benutzerautorisierung und den Sicherheitsumfang, um sicherzustellen, dass Aktionen, die im Namen von Personen durchgeführt werden, auf nachgelagerten Systemen im Kontext des jeweiligen Benutzers und mit den erforderlichen Mindestberechtigungen ausgeführt werden. Ein Beispiel: Eine LLM-Erweiterung, die auf das Code-Repository eines Benutzers zugreift, sollte erfordern, dass sich der Benutzer per OAuth authentifiziert - und zwar mit dem minimalen Berechtigungsumfang, der für die jeweilige Funktion erforderlich ist.
+#### 6. Fordern Sie eine Freigabe durch den Benutzer 
+  Nutzen Sie eine manuelle Kontrolle, um zu verlangen, dass ein Mensch Aktionen mit großen Auswirkungen genehmigt, bevor sie ausgeführt werden. Dies kann in einem nachgelagerten System (außerhalb des Geltungsbereichs der LLM-Anwendung) oder innerhalb der LLM-Erweiterung selbst implementiert werden. Beispielsweise sollte eine LLM-basierte Anwendung, die im Auftrag eines Nutzers Inhalte für soziale Medien erstellt und postet, eine Genehmigungsroutine in der Erweiterung enthalten, die den „Post“-Vorgang implementiert.
 #### 7. Vollständige Mediation
-  Implementiere die Autorisierung in nachgelagerten Systemen, anstatt dich auf eine LLM zu verlassen, um zu entscheiden, ob eine Aktion erlaubt ist oder nicht. Setze das Prinzip der vollständigen Vermittlung durch, damit alle Anfragen, die über Erweiterungen an nachgelagerte Systeme gestellt werden, anhand von Sicherheitsrichtlinien überprüft werden.
-#### 8. LLM-Eingaben und -Ausgaben säubern
-  Befolge die Best Practices für sichere Kodierung, z. B. die Empfehlungen von OWASP im ASVS (Application Security Verification Standard), mit besonderem Schwerpunkt auf der Eingabesanitisierung. Verwende statische Anwendungssicherheitstests (SAST) und dynamische und interaktive Anwendungstests (DAST, IAST) in den Entwicklungspipelines.
+  Implementieren Sie die Autorisierung in nachgelagerten Systemen, anstatt sich darauf zu verlassen, dass ein LLM entscheidet, ob eine Aktion zulässig ist oder nicht. Setzen Sie das Complete-Mediation-Prinzip (Prinzip der vollständigen Vermittlung) um, sodass alle Anfragen, die über Erweiterungen an nachgelagerte Systeme gestellt werden, gegen die Sicherheitsrichtlinien validiert werden.
+#### 8. Säubern Sie LLM-Eingaben und -Ausgaben
+  Befolgen Sie die Best Practices für sichere Entwicklung, wie z. B. die Empfehlungen von OWASP im ASVS (Application Security Verification Standard), mit besonderem Schwerpunkt auf der Eingabebereinigung. Verwenden Sie statische Anwendungssicherheitstests (SAST) sowie dynamische und interaktive Anwendungstests (DAST, IAST) in den Entwicklungspipelines.
 
-Die folgenden Optionen werden Excessive Agency nicht verhindern, können aber den Schaden begrenzen:
-
+Die folgenden Optionen können Übermäßige Handlungsfreiheit nicht verhindern, können aber den Schaden begrenzen:
 - Protokollieren und überwachen Sie die Aktivitäten von LLM-Erweiterungen und nachgelagerten Systemen, um festzustellen, wo unerwünschte Aktionen stattfinden, und reagieren Sie entsprechend.
-- Implementiere eine Ratenbegrenzung, um die Anzahl der unerwünschten Aktionen innerhalb eines bestimmten Zeitraums zu reduzieren und die Chance zu erhöhen, unerwünschte Aktionen durch Überwachung zu entdecken, bevor ein erheblicher Schaden entsteht.
+- Implementieren Sie ein Rate-Limiting, um die Anzahl unerwünschter Aktionen innerhalb eines bestimmten Zeitraums zu reduzieren und die Chance zu erhöhen, unerwünschte Aktionen durch Überwachung zu entdecken, bevor ein erheblicher Schaden entsteht.
 
 ### Beispiele für Angriffsszenarien
 
-Eine LLM-basierte persönliche Assistenten-App erhält über eine Erweiterung Zugriff auf die Mailbox einer Person, um den Inhalt eingehender E-Mails zusammenzufassen. Um diese Funktion zu erreichen, muss die Erweiterung in der Lage sein, Nachrichten zu lesen. Das Plugin, für das sich der Systementwickler entschieden hat, enthält jedoch auch Funktionen zum Senden von Nachrichten. Außerdem ist die App anfällig für einen indirekten Prompt-Injection-Angriff, bei dem eine böswillig erstellte eingehende E-Mail den LLM dazu verleitet, den Agenten anzuweisen, den Posteingang des Benutzers nach sensiblen Informationen zu durchsuchen und diese an die E-Mail-Adresse des Angreifers weiterzuleiten. Dies kann vermieden werden, indem:
-* überflüssige Funktionen eliminiert werden, indem eine Erweiterung verwendet wird, die nur E-Mail-Lesefunktionen implementiert,
-* übermäßige Berechtigungen beseitigt werden, indem man sich beim E-Mail-Dienst des Nutzers über eine OAuth-Sitzung mit Leseberechtigung authentifiziert, und/oder
-* Beseitigung übermäßiger Autonomie, indem der Nutzer jede von der LLM-Erweiterung erstellte E-Mail manuell überprüfen und auf „Senden“ drücken muss.
+Eine LLM-basierte Personal Assistant-Anwendung kann über eine Erweiterung auf die Mailbox einer Person zugreifen, um den Inhalt eingehender E-Mails zusammenzufassen. Für diese Funktion muss die Erweiterung in der Lage sein, Nachrichten zu lesen. Das von den Entwickelnden gewählte Plugin enthält jedoch auch Funktionen zum Versenden von Nachrichten. Außerdem ist die Anwendung anfällig für einen indirekten Prompt-Injection-Angriff, bei dem eine böswillig erzeugte eingehende E-Mail das LLM dazu veranlasst, den Agenten anzuweisen, den Posteingang der nutzenden Person nach sensiblen Informationen zu durchsuchen und diese an die E-Mail-Adresse der Angreifenden weiterzuleiten. 
+Dies kann vermieden werden durch:
+* das Entfernen überflüssiger Funktionen, indem eine Erweiterung verwendet wird, die ausschließlich Leserechte für E-Mails implementiert,
+* das Reduzieren übermäßiger Berechtigungen, indem die Authentifizierung beim E-Mail-Dienst der Benutzenden über eine OAuth-Sitzung mit einem nur-Lesen-Bereich erfolgt, und/oder
+* das Begrenzen übermäßiger Autonomie, indem die nutzende Person jede von der LLM-Erweiterung erstellte E-Mail manuell überprüfen und senden muss.
 
-Alternativ könnte der verursachte Schaden durch die Implementierung einer Ratenbegrenzung auf der Schnittstelle für den E-Mail-Versand verringert werden.
+Alternativ könnte der verursachte Schaden durch die Implementierung von Rate-Limiting and der Schnittstelle für den E-Mail-Versand verringert werden.
 
 ### Referenzlinks
 
