@@ -2,11 +2,11 @@
 
 ### Descrição
 
-Uma Vulnerabilidade de Injeção de Prompt ocorre quando prompts de usuários alteram o comportamento ou a saída de um LLM de maneiras não intencionais. Esses inputs podem afetar o modelo mesmo que sejam imperceptíveis para humanos; portanto, injeções de prompt não precisam ser visíveis ou legíveis por humanos, desde que o conteúdo seja interpretado pelo modelo.
+Uma Vulnerabilidade de Injeção de Prompt ocorre quando prompts de usuários alteram o comportamento ou a saída de um LLM de maneiras não intencionais. Esses inputs podem afetar o modelo mesmo que sejam imperceptíveis para humanos; portanto, injeções de prompt não precisam ser visíveis ou compreensível por humanos, desde que o conteúdo seja interpretado pelo modelo.
 
 As vulnerabilidades de injeção de prompt existem na forma como os modelos processam os prompts e como os inputs podem forçar o modelo a passar dados incorretamente para outras partes do modelo, potencialmente violando diretrizes, gerando conteúdo prejudicial, permitindo acesso não autorizado ou influenciando decisões críticas. Embora técnicas como Geração com Recuperação Aprimorada (RAG) e fine-tuning busquem tornar as saídas dos LLMs mais relevantes e precisas, pesquisas mostram que essas técnicas não mitigam completamente as vulnerabilidades de injeção de prompt.
 
-Embora injeção de prompt e jailbreak sejam conceitos relacionados à segurança de LLMs, eles frequentemente são usados de forma intercambiável. Injeção de prompt envolve manipular as respostas do modelo por meio de entradas específicas para alterar seu comportamento, o que pode incluir a violação de medidas de segurança. Jailbreak é uma forma de injeção de prompt onde o atacante fornece entradas que fazem o modelo ignorar completamente seus protocolos de segurança. Desenvolvedores podem implementar salvaguardas nos prompts do sistema e no tratamento de inputs para ajudar a mitigar ataques de injeção de prompt, mas a prevenção eficaz de jailbreaks requer atualizações contínuas no treinamento e nos mecanismos de segurança do modelo.
+Embora injeção de prompt e jailbreak sejam conceitos relacionados à segurança de LLMs, eles frequentemente são usados como sinônimos. Injeção de prompt envolve manipular as respostas do modelo por meio de entradas específicas para alterar seu comportamento, o que pode incluir a violação de medidas de segurança. Jailbreak é uma forma de injeção de prompt onde o atacante fornece entradas que fazem o modelo ignorar completamente seus protocolos de segurança. Desenvolvedores podem implementar salvaguardas nos prompts do sistema e no tratamento de inputs para ajudar a mitigar ataques de injeção de prompt, mas a prevenção eficaz de jailbreaks requer atualizações contínuas no treinamento e nos mecanismos de segurança do modelo.
 
 ### Tipos de Vulnerabilidades de Injeção de Prompt
 
@@ -19,43 +19,43 @@ Injeções indiretas ocorrem quando um LLM aceita inputs de fontes externas, com
 A gravidade e a natureza do impacto de um ataque de injeção de prompt bem-sucedido podem variar amplamente, dependendo do contexto de negócios em que o modelo opera e do grau de autonomia com que o modelo foi arquitetado. Geralmente, injeções de prompt podem levar a resultados não intencionais, incluindo, mas não se limitando a:
 
 - Divulgação de informações sensíveis
-- Exposição de informações confidenciais sobre infraestrutura ou prompts do sistema
+- Revelação de informações sensíveis sobre infraestrutura de IA ou prompts do sistema
 - Manipulação de conteúdo que leva a saídas incorretas ou tendenciosas
 - Fornecimento de acesso não autorizado a funções disponíveis para o LLM
 - Execução de comandos arbitrários em sistemas conectados
 - Manipulação de processos críticos de tomada de decisão
 
-O avanço da IA multimodal, que processa múltiplos tipos de dados simultaneamente, introduz riscos únicos de injeção de prompt. Atacantes maliciosos podem explorar interações entre modalidades, como esconder instruções em imagens que acompanham texto benigno. A complexidade desses sistemas expande a superfície de ataque. Modelos multimodais também podem ser suscetíveis a novos ataques entre modalidades que são difíceis de detectar e mitigar com as técnicas atuais. Defesas robustas específicas para multimodalidade são uma área importante para futuras pesquisas e desenvolvimento.
+O avanço da IA multimodal, que processa múltiplos tipos de dados simultaneamente, introduz riscos únicos de injeção de prompt. Atacantes maliciosos podem explorar interações entre modalidades, como esconder instruções em imagens que acompanham texto benigno. A complexidade desses sistemas expande a superfície de ataque. Modelos multimodais também podem ser vulneráveis a novos ataques intermodais que são difíceis de detectar e mitigar com as técnicas disponíveis atualmente. Defesas robustas específicas para modelos multimodais são uma área crucial para pesquisas e desenvolvimentos futuros.
 
 ### Estratégias de Prevenção e Mitigação
 
-Vulnerabilidades de injeção de prompt são possíveis devido à natureza da IA generativa. Dado o impacto estocástico intrínseco ao funcionamento dos modelos, ainda não é claro se existem métodos infalíveis de prevenção para injeção de prompt. No entanto, as seguintes medidas podem mitigar os impactos:
+Vulnerabilidades de injeção de prompt são possíveis devido à natureza da IA generativa. Dado o impacto estocástico inerente ao funcionamento dos modelos, ainda não é claro se existem métodos infalíveis de prevenção para injeção de prompt. No entanto, as seguintes medidas podem mitigar os impactos:
 
 #### 1. Restringir o comportamento do modelo
-  Forneça instruções específicas sobre o papel, as capacidades e as limitações do modelo dentro do prompt do sistema. Implemente adesão estrita ao contexto, limite respostas a tarefas ou tópicos específicos e instrua o modelo a ignorar tentativas de modificar instruções principais.
+  Forneça instruções específicas sobre o papel, as capacidades e as limitações do modelo dentro do prompt do sistema. Implemente adesão estrita ao contexto, limite respostas a tarefas ou tópicos específicos e oriente o modelo a desconsiderar tentativas de alterar as instruções principais.
 
 #### 2. Definir e validar formatos de saída esperados
-  Especifique formatos de saída claros, solicite raciocínio detalhado e citações de fontes, e use código determinístico para validar a conformidade com esses formatos.
+  Defina formatos de saída claros, requisitando raciocínio detalhado e citações de fontes, e utilize código determinístico para verificar a conformidade com esses formatos.
 
 #### 3. Implementar filtragem de entrada e saída
   Defina categorias sensíveis e construa regras para identificar e lidar com esses conteúdos. Aplique filtros semânticos e use verificações de strings para identificar conteúdo não permitido. Avalie respostas utilizando o Triângulo RAG: Relevância do contexto, fundamentação e relevância pergunta/resposta para identificar saídas potencialmente maliciosas.
 
-#### 4. Reforçar controle de privilégios e acesso com o menor privilégio
-  Forneça tokens de API exclusivos para funcionalidades extensíveis da aplicação e lide com essas funções em código em vez de fornecê-las ao modelo. Restrinja os privilégios de acesso do modelo ao mínimo necessário para suas operações pretendidas.
+#### 4. Reforçar o controle de privilégios e implementar o princípio de menor privilégio para acesso
+  Forneça tokens de API exclusivos para funcionalidades extensíveis da aplicação e gerencie essas funções diretamente no código em vez de fornecê-las ao modelo. Restrinja os privilégios de acesso do modelo ao mínimo necessário para suas operações previstas.
 
 #### 5. Requerer aprovação humana para ações de alto risco
-  Implemente controles de humanos no loop para operações privilegiadas a fim de evitar ações não autorizadas.
+  Implemente controles de humanos no processo para operações privilegiadas a fim de prevenir ações não autorizadas.
 
 #### 6. Segregar e identificar conteúdo externo
   Separe e identifique claramente conteúdos não confiáveis para limitar sua influência nos prompts dos usuários.
 
 #### 7. Realizar testes adversariais e simulações de ataques
-  Realize testes de penetração regulares e simulações de violação, tratando o modelo como um usuário não confiável para testar a eficácia das barreiras de confiança e controles de acesso.
+  Realize testes de penetração regulares e simulações de violação, tratando o modelo como um usuário não confiável, para testar a eficácia das barreiras de confiança e controles de acesso.
 
-### Cenários de Ataques Exemplares
+### Exemplos de Cenários de Ataques 
 
 #### Cenário #1: Injeção Direta
-  Um atacante injeta um prompt em um chatbot de suporte ao cliente, instruindo-o a ignorar diretrizes anteriores, consultar bancos de dados privados e enviar e-mails, levando a acesso não autorizado e elevação de privilégios.
+  Um atacante injeta um prompt em um chatbot de suporte ao cliente, instruindo-o a ignorar diretrizes anteriores, consultar base de dados privadas e enviar e-mails, resultando em acesso não autorizado e elevação de privilégios.
 
 #### Cenário #2: Injeção Indireta
   Um usuário utiliza um LLM para resumir uma página da web que contém instruções ocultas que fazem o LLM inserir uma imagem vinculando a uma URL, resultando na exfiltração de uma conversa privada.
