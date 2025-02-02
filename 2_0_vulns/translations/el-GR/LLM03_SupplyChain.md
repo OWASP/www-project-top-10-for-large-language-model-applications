@@ -65,18 +65,18 @@
 #### Σενάριο #7: Επιθέσεις CloudBorne και CloudJacking
   Αυτές οι επιθέσεις στοχεύουν σε υποδομές νέφους, αξιοποιώντας κοινόχρηστους πόρους και ευπάθειες στα επίπεδα εικονικοποίησης. Το CloudBorne περιλαμβάνει την εκμετάλλευση ευπαθειών υλικολογισμικού σε κοινόχρηστα περιβάλλοντα νέφους, θέτοντας σε κίνδυνο τους φυσικούς διακομιστές που φιλοξενούν εικονικές περιπτώσεις. Το CloudJacking αναφέρεται στον κακόβουλο έλεγχο ή την κακή χρήση των στιγμιοτύπων νέφους, οδηγώντας δυνητικά σε μη εξουσιοδοτημένη πρόσβαση σε κρίσιμες πλατφόρμες ανάπτυξης LLM. Και οι δύο επιθέσεις αντιπροσωπεύουν σημαντικούς κινδύνους για τις αλυσίδες εφοδιασμού που εξαρτώνται από μοντέλα μηχανικής μάθησης που βασίζονται στο υπολογιστικό νέφος, καθώς τα παραβιασμένα περιβάλλοντα θα μπορούσαν να εκθέσουν ευαίσθητα δεδομένα ή να διευκολύνουν περαιτέρω επιθέσεις.
 #### Σενάριο #8: LeftOvers (CVE-2023-4969)
-  LeftOvers exploitation of leaked GPU local memory to recover sensitive data. An attacker can use this attack to exfiltrate sensitive data in production servers and development workstations or laptops.
+  Αξιοποίηση της ευπαθειας «LeftOvers» της τοπικής μνήμης της GPU για την ανάκτηση ευαίσθητων δεδομένων. Ένας επιτιθέμενος μπορεί να χρησιμοποιήσει αυτή την επίθεση για να διαρρεύσει ευαίσθητα δεδομένα σε διακομιστές παραγωγής και σταθμούς εργασίας ή φορητούς υπολογιστές ανάπτυξης.
 #### Σενάριο #9: WizardLM
-  Following the removal of WizardLM, an attacker exploits the interest in this model and publish a fake version of the model with the same name but containing malware and backdoors.
-#### Σενάριο #10: Model Merge/Format Conversion Service
-  An attacker stages an attack with a model merge or format conversation service to compromise a publicly available access model to inject malware. This is an actual attack published by vendor HiddenLayer.
-#### Σενάριο #11: Reverse-Engineer Mobile App
-  An attacker reverse-engineers an mobile app to replace the model with a tampered version that leads the user to scam sites. Users are encouraged to download the app directly via social engineering techniques. This is a "real attack on predictive AI" that affected 116 Google Play apps including popular security and safety-critical applications used for as cash recognition, parental control, face authentication, and financial service.
-  (Ref. link: [real attack on predictive AI](https://arxiv.org/abs/2006.08131))
-#### Σενάριο #12: Dataset Poisoning
-  An attacker poisons publicly available datasets to help create a back door when fine-tuning models. The back door subtly favors certain companies in different markets.
-#### Σενάριο #13: T&Cs and Privacy Policy
-  An LLM operator changes its T&Cs and Privacy Policy to require an explicit opt out from using application data for model training, leading to the memorization of sensitive data.
+  Μετά την απόσυρση του μοντέλου WizardLM, ένας επιτιθέμενος εκμεταλλεύεται το ενδιαφέρον για αυτό το μοντέλο και δημοσιεύει μια ψεύτικη έκδοση του μοντέλου με το ίδιο όνομα, η οποία όμως περιέχει κακόβουλο λογισμικό και backdoors.
+#### Σενάριο #10: Υπηρεσία Συγχώνευσης Μοντέλων/Μετατροπής Μορφότυπων
+  Ένας επιτιθέμενος εξαπολύει επίθεση μέσω μιας υπηρεσίας συγχώνευσης ή μετατροπής μορφής μοντέλωνγια να θέσει σε κίνδυνο ένα δημόσια διαθέσιμο μοντέλο πρόσβασης για να εισάγει κακόβουλο λογισμικό. Αυτή είναι μια πραγματική επίθεση που δημοσιεύθηκε από τον προμηθευτή HiddenLayer.
+#### Σενάριο #11: Αντίστροφη Μηχανικής Εφαρμογής για Κινητές Συσκευές
+  Ένας εισβολέας πραγματοποιεί αντίστροφη μηχανική μιας εφαρμογής για κινητά για να αντικαταστήσει το μοντέλο με μια παραποιημένη έκδοση που οδηγεί τον χρήστη σε ιστότοπους εξαπάτησης. Οι χρήστες ενθαρρύνονται να κατεβάσουν απευθείας την εφαρμογή μέσω τεχνικών κοινωνικής μηχανικής. Πρόκειται για μια «πραγματική επίθεση στην προγνωστική Τεχνητή Νοημοσύνη» που επηρέασε 116 εφαρμογές του Google Play, συμπεριλαμβανομένων δημοφιλών εφαρμογών ασφαλείας και κρίσιμων για την ασφάλεια εφαρμογών που χρησιμοποιούνται σε αναγνώριση μετρητών, γονικό έλεγχο, έλεγχο ταυτότητας προσώπου και χρηματοοικονομικές υπηρεσίες.
+  (Σύνδεσμος Αναφοράς: [real attack on predictive AI](https://arxiv.org/abs/2006.08131))
+#### Σενάριο #12: Δηλητηρίαση Συνόλου Δεδομένων
+  Ένας επιτιθέμενος δηλητηριάζει δημόσια διαθέσιμα σύνολα δεδομένων για να βοηθήσει στη δημιουργία μιας κερκόπορτας κατά τη βελτιστοποίηση των μοντέλων. Η κερκόπορτα ευνοεί διακριτικά συγκεκριμένες εταιρείες σε διαφορετικές αγορές.
+#### Σενάριο #13: Όροι και Προϋποθέσεις και Πολιτική Απορρήτου
+  Ένας φορέας διαχείρισης LLM αλλάζει τους όρους και την πολιτική απορρήτου του ώστε να απαιτεί ρητή εξαίρεση από τη χρήση δεδομένων εφαρμογών για την εκπαίδευση μοντέλων, οδηγώντας στην απομνημόνευση ευαίσθητων δεδομένων.
 
 ### Σύνδεσμοι Αναφοράς
 
