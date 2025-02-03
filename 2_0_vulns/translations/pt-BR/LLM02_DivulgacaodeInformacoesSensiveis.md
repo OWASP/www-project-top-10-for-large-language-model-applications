@@ -2,11 +2,11 @@
 
 ### Descrição
 
-Informações sensíveis podem afetar tanto o LLM quanto o contexto de sua aplicação. Isso inclui informações pessoais identificáveis (PII), detalhes financeiros, registros de saúde, dados confidenciais de negócios, credenciais de segurança e documentos legais. Modelos proprietários também podem ter métodos de treinamento exclusivos e código-fonte considerados sensíveis, especialmente em modelos fechados ou fundacionais.
+Informações sensíveis podem afetar tanto o LLM quanto o contexto de sua aplicação. Isso inclui informações pessoais identificáveis (PII), detalhes financeiros, registros de saúde, dados confidenciais de negócios, credenciais de segurança e documentos legais. Modelos proprietários também podem ter métodos de treinamento exclusivos e código-fonte considerados sensíveis, especialmente em modelos fechados ou fundamentais.
 
 LLMs, especialmente quando integrados em aplicações, correm o risco de expor dados sensíveis, algoritmos proprietários ou detalhes confidenciais através de suas saídas. Isso pode resultar em acesso não autorizado a dados, violações de privacidade e infrações de propriedade intelectual. Consumidores devem estar cientes de como interagir de forma segura com LLMs, entendendo os riscos de fornecer informações sensíveis que podem ser inadvertidamente divulgadas nas respostas do modelo.
 
-Para reduzir esse risco, aplicações que utilizam LLMs devem realizar uma sanitização de dados adequada para evitar que dados dos usuários sejam incluídos no treinamento do modelo. Os proprietários das aplicações também devem oferecer políticas claras de Termos de Uso, permitindo que os usuários optem por não incluir seus dados no treinamento do modelo. Restrições dentro do prompt do sistema sobre os tipos de dados que o LLM deve retornar podem ajudar a mitigar a divulgação de informações sensíveis. No entanto, tais restrições podem não ser sempre respeitadas e podem ser contornadas via injeção de prompt ou outros métodos.
+Para reduzir esse risco, aplicações que utilizam LLMs devem realizar uma sanitização de dados adequada para evitar que dados dos usuários sejam incluídos no treinamento do modelo. Os proprietários das aplicações também devem oferecer políticas claras de Termos de Uso, permitindo que os usuários optem por não incluir seus dados no treinamento do modelo. Adicionar restrições dentro do prompt do sistema sobre os tipos de dados que o LLM deve retornar podem ajudar a mitigar a divulgação de informações sensíveis. No entanto, tais restrições podem não ser sempre respeitadas e podem ser contornadas via injeção de prompt ou outros métodos.
 
 ### Exemplos Comuns de Vulnerabilidades
 
@@ -51,8 +51,8 @@ Para reduzir esse risco, aplicações que utilizam LLMs devem realizar uma sanit
 
 #### 1. Ocultar Pré-configuração do Sistema
   Limite a capacidade dos usuários de sobrescrever ou acessar as configurações iniciais do sistema, reduzindo o risco de exposição de configurações internas.
-#### 2. Referenciar Melhores Práticas de Configuração de Segurança
-  Siga diretrizes como "OWASP API8:2023 Configuração de Segurança" para evitar o vazamento de informações sensíveis através de mensagens de erro ou detalhes de configuração.
+#### 2. Consulte as Melhores Práticas para Configuração de Segurança
+  Siga diretrizes como "OWASP API8:2023 Security Misconfiguration" para evitar a exposição de informações sensíveis por meio de mensagens de erro ou detalhes de configuração.
   (Ref. link: [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
 ###@ Técnicas Avançadas:
