@@ -40,5 +40,7 @@ _template.md @rossja
 ## Translations:
 2_0_vulns/translations @talesh
 
+# Sub-projects of the OWASP Top 10 for LLM Apps and Gen AI Project
+
 ## Agentic Security Initiative (ASI) under the Top 10 for LLM and Gen AI Project
-agent_security_initiative/ #guerilla7
+projects/agent_security_initiative/ @guerilla7
