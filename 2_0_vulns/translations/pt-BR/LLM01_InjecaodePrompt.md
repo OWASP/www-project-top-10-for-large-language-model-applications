@@ -2,19 +2,19 @@
 
 ### Descrição
 
-Uma Vulnerabilidade de Injeção de Prompt ocorre quando prompts de usuários alteram o comportamento ou a saída de um LLM de maneiras não intencionais. Esses inputs podem afetar o modelo mesmo que sejam imperceptíveis para humanos; portanto, injeções de prompt não precisam ser visíveis ou compreensível por humanos, desde que o conteúdo seja interpretado pelo modelo.
+Uma Vulnerabilidade de Injeção de Prompt ocorre quando prompts de usuários alteram o comportamento ou a saída de um LLM de maneiras não intencionais. Esses inputs podem afetar o modelo mesmo que sejam imperceptíveis para humanos; portanto, injeções de prompt não precisam ser visíveis ou compreensíveis por humanos, desde que o conteúdo seja interpretado pelo modelo.
 
-As vulnerabilidades de injeção de prompt existem na forma como os modelos processam os prompts e como os inputs podem forçar o modelo a passar dados incorretamente para outras partes do modelo, potencialmente violando diretrizes, gerando conteúdo prejudicial, permitindo acesso não autorizado ou influenciando decisões críticas. Embora técnicas como Geração com Recuperação Aprimorada (RAG) e fine-tuning busquem tornar as saídas dos LLMs mais relevantes e precisas, pesquisas mostram que essas técnicas não mitigam completamente as vulnerabilidades de injeção de prompt.
+As vulnerabilidades de injeção de prompt existem na forma como os modelos processam os prompts e como os inputs podem forçar o modelo a passar dados incorretamente para outras partes do modelo, potencialmente violando diretrizes, gerando conteúdo prejudicial, permitindo acesso não autorizado ou influenciando decisões críticas. Embora técnicas como Geração Aumentada por Recuperação (RAG) e fine-tuning busquem tornar as saídas dos LLMs mais relevantes e precisas, pesquisas mostram que essas técnicas não mitigam completamente as vulnerabilidades de injeção de prompt.
 
 Embora injeção de prompt e jailbreak sejam conceitos relacionados à segurança de LLMs, eles frequentemente são usados como sinônimos. Injeção de prompt envolve manipular as respostas do modelo por meio de entradas específicas para alterar seu comportamento, o que pode incluir a violação de medidas de segurança. Jailbreak é uma forma de injeção de prompt onde o atacante fornece entradas que fazem o modelo ignorar completamente seus protocolos de segurança. Desenvolvedores podem implementar salvaguardas nos prompts do sistema e no tratamento de inputs para ajudar a mitigar ataques de injeção de prompt, mas a prevenção eficaz de jailbreaks requer atualizações contínuas no treinamento e nos mecanismos de segurança do modelo.
 
 ### Tipos de Vulnerabilidades de Injeção de Prompt
 
 #### Injeções de Prompt Diretas
-Injeções diretas ocorrem quando a entrada de um usuário altera diretamente o comportamento do modelo de maneiras não intencionais ou inesperadas. A entrada pode ser intencional (i.e., um ator malicioso elaborando deliberadamente um prompt para explorar o modelo) ou não intencional (i.e., um usuário fornecendo inadvertidamente uma entrada que desencadeia um comportamento inesperado).
+Injeções diretas de prompt ocorrem quando a entrada de um usuário altera diretamente o comportamento do modelo de maneiras não intencionais ou inesperadas. A entrada pode ser intencional (i.e., um ator malicioso elaborando deliberadamente um prompt para explorar o modelo) ou não intencional (i.e., um usuário fornecendo inadvertidamente uma entrada que desencadeia um comportamento inesperado).
 
 #### Injeções de Prompt Indiretas
-Injeções indiretas ocorrem quando um LLM aceita inputs de fontes externas, como websites ou arquivos. O conteúdo externo pode conter dados que, quando interpretados pelo modelo, alteram seu comportamento de maneiras não intencionais ou inesperadas. Assim como as injeções diretas, as injeções indiretas podem ser intencionais ou não intencionais.
+Injeções indiretas de prompt ocorrem quando um LLM aceita *inputs* de fontes externas, como websites ou arquivos. O conteúdo externo pode conter dados que, quando interpretados pelo modelo, alteram seu comportamento de maneiras não intencionais ou inesperadas. Assim como as injeções diretas, as injeções indiretas podem ser intencionais ou não intencionais.
 
 A gravidade e a natureza do impacto de um ataque de injeção de prompt bem-sucedido podem variar amplamente, dependendo do contexto de negócios em que o modelo opera e do grau de autonomia com que o modelo foi arquitetado. Geralmente, injeções de prompt podem levar a resultados não intencionais, incluindo, mas não se limitando a:
 
@@ -25,11 +25,11 @@ A gravidade e a natureza do impacto de um ataque de injeção de prompt bem-suce
 - Execução de comandos arbitrários em sistemas conectados
 - Manipulação de processos críticos de tomada de decisão
 
-O avanço da IA multimodal, que processa múltiplos tipos de dados simultaneamente, introduz riscos únicos de injeção de prompt. Atacantes maliciosos podem explorar interações entre modalidades, como esconder instruções em imagens que acompanham texto benigno. A complexidade desses sistemas expande a superfície de ataque. Modelos multimodais também podem ser vulneráveis a novos ataques intermodais que são difíceis de detectar e mitigar com as técnicas disponíveis atualmente. Defesas robustas específicas para modelos multimodais são uma área crucial para pesquisas e desenvolvimentos futuros.
+O avanço da IA multimodal, que processa múltiplos tipos de dados simultaneamente, introduz riscos únicos de injeção de prompt. Atacantes maliciosos podem explorar interações entre modalidades, como esconder instruções em imagens que acompanham texto benigno. A complexidade desses sistemas expande a superfície de ataque. Modelos multimodais também podem ser vulneráveis a novos ataques intermodais que são difíceis de detectar e mitigar com as técnicas disponíveis atualmente. Defesas robustas específicas para modelos multimodais são uma área crucial para pesquisa e desenvolvimento futuros.
 
 ### Estratégias de Prevenção e Mitigação
 
-Vulnerabilidades de injeção de prompt são possíveis devido à natureza da IA generativa. Dado o impacto estocástico inerente ao funcionamento dos modelos, ainda não é claro se existem métodos infalíveis de prevenção para injeção de prompt. No entanto, as seguintes medidas podem mitigar os impactos:
+Vulnerabilidades de injeção de prompt são possíveis devido à natureza da IA generativa. Dada influência estocástico inerente ao funcionamento dos modelos, ainda não é claro se existem métodos infalíveis de prevenção para injeção de prompt. No entanto, as seguintes medidas podem mitigar os impactos:
 
 #### 1. Restringir o comportamento do modelo
   Forneça instruções específicas sobre o papel, as capacidades e as limitações do modelo dentro do prompt do sistema. Implemente adesão estrita ao contexto, limite respostas a tarefas ou tópicos específicos e oriente o modelo a desconsiderar tentativas de alterar as instruções principais.
@@ -38,7 +38,7 @@ Vulnerabilidades de injeção de prompt são possíveis devido à natureza da IA
   Defina formatos de saída claros, requisitando raciocínio detalhado e citações de fontes, e utilize código determinístico para verificar a conformidade com esses formatos.
 
 #### 3. Implementar filtragem de entrada e saída
-  Defina categorias sensíveis e construa regras para identificar e lidar com esses conteúdos. Aplique filtros semânticos e use verificações de strings para identificar conteúdo não permitido. Avalie respostas utilizando o Triângulo RAG: Relevância do contexto, fundamentação e relevância pergunta/resposta para identificar saídas potencialmente maliciosas.
+  Defina categorias sensíveis e construa regras para identificar e lidar com esses conteúdos. Aplique filtros semânticos e use verificações de strings para identificar conteúdo não permitido. Avalie respostas utilizando o Tríade RAG: Relevância do contexto, fundamentação e relevância pergunta/resposta para identificar saídas potencialmente maliciosas.
 
 #### 4. Reforçar o controle de privilégios e implementar o princípio de menor privilégio para acesso
   Forneça tokens de API exclusivos para funcionalidades extensíveis da aplicação e gerencie essas funções diretamente no código em vez de fornecê-las ao modelo. Restrinja os privilégios de acesso do modelo ao mínimo necessário para suas operações previstas.
@@ -52,10 +52,10 @@ Vulnerabilidades de injeção de prompt são possíveis devido à natureza da IA
 #### 7. Realizar testes adversariais e simulações de ataques
   Realize testes de penetração regulares e simulações de violação, tratando o modelo como um usuário não confiável, para testar a eficácia das barreiras de confiança e controles de acesso.
 
-### Exemplos de Cenários de Ataques 
+### Exemplos de Cenários de Ataques
 
 #### Cenário #1: Injeção Direta
-  Um atacante injeta um prompt em um chatbot de suporte ao cliente, instruindo-o a ignorar diretrizes anteriores, consultar base de dados privadas e enviar e-mails, resultando em acesso não autorizado e elevação de privilégios.
+  Um atacante injeta um prompt em um chatbot de suporte ao cliente, instruindo-o a ignorar diretrizes anteriores, consultar bases de dados privadas e enviar e-mails, resultando em acesso não autorizado e elevação de privilégios.
 
 #### Cenário #2: Injeção Indireta
   Um usuário utiliza um LLM para resumir uma página da web que contém instruções ocultas que fazem o LLM inserir uma imagem vinculando a uma URL, resultando na exfiltração de uma conversa privada.
@@ -100,7 +100,7 @@ Vulnerabilidades de injeção de prompt são possíveis devido à natureza da IA
 
 ### Frameworks e Taxonomias Relacionados
 
-Consulte esta seção para informações abrangentes, cenários e estratégias relacionados à implantação de infraestrutura, controles no ambiente aplicado e outras melhores práticas.
+Consulte esta seção para obter informações abrangentes, cenários e estratégias relacionados à implantação de infraestrutura, controles no ambiente aplicado e outras melhores práticas.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
 - [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**

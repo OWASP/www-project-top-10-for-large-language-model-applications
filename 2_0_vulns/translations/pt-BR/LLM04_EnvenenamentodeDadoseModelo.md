@@ -6,11 +6,11 @@ O envenenamento de dados ocorre quando dados de pré-treinamento, ajuste fino ou
 
 O envenenamento de dados pode ocorrer em diferentes estágios do ciclo de vida do LLM, incluindo pré-treinamento (aprendizado a partir de dados gerais), ajuste fino (adaptação do modelo para tarefas específicas) e embeddings (conversão de texto em vetores numéricos). Entender esses estágios ajuda a identificar onde as vulnerabilidades podem se originar. O envenenamento de dados é considerado um ataque de integridade, pois a manipulação dos dados de treinamento impacta a capacidade do modelo de fazer previsões precisas. Os riscos são particularmente altos com fontes de dados externas, que podem conter conteúdo não verificado ou malicioso.
 
-Além disso, modelos distribuídos através de repositórios compartilhados ou plataformas de código aberto podem apresentar riscos adicionais além do envenenamento de dados, como malware embutido por meio de técnicas como pickling malicioso, que podem executar código prejudicial ao carregar o modelo. Considere também que o envenenamento pode permitir a implementação de backdoors. Esses backdoors podem deixar o comportamento do modelo inalterado até que um certo gatilho cause sua ativação, dificultando os testes e a detecção, criando efetivamente uma oportunidade para o modelo se tornar um agente adormecido.
+Além disso, modelos distribuídos através de repositórios compartilhados ou plataformas de código aberto podem apresentar riscos adicionais além do envenenamento de dados, como malware embutido por meio de técnicas como *pickling* malicioso, que podem executar código prejudicial ao carregar o modelo. Considere também que o envenenamento pode permitir a implementação de backdoors. Esses backdoors podem deixar o comportamento do modelo inalterado até que um certo gatilho cause sua ativação, dificultando os testes e a detecção, criando efetivamente uma oportunidade para o modelo se tornar um agente adormecido (sleeper agent).
 
 ### Exemplos Comuns de Vulnerabilidades
 
-1. Atores maliciosos introduzem dados prejudiciais durante o treinamento, levando a saídas tendenciosas. Técnicas como "Envenenamento de Dados por Divisão de Visão" ou "Envenenamento por Preempção" exploram dinâmicas de treinamento de modelo para alcançar isso.
+1. Atores maliciosos introduzem dados prejudiciais durante o treinamento, levando a saídas tendenciosas. Técnicas como "Envenenamento de Dados por Divisão de Visão" ou "Envenenamento por Frontrunning (preempção)" exploram dinâmicas de treinamento de modelo para alcançar isso.
    (Ref. link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
    (Ref. link: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
 2. Atacantes injetam conteúdo prejudicial diretamente no processo de treinamento, comprometendo a qualidade da saída do modelo.
@@ -27,14 +27,14 @@ Além disso, modelos distribuídos através de repositórios compartilhados ou p
 5. Assegure controles de infraestrutura suficientes para evitar que o modelo acesse fontes de dados não intencionais.
 6. Use controle de versão de dados (DVC) para rastrear mudanças em conjuntos de dados e detectar manipulações. A versionagem é crucial para manter a integridade do modelo.
 7. Armazene informações fornecidas por usuários em um banco de dados de vetores, permitindo ajustes sem a necessidade de re-treinar todo o modelo.
-8. Teste a robustez do modelo com campanhas de equipes vermelhas e técnicas adversárias, como aprendizado federado, para minimizar o impacto de perturbações nos dados.
-9. Monitore a perda de treinamento e analise o comportamento do modelo para sinais de envenenamento. Use limiares para detectar saídas anômalas.
-10. Durante a inferência, integre técnicas de Geração com Recuperação Aprimorada (RAG) e grounding para reduzir riscos de alucinações.
+8. Teste a robustez do modelo com campanhas de equipes de Red Team e técnicas adversárias, como aprendizado federado, para minimizar o impacto de perturbações nos dados.
+9. Monitore a perda de treinamento e analise o comportamento do modelo para sinais de envenenamento. Use limiares (valores de corte) para detectar saídas anômalas.
+10. Integre técnicas de Geração Aumentada por Recuperação (RAG) e grounding (fundamentação) para reduzir riscos de alucinações durante a inferência.
 
-### Cenários de Ataques Exemplares
+### Exemplos de Cenários de Ataques
 
 #### Cenário #1
-  Um atacante viésa as saídas do modelo manipulando dados de treinamento ou usando técnicas de injeção de prompt para espalhar desinformação.
+  Um atacante enviesa as saídas do modelo ao manipular dados de treinamento ou usando técnicas de injeção de *prompt* para espalhar desinformação.
 #### Cenário #2
   Dados tóxicos sem o devido filtro podem levar a saídas prejudiciais ou tendenciosas, propagando informações perigosas.
 #### Cenário #3
@@ -42,7 +42,7 @@ Além disso, modelos distribuídos através de repositórios compartilhados ou p
 #### Cenário #4
   Filtros inadequados permitem que um atacante insira dados enganosos por meio de injeção de prompt, comprometendo as saídas.
 #### Cenário #5
-  Um atacante usa técnicas de envenenamento para inserir um gatilho de backdoor no modelo, permitindo a exploração de autenticação, exfiltração de dados ou execução de comandos ocultos.
+  Um atacante usa técnicas de envenenamento para inserir um gatilho de *backdoor* no modelo. Isso pode permitir a evasão de autenticação, exfiltração de dados ou execução oculta de comandos.
 
 ### Links de Referência
 
@@ -60,7 +60,7 @@ Além disso, modelos distribuídos através de repositórios compartilhados ou p
 
 ### Frameworks e Taxonomias Relacionados
 
-Consulte esta seção para informações abrangentes, cenários e estratégias relacionados à implantação de infraestrutura, controles no ambiente aplicado e outras melhores práticas.
+Consulte esta seção para obter informações abrangentes, cenários e estratégias relacionados à implantação de infraestrutura, controles no ambiente aplicado e outras melhores práticas.
 
 - [AML.T0018 | Backdoor ML Model](https://atlas.mitre.org/techniques/AML.T0018): **MITRE ATLAS**
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework): Estratégias para garantir a integridade da IA. **NIST**
