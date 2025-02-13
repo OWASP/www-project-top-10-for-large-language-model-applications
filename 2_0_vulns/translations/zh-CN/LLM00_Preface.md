@@ -21,26 +21,26 @@ OWASP大语言模型应用程序（LLM)十大风险始于2023年，是一项社�
 感谢所有参与完成这份清单的人，以及那些继续使用和改进它的人。我们很高兴能与您共同参与这一工作。
 
 
-### @Steve Wilson  
+#### Steve Wilson  
 项目负责人  
 OWASP 大语言模型应用程序十大风险列表  
 [LinkedIn](https://www.linkedin.com/in/wilsonsd/)
 
-### @Ads Dawson  
+#### Ads Dawson  
 技术负责人 & 漏洞条目负责人  
 OWASP 大语言模型应用程序十大风险列表  
 [LinkedIn](https://www.linkedin.com/in/adamdawson0/)
 
 
 ### 中文翻译作者
-### @Ken Huang 黄连金翻译
+#### Ken Huang 黄连金翻译
 [LinkedIn](https://www.linkedin.com/in/kenhuang8/)
 
 ### 关于本次翻译  
 
 鉴于《OWASP大语言模型应用程序十大风险列表》的专业性和重要性，我们特意采用纯人工翻译的方式完成本次翻译工作。上述翻译人员不仅对原文内容具备深厚的技术理解，还拥有娴熟的语言能力，确保翻译质量精准到位。  
 
-### @Talesh Seeparsan  
+#### Talesh Seeparsan  
 翻译负责人，大语言模型应用程序十大风险列表   
 LinkedIn: https://www.linkedin.com/in/talesh/
 
