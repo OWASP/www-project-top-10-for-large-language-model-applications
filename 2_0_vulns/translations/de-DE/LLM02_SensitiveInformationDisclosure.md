@@ -51,7 +51,8 @@ Um dieses Risiko zu verringern, sollten LLM-Anwendungen eine angemessene Datenbe
 
 #### 1. Verbergen der System Präambel
   Schränken Sie die Möglichkeit für Nutzende ein, die ursprünglichen Einstellungen des Systems zu überschreiben oder darauf zuzugreifen, um das Risiko einer Offenlegung interner Konfigurationen zu verringern.
-#### 2. Best Practices für bewährte Verfahren zur Sicherheit bei Fehlkonfigurationen berücksichtigen
+###$ 2. Best Practices für bewährte Verfahren zur Sicherheit bei
+####     Fehlkonfigurationen berücksichtigen
   Befolgen Sie Richtlinien wie „OWASP API8:2023 Security Misconfiguration“, um zu verhindern, dass vertrauliche Informationen durch Fehlermeldungen oder Konfigurationsdetails durchsickern.
   (Ref. link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
