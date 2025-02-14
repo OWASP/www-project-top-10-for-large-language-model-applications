@@ -40,7 +40,7 @@ Vulnerabilidades de injeção de prompt são possíveis devido à natureza da IA
 #### 3. Implementar filtragem de entrada e saída
   Defina categorias sensíveis e construa regras para identificar e lidar com esses conteúdos. Aplique filtros semânticos e use verificações de strings para identificar conteúdo não permitido. Avalie respostas utilizando o Tríade RAG: Relevância do contexto, fundamentação e relevância pergunta/resposta para identificar saídas potencialmente maliciosas.
 
-#### 4. Reforçar o controle de privilégios e implementar o princípio de menor privilégio para acesso
+###$ 4. Reforçar o controle de privilégios e implementar o princípio de menor privilégio para acesso
   Forneça tokens de API exclusivos para funcionalidades extensíveis da aplicação e gerencie essas funções diretamente no código em vez de fornecê-las ao modelo. Restrinja os privilégios de acesso do modelo ao mínimo necessário para suas operações previstas.
 
 #### 5. Requerer aprovação humana para ações de alto risco
