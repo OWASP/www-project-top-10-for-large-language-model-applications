@@ -1,30 +1,30 @@
-за дополнительными рекомендациями обращайтесь к [руководству по стилю](../documentation/style/README.md) и к [глоссарию](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Definitions)
+for additional guidance, refer to [the style guide](../documentation/style/README.md) and to the [glossary](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Definitions)
 
-## LLMXX: Название уязвимости
+## LLMXX: Risk Name
 
-### Описание
+### Description
 
-Краткое описание риска, включающее его потенциальные последствия, такие как компрометация системы, утечка данных или другие проблемы безопасности.
+A brief description of the risk that includes its potential effects such as system compromises, data breaches, or other security concerns.
 
-### Общие примеры риска
+### Common Examples of Risk
 
-1. Пример 1: конкретный случай или тип данного риска.
-2. Пример 2: Другой случай или тип этого риска.
-3. Пример 3: Еще один случай или тип этого риска.
+1. Example 1: Specific instance or type of this risk.
+2. Example 2: Another instance or type of this risk.
+3. Example 3: Yet another instance or type of this risk.
 
-### Стратегии предотвращения и снижения риска
+### Prevention and Mitigation Strategies
 
-1. Шаг 1: шаг или стратегия, которые могут быть использованы для предотвращения риска или смягчения его последствий.
-2. Шаг 2: другой шаг или стратегия предупреждения.
-3. Шаг 3: еще один шаг или стратегия предотвращения.
+1. Prevention Step 1: A step or strategy that can be used to prevent the risk or mitigate its effects.
+2. Prevention Step 2: Another prevention step or strategy.
+3. Prevention Step 3: Yet another prevention step or strategy.
 
-### Примерные сценарии атак
+### Example Attack Scenarios
 
-Сценарий № 1: Подробный сценарий, иллюстрирующий, как злоумышленник может потенциально использовать данную уязвимость, включая действия злоумышленника и возможные результаты.
+Scenario #1: A detailed scenario illustrating how an attacker could potentially exploit this risk, including the attacker's actions and the potential outcomes.
 
-Сценарий № 2: Другой пример сценария атаки, демонстрирующий иной способ использования уязвимости.
+Scenario #2: Another example of an attack scenario showing a different way the risk could be exploited.
 
-### Ссылки
+### Reference Links
 
-1. [Название ссылки](URL): **Название ресурса/веб-сайта/что-либо еще** (статьи Arxiv должны следовать руководству по цитированию, размещенному вместе со статьей)
-2. [Название ссылки](URL): **Название издания/сайта/что угодно** (статьи Arxiv должны следовать руководству по цитированию, размещенному вместе со статьей)
+1. [Link Title](URL): **Name of Outlet/Website/Whatever** (Arxiv papers should follow the citation guide posted with the article)
+2. [Link Title](URL): **Name of Outlet/Website/Whatever** (Arxiv papers should follow the citation guide posted with the article)

@@ -1,56 +1,55 @@
-## LLM09:2025 Введение в заблуждение
+## LLM09:2025 Misinformation
 
-### Описание
+### Description
 
-Введение в заблуждение, создаваемое LLM, представляет собой основную уязвимость для приложений, использующих эти модели. Введение в заблуждение возникает, когда LLM генерирует ложную или вводящую в заблуждение информацию, которая выглядит достоверно. Эта уязвимость может привести к нарушениям безопасности, ущербу для репутации и юридической ответственности.
+Misinformation from LLMs poses a core vulnerability for applications relying on these models. Misinformation occurs when LLMs produce false or misleading information that appears credible. This vulnerability can lead to security breaches, reputational damage, and legal liability.
 
-Одна из основных причин введения в заблуждение — галлюцинации, когда LLM генерирует контент, который кажется точным, но является вымышленным. Галлюцинации происходят, когда LLM заполняет пробелы в обучающих данных с использованием статистических закономерностей, не понимая на самом деле содержание. В результате модель может дать ответы, которые звучат правильно, но на самом деле полностью беспочвенные. Хотя галлюцинации являются основной причиной введения в заблуждение, они не единственная причина; предвзятости, введенные обучающими данными, и неполнота информации также могут способствовать возникновению этой проблемы.
+One of the major causes of misinformation is hallucination—when the LLM generates content that seems accurate but is fabricated. Hallucinations occur when LLMs fill gaps in their training data using statistical patterns, without truly understanding the content. As a result, the model may produce answers that sound correct but are completely unfounded. While hallucinations are a major source of misinformation, they are not the only cause; biases introduced by the training data and incomplete information can also contribute.
 
-Связанная проблема — это избыточная зависимость. Избыточная зависимость возникает, когда пользователи чрезмерно доверяют контенту, сгенерированному LLM, не проверяя его точность. Эта избыточная зависимость усугубляет влияние введения в заблуждение, так как пользователи могут интегрировать неверные данные в важные решения или процессы без должной проверки.
+A related issue is overreliance. Overreliance occurs when users place excessive trust in LLM-generated content, failing to verify its accuracy. This overreliance exacerbates the impact of misinformation, as users may integrate incorrect data into critical decisions or processes without adequate scrutiny.
 
-### Примеры рисков
+### Common Examples of Risk
 
-#### 1. Фактические неточности
-  Модель генерирует неверные утверждения, заставляя пользователей принимать решения на основе ложной информации. Например, чат-бот Air Canada предоставил неверную информацию путешественникам, что привело к операционным сбоям и юридическим последствиям. Компания была успешно подана в суд в связи с этим.  
+#### 1. Factual Inaccuracies
+  The model produces incorrect statements, leading users to make decisions based on false information. For example, Air Canada's chatbot provided misinformation to travelers, leading to operational disruptions and legal complications. The airline was successfully sued as a result.
   (Ref. link: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
-#### 2. Необоснованные утверждения
-  Модель генерирует безосновательные утверждения, что может быть особенно вредным в чувствительных контекстах, таких как здравоохранение или юридические процессы. Например, ChatGPT выдумал фальшивые юридические дела, что вызвало серьезные проблемы в суде. 
+#### 2. Unsupported Claims
+  The model generates baseless assertions, which can be especially harmful in sensitive contexts such as healthcare or legal proceedings. For example, ChatGPT fabricated fake legal cases, leading to significant issues in court.
   (Ref. link: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
-#### 3. Неверное представление экспертности
- Модель создает иллюзию понимания сложных тем, вводя пользователей в заблуждение относительно уровня своей экспертности. Например, чат-боты были замечены в неправильном представлении сложности вопросов, связанных со здоровьем, предлагая неуверенность, где ее на самом деле нет, что вводило пользователей в заблуждение, заставляя их верить, что неподтвержденные методы лечения еще обсуждаются.  
+#### 3. Misrepresentation of Expertise
+  The model gives the illusion of understanding complex topics, misleading users regarding its level of expertise. For example, chatbots have been found to misrepresent the complexity of health-related issues, suggesting uncertainty where there is none, which misled users into believing that unsupported treatments were still under debate.
   (Ref. link: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
-#### 4. Небезопасная генерация кода
-  Модель предлагает небезопасные или несуществующие библиотеки кода, что может привести к уязвимостям при интеграции в программные системы. Например, LLM предложил использование небезопасных сторонних библиотек, которые, если доверять им без проверки, могут привести к рискам безопасности.  
+#### 4. Unsafe Code Generation
+  The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems. For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks.
   (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
-### Стратегии предотвращения и смягчения последствий
+### Prevention and Mitigation Strategies
 
 #### 1. Retrieval-Augmented Generation (RAG)
-  Использование Retrieval-Augmented Generation для повышения надежности выводов модели путем извлечения соответствующей и проверенной информации из доверенных внешних баз данных в процессе генерации ответов. Это помогает смягчить риск галлюцинаций и введения в заблуждение.
+  Use Retrieval-Augmented Generation to enhance the reliability of model outputs by retrieving relevant and verified information from trusted external databases during response generation. This helps mitigate the risk of hallucinations and misinformation.
 #### 2. Model Fine-Tuning
-  Улучшение модели с помощью тонкой настройки или эмбеддингов для повышения качества выводов. Техники, такие как настройка параметров (PEFT) и цепочки рассуждений, могут помочь уменьшить частоту возникновения заблуждений.
-#### 3. Кросс-проверка и контроль человеком
-  Поощрение пользователей к проверке выводов LLM с помощью доверенных внешних источников для обеспечения точности информации. Введение контроля человеком и процессов фактчекинга, особенно для критической или чувствительной информации. Обеспечьте, чтобы человеческие рецензенты были должным образом обучены для избегания избыточной зависимости от контента, сгенерированного ИИ.
+  Enhance the model with fine-tuning or embeddings to improve output quality. Techniques such as parameter-efficient tuning (PET) and chain-of-thought prompting can help reduce the incidence of misinformation.
+#### 3. Cross-Verification and Human Oversight
+  Encourage users to cross-check LLM outputs with trusted external sources to ensure the accuracy of the information. Implement human oversight and fact-checking processes, especially for critical or sensitive information. Ensure that human reviewers are properly trained to avoid overreliance on AI-generated content.
 #### 4. Automatic Validation Mechanisms
-  Внедрение инструментов и процессов для автоматической проверки ключевых выводов, особенно в высокорисковых ситуациях.
+  Implement tools and processes to automatically validate key outputs, especially output from high-stakes environments.
 #### 5. Risk Communication
-  Выявление рисков и возможных последствий, связанных с контентом, сгенерированным LLM, и четкое донесение этих рисков и ограничений до пользователей, включая вероятность введения в заблуждени.
+  Identify the risks and possible harms associated with LLM-generated content, then clearly communicate these risks and limitations to users, including the potential for misinformation.
 #### 6. Secure Coding Practices
-  Установление безопасных практик программирования для предотвращения интеграции уязвимостей из-за неверных предложений кода.
+  Establish secure coding practices to prevent the integration of vulnerabilities due to incorrect code suggestions.
 #### 7. User Interface Design
-  Проектирование API и пользовательских интерфейсов, которые способствуют ответственному использованию LLM, например, интеграция фильтров контента, четкая маркировка контента, сгенерированного ИИ, и информирование пользователей о ограничениях надежности и точности. Указывать конкретные ограничения для предполагаемых областей использования.
+  Design APIs and user interfaces that encourage responsible use of LLMs, such as integrating content filters, clearly labeling AI-generated content and informing users on limitations of reliability and accuracy. Be specific about the intended field of use limitations.
 #### 8. Training and Education
-  Предоставление пользователям исчерпывающего обучения о ограничениях LLM, важности независимой проверки сгенерированного контента и необходимости критического мышления. В определенных контекстах предлагается обучение, связанное с конкретной областью, чтобы пользователи могли эффективно оценивать выводы LLM в своей профессиональной области.
+  Provide comprehensive training for users on the limitations of LLMs, the importance of independent verification of generated content, and the need for critical thinking. In specific contexts, offer domain-specific training to ensure users can effectively evaluate LLM outputs within their field of expertise.
 
-### Примеры сценариев атак
+### Example Attack Scenarios
 
-#### Сценарий #1
-  Атакующие экспериментируют с популярными помощниками по кодированию, чтобы найти часто галлюцинируемые имена пакетов. Как только они находят эти часто предлагаемые, но несуществующие библиотеки, они публикуют вредоносные пакеты с этими именами в широко используемых репозиториях. Разработчики, полагаясь на предложения помощника по кодированию, неосознанно интегрируют эти отравленные пакеты в свое ПО. В результате атакующие получают несанкционированный доступ, внедряют вредоносный код или устанавливают скрытые уязвимости, что приводит к значительным сбоям безопасности и компрометации данных пользователей.
-#### Сценарий #2
-  Компания предоставляет чат-бота для медицинской диагностики без обеспечения достаточной точности. Чат-бот предоставляет неверную информацию, что приводит к вредным последствиям для пациентов. В результате компания успешно подает в суд за ущерб. В этом случае нарушение безопасности и надежности не потребовало злонамеренного нападения, а возникло из-за недостаточного контроля и надежности системы LLM. В данном сценарии для компании не требуется активный атакующий для возникновения репутационного и финансового ущерба.
+#### Scenario #1
+  Attackers experiment with popular coding assistants to find commonly hallucinated package names. Once they identify these frequently suggested but nonexistent libraries, they publish malicious packages with those names to widely used repositories. Developers, relying on the coding assistant's suggestions, unknowingly integrate these poised packages into their software. As a result, the attackers gain unauthorized access, inject malicious code, or establish backdoors, leading to significant security breaches and compromising user data.
+#### Scenario #2
+  A company provides a chatbot for medical diagnosis without ensuring sufficient accuracy. The chatbot provides poor information, leading to harmful consequences for patients. As a result, the company is successfully sued for damages. In this case, the safety and security breakdown did not require a malicious attacker but instead arose from the insufficient oversight and reliability of the LLM system. In this scenario, there is no need for an active attacker for the company to be at risk of reputational and financial damage.
 
-
-### Ссылки на источники
+### Reference Links
 
 1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
 2. [Air Canada Chatbot Misinformation: What Travellers Should Know](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know): **BBC**
@@ -64,8 +63,8 @@
 10. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
 11. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
 
-### Связанные фреймворки и таксономии
+### Related Frameworks and Taxonomies
 
-См. этот раздел для исчерпывающей информации, сценариев и стратегий, связанных с развертыванием инфраструктуры, контролями в применении и другими лучшими практиками.  
+Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
 
 - [AML.T0048.002 - Societal Harm](https://atlas.mitre.org/techniques/AML.T0048) **MITRE ATLAS**

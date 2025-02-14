@@ -1,77 +1,77 @@
-## LLM02:2025 Утечка конфиденциальной информации
+## LLM02:2025 Sensitive Information Disclosure
 
-### Описание
+### Description
 
-Конфиденциальная информация может повлиять как на LLM, так и на контекст ее применения. К ней относятся персональные данные (ПД), финансовые данные, медицинские записи, конфиденциальные деловые данные, учетные данные службы безопасности и юридические документы. Кроме того, в проприетарных системах могут быть уникальные методы обучения и исходный код, которые считаются конфиденциальными, особенно в зарытых или фундаментальных моделях.
+Sensitive information can affect both the LLM and its application context. This includes personal identifiable information (PII), financial details, health records, confidential business data, security credentials, and legal documents. Proprietary models may also have unique training methods and source code considered sensitive, especially in closed or foundation models.
 
-LLM, особенно если они встроены в приложения, рискуют раскрыть чувствительные данные, собственные алгоритмы или конфиденциальную информацию через свои выходные данные. Это может привести к несанкционированному доступу к данным, нарушению конфиденциальности и нарушению прав интеллектуальной собственности. Потребители должны знать, как безопасно взаимодействовать с LLM. Они должны понимать риск непреднамеренного предоставления конфиденциальных данных, которые впоследствии могут быть раскрыты в выходных данных модели.
+LLMs, especially when embedded in applications, risk exposing sensitive data, proprietary algorithms, or confidential details through their output. This can result in unauthorized data access, privacy violations, and intellectual property breaches. Consumers should be aware of how to interact safely with LLMs. They need to understand the risks of unintentionally providing sensitive data, which may later be disclosed in the model's output.
 
-Чтобы снизить этот риск, приложения LLM должны выполнять соответствующую очистку данных, чтобы предотвратить попадание пользовательских данных в обучающую модель. Владельцы приложений также должны предоставлять четкие условия использования, позволяющие пользователям отказаться от включения их данных в обучающую модель. Добавление в системный запрос ограничений на типы данных, которые должен возвращать LLM, может обеспечить защиту от раскрытия конфиденциальной информации. Однако такие ограничения не всегда соблюдаются и могут быть обойдены с помощью Prompt Injection или других методов.
+To reduce this risk, LLM applications should perform adequate data sanitization to prevent user data from entering the training model. Application owners should also provide clear Terms of Use policies, allowing users to opt out of having their data included in the training model. Adding restrictions within the system prompt about data types that the LLM should return can provide mitigation against sensitive information disclosure. However, such restrictions may not always be honored and could be bypassed via prompt injection or other methods.
 
-### Распространенные примеры уязвимостей
+### Common Examples of Vulnerability
 
-#### 1. Утечка персональных данных (ПД)
-  Персональные данные (ПД) могут быть раскрыты во время взаимодействия с LLM.
-#### 2. Раскрытие проприетарных алгоритмов
-  Плохо настроенные выходные данные модели могут раскрыть запатентованные алгоритмы или данные. Раскрытие данных обучения может подвергнуть модели инверсионным атакам, в ходе которых злоумышленники извлекают конфиденциальную информацию или реконструируют исходные данные. Например, как показано в атаке «Proof Pudding» (CVE-2019-20634), раскрытые обучающие данные облегчают извлечение и инверсию модели, позволяя злоумышленникам обходить средства контроля безопасности в алгоритмах машинного обучения и фильтры электронной почты.
-#### 3. Раскрытие конфиденциальных бизнес-данных
-  Генерируемые ответы могут непреднамеренно содержать конфиденциальную деловую информацию.
+#### 1. PII Leakage
+  Personal identifiable information (PII) may be disclosed during interactions with the LLM.
+#### 2. Proprietary Algorithm Exposure
+  Poorly configured model outputs can reveal proprietary algorithms or data. Revealing training data can expose models to inversion attacks, where attackers extract sensitive information or reconstruct inputs. For instance, as demonstrated in the 'Proof Pudding' attack (CVE-2019-20634), disclosed training data facilitated model extraction and inversion, allowing attackers to circumvent security controls in machine learning algorithms and bypass email filters.
+#### 3. Sensitive Business Data Disclosure
+  Generated responses might inadvertently include confidential business information.
 
-### Стратегии предотвращения и смягчения последствий
+### Prevention and Mitigation Strategies
 
-#### Очистка:
+###@ Sanitization:
 
-#### 1. Интеграция методов очистки данных
-  Реализуйте очистку данных, чтобы предотвратить попадание пользовательских данных в обучающую модель. Это включает в себя очистку или маскировку конфиденциального содержимого перед его использованием в обучении.
-#### 2. Надежная входная валидация
-  Применяйте строгие методы проверки входных данных для обнаружения и отсеивания потенциально опасных или конфиденциальных данных, чтобы исключить их попадание в модель.
+#### 1. Integrate Data Sanitization Techniques
+  Implement data sanitization to prevent user data from entering the training model. This includes scrubbing or masking sensitive content before it is used in training.
+#### 2. Robust Input Validation
+  Apply strict input validation methods to detect and filter out potentially harmful or sensitive data inputs, ensuring they do not compromise the model.
 
-#### Контроль доступа:
+###@ Access Controls:
 
-#### 1. Обеспечьте строгий контроль доступа
-  Ограничьте доступ к конфиденциальным данным на основе принципа наименьших привилегий. Предоставляйте доступ только к тем данным, которые необходимы конкретному пользователю или процессу.
-#### 2. Ограничьте источники данных
-  Ограничьте доступ модели к внешним источникам данных и обеспечьте безопасное управление данными во время ее работы, чтобы избежать непреднамеренной утечки.
+#### 1. Enforce Strict Access Controls
+  Limit access to sensitive data based on the principle of least privilege. Only grant access to data that is necessary for the specific user or process.
+#### 2. Restrict Data Sources
+  Limit model access to external data sources, and ensure runtime data orchestration is securely managed to avoid unintended data leakage.
 
-#### Федеративное обучение и методы обеспечения конфиденциальности:
+###@ Federated Learning and Privacy Techniques:
 
-#### 1. Использование федеративного обучения
-  Обучайте модели, используя децентрализованные данные, хранящиеся на нескольких серверах или устройствах. Такой подход сводит к минимуму необходимость централизованного сбора данных и снижает риски воздействия.
-#### 2. Использование дифференциальной приватности
-  Применяйте методы, которые добавляют шум в данные или выходные данные, затрудняя злоумышленникам обратный инжиниринг отдельных точек данных.
+#### 1. Utilize Federated Learning
+  Train models using decentralized data stored across multiple servers or devices. This approach minimizes the need for centralized data collection and reduces exposure risks.
+#### 2. Incorporate Differential Privacy
+  Apply techniques that add noise to the data or outputs, making it difficult for attackers to reverse-engineer individual data points.
 
-#### Обучение пользователей и прозрачность:
+###@ User Education and Transparency:
 
-#### 1. Обучение пользователей безопасному использованию LLM
-  Предоставьте рекомендации по предотвращению ввода конфиденциальной информации. Предложите обучение лучшим практикам безопасного взаимодействия с LLM.
-#### 2. Обеспечить прозрачность использования данных
-  Поддерживайте четкую политику в отношении хранения, использования и удаления данных. Предоставьте пользователям возможность отказаться от включения их данных в учебные процессы.
+#### 1. Educate Users on Safe LLM Usage
+  Provide guidance on avoiding the input of sensitive information. Offer training on best practices for interacting with LLMs securely.
+#### 2. Ensure Transparency in Data Usage
+  Maintain clear policies about data retention, usage, and deletion. Allow users to opt out of having their data included in training processes.
 
-#### Безопасная конфигурация системы:
+###@ Secure System Configuration:
 
-#### 1. Скрыть преамбулу системы
-  Ограничьте возможности пользователей по отмене начальных настроек системы или доступу к ним, снизив риск раскрытия внутренних конфигураций.
-#### 2. Ссылайтесь на передовой опыт в области неправильной конфигурации системы безопасности
-  Следуйте рекомендациям, например «OWASP API8:2023 Security Misconfiguration», чтобы предотвратить утечку конфиденциальной информации через сообщения об ошибках или детали конфигурации.
-  (Ссылка:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+#### 1. Conceal System Preamble
+  Limit the ability for users to override or access the system's initial settings, reducing the risk of exposure to internal configurations.
+#### 2. Reference Security Misconfiguration Best Practices
+  Follow guidelines like "OWASP API8:2023 Security Misconfiguration" to prevent leaking sensitive information through error messages or configuration details.
+  (Ref. link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
-#### Продвинутые техники:
+###@ Advanced Techniques:
 
-#### 1. Гомоморфное шифрование
-  Используйте гомоморфное шифрование для безопасного анализа данных и машинного обучения с сохранением конфиденциальности. Это гарантирует конфиденциальность данных при их обработке моделью.
-#### 2. Токенизация и редактирование
-  Внедрите токенизацию для предварительной обработки и обеззараживания конфиденциальной информации. Такие методы, как сопоставление шаблонов, позволяют обнаружить и отредактировать конфиденциальный контент перед обработкой.
+#### 1. Homomorphic Encryption
+  Use homomorphic encryption to enable secure data analysis and privacy-preserving machine learning. This ensures data remains confidential while being processed by the model.
+#### 2. Tokenization and Redaction
+  Implement tokenization to preprocess and sanitize sensitive information. Techniques like pattern matching can detect and redact confidential content before processing.
 
-### Примерные сценарии атак
+### Example Attack Scenarios
 
-#### Сценарий № 1: Непреднамеренное раскрытие данных
-  Пользователь получает ответ, содержащий личные данные другого пользователя, из-за неадекватной очистки данных.
-#### Сценарий № 2: Целевая инъекция в запрос
-  Злоумышленник обходит фильтры ввода, чтобы извлечь конфиденциальную информацию.
-#### Сценарий № 3: Утечка данных через обучающие данные
-  Небрежное включение данных в процесс обучения приводит к раскрытию конфиденциальной информации.
+#### Scenario #1: Unintentional Data Exposure
+  A user receives a response containing another user's personal data due to inadequate data sanitization.
+#### Scenario #2: Targeted Prompt Injection
+  An attacker bypasses input filters to extract sensitive information.
+#### Scenario #3: Data Leak via Training Data
+  Negligent data inclusion in training leads to sensitive information disclosure.
 
-### Ссылки на источники
+### Reference Links
 
 1. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
 2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
@@ -79,9 +79,9 @@ LLM, особенно если они встроены в приложения, 
 4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
 5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 
-### Связанные фреймворки и таксономии
+### Related Frameworks and Taxonomies
 
-Обратитесь к этому разделу, чтобы получить исчерпывающую информацию, сценарии стратегий, связанных с развертыванием инфраструктуры, применяемыми средствами контроля среды и другими передовыми методами.
+Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
 
 - [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
 - [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**
