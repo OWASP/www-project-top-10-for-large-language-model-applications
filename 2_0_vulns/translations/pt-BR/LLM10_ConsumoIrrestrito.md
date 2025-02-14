@@ -1,33 +1,33 @@
-## LLM10:2025 Consumo Não Restrito
+## LLM10:2025 Consumo Irrestrito
 
 ### Descrição
 
-Consumo Não Restrito refere-se ao processo em que um Modelo de Linguagem Grande (LLM) gera saídas com base em consultas ou prompts de entrada. A inferência é uma função crítica dos LLMs, envolvendo a aplicação de padrões e conhecimentos aprendidos para produzir respostas ou previsões relevantes.
+Consumo Irrestrito ocorre quando um Grande Modelo de Linguagem (LLM) processa consultas ou prompts sem restrições adequadas, gerando respostas ilimitadas e potencialmente prejudiciais. A inferência é uma função crítica dos LLMs, envolvendo a aplicação de padrões e conhecimentos aprendidos para produzir respostas ou previsões relevantes.
 
-Ataques projetados para interromper serviços, esgotar os recursos financeiros do alvo ou até mesmo roubar propriedade intelectual ao clonar o comportamento de um modelo dependem de uma classe comum de vulnerabilidade de segurança para ter sucesso. O Consumo Não Restrito ocorre quando uma aplicação de LLM permite que usuários realizem inferências excessivas e descontroladas, levando a riscos como negação de serviço (DoS), perdas econômicas, roubo de modelos e degradação de serviços. As altas demandas computacionais dos LLMs, especialmente em ambientes de nuvem, os tornam vulneráveis à exploração de recursos e ao uso não autorizado.
+Ataques podem explorar essa vulnerabilidade para interromper serviços, esgotar recursos financeiros ou clonar o comportamento de um modelo, resultando em roubo de propriedade intelectual. O Consumo Irrestrito ocorre quando uma aplicação de LLM permite que usuários realizem inferências excessivas e descontroladas, levando a riscos como negação de serviço (DoS), perdas econômicas, roubo de modelos e degradação de serviços. As altas demandas computacionais dos LLMs, especialmente em ambientes de nuvem, os tornam vulneráveis à exploração de recursos e ao uso não autorizado.
 
 ### Exemplos Comuns de Vulnerabilidades
 
-#### 1. Sobrecarga com Entradas de Comprimento Variável
-  Atacantes podem sobrecarregar o LLM com inúmeras entradas de comprimentos variados, explorando ineficiências de processamento. Isso pode esgotar recursos e potencialmente tornar o sistema não responsivo, impactando significativamente a disponibilidade do serviço.
+#### 1. Ataque de Sobrecarga por Entradas Variáveis
+  Atacantes enviam uma grande quantidade de entradas com tamanhos variados para explorar falhas no processamento do LLM, causando lentidão ou indisponibilidade. Isso pode esgotar recursos e potencialmente tornar o sistema não responsivo, impactando significativamente a disponibilidade do serviço.
 
-#### 2. Negação de Carteira (DoW)
-  Iniciando um alto volume de operações, atacantes exploram o modelo de custo por uso de serviços de IA baseados em nuvem, causando encargos financeiros insustentáveis para o provedor.
+#### 2. Ataque de Exaustão Financeira (DoW)
+  Atacantes disparam um grande volume de requisições para explorar o custo por uso de serviços de IA, forçando o provedor a pagar quantias exorbitantes até o serviço se tornar inviável.
 
-#### 3. Transbordo Contínuo de Entrada
-  Enviando continuamente entradas que excedem a janela de contexto do LLM, pode-se levar ao uso excessivo de recursos computacionais, resultando em degradação do serviço e interrupções operacionais.
+#### 3. Ataque de Entrada Contínua
+  Ao enviar repetidamente entradas que excedem a capacidade do LLM, o atacante força a realocação excessiva de memória e processamento, degradando o serviço e interrupções operacionais.
 
-#### 4. Consultas de Alto Consumo de Recursos
-  Submeter consultas incomumente exigentes envolvendo sequências complexas ou padrões de linguagem intrincados pode drenar recursos do sistema, levando a tempos de processamento prolongados e possíveis falhas do sistema.
+#### 4. Ataque por Consultas Exigentes
+  Consultas extremamente complexas forçam o LLM a consumir grandes quantidades de memória e processamento, tornando o sistema lento ou indisponível. Isso pode levar a tempos de processamento prolongados e possíveis falhas do sistema.
 
 #### 5. Extração de Modelos via API
-  Atacantes podem consultar a API do modelo usando entradas cuidadosamente elaboradas e técnicas de injeção de prompts para coletar saídas suficientes para replicar parcialmente ou criar um modelo sombra. Isso representa riscos de roubo de propriedade intelectual e compromete a integridade do modelo original.
+  Por meio de consultas repetidas e manipulação de prompts, atacantes extraem respostas suficientes para reconstruir parte do modelo original ou criar uma cópia não autorizada. Isso representa riscos de roubo de propriedade intelectual e compromete a integridade do modelo original.
 
-#### 6. Replicação Funcional do Modelo
-  Usando o modelo-alvo para gerar dados de treinamento sintéticos, os atacantes podem ajustar outro modelo fundamental, criando um equivalente funcional. Isso contorna métodos tradicionais de extração baseados em consultas, representando riscos significativos para modelos e tecnologias proprietárias.
+#### 6. Criação de Modelo Clandestino
+  Atacantes usam o modelo-alvo para gerar dados sintéticos e treinar um novo modelo clandestino, replicando seu comportamento sem necessidade de acesso direto ao original. Isso contorna métodos tradicionais de extração baseados em consultas, representando riscos significativos para modelos e tecnologias proprietárias.
 
-#### 7. Ataques por Canal Lateral
-  Atacantes maliciosos podem explorar técnicas de filtragem de entrada do LLM para executar ataques por canal lateral, coletando informações sobre os pesos e a arquitetura do modelo. Isso pode comprometer a segurança do modelo e levar a explorações adicionais.
+#### 7. Ataques Laterais para Coleta de Dados
+  Atacantes analisam padrões de resposta do LLM para inferir detalhes da arquitetura e dos pesos do modelo, possibilitando sua replicação ou exploração de vulnerabilidades. Isso pode comprometer a segurança do modelo e levar a explorações adicionais.
 
 ### Estratégias de Prevenção e Mitigação
 
@@ -37,10 +37,10 @@ Ataques projetados para interromper serviços, esgotar os recursos financeiros d
 #### 2. Limitação de Exposição de Logits e Logprobs
   Restrinja ou ofusque a exposição de `logit_bias` e `logprobs` nas respostas da API, fornecendo apenas as informações necessárias sem revelar probabilidades detalhadas.
 
-#### 3. Limitação de Taxa
+#### 3. Rate Limit (controle de taxa) e Cotas de Uso
   Aplique limitação de taxa e cotas de usuários para restringir o número de solicitações que uma única entidade pode fazer em um determinado período.
 
-#### 4. Gerenciamento Dinâmico de Recursos
+#### 4. Gestão Inteligente de Recursos
   Monitore e gerencie a alocação de recursos dinamicamente para evitar que um único usuário ou solicitação consuma recursos excessivos.
 
 #### 5. Timeouts e Controle de Velocidade
@@ -49,13 +49,13 @@ Ataques projetados para interromper serviços, esgotar os recursos financeiros d
 #### 6. Técnicas de Sandbox
   Restrinja o acesso do LLM a recursos de rede, serviços internos e APIs, reduzindo riscos internos e ameaças externas.
 
-#### 7. Registro e Monitoramento Abrangente
+#### 7. Monitoramento Contínuo e Detecção de Anomalias
   Monitore continuamente o uso de recursos e implemente registros para detectar e responder a padrões incomuns de consumo de recursos.
 
-#### 8. Marcação d'Água
-  Implemente frameworks de marcação d'água para embutir e detectar o uso não autorizado de saídas de LLM.
+#### 8. Marca d'Água de Conteúdo
+  Aplique técnicas de *watermarking* (marca d'água) para rastrear e identificar o uso não autorizado das respostas do LLM, dificultando tentativas de cópia e extração do modelo.
 
-#### 9. Degradação Gradual
+#### 9. Gerenciamento de Degradação Sob Carga
   Projete o sistema para degradar gradualmente sob carga pesada, mantendo funcionalidade parcial em vez de falha completa.
 
 #### 10. Limite de Ações Enfileiradas e Escalabilidade Robusta
@@ -64,7 +64,7 @@ Ataques projetados para interromper serviços, esgotar os recursos financeiros d
 #### 11. Treinamento de Robustez Adversarial
   Treine modelos para detectar e mitigar consultas adversariais e tentativas de extração.
 
-#### 12. Filtragem de Tokens Problemáticos
+#### 12. Detecção e Bloqueio de Tokens Anômalos
   Construa listas de tokens problemáticos conhecidos e analise a saída antes de adicioná-los à janela de contexto do modelo.
 
 #### 13. Controles de Acesso
@@ -76,24 +76,24 @@ Ataques projetados para interromper serviços, esgotar os recursos financeiros d
 #### 15. Implantação Automatizada de MLOps
   Implemente implantação automatizada de MLOps com governança, rastreamento e fluxos de trabalho de aprovação para restringir o acesso e controle dentro da infraestrutura.
 
-### Cenários de Ataques Exemplares
+### Exemplos de Cenários de Ataques
 
-#### Cenário #1: Tamanho de Entrada Não Controlado
+#### Cenário #1: Ataque de Sobrecarga com Entradas Massivas
   Um atacante submete uma entrada incomumente grande a uma aplicação LLM que processa dados textuais, resultando em uso excessivo de memória e CPU, potencialmente travando o sistema ou desacelerando significativamente o serviço.
 
-#### Cenário #2: Solicitações Repetidas
+#### Cenário #2: Ataque de Exaustão por Solicitações Repetitivas
   Um atacante transmite um alto volume de solicitações para a API do LLM, causando consumo excessivo de recursos computacionais e tornando o serviço indisponível para usuários legítimos.
 
-#### Cenário #3: Consultas de Alto Consumo de Recursos
+#### Cenário #3: Exploração de Consultas para Esgotamento de Recursos
   Um atacante elabora entradas específicas projetadas para acionar os processos mais exigentes do LLM, levando a uso prolongado de CPU e possíveis falhas do sistema.
 
-#### Cenário #4: Negação de Carteira (DoW)
+#### Cenário #4: Exploração Financeira via Denial of Wallet (DoW)
   Um atacante gera operações excessivas para explorar o modelo de pagamento por uso de serviços de IA em nuvem, causando custos insustentáveis para o provedor.
 
-#### Cenário #5: Replicação Funcional do Modelo
+#### Cenário #5: Roubo de Modelo via Treinamento com Dados Sintéticos
   Um atacante usa a API do LLM para gerar dados de treinamento sintéticos e ajusta outro modelo, criando um equivalente funcional e contornando as limitações tradicionais de extração de modelos.
 
-#### Cenário #6: Contorno de Filtragem de Entrada
+#### Cenário #6: Evasão de Filtros para Vazamento de Dados
   Um atacante malicioso contorna técnicas de filtragem de entrada e preâmbulos do LLM para realizar um ataque de canal lateral e recuperar informações do modelo para um recurso remoto sob seu controle.
 
 ### Links de Referência
@@ -111,7 +111,7 @@ Ataques projetados para interromper serviços, esgotar os recursos financeiros d
 
 ### Frameworks e Taxonomias Relacionados
 
-Consulte esta seção para informações abrangentes, cenários e estratégias relacionadas à implantação de infraestrutura, controles no ambiente aplicado e outras melhores práticas.
+Consulte esta seção para obter informações abrangentes, cenários e estratégias relacionadas à implantação de infraestrutura, controles no ambiente aplicado e outras melhores práticas.
 
 - [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
 - [AML.TA0000 ML Model Access](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**
