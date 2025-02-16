@@ -1,4 +1,4 @@
-## LLM07:2025 Filtración de prompts de sistema
+## LLM07:2025 Filtración de prompts de  sistema
 
 ### Descripción
 
@@ -35,7 +35,8 @@ En resumen: la revelación del prompt de sistema en sí no presenta el riesgo re
   Dado que los LLM son susceptibles a otros ataques como inyecciones de prompts que pueden alterar el prompt de sistema, se recomienda evitar el uso de prompts de sistema para controlar el comportamiento del modelo siempre que sea posible. En su lugar, confiar en sistemas externos al LLM para asegurar este comportamiento. Por ejemplo, la detección y prevención de contenido dañino debería realizarse en sistemas externos.
 #### 3. Implementar barreras de seguridad
   Implementar un sistema de barreras de seguridad fuera del propio LLM. Aunque entrenar un comportamiento particular en un modelo puede ser efectivo, como por ejemplo entrenarlo para que no revele su prompt de sistema, no es una garantía de que el modelo siempre se adhiera a esto. Un sistema independiente que pueda inspeccionar la salida para determinar si el modelo cumple con las expectativas es preferible a las instrucciones de un prompt de sistema.
-#### 4. Asegurar que los controles de seguridad se aplican independientemente del LLM
+###$ 4. Asegurar que los controles de seguridad se aplican independientemente del 
+#### LLM
   Controles críticos como la separación de privilegios, verificación de límites de autorización y similares no deben ser delegados al LLM, ya sea a través del prompt de sistema o de otra manera. Estos controles deben ocurrir de manera determinista y auditable, y los LLM no son (actualmente) propicios para ello. En los casos en que un agente esté realizando tareas, si esas tareas requieren diferentes niveles de acceso, se deben utilizar varios agentes, cada uno configurado con la menor cantidad de privilegios necesarios para realizar las tareas deseadas.
 
 ### Ejemplos de escenarios de ataque
