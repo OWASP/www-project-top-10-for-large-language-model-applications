@@ -31,6 +31,7 @@ OWASP Top 10 para Aplicaciones de LLM
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
 ### Equipo de traducción al español
+
 Sebastián Passaro
 LinkedIn: https://www.linkedin.com/in/sebastian-passaro/
 
@@ -41,6 +42,7 @@ Cecilia Belón
 LinkedIn: https://www.linkedin.com/in/ceciliabelondev/
 
 ### Sobre esta traducción
+
 Reconociendo la naturaleza técnica y crítica del OWASP Top 10 para Aplicaciones de LLM, elegimos conscientemente emplear sólo traductores humanos en la creación de esta traducción. Los traductores mencionados no sólo tienen un profundo conocimiento técnico del contenido original, sino también la fluidez necesaria para que esta traducción sea un éxito.
 
 #### Talesh Seeparsan
