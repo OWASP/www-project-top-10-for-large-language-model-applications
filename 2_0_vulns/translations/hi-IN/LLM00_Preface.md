@@ -35,7 +35,7 @@ LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
 
 
-### Dhruv Agarwal
+#### Dhruv Agarwal
 Hindi Translation Lead, OWASP Top 10 for AI Applications LLM
 LinkedIn: https://www.linkedin.com/in/dhruwen/
 
