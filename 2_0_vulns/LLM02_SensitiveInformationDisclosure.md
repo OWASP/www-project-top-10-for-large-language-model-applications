@@ -19,35 +19,35 @@ To reduce this risk, LLM applications should perform adequate data sanitization 
 
 ### Prevention and Mitigation Strategies
 
-###@ Sanitization:
+#### Sanitization:
 
 #### 1. Integrate Data Sanitization Techniques
   Implement data sanitization to prevent user data from entering the training model. This includes scrubbing or masking sensitive content before it is used in training.
 #### 2. Robust Input Validation
   Apply strict input validation methods to detect and filter out potentially harmful or sensitive data inputs, ensuring they do not compromise the model.
 
-###@ Access Controls:
+#### Access Controls:
 
 #### 1. Enforce Strict Access Controls
   Limit access to sensitive data based on the principle of least privilege. Only grant access to data that is necessary for the specific user or process.
 #### 2. Restrict Data Sources
   Limit model access to external data sources, and ensure runtime data orchestration is securely managed to avoid unintended data leakage.
 
-###@ Federated Learning and Privacy Techniques:
+#### Federated Learning and Privacy Techniques:
 
 #### 1. Utilize Federated Learning
   Train models using decentralized data stored across multiple servers or devices. This approach minimizes the need for centralized data collection and reduces exposure risks.
 #### 2. Incorporate Differential Privacy
   Apply techniques that add noise to the data or outputs, making it difficult for attackers to reverse-engineer individual data points.
 
-###@ User Education and Transparency:
+#### User Education and Transparency:
 
 #### 1. Educate Users on Safe LLM Usage
   Provide guidance on avoiding the input of sensitive information. Offer training on best practices for interacting with LLMs securely.
 #### 2. Ensure Transparency in Data Usage
   Maintain clear policies about data retention, usage, and deletion. Allow users to opt out of having their data included in training processes.
 
-###@ Secure System Configuration:
+#### Secure System Configuration:
 
 #### 1. Conceal System Preamble
   Limit the ability for users to override or access the system's initial settings, reducing the risk of exposure to internal configurations.
@@ -55,7 +55,7 @@ To reduce this risk, LLM applications should perform adequate data sanitization 
   Follow guidelines like "OWASP API8:2023 Security Misconfiguration" to prevent leaking sensitive information through error messages or configuration details.
   (Ref. link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
-###@ Advanced Techniques:
+#### Advanced Techniques:
 
 #### 1. Homomorphic Encryption
   Use homomorphic encryption to enable secure data analysis and privacy-preserving machine learning. This ensures data remains confidential while being processed by the model.

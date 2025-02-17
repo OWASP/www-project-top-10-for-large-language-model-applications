@@ -1,0 +1,19 @@
+# Exclude local environment files
+.env
+
+# Python-related files to ignore
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE-specific
+.vscode/
+.idea/
+
+# Ignore the multi_agent folder
+multi_agent/
+
+# Ignore caching
+.cache/
+
+

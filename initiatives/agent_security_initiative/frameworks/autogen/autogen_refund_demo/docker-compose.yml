@@ -1,0 +1,11 @@
+services:
+  autogen_refund_demo:
+    build: .
+    container_name: autogen_refund_demo
+    volumes:
+      - .:/app
+    command: python run_single_agent.py
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true

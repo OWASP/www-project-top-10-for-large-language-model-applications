@@ -1,0 +1,18 @@
+services:
+  ai_recruiter:
+    build: .
+    container_name: ai_recruiter
+    volumes:
+      - ./resume_collection:/app/resume_collection  # Mount the resume collection folder
+    user: "${UID:-1000}:${GID:-1000}"  # Map container user to host user
+    env_file:
+      - .env  # Load environment variables
+    command: python ai_recruiter.py  # Run the main script
+
+  resume_generator:
+    build: .
+    container_name: resume_generator
+    volumes:
+      - ./resume_collection:/app/resume_collection  # Mount the resume collection folder
+    user: "${UID:-1000}:${GID:-1000}"  # Map container user to host user
+    command: python generate_resumes.py  # Run the resume generation script
