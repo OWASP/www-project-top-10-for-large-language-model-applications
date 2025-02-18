@@ -1,58 +1,39 @@
 ## LLM03:2025 Supply Chain
-## LLM03: 2025 आपूर्ति श्रृंखला
 
-### Description
 ### विवरण
 
-LLM supply chains are susceptible to various vulnerabilities, which can affect the integrity of training data, models, and deployment platforms. These risks can result in biased outputs, security breaches, or system failures. While traditional software vulnerabilities focus on issues like code flaws and dependencies, in ML the risks also extend to third-party pre-trained models and data.
-एलएलएम आपूर्ति श्रृंखला विभिन्न कमजोरियों के लिए अतिसंवेदनशील होती है, जो प्रशिक्षण डेटा, मॉडल और तैनाती प्लेटफार्मों की अखंडता को प्रभावित कर सकती है। इन जोखिमों के परिणामस्वरूप पक्षपाती आउटपुट, सुरक्षा उल्लंघन या सिस्टम विफलताएं हो सकती हैं। जबकि पारंपरिक सॉफ्टवेयर कमजोरियां कोड की खामियों और निर्भरता जैसे मुद्दों पर ध्यान केंद्रित करती हैं, एमएल में जोखिम भी तीसरे पक्ष के पूर्व-प्रशिक्षित मॉडल और डेटा तक विस्तारित होते हैं।
+LLM supply chains विभिन्न vulnerabilities के लिए अतिसंवेदनशील होती हैं, जिससे प्रशिक्षण डेटा, मॉडल और deployment platforms की अखंडता (integrity) प्रभावित होती हैं। इन जोखिमों के परिणामस्वरूप पक्षपाती आउटपुट (biased outputs), security breaches तथा system failures हो सकते हैंं। जबकि पारंपरिक software vulnerabilities code flaws एवं dependencies जैसे मुद्दों पर ध्यान केंद्रित करती हैंं,जबकि ML में जोखिम भी third-party के pre-trained मॉडल और डेटा तक विस्तारित होते हैंं।
 
-These external elements can be manipulated through tampering or poisoning attacks.
-इन बाहरी तत्वों को छेड़छाड़ या जहर के हमलों के माध्यम से हेरफेर किया जा सकता है।
+इन बाहरी तत्वों को tampering एवं poisoning attacks के माध्यम से हेरफेर किया जा सकता हैं।
 
 Creating LLMs is a specialized task that often depends on third-party models. The rise of open-access LLMs and new fine-tuning methods like "LoRA" (Low-Rank Adaptation)  and "PEFT" (Parameter-Efficient Fine-Tuning), especially on platforms like Hugging Face, introduce new supply-chain risks. Finally, the emergence of on-device LLMs increase the attack surface and supply-chain risks for LLM applications.
-LLMS बनाना एक विशेष कार्य है जो अक्सर तीसरे पक्ष के मॉडल पर निर्भर करता है। ओपन-एक्सेस एलएलएम और "लोरा" (लो-रैंक अनुकूलन) और "पीईएफटी" (पैरामीटर-कुशल फाइन-ट्यूनिंग) जैसे नए फाइन-ट्यूनिंग विधियों का उदय, विशेष रूप से चेहरे जैसे प्लेटफार्मों पर, नए आपूर्ति-श्रृंखला जोखिमों को पेश करता है। अंत में, ऑन-डिवाइस एलएलएम के उद्भव ने एलएलएम अनुप्रयोगों के लिए हमले की सतह और आपूर्ति-श्रृंखला जोखिमों को बढ़ाया।
 
-Some of the risks discussed here are also discussed in "LLM04 Data and Model Poisoning." This entry focuses on the supply-chain aspect of the risks.
-A simple threat model can be found [here](https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-LLM%20Supply%20Chain.png).
-यहां चर्चा किए गए कुछ जोखिमों पर "LLM04 डेटा और मॉडल पॉइज़निंग" में भी चर्चा की गई है। यह प्रविष्टि जोखिमों की आपूर्ति-श्रृंखला पहलू पर केंद्रित है।
-एक साधारण खतरा मॉडल पाया जा सकता है [यहाँ] (https://github.com/jsotiro/threatmodels/blob/main/llm%20threats-llm%20supply%20chain.png)।
 
-### Common Examples of Risks
+LLMS बनाना एक विशिष्टता (specialized) वाला कार्य हैं जो अक्सर third-party के मॉडल पर निर्भर करता हैं। open-access LLM और "LoRA" (Low-Rank Adaptation) तथा "PEFT" (Parameter-Efficient Fine-Tuning) जैसे नए fine-tuning विधियों का उदय, Hugging Face जैसे platforms पर, नए supply-chain जोखिमों को पेश करता हैं। अंत में, on-device LLM के उद्गम ने LLM applications के लिए हमले की संभावनए एवं  supply-chain जोखिमों को बढ़ाया हे।
+
+यहां चर्चा किए गए कुछ जोखिमों पर "LLM04 Data and Model Poisoning" में भी चर्चा की गई हैं। यह बिन्दु जोखिमों के supply-chain से जुड़े पहलुओ पर केंद्रित हैं।
+एक साधारण threat model पाया जा सकता हैं
+[here](https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-LLM%20Supply%20Chain.png).
+
 ### जोखिमों के सामान्य उदाहरण
 
-#### 1. Traditional Third-party Package Vulnerabilities
-  Such as outdated or deprecated components, which attackers can exploit to compromise LLM applications. This is similar to "A06:2021 – Vulnerable and Outdated Components" with increased risks when components are used during model development or finetuning.
-  (Ref. link: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
-#### 2. Licensing Risks
-  AI development often involves diverse software and dataset licenses, creating risks if not properly managed. Different open-source and proprietary licenses impose varying legal requirements. Dataset licenses may restrict usage, distribution, or commercialization.
-#### 3. Outdated or Deprecated Models
-  Using outdated or deprecated models that are no longer maintained leads to security issues.
-#### 4. Vulnerable Pre-Trained Model
-  Models are binary black boxes and unlike open source, static inspection can offer little to security assurances. Vulnerable pre-trained models can contain hidden biases, backdoors, or other malicious features that have not been identified through  the safety evaluations of model repository. Vulnerable models can be created by both poisoned datasets and direct model tampering using techniques such as ROME also known as lobotomisation.
-#### 5. Weak Model Provenance
-  Currently there are no strong provenance assurances in published models. Model Cards and associated documentation provide model information and relied upon users, but they offer no guarantees on the origin of the model. An attacker can compromise supplier account on a model repo or create a similar one and combine it with social engineering techniques to compromise the supply-chain of an LLM application.
-#### 6. Vulnerable LoRA adapters
-  LoRA is a popular fine-tuning technique that enhances modularity by allowing pre-trained layers to be bolted onto an existing LLM. The method increases efficiency but create new risks, where a malicious LorA adapter compromises the integrity and security of the pre-trained base model. This can happen both in collaborative model merge environments but also exploiting the support for LoRA from popular inference deployment platforms such as vLMM and OpenLLM where adapters can be downloaded and applied to a deployed model.
-#### 7. Exploit Collaborative Development Processes
-  Collaborative model merge and model handling services (e.g. conversions) hosted in shared environments can be exploited to introduce vulnerabilities in shared models. Model merging is is very popular on Hugging Face with model-merged models topping the OpenLLM leaderboard and can be exploited to bypass reviews. Similarly, services such as conversation bot have been proved to be vulnerable to maniputalion and introduce malicious code in models.
-#### 8. LLM Model on Device supply-chain vulnerabilities
-  LLM models on device increase the supply attack surface with compromised manufactured processes and exploitation of device OS or fimware vulnerabilities to compromise models. Attackers can reverse engineer and re-package applications with tampered models.
-#### 9. Unclear T&Cs and Data Privacy Policies
-  Unclear T&Cs and data privacy policies of the model operators lead to the application's sensitive data being used for model training and subsequent sensitive information exposure. This may also apply to risks from using copyrighted material by the model supplier.
-#### 1। पारंपरिक तृतीय-पक्ष पैकेज कमजोरियां
-  जैसे कि पुराने या पदावनत घटक, जो हमलावर एलएलएम अनुप्रयोगों से समझौता करने के लिए शोषण कर सकते हैं। यह "A06: 2021 - कमजोर और पुराने घटकों" के समान है जब बढ़े हुए जोखिमों के साथ जब घटक का उपयोग मॉडल विकास या फ़िनिट्यूनिंग के दौरान किया जाता है।
-  (Ref।
-#### 2। लाइसेंसिंग जोखिम
-  AI विकास में अक्सर विविध सॉफ़्टवेयर और डेटासेट लाइसेंस शामिल होते हैं, जो ठीक से प्रबंधित नहीं होने पर जोखिम पैदा करते हैं। विभिन्न ओपन-सोर्स और मालिकाना लाइसेंस अलग-अलग कानूनी आवश्यकताओं को लागू करते हैं। डेटासेट लाइसेंस उपयोग, वितरण या व्यावसायीकरण को प्रतिबंधित कर सकते हैं।
-#### 3। पुराना या पदावनत मॉडल
-  पुराने या पदावनत मॉडल का उपयोग करना जो अब बनाए नहीं रखा जाता है, सुरक्षा के मुद्दों की ओर जाता है।
-#### 4। कमजोर पूर्व-प्रशिक्षित मॉडल
-  मॉडल बाइनरी ब्लैक बॉक्स हैं और खुले स्रोत के विपरीत, स्थिर निरीक्षण सुरक्षा आश्वासन के लिए बहुत कम पेश कर सकता है। कमजोर पूर्व-प्रशिक्षित मॉडल में छिपे हुए पूर्वाग्रह, बैकडोर या अन्य दुर्भावनापूर्ण विशेषताएं हो सकती हैं जिन्हें मॉडल रिपॉजिटरी के सुरक्षा मूल्यांकन के माध्यम से पहचाना नहीं गया है। कमजोर मॉडल दोनों जहर वाले डेटासेट और प्रत्यक्ष मॉडल छेड़छाड़ दोनों द्वारा बनाया जा सकता है, जैसे रोम जैसी तकनीकों का उपयोग करके इसे लोबोटोमाइजेशन के रूप में भी जाना जाता है।
-#### 5। कमजोर मॉडल सिद्धता
-  वर्तमान में प्रकाशित मॉडल में कोई मजबूत सिद्ध आश्वासन नहीं हैं। मॉडल कार्ड और संबंधित दस्तावेज मॉडल की जानकारी प्रदान करते हैं और उपयोगकर्ताओं पर भरोसा करते हैं, लेकिन वे मॉडल की उत्पत्ति पर कोई गारंटी नहीं देते हैं। एक हमलावर एक मॉडल रेपो पर आपूर्तिकर्ता खाते से समझौता कर सकता है या एक समान बना सकता है और इसे एलएलएम एप्लिकेशन की आपूर्ति-श्रृंखला से समझौता करने के लिए सोशल इंजीनियरिंग तकनीकों के साथ जोड़ सकता है।
-#### 6। कमजोर लोरा एडेप्टर
-  लोरा एक लोकप्रिय फाइन-ट्यूनिंग तकनीक है जो पूर्व-प्रशिक्षित परतों को मौजूदा एलएलएम पर बोल्ट करने की अनुमति देकर मॉड्यूलरिटी को बढ़ाती है। विधि दक्षता बढ़ाती है लेकिन नए जोखिम पैदा करती है, जहां एक दुर्भावनापूर्ण लोरा एडाप्टर पूर्व-प्रशिक्षित बेस मॉडल की अखंडता और सुरक्षा से समझौता करता है। यह सहयोगी मॉडल मर्ज वातावरण में दोनों हो सकता है, लेकिन वीएलएमएम और ओपनएलएलएम जैसे लोकप्रिय अनुमान परिनियोजन प्लेटफार्मों से लोरा के लिए समर्थन का शोषण भी कर सकता है जहां एडेप्टर को डाउनलोड किया जा सकता है और एक तैनात मॉडल पर लागू किया जा सकता है।
+#### 1.  Third-party Package से जुड़ी पारंपरिक vulnerabilities
+  जैसे कि outdated या deprecated components, जिनका हमलावर LLM applications को compromise करने के प्रयोग लेता हैंं। यह "A06:2021 – Vulnerable and Outdated Components" के जैसा हैं जब components का उपयोग मॉडल विकास या finetuning के दौरान होने से जोखिमों बद जाता हैं।
+  ( संदर्भ link: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
+#### 2.  Licensing से जुड़े जोखिम
+  AI के विकास में अक्सर विविध प्रकार के software और डेटासेट licenses शामिल होते हैंं, जो ठीक से संभले नहीं जाने पर जोखिम पैदा कर सकते हैंं। विभिन्न open-source एवं  proprietary licenses अलग-अलग कानूनी आवश्यकताओं के साथ आते हैंं। डेटासेट licenses उपयोग (usage), वितरण (distribution) तया व्यावसायीकरण (commercialization) को प्रतिबंधित कर सकते हैंं।
+
+#### 3.  Outdated या Deprecated  मॉडल
+  Outdated  या Deprecated मॉडल का उपयोग करना जो अब maintained नही हैं, सुरक्षा का मुद्दों बनते हैं। 
+  
+#### 4.  Vulnerable pre-trained मॉडल
+  मॉडल binary black boxes हैंं और open source के विपरीत, static निरीक्षण से सुरक्षा के प्रती बहुत कम किया जा सकता हैं। Vulnerable pre-trained मॉडल में छिपे हुए पूर्वाग्रह (biases), backdoors या अन्य दुर्भावनापूर्ण features हो सकते हैंं जिन्हें मॉडल repository के सुरक्षा मूल्यांकन के माध्यम से पहचाना नहीं जा पाया हैं। Vulnerable मॉडल को दोनों poisoned डेटासेट एवं सीधा मॉडल से छेड़छाड़ के द्वारा बनाया जा सकता हैं, जैसे की ROME जैसी तकनीके जिसे lobotomisation भी कहते है उसका उपयोग करके।
+
+#### 5.  मॉडल के कमजोर सिद्धता
+  वर्तमान में प्रकाशित मॉडलो में कोई मजबूत सिद्धांतों का आश्वासन नहीं हैंं। मॉडल के Cards एवं इससे संबंधित दस्तावेज मॉडल की जानकारी तो  प्रदान करते हैंं, वह users पर निर्भर होते हैंं, लेकिन वह मॉडल स्रोत (origin) पर कोई गारंटी नहीं देते। एक हमलावर एक मॉडल repo से जुड़े आपूर्तिकर्ता के खाते को compromise कर सकता हैं या एक उसके समान लगने वाला खाता बना कर उसे social engineering की तकनीकों के सतह जोड़ कर, LLM एप्लिकेशन की supply-chain को compromise कर सकता हैं।
+
+#### 6.  Vulnerable LoRA adapters
+  LoRA एक लोकप्रिय fine-tuning तकनीक हैं जो pre-trained परतों को मौजूदा LLM पर जोड़ने की अनुमति देकर modularity को बढ़ाती हैं। यह विधि दक्षता (efficiency) तो बढ़ाती हैं लेकिन नए जोखिमों भी पैदा हो जाते  हैं, जहां एक दुर्भावनापूर्ण LoRA adapter pre-trained बेस मॉडल की अखंडता एवं सुरक्षा से compromise करता हैं। यह collaborative एवं model merge environments दोनों मे हो सकता हैं, लेकिन vLMM एवं OpenLLM जैसे लोकप्रिय inference deployment platforms द्वारा भी LoRA के support को exploit किया जा सकता हैं जहां adapters को डाउनलोड करके deployed मॉडल पर लागू किया जा सकता हैं।
 #### 7। सहयोगी विकास प्रक्रियाओं का शोषण करें
   साझा वातावरण में होस्ट किए गए सहयोगी मॉडल मर्ज और मॉडल हैंडलिंग सेवाओं (जैसे रूपांतरण) को साझा मॉडल में कमजोरियों को पेश करने के लिए शोषण किया जा सकता है। मॉडल मर्जिंग OpenLLM लीडरबोर्ड में टॉप करने वाले मॉडल-विलंबित मॉडल के साथ चेहरे को गले लगाने के लिए बहुत लोकप्रिय है और समीक्षाओं को बायपास करने के लिए शोषण किया जा सकता है। इसी तरह, वार्तालाप बॉट जैसी सेवाओं को मैनिपुटालियन के लिए असुरक्षित साबित किया गया है और मॉडल में दुर्भावनापूर्ण कोड पेश किया गया है।
 #### 8। डिवाइस आपूर्ति-श्रृंखला कमजोरियों पर एलएलएम मॉडल
