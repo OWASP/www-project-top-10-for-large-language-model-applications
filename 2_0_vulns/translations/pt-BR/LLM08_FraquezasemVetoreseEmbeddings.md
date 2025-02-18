@@ -1,4 +1,4 @@
-## LLM08:2025 Fraquezas em Vetores e Embeddings
+## LLM08:2025 Fraquezas em Vetores  e Embeddings
 
 ### Descrição
 
