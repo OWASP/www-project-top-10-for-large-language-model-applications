@@ -12,17 +12,13 @@ LLMS से गलत सूचना इन मॉडलों पर भरो
 
 #### 1.  तथ्यात्मक अशुद्धि
   मॉडल गलत कथन का उत्पादन करता हैं, प्रमुख user झूठी जानकारी के आधार पर निर्णय लेने के लिए। उदाहरण के लिए, एयर कनाडा के चैटबॉट ने यात्रियों को गलत सूचना प्रदान की, जिससे परिचालन व्यवधान और कानूनी जटिलताओं के लिए अग्रणी। परिणामस्वरूप एयरलाइन पर सफलतापूर्वक मुकदमा चलाया गया।
-  
 #### 2.  असमर्थित दावे
   मॉडल आधारहीन दावे उत्पन्न करता हैं, जो विशेष रूप से संवेदनशील संदर्भों जैसे कि स्वास्थ्य सेवा या कानूनी कार्यवाही में हानिकारक हो सकता हैं। उदाहरण के लिए, CHATGPT ने नकली कानूनी मामलों को गढ़ा, जिससे अदालत में महत्वपूर्ण मुद्दे मिले।
-  
 #### 3.  विशेषज्ञता की गलत बयानी
-  मॉडल जटिल विषयों को समझने का भ्रम देता हैं, userओं को इसकी विशेषज्ञता के स्तर के बारे में भ्रमित करता हैं। उदाहरण के लिए, चैटबॉट्स को स्वास्थ्य से संबंधित मुद्दों की जटिलता को गलत तरीके से प्रस्तुत करने के लिए पाया गया हैं, जिसमें अनिश्चितता का सुझाव दिया गया हैं, जहां कोई नहीं हैं, जिसने userओं को यह मानने में गुमराह किया कि असमर्थित उपचार अभी भी बहस के अधीन थे।
-  
+  मॉडल जटिल विषयों को समझने का भ्रम देता हैं, userओं को इसकी विशेषज्ञता के स्तर के बारे में भ्रमित करता हैं। उदाहरण के लिए, चैटबॉट्स को स्वास्थ्य से संबंधित मुद्दों की जटिलता को गलत तरीके से प्रस्तुत करने के लिए पाया गया हैं, जिसमें अनिश्चितता का सुझाव दिया गया हैं, जहां कोई नहीं हैं, जिसने userओं को यह मानने में गुमराह किया कि असमर्थित उपचार अभी भी बहस के अधीन थे।  
 #### 4.  असुरक्षित कोड जनरेशन
   मॉडल असुरक्षित या गैर-मौजूद कोड पुस्तकालयों का सुझाव देता हैं, जो software सिस्टम में एकीकृत होने पर vulnerabilities का परिचय दे सकता हैं। उदाहरण के लिए, LLMS असुरक्षित third-party पुस्तकालयों का उपयोग करके प्रस्तावित करता हैं, जो कि यदि सत्यापन के बिना भरोसा किया जाता हैं, तो सुरक्षा जोखिमों की ओर जाता हैं।
   
-
 ### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
 #### 1.  Retrieval-Augmented Generation (RAG)
@@ -49,7 +45,9 @@ LLMS से गलत सूचना इन मॉडलों पर भरो
 #### परिदृश्य#2
   एक कंपनी पर्याप्त सटीकता सुनिश्चित किए बिना चिकित्सा निदान के लिए एक चैटबॉट प्रदान करती हैं। चैटबॉट खराब जानकारी प्रदान करता हैं, जिससे रोगियों के लिए हानिकारक परिणाम होते हैंं। नतीजतन, कंपनी को सफलतापूर्वक नुकसान के लिए मुकदमा दायर किया गया हैं। इस मामले में, सुरक्षा और सुरक्षा टूटने के लिए एक दुर्भावनापूर्ण हमलावर की आवश्यकता नहीं थी, बल्कि LLM प्रणाली की अपर्याप्त निरीक्षण और विश्वसनीयता से उत्पन्न हुई। इस परिदृश्य में, कंपनी के प्रति प्रतिष्ठित और वित्तीय क्षति के जोखिम के लिए एक सक्रिय हमलावर की आवश्यकता नहीं हैं।
 
-### संबंधित लिंक1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
+### संबंधित लिंक
+
+1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
 2. [Air Canada Chatbot Misinformation: What Travellers Should Know](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know): **BBC**
 3. [ChatGPT Fake Legal Cases: Generative AI Hallucinations](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/): **LegalDive**
 4. [Understanding LLM Hallucinations](https://towardsdatascience.com/llm-hallucinations-ec831dcd7786): **Towards Data Science**
@@ -60,7 +58,6 @@ LLMS से गलत सूचना इन मॉडलों पर भरो
 9. [How to Reduce the Hallucinations from Large Language Models](https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models/): **The New Stack**
 10. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
 11. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
-
 
 ### संबंधित फ्रेमवर्क और टैक्सोनॉमी
 
