@@ -61,4 +61,3 @@
 6. [Confused Deputy Risks in RAG-based LLMs](https://confusedpilot.info/) 
 7. [How RAG Poisoning Made Llama3 Racist!](https://blog.repello.ai/how-rag-poisoning-made-llama3-racist-1c5e390dd564)  
 8. [What is the RAG Triad? ](https://truera.com/ai-quality-education/generative-ai-rags/what-is-the-rag-triad/) 
-
