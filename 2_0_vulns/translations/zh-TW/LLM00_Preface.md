@@ -39,7 +39,7 @@ LinkedIn: https://www.linkedin.com/in/ninedter/
 
 ###@ Will Huang 
 Tranditional Chinese Translation Group / Reviewer
-Facebook: https://www.facebook.com/will.fans
+LinkedIn: https://www.linkedin.com/in/will-huang-tw/
 
 ###@ Yingzi Jin
 Tranditional Chinese Translation Group / Reviewer
