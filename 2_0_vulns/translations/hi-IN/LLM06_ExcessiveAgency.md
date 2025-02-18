@@ -54,6 +54,7 @@
   सुरक्षित कोडिंग सर्वोत्तम अभ्यास का पालन करें, जैसे कि ASVS (एप्लिकेशन सुरक्षा सत्यापन मानक) में OWASP की सिफारिशों को लागू करना, इनपुट Sanitisation पर विशेष रूप से मजबूत फोकस के साथ। विकास पाइपलाइनों में स्टेटिक एप्लिकेशन सिक्योरिटी टेस्टिंग (SAST) और डायनेमिक एंड इंटरएक्टिव एप्लिकेशन टेस्टिंग (DAST, IAST) का उपयोग करें।
 
 निम्नलिखित विकल्प अत्यधिक एजेंसी को नहीं रोकेंगे, लेकिन नुकसान के स्तर को सीमित कर सकते हैंं:
+
 - LLM एक्सटेंशन और डाउनस्ट्रीम सिस्टम की गतिविधि को लॉग इन करें और यह पहचानने के लिए कि अवांछनीय क्रियाएं कहां हो रही हैंं, और तदनुसार जवाब दें।
 - किसी निश्चित समय अवधि के भीतर होने वाली अवांछनीय कार्यों की संख्या को कम करने के लिए दर-सीमित करना लागू करें, महत्वपूर्ण क्षति होने से पहले निगरानी के माध्यम से अवांछनीय कार्यों की खोज करने का अवसर बढ़ाएं।
 
@@ -74,3 +75,4 @@
 4. [NeMo-Guardrails: Interface guidelines](https://github.com/NVIDIA/NeMo-Guardrails/blob/main/docs/security/guidelines.md): **NVIDIA Github**
 6. [Simon Willison: Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/): **Simon Willison**
 7. [Sandboxing Agentic AI Workflows with WebAssembly](https://developer.nvidia.com/blog/sandboxing-agentic-ai-workflows-with-webassembly/) **NVIDIA, Joe Lucas**
+   
