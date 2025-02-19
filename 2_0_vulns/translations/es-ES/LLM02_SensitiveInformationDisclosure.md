@@ -1,4 +1,4 @@
-## LLM02:2025 Divulgación de información sensible
+## LLM02:2025 Divulgación de información  sensible
 
 ### Descripción
 

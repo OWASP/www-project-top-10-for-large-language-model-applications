@@ -12,14 +12,13 @@ La entrada **Debilidades de vector y representaciones vectoriales** responde a l
 
 También hemos agregado **Filtración de prompts de sistema** para abordar un área con vulnerabilidades del mundo real que fueron muy solicitadas por la comunidad. Muchas aplicaciones asumieron que los prompts estaban aislados de forma segura, pero los incidentes recientes han demostrado que los desarrolladores no pueden asumir con seguridad que la información en estos prompts permanece secreta.
 
-**Agencia excesiva** se ha expandido has been expanded, dado el mayor uso de arquitecturas de agentes que pueden otorgarle más autonomía al LLM. Con los LLM actuando como agentes o en configuraciones de plugins, los permisos no controlados pueden llevar a acciones no deseadas o riesgosas, lo que hace que esta entrada sea más crítica que nunca.
+**Agencia excesiva** se ha expandido, dado el mayor uso de arquitecturas de agentes que pueden otorgarle más autonomía al LLM. Con los LLM actuando como agentes o en configuraciones de plugins, los permisos no controlados pueden llevar a acciones no deseadas o riesgosas, lo que hace que esta entrada sea más crítica que nunca.
 
 ### Avanzando
 
-Al igual que la propia tecnología, esta lista es producto de las ideas y experiencias de la comunidad de código abierto. Se ha elaborado gracias a las contribuciones de desarrolladores, científicos de datos y expertos en seguridad entre sectores, todos ellos comprometidos con la creación de aplicaciones de IA más seguras. Nos enorgullece compartir esta versión de 2025 con usteded, y esperamos que les proporcionen las herramientas y los conocimientos necesarios para asegurar los LLM eficazmente.
+Al igual que la propia tecnología, esta lista es producto de las ideas y experiencias de la comunidad de código abierto. Se ha elaborado gracias a las contribuciones de desarrolladores, científicos de datos y expertos en seguridad entre sectores, todos ellos comprometidos con la creación de aplicaciones de IA más seguras. Nos enorgullece compartir esta versión de 2025 con ustedes, y esperamos que les proporcionen las herramientas y los conocimientos necesarios para asegurar los LLM eficazmente.
 
 Gracias a todos los que han contribuido a su elaboración y a los que siguen utilizándola y mejorándola. Estamos agradecidos de formar parte de este trabajo con ustedes.
-
 
 #### Steve Wilson
 Líder del proyecto
@@ -28,16 +27,24 @@ LinkedIn: https://www.linkedin.com/in/wilsonsd/
 
 #### Ads Dawson
 Líder técnico y líder de entradas de vulnerabilidad
-OWASP Top 10 para Aplicaciones de Modelos de Lenguaje Grandes
+OWASP Top 10 para Aplicaciones de LLM
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
-### Spanish Translation Team
-Name
-LinkedIn
+### Equipo de traducción al español
 
-### About this translation
-Recognizing the technical and critical nature of the OWASP Top 10 for Large Language Model Applications, we consciously chose to employ only human translators in the creation of this translation. The translators listed above not only have a deep technical knowledge of the original content, but also the fluency required to make this translation a success.
+Sebastián Passaro
+LinkedIn: https://www.linkedin.com/in/sebastian-passaro/
+
+Pablo Alzuri
+LinkedIn: https://www.linkedin.com/in/palzuri/
+
+Cecilia Belón
+LinkedIn: https://www.linkedin.com/in/ceciliabelondev/
+
+### Sobre esta traducción
+
+Reconociendo la naturaleza técnica y crítica del OWASP Top 10 para Aplicaciones de LLM, elegimos conscientemente emplear sólo traductores humanos en la creación de esta traducción. Los traductores mencionados no sólo tienen un profundo conocimiento técnico del contenido original, sino también la fluidez necesaria para que esta traducción sea un éxito.
 
 #### Talesh Seeparsan
-Translation Lead, OWASP Top 10 for AI Applications LLM
+Líder de traducción, OWASP Top 10 para Aplicaciones de LLM
 LinkedIn: https://www.linkedin.com/in/talesh/
