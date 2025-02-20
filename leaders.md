@@ -7,4 +7,4 @@
 
 ### Core Leadership vTeam
 
-- Full Core Team [Team Page](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/Core-Team)
+- Full Core Team [Team Page](https://genai.owasp.org/contributors/)
