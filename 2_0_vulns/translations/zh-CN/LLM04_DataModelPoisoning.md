@@ -1,6 +1,6 @@
-### LLM04: 2025 数据与模型投毒
+## LLM04: 2025 数据与模型投毒
 
-#### 描述
+### 描述
 
 数据投毒发生在预训练、微调或嵌入数据阶段通过操控数据引入漏洞、后门或偏见。此类操控可能损害模型的安全性、性能或道德行为，导致有害输出或功能受损。常见风险包括模型性能下降、输出偏见或有毒内容以及对下游系统的利用。
 
@@ -8,7 +8,7 @@
 
 此外，通过共享库或开源平台分发的模型可能面临除数据投毒以外的风险，例如通过恶意序列化文件（如pickling）嵌入恶意代码，这些代码在加载模型时会执行。更复杂的是，投毒还可能实现后门功能，这种后门在触发特定条件之前保持隐蔽，难以检测。
 
-#### 常见漏洞示例
+### 常见漏洞示例
 
 1. 恶意行为者在训练数据中引入有害数据，导致输出偏见。例如，“Split-View数据投毒”或“前置投毒（Frontrunning Poisoning）”等技术利用训练动态实现攻击。  
    （参考链接：[Split-View数据投毒](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg)）  
@@ -19,7 +19,7 @@
 4. 未验证的训练数据增加偏差或错误输出的风险。  
 5. 资源访问限制不足可能导致不安全数据的引入，从而产生偏见输出。
 
-#### 防范与缓解策略
+### 防范与缓解策略
 
 1. 使用工具如OWASP CycloneDX或ML-BOM跟踪数据来源和变换，在模型开发的各个阶段验证数据合法性。  
 2. 严格审查数据供应商，并对模型输出与可信来源进行验证，检测投毒迹象。  
@@ -32,24 +32,24 @@
 9. 监控训练损失并分析模型行为，检测投毒迹象。设定阈值以识别异常输出。  
 10. 在推理过程中结合检索增强生成（RAG）和归因技术，减少幻觉风险。
 
-#### 示例攻击场景
+### 示例攻击场景
 
-##### 场景1  
+#### 场景1
 攻击者通过操控训练数据或提示注入技术偏向模型输出，传播虚假信息。  
 
-##### 场景2  
+#### 场景2
 缺乏适当过滤的有毒数据导致有害或偏见输出，传播危险信息。  
 
-##### 场景3  
+#### 场景3
 恶意行为者或竞争对手创建伪造文件进行训练，导致模型输出反映不准确信息。  
 
-##### 场景4  
+#### 场景4
 过滤不充分允许攻击者通过提示注入插入误导性数据，导致受损输出。  
 
-##### 场景5  
+#### 场景5
 攻击者利用投毒技术为模型插入后门触发器，例如身份验证绕过或数据泄露。  
 
-#### 参考链接
+### 参考链接
 
 1. [数据投毒攻击如何破坏机器学习模型](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html)：**CSO Online**  
 2. [MITRE ATLAS（框架）Tay投毒](https://atlas.mitre.org/studies/AML.CS0009/)：**MITRE ATLAS**  
@@ -62,7 +62,7 @@
 9. [永远不会有空闲时刻：利用机器学习的pickle文件](https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/)：**TrailofBits**  
 10. [Sleeper Agents：训练欺骗性LLMs以通过安全训练](https://www.anthropic.com/news/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training)：**Anthropic（arXiv）**  
 
-#### 相关框架和分类
+### 相关框架和分类
 
 - [AML.T0018 | ML模型后门](https://atlas.mitre.org/techniques/AML.T0018)：**MITRE ATLAS**  
 - [NIST AI风险管理框架](https://www.nist.gov/itl/ai-risk-management-framework)：确保AI完整性的策略。**NIST**
