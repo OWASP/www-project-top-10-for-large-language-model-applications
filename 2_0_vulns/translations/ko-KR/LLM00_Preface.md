@@ -1,44 +1,53 @@
-## Letter from the Project Leads
+## 프로젝트 리더 서문
 
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+대규모 언어 모델 애플리케이션을 위한 OWASP Top 10은 2023년에 AI 애플리케이션과 관련된 보안 문제를 강조하고 해결하기 위한 커뮤니티 주도의 노력으로 시작되었습니다. 그 이후로 이 기술은 산업과 애플리케이션 전반에 걸쳐 계속 확산되어 왔으며 관련 위험도 함께 증가했습니다. LLMs이 고객 상호 작용부터 내부 운영까지 모든 것에 더욱 깊숙이 포함되면서 개발자와 보안 전문가들은 새로운 취약점과 이에 대응하는 방법을 발견하고 있습니다.
 
-The 2023 list was a big success in raising awareness and building a foundation for secure LLM usage, but we've learned even more since then. In this new 2025 version, we’ve worked with a larger, more diverse group of contributors worldwide who have all helped shape this list. The process involved brainstorming sessions, voting, and real-world feedback from professionals in the thick of LLM application security, whether by contributing or refining those entries through feedback. Each voice was critical to making this new release as thorough and practical as possible.
+2023년 목록은 인식을 제고하고 안전한 LLM 사용을 위한 기반을 구축하는 데 큰 성공을 거두었지만, 그 이후로 더 많은 것을 배웠습니다. 새로운 2025년 버전에서는 이 목록을 만드는 데 도움을 준 전 세계의 더 크고 다양한 기여자 그룹과 협력했습니다. 이 과정에는 브레인스토밍 세션, 투표, 그리고 LLM 애플리케이션 보안의 최전선에 있는 전문가들의 실질적인 피드백을 통해 해당 항목에 기여하거나 개선하는 등의 방식으로 진행되었습니다. 이 새로운 릴리스를 최대한 철저하고 실용적으로 만드는 데는 각자의 의견이 매우 중요한 역할을 했습니다.
 
-### What’s New in the 2025 Top 10
+### 2025 Top 10의 새로운 기능
 
-The 2025 list reflects a better understanding of existing risks and introduces critical updates on how LLMs are used in real-world applications today. For instance, **Unbounded Consumption** expands on what was previously Denial of Service to include risks around resource management and unexpected costs—a pressing issue in large-scale LLM deployments.
+2025 목록은 기존 위험에 대한 더 나은 이해를 반영하고 오늘날 실제 애플리케이션에서 LLMs이 어떻게 사용되는지에 대한 중요한 업데이트를 소개합니다. 예를 들어, 무제한 소비는 이전에는 서비스 거부에 국한되었던 것을 확장하여 대규모 LLM 배포에서 시급한 문제인 리소스 관리 및 예기치 않은 비용과 관련된 위험을 포함하였습니다.
 
-The **Vector and Embeddings** entry responds to the community’s requests for guidance on securing Retrieval-Augmented Generation (RAG) and other embedding-based methods, now core practices for grounding model outputs.
+**벡터 및 임베딩** 항목은 현재 모델 출력의 근거를 마련하는 핵심 사례인 검색증강생성(RAG: Retrieval-Augmented Generation) 및 기타 임베딩 기반 방법의 보안에 대한 커뮤니티의 지침 요청에 대한 응답입니다.
 
-We’ve also added **System Prompt Leakage** to address an area with real-world exploits that were highly requested by the community. Many applications assumed prompts were securely isolated, but recent incidents have shown that developers cannot safely assume that information in these prompts remains secret.
+또한 커뮤니티에서 요청이 많았던 실제 익스플로잇 영역을 해결하기 위해 **시스템 프롬프트 누출**을 추가했습니다. 많은 애플리케이션은 프롬프트가 안전하게 격리되어 있다고 가정했지만, 최근 발생한 사건으로 인해 개발자가 프롬프트의 정보가 비밀로 유지된다고 안심할 수 없다는 사실이 밝혀졌습니다
 
-**Excessive Agency** has been expanded, given the increased use of agentic architectures that can give the LLM more autonomy. With LLMs acting as agents or in plug-in settings, unchecked permissions can lead to unintended or risky actions, making this entry more critical than ever.
+**과도한 에이전시**는 LLM에 더 많은 자율성을 부여할 수 있는 에이전트 아키텍처의 사용이 증가함에 따라 확장되었습니다. LLMs이 에이전트 또는 플러그인 설정으로 작동하면서 확인되지 않은 권한은 의도치 않은 위험한 작업으로 이어질 수 있으므로 이 항목의 중요성이 그 어느 때보다 커졌습니다.
 
-### Moving Forward
+### 앞으로의 방향
 
-Like the technology itself, this list is a product of the open-source community’s insights and experiences. It has been shaped by contributions from developers, data scientists, and security experts across sectors, all committed to building safer AI applications. We’re proud to share this 2025 version with you, and we hope it provides you with the tools and knowledge to secure LLMs effectively.
+이 목록은 기술 자체와 마찬가지로 오픈 소스 커뮤니티의 인사이트와 경험의 산물입니다. 보다 안전한 AI 애플리케이션을 구축하기 위해 노력하는 여러 분야의 개발자, 데이터 과학자, 보안 전문가들의 기여를 통해 만들어졌습니다. 이 2025 버전을 여러분과 공유하게 되어 자랑스럽게 생각하며, LLMs을 효과적으로 보호할 수 있는 도구와 지식을 얻을 수 있기를 바랍니다.
 
-Thank you to everyone who helped bring this together and those who continue to use and improve it. We’re grateful to be part of this work with you.
+이 프로젝트에 도움을 주신 모든 분들과 계속해서 사용하고 개선해 주시는 모든 분들께 감사드립니다. 여러분과 함께 이 작업에 참여하게 되어 감사하게 생각합니다.
 
 
 #### Steve Wilson
-Project Lead
-OWASP Top 10 for Large Language Model Applications
+대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 프로젝트 리더
 LinkedIn: https://www.linkedin.com/in/wilsonsd/
 
 #### Ads Dawson
-Technical Lead & Vulnerability Entries Lead
-OWASP Top 10 for Large Language Model Applications
+대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 기술 리더 및 취약점 항목 리더
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
 
 ### Korean Translation Team
-Name
-LinkedIn
+전영재(Youngjae Jeon)
+대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 한국어 번역 리더
+LinkedIn: https://www.linkedin.com/in/youngjae-jeon-4a368163/
+FaceBook: https://www.facebook.com/nanuminfo/about/
 
-### About this translation
-Recognizing the technical and critical nature of the OWASP Top 10 for Large Language Model Applications, we consciously chose to employ only human translators in the creation of this translation. The translators listed above not only have a deep technical knowledge of the original content, but also the fluency required to make this translation a success.
+성지연(Jiyeon Sung)
+대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 한국어 번역자
+LinkedIn: 
+
+송현석(Hyunsuk Song)
+대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 한국어 번역자
+LinkedIn: 
+
+
+### 번역 정보
+대규모 언어 모델 애플리케이션을 위한 OWASP Top 10의 기술적이고 중요한 특성을 인식하여 이 번역을 제작할 때 의식적으로 인간 번역가만 고용하기로 결정했습니다. 위에 나열된 번역가들은 원본 콘텐츠에 대한 깊은 기술적 지식을 갖추고 있을 뿐만 아니라 이 번역을 성공적으로 수행하는 데 필요한 유창함도 갖추고 있습니다.
 
 #### Talesh Seeparsan
-Translation Lead, OWASP Top 10 for AI Applications LLM
+대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 번역 책임자
 LinkedIn: https://www.linkedin.com/in/talesh/
