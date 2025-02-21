@@ -30,23 +30,21 @@ LinkedIn: https://www.linkedin.com/in/wilsonsd/
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
 
-### Korean Translation Team
+### 한국어 번역팀
 #### 전영재(Youngjae Jeon)
-대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 한국어 번역 리더
+대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 한국어 번역 책임자
 LinkedIn: https://www.linkedin.com/in/youngjae-jeon-4a368163/
 FaceBook: https://www.facebook.com/nanuminfo/about/
 
 #### 성지연(Jiyeon Sung)
-대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 한국어 번역자
 LinkedIn: 
 
 #### 송현석(Hyunseok Song)
-대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 한국어 번역자
 LinkedIn: 
 
 
 ### 번역 정보
-대규모 언어 모델 애플리케이션을 위한 OWASP Top 10의 기술적이고 중요한 특성을 인식하여 이 번역을 제작할 때 의식적으로 인간 번역가만 고용하기로 결정했습니다. 위에 나열된 번역가들은 원본 콘텐츠에 대한 깊은 기술적 지식을 갖추고 있을 뿐만 아니라 이 번역을 성공적으로 수행하는 데 필요한 유창함도 갖추고 있습니다.
+대규모 언어 모델 애플리케이션을 위한 OWASP Top 10의 기술적이고 중요한 특성을 인식하여 이 번역을 제작할 때 오로지 인간 번역자만 고용하기로 의도적으로 결정하였습니다. 위에 나열된 번역자들은 원본 콘텐츠에 대한 깊은 기술적 지식을 갖추고 있을 뿐만 아니라, 이 번역을 성공적으로 수행하는 데 필요한 유창한 언어 구사력을 갖추고 있습니다.
 
 #### Talesh Seeparsan
 대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 번역 책임자
