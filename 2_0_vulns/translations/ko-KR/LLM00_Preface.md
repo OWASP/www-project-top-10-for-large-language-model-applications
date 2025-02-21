@@ -14,7 +14,7 @@
 
 **과도한 에이전시**는 LLM에 더 많은 자율성을 부여할 수 있는 에이전트 아키텍처의 사용이 증가함에 따라 확장되었습니다. LLMs이 에이전트 또는 플러그인 설정으로 작동하면서 확인되지 않은 권한은 의도치 않은 위험한 작업으로 이어질 수 있으므로 이 항목의 중요성이 그 어느 때보다 커졌습니다.
 
-### 앞으로의 방향
+### 앞으로의 전망
 
 이 목록은 기술 자체와 마찬가지로 오픈 소스 커뮤니티의 인사이트와 경험의 산물입니다. 보다 안전한 AI 애플리케이션을 구축하기 위해 노력하는 여러 분야의 개발자, 데이터 과학자, 보안 전문가들의 기여를 통해 만들어졌습니다. 이 2025 버전을 여러분과 공유하게 되어 자랑스럽게 생각하며, LLMs을 효과적으로 보호할 수 있는 도구와 지식을 얻을 수 있기를 바랍니다.
 
@@ -31,16 +31,16 @@ LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
 
 ### Korean Translation Team
-전영재(Youngjae Jeon)
+#### 전영재(Youngjae Jeon)
 대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 한국어 번역 리더
 LinkedIn: https://www.linkedin.com/in/youngjae-jeon-4a368163/
 FaceBook: https://www.facebook.com/nanuminfo/about/
 
-성지연(Jiyeon Sung)
+#### 성지연(Jiyeon Sung)
 대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 한국어 번역자
 LinkedIn: 
 
-송현석(Hyunsuk Song)
+#### 송현석(Hyunseok Song)
 대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 한국어 번역자
 LinkedIn: 
 
