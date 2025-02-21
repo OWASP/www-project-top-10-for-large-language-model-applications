@@ -38,8 +38,8 @@ OWASP 大型語言模型應用 Top 10
 Tranditional Chinese Translation Group / Group Leader
 LinkedIn: https://www.linkedin.com/in/ninedter/
 
-#### Will Huang 
-Tranditional Chinese Translation Group / Reviewer
+#### Will Huang / 黃保翕
+Traditional Chinese Translation Group / Reviewer
 LinkedIn: https://www.linkedin.com/in/will-huang-tw/
 
 #### Yingzi Jin
