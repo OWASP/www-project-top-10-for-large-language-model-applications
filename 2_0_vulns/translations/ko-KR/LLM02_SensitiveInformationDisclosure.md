@@ -1,88 +1,89 @@
-## LLM02:2025 Sensitive Information Disclosure
+## LLM02:2025 민감한 정보 공걔
 
-### Description
+### 설명
 
-Sensitive information can affect both the LLM and its application context. This includes personal identifiable information (PII), financial details, health records, confidential business data, security credentials, and legal documents. Proprietary models may also have unique training methods and source code considered sensitive, especially in closed or foundation models.
+민감한 정보는 LLM과 애플리케이션 컨텍스트 모두에 영향을 미칠 수 있습니다. 여기에는 개인식별정보(PII), 재무 정보, 건강 기록, 기밀 비즈니스 데이터, 보안 자격 증명 및 법률 문서가 포함됩니다. 독점 모델에는 고유한 교육방법과 소스코드가 있을 수 있으며, 폐쇄형 모델이나 기반 모델의 경우 더 민감하다고 간주될 수 있습니다.
 
-LLMs, especially when embedded in applications, risk exposing sensitive data, proprietary algorithms, or confidential details through their output. This can result in unauthorized data access, privacy violations, and intellectual property breaches. Consumers should be aware of how to interact safely with LLMs. They need to understand the risks of unintentionally providing sensitive data, which may later be disclosed in the model's output.
+특히 애플리케이션에 포함된 LLMs의 경우 출력을 통해 민감한 데이터, 독점 알고리즘 또는 기밀 정보가 노출될 위험이 있습니다. 이로 인해 무단 데이터 액세스, 개인정보 침해, 지적 재산권 침해가 발생할 수 있습니다. 소비자는 LLMs와 안전하게 상호 작용하는 방법을 알고 있어야 합니다. 의도치 않게 민감한 데이터를 제공할 경우 나중에 모델의 출력에 의해 공개될 수 있는 위험이 있다는 것을 알아야 합니다.
 
 To reduce this risk, LLM applications should perform adequate data sanitization to prevent user data from entering the training model. Application owners should also provide clear Terms of Use policies, allowing users to opt out of having their data included in the training model. Adding restrictions within the system prompt about data types that the LLM should return can provide mitigation against sensitive information disclosure. However, such restrictions may not always be honored and could be bypassed via prompt injection or other methods.
+이러한 위험을 줄이려면 LLM 애플리케이션은 적절한 데이터 정제를 수행하여 사용자 데이터가 학습 모델에 포함되지 않도록 해야 합니다. 또한 애플리케이션 소유자는 명확한 이용약관 정책을 제공하여 사용자가 자신의 데이터가 학습 모델에 포함되지 않도록 선택할 수 있도록 해야 합니다. 시스템 프롬프트에 LLM이 반환해야 하는 데이터 유형에 대한 제한을 추가하여 민감한 정보 노출에 대한 완화 조치를 취할 수 있습니다. 그러나 이러한 제한이 항상 지켜지는 것은 아니며 프롬프트 인젝션이나 다른 방법을 통해 우회할 수 있습니다.
 
-### Common Examples of Vulnerability
+### 취약점의 일반적인 예
 
-#### 1. PII Leakage
-  Personal identifiable information (PII) may be disclosed during interactions with the LLM.
-#### 2. Proprietary Algorithm Exposure
-  Poorly configured model outputs can reveal proprietary algorithms or data. Revealing training data can expose models to inversion attacks, where attackers extract sensitive information or reconstruct inputs. For instance, as demonstrated in the 'Proof Pudding' attack (CVE-2019-20634), disclosed training data facilitated model extraction and inversion, allowing attackers to circumvent security controls in machine learning algorithms and bypass email filters.
-#### 3. Sensitive Business Data Disclosure
-  Generated responses might inadvertently include confidential business information.
+#### 1. 개인정보 유출
+  LLM과 상호작용하는 동안 개인식별정보(PII)가 공개될 수 있습니다.
+#### 2. 독점 알고리즘 노출
+  모델 출력이 잘못 구성되면 독점 알고리즘이나 데이터가 노출될 수 있습니다. 학습 데이터가 공개되면 공격자가 민감한 정보를 추출하거나 입력을 재구성하는 반전 공격에 모델이 노출될 수 있습니다. 예를 들어, '프루프 푸딩(Proof Pudding)' 공격(CVE-2019-20634)에서 입증된 것처럼, 공개된 학습 데이터를 통해 모델 추출 및 반전을 용이하게 하여 공격자가 머신러닝 알고리즘의 보안 제어를 우회하고 이메일 필터를 우회할 수 있습니다.
+#### 3. 민감한 비즈니스 데이터 공개
+  생성된 응답에 의도치 않은 비즈니스 기밀 정보가 포함될 수 있습니다.
 
-### Prevention and Mitigation Strategies
+### 예방 및 완화 전략
 
-#### Sanitization:
+#### 정화(Sanitization):
 
-#### 1. Integrate Data Sanitization Techniques
-  Implement data sanitization to prevent user data from entering the training model. This includes scrubbing or masking sensitive content before it is used in training.
-#### 2. Robust Input Validation
-  Apply strict input validation methods to detect and filter out potentially harmful or sensitive data inputs, ensuring they do not compromise the model.
+#### 1. 데이터 정화 기술 통합
+  사용자 데이터가 훈련 모델에 들어가지 않도록 데이터를 정화하도록 구현합니다. 여기에는 훈련에 사용되기 전에 민감한 콘텐츠를 삭제하거나 마스킹하는 것이 포함됩니다.
+#### 2. 강력한 입력 검증
+  모델이 손상되지 않도록 잠재적으로 유해하거나 민감한 데이터 입력을 감지하고 필터링하기 위해 엄격한 입력 검증 방법을 적용하십시오.
 
-#### Access Controls:
+#### 액세스 제어:
 
-#### 1. Enforce Strict Access Controls
-  Limit access to sensitive data based on the principle of least privilege. Only grant access to data that is necessary for the specific user or process.
-#### 2. Restrict Data Sources
-  Limit model access to external data sources, and ensure runtime data orchestration is securely managed to avoid unintended data leakage.
+#### 1. 엄격한 액세스 제어 시행
+  최소 권한 원칙에 따라 민감한 데이터에 대한 액세스를 제한합니다. 특정 사용자 또는 프로세스에 필요한 데이터에만 액세스 권한을 부여하세요.
+#### 2. 데이터 소스 제한
+  외부 데이터 소스에 대한 모델 액세스를 제한하고, 의도치 않은 데이터 유출을 방지하기 위해 런타임 데이터 오케스트레이션을 안전하게 관리하세요.
 
-#### Federated Learning and Privacy Techniques:
+#### 연합 학습 및 개인정보 보호 기술:
 
-#### 1. Utilize Federated Learning
-  Train models using decentralized data stored across multiple servers or devices. This approach minimizes the need for centralized data collection and reduces exposure risks.
-#### 2. Incorporate Differential Privacy
-  Apply techniques that add noise to the data or outputs, making it difficult for attackers to reverse-engineer individual data points.
+#### 1. 연합 학습 활용
+  여러 서버 또는 디바이스에 저장된 분산형 데이터를 사용하여 모델을 훈련합니다. 이 접근 방식은 중앙 집중식 데이터 수집의 필요성을 최소화하고 노출 위험을 줄입니다.
+#### 2. 차등 개인정보 보호 통합
+  데이터 또는 출력에 노이즈를 추가하는 기술을 적용하여 공격자가 개별 데이터 포인트를 리버스 엔지니어링하기 어렵게 만듭니다.
 
-#### User Education and Transparency:
+#### 사용자 교육 및 투명성:
 
-#### 1. Educate Users on Safe LLM Usage
-  Provide guidance on avoiding the input of sensitive information. Offer training on best practices for interacting with LLMs securely.
-#### 2. Ensure Transparency in Data Usage
-  Maintain clear policies about data retention, usage, and deletion. Allow users to opt out of having their data included in training processes.
+#### 1. 사용자에게 안전한 LLM 사용법 교육
+  민감한 정보를 입력하지 않도록 안내합니다. LLMs과 안전하게 상호 작용하기 위한 모범 사례에 대한 교육을 제공하세요.
+#### 2. 데이터 사용의 투명성 보장
+  데이터 보존, 사용 및 삭제에 대한 명확한 정책을 유지합니다. 사용자가 자신의 데이터가 교육 프로세스에 포함되는 것을 거부할 수 있도록 합니다.
 
-#### Secure System Configuration:
+#### 보안 시스템 구성:
 
-#### 1. Conceal System Preamble
-  Limit the ability for users to override or access the system's initial settings, reducing the risk of exposure to internal configurations.
-#### 2. Reference Security Misconfiguration Best Practices
-  Follow guidelines like "OWASP API8:2023 Security Misconfiguration" to prevent leaking sensitive information through error messages or configuration details.
-  (Ref. link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+#### 1. 시스템 프리앰블 은닉
+  사용자가 시스템의 초기 설정을 재정의하거나 액세스할 수 있는 기능을 제한하여 내부 구성에 노출될 위험을 줄입니다.
+#### 2. 보안 구성 오류 모범 사례 참조
+  오류 메시지나 설정 세부 정보를 통해 민감한 정보가 유출되지 않도록 "OWASP API8:2023 보안 구성 오류"와 같은 지침을 따르세요.
+  (참조 링크:[OWASP API8:2023 보안 구성 오류](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
-#### Advanced Techniques:
+#### 고급 기술:
 
-#### 1. Homomorphic Encryption
-  Use homomorphic encryption to enable secure data analysis and privacy-preserving machine learning. This ensures data remains confidential while being processed by the model.
-#### 2. Tokenization and Redaction
-  Implement tokenization to preprocess and sanitize sensitive information. Techniques like pattern matching can detect and redact confidential content before processing.
+#### 1. 동형 암호화(Homomorphic Encryption)
+  동형 암호화를 사용하여 안전한 데이터 분석 및 개인정보 보호 머신러닝을 가능하게 합니다. 이를 통해 데이터가 모델에 의해 처리되는 동안 기밀성을 유지합니다.
+#### 2. 토큰화 및 비공개 처리
+  민감한 정보를 전처리하고 정화하기 위해 토큰화를 구현합니다. 패턴 매칭과 같은 기술은 처리하기 전에 기밀 콘텐츠를 감지하고 삭제할 수 있습니다.
 
-### Example Attack Scenarios
+### 공격 시나리오 예시
 
-#### Scenario #1: Unintentional Data Exposure
-  A user receives a response containing another user's personal data due to inadequate data sanitization.
-#### Scenario #2: Targeted Prompt Injection
-  An attacker bypasses input filters to extract sensitive information.
-#### Scenario #3: Data Leak via Training Data
-  Negligent data inclusion in training leads to sensitive information disclosure.
+#### 시나리오 #1: 의도하지 않은 데이터 노출
+  사용자가 부적절한 데이터 정화로 인해 다른 사용자의 개인 데이터가 포함된 응답을 수신합니다.
+#### 시나리오 #2: 타겟팅된 프롬프트 주입
+  공격자가 입력 필터를 우회하여 민감한 정보를 추출합니다.
+#### 시나리오 #3: 학습 데이터를 통한 데이터 유출
+  훈련에 부주의하게 데이터를 포함하면 민감한 정보가 노출될 수 있습니다.
 
-### Reference Links
+### 참조 링크
 
-1. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
-2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
-3. [ChatGPT Spit Out Sensitive Data When Told to Repeat ‘Poem’ Forever](https://www.wired.com/story/chatgpt-poem-forever-security-roundup/): **Wired**
-4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
-5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
+1. [ChatGPT의 삼성 유출에서 배운 교훈](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
+2. [AI 데이터 유출 위기: 새로운 도구로 회사 기밀이 ChatGPT로 유출되는 것을 방지](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
+3. ['Poem'을 영원히 반복하라는 지시를 받으면 민감한 데이터를 뱉어내는 ChatGPT](https://www.wired.com/story/chatgpt-poem-forever-security-roundup/): **Wired**
+4. [차등 개인정보 보호를 사용하여 보안 모델 구축하기](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
+5. [프루프 푸딩 (CVE-2019-20634) AVID](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 
-### Related Frameworks and Taxonomies
+### 관련 프레임워크 및 분류
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+인프라 구축과 관련된 종합적인 정보, 시나리오 전략, 적용된 환경 제어 및 기타 모범 사례는 이 섹션을 참조하세요.
 
-- [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
-- [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**
-- [AML.T0024.002 - Extract ML Model](https://atlas.mitre.org/techniques/AML.T0024.002) **MITRE ATLAS**
+- [AML.T0024.000 - 훈련 데이터 멤버십 유추](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
+- [AML.T0024.001 - 인버트 ML 모델](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**
+- [AML.T0024.002 - 추출 ML 모델](https://atlas.mitre.org/techniques/AML.T0024.002) **MITRE ATLAS**

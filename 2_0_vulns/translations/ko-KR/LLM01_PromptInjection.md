@@ -48,23 +48,23 @@
 
 ### 공격 시나리오 예시
 
-#### Scenario #1: 직접 인젝션
+#### 시나리오 #1: 직접 인젝션
   공격자가 고객 지원 챗봇에 프롬프트 인젝션을 시도하여 이전 지침을 무시하고 개인 데이터 저장소를 조회하고 이메일을 보내도록 지시하여 무단 액세스 및 권한 상승을 유도합니다.
-#### Scenario #2: 간접 인젝션
+#### 시나리오 #2: 간접 인젝션
   사용자가 LLM을 사용하여 숨겨진 지침이 포함된 웹 페이지를 요약하여 LLM이 URL로 연결되는 이미지에 삽입해 비공개 대화가 유출되도록 할 수 있습니다.
-#### Scenario #3: 의도하지 않은 인젝션
+#### 시나리오 #3: 의도하지 않은 인젝션
   한 회사가 직무 설명에 AI가 생성한 지원서를 식별하는 지침을 포함시켰습니다. 이 지침을 인지하지 못한 지원자가 이력서를 최적화하기 위해 LLM을 사용하면 AI가 이를 실수로 감지하여 트리거합니다.
-#### Scenario #4: 의도적인 모델 영향
+#### 시나리오 #4: 의도적인 모델 영향
   공격자가 검색 증강 생성(RAG) 애플리케이션에서 사용하는 리포지토리의 문서를 수정합니다. 사용자의 쿼리가 수정된 콘텐츠를 반환하면 악성 명령은 LLM의 출력을 변경하여 오해의 소지가 있는 결과를 생성합니다.
-#### Scenario #5: 코드 인젝션
+#### 시나리오 #5: 코드 인젝션
   An attacker exploits a vulnerability (CVE-2024-5184) in an LLM-powered email assistant to inject malicious prompts, allowing access to sensitive information and manipulation of email content. 공격자는 LLM 기반 이메일 도우미의 취약점(CVE-2024-5184)을 악용하여 악성 프롬프트 인젝션을 통해 민감한 정보에 액세스하거나 이메일 콘텐츠를 조작을 시도할 수 있습니다.
-#### Scenario #6: 페이로드 분할
+#### 시나리오 #6: 페이로드 분할
   An attacker uploads a resume with split malicious prompts. When an LLM is used to evaluate the candidate, the combined prompts manipulate the model's response, resulting in a positive recommendation despite the actual resume contents. 공격자가 악성 프롬프트가 포함된 이력서를 분할하여 업로드합니다. LLM을 사용하여 지원자를 평가하면 결합된 프롬프트가 모델의 응답을 조작하여 실제 이력서 내용과 관계없이 긍정적인 추천을 받게 됩니다.
-#### Scenario #7: 멀티모달 인젝션
+#### 시나리오 #7: 멀티모달 인젝션
   공격자는 정상 텍스트와 함께 악성 프롬프트를 이미지에 삽입합니다. 멀티모달 AI가 이미지와 텍스트를 동시에 처리하는 경우 숨겨진 프롬프트는 모델의 동작을 변경하여 무단 작업이나 민감한 정보 노출로 이어질 수 있습니다.
-#### Scenario #8: 적대적 접미사
+#### 시나리오 #8: 적대적 접미사
   공격자는 프롬프트에 의미 없어 보이는 문자열을 추가하여 안전 조치를 우회하는 악의적인 방식으로 LLM의 출력에 영향을 미치도록 합니다.
-#### Scenario #9: 다국어/난독화 공격
+#### 시나리오 #9: 다국어/난독화 공격
   공격자는 필터를 회피하거나 LLM의 동작을 조작하기 위해 여러 언어를 사용하거나 악성 명령어 인코딩(예: Base64 또는 이모티콘 사용)을 합니다.
 
 ### 참조 링크
