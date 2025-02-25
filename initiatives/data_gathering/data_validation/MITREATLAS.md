@@ -153,7 +153,7 @@ By integrating these practices into your development and security processes, you
 
 For the vulnerabilities addressed, the following automated tools can be integrated into your development and deployment pipelines:
 
-- **OWASP ZAP**: Automate web application security testing.
+- **ZAP**: Automate web application security testing.
 - **Bandit**: Integrate into CI/CD pipelines for automatic scanning of Python code for security issues.
 - **SQLMap**: Use in automated testing environments to check for SQL injection vulnerabilities.
 - **PyCQA/flake8**: Integrate into your development process for continuous code quality and security checks.
