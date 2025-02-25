@@ -1,55 +1,55 @@
-## LLM09:2025 Misinformation
+## LLM09:2025 허위 정보
 
-### Description
+### 설명
 
-Misinformation from LLMs poses a core vulnerability for applications relying on these models. Misinformation occurs when LLMs produce false or misleading information that appears credible. This vulnerability can lead to security breaches, reputational damage, and legal liability.
+LLM에서 발생하는 허위 정보는 이러한 모델을 활용하는 애플리케이션의 핵심적인 보안 취약점 중 하나입니다. 허위 정보는 LLM이 신뢰할 수 있는 것처럼 보이지만 실제로는 잘못되거나 오해를 유발하는 정보를 생성할 때 발생합니다. 이러한 취약점은 보안 침해, 평판 손상, 법적 책임과 같은 심각한 문제를 초래할 수 있습니다.
 
-One of the major causes of misinformation is hallucination—when the LLM generates content that seems accurate but is fabricated. Hallucinations occur when LLMs fill gaps in their training data using statistical patterns, without truly understanding the content. As a result, the model may produce answers that sound correct but are completely unfounded. While hallucinations are a major source of misinformation, they are not the only cause; biases introduced by the training data and incomplete information can also contribute.
+허위 정보의 주요 원인 중 하나는 환각입니다. 환각은 LLM이 사실처럼 보이는 허구의 콘텐츠를 생성하는 현상을 의미합니다. 이는 모델이 훈련 데이터에서 부족한 정보를 통계적 패턴을 기반으로 보완하려고 할 때 발생하며, 모델이 내용을 실제로 이해하지 못한 채 출력을 생성하는 경우입니다. 그 결과, 겉보기에 신뢰할 수 있어 보이지만 전혀 근거 없는 정보를 제공할 수 있습니다. 하지만 환각만이 유일한 원인은 아닙니다. 훈련 데이터에 내재된 편향과 불완전한 정보도 허위 정보의 원인이 될 수 있습니다. 또 다른 관련 문제는 과도한 신뢰입니다. 과도한 신뢰는 이용자가 LLM이 생성한 콘텐츠를 지나치게 신뢰하여 그 정확성을 검증하지 않는 경우에 발생합니다.
 
-A related issue is overreliance. Overreliance occurs when users place excessive trust in LLM-generated content, failing to verify its accuracy. This overreliance exacerbates the impact of misinformation, as users may integrate incorrect data into critical decisions or processes without adequate scrutiny.
+이로 인해 이용자들은 충분한 검토 없이 잘못된 데이터를 중요한 의사 결정이나 프로세스에 반영할 위험이 있으며, 그 결과 허위 정보의 영향이 더욱 심각해질 수 있습니다.
 
-### Common Examples of Risk
+### 일반적 취약점 예시
 
-#### 1. Factual Inaccuracies
-  The model produces incorrect statements, leading users to make decisions based on false information. For example, Air Canada's chatbot provided misinformation to travelers, leading to operational disruptions and legal complications. The airline was successfully sued as a result.
-  (Ref. link: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
-#### 2. Unsupported Claims
-  The model generates baseless assertions, which can be especially harmful in sensitive contexts such as healthcare or legal proceedings. For example, ChatGPT fabricated fake legal cases, leading to significant issues in court.
-  (Ref. link: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
-#### 3. Misrepresentation of Expertise
-  The model gives the illusion of understanding complex topics, misleading users regarding its level of expertise. For example, chatbots have been found to misrepresent the complexity of health-related issues, suggesting uncertainty where there is none, which misled users into believing that unsupported treatments were still under debate.
-  (Ref. link: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
-#### 4. Unsafe Code Generation
-  The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems. For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks.
-  (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
+#### 1. 사실적 부정확성
+  모델이 잘못된 정보를 생성하여 이용자가 이를 바탕으로 잘못된 결정을 내리게 하는 경우입니다. 예를 들어, Air Canada의 챗봇이 여행객들에게 부정확한 정보를 제공하여 운영상의 혼란과 법적 문제를 초래하였으며, 그 결과 항공사는 소송에서 패소하였습니다.
+  (참조 링크: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
+#### 2. 근거 없는 주장
+  모델이 명확한 근거 없이 주장을 생성하는 경우로, 특히 의료 및 법률과 같은 민감한 분야에서 심각한 피해를 초래할 수 있습니다. 예를 들어, ChatGPT가 가짜 법률 사건을 생성하여 실제 법정에서 심각한 문제를 초래한 사례가 있습니다.
+  (참조 링크: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
+#### 3. 전문성 허위 진술
+  모델이 특정 주제에 대한 이해도가 높은 것처럼 보이게 만들어 이용자가 모델의 전문성을 오해하도록 유도하는 경우입니다. 예를 들어, 의료 챗봇이 실제로는 확실한 치료법이 있음에도 불구하고, 불확실한 정보처럼 표현하여 이용자가 오해하도록 유도한 사례가 있습니다. 이로 인해 검증되지 않은 치료법이 여전히 논란 중인 것처럼 보이게 만드는 문제가 발생할 수 있습니다.
+  (참조 링크: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
+#### 4. 안전하지 않은 코드 생성
+  모델이 보안에 취약하거나 존재하지 않는 코드 라이브러리를 추천하는 경우입니다. 개발자가 이를 검증 없이 신뢰할 경우, 소프트웨어에 보안 취약점이 포함될 위험이 있습니다. 예를 들어, LLM이 보안성이 떨어지는 타사 라이브러리를 추천한 사례가 있으며, 개발자가 이를 그대로 사용한 경우 보안 사고가 발생할 수 있습니다.
+  (참조 링크: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
-### Prevention and Mitigation Strategies
+### 예방 및 완화 전략
 
-#### 1. Retrieval-Augmented Generation (RAG)
-  Use Retrieval-Augmented Generation to enhance the reliability of model outputs by retrieving relevant and verified information from trusted external databases during response generation. This helps mitigate the risk of hallucinations and misinformation.
-#### 2. Model Fine-Tuning
-  Enhance the model with fine-tuning or embeddings to improve output quality. Techniques such as parameter-efficient tuning (PET) and chain-of-thought prompting can help reduce the incidence of misinformation.
-#### 3. Cross-Verification and Human Oversight
-  Encourage users to cross-check LLM outputs with trusted external sources to ensure the accuracy of the information. Implement human oversight and fact-checking processes, especially for critical or sensitive information. Ensure that human reviewers are properly trained to avoid overreliance on AI-generated content.
-#### 4. Automatic Validation Mechanisms
-  Implement tools and processes to automatically validate key outputs, especially output from high-stakes environments.
-#### 5. Risk Communication
-  Identify the risks and possible harms associated with LLM-generated content, then clearly communicate these risks and limitations to users, including the potential for misinformation.
-#### 6. Secure Coding Practices
-  Establish secure coding practices to prevent the integration of vulnerabilities due to incorrect code suggestions.
-#### 7. User Interface Design
-  Design APIs and user interfaces that encourage responsible use of LLMs, such as integrating content filters, clearly labeling AI-generated content and informing users on limitations of reliability and accuracy. Be specific about the intended field of use limitations.
-#### 8. Training and Education
-  Provide comprehensive training for users on the limitations of LLMs, the importance of independent verification of generated content, and the need for critical thinking. In specific contexts, offer domain-specific training to ensure users can effectively evaluate LLM outputs within their field of expertise.
+#### 1. RAG 활용
+  RAG를 사용하여 신뢰할 수 있는 외부 데이터베이스에서 검증된 정보를 검색함으로써, 모델 출력의 신뢰성을 향상시킵니다. 이를 통해 환각 및 허위 정보 발생 위험을 줄일 수 있습니다.
+#### 2. 모델 미세 조정
+  모델을 미세 조정하거나 임베딩을 적용하여 출력 품질을 개선합니다. 파라미터 효울적 튜닝(Parameter Efficient Tuning, PET) 및 연쇄적 사고 프롬프팅과 같은 기법을 활용하면 허위 정보 발생 빈도를 줄일 수 있습니다.
+#### 3. 교차 검증 및 인적 감독
+  이용자들이 LLM이 생성한 정보를 신뢰할 수 있는 외부 출처와 비교하여 검증하도록 권장합니다. 또한, 중요한 정보에 대해서는 인간 감독 및 사실 검증 프로세스를 도입해야 합니다. 특히, 검토 담당자는 AI가 생성한 콘텐츠에 대한 과도한 신뢰를 방지할 수 있도록 적절한 교육을 받아야 합니다.
+#### 4. 자동 검증 메커니즘
+  고위험 환경에서 생성된 주요 출력물을 자동으로 검증하는 도구와 프로세스를 도입해야 합니다. 
+#### 5. 위험 커뮤니케이션
+  LLM이 생성한 콘텐츠와 관련된 위험 요소 및 발생 가능한 피해를 식별하고, 이러한 위험과 제한 사항을 이용자에게 명확히 전달해야 합니다. 특히 허위 정보가 발생할 가능성을 포함한 경고 메시지를 제공하는 것이 중요합니다.
+#### 6. 보안 코딩 적용
+  LLM이 제안한 코드가 보안 취약점을 포함하지 않도록 개발 과정에서 보안 코딩 관행을 철저히 준수해야 합니다.
+#### 7. 이용자 인터페이스 설계
+  LLM을 책임감 있게 사용할 수 있도록 API 및 이용자 인터페이스를 설계해야 합니다. 콘텐츠 필터를 통합하고, AI가 생성한 콘텐츠임을 명확히 표시하며, 신뢰성과 정확성의 한계를 이용자에게 안내해야 합니다. 또한, LLM이 사용될 특정 분야에서의 제한 사항을 명확히 명시해야 합니다.
+#### 8. 훈련 및 교육
+  이용자들에게 LLM의 한계를 명확히 이해시키고, 생성된 콘텐츠를 독립적으로 검증하는 방법을 교육해야 합니다. 특정 산업이나 환경에서 사용할 경우, 해당 분야에 특화된 교육을 제공하여 이용자가 LLM 출력을 효과적으로 평가할 수 있도록 지원해야 합니다.
 
-### Example Attack Scenarios
+### 공격 시나리오 예시
 
-#### Scenario #1
-  Attackers experiment with popular coding assistants to find commonly hallucinated package names. Once they identify these frequently suggested but nonexistent libraries, they publish malicious packages with those names to widely used repositories. Developers, relying on the coding assistant's suggestions, unknowingly integrate these poised packages into their software. As a result, the attackers gain unauthorized access, inject malicious code, or establish backdoors, leading to significant security breaches and compromising user data.
-#### Scenario #2
-  A company provides a chatbot for medical diagnosis without ensuring sufficient accuracy. The chatbot provides poor information, leading to harmful consequences for patients. As a result, the company is successfully sued for damages. In this case, the safety and security breakdown did not require a malicious attacker but instead arose from the insufficient oversight and reliability of the LLM system. In this scenario, there is no need for an active attacker for the company to be at risk of reputational and financial damage.
+#### 시나리오 #1
+  공격자는 인기 있는 코드 작성 보조 도구를 활용하여 모델이 자주 환각을 일으키는 패키지 이름을 탐색합니다. 이후, 이러한 존재하지 않는 라이브러리와 동일한 이름으로 악성 패키지를 배포하고, 이를 널리 사용되는 코드 저장소에 등록합니다. 개발자는 코딩 보조 도구의 추천을 신뢰하여 이러한 악성 패키지를 의도치 않게 소프트웨어에 포함할 수 있습니다. 그 결과, 공격자는 무단 접근을 획득하거나, 악성 코드를 인젝션하거나, 백도어를 설정하여 심각한 보안 침해를 일으키고 이용자 데이터를 탈취할 수 있습니다.
+#### 시나리오 #2
+  한 기업이 의료 진단용 챗봇을 개발하였으나, 정확성을 충분히 검증하지 않은 채 서비스에 배포하였습니다. 이 챗봇은 부정확한 의료 정보를 제공하였으며, 그로 인해 환자에게 심각한 피해를 초래하였습니다. 결과적으로 해당 기업은 손해배상 소송에서 패소하게 되었습니다. 이 사례에서는 악의적인 공격자가 개입하지 않았음에도 불구하고 LLM 시스템의 감독 부족 및 신뢰성 문제로 인해 보안 및 안전이 무너지는 상황이 발생하였습니다. 즉, 외부 공격자가 존재하지 않더라도 기업은 평판 손실 및 재정적 피해를 입을 위험에 처할 수 있습니다.
 
-### Reference Links
+### 참조 링크
 
 1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
 2. [Air Canada Chatbot Misinformation: What Travellers Should Know](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know): **BBC**
@@ -63,8 +63,9 @@ A related issue is overreliance. Overreliance occurs when users place excessive 
 10. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
 11. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
 
-### Related Frameworks and Taxonomies
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+### 관련 프레임워크 및 분류
 
-- [AML.T0048.002 - Societal Harm](https://atlas.mitre.org/techniques/AML.T0048) **MITRE ATLAS**
+인프라 구축과 관련된 종합적인 정보, 시나리오 전략, 적용된 환경 제어 및 기타 모범 사례는 이 섹션을 참조하세요.
+
+- [AML.T0048.002 - Societal Harm](https://atlas.mitre.org/techniques/AML.T0048): **MITRE ATLAS**

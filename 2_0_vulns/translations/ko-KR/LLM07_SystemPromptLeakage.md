@@ -1,59 +1,59 @@
-## LLM07:2025 System Prompt Leakage
+## LLM07:2025 시스템 프롬프트 유출
 
-### Description
+### 설명
 
-The system prompt leakage vulnerability in LLMs refers to the risk that the system prompts or instructions used to steer the behavior of the model can also contain sensitive information that was not intended to be discovered. System prompts are designed to guide the model's output based on the requirements of the application, but may inadvertently contain secrets. When discovered, this information can be used to facilitate other attacks.
+LLM에서 시스템 프롬프트 유출 취약점은 시스템 프롬프트나 지침이 모델의 행동을 유도하는 데 사용되지만, 의도치 않게 민감 정보를 포함할 수 있는 위험을 의미합니다. 시스템 프롬프트는 애플리케이션의 요구 사항에 맞게 모델의 출력을 유도하기 위해 설계되었지만, 그 안에 비밀 정보가 포함될 수 있습니다. 이러한 정보가 발견되면 다른 공격을 수행하는 데 이용될 수 있습니다.
 
-It's important to understand that the system prompt should not be considered a secret, nor should it be used as a security control. Accordingly, sensitive data such as credentials, connection strings, etc. should not be contained within the system prompt language.
+시스템 프롬프트는 비밀로 취급되어서는 안 되며, 보안 제어로 사용되어서도 안 된다는 점을 이해하는 것이 중요합니다. 따라서 자격 증명, 연결 문자열 등과 같은 민감한 데이터는 시스템 프롬프트 언어에 포함되지 않아야 합니다.
 
-Similarly, if a system prompt contains information describing different roles and permissions, or sensitive data like connection strings or passwords, while the disclosure of such information may be helpful, the fundamental security risk is not that these have been disclosed, it is that the application allows bypassing strong session management and authorization checks by delegating these to the LLM, and that sensitive data is being stored in a place that it should not be.
+마찬가지로 시스템 프롬프트에 다른 역할과 권한을 설명는 정보 또는 연결 문자열이나 비밀번호와 같은 민감한 데이터가 포함되어 있다면, 이러한 정보의 유출은 유용할 수 있지만, 근본적인 보안 위험은 이 정보가 유출되었기 때문이 아니라, 애플리케이션이 강력한 세션 관리 및 권한 검사를 우회하도록 LLM에 이를 위임하고, 민감한 데이터가 부적절한 위치에 저장되고 있다는 점입니다.
 
-In short: disclosure of the system prompt itself does not present the real risk -- the security risk lies with the underlying elements, whether that be sensitive information disclosure, system guardrails bypass, improper separation of privileges, etc. Even if the exact wording is not disclosed, attackers interacting with the system will almost certainly be able to determine many of the guardrails and formatting restrictions that are present in system prompt language in the course of using the application, sending utterances to the model, and observing the results.
+간단히 말하면, 시스템 프롬프트 자체의 유출은 실제 위험을 초래하지 않습니다. 보안 위험은 민감 정보의 유출, 시스템 가드레일 우회, 권한 분리 오류 등 근본적인 요소에 있습니다. 정확한 문구가 유출되지 않더라도, 시스템과 상호 작용하는 공격자는 애플리케이션을 사용하고 모델에 발언을 보내며 결과를 관찰하는 과정에서 시스템 프롬프트 언어에 있는 많은 가드레일 및 형식 제한을 거의 확실히 파악할 수 있습니다.
 
-### Common Examples of Risk
+### 일반적 취약점 예시
 
-#### 1. Exposure of Sensitive Functionality
-  The system prompt of the application may reveal sensitive information or functionality that is intended to be kept confidential, such as sensitive system architecture, API keys, database credentials, or user tokens. These can be extracted or used by attackers to gain unauthorized access into the application. For example, a system prompt that contains the type of database used for a tool could allow the attacker to target it for SQL injection attacks.
-#### 2. Exposure of Internal Rules
-  The system prompt of the application reveals information on internal decision-making processes that should be kept confidential. This information allows attackers to gain insights into how the application works which could allow attackers to exploit weaknesses or bypass controls in the application. For example - There is a banking application that has a chatbot and its system prompt may reveal information like:
-    >"The Transaction limit is set to $5000 per day for a user. The Total Loan Amount for a user is $10,000".
-  This information allows the attackers to bypass the security controls in the application like doing transactions more than the set limit or bypassing the total loan amount.
-#### 3. Revealing of Filtering Criteria
-  A system prompt might ask the model to filter or reject sensitive content. For example, a model might have a system prompt like,
-    >“If a user requests information about another user, always respond with ‘Sorry, I cannot assist with that request’”.
-#### 4. Disclosure of Permissions and User Roles
-  The system prompt could reveal the internal role structures or permission levels of the application. For instance, a system prompt might reveal,
-    >“Admin user role grants full access to modify user records.”
-  If the attackers learn about these role-based permissions, they could look for a privilege escalation attack.
+#### 1. 민감한 기능 유출
+  애플리케이션의 시스템 프롬프트가 민감 정보나 기능을 유출할 수 있습니다. 예를 들어, 민감한 시스템 아키텍처, API 키, 데이터베이스 자격 증명, 이용자 토큰 등이 포함되어 있을 수 있습니다. 공격자는 이러한 정보를 추출하거나 사용하여 애플리케이션에 무단으로 접근할 수 있습니다. 예를 들어, 시스템 프롬프트에 사용된 데이터베이스 유형이 포함되면 공격자는 이를 SQL 인젝션 공격의 대상으로 삼을 수 있습니다.
+#### 2. 내부 규칙 유출
+  애플리케이션의 시스템 프롬프트가 내부 의사 결정 프로세스를 유출할 수 있습니다. 이러한 정보는 공격자가 애플리케이션이 어떻게 작동하는지 파악할 수 있게 하여, 약점을 이용하거나 애플리케이션의 제어 장치를 우회할 수 있게 만듭니다. 예를 들어, 은행 애플리케이션의 챗봇에서 시스템 프롬프트에 아래와 같은 내용이 포함될 수 있습니다. 
+    >"이용자의 거래 한도는 하루에 $5000로 설정됩니다. 이용자의 총 대출 금액은 $10,000입니다."
+  이 정보는 공격자가 애플리케이션의 보안 제어를 우회하여 설정된 한도를 초과한 거래를 하거나 대출 금액 한도를 우회할 수 있도록 합니다.
+#### 3. 필터링 기준 유출
+  시스템 프롬프트는 민감한 콘텐츠를 필터링하거나 거부하라는 지시를 모델에 내릴 수 있습니다. 예를 들어, 시스템 프롬프트에 아래와 같은 내용이 포함될 수 있습니다.
+    >"이용자가 다른 이용자에 대한 정보를 요청하면 항상 ‘죄송합니다, 그 요청을 처리할 수 없습니다.’라고 응답하십시오."
+#### 4. 권한 및 이용자 역할 유출
+  시스템 프롬프트는 애플리케이션의 내부 역할 구조나 권한 수준을 유출할 수 있습니다. 예를 들어, 시스템 프롬프트에 아래와 같은 내용이 포함될 수 있습니다. 
+    >"관리자와 이용자 역할은 이용자 기록을 수정할 수 있는 전체 접근 권한을 부여합니다."
+  공격자가 이러한 역할 기반 권한을 알게 되면, 권한 상승 공격을 시도할 수 있습니다.
 
-### Prevention and Mitigation Strategies
+### 예방 및 완화 전략
 
-#### 1. Separate Sensitive Data from System Prompts
-  Avoid embedding any sensitive information (e.g. API keys, auth keys, database names, user roles, permission structure of the application) directly in the system prompts. Instead, externalize such information to the systems that the model does not directly access.
-#### 2. Avoid Reliance on System Prompts for Strict Behavior Control
-  Since LLMs are susceptible to other attacks like prompt injections which can alter the system prompt, it is recommended to avoid using system prompts to control the model behavior where possible. Instead, rely on systems outside of the LLM to ensure this behavior. For example, detecting and preventing harmful content should be done in external systems.
-#### 3. Implement Guardrails
-  Implement a system of guardrails outside of the LLM itself. While training particular behavior into a model can be effective, such as training it not to reveal its system prompt, it is not a guarantee that the model will always adhere to this. An independent system that can inspect the output to determine if the model is in compliance with expectations is preferable to system prompt instructions.
-#### 4. Ensure that security controls are enforced independently from the LLM
-  Critical controls such as privilege separation, authorization bounds checks, and similar must not be delegated to the LLM, either through the system prompt or otherwise. These controls need to occur in a deterministic, auditable manner, and LLMs are not (currently) conducive to this. In cases where an agent is performing tasks, if those tasks require different levels of access, then multiple agents should be used, each configured with the least privileges needed to perform the desired tasks.
+#### 1. 시스템 프롬프트에서 민감한 데이터 분리
+  API 키, 인증 키, 데이터베이스 이름, 이용자 역할, 애플리케이션의 권한 구조 등과 같은 민감 정보를 시스템 프롬프트에 직접 포함시키지 마세요. 대신, 해당 정보를 모델이 직접 접근하지 않는 외부 시스템에 저장하고 관리해야 합니다.
+#### 2. 시스템 프롬프트에 의존하지 않고 엄격한 행동 제어
+  LLM은 프롬프트 인젝션 공격과 같은 다른 공격에 취약하기 때문에 가능한 한 시스템 프롬프트에 의존하여 모델의 행동을 제어하는 것은 피해야 합니다. 대신, 외부 시스템을 사용하여 모델의 행동을 보장하는 것이 좋습니다. 예를 들어, 유해 콘텐츠를 탐지하고 방지하는 작업은 외부 시스템에서 처리해야 합니다.
+#### 3. 가드레일 구현
+  LLM 자체 외부에 가드레일 시스템을 구현해야 합니다. 시스템 프롬프트를 유출하지 않도록 훈련하는 등 특정 행동을 모델에 훈련시키는 것이 효과적일 수 있지만, 모델이 항상 이를 준수한다고 보장할 수는 없습니다. 모델의 출력을 검사하여 기대한 대로 동작하는지 확인할 수 있는 독립적인 시스템이 시스템 프롬프트 지침보다 더 바람직합니다.
+#### 4. LLM과 독립적인 보안 제어 구현
+  권한 분리, 인증 경계 체크와 같은 중요한 보안 제어는 시스템 프롬프트를 통하건 다른 방식이건 LLM에 위임되어서는 안 됩니다. 이러한 제어는 결정적이고 감사 가능한 방식으로 이루어져야 하며, LLM은 현재 이와 같은 작업을 수행하기에 적합하지 않습니다. 작업을 수행하는 에이전트가 여러 수준의 접근 권한을 필요로 한다면, 각 작업에 필요한 최소 권한만을 가진 여러 에이전트를 사용해야 합니다.
 
-### Example Attack Scenarios
+### 공격 시나리오 예시
 
-#### Scenario #1
-   An LLM has a system prompt that contains a set of credentials used for a tool that it has been given access to. The system prompt is leaked to an attacker, who then is able to use these credentials for other purposes.
-#### Scenario #2
-  An LLM has a system prompt prohibiting the generation of offensive content, external links, and code execution. An attacker extracts this system prompt and then uses a prompt injection attack to bypass these instructions, facilitating a remote code execution attack.
+#### 시나리오 #1
+   LLM에 시스템 프롬프트가 포함되어 있으며, 이 프롬프트에는 LLM이 접근할 수 있는 도구에 대한 자격 증명이 들어 있습니다. 이 시스템 프롬프트가 공격자에게 유출되면, 공격자는 이러한 자격 증명을 사용하여 다른 용도로 악용할 수 있습니다.
+#### 시나리오 #2
+  LLM에 외부 링크, 코드 실행, 공격적인 콘텐츠 생성을 금지하는 시스템 프롬프트가 있습니다. 공격자는 이 시스템 프롬프트를 추출한 후 프롬프트 인젝션 공격을 사용하여 이러한 지침을 우회하고 원격 코드 실행 공격을 수행할 수 있습니다.
 
-### Reference Links
+### 참조 링크
 
-1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
-2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): Prompt Security
-3. [chatgpt_system_prompt](https://github.com/LouisShark/chatgpt_system_prompt): LouisShark
-4. [leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts): Jujumilk3
-5. [OpenAI Advanced Voice Mode System Prompt](https://x.com/Green_terminals/status/1839141326329360579): Green_Terminals
+1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): **Pliny the prompter**
+2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): **Prompt Security**
+3. [chatgpt_system_prompt](https://github.com/LouisShark/chatgpt_system_prompt): **LouisShark**
+4. [leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts): **Jujumilk3**
+5. [OpenAI Advanced Voice Mode System Prompt](https://x.com/Green_terminals/status/1839141326329360579): **Green_Terminals**
 
-### Related Frameworks and Taxonomies
+### 관련 프레임워크 및 분류
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+인프라 구축과 관련된 종합적인 정보, 시나리오 전략, 적용된 환경 제어 및 기타 모범 사례는 이 섹션을 참조하세요.
 
-- [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
+- [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000): **MITRE ATLAS**

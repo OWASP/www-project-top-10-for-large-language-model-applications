@@ -1,77 +1,77 @@
-## LLM06:2025 Excessive Agency
+## LLM06:2025 과도한 위임
 
-### Description
+### 설명
 
-An LLM-based system is often granted a degree of agency by its developer - the ability to call functions or interface with other systems via extensions (sometimes referred to as tools, skills or plugins by different vendors) to undertake actions in response to a prompt. The decision over which extension to invoke may also be delegated to an LLM 'agent' to dynamically determine based on input prompt or LLM output. Agent-based systems will typically make repeated calls to an LLM using output from previous invocations to ground and direct subsequent invocations.
+LLM 기반 시스템은 종종 개발자로부터 일정 수준의 자율성을 부여받습니다. 즉, 확장 기능(일부 벤더에 따라 도구, 스킬 또는 플러그인이라고도 함)을 통해 함수 호출이나 다른 시스템과의 인터페이스를 수행하여 프롬프트에 대한 응답으로 특정 작업을 수행할 수 있습니다. 어떤 확장을 호출할지 결정하는 권한 또한 LLM ‘에이전트’에게 위임될 수 있으며, 이는 입력된 프롬프트나 LLM의 출력을 기반으로 동적으로 결정됩니다. 에이전트 기반 시스템은 일반적으로 이전 호출의 출력을 활용하여 후속 호출을 보완하고 방향을 설정하기 위해 LLM을 반복적으로 호출합니다.
 
-Excessive Agency is the vulnerability that enables damaging actions to be performed in response to unexpected, ambiguous or manipulated outputs from an LLM, regardless of what is causing the LLM to malfunction. Common triggers include:
-* hallucination/confabulation caused by poorly-engineered benign prompts, or just a poorly-performing model;
-* direct/indirect prompt injection from a malicious user, an earlier invocation of a malicious/compromised extension, or (in multi-agent/collaborative systems) a malicious/compromised peer agent.
+과도한 위임(Excessive Agency)은 LLM이 오작동하는 원인과 상관없이, 예상치 못한 입력, 애매한 프롬프트, 또는 조작된 출력에 의해 손상될 수 있는 작업을 수행하도록 만드는 취약점을 의미합니다. 일반적인 원인은 다음과 같습니다.
+* 부적절하게 설계된 양성 프롬프트 또는 성능이 낮은 모델로 인해 환각/착각 발생
+* 악의적인 이용자의 직접/간접적인 프롬프트 인젝션, 악의적이거나 손상된 확장 프로그램의 초기 호출 또는 다중 에이전트/협업 시스템의 경우 악의적이거나 손상된 피어 에이전트
 
-The root cause of Excessive Agency is typically one or more of:
-* excessive functionality;
-* excessive permissions;
-* excessive autonomy.
+과도한 위임의 근본 원인은 일반적으로 다음 중 하나 이상에 해당합니다.
+* 과도한 기능
+* 과도한 권한
+* 과도한 자율성
 
-Excessive Agency can lead to a broad range of impacts across the confidentiality, integrity and availability spectrum, and is dependent on which systems an LLM-based app is able to interact with.
+과도한 위임은 기밀성, 무결성, 가용성 측면에서 다양한 영향을 초래할 수 있으며, 이는 LLM 기반 애플리케이션이 상호 작용할 수 있는 시스템에 따라 달라집니다.
 
-Note: Excessive Agency differs from Insecure Output Handling which is concerned with insufficient scrutiny of LLM outputs.
+참고: 과도한 위임은 LLM 결과에 대한 충분한 검토가 이루어지지 않는 불안정한 결과 처리와는 다릅니다.
 
-### Common Examples of Risks
+### 일반적 취약점 예시
 
-#### 1. Excessive Functionality
-  An LLM agent has access to extensions which include functions that are not needed for the intended operation of the system. For example, a developer needs to grant an LLM agent the ability to read documents from a repository, but the 3rd-party extension they choose to use also includes the ability to modify and delete documents.
-#### 2. Excessive Functionality
-  An extension may have been trialled during a development phase and dropped in favor of a better alternative, but the original plugin remains available to the LLM agent.
-#### 3. Excessive Functionality
-  An LLM plugin with open-ended functionality fails to properly filter the input instructions for commands outside what's necessary for the intended operation of the application. E.g., an extension to run one specific shell command fails to properly prevent other shell commands from being executed.
-#### 4. Excessive Permissions
-  An LLM extension has permissions on downstream systems that are not needed for the intended operation of the application. E.g., an extension intended to read data connects to a database server using an identity that not only has SELECT permissions, but also UPDATE, INSERT and DELETE permissions.
-#### 5. Excessive Permissions
-  An LLM extension that is designed to perform operations in the context of an individual user accesses downstream systems with a generic high-privileged identity. E.g., an extension to read the current user's document store connects to the document repository with a privileged account that has access to files belonging to all users.
-#### 6. Excessive Autonomy
-  An LLM-based application or extension fails to independently verify and approve high-impact actions. E.g., an extension that allows a user's documents to be deleted performs deletions without any confirmation from the user.
+#### 1. 과도한 기능
+  LLM 에이전트는 시스템의 의도된 작동에 필요하지 않은 기능이 포함된 확장 기능에 액세스할 수 있습니다. 예를 들어 개발자가 LLM 에이전트에게 리포지토리에서 문서를 읽을 수 있는 기능을 부여해야 하지만 사용하기로 선택한 타사 확장 기능에는 문서를 수정하고 삭제하는 기능도 포함되어 있습니다.
+#### 2. 과도한 기능
+  개발 단계에서 더 나은 대안을 위해 확장 기능이 시험되었다가 삭제되었을 수 있지만, 원래 플러그인은 LLM 에이전트에서 계속 사용할 수 있습니다.
+#### 3. 과도한 기능
+  개방형 기능이 있는 LLM 플러그인이 애플리케이션의 의도된 작동에 필요한 명령 외의 명령에 대한 입력 지침을 제대로 필터링하지 못합니다. 예를 들어, 특정 셸 명령을 실행하는 확장 프로그램이 다른 셸 명령이 실행되는 것을 제대로 막지 못합니다.
+#### 4. 과도한 권한
+  LLM 확장 프로그램은 애플리케이션의 의도된 작동에 필요하지 않은 다운스트림 시스템에 대한 권한을 가지고 있습니다. 예를 들어, 데이터를 읽기 위한 확장 프로그램은 SELECT 권한 뿐만 아니라 UPDATE, INSERT, DELETE 권한이 있는 ID를 사용하여 데이터베이스 서버에 연결합니다.
+#### 5. 과도한 권한
+  개별 이용자의 컨텍스트에서 작업을 수행하도록 설계된 LLM 확장은 일반적인 높은 권한의 ID로 다운스트림 시스템에 액세스합니다. 예를 들어 현재 이용자의 문서 저장소를 읽기 위한 확장 프로그램은 모든 이용자가 소유한 파일에 액세스할 수 있는 권한 있는 계정으로 문서 저장소에 연결합니다.
+#### 6. 과도한 자율성
+  LLM 기반 애플리케이션 또는 확장 프로그램이 영향력이 큰 작업을 독립적으로 확인 및 승인하지 못합니다. 예를 들어, 이용자의 문서를 삭제할 수 있는 확장 프로그램이 이용자의 확인 없이 삭제를 수행합니다.
 
-### Prevention and Mitigation Strategies
+### 예방 및 완화 전략
 
-The following actions can prevent Excessive Agency:
+다음 조치를 통해 과도한 위임을 방지할 수 있습니다.
 
-#### 1. Minimize extensions
-  Limit the extensions that LLM agents are allowed to call to only the minimum necessary. For example, if an LLM-based system does not require the ability to fetch the contents of a URL then such an extension should not be offered to the LLM agent.
-#### 2. Minimize extension functionality
-  Limit the functions that are implemented in LLM extensions to the minimum necessary. For example, an extension that accesses a user's mailbox to summarise emails may only require the ability to read emails, so the extension should not contain other functionality such as deleting or sending messages.
-#### 3. Avoid open-ended extensions
-  Avoid the use of open-ended extensions where possible (e.g., run a shell command, fetch a URL, etc.) and use extensions with more granular functionality. For example, an LLM-based app may need to write some output to a file. If this were implemented using an extension to run a shell function then the scope for undesirable actions is very large (any other shell command could be executed). A more secure alternative would be to build a specific file-writing extension that only implements that specific functionality.
-#### 4. Minimize extension permissions
-  Limit the permissions that LLM extensions are granted to other systems to the minimum necessary in order to limit the scope of undesirable actions. For example, an LLM agent that uses a product database in order to make purchase recommendations to a customer might only need read access to a 'products' table; it should not have access to other tables, nor the ability to insert, update or delete records. This should be enforced by applying appropriate database permissions for the identity that the LLM extension uses to connect to the database.
-#### 5. Execute extensions in user's context
-  Track user authorization and security scope to ensure actions taken on behalf of a user are executed on downstream systems in the context of that specific user, and with the minimum privileges necessary. For example, an LLM extension that reads a user's code repo should require the user to authenticate via OAuth and with the minimum scope required.
-#### 6. Require user approval
-  Utilise human-in-the-loop control to require a human to approve high-impact actions before they are taken. This may be implemented in a downstream system (outside the scope of the LLM application) or within the LLM extension itself. For example, an LLM-based app that creates and posts social media content on behalf of a user should include a user approval routine within the extension that implements the 'post' operation.
-#### 7. Complete mediation
-  Implement authorization in downstream systems rather than relying on an LLM to decide if an action is allowed or not. Enforce the complete mediation principle so that all requests made to downstream systems via extensions are validated against security policies.
-#### 8. Sanitise LLM inputs and outputs
-  Follow secure coding best practice, such as applying OWASP’s recommendations in ASVS (Application Security Verification Standard), with a particularly strong focus on input sanitisation. Use Static Application Security Testing (SAST) and Dynamic and Interactive application testing (DAST, IAST) in development pipelines.
+#### 1. 확장 기능 최소화
+  LLM 에이전트가 호출할 수 있는 확장 기능을 최소한으로 제한해야 합니다. 예를 들어, LLM 기반 시스템이 URL의 내용을 가져올 필요가 없다면, 해당 확장 기능을 제공하지 않아야 합니다.
+#### 2. 확장 기능 범위 최소화
+  LLM 확장에서 구현되는 기능을 최소한으로 제한해야 합니다. 예를 들어, 이용자의 메일함에 접근하여 이메일을 요약하는 확장은 이메일을 읽는 기능만 필요할 수 있으며, 삭제하거나 전송하는 기능은 포함되지 않아야 합니다.
+#### 3. 개방형 확장 기능 방지
+  가능하면 범위가 열린 확장 기능(예: 셸 명령 실행, URL 가져오기 등)을 사용하지 말고, 보다 세분화된 기능을 제공하는 확장을 사용해야 합니다. 예를 들어, LLM 기반 애플리케이션이 특정 파일에 출력을 저장해야 하는 경우, 이를 셸 명령 실행 확장을 통해 구현하면 보안 위험이 커집니다(다른 셸 명령도 실행될 수 있음). 보다 안전한 대안은 파일 쓰기 전용 확장을 만들어 해당 기능만 수행하도록 하는 것입니다.
+#### 4. 확장 권한 최소화
+  LLM 확장이 다른 시스템에 부여받는 권한을 최소한으로 제한하여, 원치 않는 작업의 범위를 줄여야 합니다. 예를 들어, 고객에게 제품 추천을 제공하는 LLM 에이전트가 제품 데이터베이스를 사용할 경우, ‘products’ 테이블에 대한 읽기 권한만 필요합니다. 이 에이전트는 다른 테이블에 접근하거나, 데이터를 인젝션, 수정, 삭제할 필요가 없습니다. 이러한 제한은 LLM 확장이 데이터베이스에 연결할 때 사용하는 계정의 적절한 권한 설정을 통해 적용해야 합니다.
+#### 5. 이용자 컨텍스트 확장 실행
+  이용자의 권한과 보안 범위를 추적하여, 이용자를 대신해 수행되는 작업이 해당 이용자의 컨텍스트에서 최소 권한으로 실행되도록 해야 합니다. 예를 들어, 이용자의 코드 리포지토리를 읽는 LLM 확장은 이용자가 OAuth를 통해 인증하고 최소 필요한 범위만을 요구해야 합니다.
+#### 6. 이용자 승인 요구
+  고위험 작업을 실행하기 전에 인간의 승인을 요구하는 제어 방식을 사용합니다. 이는 LLM 애플리케이션 범위 외의 다운스트림 시스템에서 구현되거나 LLM 확장 내에서 구현될 수 있습니다. 예를 들어, 이용자를 대신해 소셜 미디어 콘텐츠를 생성하고 게시하는 LLM 기반 앱은 '게시' 작업을 구현하는 확장 내에서 이용자 승인 절차를 포함해야 합니다.
+#### 7. 완전한 중재
+  LLM에 의존하여 작업의 허용 여부를 결정하는 대신 다운스트림 시스템에서 권한을 구현하세요. 확장을 통해 다운스트림 시스템에 대한 모든 요청이 보안 정책에 따라 검증되도록 완전한 중개 원칙을 적용하세요.
+#### 8. LLM 입력 및 출력 정리
+  OWASP의 ASVS 권장 사항을 적용하는 등 보안 코딩 모범 사례를 따르며, 특히 입력 정리에 강한 집중을 해야 합니다. 개발 파이프라인에서 정적 애플리케이션 보안 테스트(Static Application Security Testing, SAST) 및 동적/인터랙티브 애플리케이션 테스트(Dynamic and Interactive Application Security Testing, DAST/IAST)를 사용합니다.
 
-The following options will not prevent Excessive Agency, but can limit the level of damage caused:
+다음 옵션은 과도한 위임을 방지하지는 못하지만 피해 수준을 제한할 수 있습니다.
 
-- Log and monitor the activity of LLM extensions and downstream systems to identify where undesirable actions are taking place, and respond accordingly.
-- Implement rate-limiting to reduce the number of undesirable actions that can take place within a given time period, increasing the opportunity to discover undesirable actions through monitoring before significant damage can occur.
+- LLM 확장 및 다운스트림 시스템의 활동을 로깅하고 모니터링하여 원치 않는 작업이 발생하는 위치를 식별하고 적절하게 대응합니다.
+- 주어진 시간 동안 발생할 수 있는 원치 않는 작업의 수를 제한하는 속도 제한을 구현하여, 큰 피해가 발생하기 전에 모니터링을 통해 원치 않는 작업을 발견할 기회를 증가시킵니다.
 
-### Example Attack Scenarios
+### 공격 시나리오 예시
 
-An LLM-based personal assistant app is granted access to an individual’s mailbox via an extension in order to summarise the content of incoming emails. To achieve this functionality, the extension requires the ability to read messages, however the plugin that the system developer has chosen to use also contains functions for sending messages. Additionally, the app is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the agent to scan the user's inbox for sensitive information and forward it to the attacker's email address. This could be avoided by:
-* eliminating excessive functionality by using an extension that only implements mail-reading capabilities,
-* eliminating excessive permissions by authenticating to the user's email service via an OAuth session with a read-only scope, and/or
-* eliminating excessive autonomy by requiring the user to manually review and hit 'send' on every mail drafted by the LLM extension.
+LLM 기반 개인 비서 앱이 이용자의 메일함에 접근할 수 있는 확장을 통해 들어오는 이메일의 내용을 요약하는 기능을 수행합니다. 이 기능을 구현하기 위해, 확장은 메시지를 읽을 수 있는 기능을 요구하지만, 시스템 개발자가 선택한 플러그인은 메시지를 보내는 기능도 포함하고 있습니다. 또한, 앱은 간접적인 프롬프트 인젝션 공격에 취약하여, 악의적으로 작성된 이메일이 LLM을 속여 이용자의 받은 편지함을 스캔하고 민감 정보를 공격자의 이메일로 전달하도록 명령할 수 있습니다. 이 문제는 다음과 같은 방식으로 예방할 수 있습니다:
+* 이메일 읽기 기능만을 구현하는 확장 프로그램을 사용하여 과도한 기능을 제거합니다.
+* 읽기 전용 범위의 OAuth 세션을 통해 이용자의 이메일 서비스에 인증하여 권한을 최소화합니다.
+* LLM 확장자로 작성된 모든 이메일을 이용자가 수동으로 검토하고 '보내기' 버튼을 누르도록 요구하여 과도한 자율성을 제거합니다.
 
-Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
+또는, 이메일 전송 인터페이스에 속도 제한을 구현하여 피해를 줄일 수 있습니다.
 
-### Reference Links
+### 참조 링크
 
 1. [Slack AI data exfil from private channels](https://promptarmor.substack.com/p/slack-ai-data-exfiltration-from-private): **PromptArmor**
 2. [Rogue Agents: Stop AI From Misusing Your APIs](https://www.twilio.com/en-us/blog/rogue-ai-agents-secure-your-apis): **Twilio**
 3. [Embrace the Red: Confused Deputy Problem](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./): **Embrace The Red**
 4. [NeMo-Guardrails: Interface guidelines](https://github.com/NVIDIA/NeMo-Guardrails/blob/main/docs/security/guidelines.md): **NVIDIA Github**
 6. [Simon Willison: Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/): **Simon Willison**
-7. [Sandboxing Agentic AI Workflows with WebAssembly](https://developer.nvidia.com/blog/sandboxing-agentic-ai-workflows-with-webassembly/) **NVIDIA, Joe Lucas**
+7. [Sandboxing Agentic AI Workflows with WebAssembly](https://developer.nvidia.com/blog/sandboxing-agentic-ai-workflows-with-webassembly/): **NVIDIA, Joe Lucas**
