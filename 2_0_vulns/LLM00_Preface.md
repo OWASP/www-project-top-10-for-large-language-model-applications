@@ -12,7 +12,7 @@ The **Vector and Embeddings** entry responds to the community’s requests for g
 
 We’ve also added **System Prompt Leakage** to address an area with real-world exploits that were highly requested by the community. Many applications assumed prompts were securely isolated, but recent incidents have shown that developers cannot safely assume that information in these prompts remains secret.
 
-**Excessive Agency** has been expanded, given the increased use of agentic architectures that can give the LLM more autonomy.  With LLMs acting as agents or in plug-in settings, unchecked permissions can lead to unintended or risky actions, making this entry more critical than ever.
+**Excessive Agency** has been expanded, given the increased use of agentic architectures that can give the LLM more autonomy. With LLMs acting as agents or in plug-in settings, unchecked permissions can lead to unintended or risky actions, making this entry more critical than ever.
 
 ### Moving Forward
 

@@ -9,7 +9,7 @@ CODEOWNERS @GangGreenTemperTatum @virtualsteve-star
 .github/ @GangGreenTemperTatum @virtualsteve-star
 
 ## Data Gathering
-data_gathering/* @emmanuelgjr @GangGreenTemperTatum
+initiatives/data_gathering/* @emmanuelgjr @GangGreenTemperTatum
 
 # Top 10 Vulnerabilities and Leads:
 ## Use **/ to match files in any directory
@@ -39,3 +39,8 @@ _template.md @rossja
 
 ## Translations:
 2_0_vulns/translations @talesh
+
+# Sub-projects of the OWASP Top 10 for LLM Apps and Gen AI Project
+
+## Agentic Security Initiative (ASI) under the Top 10 for LLM and Gen AI Project
+initiatives/agent_security_initiative/ @guerilla7
