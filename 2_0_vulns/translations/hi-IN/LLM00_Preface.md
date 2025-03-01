@@ -1,24 +1,24 @@
-## Letter from the Project Leads
+## प्रोजेक्ट लीडर्स की तरफ से पत्र
 
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+"LLM applications के लिए OWASP शीर्ष 10" 2023 में शुरू हुआ एक समुदाय-संचालित प्रयास हैं जो AI applications  के प्रति होने वाले सुरक्षा मुद्दों को उजागर एवं संबोधित करता हैं। तब से अब तक ,टेक्नॉलोजी ने उद्योगों एवं applications मे फैलाव एवं बदलाव किये हैं, जिससे कुछ संबंधित जोखिम भी हैंं। चूंकि LLM ग्राहक इंटरैक्शन से लेकर आंतरिक संचालन तक हर जगह  में अधिक गहराई से पहुच चुका हैंं इसलिये developers और सुरक्षा पेशेवर नई vulnerabilities की खोज एवं उनसे मुकाबला करने के तरीके खोज रहे हैं।
 
-The 2023 list was a big success in raising awareness and building a foundation for secure LLM usage, but we've learned even more since then. In this new 2025 version, we’ve worked with a larger, more diverse group of contributors worldwide who have all helped shape this list. The process involved brainstorming sessions, voting, and real-world feedback from professionals in the thick of LLM application security, whether by contributing or refining those entries through feedback. Each voice was critical to making this new release as thorough and practical as possible.
+2023 की सूची जागरूकता बढ़ाने और सुरक्षित LLM उपयोग के लिए एक नींव बनी हैं, लेकिन तब से अब तक हमने और भी अधिक सीखा हैं। इस नए 2025 संस्करण में, हमने दुनिया भर में योगदानकर्ताओं के एक बड़े, अधिक विविध समूह के साथ काम किया हैं, जिन्होंने इस सूची को आकार देने में मदद की हैं। इस प्रक्रिया में हमने विचार-विमर्श, मतदान, पेशेवरों से मंथन एवं फीडबैक के माध्यम से उन बिन्दुओ और सुदृढ़ किया हैं। प्रत्येक हाथ की माजबूती ने इस रिलीज को यथासंभव एवं  व्यावहारिक बनाने मे महत्वपूर्ण भूमिका निभाई हैं।
 
-### What’s New in the 2025 Top 10
+### 2025 की शीर्ष 10 की सूची में क्या नया हैं
 
-The 2025 list reflects a better understanding of existing risks and introduces critical updates on how LLMs are used in real-world applications today. For instance, **Unbounded Consumption** expands on what was previously Denial of Service to include risks around resource management and unexpected costs—a pressing issue in large-scale LLM deployments.
+2025 की सूची मौजूदा जोखिमों की बेहतर समीक्षा एवं वास्तविक दुनिया की applications में LLM का उपयोग कैसे किया जाये इस पर महत्वपूर्ण अपडेट पेश करती हैं। उदाहरण के लिए, **Unbounded Consumption** जो की Denial of Service के इर्द-गिर्द रहते हुए संसाधन प्रबंधन और अप्रत्याशित लागतों के जोखिमों को शामिल करता था, जो बड़े पैमाने पर LLM deployment का बड़ा मुद्दा था।
 
-The **Vector and Embeddings** entry responds to the community’s requests for guidance on securing Retrieval-Augmented Generation (RAG) and other embedding-based methods, now core practices for grounding model outputs.
+**Vector and Embeddings** बिन्दु समुदाय के अनुरोधों पर प्रतिक्रिया करता हैं, जो Retrieval-Augmented Generation (RAG) और अन्य embedding-based विधियों को सुरक्षित करने के लिए मार्गदर्शन का अनुरोध करते हैं, जो अब मॉडल आउटपुट की समीक्षा के लिए मुख्य हैं।
 
-We’ve also added **System Prompt Leakage** to address an area with real-world exploits that were highly requested by the community. Many applications assumed prompts were securely isolated, but recent incidents have shown that developers cannot safely assume that information in these prompts remains secret.
+हमने वास्तविकता के exploits के लिए **System Prompt Leakage** भी जोड़ा हैं जो समुदाय द्वारा अत्यधिक अनुरोध किए गया था। कई applications prompts को सुरक्षित रूप से अलग मानती थी, लेकिन हाल की घटनाओं बताती हैं कि developers यह नहीं मान सकते हैंं कि इन prompts में जानकारी गुप्त बनी हुई हैं।
 
-**Excessive Agency** has been expanded, given the increased use of agentic architectures that can give the LLM more autonomy.  With LLMs acting as agents or in plug-in settings, unchecked permissions can lead to unintended or risky actions, making this entry more critical than ever.
+एजेंटिक (agent-based) ढ़ाचे का बढ़ते उपयोग LLM को अधिक स्वचन्दता दे सकते हैंं, जिस कारण से हमे **Excessive Agency** का विस्तार खाना पड़ा।  LLM एजैंट्स का प्लग-इन सेटिंग्स मे वर्चस्व एवं अनियंत्रित अनुमतियों  से अनपेक्षित तथा जोखिम भरे कार्य उत्पन्न हो सकते हैं, जिससे यह बिन्दु पहले से कहीं अधिक महत्वपूर्ण हो जाता हैं।
 
-### Moving Forward
+### आगे बढ़ते हुए
 
-Like the technology itself, this list is a product of the open-source community’s insights and experiences. It has been shaped by contributions from developers, data scientists, and security experts across sectors, all committed to building safer AI applications. We’re proud to share this 2025 version with you, and we hope it provides you with the tools and knowledge to secure LLMs effectively.
+यह सूची टेक्नॉलोजी की तरह, open-source community की अंतर्दृष्टि और अनुभवों का प्रतिरूप हैं। यह developers, data scientists एवं विभिन्न क्षेत्रों के सुरक्षा विशेषज्ञों के योगदान द्वारा आकार दी गई हैं, जो सुरक्षित AI applications के निर्माण के लिए प्रतिबद्ध हैंं। हमें गर्व हैं इस संस्करण को आपके समक्ष साझा करते हुए, और हम उम्मीद करते हैं कि यह आपको LLM को प्रभावी ढंग से सुरक्षित करने के लिए उपकरण एवं ज्ञान प्रदान करेगा।
 
-Thank you to everyone who helped bring this together and those who continue to use and improve it. We’re grateful to be part of this work with you.
+हम सभी को धन्यवाद करते हैं जिन्होंने इसे एक साथ लाने में मदद की और जो इसके उपयोग एवं सुधार के लिये सुदृढ़ हैंं। हम आपके साथ इस कार्य का हिस्सा बनने के लिए आभारी हैंं।
 
 
 #### Steve Wilson
@@ -31,13 +31,18 @@ Technical Lead & Vulnerability Entries Lead
 OWASP Top 10 for Large Language Model Applications
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
+### अनुवादक की ओर से 
 
-### Hindi Translation Team
-Name
-LinkedIn
+मेरे लिये हिन्दी मानव मूल्यों एवं भावनाओं को प्रकट करने का एक अनमोल जरिया हे । यह भाषा भारत (India) एवं सनातन की तर्ज पर हर व्यक्तिव को बिना किसी भेद-भाव के अपने अंदर समेटती है। भारत मे हिन्दी की सामाजिक एवं राजनीतिक हालत मे भी जनता हु, जनता हु की इसमे कुछ मात्राओ की गलतिया होगी, जो की कुछ phonetic keyboard एवं कुछ मेरी अज्ञानता के कारण होगी, पर भविष्य मे उम्मीद करता हु की आप भी इस प्रकार के कार्यों मे साहियोग दे। 
+सभी भाषाओ की एक बात होती ही की कुछ शब्दों की प्रासांगिकता का अनुवाद या तो आसंभाव होता हे या संभव हे तो आम जनमानस के लिये समझना कठिन होता हे। इसिलिये मैने कोशिश की है की इस संस्करण को अधिक से अधिक साधारण, सहज एवं सामान्य, एवं कुछ शब्दों को बिना अनुवाद के ही राखू । मे जनता हुँ की इसमे कुछ मानव त्रुटिया हो सकती है, तो आप हमे सुझाव भेज सकते है।
 
-### About this translation
-Recognizing the technical and critical nature of the OWASP Top 10 for Large Language Model Applications, we consciously chose to employ only human translators in the creation of this translation. The translators listed above not only have a deep technical knowledge of the original content, but also the fluency required to make this translation a success.
+
+#### Dhruv Agarwal
+Hindi Translation Lead, OWASP Top 10 for AI Applications LLM
+LinkedIn: https://www.linkedin.com/in/dhruwen/
+
+### इस अनुवाद के बारे में
+"LLM applications के लिए OWASP शीर्ष 10" की तकनीकी एवं संवेदनशील प्रकृति को देखते हुए, हमने इस अनुवाद के निर्माण में केवल मानव अनुवादकों का प्रयोग किया है । सूचीबद्ध अनुवादकों को न केवल मूल सामग्री का गहन तकनीकी ज्ञान है, बल्कि इस अनुवाद को सफल बनाने के लिए आवश्यक वाक्पटुता भी है।
 
 #### Talesh Seeparsan
 Translation Lead, OWASP Top 10 for AI Applications LLM
