@@ -1,76 +1,76 @@
-## LLM10:2025 Unbounded Consumption
+## LLM10:2025 अनबाउंडेड खपत
 
 ### विवरण
 
-Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
+अनबाउंडेड खपत उस प्रक्रिया को संदर्भित करती हैं जहां एक बड़ी भाषा मॉडल (LLM) इनपुट query या Prompt के आधार पर आउटपुट उत्पन्न करता हैं। प्रासंगिक प्रतिक्रियाओं या भविष्यवाणियों का उत्पादन करने के लिए सीखे गए पैटर्न एवं  ज्ञान के अनुप्रयोग को शामिल करते हुए, LLM का एक महत्वपूर्ण कार्य हैं।
 
-Attacks designed to disrupt service, deplete the target's financial resources, or even steal intellectual property by cloning a model’s behavior all depend on a common class of security vulnerability in order to succeed. Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to risks such as denial of service (DoS), economic losses, model theft, and service degradation. The high computational demands of LLMs, especially in cloud environments, make them vulnerable to resource exploitation and unauthorized usage.
+सेवा को बाधित करने के लिए डिज़ाइन किए गए हमले, लक्ष्य के वित्तीय संसाधनों को समाप्त कर दें, या यहां तक ​​कि एक मॉडल के व्यवहार को क्लोन करके बौद्धिक संपदा चोरी करें, सभी सफल होने के लिए सुरक्षा Vulnerability के एक सामान्य वर्ग पर निर्भर करते हैंं। अनबाउंड खपत तब होती हैं जब एक बड़ी भाषा मॉडल (LLM) application users को अत्यधिक एवं  अनियंत्रित निष्कर्षों का संचालन करने की अनुमति देता हैं, जिससे सेवा से इनकार (डीओएस), आर्थिक नुकसान, मॉडल चोरी एवं  सेवा गिरावट जैसे जोखिम होते हैंं। LLM की उच्च कम्प्यूटेशनल मांगें, विशेष रूप से क्लाउड वातावरण में, उन्हें संसाधन exploit एवं  अनधिकृत उपयोग के लिए असुरक्षित बनाती हैंं।
 
 ### Vulnerability के सामान्य उदाहरण
 
-#### 1. Variable-Length Input Flood
-  Attackers can overload the LLM with numerous inputs of varying lengths, exploiting processing inefficiencies. This can deplete resources and potentially render the system unresponsive, significantly impacting service availability.
-#### 2. Denial of Wallet (DoW)
-  By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
-#### 3. Continuous Input Overflow
-  Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
-#### 4. Resource-Intensive Queries
-  Submitting unusually demanding queries involving complex sequences or intricate language patterns can drain system resources, leading to prolonged processing times and potential system failures.
-#### 5. Model Extraction via API
-  Attackers may query the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model. This not only poses risks of intellectual property theft but also undermines the integrity of the original model.
-#### 6. Functional Model Replication
-  Using the target model to generate synthetic training data can allow attackers to fine-tune another foundational model, creating a functional equivalent. This circumvents traditional query-based extraction methods, posing significant risks to proprietary models and technologies.
-#### 7. Side-Channel Attacks
-  Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
+#### 1. चर-लंबाई इनपुट बाढ़
+  हमलावर अलग -अलग लंबाई के कई इनपुट के साथ LLM को ओवरलोड कर सकते हैंं, प्रसंस्करण अक्षमताओं का exploit कर सकते हैंं। यह संसाधनों को कम कर सकता हैं एवं  संभावित रूप से सिस्टम को अनुत्तरदायी, सेवा उपलब्धता को प्रभावित करने के लिए संभावित रूप से प्रस्तुत कर सकता हैं।
+#### 2. वॉलेट (डॉव) से इनकार
+  संचालन की एक उच्च मात्रा शुरू करके, हमलावर क्लाउड पर आधारित AI सेवाओं की लागत-प्रति-उपयोग मॉडल का फायदा उठाते हैंं, जिससे प्रदाता पर अस्थिर वित्तीय बोझ एवं  वित्तीय बर्बादी को जोखिम में डाल दिया जाता हैं।
+#### 3. निरंतर इनपुट ओवरफ्लो
+  LLM के संदर्भ विंडो से अधिक होने वाले इनपुट को लगातार भेजने से अत्यधिक कम्प्यूटेशनल संसाधन उपयोग हो सकता हैं, जिसके परिणामस्वरूप सेवा में गिरावट एवं  परिचालन व्यवधान हो सकते हैंं।
+#### 4. संसाधन-गहन प्रश्न
+  जटिल अनुक्रमों या जटिल भाषा पैटर्न से जुड़े असामान्य रूप से मांग वाले प्रश्नों को प्रस्तुत करना सिस्टम संसाधनों को सूखा सकता हैं, जिससे लंबे समय तक प्रसंस्करण समय एवं  संभावित system विफलताएं हो सकती हैंं।
+#### 5. APIs के माध्यम से मॉडल निष्कर्षण
+  हमलावर एक आंशिक मॉडल को दोहराने या एक छाया मॉडल बनाने के लिए पर्याप्त आउटपुट एकत्र करने के लिए सावधानीपूर्वक तैयार किए गए इनपुट एवं  Prompt इंजेक्शन तकनीकों का उपयोग करके मॉडल APIs को query कर सकते हैंं। यह न केवल बौद्धिक संपदा चोरी के जोखिम पैदा करता हैं, बल्कि मूल मॉडल की अखंडता को भी कम करता हैं।
+#### 6. कार्यात्मक मॉडल प्रतिकृति
+  सिंथेटिक प्रशिक्षण डेटा उत्पन्न करने के लिए लक्ष्य मॉडल का उपयोग करना हमलावरों को एक अन्य मूलभूत मॉडल को ठीक करने की अनुमति दे सकता हैं, जिससे एक कार्यात्मक समकक्ष बन सकता हैं। यह पारंपरिक query पर आधारित निष्कर्षण विधियों को बढ़ाता हैं, जो proprietary मॉडल एवं  प्रौद्योगिकियों के लिए महत्वपूर्ण जोखिम प्रस्तुत करता हैं।
+#### 7. साइड-चैनल हमले
+  दुर्भावनापूर्ण हमलावर साइड-चैनल हमलों को निष्पादित करने, मॉडल वेट एवं  वास्तुशिल्प जानकारी की कटाई के लिए LLM के इनपुट फ़िल्टरिंग तकनीकों का exploit कर सकते हैंं। यह मॉडल की सुरक्षा से compromise कर सकता हैं एवं  आगे के exploit का कारण बन सकता हैं।
 
 ### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
-#### 1. Input Validation
-  Implement strict input validation to ensure that inputs do not exceed reasonable size limits.
-#### 2. Limit Exposure of Logits and Logprobs
-  Restrict or obfuscate the exposure of `logit_bias` and `logprobs` in API responses. Provide only the necessary information without revealing detailed probabilities.
-#### 3. Rate Limiting
-  Apply rate limiting and user quotas to restrict the number of requests a single source entity can make in a given time period.
-#### 4. Resource Allocation Management
-  Monitor and manage resource allocation dynamically to prevent any single user or request from consuming excessive resources.
-#### 5. Timeouts and Throttling
-  Set timeouts and throttle processing for resource-intensive operations to prevent prolonged resource consumption.
-#### 6.Sandbox Techniques
-  Restrict the LLM's access to network resources, internal services, and APIs.
-  - This is particularly significant for all common scenarios as it encompasses insider risks and threats. Furthermore, it governs the extent of access the LLM application has to data and resources, thereby serving as a crucial control mechanism to mitigate or prevent side-channel attacks.
-#### 7. Comprehensive Logging, Monitoring and Anomaly Detection
-  Continuously monitor resource usage and implement logging to detect and respond to unusual patterns of resource consumption.
-#### 8. Watermarking
-  Implement watermarking frameworks to embed and detect unauthorized use of LLM outputs.
-#### 9. Graceful Degradation
-  Design the system to degrade gracefully under heavy load, maintaining partial functionality rather than complete failure.
-#### 10. Limit Queued Actions and Scale Robustly
-  Implement restrictions on the number of queued actions and total actions, while incorporating dynamic scaling and load balancing to handle varying demands and ensure consistent system performance.
-#### 11. Adversarial Robustness Training
-  Train models to detect and mitigate adversarial queries and extraction attempts.
-#### 12. Glitch Token Filtering
-  Build lists of known glitch tokens and scan output before adding it to the model’s context window.
-#### 13. Access Controls
-  Implement strong access controls, including role-based access control (RBAC) and the principle of least privilege, to limit unauthorized access to LLM model repositories and training environments.
-#### 14. Centralized ML Model Inventory
-  Use a centralized ML model inventory or registry for models used in production, ensuring proper governance and access control.
-#### 15. Automated MLOps Deployment
-  Implement automated MLOps deployment with governance, tracking, and approval workflows to tighten access and deployment controls within the infrastructure.
+#### 1. इनपुट validation
+  यह सुनिश्चित करने के लिए सख्त इनपुट validation को लागू करें कि इनपुट उचित आकार की सीमा से अधिक न हों।
+#### 2. लॉग्स एवं  लॉगप्रोब के एक्सपोज़र को सीमित करें
+  API प्रतिक्रियाओं में `logit_bias` एवं ` logprobs` के जोखिम को प्रतिबंधित या ऑब्जेक्ट करें। विस्तृत संभावनाओं का खुलासा किए बिना केवल आवश्यक जानकारी प्रदान करें।
+#### 3. दर सीमित
+  किसी एकल स्रोत इकाई के अनुरोधों की संख्या को प्रतिबंधित करने के लिए दर सीमित एवं  user कोटा को लागू करें एक निश्चित समय अवधि में कर सकते हैंं।
+#### 4. संसाधन आवंटन प्रबंधन
+  किसी एकल user को रोकने के लिए या अत्यधिक संसाधनों का सेवन करने से अनुरोध करने के लिए गतिशील रूप से संसाधन आवंटन की निगरानी एवं  प्रबंधन करें।
+#### 5. टाइमआउट एवं  थ्रॉटलिंग
+  लंबे समय तक संसाधन की खपत को रोकने के लिए संसाधन-गहन संचालन के लिए टाइमआउट एवं  थ्रॉटल प्रोसेसिंग सेट करें।
+#### 6.sandbox तकनीक
+  नेटवर्क संसाधनों, आंतरिक सेवाओं एवं  APIs तक LLM की पहुंच (access) को प्रतिबंधित करें।
+  - यह सभी सामान्य परिदृश्यों के लिए विशेष रूप से महत्वपूर्ण हैं क्योंकि यह इनसाइडर जोखिमों एवं  खतरों को शामिल करता हैं। इसके अलावा, यह LLM application को डेटा एवं  संसाधनों के लिए पहुंच (access) की सीमा को नियंत्रित करता हैं, जिससे साइड-चैनल हमलों को कम करने या रोकने के लिए एक महत्वपूर्ण नियंत्रण तंत्र के रूप में काम होता हैं।
+#### 7. व्यापक लॉगिंग, निगरानी एवं  विसंगति का पता लगाना
+  संसाधन के उपयोग की लगातार निगरानी करें एवं  संसाधन की खपत के असामान्य पैटर्न का पता लगाने एवं  प्रतिक्रिया देने के लिए लॉगिंग को लागू करें।
+#### 8. वॉटरमार्किंग
+  LLM आउटपुट के अनधिकृत उपयोग को एम्बेड करने एवं  पता लगाने के लिए वॉटरमार्किंग फ्रेमवर्क को लागू करें।
+#### 9. ग्रेसफुल डिग्रेडेशन
+  पूरी तरह से विफलता के बजाय आंशिक कार्यक्षमता बनाए रखने के लिए, भारी भार के तहत सुशोभित रूप से नीचा दिखाने के लिए सिस्टम को डिजाइन करें।
+#### 10. कतारबद्ध कार्यों को सीमित करें एवं  मजबूत रूप से स्केल करें
+  डायनामिक स्केलिंग एवं  लोड बैलेंसिंग को शामिल करते हुए, अलग -अलग मांगों को संभालने एवं  सुसंगत सिस्टम प्रदर्शन सुनिश्चित करने के लिए लोड बैलेंस को शामिल करते हुए, कतारबद्ध कार्यों एवं  कुल कार्यों की संख्या पर प्रतिबंध लागू करें।
+#### 11. प्रतिकूल मजबूती प्रशिक्षण
+  प्रतिकूल प्रश्नों एवं  निष्कर्षण प्रयासों का पता लगाने एवं  कम करने के लिए ट्रेन मॉडल।
+#### 12. ग्लिच टोकन फ़िल्टरिंग
+  मॉडल के संदर्भ विंडो में जोड़ने से पहले ज्ञात गड़बड़ टोकन एवं  स्कैन आउटपुट की सूची बनाएं।
+#### 13. एक्सेस कंट्रोल
+  LLM मॉडल repository एवं  प्रशिक्षण वातावरण तक अनधिकृत पहुंच (unauthorized access) को सीमित करने के लिए भूमिका पर आधारित एक्सेस कंट्रोल (आरबीएसी) एवं  कम से कम विशेषाधिकार के सिद्धांत सहित मजबूत पहुंच (access) नियंत्रणों को लागू करें।
+#### 14. केंद्रीकृत ML मॉडल इन्वेंटरी
+  उत्पादन में उपयोग किए जाने वाले मॉडल के लिए एक केंद्रीकृत ML मॉडल इन्वेंटरी या रजिस्ट्री का उपयोग करें, उचित शासन एवं  पहुंच (access) नियंत्रण सुनिश्चित करें।
+#### 15. स्वचालित MLOPS deployment
+  बुनियादी ढांचे के भीतर पहुंच (access) एवं  deployment नियंत्रणों को कसने के लिए शासन, ट्रैकिंग एवं  अनुमोदन वर्कफ़्लो के साथ स्वचालित MLOPS deployment को लागू करें।
 
 ### उदाहरण स्वरूप हमले के परिदृश्य
 
-#### Scenario #1: Uncontrolled Input Size
-  An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
-#### Scenario #2: Repeated Requests
-  An attacker transmits a high volume of requests to the LLM API, causing excessive consumption of computational resources and making the service unavailable to legitimate users.
-#### Scenario #3: Resource-Intensive Queries
-  An attacker crafts specific inputs designed to trigger the LLM's most computationally expensive processes, leading to prolonged CPU usage and potential system failure.
-#### Scenario #4: Denial of Wallet (DoW)
-  An attacker generates excessive operations to exploit the pay-per-use model of cloud-based AI services, causing unsustainable costs for the service provider.
-#### Scenario #5: Functional Model Replication
-  An attacker uses the LLM's API to generate synthetic training data and fine-tunes another model, creating a functional equivalent and bypassing traditional model extraction limitations.
-#### Scenario #6: Bypassing System Input Filtering
-  A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
+#### परिदृश्य#1: अनियंत्रित इनपुट आकार
+  एक हमलावर एक LLM application के लिए एक असामान्य रूप से बड़ा इनपुट प्रस्तुत करता हैं जो texts डेटा को संसाधित करता हैं, जिसके परिणामस्वरूप अत्यधिक मेमोरी उपयोग एवं  सीपीयू लोड होता हैं, संभवतः सिस्टम को दुर्घटनाग्रस्त हो जाता हैं या सेवा को काफी धीमा कर देता हैं।
+#### परिदृश्य#2: बार -बार अनुरोध
+  एक हमलावर LLM APIs के लिए अनुरोधों की एक उच्च मात्रा प्रसारित करता हैं, जिससे कम्प्यूटेशनल संसाधनों की अत्यधिक खपत होती हैं एवं  सेवा को वैध users के लिए अनुपलब्ध बना दिया जाता हैं।
+#### परिदृश्य#3: संसाधन-गहन प्रश्न
+  एक हमलावर शिल्प विशिष्ट इनपुट्स को LLM की सबसे कम्प्यूटेशनल रूप से महंगी प्रक्रियाओं को trigger करने के लिए डिज़ाइन किया गया हैं, जिससे लंबे समय तक सीपीयू उपयोग एवं  संभावित system की विफलता होती हैं।
+#### परिदृश्य#4: वॉलेट का इनकार (डॉव)
+  एक हमलावर क्लाउड पर आधारित AI सेवाओं के पे-प्रति-उपयोग मॉडल का फायदा उठाने के लिए अत्यधिक संचालन उत्पन्न करता हैं, जिससे सेवा प्रदाता के लिए अस्थिर लागत होती हैं।
+#### परिदृश्य#5: कार्यात्मक मॉडल प्रतिकृति
+  एक हमलावर सिंथेटिक प्रशिक्षण डेटा उत्पन्न करने के लिए LLM के APIs का उपयोग करता हैं एवं  एक एवं  मॉडल को ठीक करने के लिए, एक कार्यात्मक समकक्ष एवं  पारंपरिक मॉडल निष्कर्षण सीमाओं को दरकिनार करता हैं।
+#### परिदृश्य#6: सिस्टम इनपुट फ़िल्टरिंग को बायपास करना
+  एक दुर्भावनापूर्ण हमलावर इनपुट फ़िल्टरिंग तकनीकों एवं  LLM के प्रस्ताव को साइड-चैनल हमला करने एवं  उनके नियंत्रण के तहत एक रिमोट नियंत्रित संसाधन के लिए मॉडल की जानकारी प्राप्त करने के लिए LLM के प्रस्ताव को बायपास करता हैं।
 
 ### संबंधित लिंक
 
