@@ -17,7 +17,7 @@ Excessive Agency can lead to a broad range of impacts across the confidentiality
 
 Note: Excessive Agency differs from Insecure Output Handling which is concerned with insufficient scrutiny of LLM outputs.
 
-### Common Examples of Risks
+### जोखिमों के सामान्य उदाहरण
 
 #### 1. Excessive Functionality
   An LLM agent has access to extensions which include functions that are not needed for the intended operation of the system. For example, a developer needs to grant an LLM agent the ability to read documents from a repository, but the 3rd-party extension they choose to use also includes the ability to modify and delete documents.

@@ -6,7 +6,7 @@ Vectors and embeddings vulnerabilities present significant security risks in sys
 
 Retrieval Augmented Generation (RAG) is a model adaptation technique that enhances the performance and contextual relevance of responses from LLM Applications, by combining pre-trained language models with external knowledge sources.Retrieval Augmentation uses vector mechanisms and embedding. (Ref #1)
 
-### Common Examples of Risks
+### जोखिमों के सामान्य उदाहरण
 
 #### 1. Unauthorized Access & Data Leakage
   Inadequate or misaligned access controls can lead to unauthorized access to embeddings containing sensitive information. If not properly managed, the model could retrieve and disclose personal data, proprietary information, or other sensitive content. Unauthorized use of copyrighted material or non-compliance with data usage policies during augmentation can lead to legal repercussions.
