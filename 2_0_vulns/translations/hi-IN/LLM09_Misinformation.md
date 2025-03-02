@@ -1,53 +1,54 @@
-## LLM09:2025 Misinformation
+## LLM09:2025 गलत सूचना
 
 ### विवरण
 
-Misinformation from LLMs poses a core vulnerability for applications relying on these models. Misinformation occurs when LLMs produce false or misleading information that appears credible. This vulnerability can lead to security breaches, reputational damage, and legal liability.
+LLMS के द्वारा गलत सूचना इन मॉडलों पर भरोसा करने वाले applications  के लिए एक मुख्य Vulnerability हैं। गलत सूचना का संचार तब होता है जब  LLMS विश्वसनीय दिखाई देने वाली झूठी या भ्रामक जानकारी को उत्पन्न करता हैं। इस Vulnerability से सुरक्षा उल्लंघ (security breaches), प्रतिष्ठा की क्षति (reputational damage) एवं  कानूनी देयता (legal liability) हो सकती हैं।
 
-One of the major causes of misinformation is hallucination—when the LLM generates content that seems accurate but is fabricated. Hallucinations occur when LLMs fill gaps in their training data using statistical patterns, without truly understanding the content. As a result, the model may produce answers that sound correct but are completely unfounded. While hallucinations are a major source of misinformation, they are not the only cause; biases introduced by the training data and incomplete information can also contribute.
+गलत सूचनाओं के प्रमुख कारणों में से एक hallucination हैंं। इसमे LLM ऐसी सामग्री उत्पन्न करता हैं जो सटीक लगते हुए भी बनावटी होती हैं, जिसके लिए वह वास्तव में सामग्री को समझे बिना ही statistical patterns से  अपने प्रशिक्षण डेटा के gaps को भरता है। इससे मॉडल वह उत्तर देता हैं जो सही लगते हुए भी पूरी तरह से निराधार होते हैंं। इसमे hallucination के अलावा भी प्रशिक्षण डेटा एवं अपूर्ण जानकारी से होने वाले biases भी मुख्य योगदान दे+ सकते हैंं।
 
-A related issue is overreliance. Overreliance occurs when users place excessive trust in LLM-generated content, failing to verify its accuracy. This overreliance exacerbates the impact of misinformation, as users may integrate incorrect data into critical decisions or processes without adequate scrutiny.
+इसी प्रकार Overreliance हैं जो user द्वारा LLM से उत्पन्न सामग्री पर अत्यधिक विश्वास करके उसे सटीकता से verify ना करने के कारण होता। यह वस्तुतः गलत सूचना के प्रभाव को बढ़ाता हैं, क्योंकि user पर्याप्त जांच के बिना ही महत्वपूर्ण निर्णयों या प्रक्रियाओं में गलत डेटा का प्रयोग कर लेता हैंं।
 
-### Common Examples of Risk
+### जोखिम के सामान्य उदाहरण
 
-#### 1. Factual Inaccuracies
-  The model produces incorrect statements, leading users to make decisions based on false information. For example, Air Canada's chatbot provided misinformation to travelers, leading to operational disruptions and legal complications. The airline was successfully sued as a result.
+#### 1. तथ्यात्मक अशुद्धि
+  मॉडल गलत कथनों को बनाता हैं, जिससे की user झूठी जानकारी के आधार पर निर्णय लेते है। उदाहरण के लिए, Air Canada के चैटबॉट ने यात्रियों को गलत सूचना प्रदान की, जिससे परिचालन मे व्यवधान एवं  कानूनी जटिलताओं पेड़ हो गई। जिसके परिणामस्वरूप airline पर मुकदमा चलाया गया।
   (Ref. link: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
-#### 2. Unsupported Claims
-  The model generates baseless assertions, which can be especially harmful in sensitive contexts such as healthcare or legal proceedings. For example, ChatGPT fabricated fake legal cases, leading to significant issues in court.
+#### 2. असमर्थित दावे
+  मॉडल आधारहीन दावे करता हैं, जो मुखयतः संवेदनशील संदर्भों जैसे कि स्वास्थ्य सेवा या कानूनी कार्यवाही में हानिकारक हो सकती हैं। उदाहरण के लिए, CHATGPT ने नकली कानूनी मामलों को गढ़ा, जिससे की अदालत में महत्वपूर्ण समस्याएं देखने को मिली।
   (Ref. link: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
-#### 3. Misrepresentation of Expertise
-  The model gives the illusion of understanding complex topics, misleading users regarding its level of expertise. For example, chatbots have been found to misrepresent the complexity of health-related issues, suggesting uncertainty where there is none, which misled users into believing that unsupported treatments were still under debate.
+#### 3. विशेषज्ञता से बहकना
+  मॉडल जटिल विषयों को समझने का भ्रम बनाता हैं, जिससे की users को इसकी विशेषज्ञता के स्तर के बारे में भ्रम पैदा होते हैं। उदाहरण के लिए, चैटबॉट्स को स्वास्थ्य संबंधित मुद्दों की जटिलता को गलत तरीके से प्रस्तुत करते पाया गया हैं, जिसमें की users को कुछ उपचारों पर संदेह होने लगा।
   (Ref. link: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
-#### 4. Unsafe Code Generation
-  The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems. For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks.
+#### 4. असुरक्षित कोड की उत्पत्ति
+  मॉडल असुरक्षित या गैर-मौजूद code libraries सूझता हैं, जो की software में प्रयोग होने पर vulnerabilities पैदा कर सकती हैं। उदाहरण के लिए, LLMS असुरक्षित third-party libraries के  उपयोग को प्रस्तावित करता हैं, जो कि validation के बिना सुरक्षा जोखिमों पैदा कर सकते हैं।
   (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
 ### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
 #### 1. Retrieval-Augmented Generation (RAG)
-  Use Retrieval-Augmented Generation to enhance the reliability of model outputs by retrieving relevant and verified information from trusted external databases during response generation. This helps mitigate the risk of hallucinations and misinformation.
-#### 2. Model Fine-Tuning
-  Enhance the model with fine-tuning or embeddings to improve output quality. Techniques such as parameter-efficient tuning (PET) and chain-of-thought prompting can help reduce the incidence of misinformation.
-#### 3. Cross-Verification and Human Oversight
-  Encourage users to cross-check LLM outputs with trusted external sources to ensure the accuracy of the information. Implement human oversight and fact-checking processes, especially for critical or sensitive information. Ensure that human reviewers are properly trained to avoid overreliance on AI-generated content.
-#### 4. Automatic Validation Mechanisms
-  Implement tools and processes to automatically validate key outputs, especially output from high-stakes environments.
-#### 5. Risk Communication
-  Identify the risks and possible harms associated with LLM-generated content, then clearly communicate these risks and limitations to users, including the potential for misinformation.
+  प्रतिक्रिया देने के दौरान विश्वसनीय बाहरी डेटाबेस से प्रासंगिक एवं verified जानकारी को प्राप्त करके मॉडल आउटपुट की विश्वसनीयता को बढ़ाने के लिए Retrieval-Augmented Generation का उपयोग करें। यह hallucination एवं गलत सूचना के जोखिम को कम करने में मदद करता हैं।
+#### 2. मॉडल fine-tuning
+  मॉडल के आउटपुट की गुणवत्ता में सुधार के लिए fine-tuning या embeddings का प्रयोग करे । Parameter-efficient tuning (PET) एवं  chain-of-thought prompting जैसी तकनीकें गलत सूचना को कम करने में मदद कर सकती हैंं।
+#### 3. Cross-Verification एवं  Cross-Verification
+  जानकारी की सटीकता सुनिश्चित करने के लिए विश्वसनीय बाहरी स्रोतों के साथ LLM के आउटपुट  
+  को जाँचे। मानव निरीक्षण एवं fact-checking की  प्रक्रियाओं को लागू करें, विशेष रूप से महत्वपूर्ण या संवेदनशील जानकारी के लिए। मानव समीक्षकों को AI से उत्पन्न सामग्री पर overreliance से बचने के लिए ठीक से प्रशिक्षित करे।
+#### 4. स्वचालित validation तंत्र
+  ऐसे उपकरण एवं प्रक्रियाओं को लागू करे जो स्वचालित (automatic) रूप से प्रमुख आउटपुट की जाँचे करे, विशेष रूप से high-stakes environments वाले outputs की ।
+#### 5. जोखिम संचार
+  LLM द्वारा उत्पन्न सामग्री से जुड़े जोखिमों एवं  संभावित हानि की पहचान करें, फिर स्पष्ट रूप से इन जोखिमों एवं सीमाओं को users को बताए, जिसमें गलत सूचना भी शामिल हैं।
 #### 6. Secure Coding Practices
-  Establish secure coding practices to prevent the integration of vulnerabilities due to incorrect code suggestions.
-#### 7. User Interface Design
-  Design APIs and user interfaces that encourage responsible use of LLMs, such as integrating content filters, clearly labeling AI-generated content and informing users on limitations of reliability and accuracy. Be specific about the intended field of use limitations.
-#### 8. Training and Education
-  Provide comprehensive training for users on the limitations of LLMs, the importance of independent verification of generated content, and the need for critical thinking. In specific contexts, offer domain-specific training to ensure users can effectively evaluate LLM outputs within their field of expertise.
+  गलत कोड सुझावों के कारण होने वाली vulnerabilities को रोकने के लिए Secure Coding Practices को लागू करें।
+#### 7. UI डिजाइन
+  ऐसी APIs एवं  user इंटरफेस बनाए जो LLM के जिम्मेदार उपयोग को प्रोत्साहित करे, जैसे कि सामग्री की छताई के लिए फ़िल्टर को जोड़ना, स्पष्ट रूप से AI से उत्पन्न सामग्री को लेबल करना एवं  users को विश्वसनीयता (reliability) एवं  सटीकता (accuracy) की सीमाये बताना। इसी प्रकार use limitations के intended field के बारे में specific रहें।
+#### 8. प्रशिक्षण एवं शिक्षा
+  LLM की सीमाओं के बारे मे users को प्रशिक्षण दे, उत्पन्न सामग्री के स्वतंत्र validation का महत्व, एवं  critical thinking की आवश्यकता के बारे मे समझाए। विशिष्ट जगहों पर, users को उसकी विशेषज्ञता के क्षेत्र में LLM आउटपुट का प्रभावी ढंग से मूल्यांकन करने के लिए domain-specific प्रशिक्षण भी प्रदान करें।
 
 ### उदाहरण स्वरूप हमले के परिदृश्य
 
-#### Scenario #1
-  Attackers experiment with popular coding assistants to find commonly hallucinated package names. Once they identify these frequently suggested but nonexistent libraries, they publish malicious packages with those names to widely used repositories. Developers, relying on the coding assistant's suggestions, unknowingly integrate these poised packages into their software. As a result, the attackers gain unauthorized access, inject malicious code, or establish backdoors, leading to significant security breaches and compromising user data.
-#### Scenario #2
-  A company provides a chatbot for medical diagnosis without ensuring sufficient accuracy. The chatbot provides poor information, leading to harmful consequences for patients. As a result, the company is successfully sued for damages. In this case, the safety and security breakdown did not require a malicious attacker but instead arose from the insufficient oversight and reliability of the LLM system. In this scenario, there is no need for an active attacker for the company to be at risk of reputational and financial damage.
+#### परिद्रश्य 1
+  आम तौर पर hallucination करने वाले packages को खोजने के लिए हमलावर लोकप्रिय कोडिंग सहायकों का प्रयोग करता हैंं। एक बार इन  frequently suggested लेकिन nonexistent libraries की पहचान करके, वे ज्यादा प्रयोग मे आने वाली  repositories पर उन नामों के साथ दुर्भावनापूर्ण Package प्रकाशित करते हैंं। जिससे developers कोडिंग सहायक के सुझावों पर भ अनजाने में ही इन poised (दुर्भावनापूर्ण) packages को अपने software में जोड़ देते हैं। जिससे हमलावार अनधिकृत पहुंच (unauthorized access) प्राप्त करके दुर्भावनापूर्ण कोड को inject करते हैंं, या backdoors स्थापित करते हैंं, जिससे महत्वपूर्ण सुरक्षा उल्लंघनों एवं  user डेटा से compromise होता हैं।
+#### परिदृश्य#2
+  एक कंपनी पर्याप्त सटीकता (accuracy) सुनिश्चित किए बिना चिकित्सा निदान (medical diagnosis) के लिए एक चैटबॉट देती हैं। चैटबॉट की खराब जानकारी से रोगियों को  हानि होती हैंं। नतीजतन, कंपनी के खिलाफ नुकसान के लिए मुकदमा दायर किया गया हैं। इस मामले में गलती किसी  दुर्भावनापूर्ण हमलावर की नहीं बल्कि LLM प्रणाली की अपर्याप्त निरीक्षण एवं  विश्वसनीयता (insufficient oversight and reliability) से हुई। इस परिदृश्य में, कंपनी की प्रतिष्ठित एवं वित्तीय क्षति के लिए कोई सक्रिय हमलावर की आवश्यकता नहीं हैं।
 
 ### संबंधित लिंक
 
