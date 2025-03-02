@@ -1,84 +1,89 @@
 ## LLM03:2025 Supply Chain
 
-### Description
+### विवरण
 
-LLM supply chains are susceptible to various vulnerabilities, which can affect the integrity of training data, models, and deployment platforms. These risks can result in biased outputs, security breaches, or system failures. While traditional software vulnerabilities focus on issues like code flaws and dependencies, in ML the risks also extend to third-party pre-trained models and data.
+LLM supply chains विभिन्न vulnerabilities के लिए अतिसंवेदनशील होती हैं, जिससे प्रशिक्षण डेटा, मॉडल और deployment platforms की अखंडता (integrity) प्रभावित होती हैं। इन जोखिमों के परिणामस्वरूप पक्षपाती आउटपुट (biased outputs), security breaches तथा system failures हो सकते हैंं। जबकि पारंपरिक software vulnerabilities code flaws एवं dependencies जैसे मुद्दों पर ध्यान केंद्रित करती हैंं,जबकि ML में जोखिम भी third-party के pre-trained मॉडल और डेटा तक विस्तारित होते हैंं।
 
-These external elements can be manipulated through tampering or poisoning attacks.
+इन बाहरी तत्वों को tampering एवं poisoning attacks के माध्यम से हेरफेर किया जा सकता हैं।
 
-Creating LLMs is a specialized task that often depends on third-party models. The rise of open-access LLMs and new fine-tuning methods like "LoRA" (Low-Rank Adaptation)  and "PEFT" (Parameter-Efficient Fine-Tuning), especially on platforms like Hugging Face, introduce new supply-chain risks. Finally, the emergence of on-device LLMs increase the attack surface and supply-chain risks for LLM applications.
+LLMS बनाना एक विशिष्टता (specialized) वाला कार्य हैं जो अक्सर third-party के मॉडल पर निर्भर करता हैं। open-access LLM और "LoRA" (Low-Rank Adaptation) तथा "PEFT" (Parameter-Efficient Fine-Tuning) जैसे नए fine-tuning विधियों का उदय, Hugging Face जैसे platforms पर, नए supply-chain जोखिमों को पेश करता हैं। अंत में, on-device LLM के उद्गम ने LLM applications के लिए हमले की संभावनए एवं  supply-chain जोखिमों को बढ़ाया हे।
 
-Some of the risks discussed here are also discussed in "LLM04 Data and Model Poisoning." This entry focuses on the supply-chain aspect of the risks.
-A simple threat model can be found [here](https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-LLM%20Supply%20Chain.png).
+यहां चर्चा किए गए कुछ जोखिमों पर "LLM04 Data and Model Poisoning" में भी चर्चा की गई हैं। यह बिन्दु जोखिमों के supply-chain से जुड़े पहलुओ पर केंद्रित हैं।
+एक साधारण threat model पाया जा सकता हैं
+[here](https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-LLM%20Supply%20Chain.png).
 
-### Common Examples of Risks
+### जोखिमों के सामान्य उदाहरण
 
-#### 1. Traditional Third-party Package Vulnerabilities
-  Such as outdated or deprecated components, which attackers can exploit to compromise LLM applications. This is similar to "A06:2021 – Vulnerable and Outdated Components" with increased risks when components are used during model development or finetuning.
-  (Ref. link: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
-#### 2. Licensing Risks
-  AI development often involves diverse software and dataset licenses, creating risks if not properly managed. Different open-source and proprietary licenses impose varying legal requirements. Dataset licenses may restrict usage, distribution, or commercialization.
-#### 3. Outdated or Deprecated Models
-  Using outdated or deprecated models that are no longer maintained leads to security issues.
-#### 4. Vulnerable Pre-Trained Model
-  Models are binary black boxes and unlike open source, static inspection can offer little to security assurances. Vulnerable pre-trained models can contain hidden biases, backdoors, or other malicious features that have not been identified through  the safety evaluations of model repository. Vulnerable models can be created by both poisoned datasets and direct model tampering using techniques such as ROME also known as lobotomisation.
-#### 5. Weak Model Provenance
-  Currently there are no strong provenance assurances in published models. Model Cards and associated documentation provide model information and relied upon users, but they offer no guarantees on the origin of the model. An attacker can compromise supplier account on a model repo or create a similar one and combine it with social engineering techniques to compromise the supply-chain of an LLM application.
+#### 1. Third-party Package से जुड़ी पारंपरिक vulnerabilities
+  जैसे कि outdated या deprecated components, जिनका हमलावर LLM applications को compromise करने के प्रयोग लेता हैंं। यह "A06:2021 – Vulnerable and Outdated Components" के जैसा हैं जब components का उपयोग मॉडल विकास या finetuning के दौरान होने से जोखिमों बद जाता हैं।
+  ( संदर्भ link: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
+#### 2. Licensing से जुड़े जोखिम
+  AI के विकास में अक्सर विविध प्रकार के software और डेटासेट licenses शामिल होते हैंं, जो ठीक से संभले नहीं जाने पर जोखिम पैदा कर सकते हैंं। विभिन्न open-source एवं  proprietary licenses अलग-अलग कानूनी आवश्यकताओं के साथ आते हैंं। डेटासेट licenses उपयोग (usage), वितरण (distribution) तया व्यावसायीकरण (commercialization) को प्रतिबंधित कर सकते हैंं।
+#### 3. Outdated या Deprecated  मॉडल
+  Outdated  या Deprecated मॉडल का उपयोग करना जो अब maintained नही हैं, सुरक्षा का मुद्दों बनते हैं। 
+#### 4. Vulnerable pre-trained मॉडल
+  मॉडल binary black boxes हैंं और open source के विपरीत, static निरीक्षण से सुरक्षा के प्रती बहुत कम किया जा सकता हैं। Vulnerable pre-trained मॉडल में छिपे हुए पूर्वाग्रह (biases), backdoors या अन्य दुर्भावनापूर्ण features हो सकते हैंं जिन्हें मॉडल repository के सुरक्षा मूल्यांकन के माध्यम से पहचाना नहीं जा पाया हैं। Vulnerable मॉडल को दोनों poisoned डेटासेट एवं सीधा मॉडल से छेड़छाड़ के द्वारा बनाया जा सकता हैं, जैसे की ROME जैसी तकनीके जिसे lobotomisation भी कहते है उसका उपयोग करके।
+#### 5. मॉडल के कमजोर सिद्धता
+  वर्तमान में प्रकाशित मॉडलो में कोई मजबूत सिद्धांतों का आश्वासन नहीं हैंं। मॉडल के Cards एवं इससे संबंधित दस्तावेज मॉडल की जानकारी तो  प्रदान करते हैंं, वह users पर निर्भर होते हैंं, लेकिन वह मॉडल स्रोत (origin) पर कोई गारंटी नहीं देते। एक हमलावर एक मॉडल repo से जुड़े आपूर्तिकर्ता के खाते को compromise कर सकता हैं या एक उसके समान लगने वाला खाता बना कर उसे social engineering की तकनीकों के सतह जोड़ कर, LLM application की supply-chain को compromise कर सकता हैं।
 #### 6. Vulnerable LoRA adapters
-  LoRA is a popular fine-tuning technique that enhances modularity by allowing pre-trained layers to be bolted onto an existing LLM. The method increases efficiency but create new risks, where a malicious LorA adapter compromises the integrity and security of the pre-trained base model. This can happen both in collaborative model merge environments but also exploiting the support for LoRA from popular inference deployment platforms such as vLMM and OpenLLM where adapters can be downloaded and applied to a deployed model.
-#### 7. Exploit Collaborative Development Processes
-  Collaborative model merge and model handling services (e.g. conversions) hosted in shared environments can be exploited to introduce vulnerabilities in shared models. Model merging is is very popular on Hugging Face with model-merged models topping the OpenLLM leaderboard and can be exploited to bypass reviews. Similarly, services such as conversation bot have been proved to be vulnerable to maniputalion and introduce malicious code in models.
-#### 8. LLM Model on Device supply-chain vulnerabilities
-  LLM models on device increase the supply attack surface with compromised manufactured processes and exploitation of device OS or fimware vulnerabilities to compromise models. Attackers can reverse engineer and re-package applications with tampered models.
-#### 9. Unclear T&Cs and Data Privacy Policies
-  Unclear T&Cs and data privacy policies of the model operators lead to the application's sensitive data being used for model training and subsequent sensitive information exposure. This may also apply to risks from using copyrighted material by the model supplier.
+  LoRA एक लोकप्रिय fine-tuning तकनीक हैं जो pre-trained परतों को मौजूदा LLM पर जोड़ने की अनुमति देकर modularity को बढ़ाती हैं। यह विधि दक्षता (efficiency) तो बढ़ाती हैं लेकिन नए जोखिमों भी पैदा हो जाते  हैं, जहां एक दुर्भावनापूर्ण LoRA adapter pre-trained बेस मॉडल की अखंडता एवं सुरक्षा से compromise करता हैं। यह collaborative एवं model merge environments दोनों मे हो सकता हैं, लेकिन vLMM एवं OpenLLM जैसे लोकप्रिय inference deployment platforms द्वारा भी LoRA के support को exploit किया जा सकता हैं जहां adapters को डाउनलोड करके deployed मॉडल पर लागू किया जा सकता हैं।
+#### 7. Collaborative Development Processes को exploit करें
+  Shared environments में होस्ट किए गए Collaborative model merge एवं model handling services (जैसे conversions) को shared मॉडल्स में vulnerabilities  पैदा करने के लिए exploit किया जा सकता हैं। Hugging Face पर model merging  बहुत लोकप्रिय होने के साथ-साथ इसके मॉडल्स OpenLLM लीडरबोर्ड में भी टॉप पर है, जिसके साथ-साथ इनको review को bypass करने के लिए भी exploit किया जा सकता हैं। इसी तरह ही services (सेवाओं) जेसे conversation bot 
+  भी vulnerable होते है हेरफेर एवं दुर्भावनापूर्ण कोड डालने के प्रती।
+#### 8. Devices की supply-chain vulnerabilities पर LLM मॉडल
+  Devices पर LLM मॉडल लगाने से supply पर हमलों की संभावनाए बड़ती है ,इसके साथ यह निर्माण की प्रक्रियाओं (manufactured processes) को compromise एवं  device OS या fimware vulnerabilities को भी  exploit कर साकता हैंं। इससे हमलावर छेड़छाड़ (tampered) किए गए मॉडल्स को reverse engineer एवं  applications को re-package कर सकता हैंं।
+#### 9. अस्पष्ट T&Cs (नियम व शर्तें) एवं डेटा के लिए गोपनीयता की नीतियां (Privacy Policies)
+  मॉडल ऑपरेटरों (operators) की अस्पष्ट T&Cs (नियम व शर्तें) एवं डेटा के लिए गोपनीयता की नीतियां के कारण, application के संवेदनशील डेटा का उपयोग मॉडल प्रशिक्षण एवं इसके साथ संवेदनशील जानकारी के exposure के लिए हो सकता  हैंं। यह मॉडल के आपूर्तिकर्ता (supplier) द्वारा copyrighted सामग्री के उपयोग करने से उतन्न होने वाले जोखिमों पर भी लागू हो सकता हैं।
 
-### Prevention and Mitigation Strategies
+### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
-1. Carefully vet data sources and suppliers, including T&Cs and their privacy policies, only using trusted suppliers. Regularly review and audit supplier Security and Access, ensuring no changes in their security posture or T&Cs.
-2. Understand and apply the mitigations found in the OWASP Top Ten's "A06:2021 – Vulnerable and Outdated Components." This includes vulnerability scanning, management, and patching components. For development environments with access to sensitive data, apply these controls in those environments, too.
-  (Ref. link: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
-3. Apply comprehensive AI Red Teaming and Evaluations when selecting a third party model. Decoding Trust is an example of a Trustworthy AI benchmark for LLMs but models can finetuned to by pass published benchmarks. Use extensive AI Red Teaming to evaluate the model, especially in the use cases you are planning to use the model for.
-4. Maintain an up-to-date inventory of components using a Software Bill of Materials (SBOM) to ensure you have an up-to-date, accurate, and signed inventory, preventing tampering with deployed packages. SBOMs can be used to detect and alert for new, zero-date vulnerabilities quickly. AI BOMs and ML SBOMs are an emerging area and you should evaluate options starting with OWASP CycloneDX
-5. To mitigate AI licensing risks, create an inventory of all types of licenses involved using BOMs and conduct regular audits of all software, tools, and datasets, ensuring compliance and transparency through BOMs. Use automated license management tools for real-time monitoring and train teams on licensing models. Maintain detailed licensing documentation in BOMs and leverage tools such as [Dyana](https://github.com/dreadnode/dyana) to perform dynamic analysis of third-party software.
-6. Only use models from verifiable sources and use third-party model integrity checks with signing and file hashes to compensate for the lack of strong model provenance. Similarly, use code signing for externally supplied code.
-7. Implement strict monitoring and auditing practices for collaborative model development environments to prevent and quickly detect any abuse. "HuggingFace SF_Convertbot Scanner" is an example of automated scripts to use.
+1. डेटा स्रोतों एवं आपूर्तिकर्ताओं (suppliers) की vetting (स्पष्ट तौर पर जांच एवं पड़ताल) करे, जिसमें T&Cs (नियम व शर्तें) एवं उनकी गोपनीयता नीतियों भी शामिल हो,इसके लिये केवल विश्वसनीय आपूर्तिकर्ताओं (trusted suppliers) का ही उपयोग करे। 
+नियमित रूप से आपूर्तिकर्ता की सुरक्षा (Security) तथा  पहुंच (Acces) की समीक्षा (review) एवं  ऑडिट (audit)करे  ,यह सुनिश्चित करते हुए की इनसे  सुरक्षा मुद्रा या T&Cs (नियम व शर्तें) में कोई बदलाव तो नहीं या रहा।
+2.  OWASP टॉप 10 के "A06:2021 – Vulnerable and Outdated Components." में दिए गए समाधानों को समझें एवं लागू करें। इसमें Vulnerability की खोज (scanning), प्रबंधन (management) एवं component पर सुधार लागू करना (patching) शामिल हैंं। संवेदनशील डेटा तक पहुंच (access) के साथ development environments के लिए, इन नियंत्रणों को उन सभी वातावरणों में भी लागू करें।
+ (Ref. link: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
+3.  Third-party मॉडल के चयन से पूर्व उसपर व्यापक AI Red Teaming एवं मूल्यांकन (evaluations) लगाए। Decoding Trust एक उदाहरण हैं LLMs के लिए एक भरोसेमंद AI बेंचमार्क का, लेकिन मॉडल्स इस प्रकार से finetune किया जा सकता हे की वह प्रकाशित बेंचमार्क को भी bypass (बचकर निकल जाना) कर दे। मॉडल का मूल्यांकन करने के लिए व्यापक AI Red Teaming का प्रयोग करें, विशेष रूप से मॉडल के उपयोगों (use cases) की योजना बनाने के लिये।
+4. Software Bill of Materials (SBOM) का प्रयोग up-to-date, सटीक एवं signed (सत्यापित) inventory बनाए, जो कि deployed packages के साथ छेड़छाड़ को रोकने के लिए सहायक हो सके। SBOMs का प्रयोग नई, zero-date vulnerabilities को जल्दी से पता (detect) लगाने एवं सतर्क (alert) करने के लिए किया जा सकता हैं। AI BOMs एवं ML SBOMs एक उभरता हुआ क्षेत्र हैं, इसके लिये आपको OWASP Cyclonedx से शुरुवात करते हुए अन्य विकल्पों का मूल्यांकन करना चाहिए।
+5.  AI Licensing जोखिमों को कम करने के लिए, BOM का प्रयोग करते हुए, सभी प्रकार के licenses की एक सूची बनाएं तथा इसी से ही compliance (स्वीकृति) एवं  transparency (पारदर्शिता) सुनिश्चित करते हुए, सभी software, tools तथा डेटासेट को नियमित रूप से audit करते रहे। वास्तविक समय की निगरानी (real-time monitoring) के लिए स्वचालित (automated) licenses प्रबंधन tools का उपयोग करें एवं Licensing मॉडल पर टीमों को प्रशिक्षित (train) करें। BOMs और leverage tools जैसे की [Dyana] (https://github.com/dreadnode/dyana) के विस्तृत licensing documentation बनाए, ताकि third-party software का गतिशील विश्लेषण (dynamic analysis) किया जा सके।
+6.  केवल सत्यापित स्रोतों (verifiable sources) के मॉडल्स का ही प्रयोग करें एवं  मजबूत मॉडल सिद्धता (provenance) की कमी की  क्षतिपूर्ति हेतु signing एवं फ़ाइल हैंश (file hashes) के साथ third-party मॉडल्स की  अखंडता की जांच करें। इसी तरह, बाहर से प्राप्त code के लिये code signing का उपयोग करें।
+7.  किसी भी दुरुपयोग का जल्द से जल्द पता लगाने एवं रोकने के लिए collaborative model के development environment मे सख्त निगरानी एवं auditing को लागू करें। "HuggingFace SF_Convertbot Scanner" इसी कार्य  के लिए  प्रयोग मे आने वाली एक automated (स्वचालित) scripts का उदाहरण हैं।
   (Ref. link: [HuggingFace SF_Convertbot Scanner](https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163))
-8. Anomaly detection and adversarial robustness tests on supplied models and data can help detect tampering and poisoning as discussed in "LLM04 Data and Model Poisoning; ideally, this should be part of MLOps and LLM pipelines; however, these are emerging techniques and may be easier to implement as part of red teaming exercises.
-9. Implement a patching policy to mitigate vulnerable or outdated components. Ensure the application relies on a maintained version of APIs and underlying model.
-10. Encrypt models deployed at AI edge with integrity checks and use vendor attestation APIs to prevent tampered apps and models and terminate applications of unrecognized firmware.
+8.  दिए गए (supplied) मॉडल एवं डेटा, पर Anomaly detection (गड़बड़ का पता लगाने) एवं adversarial robustness (प्रतिकूलता की मजबूती का परीक्षण करना)
+लगाने से, छेड़छाड़ (tampering) एवं विषाक्तता (poisoning) के बारे मे पता लगाने में मदद मिल साकती हैं जैसा कि "LLM04 Data and Model Poisoning" में चर्चा की गई हैं। आदर्श रूप से, यह MLOps एवं LLM pipelines का हिस्सा होना चाहिए थी, लेकिन उभरती हुई तकनीक होने के कारण यह Red Teaming के हिस्से के रूप में लागू करना आसान हैं।
+9.  Vulnerable या Outdated components को कम करने के लिए एक patching (सुधारणा) नीति लागू करें। सुनिश्चित करें कि application, अनुरक्षित संस्करण (maintained version) वाली APIs एवं अंतर्निहित मॉडल पर निर्भर करती हो।
+10. जो Encrypt मॉडल, AI एज में deployed किए गए है, integrity checks (अखंडता की जांच करना) के साथ एवं vendor attestation (like verified and secured) APIs का प्रयोग करे जिससे की apps एवं models को tampered होने से बचाया जा सके। इसी के साथ बंद करे (terminate) ऐसी applications को जिनमे  अमान्यताप्राप्त (unrecognized) firmware हैं।
 
-### Sample Attack Scenarios
+### उदाहरण स्वरूप हमले के परिदृश्य
 
-#### Scenario #1: Vulnerable Python Library
-  An attacker exploits a vulnerable Python library to compromise an LLM app. This happened in the first Open AI data breach.  Attacks on  the PyPi package registry  tricked model developers into downloading a compromised PyTorch dependency with malware in a model development environment.  A more sophisticated example of this type of attack is Shadow Ray attack on the Ray AI framework used by many vendors to manage AI infrastructure.  In this attack, five vulnerabilities are believed to have been exploited in the wild affecting many servers.
-#### Scenario #2: Direct Tampering
-  Direct Tampering and publishing a model to spread misinformation. This is an actual attack with PoisonGPT bypassing Hugging Face safety features by directly changing model parameters.
-#### Scenario #3: Finetuning Popular Model
-  An attacker finetunes a popular open access model to remove key safety features and perform high in a specific domain (insurance). The model is finetuned to score highly on safety benchmarks but  has very targeted  triggers. They deploy it on Hugging Face for victims to use it exploiting their trust on  benchmark assurances.
-#### Scenario #4: Pre-Trained Models
-  An LLM system deploys pre-trained models from a widely used repository without thorough verification. A compromised model introduces malicious code, causing biased outputs in certain contexts and leading to harmful or manipulated outcomes
-#### Scenario #5: Compromised Third-Party Supplier
-  A compromised third-party supplier provides a vulnerable LorA adapter that is being merged to an LLM using model merge on Hugging Face.
-#### Scenario #6: Supplier Infiltration
-  An attacker infiltrates a third-party supplier and compromises the production of a LoRA (Low-Rank Adaptation) adapter intended for integration with an on-device LLM deployed using frameworks like vLLM or OpenLLM. The compromised LoRA adapter is subtly altered to include hidden vulnerabilities and malicious code. Once this adapter is merged with the LLM, it provides the attacker with a covert entry point into the system. The malicious code can activate during model operations, allowing the attacker to manipulate the LLM’s outputs.
-#### Scenario #7: CloudBorne and CloudJacking Attacks
-  These attacks target cloud infrastructures, leveraging shared resources and vulnerabilities in the virtualization layers. CloudBorne involves exploiting firmware vulnerabilities in shared cloud environments, compromising the physical servers hosting virtual instances. CloudJacking refers to malicious control or misuse of cloud instances, potentially leading to unauthorized access to critical LLM deployment platforms. Both attacks represent significant risks for supply chains reliant on cloud-based ML models, as compromised environments could expose sensitive data or facilitate further attacks.
-#### Scenario #8: LeftOvers (CVE-2023-4969)
-  LeftOvers exploitation of leaked GPU local memory to recover sensitive data. An attacker can use this attack to exfiltrate sensitive data in production servers and development workstations or laptops.
-#### Scenario #9: WizardLM
-  Following the removal of WizardLM, an attacker exploits the interest in this model and publish a fake version of the model with the same name but containing malware and backdoors.
-#### Scenario #10: Model Merge/Format Conversion Service
-  An attacker stages an attack with a model merge or format conversation service to compromise a publicly available access model to inject malware. This is an actual attack published by vendor HiddenLayer.
-#### Scenario #11: Reverse-Engineer Mobile App
-  An attacker reverse-engineers an mobile app to replace the model with a tampered version that leads the user to scam sites. Users are encouraged to download the app directly via social engineering techniques. This is a "real attack on predictive AI" that affected 116 Google Play apps including popular security and safety-critical applications used for as cash recognition, parental control, face authentication, and financial service.
+#### परिदृश्य#1: Vulnerable Python Library
+  एक हमलावर LLM app को compromise करने के लिए एक Vulnerable Python Library को exploit करता हैं। यह सबसे पहले OpenAI data breach मे देखा गया था। PYPI Package registry पर हमलों द्वारा मॉडल developers को एक model development environment में malware से compromise कि गई Pytorch  dependency download करने में बाध्य कर दिया।  इस प्रकार के हमले का एक अधिक पेचीदा उदाहरण हे AI infrastructure (बुनियादी ढांचे) का प्रबंधन करने के लिए कई विक्रेताओं द्वारा उपयोग किए जाने वाले Ray AI framework पर Shadow Ray attack हैं।  इस हमले में, माना जाता हैं कि पांच vulnerabilities हे जो संभवतः  कई servers को प्रभावित करने में exploit कि जाती  हैं।
+#### परिदृश्य#2: प्रत्यक्ष छेड़छाड़ (Direct Tampering)
+  गलत सूचना फैलाने के लिए एक मॉडल को प्रकाशित एवं उसमे प्रत्यक्ष रूप से  छेड़छाड़ करना। यह बदलते मॉडल parameters से PoisonGPT द्वारा HuggingFace के सुरक्षा features को bypass (दरकिनार) करने वाला वास्तविक हमला हैं।
+#### परिदृश्य#3: लोकप्रिय मॉडल की  finetuning 
+  एक हमलावर प्रमुख सुरक्षा सुविधाओं (key safety feature) को हटाने एवं एक विशिष्ट domain (बीमा) में उच्च प्रदर्शन करने के लिए एक लोकप्रिय open access मॉडल को finetune करता हैं। मॉडल सुरक्षा benchmarks पर अत्यधिक स्कोर करने के लिए finetuned हैं, लेकिन बहुत लक्षित triggers के साथ। वे इसे पीड़ितों के लिए HuggingFace deploy करते हैंं, जो benchmarks आश्वासन पर भरोसे को exploit लिये इसका प्रयोग कर सकते हैंं।
+#### परिदृश्य#4: Pre-trained मॉडल
+  एक LLM सिस्टम ढंग से सत्यापन के बिना एक ज्यादा प्रोयोग मे ली जाने वाली repository से pre-trained मॉडल को deploy करते हैं। एक compromise मॉडल दुर्भावनापूर्ण कोड को उसमे दल देते है, जिससे कुछ संदर्भों में पक्षपाती आउटपुट आते हैं एवं हानिकारक या हेरफेर कीये हुए परिणाम देखने को मिलते हैं।
+#### परिदृश्य#5: compromised हुआ third-party आपूर्तिकर्ता
+  एक compromised  हुआ third-party आपूर्तिकर्ता एक Vulnerable LoRA adapter को HuggingFace के model merge का प्रयोग करते हुए LLM मे merge कर देता हैं।
+#### परिदृश्य#6: आपूर्तिकर्ता द्वारा घुसपैठ (Supplier Infiltration)
+  एक हमलावर third-party आपूर्तिकर्ता में घुसपैठ हे, ताकि वह vLLM तथा openLLM जैसे फ्रेमवर्क से deploy किए गए on-device LLM के साथ integrate होने वाले LoRA (Low-Rank Adaptation) adapter के उत्पादन को compromise कर सके। इसमे compromise हुए LoRA adapter को ध्यान पूर्वक बदलाव कीये जाते है, जिससे उसमे छिपी हुई vulnerabilities एवं  दुर्भावनापूर्ण कोड को शामिल जा सके। एक बार जब इस adapter को LLM से merged कर दिया जाता हैं, तो यह हमलावर को सिस्टम में एक covert entry point (गुप्त प्रवेश बिंदु) प्रदान करता हैं। यह दुर्भावनापूर्ण कोड मॉडल संचालन के दौरान सक्रिय हो सकता हैं, जिससे हमलावर LLM के आउटपुट में हेरफेर कर सकता हैं।
+#### परिदृश्य#7: CloudBorne एवं CloudJacking हमले
+  ये हमले cloud के infrastructure को लक्षित करते हुए, उसमे मौजूद virtualization  परतों में साझा संसाधनों एवं  vulnerabilities का लाभ उठाते हैंं। CloudBorne के अंतर्गत साझा cloud environments में firmware vulnerabilities का exploit करना शामिल हैं, जो की physical servers द्वारा hosted virtual instance को compromise करते हैं। CloudJacking के अंतर्गत दुर्भावनापूर्ण नियंत्रण (malicious control) तथा cloud instances का दुरुपयोग शामिल हैं, जिससे की महत्वपूर्ण LLM deployment platforms पर अनधिकृत पहुंच (unauthorized access) बड़ती  हैं। दोनों हमले cloud-आधारित ML मॉडल पर आधारित  supply chains के लिए महत्वपूर्ण जोखिमों पेश  करते हैंं, क्योंकि compromised environments संवेदनशील डेटा को उजागर करने एवं हमलों मे बढ़ोतरी कर सकते हैं।
+#### परिदृश्य#8: LeftOvers (CVE-2023-4969)
+  संवेदनशील डेटा को  वापस र्प्राप्त करने के लिए लीक हुई GPU local memory का leftover exploition करना। हमलावर इस हमले का उपयोग production servers एवं development workstations तथा laptops के संवेदनशील डेटा को exfiltrate  करने के लिए कर सकता हैं।
+#### परिदृश्य#9: WizardLM
+  WizardLM को हटाने के बाद, एक हमलावर इस मॉडल में रुचि का फायदा उठाकर उसी नाम के साथ मॉडल का एक नकली संस्करण प्रकाशित करता हैं, लेकिन malware एवं  backdoors के साथ।
+#### परिदृश्य#10: Model Merge/Format Conversion Service
+एक हमलावर model merge तथा format conversation service के प्रयोग से , सार्वजनिक रूप से उपलब्ध access model को compromise करने के लिए उसमे malware को इंजेक्ट करता हैं। यह vendor HiddenLayer द्वारा प्रकाशित एक वास्तविक हमला हैं।
+#### परिदृश्य#11: Reverse-Engineer Mobile App
+  एक हमलावर एक Mobile App को Reverse-Engineer 
+  करता हे ताकि वह मॉडल को एक छेड़छाड़ किए गए मॉडल के साथ बदल दे जो user को scam site की ओर ले जाता हैं, जिससे की Users को social engineering तकनीकों के माध्यम से गलत app डाउनलोड जा सकते हैं। यह एक ""real attack on predictive AI" हैं जिसने 116 Google Play apps को प्रभावित किया, जिसमें की बहुत से लोकप्रिय सुरक्षा एवं  सुरक्षा-महत्वपूर्ण applications हे जिसमे की cash recognition, parental control, face authentication एवं financial service आदि प्रकार के app  शामिल हे।
   (Ref. link: [real attack on predictive AI](https://arxiv.org/abs/2006.08131))
-#### Scenario #12: Dataset Poisoning
-  An attacker poisons publicly available datasets to help create a back door when fine-tuning models. The back door subtly favors certain companies in different markets.
-#### Scenario #13: T&Cs and Privacy Policy
-  An LLM operator changes its T&Cs and Privacy Policy to require an explicit opt out from using application data for model training, leading to the memorization of sensitive data.
+#### परिदृश्य#12: Dataset Poisoning
+  एक हमलावर poison करता हे सार्वजनिक रूप से उपलब्ध डेटासेट को, जिससे की मॉडल की fine-tuning के दौरान उसमे back door बनाए जा सकते हैं। यह back door सूक्ष्म एवं गुप्त  रूप से विभिन्न बाजारों में कुछ कंपनियों के प्रती पक्षधर करने के लिये प्रयोग मे आते हैं।
+#### परिदृश्य#13: T&Cs (नियम व शर्तें) एवं  गोपनीयता नीति
+  एक LLM operator  अपने T&Cs (नियम व शर्तें) एवं  गोपनीयता नीति को बदलता हैं ताकि वह मॉडल प्रशिक्षण के लिए application डेटा का प्रयोग कर सके, एवं इसमे प्रयोग से बाहर निकालने के लिये खास प्रकार की नीति की आवश्यकता हो, जिससे की संवेदनशील डेटा मॉडल को याद होता रहे ।
 
-### Reference Links
+### संबंधित लिंक
 
 1. [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news)
 2. [Large Language Models On-Device with MediaPipe and TensorFlow Lite](https://developers.googleblog.com/en/large-language-models-on-device-with-mediapipe-and-tensorflow-lite/)
@@ -91,8 +96,8 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 9. [Thousands of servers hacked due to insecurely deployed Ray AI framework](https://www.csoonline.com/article/2075540/thousands-of-servers-hacked-due-to-insecurely-deployed-ray-ai-framework.html)
 10. [LeftoverLocals: Listening to LLM responses through leaked GPU local memory](https://blog.trailofbits.com/2024/01/16/leftoverlocals-listening-to-llm-responses-through-leaked-gpu-local-memory/)
 
-### Related Frameworks and Taxonomies
+### संबंधित फ्रेमवर्क और टैक्सोनॉमी
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Infrastructure deployment, applied environment controls  तथा अन्य सर्वोत्तम उपायों से संबंधित व्यापक जानकारी, परिदृश्यों की रणनीतियों के लिए इस खंड का संदर्भ लें।
 
 - [ML Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010) -  **MITRE ATLAS**

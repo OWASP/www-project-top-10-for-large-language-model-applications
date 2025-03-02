@@ -1,73 +1,73 @@
-## LLM01:2025 Prompt Injection
+## LLM01:2025 Prompt इंजेक्शन
 
-### Description
+### विवरण
 
-A Prompt Injection Vulnerability occurs when user prompts alter the LLM’s behavior or output in unintended ways. These inputs can affect the model even if they are imperceptible to humans, therefore prompt injections do not need to be human-visible/readable, as long as the content is parsed by the model.
+Prompt इंजेक्शन Vulnerability तब होती हैं, जब user के prompts द्वारा LLM के व्यवहार तथा आउटपुट मे अनपेक्षित ढंग से बदलाव या जाए। यह इनपुट मॉडल को प्रभावित कर सकते हैंं, भले ही वे मनुष्यों के लिए अगोचर हों, इसलिए Prompt इंजेक्शन को मानव-दृश्यमान/पठनीय होने की आवश्यकता नहीं है, जब तक कि सामग्री को मॉडल द्वारा पार्स किया जाता रहे।
 
-Prompt Injection vulnerabilities exist in how models process prompts, and how input may force the model to incorrectly pass prompt data to other parts of the model, potentially causing them to violate guidelines, generate harmful content, enable unauthorized access, or influence critical decisions. While techniques like Retrieval Augmented Generation (RAG) and fine-tuning aim to make LLM outputs more relevant and accurate, research shows that they do not fully mitigate prompt injection vulnerabilities.
+Prompt इंजेक्शन की vulnerabilities इस बात पर निर्भर हे की मॉडल prompts को कैसे प्रतिपादित(process) करता हैं, और कैसे इनपुट मॉडल को गलत तरीके से उसके अन्य हिस्सों में Prompt डेटा को पारित करने के लिए मजबूर कर सकता हैं, जो संभवतः उन्हें निर्देशों का उल्लंघन करने, हानिकारक सामग्री को उत्पन्न करने, अनधिकृत पहुंच (unauthorized access) के लिये सक्षम करने या महत्वपूर्ण निर्णयों को प्रभावित करने के लिए बाध्य करता हे। जबकि LLM आउटपुट को अधिक प्रासंगिक और सटीक बनाने के लिए Retrieval Augmented Generation (RAG) तथा fine-tuning जैसी तकनीकों प्रयोग मे आती हैं, वही शोध बाटाते ही की ये पूरी तरह से Prompt इंजेक्शन vulnerabilities को कम नहीं कर सकती हे।
 
-While prompt injection and jailbreaking are related concepts in LLM security, they are often used interchangeably. Prompt injection involves manipulating model responses through specific inputs to alter its behavior, which can include bypassing safety measures. Jailbreaking is a form of prompt injection where the attacker provides inputs that cause the model to disregard its safety protocols entirely. Developers can build safeguards into system prompts and input handling to help mitigate prompt injection attacks, but effective prevention of jailbreaking requires ongoing updates to the model's training and safety mechanisms.
+Prompt इंजेक्शन और jailbreaking LLM सुरक्षा में संबंधित सिद्धांत हैंं, पर अक्सर परस्पर उपयोग मे आते हैंं। Prompt इंजेक्शन में कुछ खास इनपुट के प्रयोग से, मॉडल की प्रतिक्रियाओं में हेरफेर करके उसके व्यवहार में परिवर्तन करना शामिल है, जिसमें सुरक्षा उपायों को दरकिनार करना भी शामिल हो सकता है। Jailbreaking, prompt इंजेक्शन का एक रूप हैं जहां हमलावर इनपुट प्रदान करता हैं जो मॉडल की अपने सुरक्षा प्रोटोकॉल की पूरी तरह से अवहेलना करने का कारण बनता हैं। developers Prompt इंजेक्शन हमलों से बचाव के लिए सिस्टम Prompt एवं इनपुट हैंंडलिंग में सुरक्षा उपायों को निर्मित कर सकते हैंं, लेकिन jailbreaking की प्रभावी रोकथाम के लिए मॉडल के प्रशिक्षण एवं सुरक्षा तंत्र मे अपडेट की आवश्यकता होती हैं।
 
-### Types of Prompt Injection Vulnerabilities
+### Prompt इंजेक्शन vulnerabilities के प्रकार
 
-#### Direct Prompt Injections
-  Direct prompt injections occur when a user's prompt input directly alters the behavior of the model in unintended or unexpected ways. The input can be either intentional (i.e., a malicious actor deliberately crafting a prompt to exploit the model) or unintentional (i.e., a user inadvertently providing input that triggers unexpected behavior).
+#### प्रत्यक्ष Prompt इंजेक्शन
+  प्रत्यक्ष Prompt इंजेक्शन मे user का Prompt इनपुट सीधे अनपेक्षित या अप्रत्याशित तरीकों से मॉडल के व्यवहार को बदल देता हैं। यह इनपुट या तो जानबूझकर हो सकता हैं (यानी, एक दुर्भावनापूर्ण व्यक्ति जानबूझकर मॉडल का फायदा उठाने के लिए कुछ prompts को तैयार करे) या अनजाने में (यानी, एक user अनजाने में ऐसा इनपुट देता हैं जो अप्रत्याशित व्यवहार को ट्रिगर करता हैं)।
 
-#### Indirect Prompt Injections
-  Indirect prompt injections occur when an LLM accepts input from external sources, such as websites or files. The content may have in the external content data that when interpreted by the model, alters the behavior of the model in unintended or unexpected ways. Like direct injections, indirect injections can be either intentional or unintentional.
+#### अप्रत्यक्ष Prompt इंजेक्शन
+  अप्रत्यक्ष Prompt इंजेक्शन मे LLM बाहरी स्रोतों (वेबसाइट या फाइलें) से इनपुट स्वीकार करता हैं, जिनकी  सामग्री को मॉडल द्वारा प्रयोग (interpret) मे लाने से मॉडल के व्यवहार  मे अनपेक्षित या अप्रत्याशित बदलाव हो जाते हैं। यह भी प्रत्यक्ष इंजेक्शन की तरह, जानबूझकर या अनजाने में हो सकता हैंं।
 
-The severity and nature of the impact of a successful prompt injection attack can vary greatly and are largely dependent on both the business context the model operates in, and the agency with which the model is architected. Generally, however, prompt injection can lead to unintended outcomes, including but not limited to:
+सफल Prompt इंजेक्शन हमले के प्रभाव की गंभीरता और प्रकृति बहुत भिन्न हो सकती हैं एवं ये बड़े पैमाने पर व्यवसाय के संदर्भ मे जिसके लिये मॉडल काम मे लिया जा रहा हैं, तथा जिस एजेंसी के साथ मॉडल ढाल गया हैं। आम तौर पर, Prompt इंजेक्शन अनपेक्षित परिणामों को जन्म देता हैं, लेकिन कुछ निम्नलिखित बिन्दुओ तक सीमित नहीं हैं जेसे की :
 
-- Disclosure of sensitive information
-- Revealing sensitive information about AI system infrastructure or system prompts
-- Content manipulation leading to incorrect or biased outputs
-- Providing unauthorized access to functions available to the LLM
-- Executing arbitrary commands in connected systems
-- Manipulating critical decision-making processes
+- संवेदनशील जानकारी का प्रकटीकरण
+- AI सिस्टम ढ़ाचे (infrastructure) या सिस्टम Prompt के बारे में संवेदनशील जानकारी का खुलासा करना
+- सामग्री हेरफेर जो की गलत या पक्षपाती आउटपुट की और ले जाये
+- LLM के लिए उपलब्ध functions की अनधिकृत पहुंच (unauthorized access) प्रदान करना
+- कनेक्टेड सिस्टम में मनमानी आदेशों को निष्पादित (Executing) करना
+- महत्वपूर्ण निर्णय लेने की प्रक्रियाओं में हेरफेर करना
 
-The rise of multimodal AI, which processes multiple data types simultaneously, introduces unique prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
+मल्टीमॉडल (multimodal) AI का उदय, जो एक साथ कई प्रकार के data-types को संसाधित कर सकता हैं, वह कुछ नए Prompt इंजेक्शन जोखिमों को उत्पन्न करता हैं। दुर्भावनापूर्ण व्यक्ति modalities के बीच बातचीत (interactions) का फायदा उठा सकते हैंं, जैसे कि सौम्य texts के साथ imageयों में निर्देश छिपाना। इन प्रणालियों की जटिलता हमले की होने की संभावनाओ का विस्तार करती हैं। मल्टीमॉडल (multimodal) मॉडल भी कुछ खास  cross-modal हमलों के लिए अतिसंवेदनशील हो सकते हैंं जो की वर्तमान तकनीकों के द्वारा पता लगाने एवं उसका समाधान करने के लिए मुश्किल हैंं। मजबूत (Robust) मल्टीमॉडल (multimodal) सुराख समाधान आगे के शोध एवं विकास के लिए एक महत्वपूर्ण क्षेत्र हैं।
 
-### Prevention and Mitigation Strategies
+### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
-Prompt injection vulnerabilities are possible due to the nature of generative AI. Given the stochastic influence at the heart of the way models work, it is unclear if there are fool-proof methods of prevention for prompt injection. However, the following measures can mitigate the impact of prompt injections:
+जनरेटिव AI की प्रकृति ही कारण हे Prompt इंजेक्शन vulnerabilities का, मॉडल के काम करने के तरीके से यह स्पष्ट नहीं हैं कि Prompt इंजेक्शन की रोकथाम के लिया कोई पूर्ण समाधान हो साकता हैंं या नहीं। हालांकि, निम्नलिखित उपाय Prompt इंजेक्शन के प्रभाव को कम कर सकते हैंं:
 
-#### 1. Constrain model behavior
-  Provide specific instructions about the model's role, capabilities, and limitations within the system prompt. Enforce strict context adherence, limit responses to specific tasks or topics, and instruct the model to ignore attempts to modify core instructions.
-#### 2. Define and validate expected output formats
-  Specify clear output formats, request detailed reasoning and source citations, and use deterministic code to validate adherence to these formats.
-#### 3. Implement input and output filtering
-  Define sensitive categories and construct rules for identifying and handling such content. Apply semantic filters and use string-checking to scan for non-allowed content. Evaluate responses using the RAG Triad: Assess context relevance, groundedness, and question/answer relevance to identify potentially malicious outputs.
-#### 4. Enforce privilege control and least privilege access
-  Provide the application with its own API tokens for extensible functionality, and handle these functions in code rather than providing them to the model. Restrict the model's access privileges to the minimum necessary for its intended operations.
-#### 5. Require human approval for high-risk actions
-  Implement human-in-the-loop controls for privileged operations to prevent unauthorized actions.
-#### 6. Segregate and identify external content
-  Separate and clearly denote untrusted content to limit its influence on user prompts.
-#### 7. Conduct adversarial testing and attack simulations
-  Perform regular penetration testing and breach simulations, treating the model as an untrusted user to test the effectiveness of trust boundaries and access controls.
+#### 1. मॉडल के व्यवहार को बाधित करें
+सिस्टम Prompt को मॉडल की भूमिका, क्षमताओं एवं सीमाओं के बारे में विशिष्ट निर्देश प्रदान करें। सख्त संदर्भ पालन (context adherence) को लागू करें, विशिष्ट कार्यों एवं विषयों के लिए प्रतिक्रियाओं को सीमित करें, तथा मॉडल को निर्देश दे कि वह कोर निर्देशों को संशोधित करने के प्रयासों को अनदेखा करें।
+#### 2. अपेक्षित आउटपुट प्रारूपों को परिभाषित करें और मान्य करें
+  स्पष्ट आउटपुट के formats बताए, विस्तृत तर्क एवं स्रोत के citations का अनुरोध करें, और इन प्रारूपों के पालन को मान्य करने के लिए नियतात्मक (deterministic) कोड का उपयोग करें।
+#### 3. इनपुट और आउटपुट फ़िल्टरिंग को लागू करें
+  संवेदनशील श्रेणियों को परिभाषित करें और ऐसी सामग्री की पहचान एवं संभालने के लिए नियमों का निर्माण करें। सिमेंटिक (semantic) फ़िल्टर लागू करें एवं बिना अनिमती वाली सामग्री के लिए के लिए स्ट्रिंग-चेकिंग का उपयोग करें। RAG TRIAD का उपयोग करके प्रतिक्रियाओं का मूल्यांकन करें: संभावित दुर्भावनापूर्ण आउटपुट की पहचान करने के लिए संदर्भ प्रासंगिकता, जमीनीपन (groundedness- असलियत से जुड़ाव) और प्रश्न/उत्तर प्रासंगिकता का आकलन करें।
+#### 4. विशेषाधिकार नियंत्रण एवं कम से कम विशेषाधिकार पहुंच को लागू करें
+   Application को विस्तारणीय कार्यक्षमता के लिए उसके खुद के API टोकन दे एवं इन funtions को मॉडल को देने की बजाय कोड में संभालें। मॉडल के एक्सेस विशेषाधिकारों को न्यूनतम आवश्यक तक सीमित करें।
+#### 5. उच्च जोखिम वाले कार्यों के लिए मानव सविक्रती
+  अनधिकृत कार्यों को रोकने के लिए विशेषाधिकार प्राप्त कार्यों (operations) मे human-in-the-loop नियंत्रण को लागू करें।
+#### 6. बाहरी सामग्री को पहचानें एवं भागों मे बाटे 
+  user prompts पर इसके प्रभाव को सीमित करने के लिए अलग भागों मे बाटे एवं स्पष्ट रूप से अविश्वसनीय सामग्री को चिन्हित करें।
+#### 7. प्रतिकूल परीक्षण और हमलों की सिमुलेशन  नियमित रूप से करें
+  ट्रस्ट की सीमाओं तथा एक्सेस कंट्रोल की प्रभावशीलता का परीक्षण करने के लिए मॉडल को एक अविश्वसनीय user के रूप में मानते हुए, नियमित penetration testing एवं breach simulations करें।
 
-### Example Attack Scenarios
+### उदाहरण स्वरूप हमले के परिदृश्य
 
-#### Scenario #1: Direct Injection
-  An attacker injects a prompt into a customer support chatbot, instructing it to ignore previous guidelines, query private data stores, and send emails, leading to unauthorized access and privilege escalation.
-#### Scenario #2: Indirect Injection
-  A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, leading to exfiltration of the the private conversation.
-#### Scenario #3: Unintentional Injection
-  A company includes an instruction in a job description to identify AI-generated applications. An applicant, unaware of this instruction, uses an LLM to optimize their resume, inadvertently triggering the AI detection.
-#### Scenario #4: Intentional Model Influence
-  An attacker modifies a document in a repository used by a Retrieval-Augmented Generation (RAG) application. When a user's query returns the modified content, the malicious instructions alter the LLM's output, generating misleading results.
-#### Scenario #5: Code Injection
-  An attacker exploits a vulnerability (CVE-2024-5184) in an LLM-powered email assistant to inject malicious prompts, allowing access to sensitive information and manipulation of email content.
-#### Scenario #6: Payload Splitting
-  An attacker uploads a resume with split malicious prompts. When an LLM is used to evaluate the candidate, the combined prompts manipulate the model's response, resulting in a positive recommendation despite the actual resume contents.
-#### Scenario #7: Multimodal Injection
-  An attacker embeds a malicious prompt within an image that accompanies benign text. When a multimodal AI processes the image and text concurrently, the hidden prompt alters the model's behavior, potentially leading to unauthorized actions or disclosure of sensitive information.
-#### Scenario #8: Adversarial Suffix
-  An attacker appends a seemingly meaningless string of characters to a prompt, which influences the LLM's output in a malicious way, bypassing safety measures.
-#### Scenario #9: Multilingual/Obfuscated Attack
-  An attacker uses multiple languages or encodes malicious instructions (e.g., using Base64 or emojis) to evade filters and manipulate the LLM's behavior.
+#### परिदृश्य#1: प्रत्यक्ष इंजेक्शन
+  एक हमलावर एक ग्राहक सहायता चैटबॉट में एक prompts को इंजेक्ट करता हैं, वह पिछले दिशानिर्देशों को अनदेखा करने, निजी डेटा स्टोरों को query करने और ईमेल भेजने के लिए निर्देश देता हैं, जिससे अनधिकृत पहुंच (unauthorized access) एवं विशेषाधिकार वृद्धि (privilege escalation) होती हैं।
+#### परिदृश्य#2: अप्रत्यक्ष इंजेक्शन
+  एक user छिपे हुए निर्देशों वाले एक webpage को संक्षेप में प्रस्तुत करने के लिए एक LLM को नियुक्त करता हैं। उस छुपे निर्देश के कारण LLM एक URL वाली image (image linking to a URL) डालता हे, जिससे कारण निजी वार्तालाप का exfiltration हो जाता हैं।
+#### परिदृश्य#3: अनैच्छिक इंजेक्शन
+  एक कंपनी अपने नौकरी विवरण में AI से बने आवेदनों की पहचान के लिए निर्देश शामिल करती हैं। एक आवेदक, इस निर्देश से अनजान, अपने resume को बेहतर करने के लिये LLM का प्रयोग करता हैं, जिससे अनजाने में ही AI detection चालू हो जाता हे।
+#### परिदृश्य#4: जानबूझकर मॉडल को प्रभावित करना 
+  एक हमलावर एक Retrieval-Augmented Generation (RAG) application वाली  repository के एक दस्तावेज़ को संशोधित करता हैं। जिसके कारण जब  user की query संशोधित सामग्री लौटाती हैं, तो दुर्भावनापूर्ण निर्देश LLM के आउटपुट को बदल देते हैंं, जिससे भ्रामक परिणामों की उत्पत्ति होती हैंं।
+#### परिदृश्य#5: कोड इंजेक्शन
+  एक हमलावर Vulnerability (CVE-2024-5184) का प्रयोग करके एक  दुर्भावनापूर्ण prompts को LLM-संचालित ईमेल सहायक application मे इंजेक्ट करता हैं, जिससे उसे संवेदनशील जानकारी एवं ईमेल सामग्री में हेरफेर करने की अनुमति मिल जाती हैं।
+#### परिदृश्य#6: पेलोड विभाजन
+  एक हमलावर split malicious prompts वाले resume को अपलोड करता हैं। जिसके कारण जब LLM उम्मीदवार का मूल्यांकन करता हैं, तो संयुक्त prompts मॉडल की प्रतिक्रिया में हेरफेर करते हैंं, जिसके परिणामस्वरूप resume की वास्तविक वाली सामग्री के बावजूद भी  सकारात्मक सिफारिश आती हैं।
+#### परिदृश्य#7: मल्टीमॉडल (multimodal) इंजेक्शन
+  एक हमलावर ने सामान्य text वाली image के भीतर दुर्भावनापूर्ण prompts दल दिए। जिसके कारण जब एक मल्टीमॉडल (multimodal) AI ने image और texts को एक साथ संसाधित किया, तो छिपा हुआ Prompt के कारण मॉडल के व्यवहार मे बदलाव हैं, जिससे संवेदनशील जानकारी का प्रकटीकरण तथा अनधिकृत कार्यों हो जाते हैं।
+#### परिदृश्य#8: प्रतिकूल Suffix
+  एक हमलावर prompts के साथ एक अर्थहीन प्रतीत होता वली string को जोड़ देता हैं, जो एक दुर्भावनापूर्ण तरीके से LLM के आउटपुट को प्रभावित करता हैं,जो सुरक्षा के उपायों को दरकिनार कर देता हैं।
+#### परिदृश्य#9: बहुभाषी गुप्त (Obfuscated/छिपाया हुआ)  हमला
+  एक हमलावर कई भाषाओं का उपयोग या दुर्भावनापूर्ण निर्देशों को (जैसे, Base64 or emojis) के भीतर encodes ताकि वह फिल्टर से बच जाये तथा LLM के व्यवहार में हेरफेर कर सके।
 
-### Reference Links
+### संबंधित लिंक
 
 1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
 2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
@@ -84,9 +84,9 @@ Prompt injection vulnerabilities are possible due to the nature of generative AI
 14. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
 15. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
 
-### Related Frameworks and Taxonomies
+### संबंधित फ्रेमवर्क और टैक्सोनॉमी
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Infrastructure deployment, applied environment controls  तथा अन्य सर्वोत्तम उपायों से संबंधित व्यापक जानकारी, परिदृश्यों की रणनीतियों के लिए इस खंड का संदर्भ लें।
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
 - [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
