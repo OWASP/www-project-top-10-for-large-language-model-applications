@@ -1,6 +1,6 @@
 ## LLM07:2025 System Prompt Leakage
 
-### Description
+### विवरण
 
 The system prompt leakage vulnerability in LLMs refers to the risk that the system prompts or instructions used to steer the behavior of the model can also contain sensitive information that was not intended to be discovered. System prompts are designed to guide the model's output based on the requirements of the application, but may inadvertently contain secrets. When discovered, this information can be used to facilitate other attacks.
 
@@ -26,7 +26,7 @@ In short: disclosure of the system prompt itself does not present the real risk 
     >“Admin user role grants full access to modify user records.”
   If the attackers learn about these role-based permissions, they could look for a privilege escalation attack.
 
-### Prevention and Mitigation Strategies
+### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
 #### 1. Separate Sensitive Data from System Prompts
   Avoid embedding any sensitive information (e.g. API keys, auth keys, database names, user roles, permission structure of the application) directly in the system prompts. Instead, externalize such information to the systems that the model does not directly access.
@@ -37,14 +37,14 @@ In short: disclosure of the system prompt itself does not present the real risk 
 #### 4. Ensure that security controls are enforced independently from the LLM
   Critical controls such as privilege separation, authorization bounds checks, and similar must not be delegated to the LLM, either through the system prompt or otherwise. These controls need to occur in a deterministic, auditable manner, and LLMs are not (currently) conducive to this. In cases where an agent is performing tasks, if those tasks require different levels of access, then multiple agents should be used, each configured with the least privileges needed to perform the desired tasks.
 
-### Example Attack Scenarios
+### उदाहरण स्वरूप हमले के परिदृश्य
 
 #### Scenario #1
    An LLM has a system prompt that contains a set of credentials used for a tool that it has been given access to.  The system prompt is leaked to an attacker, who then is able to use these credentials for other purposes.
 #### Scenario #2
   An LLM has a system prompt prohibiting the generation of offensive content, external links, and code execution. An attacker extracts this system prompt and then uses a prompt injection attack to bypass these instructions, facilitating a remote code execution attack.
 
-### Reference Links
+### संबंधित लिंक
 
 1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
 2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): Prompt Security
@@ -52,8 +52,8 @@ In short: disclosure of the system prompt itself does not present the real risk 
 4. [leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts): Jujumilk3
 5. [OpenAI Advanced Voice Mode System Prompt](https://x.com/Green_terminals/status/1839141326329360579): Green_Terminals
 
-### Related Frameworks and Taxonomies
+### संबंधित फ्रेमवर्क और टैक्सोनॉमी
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Infrastructure deployment, applied environment controls  तथा अन्य सर्वोत्तम उपायों से संबंधित व्यापक जानकारी, परिदृश्यों की रणनीतियों के लिए इस खंड का संदर्भ लें।
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**

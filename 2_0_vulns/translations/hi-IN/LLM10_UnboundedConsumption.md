@@ -1,6 +1,6 @@
 ## LLM10:2025 Unbounded Consumption
 
-### Description
+### विवरण
 
 Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
 
@@ -23,7 +23,7 @@ Attacks designed to disrupt service, deplete the target's financial resources, o
 #### 7. Side-Channel Attacks
   Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
 
-### Prevention and Mitigation Strategies
+### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
 #### 1. Input Validation
   Implement strict input validation to ensure that inputs do not exceed reasonable size limits.
@@ -57,7 +57,7 @@ Attacks designed to disrupt service, deplete the target's financial resources, o
 #### 15. Automated MLOps Deployment
   Implement automated MLOps deployment with governance, tracking, and approval workflows to tighten access and deployment controls within the infrastructure.
 
-### Example Attack Scenarios
+### उदाहरण स्वरूप हमले के परिदृश्य
 
 #### Scenario #1: Uncontrolled Input Size
   An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
@@ -72,7 +72,7 @@ Attacks designed to disrupt service, deplete the target's financial resources, o
 #### Scenario #6: Bypassing System Input Filtering
   A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
 
-### Reference Links
+### संबंधित लिंक
 
 1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**
@@ -85,9 +85,9 @@ Attacks designed to disrupt service, deplete the target's financial resources, o
 9. [Sponge Examples: Energy-Latency Attacks on Neural Networks: Arxiv White Paper](https://arxiv.org/abs/2006.03463) **arXiv**
 10. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
 
-### Related Frameworks and Taxonomies
+### संबंधित फ्रेमवर्क और टैक्सोनॉमी
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Infrastructure deployment, applied environment controls  तथा अन्य सर्वोत्तम उपायों से संबंधित व्यापक जानकारी, परिदृश्यों की रणनीतियों के लिए इस खंड का संदर्भ लें।
 
 - [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
 - [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**

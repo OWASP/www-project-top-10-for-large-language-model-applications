@@ -1,6 +1,6 @@
 ## LLM06:2025 Excessive Agency
 
-### Description
+### विवरण
 
 An LLM-based system is often granted a degree of agency by its developer - the ability to call functions or interface with other systems via extensions (sometimes referred to as tools, skills or plugins by different vendors) to undertake actions in response to a prompt. The decision over which extension to invoke may also be delegated to an LLM 'agent' to dynamically determine based on input prompt or LLM output. Agent-based systems will typically make repeated calls to an LLM using output from previous invocations to ground and direct subsequent invocations.
 
@@ -32,7 +32,7 @@ Note: Excessive Agency differs from Insecure Output Handling which is concerned 
 #### 6. Excessive Autonomy
   An LLM-based application or extension fails to independently verify and approve high-impact actions. E.g., an extension that allows a user's documents to be deleted performs deletions without any confirmation from the user.
 
-### Prevention and Mitigation Strategies
+### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
 The following actions can prevent Excessive Agency:
 
@@ -58,7 +58,7 @@ The following options will not prevent Excessive Agency, but can limit the level
 - Log and monitor the activity of LLM extensions and downstream systems to identify where undesirable actions are taking place, and respond accordingly.
 - Implement rate-limiting to reduce the number of undesirable actions that can take place within a given time period, increasing the opportunity to discover undesirable actions through monitoring before significant damage can occur.
 
-### Example Attack Scenarios
+### उदाहरण स्वरूप हमले के परिदृश्य
 
 An LLM-based personal assistant app is granted access to an individual’s mailbox via an extension in order to summarise the content of incoming emails. To achieve this functionality, the extension requires the ability to read messages, however the plugin that the system developer has chosen to use also contains functions for sending messages. Additionally, the app is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the agent to scan the user's inbox for senitive information and forward it to the attacker's email address. This could be avoided by:
 * eliminating excessive functionality by using an extension that only implements mail-reading capabilities,
@@ -67,7 +67,7 @@ An LLM-based personal assistant app is granted access to an individual’s mailb
 
 Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
 
-### Reference Links
+### संबंधित लिंक
 
 1. [Slack AI data exfil from private channels](https://promptarmor.substack.com/p/slack-ai-data-exfiltration-from-private): **PromptArmor**
 2. [Rogue Agents: Stop AI From Misusing Your APIs](https://www.twilio.com/en-us/blog/rogue-ai-agents-secure-your-apis): **Twilio**

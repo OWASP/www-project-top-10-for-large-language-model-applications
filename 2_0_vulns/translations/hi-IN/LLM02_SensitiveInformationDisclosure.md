@@ -1,6 +1,6 @@
 ## LLM02:2025 Sensitive Information Disclosure
 
-### Description
+### विवरण
 
 Sensitive information can affect both the LLM and its application context. This includes personal identifiable information (PII), financial details, health records, confidential business data, security credentials, and legal documents. Proprietary models may also have unique training methods and source code considered sensitive, especially in closed or foundation models.
 
@@ -17,7 +17,7 @@ To reduce this risk, LLM applications should perform adequate data sanitization 
 #### 3. Sensitive Business Data Disclosure
   Generated responses might inadvertently include confidential business information.
 
-### Prevention and Mitigation Strategies
+### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
 #### Sanitization:
 
@@ -62,7 +62,7 @@ To reduce this risk, LLM applications should perform adequate data sanitization 
 #### 2. Tokenization and Redaction
   Implement tokenization to preprocess and sanitize sensitive information. Techniques like pattern matching can detect and redact confidential content before processing.
 
-### Example Attack Scenarios
+### उदाहरण स्वरूप हमले के परिदृश्य
 
 #### Scenario #1: Unintentional Data Exposure
   A user receives a response containing another user's personal data due to inadequate data sanitization.
@@ -71,7 +71,7 @@ To reduce this risk, LLM applications should perform adequate data sanitization 
 #### Scenario #3: Data Leak via Training Data
   Negligent data inclusion in training leads to sensitive information disclosure.
 
-### Reference Links
+### संबंधित लिंक
 
 1. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
 2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
@@ -79,9 +79,9 @@ To reduce this risk, LLM applications should perform adequate data sanitization 
 4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
 5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 
-### Related Frameworks and Taxonomies
+### संबंधित फ्रेमवर्क और टैक्सोनॉमी
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Infrastructure deployment, applied environment controls  तथा अन्य सर्वोत्तम उपायों से संबंधित व्यापक जानकारी, परिदृश्यों की रणनीतियों के लिए इस खंड का संदर्भ लें।
 
 - [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
 - [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**
