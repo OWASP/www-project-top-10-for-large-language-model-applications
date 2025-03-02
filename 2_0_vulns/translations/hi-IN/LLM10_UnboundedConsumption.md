@@ -6,7 +6,7 @@ Unbounded Consumption refers to the process where a Large Language Model (LLM) g
 
 Attacks designed to disrupt service, deplete the target's financial resources, or even steal intellectual property by cloning a model’s behavior all depend on a common class of security vulnerability in order to succeed. Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to risks such as denial of service (DoS), economic losses, model theft, and service degradation. The high computational demands of LLMs, especially in cloud environments, make them vulnerable to resource exploitation and unauthorized usage.
 
-### Common Examples of Vulnerability
+### Vulnerability के सामान्य उदाहरण
 
 #### 1. Variable-Length Input Flood
   Attackers can overload the LLM with numerous inputs of varying lengths, exploiting processing inefficiencies. This can deplete resources and potentially render the system unresponsive, significantly impacting service availability.

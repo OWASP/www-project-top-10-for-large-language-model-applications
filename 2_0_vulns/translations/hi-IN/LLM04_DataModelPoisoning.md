@@ -8,7 +8,7 @@ Data poisoning can target different stages of the LLM lifecycle, including pre-t
 
 Moreover, models distributed through shared repositories or open-source platforms can carry risks beyond data poisoning, such as malware embedded through techniques like malicious pickling, which can execute harmful code when the model is loaded. Also, consider that poisoning may allow for the implementation of a backdoor. Such backdoors may leave the model's behavior untouched until a certain trigger causes it to change. This may make such changes hard to test for and detect, in effect creating the opportunity for a model to become a sleeper agent.
 
-### Common Examples of Vulnerability
+### Vulnerability के सामान्य उदाहरण
 
 1. Malicious actors introduce harmful data during training, leading to biased outputs. Techniques like "Split-View Data Poisoning" or "Frontrunning Poisoning" exploit model training dynamics to achieve this.
   (Ref. link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
