@@ -1,77 +1,78 @@
-## LLM02:2025 Sensitive Information Disclosure
+## LLM02:2025 संवेदनशील सूचना का प्रकटीकरण
 
-### Description
+### विवरण
 
-Sensitive information can affect both the LLM and its application context. This includes personal identifiable information (PII), financial details, health records, confidential business data, security credentials, and legal documents. Proprietary models may also have unique training methods and source code considered sensitive, especially in closed or foundation models.
+संवेदनशील जानकारी LLM एवं उसकी application के संदर्भ दोनों को प्रभावित करती हैं। इसमें personal identifiable information (PII), वित्तीय विवरण, स्वास्थ्य रिकॉर्ड, गोपनीय व्यवसाय डेटा, सिक्युरिटी क्रेडेंशियल्स और कानूनी दस्तावेज शामिल हैंं। Proprietary मॉडल में अद्वितीय प्रशिक्षण विधियाँ एवं source code भी संवेदनशील माना जा सकते हैं, विशेष रूप से closed एवं foundation मॉडल में।
 
-LLMs, especially when embedded in applications, risk exposing sensitive data, proprietary algorithms, or confidential details through their output. This can result in unauthorized data access, privacy violations, and intellectual property breaches. Consumers should be aware of how to interact safely with LLMs. They need to understand the risks of unintentionally providing sensitive data, which may later be disclosed in the model's output.
+LLM, विशेष रूप से जब applications में जोड़े जाते है तो ये, संवेदनशील डेटा, proprietary algorithms, या उनके आउटपुट के माध्यम से गोपनीय विवरण को उजागर करने का खतरा रखते हैं। इसके परिणामस्वरूप अनधिकृत डेटा एक्सेस, गोपनीयता उल्लंघन एवं बौद्धिक संपदा उल्लंघनों का परिणाम हो सकता हैं। उपभोक्ताओं को पता होना चाहिए कि LLM को सुरक्षित रूप से कैसे प्रयोग करें। उन्हें अनजाने में संवेदनशील डेटा प्रदान करने के जोखिमों को समझने चाहिए,  जिससे बाद में मॉडल के आउटपुट में इनका खुलासा ना होने पाए।
 
-To reduce this risk, LLM applications should perform adequate data sanitization to prevent user data from entering the training model. Application owners should also provide clear Terms of Use policies, allowing users to opt out of having their data included in the training model. Adding restrictions within the system prompt about data types that the LLM should return can provide mitigation against sensitive information disclosure. However, such restrictions may not always be honored and could be bypassed via prompt injection or other methods.
+इसी लिये LLM applications को user डेटा को प्रशिक्षण मॉडल में प्रवेश करने से रोकने के लिए पर्याप्त डेटा सैनिटाइजेशन करना चाहिए। Applications मालिकों को स्पष्ट Terms of Use policies (उपयोग की नीतियों) प्रदान करनी चाहिए, जिससे users प्रशिक्षण मॉडल में अपने डेटा को शामिल करने या ना करने के लिये स्वयं बाध्य हो जाये। LLM द्वारा दिए जा सकने वाले data types के बारे मे सिस्टम prompt के भीतर प्रतिबंधों को जोड़ने से संवेदनशील जानकारी के प्रकटीकरण से बचाव कर सकते हैं। हालांकि, इस तरह के प्रतिबंधों का सुझाव नहीं दिया जाता क्योंकि इन्हे Prompt इंजेक्शन या अन्य तरीकों के माध्यम से नजरअंदाज किया जा सकता हैं।
 
-### Common Examples of Vulnerability
+### Vulnerability के सामान्य उदाहरण
 
-#### 1. PII Leakage
-  Personal identifiable information (PII) may be disclosed during interactions with the LLM.
-#### 2. Proprietary Algorithm Exposure
-  Poorly configured model outputs can reveal proprietary algorithms or data. Revealing training data can expose models to inversion attacks, where attackers extract sensitive information or reconstruct inputs. For instance, as demonstrated in the 'Proof Pudding' attack (CVE-2019-20634), disclosed training data facilitated model extraction and inversion, allowing attackers to circumvent security controls in machine learning algorithms and bypass email filters.
-#### 3. Sensitive Business Data Disclosure
-  Generated responses might inadvertently include confidential business information.
+#### 1. PII रिसाव
+  Personal identifiable information (PII) का खुलासा LLM के प्रयोग के दौरान हो सकता हैं।
+#### 2. Proprietary Algorithm द्वारा खुलासा
+  खराब तरीके से configured किए गए मॉडल proprietary algorithms या डेटा को प्रकट कर सकते हैंं। प्रशिक्षण डेटा की जानकारी से मॉडल पर inversion attacks हो सकते हैं, जिससे हमलावर इनपुट को पुनर्निर्मित  तथा संवेदनशील जानकारी निकालते सकता  हैंं। 
+  उदाहरण स्वरूप, जैसा कि 'Proof Pudding' attack (CVE-2019-20634) में बताया गया हैं, disclosed प्रशिक्षण डेटा से मॉडल मे extraction एवं inversion होता हे, जिससे हमलावर को ML algorithms मे नियंत्रणों को दरकिनार करने एवं ईमेल फिल्टर को बायपास कर देता हैंं।
+#### 3. संवेदनशील व्यापारिक डेटा का प्रकटीकरण
+  उत्पन्न प्रतिक्रियाओं में अनजाने में गोपनीय व्यावसायिक जानकारी शामिल हो सकती हैं।
 
-### Prevention and Mitigation Strategies
+### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
 #### Sanitization:
 
-#### 1. Integrate Data Sanitization Techniques
-  Implement data sanitization to prevent user data from entering the training model. This includes scrubbing or masking sensitive content before it is used in training.
-#### 2. Robust Input Validation
-  Apply strict input validation methods to detect and filter out potentially harmful or sensitive data inputs, ensuring they do not compromise the model.
+#### 1। डेटा सैनिटाइजेशन तकनीकों को जोड़े
+  User डेटा को प्रशिक्षण मॉडल में प्रवेश करने से रोकने के लिए डेटा सैनिटाइजेशन को लागू करें। इसमें अंतर्गत प्रशिक्षण में उपयोग किए जाने से पहले संवेदनशील सामग्री की scrubbing (छाँट कर हटाना ) या masking (चुप देना) करना शामिल हैं।
+#### 2। मजबूत इनपुट validation ( मापदंड के अनुसार वैधीकरण)
+  संभावित रूप से हानिकारक या संवेदनशील डेटा इनपुट का पता लगाने एवं फ़िल्टर करने के लिए सख्त इनपुट validations का प्रयोग करे ,यह सुनिश्चित करें कि वे मॉडल को compromise तो नहीं कर रहे।
 
 #### Access Controls:
 
-#### 1. Enforce Strict Access Controls
-  Limit access to sensitive data based on the principle of least privilege. Only grant access to data that is necessary for the specific user or process.
-#### 2. Restrict Data Sources
-  Limit model access to external data sources, and ensure runtime data orchestration is securely managed to avoid unintended data leakage.
+#### 1। सख्त Access Controls लागू करें
+  कम से कम privilege ( विशेषाधिकार ) के आधार पर संवेदनशील डेटा तक पहुंच (access) को सीमित करें। केवल उस डेटा तक पहुंच (access) प्रदान करें जो विशिष्ट user या process (प्रक्रिया) के लिए आवश्यक हैं।
+#### 2। डेटा स्रोतों को प्रतिबंधित करें
+  बाहरी डेटा स्रोतों तक मॉडल की पहुंच (access) को सीमित करें, और सुनिश्चित करें कि runtime डेटा orchestration को अनपेक्षित डेटा रिसाव से बचने के लिए सुरक्षित रूप से संभाला जा रहा हो।
 
-#### Federated Learning and Privacy Techniques:
+#### Federated Learning एवं गोपनीयता तकनीक ( Privacy Techniques) :
 
-#### 1. Utilize Federated Learning
-  Train models using decentralized data stored across multiple servers or devices. This approach minimizes the need for centralized data collection and reduces exposure risks.
-#### 2. Incorporate Differential Privacy
-  Apply techniques that add noise to the data or outputs, making it difficult for attackers to reverse-engineer individual data points.
+#### 1.  Federated Learning का उपयोग करें
+  कई servers तथा devices में संग्रहीत decentralized डेटा का उपयोग करके मॉडल को प्रशिक्षित करे। यह तरीका centralised डेटा संग्रह की आवश्यकता को कम करता हैं और exposure जोखिमों को कम करता हैं।
+#### 2.  Differential गोपनीयता को शामिल करें
+  ऐसी तकनीकों को लागू करें जो डेटा या आउटपुट में कार्य की दरस्ती से अवांछित चीजों को जोड़ती हैंं, जिससे हमलावरों के लिए व्यक्तिगत डेटा बिंदुओं को reverse-engineer करना मुश्किल हो जाता हैं।
 
-#### User Education and Transparency:
+#### Users के लिय शिक्षा और पारदर्शिता:
 
-#### 1. Educate Users on Safe LLM Usage
-  Provide guidance on avoiding the input of sensitive information. Offer training on best practices for interacting with LLMs securely.
-#### 2. Ensure Transparency in Data Usage
-  Maintain clear policies about data retention, usage, and deletion. Allow users to opt out of having their data included in training processes.
+#### 1. LLM के सुरक्षित उपयोग के प्रती  users को शिक्षित करें
+  संवेदनशील जानकारी के इनपुट मे न देने के प्रती उनका मार्गदर्शन करें। सुरक्षित रूप से LLM के प्रयोग (interaction) के प्रती उच्च practices पर प्रशिक्षण दे।
+#### 2. डेटा के उपयोग में पारदर्शिता सुनिश्चित करें
+  डेटा के retention, usage, एवं deletion के बारे में स्पष्ट नीतियां बनाए। Users को यह अनुमति दे की वह प्रशिक्षण प्रक्रियाओं में अपने डेटा को शामिल करने या ना करने के लिये स्वयं बाध्य हो जाये।
 
-#### Secure System Configuration:
+#### सुरक्षित सिस्टम Configuration:
 
-#### 1. Conceal System Preamble
-  Limit the ability for users to override or access the system's initial settings, reducing the risk of exposure to internal configurations.
-#### 2. Reference Security Misconfiguration Best Practices
-  Follow guidelines like "OWASP API8:2023 Security Misconfiguration" to prevent leaking sensitive information through error messages or configuration details.
-  (Ref. link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+#### 1.  सिस्टम प्राइमबल को Conceal (जो न्यूनतम परिवर्तन हो ) करे 
+  आंतरिक Configuration से संपर्क के जोखिम को कम करने के लिये ,users द्वारा सिस्टम की प्रारंभिक settings को ओवरराइड करने या एक्सेस करने की क्षमता को सीमित करें।
+#### 2. सुरक्षा से जुड़े Misconfiguration के संदर्भ मे उच्च practices
+  Error messages या configuration details के माध्यम से संवेदनशील जानकारियों को लीक होने से रोकने के लिए "OWASP API8: 2023 Security Misconfiguration" जैसे दिशानिर्देशों का पालन करें।
+  (संदर्भ link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
-#### Advanced Techniques:
+#### उन्नत तकनीके
 
-#### 1. Homomorphic Encryption
-  Use homomorphic encryption to enable secure data analysis and privacy-preserving machine learning. This ensures data remains confidential while being processed by the model.
-#### 2. Tokenization and Redaction
-  Implement tokenization to preprocess and sanitize sensitive information. Techniques like pattern matching can detect and redact confidential content before processing.
+#### 1.  Homomorphic Encryption
+  सुरक्षित data analysis evam privacy-preserving machine learning को सक्षम करने के लिए Homomorphic Encryption का उपयोग करें। यह सुनिश्चित करता हैं कि मॉडल द्वारा processe किए जाने के दौरान डेटा गोपनीय रहे।
+#### 2.  Tokenization evam Redaction
+  Preprocess के लिए tokenization को लागू करें एवं संवेदनशील जानकारी को sanitize करें। Pattern matching जैसी तकनिके ke dwara processing से पहले गोपनीय सामग्री का पता लगाया जा सकता हैं और फिर से बनाया जा सकता हैं।
 
-### Example Attack Scenarios
+### उदाहरण स्वरूप हमले के परिदृश्य
 
-#### Scenario #1: Unintentional Data Exposure
-  A user receives a response containing another user's personal data due to inadequate data sanitization.
-#### Scenario #2: Targeted Prompt Injection
-  An attacker bypasses input filters to extract sensitive information.
-#### Scenario #3: Data Leak via Training Data
-  Negligent data inclusion in training leads to sensitive information disclosure.
+#### परिदृश्य#1: डेटा का अनजाने में एक्सपोज़र
+  एक user अपर्याप्त डेटा sanitization के कारण किसी अन्य user के व्यक्तिगत डेटा से युक्त प्रतिक्रिया प्राप्त करता हैं।
+#### परिदृश्य#2: लक्षित Prompt इंजेक्शन
+  एक हमलावर संवेदनशील जानकारी निकालने के लिए input filters को bypass करता हैं।
+#### परिदृश्य#3: प्रशिक्षण डेटा के माध्यम से डेटा लीक होना
+  लापरवाह द्वारा डेटा को समावेशित करने के कारण  प्रशिक्षण में संवेदनशील जानकारी का प्रकटीकरण होता हैं।
 
-### Reference Links
+### संबंधित लिंक
 
 1. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
 2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
@@ -79,9 +80,9 @@ To reduce this risk, LLM applications should perform adequate data sanitization 
 4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
 5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 
-### Related Frameworks and Taxonomies
+### संबंधित फ्रेमवर्क और टैक्सोनॉमी
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Infrastructure deployment, applied environment controls  तथा अन्य सर्वोत्तम उपायों से संबंधित व्यापक जानकारी, परिदृश्यों की रणनीतियों के लिए इस खंड का संदर्भ लें।
 
 - [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
 - [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**

@@ -1,50 +1,50 @@
-## LLM04: Data and Model Poisoning
+## LLM04: डेटा एवं  मॉडल Poisoning
 
-### Description
+### विवरण
 
-Data poisoning occurs when pre-training, fine-tuning, or embedding data is manipulated to introduce vulnerabilities, backdoors, or biases. This manipulation can compromise model security, performance, or ethical behavior, leading to harmful outputs or impaired capabilities. Common risks include degraded model performance, biased or toxic content, and exploitation of downstream systems.
+डेटा poisoning तब होती हैं जब pre-training (पूर्व-प्रशिक्षण), fine-tuning या embedding data मे vulnerabilities, backdoors या biases डालने के लिए हेरफेर की जाती हैं। यह हेरफेर मॉडल की सुरक्षा (security), प्रदर्शन (performance) एवं नैतिक व्यवहार (ethical behavior) को compromise कर सकती हैं, जिससे हानिकारक आउटपुट या बिगड़ा हुआ capabilities (क्षमताएं) पैदा हो सकती हैंं। सामान्य जोखिमों में मॉडल की degraded  performance, biased तथा toxic content, एवं downstream systems का exploitation शामिल हैं।
 
-Data poisoning can target different stages of the LLM lifecycle, including pre-training (learning from general data), fine-tuning (adapting models to specific tasks), embedding (converting text into numerical vectors), and transfer learning (reusing a pre-trained model on a new task). Understanding these stages helps identify where vulnerabilities may originate. Data poisoning is considered an integrity attack since tampering with training data impacts the model's ability to make accurate predictions. The risks are particularly high with external data sources, which may contain unverified or malicious content.
+डेटा poisoning LLM जीवनचक्र के विभिन्न चरणों को लक्षित कर साकता हैं, जिसमें pre-training (सामान्य डेटा से सीखना), fine-tuning (विशिष्ट कार्यों के लिए मॉडल को अनुकूलित करना), embedding (texts को संख्यात्मक वैक्टर में परिवर्तित करना), एवं  transfer learning (एक नए कार्य पर प्रशिक्षित मॉडल को बार-बार प्रयोग मे लेना)। इन चरणों को समझने से यह पहचानने में मदद मिलती हैं कि vulnerabilities कहां से उत्पन्न हो सकती हैंं। डेटा poisoning को एक integrity (अखंडता) हमला माना जाता हैं क्योंकि प्रशिक्षण डेटा के साथ छेड़छाड़ करने से सटीक  पूर्वानुमान लगाने की मॉडल की क्षमता प्रभावित होती हैं। बाहरी डेटा स्रोतों के साथ जोखिम अधिक होता हैंं, क्योंकि उसमे unverified या दुर्भावनापूर्ण (malicious) सामग्री हो सकती हैं।
 
-Moreover, models distributed through shared repositories or open-source platforms can carry risks beyond data poisoning, such as malware embedded through techniques like malicious pickling, which can execute harmful code when the model is loaded. Also, consider that poisoning may allow for the implementation of a backdoor. Such backdoors may leave the model's behavior untouched until a certain trigger causes it to change. This may make such changes hard to test for and detect, in effect creating the opportunity for a model to become a sleeper agent.
+इसके अलावा, shared repository या open-source platforms के माध्यम से वितरित किए गए मॉडल डेटा poisoning से अधिक बड़े जोखिम पैदा कर सकते हैंं, जैसे कि malicious pickling जैसी तकनीकों के माध्यम से malware की embedded, जो कि मॉडल के लोड होने के समय उसमे हानिकारक कोड को execute कर सकती हैं। इसके तरह poisoning, backdoor के implementation को भी अनुमति दे सकती हैं। इस तरह के backdoors मॉडल के व्यवहार मे तब तक कुछ नहीं करते, जब तक कि एक निश्चित trigger इसे बदलने का संकेत नहीं देता या hit नहीं होता। यह इस तरह के परिवर्तनों के लिये परीक्षण एवं पता लगाने की क्षमता को कठिन बना सकता हैं, जो की मॉडल को sleeper agent बना देता हैं।
 
-### Common Examples of Vulnerability
+### Vulnerability के सामान्य उदाहरण
 
-1. Malicious actors introduce harmful data during training, leading to biased outputs. Techniques like "Split-View Data Poisoning" or "Frontrunning Poisoning" exploit model training dynamics to achieve this.
+1. दुर्भावनापूर्ण व्यक्ति प्रशिक्षण के दौरान हानिकारक डेटा डालते हैंं, जिससे पक्षपाती आउटपुट आता हैं। इसके लिए "Split-View Data Poisoning" या "Frontrunning Poisoning" जैसे तकनीकें के प्रयोग से मॉडल के प्रशिक्षण चक्र को exploit किया जाता हे।
   (Ref. link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
   (Ref. link: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
-2. Attackers can inject harmful content directly into the training process, compromising the model’s output quality.
-3. Users unknowingly inject sensitive or proprietary information during interactions, which could be exposed in subsequent outputs.
-4. Unverified training data increases the risk of biased or erroneous outputs.
-5. Lack of resource access restrictions may allow the ingestion of unsafe data, resulting in biased outputs.
+2. हमलावरों द्वारा हानिकारक सामग्री को सीधे प्रशिक्षण प्रक्रिया में inject (डालना) करके मॉडल की आउटपुट गुणवत्ता से compromise किया जा सकता हैंं।
+3. User अनजाने में ही interaction के दौरान संवेदनशील या proprietary जानकारी को inject कर देता हैंं, जो की बादमे आउटपुट में उजागर हो सकती हैं।
+4. Unverified (अस्वीकृत) प्रशिक्षण डेटा पक्षपाती या गलत आउटपुट के जोखिम को बढ़ा सकते हैं।
+5. संसाधन तक पहुंच के प्रतिबंधों (resource access restrictions) की कमी के कारण असुरक्षित डेटा के ग्रहण की अनुमति मिल सकती हैं, जिसके परिणामस्वरूप पक्षपाती आउटपुट आ सकते हैं।
 
-### Prevention and Mitigation Strategies
+### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
-1. Track data origins and transformations using tools like OWASP CycloneDX or ML-BOM and leverage tools such as [Dyana](https://github.com/dreadnode/dyana) to perform dynamic analysis of third-party software. Verify data legitimacy during all model development stages.
-2. Vet data vendors rigorously, and validate model outputs against trusted sources to detect signs of poisoning.
-3. Implement strict sandboxing to limit model exposure to unverified data sources. Use anomaly detection techniques to filter out adversarial data.
-4. Tailor models for different use cases by using specific datasets for fine-tuning. This helps produce more accurate outputs based on defined goals.
-5. Ensure sufficient infrastructure controls to prevent the model from accessing unintended data sources.
-6. Use data version control (DVC) to track changes in datasets and detect manipulation. Versioning is crucial for maintaining model integrity.
-7. Store user-supplied information in a vector database, allowing adjustments without re-training the entire model.
-8. Test model robustness with red team campaigns and adversarial techniques, such as federated learning, to minimize the impact of data perturbations.
-9. Monitor training loss and analyze model behavior for signs of poisoning. Use thresholds to detect anomalous outputs.
-10. During inference, integrate Retrieval-Augmented Generation (RAG) and grounding techniques to reduce risks of hallucinations.
+1. डेटा की उत्पत्ति एवं परिवरतानों पर OWASP Cyclonedx या ML-BOM जेसे tools का प्रयोग कर नज़र राखे, एवं इसके साथ tools जैसे की [Dyana] (https://github.com/dreadnode/dyana) का भी फ़ायदा उठा साकते हे, जिससे की third-party software का dynamic विश्लेषण कर सकते है। मॉडल के सभी  development चरणों के दौरान डेटा वैधता (legitimacy) को सत्यापित (Verify) करें।
+2. डेटा विक्रेताओं का कठोरता से मूल्यांकन करे, एवं  poisoning का पता लगाने के लिए विश्वसनीय स्रोतों से  मॉडल आउटपुट का मिलन करें।
+3. मॉडल पर सख्त sandboxing लगाए, ताकी वह अस्वीकृत डेटा स्रोतों की पहुच से दूर हो सके। प्रतिकूल (adversarial) डेटा को फ़िल्टर करने के लिए anomaly detection की  तकनीक का उपयोग करें।
+4. विशिष्ट डेटासेट के प्रयोग से Fine-tuning करके मॉडल को खास कार्यक्षमताओ के लिए तैयार करे। यह खास लक्ष्यों के लिये अधिक सटीक आउटपुट पाने में मदद करता हैं।
+5. मॉडल को unintended डेटा स्रोतों तक पहुंचने से रोकने के लिए पर्याप्त infrastructure सुनिश्चित करें।
+6. डेटासेट में परिवर्तन पर नज़र रखने एवं  हेरफेर का पता लगाने के लिए data version control (DVC) का उपयोग करें। मॉडल अखंडता बनाए रखने के लिए Versioning बहुत महत्वपूर्ण हैं।
+7. Vector database में user द्वारा दी गई जानकारी को संग्रहीत करें, जिससे की पूरे मॉडल को फिर से प्रशिक्षण किए बिना ही उसमे सुधार लिए जा सकेगे।
+8. Red team campaigns एवं adversarial तकनीकों के साथ  मॉडल की मजबूती (robustness) का प्रशिक्षण करे, जैसे कि federated learning का प्रयोग डेटा मे अव्यवस्थाएं (perturbations) को कम किया जा सकता है।
+9. प्रशिक्षण के दौरान की हानि की निगरानी करें एवं  poisoning की पहचान के लिए मॉडल के व्यवहार का विश्लेषण करें। विसंगतिपूर्ण (anomalous) आउटपुट का पता लगाने के लिए thresholds का उपयोग करें।
+10. परामर्श पाने के दौरान hallucinations के जोखिम को कम करने के लिए Retrieval-Augmented Generation (RAG) एवं grounding तकनीकों को प्रयोग करें।
 
-### Example Attack Scenarios
+### उदाहरण स्वरूप हमले के परिदृश्य
 
-#### Scenario #1
-  An attacker biases the model's outputs by manipulating training data or using prompt injection techniques, spreading misinformation.
-#### Scenario #2
-  Toxic data without proper filtering can lead to harmful or biased outputs, propagating dangerous information.
-#### Scenario # 3
-  A malicious actor or competitor creates falsified documents for training, resulting in model outputs that reflect these inaccuracies.
-#### Scenario #4
-  Inadequate filtering allows an attacker to insert misleading data via prompt injection, leading to compromised outputs.
-#### Scenario #5
-  An attacker uses poisoning techniques to insert a backdoor trigger into the model. This could leave you open to authentication bypass, data exfiltration or hidden command execution.
+#### परिद्रश्य 1
+  एक हमलावर प्रशिक्षण डेटा में हेरफेर या Prompt इंजेक्शन तकनीकों का उपयोग करके, गलत सूचना फैलाने के लिये  मॉडल के आउटपुट मे पूर्वाग्रहों पैदा करता हैं।
+#### परिदृश्य#2
+  उचित फ़िल्टरिंग के बिना विषाक्त डेटा हानिकारक या पक्षपाती आउटपुट को जन्म दे सकता हैं, जिससे की खतरनाक जानकारी का प्रचार हो सकता है।
+#### परिदृश्य#3
+  एक दुर्भावनापूर्ण व्यक्ति या प्रतिद्वंद्वी प्रशिक्षण डाटा के लिये गलत दस्तावेज बनाता हैं, जिसके की मॉडल आउटपुट मे यह अशुद्धियों झलकती हैं।
+#### परिदृश्य#4
+  अपर्याप्त फ़िल्टरिंग एक हमलावर को Prompt इंजेक्शन के माध्यम से भ्रामक डेटा डालने की अनुमति देता हैं, जिससे  की आउटपुट compromise हो जाते हैं।
+#### परिदृश्य#5
+  एक हमलावर poisoning तकनीकों के प्रयोग से मॉडल में एक backdoors trigger डालता हैं। यह आपको authentication bypass, data exfiltration या hidden command execution करने को बाध्य कर सकता है।
 
-### Reference Links
+### संबंधित लिंक
 
 1. [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html): **CSO Online**
 2. [MITRE ATLAS (framework) Tay Poisoning](https://atlas.mitre.org/studies/AML.CS0009/): **MITRE ATLAS**
@@ -58,9 +58,9 @@ Moreover, models distributed through shared repositories or open-source platform
 10. [arXiv:2401.05566 Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://www.anthropic.com/news/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training) **Anthropic (arXiv)**
 11. [Backdoor Attacks on AI Models](https://www.cobalt.io/blog/backdoor-attacks-on-ai-models) **Cobalt**
 
-### Related Frameworks and Taxonomies
+### संबंधित फ्रेमवर्क और टैक्सोनॉमी
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Infrastructure deployment, applied environment controls  तथा अन्य सर्वोत्तम उपायों से संबंधित व्यापक जानकारी, परिदृश्यों की रणनीतियों के लिए इस खंड का संदर्भ लें।
 
 - [AML.T0018 | Backdoor ML Model](https://atlas.mitre.org/techniques/AML.T0018) **MITRE ATLAS**
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework): Strategies for ensuring AI integrity. **NIST**
