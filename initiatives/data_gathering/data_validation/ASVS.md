@@ -44,7 +44,7 @@ def process_request(request_data):
 
 For automating validation and ensuring adherence to ASVS standards, consider integrating the following tools into your development and deployment pipelines:
 
-- **OWASP ZAP (Zed Attack Proxy)**: For finding vulnerabilities in web applications.
+- **ZAP (Zed Attack Proxy)**: For finding vulnerabilities in web applications.
 - **SonarQube**: For continuous inspection of code quality to detect bugs, vulnerabilities, and code smells in your code.
 - **OWASP Dependency-Check**: For detecting publicly disclosed vulnerabilities in project dependencies.
 - **Bandit**: For finding common security issues in Python code.

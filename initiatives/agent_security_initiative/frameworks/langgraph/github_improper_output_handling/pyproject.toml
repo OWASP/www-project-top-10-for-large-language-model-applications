@@ -1,0 +1,14 @@
+[project]
+name = "leaked-credentials"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-aws>=0.2.10",
+    "langchain-core>=0.3.29",
+    "langgraph>=0.2.62",
+    "pydantic>=2.10.5",
+    "requests>=2.32.3",
+    "typing-extensions>=4.12.2",
+]

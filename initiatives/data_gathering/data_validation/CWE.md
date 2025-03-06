@@ -83,7 +83,7 @@ For enhancing the security of your LLM application, integrating automated valida
 
 1. **Bandit**: A tool designed to find common security issues in Python code. It's useful for static analysis and can help detect security issues related to the CWEs mentioned.
    
-2. **OWASP ZAP (Zed Attack Proxy)**: An open-source web application security scanner. While more web-focused, it can be useful for testing web interfaces to LLM applications for issues like XSS (CWE-79) and other web vulnerabilities.
+2. **ZAP (Zed Attack Proxy)**: An open-source web application security scanner. While more web-focused, it can be useful for testing web interfaces to LLM applications for issues like XSS (CWE-79) and other web vulnerabilities.
 
 3. **SonarQube**: Offers comprehensive code quality and security scanning, including detection of vulnerabilities and code smells.
 
