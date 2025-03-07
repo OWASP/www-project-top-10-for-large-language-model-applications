@@ -1,50 +1,57 @@
-## LLM04: Data and Model Poisoning
+## LLM04:2025 データとモデルポイズニング
 
-### Description
+### 説明
 
-Data poisoning occurs when pre-training, fine-tuning, or embedding data is manipulated to introduce vulnerabilities, backdoors, or biases. This manipulation can compromise model security, performance, or ethical behavior, leading to harmful outputs or impaired capabilities. Common risks include degraded model performance, biased or toxic content, and exploitation of downstream systems.
+データポイズニングが発生するケースは、事前学習やファインチューニング、または埋め込みデータが、脆弱性、バックドア、またはバイアスを注入するために操作されたときです。このような操作は、モデルのセキュリティ、性能、または倫理的な動作を危険にさらし、有害な出力や能力の低下につながります。一般的なリスクには、モデル性能の低下、偏った内容や有害な内容、下流システムの悪用などがあります。
 
-Data poisoning can target different stages of the LLM lifecycle, including pre-training (learning from general data), fine-tuning (adapting models to specific tasks), embedding (converting text into numerical vectors), and transfer learning (reusing a pre-trained model on a new task). Understanding these stages helps identify where vulnerabilities may originate. Data poisoning is considered an integrity attack since tampering with training data impacts the model's ability to make accurate predictions. The risks are particularly high with external data sources, which may contain unverified or malicious content.
+データポイズニングは、事前学習（一般的なデータからの学習）、ファインチュ ーニング（特定のタスクへのモデルの適応）、埋め込み（テキストから数値ベクトルへの変換）など、LLM ライフサイクルのさまざまな段階をターゲットにすることができます。これらの段階を理解することは、脆弱性がどこから発生するかを特定するのに役立ちます。学習データの改ざんは、モデルが正確な予測を行う能力に影響を与えるため、データポイズニングは完全性攻撃とみなされます。検証されていない、あるいは悪意のあるコンテンツが含まれている可能性のある外部データソースでは、リスクが特に高くなります。
 
-Moreover, models distributed through shared repositories or open-source platforms can carry risks beyond data poisoning, such as malware embedded through techniques like malicious pickling, which can execute harmful code when the model is loaded. Also, consider that poisoning may allow for the implementation of a backdoor. Such backdoors may leave the model's behavior untouched until a certain trigger causes it to change. This may make such changes hard to test for and detect, in effect creating the opportunity for a model to become a sleeper agent.
+さらに、共有リポジトリやオープンソースプラットフォームを通じて配布されるモデルは、悪意のあるピックリングのような技術によって埋め込まれたマルウェアのような、データポイズニング以外のリスクを伴う可能性があります。また、ポイズニングはバックドアの実装を許す可能性があることも考慮してください。このようなバックドアは、あるトリガーがそれを変更させるまで、モデルの動作をそのままにしておくかもしれません。これにより、そのような変更をテストしたり検出したりすることが難しくなり、事実上、モデルがスリーパーエージェント（潜伏型バックドア）になる機会を作ってしまうかもしれません。
 
-### Common Examples of Vulnerability
+### 脆弱性の一般的な例
 
-1. Malicious actors introduce harmful data during training, leading to biased outputs. Techniques like "Split-View Data Poisoning" or "Frontrunning Poisoning" exploit model training dynamics to achieve this.
-  (Ref. link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
-  (Ref. link: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
-2. Attackers can inject harmful content directly into the training process, compromising the model’s output quality.
-3. Users unknowingly inject sensitive or proprietary information during interactions, which could be exposed in subsequent outputs.
-4. Unverified training data increases the risk of biased or erroneous outputs.
-5. Lack of resource access restrictions may allow the ingestion of unsafe data, resulting in biased outputs.
+1. 悪意のある行為者は、トレーニング中に有害なデータを導入し、偏った出力を導きます。「Split-View Data Poisoning」や「Frontrunning Poisoning」のようなテクニックは、モデルのトレーニングダイナミクスを悪用してこれを実現します。 (参考リンク: [スプリット・ビュー・データ・ポイズニング](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg)) (参考リンク: [フロントランニング・ポイズニング](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
+2. 攻撃者は、有害なコンテンツを学習プロセスに直接注入し、モデルの出力品質を損なうことができます。
+3. ユーザーは、対話中に機密情報や専有情報を無意識のうちに注入し、それが後続の出力で暴露される可能性があります。
+4. 未検証のトレーニングデータは、偏った出力や誤った出力のリスクを高めます。
+5. リソースへのアクセス制限がないため、安全でないデータの取り込みが可能になり、結果として偏った出力になる可能性があります。
 
-### Prevention and Mitigation Strategies
+### 予防と緩和の戦略
 
-1. Track data origins and transformations using tools like OWASP CycloneDX or ML-BOM and leverage tools such as [Dyana](https://github.com/dreadnode/dyana) to perform dynamic analysis of third-party software. Verify data legitimacy during all model development stages.
-2. Vet data vendors rigorously, and validate model outputs against trusted sources to detect signs of poisoning.
-3. Implement strict sandboxing to limit model exposure to unverified data sources. Use anomaly detection techniques to filter out adversarial data.
-4. Tailor models for different use cases by using specific datasets for fine-tuning. This helps produce more accurate outputs based on defined goals.
-5. Ensure sufficient infrastructure controls to prevent the model from accessing unintended data sources.
-6. Use data version control (DVC) to track changes in datasets and detect manipulation. Versioning is crucial for maintaining model integrity.
-7. Store user-supplied information in a vector database, allowing adjustments without re-training the entire model.
-8. Test model robustness with red team campaigns and adversarial techniques, such as federated learning, to minimize the impact of data perturbations.
-9. Monitor training loss and analyze model behavior for signs of poisoning. Use thresholds to detect anomalous outputs.
-10. During inference, integrate Retrieval-Augmented Generation (RAG) and grounding techniques to reduce risks of hallucinations.
+1. OWASP CycloneDX や ML-BOM のようなツールを使用して、データの起源と変換を追跡します。すべてのモデル開発段階において、データの正当性を検証します。
+2. データベンダーを厳しく吟味し、モデル出力を信頼できるソースと照らし合わせて検証し、害悪の兆候を検出します。
+3. 厳密なサンドボックス（隔離環境）を実装し、検証されていないデータソースにモデルが晒されることを制限します。異常検知技術を使用して、敵対的なデータをフィルタリングします。
+4. ファインチューニングのために特定のデータセットを使用することで、さまざまなユースケースに合わせてモデルを調整します。これにより、定義された目標に基づき、より正確なアウトプットを生成することができます。
+5. モデルが意図しないデータソースにアクセスするのを防ぐために、十分なインフラストラクチャ制御を確保します。
+6. データ・バージョン管理（DVC）を使用して、データセットの変更を追跡し、操作を検出します。バージョン管理は、モデルの完全性を維持するために非常に重要です。
+7. ユーザーから提供された情報をベクトルデータベースに保存し、モデル全体を再トレーニングすることなく調整が可能です。
+8. レッドチームによるキャンペーンや、連合学習などの敵対的手法を用いてモデルの頑健性をテストし、データ摂動の影響を最小限に抑えます。
+9. トレーニングの損失を監視し、中毒の兆候についてモデルの動作を分析します。閾値を使用して異常出力を検出します。
+10. 推論の際には、RAG（ Retrieval-Augmented Generation）とグラウンディング技術を統合し、幻覚のリスクを減らします。
 
-### Example Attack Scenarios
+### 攻撃シナリオの例
 
-#### Scenario #1
-  An attacker biases the model's outputs by manipulating training data or using prompt injection techniques, spreading misinformation.
-#### Scenario #2
-  Toxic data without proper filtering can lead to harmful or biased outputs, propagating dangerous information.
-#### Scenario # 3
-  A malicious actor or competitor creates falsified documents for training, resulting in model outputs that reflect these inaccuracies.
-#### Scenario #4
-  Inadequate filtering allows an attacker to insert misleading data via prompt injection, leading to compromised outputs.
-#### Scenario #5
-  An attacker uses poisoning techniques to insert a backdoor trigger into the model. This could leave you open to authentication bypass, data exfiltration or hidden command execution.
+#### シナリオ #1
 
-### Reference Links
+攻撃者は、学習データを操作したり、プロンプト・インジェクションのテクニックを使ったりして、モデルの出力に偏りを与え、誤った情報を広めます。
+
+#### シナリオ #2
+
+適切なフィルタリングを行わない有害なデータは、有害または偏った出力につながり、危険な情報を伝播させます。
+
+#### シナリオ # 3
+
+悪意のある行為者や競合他社がトレーニング用に改ざんされた文書を作成し、その結果、モデルの出力に不正確さが反映されます。
+
+#### シナリオ #4
+
+不適切なフィルタリングにより、攻撃者はプロンプト・インジェクションを介して誤解を招くデータを挿入し、危険な出力に導くことができます。
+
+#### シナリオ #5
+
+攻撃者はポイズニング技術を使用して、モデルにバックドア・トリガーを挿入します。これにより、認証のバイパス、データの流出、隠しコマンドの実行を許してしまう可能性があります。
+
+### 参考リンク
 
 1. [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html): **CSO Online**
 2. [MITRE ATLAS (framework) Tay Poisoning](https://atlas.mitre.org/studies/AML.CS0009/): **MITRE ATLAS**
@@ -58,10 +65,9 @@ Moreover, models distributed through shared repositories or open-source platform
 10. [arXiv:2401.05566 Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://www.anthropic.com/news/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training) **Anthropic (arXiv)**
 11. [Backdoor Attacks on AI Models](https://www.cobalt.io/blog/backdoor-attacks-on-ai-models) **Cobalt**
 
-### Related Frameworks and Taxonomies
+### 関連フレームワークと分類
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+インフラ配備に関する包括的な情報、シナリオ戦略、適用される環境管理、その他のベストプラクティスについては、以下のセクションを参照してください。
 
-- [AML.T0018 | Backdoor ML Model](https://atlas.mitre.org/techniques/AML.T0018) **MITRE ATLAS**
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework): Strategies for ensuring AI integrity. **NIST**
-- [ML07:2023 Transfer Learning Attack](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML07_2023-Transfer_Learning_Attack) **OWASP Machine Learning Security Top Ten**
+- [AML.T0018 | バックドア ML モデル](https://atlas.mitre.org/techniques/AML.T0018) **MITRE ATLAS**
+- [NIST AI リスク管理フレームワーク](https://www.nist.gov/itl/ai-risk-management-framework): Strategies for ensuring AI integrity. **NIST**

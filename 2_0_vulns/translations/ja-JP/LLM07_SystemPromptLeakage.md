@@ -1,50 +1,70 @@
-## LLM07:2025 System Prompt Leakage
+## LLM07:2025 システムプロンプトの漏洩
 
-### Description
+### 説明
 
-The system prompt leakage vulnerability in LLMs refers to the risk that the system prompts or instructions used to steer the behavior of the model can also contain sensitive information that was not intended to be discovered. System prompts are designed to guide the model's output based on the requirements of the application, but may inadvertently contain secrets. When discovered, this information can be used to facilitate other attacks.
+LLM におけるシステムプロンプトの漏洩の脆弱性とは、モデルの動作を誘導するために使用されるシス テムプロンプトや指示にも、発見されることを意図していない機密情報が含まれている可能性があるというリスクを指します。システムプロンプトは、アプリケーションの要求に基づいてモデルの出力を誘導するように設計されていますが、不注意に機密情報が含まれている可能性があります。発見された場合、この情報は他の攻撃を容易にするために使用することができます。
 
-It's important to understand that the system prompt should not be considered a secret, nor should it be used as a security control. Accordingly, sensitive data such as credentials, connection strings, etc. should not be contained within the system prompt language.
+システムプロンプトは秘密とみなされるべきではなく、セキュリティコントロールとして使用されるべきではないことを理解することが重要です。したがって、認証情報、接続文字列などの機密データをシステムプロンプト言語に含めるべきではありません。
 
-Similarly, if a system prompt contains information describing different roles and permissions, or sensitive data like connection strings or passwords, while the disclosure of such information may be helpful, the fundamental security risk is not that these have been disclosed, it is that the application allows bypassing strong session management and authorization checks by delegating these to the LLM, and that sensitive data is being stored in a place that it should not be.
+同様に、システムプロンプトが、異なるロールとパーミッションを記述した情報、あるいは、接続文字列やパスワードのような機密データを含んでいる場合、そのような情報の開示は役に立つかもしれませんが、基本的なセキュリティリスクは、それらが開示されたことではなく、アプリケーションが、LLM にそれらを委譲することによって、強力なセッション管理と認可チェックを回避することを許可していること、そして、機密データが、あるべきでない場所に保存されていることです。
 
-In short: disclosure of the system prompt itself does not present the real risk -- the security risk lies with the underlying elements, whether that be sensitive information disclosure, system guardrails bypass, improper separation of privileges, etc. Even if the exact wording is not disclosed, attackers interacting with the system will almost certainly be able to determine many of the guardrails and formatting restrictions that are present in system prompt language in the course of using the application, sending utterances to the model, and observing the results.
+要するに、システムプロンプト自体の開示は、本当のリスクをもたらしません。セキュリティリスクは、機密情報の開示、システムガードレールのバイパス、特権の不適切な分離など、その根底にある要素にあります。たとえ正確な文言が開示されなくても、システムと相互作用する攻撃者は、アプリケーションを使用し、モデルに発言を送信し、結果を観察する過程で、システムプロンプトの文言に存在するガードレールとフォーマットの制限の多くをほぼ確実に決定することができます。
 
-### Common Examples of Risk
+### リスクの一般的な例
 
-#### 1. Exposure of Sensitive Functionality
-  The system prompt of the application may reveal sensitive information or functionality that is intended to be kept confidential, such as sensitive system architecture, API keys, database credentials, or user tokens. These can be extracted or used by attackers to gain unauthorized access into the application. For example, a system prompt that contains the type of database used for a tool could allow the attacker to target it for SQL injection attacks.
-#### 2. Exposure of Internal Rules
-  The system prompt of the application reveals information on internal decision-making processes that should be kept confidential. This information allows attackers to gain insights into how the application works which could allow attackers to exploit weaknesses or bypass controls in the application. For example - There is a banking application that has a chatbot and its system prompt may reveal information like:
-    >"The Transaction limit is set to $5000 per day for a user. The Total Loan Amount for a user is $10,000".
-  This information allows the attackers to bypass the security controls in the application like doing transactions more than the set limit or bypassing the total loan amount.
-#### 3. Revealing of Filtering Criteria
-  A system prompt might ask the model to filter or reject sensitive content. For example, a model might have a system prompt like,
-    >“If a user requests information about another user, always respond with ‘Sorry, I cannot assist with that request’”.
-#### 4. Disclosure of Permissions and User Roles
-  The system prompt could reveal the internal role structures or permission levels of the application. For instance, a system prompt might reveal,
-    >“Admin user role grants full access to modify user records.”
-  If the attackers learn about these role-based permissions, they could look for a privilege escalation attack.
+#### 1. 機密機能の露出
 
-### Prevention and Mitigation Strategies
+アプリケーションのシステムプロンプトは、機密性の高いシステムアーキテクチャ、API キー、データベースの認証情報、あるいはユーザートークンのような、機密保持を意図された機密情報や機能を明らかにするかもしれません。これらは、攻撃者がアプリケーションに不正にアクセスするために抽出されたり、利用されたりする可能性があります。例えば、あるツールに使用されているデータベースのタイプを含むシステムプロンプトは、攻撃者が SQL インジェクション攻撃のターゲットにすることを可能にするかもしれません。
 
-#### 1. Separate Sensitive Data from System Prompts
-  Avoid embedding any sensitive information (e.g. API keys, auth keys, database names, user roles, permission structure of the application) directly in the system prompts. Instead, externalize such information to the systems that the model does not directly access.
-#### 2. Avoid Reliance on System Prompts for Strict Behavior Control
-  Since LLMs are susceptible to other attacks like prompt injections which can alter the system prompt, it is recommended to avoid using system prompts to control the model behavior where possible. Instead, rely on systems outside of the LLM to ensure this behavior. For example, detecting and preventing harmful content should be done in external systems.
-#### 3. Implement Guardrails
-  Implement a system of guardrails outside of the LLM itself. While training particular behavior into a model can be effective, such as training it not to reveal its system prompt, it is not a guarantee that the model will always adhere to this. An independent system that can inspect the output to determine if the model is in compliance with expectations is preferable to system prompt instructions.
-#### 4. Ensure that security controls are enforced independently from the LLM
-  Critical controls such as privilege separation, authorization bounds checks, and similar must not be delegated to the LLM, either through the system prompt or otherwise. These controls need to occur in a deterministic, auditable manner, and LLMs are not (currently) conducive to this. In cases where an agent is performing tasks, if those tasks require different levels of access, then multiple agents should be used, each configured with the least privileges needed to perform the desired tasks.
+#### 2. 社内規定の公開
 
-### Example Attack Scenarios
+アプリケーションのシステムプロンプトは、秘密にしておくべき内部の意思決定プロセスの情報を明らかにします。この情報は、攻撃者がアプリケーションの弱点を突いたり、アプリケーションの制御を迂回したりすることを可能にし、アプリケーションがどのように動作するかについての洞察を得ることを可能にします。例えば、チャットボットを持つ銀行アプリケーションがあり、そのシステムプロンプトは以下のような情報を明らかにするかもしれません。
 
-#### Scenario #1
-   An LLM has a system prompt that contains a set of credentials used for a tool that it has been given access to. The system prompt is leaked to an attacker, who then is able to use these credentials for other purposes.
-#### Scenario #2
-  An LLM has a system prompt prohibiting the generation of offensive content, external links, and code execution. An attacker extracts this system prompt and then uses a prompt injection attack to bypass these instructions, facilitating a remote code execution attack.
+取引限度額は 1 日あたり 5000 ドルに設定されています。ユーザーのローン総額は $10,000。
 
-### Reference Links
+この情報により、攻撃者は、設定された限度額以上の取引を行ったり、融資総額を迂回したりするなど、アプリケーションのセキュリティ制御を迂回することができます。
+
+#### 3. フィルタリング基準の公開
+
+システムプロンプトは、機密性の高いコンテンツをフィルタリングまたは拒否するようモデルに求めるかもしれません。例えば、モデルには次のようなシステムプロンプトがあるかもしれません。
+
+ユーザーが他のユーザーに関する情報を要求した場合は、常に『申し訳ありませんが、 その要求には対応できません』と返答してください
+
+#### 4. 権限とユーザーロールの開示
+
+システムプロンプトはアプリケーションの内部ロール構造や権限レベルを明らかにするかもしれません。例えば、システムプロンプトは次のことを明らかにするかもしれません。
+
+Admin ユーザー・ロールは、ユーザー・レコードを修正するためのフル・アクセスを許可します。攻撃者がこれらのロールベースのパーミッションを知れば、特権昇格攻撃を狙うことができる。
+
+### 予防と緩和の戦略
+
+#### 1. システムプロンプトから機密データを分離
+
+機密情報(API キー、認証キー、データベース名、ユーザーロール、アプリケーションの権限構造など)をシステムプロンプトに直接埋め込むことは避けてください。代わりに、そのような情報はモデルが直接アクセスしないシステムに外部化します。
+
+#### 2. 厳格な行動制御のためのシステム・プロンプトへの依存を避ける
+
+LLM は、システムプロンプトを変更するプロンプトインジェクションのような攻撃を受けやすいため、可能な限り、システムプロンプトを使用してモデルの動作を制御することは避けることが推奨されます。その代わりに、LLM の外部のシステムに依存して、この動作を保証します。例えば、有害なコンテンツの検出と防止は外部のシステムで行うべきです。
+
+#### 3. ガードレールの設置
+
+LLM 自身の外側にガードレールのシステムを実装します。特定の動作をモデルに訓練することは、システムプロンプトを明らかにしないように訓練するなど、効果的な場合がありますが、モデルが常にこれを守ることを保証するものではありません。モデルが期待に準拠しているかどうかを判断するために出力を検査できる独立したシステムは、システムプロンプトの指示よりも望ましいです。
+
+#### 4. セキュリティ管理を LLM から独立して実施
+
+特権の分離、権限境界チェック、および類似のような重要な管理は、システム・プロンプトまたはその他の方法で、LLM に委任してはならない。これらの制御は、決定論的で監査可能な方法で行われる必要があり、LLM は（現在のところ）これに適していません。エージェントがタスクを実行する場合、それらのタスクが異なるレベルのアクセスを必要とするのであれば、複数のエージェントを使用し、それぞれが必要なタスクを実行するのに必要な最小の権限で構成されるべきです。
+
+### 攻撃シナリオの例
+
+#### シナリオ #1
+
+LLM は、アクセスを許可されたツールで使用される一連の認証情報を含むシステム・プロンプトを持ちます。システムプロンプトは攻撃者に漏洩し、攻撃者はこれらの認証情報を他の目的に使用することができます。
+
+#### シナリオ #2
+
+LLM には、攻撃的なコンテンツの生成、外部リンク、コードの実行を禁止するシステムプロンプトがあります。攻撃者はこのシステム・プロンプトを抽出し、プロンプト・インジェクション攻撃を使ってこれらの指示を回避し、リモート・コード実行攻撃を容易にします。
+
+### 参考リンク
 
 1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
 2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): Prompt Security
@@ -52,8 +72,8 @@ In short: disclosure of the system prompt itself does not present the real risk 
 4. [leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts): Jujumilk3
 5. [OpenAI Advanced Voice Mode System Prompt](https://x.com/Green_terminals/status/1839141326329360579): Green_Terminals
 
-### Related Frameworks and Taxonomies
+### 関連フレームワークと分類
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+インフラ配備に関する包括的な情報、シナリオ戦略、適用される環境管理、その他のベストプラクティスについては、以下のセクションを参照してください。
 
-- [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
+- [AML.T0051.000 - LLM プロンプトインジェクション: 直接 (Meta プロンプト抽出)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
