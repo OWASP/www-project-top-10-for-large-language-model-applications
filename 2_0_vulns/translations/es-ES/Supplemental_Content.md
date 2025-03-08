@@ -30,7 +30,7 @@ Join the Effort! 💡
 This project thrives because of the amazing global community behind it. If you’re passionate about AI security, we invite you to contribute to translations, research, and guidance to expand this critical initiative. Let’s make AI security accessible worldwide!
 📢 Check out the translations below:
  🔗 Spanish: 
- 🔗 Persian: 
+ 🔗 German: 
  🔗 Simplified Chinese: 
  🔗 Traditional Chinese: 
  🔗 Portuguese: 
