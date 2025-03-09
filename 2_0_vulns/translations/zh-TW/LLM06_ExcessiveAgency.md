@@ -1,23 +1,23 @@
-## LLM06:2025 過度授權
+## LLM06:2025 過度代理授權
 
 ### 描述
 
-**過度授權** (Excessive Agency) 指的是在 LLM (大型語言模型, Large Language Model) 應用程式中，LLM 常被賦予一定程度的行動能力 (Agency)，可透過擴充功能 (Extensions，也可能稱為工具、Skills 或 Plugins) 來呼叫函數或與其他系統介接，以回應提示並採取動作。然而，若 LLM 「代理人」 (Agent) 有過度的功能、權限或自主性，便可能在意料之外、模糊不清或被操縱的輸出影響下，執行破壞性行為。
+**過度代理授權** (Excessive Agency) 指的是在 LLM (大型語言模型, Large Language Model) 應用程式中，LLM 常被賦予一定程度的行動能力 (Agency)，可透過擴充功能 (Extensions，也可能稱為工具、Skills 或 Plugins) 來呼叫函數或與其他系統介接，以回應提示並採取動作。然而，若 LLM 「代理人」 (Agent) 有過度的功能、權限或自主性，便可能在意料之外、模糊不清或被操縱的輸出影響下，執行破壞性行為。
 
 常見引發此問題的情境包括：
 
 - 由不良設計的正常提示或效能不佳的模型導致的幻想 (hallucination) /捏造 (confabulation) 內容。
 - 來自惡意使用者、早期已遭入侵或具惡意意圖之擴充功能，或 (在多代理/協作系統中) 遭入侵的同儕代理所產生的直接/間接 Prompt Injection 攻擊。
 
-過度授權 (Excessive Agency) 的根本原因通常是以下其中之一或多種：
+過度代理授權 (Excessive Agency) 的根本原因通常是以下其中之一或多種：
 
 - 功能過多 (Excessive Functionality)
 - 權限過大 (Excessive Permissions)
 - 自主性過強 (Excessive Autonomy)
 
-過度授權 (Excessive Agency) 可能在機密性、完整性、可用性等多方層面引發廣泛的負面影響，且影響程度取決於 LLM 應用程式可存取的系統範圍。
+過度代理授權 (Excessive Agency) 可能在機密性、完整性、可用性等多方層面引發廣泛的負面影響，且影響程度取決於 LLM 應用程式可存取的系統範圍。
 
-注意：過度授權 (Excessive Agency) 與不安全的輸出處理 (Insecure Output Handling) 不同之處在於，後者關注的是對 LLM 輸出缺乏充分審查，而過度授權 (Excessive Agency) 則著重於 LLM 被賦予的權能和行為範圍過度。
+注意：過度代理授權 (Excessive Agency) 與不安全的輸出處理 (Insecure Output Handling) 不同之處在於，後者關注的是對 LLM 輸出缺乏充分審查，而過度代理授權 (Excessive Agency) 則著重於 LLM 被賦予的權能和行為範圍過度。
 
 ### 常見風險實例
 
