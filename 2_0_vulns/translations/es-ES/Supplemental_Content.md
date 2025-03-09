@@ -5,35 +5,34 @@ Top 10 2025 de riesgos y mitigaciones para LLMs y aplicaciones de IA Generativa
 Explora los 10 principales riesgos, vulnerabilidades y mitigaciones más recientes para desarrollar y proteger aplicaciones de IA generativa y LLM a lo largo del ciclo de vida de desarrollo, despliegue y gestión.
 
 ## Long Description
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+OWASP Top 10 para aplicaciones de modelos de lenguaje de gran tamaño comenzó en 2023 como una comunidad impulsada por el esfuerzo de visibilizar y abordar problemas de seguridad específicos para aplicaciones de IA. Desde ese momento, la tecnología ha seguido extendiéndose a través de industrias y aplicaciones, al igual que los riesgos asociados. A medida que los LLMs se integran más profundamente en todo desde las interacciones con los clientes hasta las operaciones internas, los desarrolladores y profesionales de seguridad están descubriendo nuevas vulnerabilidades y formas de contrarrestarlas.
 
 ## Sponsorship
-We appreciate our Project Sponsors’ funding contributions to help support the objectives of the project and help to cover operational and outreach costs augmenting the resources the OWASP.org foundation provides. The OWASP Top 10 for LLM and Generative AI Project continues to maintain a vendor neutral and unbiased approach. Sponsors do not receive special governance considerations as part of their support. Sponsors do receive recognition for their contributions in our materials and web properties.
-All materials the project generates are community developed, driven and released under open source and creative commons licenses. For more information on becoming a sponsor Visit the Sponsorship Section on our Website to learn more about helping to sustain the project through sponsorship.
+Agradecemos las contribuciones de los patrocinadores del proyecto para ayudar a mantener nuestros objetivos y así cubrir los costos operacionales y de extensión aumentando los recursos que la fundación OWASP.org provee. El proyecto de LLM e IA Generativa de OWASP Top 10 continúa manteniendo un enfoque neutral e imparcial respecto de los proveedores. Los patrocinadores no reciben consideraciones de gobernanza especiales como parte de su apoyo. Los mismos sí reciben reconocimiento por sus contribuciones en nuestros materiales y propiedades web.
+Todo el material generado por el proyecto es desarrollado por la comunidad, impulsado y publicado bajo la licencia de código abierto y bienes comunes creativos. Para más información en cómo convertirse en un patrocinador visite la Sección de Patrocinadores en nuestro sitio web para aprender más sobre cómo ayudar a sostener el proycto a través del patrocinio.
 
 ## Social Media
-🚀 Exciting News! New Translations Available for the OWASP Top 10 for LLM & Generative AI (2025) 🌍
+🚀 ¡Noticias emocionantes! Hay nuevas traducciones disponibles para OWASP Top 10 para LLM e IA generativa (2025) 🌍
 
-We’re thrilled to announce that the OWASP Top 10 for LLM Applications and Generative AI 2025 is now available in Spanish, Persian, Simplified Chinese, Traditional Chinese, Portuguese, and Russian!
+¡Estamos encantados de anunciar que OWASP Top 10 para Aplicaciones LLM e IA Generativa 2025 está ahora disponible en español, persa, chino simplificado, chino tradicional, portugués y ruso!
+Esta actualización provee abordar de forma actualizada y comprensiva los riesgos más importantes, vulnerabilidades y mitigaciones para aseguridad las aplicaciones LLM e IA Generativa a través de su desarrollo, despliegue y en la gestión de su ciclo de vida. Ya sea que estés trabajando en aplaciones basadas en RAG, arquitecturas de agentes, o integraciones complejas con LLM, esta lista es imprescindible para desarrolladores, profesionales de seguridad, y organizaciones en búsqueda de adaptar la IA de forma segura.
 
-This update provides a refreshed and comprehensive resource addressing the top risks, vulnerabilities, and mitigations for securing Generative AI and LLM applications across their development, deployment, and management lifecycle. Whether you're working with RAG-based applications, agentic architectures, or complex LLM integrations, this list is a must-have for developers, security professionals, and organizations looking to adopt AI securely.
+Qué es nevo en el OWASP Top 10 para LLMs de 2025?
 
-What's New in the 2025 OWASP Top 10 for LLMs?
+✅ Consumo ilimitado: Expandir más allá de la denegación de servicio para incluir los riesgos de manejos de recursos y costos inseperados en despliegues a gran escala.
+✅ Seguridad de vectores e incrustaciones: Abordar riesgos de seguridad en la Generación de Recuperación-Aumentada (RAG) y otras técnicas basadas en incrustación.
+✅ Fuga de entradas al sistema: Es una nueva sección que aborda las vulnerabilidades y los riesgos de asumir que las entradas permanecer aisladas.
+✅ Agencia excesiva: Mientras que la autonomía de la IA crece, esta actualización visibiliza preocupaciones de seguridad alrededor de la arquitectura de agentes con limitada supervisión humana.
 
-✅ Unbounded Consumption: Expanding beyond denial of service to include risks of resource management and unexpected costs in large-scale deployments.
-✅ Vectors & Embeddings Security: Addressing security risks in Retrieval-Augmented Generation (RAG) and other embedding-based techniques.
-✅ System Prompt Leakage: A newly added entry tackling real-world exploits and the {risks of assuming prompts remain isolated.
-✅ Excessive Agency: As AI autonomy grows, this update highlights security concerns around agentic architectures with limited human oversight.
+Únete al esfuerzo! 💡
 
-Join the Effort! 💡
+Este proyecto prospera gracias a la increíble comunidad global que está detrás de él. Si eres una persona apasionada por la seguridad en IA, te invitamos a contribuir en las traducciones, investigación, y orientación para ampliar esta iniciativa crítica. ¡Hagamos de la seguridad en IA accesible en todo el mundo!
+📢 Vea las traducciones a continuación:
+ 🔗 Español: 
+ 🔗 Alemán: 
+ 🔗 Chino simplificado: 
+ 🔗 Chino tradiciona: 
+ 🔗 Portugués: 
+ 🔗 Ruso: 
 
-This project thrives because of the amazing global community behind it. If you’re passionate about AI security, we invite you to contribute to translations, research, and guidance to expand this critical initiative. Let’s make AI security accessible worldwide!
-📢 Check out the translations below:
- 🔗 Spanish: 
- 🔗 German: 
- 🔗 Simplified Chinese: 
- 🔗 Traditional Chinese: 
- 🔗 Portuguese: 
- 🔗 Russian: 
-
-Interested in getting involved? Comment below or reach out! Together, we can build a more secure AI-driven future. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
+¿Interesado en involucrarte? Comente a continuación o contáctenos! Juntos podemos construir un futuro más seguro impulsado por la IA. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
