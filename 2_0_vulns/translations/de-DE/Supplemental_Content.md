@@ -14,7 +14,7 @@ Alle Materialien, die im Rahmen des Projekts erstellt werden, werden von der Com
 ## Social Media
 🚀 Spannende Neuigkeiten! Neue Übersetzungen für die OWASP Top 10 für LLM & Generative KI (2025) verfügbar 🌍
 
-Wir freuen uns, bekannt geben zu können, dass die OWASP Top 10 für LLM-Applikationen und Generative KI 2025 jetzt auf Spanisch, Persisch, vereinfachtem Chinesisch, traditionellem Chinesisch, Portugiesisch und Russisch verfügbar ist!
+Wir freuen uns, bekannt geben zu können, dass die OWASP Top 10 für LLM-Applikationen und Generative KI 2025 jetzt auf Spanisch, Deutsch, vereinfachtem Chinesisch, traditionellem Chinesisch, Portugiesisch und Russisch verfügbar ist!
 
 Dieses Update bietet eine aktualisierte und umfassende Ressource, die sich mit den größten Risiken, Schwachstellen und Gegenmaßnahmen für die Absicherung von Anwendungen für generative KI und LLM über ihren gesamten Entwicklungs-, Bereitstellungs- und Verwaltungslebenszyklus hinweg befasst. Ganz gleich, ob Sie mit RAG-basierten Anwendungen, Agentic-Architekturen oder komplexen LLM-Integrationen arbeiten, diese Liste ist ein Muss für Entwickler, Sicherheitsexperten und Organisationen, die KI sicher einsetzen möchten.
 
@@ -28,7 +28,7 @@ Was ist neu in den OWASP Top 10 für LLM-Applikationen 2025?
 Macht mit! 💡
 
 Dieses Projekt lebt von der großartigen globalen Gemeinschaft, die dahinter steht. Wenn Sie sich für KI-Sicherheit begeistern, laden wir Sie ein, bei Übersetzungen, Recherchen und der Anleitung mitzuwirken, um diese wichtige Initiative zu erweitern. Lasst uns KI-Sicherheit weltweit zugänglich machen!
-📢 Schaut euch die folgenden Übersetzungen an:
+📢 Schauen Sie sich die folgenden Übersetzungen an:
 🔗 Spanisch: 
 🔗 Deutsch: 
 🔗 Vereinfachtes Chinesisch: 
