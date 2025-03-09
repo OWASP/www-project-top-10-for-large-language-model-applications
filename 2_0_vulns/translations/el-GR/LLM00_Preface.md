@@ -34,7 +34,7 @@ LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
 
 ### Ομάδα Ελληνικής Μετάφρασης
-Aristeidiz Zoumpakis
+Aristeidis Zoumpakis
 LinkedIn: https://www.linkedin.com/in/aristeidis-zoumpakis-9652532b/
 
 ### Σχετικά με αυτή τη μετάφραση
