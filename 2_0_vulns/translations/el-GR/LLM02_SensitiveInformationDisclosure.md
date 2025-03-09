@@ -1,77 +1,77 @@
-## LLM02:2025 Sensitive Information Disclosure
+## LLM02:2025 Αποκάλυψη Ευαίσθητων Πληροφοριών
 
-### Description
+### Περιγραφή
 
-Sensitive information can affect both the LLM and its application context. This includes personal identifiable information (PII), financial details, health records, confidential business data, security credentials, and legal documents. Proprietary models may also have unique training methods and source code considered sensitive, especially in closed or foundation models.
+Οι ευαίσθητες πληροφορίες μπορούν να επηρεάσουν τόσο τo LLM όσο και το πλαίσιο εφαρμογής του. Αυτό περιλαμβάνει προσωπικά ταυτοποιήσιμες πληροφορίες (PII), οικονομικά στοιχεία, αρχεία υγείας, εμπιστευτικά επιχειρηματικά δεδομένα, διαπιστευτήρια ασφαλείας και νομικά έγγραφα. Τα ιδιόκτητα μοντέλα μπορεί επίσης να έχουν μοναδικές μεθόδους εκπαίδευσης και πηγαίο κώδικα που θεωρούνται ευαίσθητα, ιδίως σε κλειστά ή ιδρυματικά μοντέλα.
 
-LLMs, especially when embedded in applications, risk exposing sensitive data, proprietary algorithms, or confidential details through their output. This can result in unauthorized data access, privacy violations, and intellectual property breaches. Consumers should be aware of how to interact safely with LLMs. They need to understand the risks of unintentionally providing sensitive data, which may later be disclosed in the model's output.
+Τα LLM, ειδικά όταν ενσωματώνονται σε εφαρμογές, κινδυνεύουν να εκθέσουν ευαίσθητα δεδομένα, ιδιόκτητους αλγορίθμους ή εμπιστευτικές λεπτομέρειες μέσω της εξόδου τους. Αυτό μπορεί να οδηγήσει σε μη εξουσιοδοτημένη πρόσβαση δεδομένων, παραβιάσεις της ιδιωτικότητας και παραβιάσεις της πνευματικής ιδιοκτησίας. Οι χρήστες θα πρέπει να γνωρίζουν πώς να αλληλεπιδρούν με ασφάλεια με τα LLM. Θα πρέπει να κατανοήσουν τους κινδύνους της ακούσιας παροχής ευαίσθητων δεδομένων, τα οποία μπορεί αργότερα να αποκαλυφθούν στην έξοδο του μοντέλου.
 
-To reduce this risk, LLM applications should perform adequate data sanitization to prevent user data from entering the training model. Application owners should also provide clear Terms of Use policies, allowing users to opt out of having their data included in the training model. Adding restrictions within the system prompt about data types that the LLM should return can provide mitigation against sensitive information disclosure. However, such restrictions may not always be honored and could be bypassed via prompt injection or other methods.
+Για να μειωθεί αυτός ο κίνδυνος, οι εφαρμογές LLM θα πρέπει να εκτελούν επαρκή εξυγίανση δεδομένων για να αποτρέψουν την είσοδο δεδομένων χρηστών στο μοντέλο εκπαίδευσης. Οι ιδιοκτήτες των εφαρμογών θα πρέπει επίσης να παρέχουν σαφείς πολιτικές όρων χρήσης, επιτρέποντας στους χρήστες να μην παρέχουν συγκατάθεση να συμπεριληφθούν τα δεδομένα τους στο μοντέλο εκπαίδευσης. Η προσθήκη περιορισμών στο πλαίσιο της προτροπής του συστήματος σχετικά με τους τύπους δεδομένων που θα πρέπει να επιστρέφει το LLM μπορεί να προσφέρει μετριασμό κατά της αποκάλυψης ευαίσθητων πληροφοριών. Ωστόσο, αυτοί οι περιορισμοί ενδέχεται να μην τηρούνται πάντα και να μπορούν να παρακαμφθούν μέσω έγχυσης προτροπών ή άλλων μεθόδων.
 
-### Common Examples of Vulnerability
+### Συνήθη παραδείγματα ευπάθειας
 
-#### 1. PII Leakage
-  Personal identifiable information (PII) may be disclosed during interactions with the LLM.
-#### 2. Proprietary Algorithm Exposure
-  Poorly configured model outputs can reveal proprietary algorithms or data. Revealing training data can expose models to inversion attacks, where attackers extract sensitive information or reconstruct inputs. For instance, as demonstrated in the 'Proof Pudding' attack (CVE-2019-20634), disclosed training data facilitated model extraction and inversion, allowing attackers to circumvent security controls in machine learning algorithms and bypass email filters.
-#### 3. Sensitive Business Data Disclosure
-  Generated responses might inadvertently include confidential business information.
+#### 1. Διαρροή Προσωπικά Ταυτοποιήσιμων Πληροφοριών
+  Προσωπικά ταυτοποιήσιμες πληροφορίες (PII) μπορεί να αποκαλυφθούν κατά τη διάρκεια αλληλεπιδράσεων με το LLM.
+#### 2. Έκθεση Ιδιόκτητου Αλγορίθμου
+  Οι κακώς διαμορφωμένες έξοδοι του μοντέλου μπορούν να αποκαλύψουν ιδιόκτητους αλγορίθμους ή δεδομένα. Η αποκάλυψη δεδομένων εκπαίδευσης μπορεί να εκθέσει τα μοντέλα σε επιθέσεις αντιστροφής, όπου οι επιτιθέμενοι εξάγουν ευαίσθητες πληροφορίες ή ανακατασκευάζουν τις εισόδους. Για παράδειγμα, όπως καταδείχθηκε στην επίθεση «Proof Pudding» (CVE-2019-20634), η αποκάλυψη δεδομένων εκπαίδευσης διευκόλυνε την εξαγωγή και αντιστροφή μοντέλων, επιτρέποντας στους επιτιθέμενους να παρακάμπτουν τους ελέγχους ασφαλείας σε αλγορίθμους μηχανικής μάθησης και να παρακάμπτουν τα φίλτρα ηλεκτρονικού ταχυδρομείου.
+#### 3. Αποκάλυψη Ευαίσθητων Επιχειρηματικών Δεδομένων
+  Οι παραγόμενες απαντήσεις ενδέχεται να περιλαμβάνουν εκ παραδρομής εμπιστευτικές επιχειρηματικές πληροφορίες.
 
-### Prevention and Mitigation Strategies
+### Στρατηγικές πρόληψης και μετριασμού
 
-#### Sanitization:
+#### Εξυγίανση:
 
-#### 1. Integrate Data Sanitization Techniques
-  Implement data sanitization to prevent user data from entering the training model. This includes scrubbing or masking sensitive content before it is used in training.
-#### 2. Robust Input Validation
-  Apply strict input validation methods to detect and filter out potentially harmful or sensitive data inputs, ensuring they do not compromise the model.
+#### 1. Ενσωμάτωση Τεχνικών Εξυγίανσης Δεδομένων
+  Εφαρμόστε την εξυγίανση δεδομένων για να αποτρέψετε την είσοδο δεδομένων χρηστών στο μοντέλο εκπαίδευσης. Αυτό περιλαμβάνει την εκκαθάριση ή την απόκρυψη ευαίσθητου περιεχομένου πριν από τη χρήση του στην εκπαίδευση.
+#### 2. Ισχυρή Επικύρωση Εισόδου
+  Εφαρμόστε αυστηρές μεθόδους επικύρωσης εισόδου για τον εντοπισμό και το φιλτράρισμα δυνητικά επιβλαβών ή ευαίσθητων εισόδων δεδομένων, διασφαλίζοντας ότι δεν θέτουν σε κίνδυνο το μοντέλο.
 
-#### Access Controls:
+#### Έλεγχοι πρόσβασης:
 
-#### 1. Enforce Strict Access Controls
-  Limit access to sensitive data based on the principle of least privilege. Only grant access to data that is necessary for the specific user or process.
-#### 2. Restrict Data Sources
-  Limit model access to external data sources, and ensure runtime data orchestration is securely managed to avoid unintended data leakage.
+#### 1. Επιβολή Αυστηρών Ελέγχων Πρόσβασης
+  Περιορίστε την πρόσβαση σε ευαίσθητα δεδομένα με βάση την αρχή των λιγότερων προνομίων. Χορηγήστε πρόσβαση μόνο σε δεδομένα που είναι απαραίτητα για τον συγκεκριμένο χρήστη ή διαδικασία.
+#### 2. Περιορισμός των Πηγών Δεδομένων
+  Περιορίστε την πρόσβαση του μοντέλου σε εξωτερικές πηγές δεδομένων και διασφαλίστε την ασφαλή διαχείριση της ενορχήστρωσης δεδομένων κατά τη διάρκεια εκτέλεσης για την αποφυγή ακούσιας διαρροής δεδομένων.
 
-#### Federated Learning and Privacy Techniques:
+#### Τεχνικές ομοσπονδιακής μάθησης και προστασίας της ιδιωτικότητας:
 
-#### 1. Utilize Federated Learning
-  Train models using decentralized data stored across multiple servers or devices. This approach minimizes the need for centralized data collection and reduces exposure risks.
-#### 2. Incorporate Differential Privacy
-  Apply techniques that add noise to the data or outputs, making it difficult for attackers to reverse-engineer individual data points.
+#### 1. Αξιοποίηση της ομοσπονδιακής μάθησης (Federated Learning)
+  Εκπαιδεύστε μοντέλα χρησιμοποιώντας αποκεντρωμένα δεδομένα που είναι αποθηκευμένα σε πολλούς διακομιστές ή συσκευές. Αυτή η προσέγγιση ελαχιστοποιεί την ανάγκη για κεντρική συλλογή δεδομένων και μειώνει τους κινδύνους έκθεσης.
+#### 2. Ενσωμάτωση Διαφορικής Ιδιωτικότητας
+  Εφαρμόστε τεχνικές που προσθέτουν θόρυβο στα δεδομένα ή στις εξόδους, καθιστώντας δύσκολο για τους επιτιθέμενους να αντιστρέψουν την επεξεργασία μεμονωμένων σημείων δεδομένων.
 
-#### User Education and Transparency:
+#### Εκπαίδευση χρηστών και διαφάνεια:
 
-#### 1. Educate Users on Safe LLM Usage
-  Provide guidance on avoiding the input of sensitive information. Offer training on best practices for interacting with LLMs securely.
-#### 2. Ensure Transparency in Data Usage
-  Maintain clear policies about data retention, usage, and deletion. Allow users to opt out of having their data included in training processes.
+#### 1. Εκπαίδευση των χρηστών για την ασφαλή χρήση της LLM
+  Παροχή οδηγιών για την αποφυγή της εισαγωγής ευαίσθητων πληροφοριών. Προσφέρετε εκπαίδευση σχετικά με τις βέλτιστες πρακτικές για την ασφαλή αλληλεπίδραση με τα LLM.
+#### 2. Διασφάλιση διαφάνειας στη χρήση δεδομένων
+  Διατηρήστε σαφείς πολιτικές σχετικά με τη διατήρηση, τη χρήση και τη διαγραφή δεδομένων. Να επιτρέπετε στους χρήστες να επιλέγουν να μην συμπεριλαμβάνονται τα δεδομένα τους σε διαδικασίες κατάρτισης.
 
-#### Secure System Configuration:
+#### Ασφαλής διαμόρφωση συστήματος:
 
-#### 1. Conceal System Preamble
-  Limit the ability for users to override or access the system's initial settings, reducing the risk of exposure to internal configurations.
-#### 2. Reference Security Misconfiguration Best Practices
-  Follow guidelines like "OWASP API8:2023 Security Misconfiguration" to prevent leaking sensitive information through error messages or configuration details.
-  (Ref. link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+#### 1. Απόκρυψη προοιμίου συστήματος
+  Περιορίστε τη δυνατότητα των χρηστών να παρακάμπτουν ή να έχουν πρόσβαση στις αρχικές ρυθμίσεις του συστήματος, μειώνοντας τον κίνδυνο έκθεσης σε εσωτερικές ρυθμίσεις.
+#### 2. Βέλτιστες πρακτικές αποφυγής λανθασμένων ρυθμίσεων ασφαλείας
+  Ακολουθήστε οδηγίες όπως το «OWASP API8:2023 Security Misconfiguration» για να αποφύγετε τη διαρροή ευαίσθητων πληροφοριών μέσω μηνυμάτων σφάλματος ή λεπτομερειών διαμόρφωσης.
+  (Σύνδεσμος Αναφοράς:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
-#### Advanced Techniques:
+#### Προχωρημένες τεχνικές:
 
-#### 1. Homomorphic Encryption
-  Use homomorphic encryption to enable secure data analysis and privacy-preserving machine learning. This ensures data remains confidential while being processed by the model.
-#### 2. Tokenization and Redaction
-  Implement tokenization to preprocess and sanitize sensitive information. Techniques like pattern matching can detect and redact confidential content before processing.
+#### 1. Ομομορφική κρυπτογράφηση
+  Χρησιμοποιήστε ομομορφική κρυπτογράφηση για να επιτρέψετε την ασφαλή ανάλυση δεδομένων και τη μηχανική μάθηση με διατήρηση της ιδιωτικότητας. Αυτό διασφαλίζει ότι τα δεδομένα παραμένουν εμπιστευτικά κατά την επεξεργασία τους από το μοντέλο.
+#### 2. Τεχικές Κωδικοποίησης (Tokenization) και Απόκρυψης (Redaction)
+  Εφαρμόστε τη διαδικασία tokenization για την προεπεξεργασία και την εξυγίανση ευαίσθητων πληροφοριών. Τεχνικές όπως η αντιστοίχιση προτύπων μπορούν να ανιχνεύσουν και να διαγράψουν εμπιστευτικό περιεχόμενο πριν από την επεξεργασία.
 
-### Example Attack Scenarios
+### Παραδείγματα σεναρίων επίθεσης
 
-#### Scenario #1: Unintentional Data Exposure
-  A user receives a response containing another user's personal data due to inadequate data sanitization.
-#### Scenario #2: Targeted Prompt Injection
-  An attacker bypasses input filters to extract sensitive information.
-#### Scenario #3: Data Leak via Training Data
-  Negligent data inclusion in training leads to sensitive information disclosure.
+#### Σενάριο #1: Ακούσια έκθεση δεδομένων
+  Ένας χρήστης λαμβάνει μια απάντηση που περιέχει προσωπικά δεδομένα άλλου χρήστη λόγω ανεπαρκούς εξυγίανσης δεδομένων.
+#### Σενάριο #2: Στοχευμένη έγχυση προτροπής
+  Ένας εισβολέας παρακάμπτει τα φίλτρα εισόδου για να αποσπάσει ευαίσθητες πληροφορίες.
+#### Σενάριο #3: Διαρροή δεδομένων μέσω δεδομένων εκπαίδευσης
+  Η πλημμελής συμπερίληψη δεδομένων στην εκπαίδευση οδηγεί σε αποκάλυψη ευαίσθητων πληροφοριών.
 
-### Reference Links
+### Σύνδεσμοι Αναφοράς
 
 1. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
 2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
@@ -79,9 +79,9 @@ To reduce this risk, LLM applications should perform adequate data sanitization 
 4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
 5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 
-### Related Frameworks and Taxonomies
+### Σχετικά πλαίσια και ταξινομήσεις
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Ανατρέξτε σε αυτή την ενότητα για αναλυτικές πληροφορίες, στρατηγικές σεναρίων σχετικά με την ανάπτυξη υποδομών, εφαρμοσμένους ελέγχους περιβάλλοντος και άλλες βέλτιστες πρακτικές.
 
 - [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
 - [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**
