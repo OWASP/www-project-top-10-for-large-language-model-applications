@@ -1,50 +1,50 @@
-## LLM07:2025 System Prompt Leakage
+## LLM07:2025 Διαρροή Προτροπών Συστήματος
 
-### Description
+### Περιγραφή
 
-The system prompt leakage vulnerability in LLMs refers to the risk that the system prompts or instructions used to steer the behavior of the model can also contain sensitive information that was not intended to be discovered. System prompts are designed to guide the model's output based on the requirements of the application, but may inadvertently contain secrets. When discovered, this information can be used to facilitate other attacks.
+Η ευπάθεια διαρροής προτροπών του συστήματος στα LLM αναφέρεται στον κίνδυνο οι προτροπές ή οι οδηγίες του συστήματος που χρησιμοποιούνται για την καθοδήγηση της συμπεριφοράς του μοντέλου να περιέχουν επίσης ευαίσθητες πληροφορίες που δεν προορίζονταν να αποκαλυφθούν. Οι προτροπές του συστήματος έχουν σχεδιαστεί για να καθοδηγούν την έξοδο του μοντέλου με βάση τις απαιτήσεις της εφαρμογής, αλλά μπορεί να περιέχουν εκ παραδρομής απόρρητες πληροφορίες. Όταν ανακαλυφθούν, οι πληροφορίες αυτές μπορούν να χρησιμοποιηθούν για τη διευκόλυνση άλλων επιθέσεων.
 
-It's important to understand that the system prompt should not be considered a secret, nor should it be used as a security control. Accordingly, sensitive data such as credentials, connection strings, etc. should not be contained within the system prompt language.
+Είναι σημαντικό να γίνει αντιληπτό ότι η προτροπή του συστήματος δεν πρέπει να θεωρείται απόρρητη, ούτε να χρησιμοποιείται ως έλεγχος ασφαλείας. Κατά συνέπεια, ευαίσθητα δεδομένα όπως διαπιστευτήρια, συμβολοσειρές σύνδεσης κ.λπ. δεν θα πρέπει να περιέχονται στη γλώσσα της προτροπής συστήματος.
 
-Similarly, if a system prompt contains information describing different roles and permissions, or sensitive data like connection strings or passwords, while the disclosure of such information may be helpful, the fundamental security risk is not that these have been disclosed, it is that the application allows bypassing strong session management and authorization checks by delegating these to the LLM, and that sensitive data is being stored in a place that it should not be.
+Ομοίως, εάν μια προτροπή συστήματος περιέχει πληροφορίες που περιγράφουν διαφορετικούς ρόλους και δικαιώματα ή ευαίσθητα δεδομένα όπως συμβολοσειρές σύνδεσης ή κωδικούς πρόσβασης, ενώ η αποκάλυψη αυτών των πληροφοριών μπορεί να είναι χρήσιμη, ο θεμελιώδης κίνδυνος ασφάλειας δεν είναι ότι αυτά έχουν αποκαλυφθεί, αλλά ότι η εφαρμογή επιτρέπει την παράκαμψη ισχυρών ελέγχων διαχείρισης συνόδου και εξουσιοδότησης αναθέτοντάς τους στο LLM και ότι ευαίσθητα δεδομένα αποθηκεύονται σε μέρος που δεν θα έπρεπε να βρίσκονται.
 
-In short: disclosure of the system prompt itself does not present the real risk -- the security risk lies with the underlying elements, whether that be sensitive information disclosure, system guardrails bypass, improper separation of privileges, etc. Even if the exact wording is not disclosed, attackers interacting with the system will almost certainly be able to determine many of the guardrails and formatting restrictions that are present in system prompt language in the course of using the application, sending utterances to the model, and observing the results.
+Εν συντομία: η αποκάλυψη της ίδιας της προτροπής του συστήματος δεν αποτελεί τον πραγματικό κίνδυνο - ο κίνδυνος ασφάλειας έγκειται στα υποκείμενα στοιχεία, είτε πρόκειται για αποκάλυψη ευαίσθητων πληροφοριών, είτε για παράκαμψη των προστατευτικών δικλείδων του συστήματος, είτε για πλημμελή διαχωρισμό των προνομίων κ.λπ. Ακόμη και αν δεν αποκαλυφθεί η ακριβής διατύπωση, οι επιτιθέμενοι που αλληλεπιδρούν με το σύστημα θα είναι σχεδόν σίγουρα σε θέση να προσδιορίσουν πολλές από τις προστατευτικές δικλείδες και τους περιορισμούς μορφοποίησης που υπάρχουν στη γλώσσα της προτροπής συστήματος κατά τη διάρκεια της χρήσης της εφαρμογής, της αποστολής λεκτικών στο μοντέλο και της παρατήρησης των αποτελεσμάτων.
 
-### Common Examples of Risk
+### Συνήθη Παραδείγματα Κινδύνου
 
-#### 1. Exposure of Sensitive Functionality
-  The system prompt of the application may reveal sensitive information or functionality that is intended to be kept confidential, such as sensitive system architecture, API keys, database credentials, or user tokens.  These can be extracted or used by attackers to gain unauthorized access into the application. For example, a system prompt that contains the type of database used for a tool could allow the attacker to target it for SQL injection attacks.
-#### 2. Exposure of Internal Rules
-  The system prompt of the application reveals information on internal decision-making processes that should be kept confidential. This information allows attackers to gain insights into how the application works which could allow attackers to exploit weaknesses or bypass controls in the application. For example - There is a banking application that has a chatbot and its system prompt may reveal information like 
-    >"The Transaction limit is set to $5000 per day for a user. The Total Loan Amount for a user is $10,000".
-  This information allows the attackers to bypass the security controls in the application like doing transactions more than the set limit or bypassing the total loan amount.
-#### 3. Revealing of Filtering Criteria
-  A system prompt might ask the model to filter or reject sensitive content. For example, a model might have a system prompt like,
-    >“If a user requests information about another user, always respond with ‘Sorry, I cannot assist with that request’”.
-#### 4. Disclosure of Permissions and User Roles
-  The system prompt could reveal the internal role structures or permission levels of the application. For instance, a system prompt might reveal,
-    >“Admin user role grants full access to modify user records.”
-  If the attackers learn about these role-based permissions, they could look for a privilege escalation attack.
+#### 1. Αποκάλυψη Ευαίσθητων Λειτουργιών
+  Η προτροπή συστήματος της εφαρμογής μπορεί να αποκαλύψει ευαίσθητες πληροφορίες ή λειτουργίες που προορίζονται να παραμείνουν εμπιστευτικές, όπως απόρρητα στοιχεία αρχιτεκτονικής του συστήματος, κλειδιά API, διαπιστευτήρια βάσης δεδομένων ή διακριτικά χρήστη.  Αυτά μπορούν να εξαχθούν ή να χρησιμοποιηθούν από επιτιθέμενους για να αποκτήσουν μη εξουσιοδοτημένη πρόσβαση στην εφαρμογή. Για παράδειγμα, μια προτροπή συστήματος που περιέχει τον τύπο της βάσης δεδομένων που χρησιμοποιείται για ένα εργαλείο θα μπορούσε να επιτρέψει στον επιτιθέμενο να το στοχεύσει για επιθέσεις SQL injection.
+#### 2. Αποκάλυψη Εσωτερικών Κανόνων
+  Η προτροπή συστήματος της εφαρμογής αποκαλύπτει πληροφορίες σχετικά με τις εσωτερικές διαδικασίες λήψης αποφάσεων που πρέπει να παραμείνουν εμπιστευτικές. Αυτές οι πληροφορίες επιτρέπουν στους επιτιθέμενους να αποκτήσουν γνώσεις σχετικά με τον τρόπο λειτουργίας της εφαρμογής, οι οποίες θα μπορούσαν να επιτρέψουν στους επιτιθέμενους να εκμεταλλευτούν αδυναμίες ή να παρακάμψουν ελέγχους της εφαρμογής. Για παράδειγμα - Υπάρχει μια τραπεζική εφαρμογή που διαθέτει ένα chatbot και η προτροπή συστήματος μπορεί να αποκαλύψει πληροφορίες όπως 
+    >"Το όριο συναλλαγών έχει οριστεί σε $5000 ανά ημέρα για έναν χρήστη. Το συνολικό ποσό δανείου για έναν χρήστη είναι 10.000 δολάρια».
+  Αυτές οι πληροφορίες επιτρέπουν στους επιτιθέμενους να παρακάμψουν τους ελέγχους ασφαλείας της εφαρμογής, όπως να πραγματοποιούν συναλλαγές μεγαλύτερες από το καθορισμένο όριο ή να παρακάμπτουν το συνολικό ποσό δανείου.
+#### 3. Αποκάλυψη Κριτηρίων Φιλτραρίσματος
+  Μια προτροπή του συστήματος μπορεί να ζητήσει από το μοντέλο να φιλτράρει ή να απορρίψει ευαίσθητο περιεχόμενο. Για παράδειγμα, ένα μοντέλο μπορεί να έχει μια προτροπή συστήματος όπως,
+    >“Εάν ένας χρήστης ζητήσει πληροφορίες σχετικά με έναν άλλο χρήστη, απαντήστε πάντα με τη φράση «Λυπάμαι, δεν μπορώ να βοηθήσω σε αυτό το αίτημα».’”.
+#### 4. Αποκάλυψη Δικαιωμάτων και Ρόλων Χρηστών
+  Η προτροπή του συστήματος θα μπορούσε να αποκαλύψει τις εσωτερικές δομές ρόλων ή τα επίπεδα δικαιωμάτων της εφαρμογής. Για παράδειγμα, μια προτροπή συστήματος μπορεί να αποκαλύψει,
+    >“Ο ρόλος χρήστη Admin παρέχει πλήρη πρόσβαση στην τροποποίηση των εγγραφών χρηστών.”
+  Εάν οι επιτιθέμενοι μάθουν για αυτά τα δικαιώματα βάσει ρόλων, θα μπορούσαν να αναζητήσουν μια επίθεση κλιμάκωσης προνομίων.
 
-### Prevention and Mitigation Strategies
+### Στρατηγικές Πρόληψης και Αντιμετώπισης
 
-#### 1. Separate Sensitive Data from System Prompts
-  Avoid embedding any sensitive information (e.g. API keys, auth keys, database names, user roles, permission structure of the application) directly in the system prompts. Instead, externalize such information to the systems that the model does not directly access.
-#### 2. Avoid Reliance on System Prompts for Strict Behavior Control
-  Since LLMs are susceptible to other attacks like prompt injections which can alter the system prompt, it is recommended to avoid using system prompts to control the model behavior where possible.  Instead, rely on systems outside of the LLM to ensure this behavior.  For example, detecting and preventing harmful content should be done in external systems.
-#### 3. Implement Guardrails
-  Implement a system of guardrails outside of the LLM itself.  While training particular behavior into a model can be effective, such as training it not to reveal its system prompt, it is not a guarantee that the model will always adhere to this.  An independent system that can inspect the output to determine if the model is in compliance with expectations is preferable to system prompt instructions.
-#### 4. Ensure that security controls are enforced independently from the LLM
-  Critical controls such as privilege separation, authorization bounds checks, and similar must not be delegated to the LLM, either through the system prompt or otherwise. These controls need to occur in a deterministic, auditable manner, and LLMs are not (currently) conducive to this. In cases where an agent is performing tasks, if those tasks require different levels of access, then multiple agents should be used, each configured with the least privileges needed to perform the desired tasks.
+#### 1. Διαχωρισμός των ευαίσθητων δεδομένων από τις προτροπές συστήματος
+  Αποφύγετε την ενσωμάτωση ευαίσθητων πληροφοριών (π.χ. κλειδιά API, κλειδιά εξουσιοδότησης, ονόματα βάσεων δεδομένων, ρόλους χρηστών, δομή δικαιωμάτων της εφαρμογής) απευθείας στις προτροπές του συστήματος. Αντ' αυτού, εξωτερικεύστε αυτές τις πληροφορίες στα συστήματα στα οποία δεν έχει άμεση πρόσβαση το μοντέλο.
+#### 2. Αποφυγή της εξάρτησης από τις προτροπές του συστήματος για αυστηρό έλεγχο συμπεριφοράς
+  Δεδομένου ότι τα LLM είναι ευάλωτα σε άλλες επιθέσεις, όπως οι εγχύσεις προτροπών που μπορούν να τροποποιήσουν την προτροπή του συστήματος, συνιστάται να αποφεύγεται η χρήση προτροπών συστήματος για τον έλεγχο της συμπεριφοράς του μοντέλου, όπου αυτό είναι δυνατόν.  Αντ' αυτού, βασιστείτε σε συστήματα εκτός του LLM για να διασφαλίσετε αυτή τη συμπεριφορά.  Για παράδειγμα, η ανίχνευση και η πρόληψη επιβλαβούς περιεχομένου θα πρέπει να γίνεται σε εξωτερικά συστήματα.
+#### 3. Εφαρμογή προστατευτικών δικλείδων
+  Εφαρμόστε ένα σύστημα προστατευτικών δικλείδων εκτός του ίδιου του LLM.  Παρόλο που η εκπαίδευση συγκεκριμένης συμπεριφοράς σε ένα μοντέλο μπορεί να είναι αποτελεσματική, όπως η εκπαίδευσή του να μην αποκαλύπτει την προτροπή του συστήματος, δεν αποτελεί εγγύηση ότι το μοντέλο θα τηρεί πάντοτε αυτή τη συμπεριφορά.  Ένα ανεξάρτητο σύστημα που μπορεί να επιθεωρήσει την έξοδο για να καθορίσει αν το μοντέλο συμμορφώνεται με τις προσδοκίες είναι προτιμότερο από τις οδηγίες προτροπής συστήματος.
+#### 4. Διασφάλιση ότι οι έλεγχοι ασφαλείας επιβάλλονται ανεξάρτητα από το LLM
+  Οι κρίσιμοι έλεγχοι, όπως ο διαχωρισμός προνομίων, οι έλεγχοι ορίων εξουσιοδότησης και άλλα παρόμοια, δεν πρέπει να ανατίθενται στο LLM, είτε μέσω της προτροπής συστήματος είτε με άλλο τρόπο. Αυτοί οι έλεγχοι πρέπει να πραγματοποιούνται με ντετερμινιστικό, ελέγξιμο τρόπο και τα LLM δεν ευνοούν (επί του παρόντος) κάτι τέτοιο. Σε περιπτώσεις όπου ένας πράκτορας εκτελεί καθήκοντα, εάν τα καθήκοντα αυτά απαιτούν διαφορετικά επίπεδα πρόσβασης, τότε θα πρέπει να χρησιμοποιούνται πολλαπλοί πράκτορες, καθένας από τους οποίους θα έχει ρυθμιστεί με τα λιγότερα προνόμια που απαιτούνται για την εκτέλεση των επιθυμητών εργασιών.
 
-### Example Attack Scenarios
+### Παραδείγματα Σεναρίων Επίθεσης
 
-#### Scenario #1
-   An LLM has a system prompt that contains a set of credentials used for a tool that it has been given access to.  The system prompt is leaked to an attacker, who then is able to use these credentials for other purposes.
-#### Scenario #2
-  An LLM has a system prompt prohibiting the generation of offensive content, external links, and code execution. An attacker extracts this system prompt and then uses a prompt injection attack to bypass these instructions, facilitating a remote code execution attack.
+#### Σενάριο #1
+   Ένα LLM διαθέτει μια προτροπή συστήματος που περιέχει ένα σύνολο διαπιστευτηρίων που χρησιμοποιούνται για ένα εργαλείο στο οποίο του έχει δοθεί πρόσβαση.  Η προτροπή συστήματος αποκαλύπτεται σε έναν εισβολέα, ο οποίος στη συνέχεια μπορεί να χρησιμοποιήσει αυτά τα διαπιστευτήρια για άλλους σκοπούς.
+#### Σενάριο #2
+  Ένα LLM διαθέτει μια προτροπή συστήματος που απαγορεύει τη δημιουργία επιθετικού περιεχομένου, εξωτερικών συνδέσμων και την εκτέλεση κώδικα. Ένας εισβολέας εξάγει αυτή την προτροπή συστήματος και στη συνέχεια χρησιμοποιεί μια επίθεση έγχυσης προτροπής για να παρακάμψει αυτές τις οδηγίες, διευκολύνοντας μια επίθεση απομακρυσμένης εκτέλεσης κώδικα.
 
-### Reference Links
+### Σύνδεσμοι Αναφοράς
 
 1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
 2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): Prompt Security
@@ -52,8 +52,8 @@ In short: disclosure of the system prompt itself does not present the real risk 
 4. [leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts): Jujumilk3
 5. [OpenAI Advanced Voice Mode System Prompt](https://x.com/Green_terminals/status/1839141326329360579): Green_Terminals
 
-### Related Frameworks and Taxonomies
+### Σχετικά Πλαίσια και Ταξινομήσεις
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Ανατρέξτε σε αυτή την ενότητα για αναλυτικές πληροφορίες, στρατηγικές σεναρίων σχετικά με την ανάπτυξη υποδομών, εφαρμοσμένους ελέγχους περιβάλλοντος και άλλες βέλτιστες πρακτικές.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
