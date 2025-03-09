@@ -12,7 +12,7 @@
 
 我們也新增了**系統提示洩漏 (System Prompt Leakage)** 項目，以反應社群在真實世界中看到高度重複發生的實際案例。許多應用原以為系統提示 (Prompt) 內容能安全隔離，但近期事件顯示，開發者不應輕易假設提示中的資訊能夠被完整的保護。
 
-**過度授權 (Excessive Agency)** 亦已擴充，呼應現在愈發普及的代理人 (Agentic) 架構在 LLM 應用中的使用。當 LLM 作為代理或透過外掛進行作業時，若未妥善限制和確認其授權，便可能帶來意料之外或高風險的行為，因此此項目比以往更為重要。
+**過度代理授權 (Excessive Agency)** 亦已擴充，呼應現在愈發普及的代理人 (Agentic) 架構在 LLM 應用中的使用。當 LLM 作為代理或透過外掛進行作業時，若未妥善限制和確認其授權，便可能帶來意料之外或高風險的行為，因此此項目比以往更為重要。
 
 **展望未來**
 
@@ -35,15 +35,15 @@ OWASP 大型語言模型應用 Top 10
 ### 繁體中文翻譯團隊
 
 #### Henry Hu / 胡辰澔
-Tranditional Chinese Translation Group / Group Leader
+Traditional Chinese Translation Group / Group Leader
 LinkedIn: https://www.linkedin.com/in/ninedter/
 
-#### Will Huang 
-Tranditional Chinese Translation Group / Reviewer
-LinkedIn: https://www.linkedin.com/in/will-huang-tw/
+#### Will Huang / 黃保翕
+Traditional Chinese Translation Group / Reviewer
+Facebook: https://www.facebook.com/will.fans
 
 #### Yingzi Jin
-Tranditional Chinese Translation Group / Reviewer
+Traditional Chinese Translation Group / Reviewer
 LinkedIn: https://www.linkedin.com/in/yingzi-j-77606122a/
 
 ### 關於本次翻譯

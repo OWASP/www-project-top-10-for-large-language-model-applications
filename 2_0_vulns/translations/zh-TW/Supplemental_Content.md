@@ -5,35 +5,34 @@
 瞭解在開發過程中如何確保生成式AI與大型語言模型對應用程式安全的最新十大風險、弱點及因應措施，本次所公佈的措施包含整個開發、部署及管理生命週期，確保基礎的安全性。
 
 ## Long Description
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+OWASP 大型語言模型應用十大風險清單始於2023年，這是一項由社群主導的計畫，目的在於凸顯並處理人工智慧應用特有的資安問題。從那時起，這項技術持續在各產業和應用場景中普及，相關風險也跟著增加。隨著大型語言模型更深入地融入從客戶互動到企業內部營運的各個層面，開發人員和資安專家正在發現新的弱點——以及因應這些弱點的方法。
 
 ## Sponsorship
-We appreciate our Project Sponsors’ funding contributions to help support the objectives of the project and help to cover operational and outreach costs augmenting the resources the OWASP.org foundation provides. The OWASP Top 10 for LLM and Generative AI Project continues to maintain a vendor neutral and unbiased approach. Sponsors do not receive special governance considerations as part of their support. Sponsors do receive recognition for their contributions in our materials and web properties.
-All materials the project generates are community developed, driven and released under open source and creative commons licenses. For more information on becoming a sponsor Visit the Sponsorship Section on our Website to learn more about helping to sustain the project through sponsorship.
+我們感謝專案贊助商的資金贊助，這些贊助有助於支持完成專案目標並協助支付營運和推廣成本，增加 OWASP 基金會所能提供給專案的資源。OWASP大型語言模型及生成式AI十大風險專案持續保持廠商中立和公正的立場。贊助商不會因其支持而在專案治理方面獲得特殊考量。贊助商會在我們的資料和網站中獲得對其貢獻的肯定。
+專案產出的所有資料都是由社群開發、推動，並在開源及創用 CC 授權下發布。若想了解更多關於成為贊助商的資訊，請造訪我們網站的贊助專區，進一步了解如何透過贊助來協助維持專案的永續發展。
 
 ## Social Media
-🚀 Exciting News! New Translations Available for the OWASP Top 10 for LLM & Generative AI (2025) 🌍
+🚀 號外！OWASP大型語言模型及生成式 AI 十大風險（2025）現已提供新翻譯版本！ 🌍
 
-We’re thrilled to announce that the OWASP Top 10 for LLM Applications and Generative AI 2025 is now available in Spanish, Persian, Simplified Chinese, Traditional Chinese, Portuguese, and Russian!
+我們非常高興的宣佈，OWASP大型語言模型應用及生成式 AI 十大風險（2025）現已提供西班牙文、波斯文、簡體中文、繁體中文、葡萄牙文和俄文版本！
+這次更新針對生成式AI和大型語言模型應用在開發、部署和管理生命週期提供了一個全新且全面的資源，其中的針對主要風險、弱點和緩解措施進行了新的詮釋及說明。無論您是使用基於 RAG 的應用、代理架構，或是複雜的大型語言模型整合，這份清單對於開發人員、資安專家以及希望安全採用 AI 的組織來說都是不可或缺的參考資料。
 
-This update provides a refreshed and comprehensive resource addressing the top risks, vulnerabilities, and mitigations for securing Generative AI and LLM applications across their development, deployment, and management lifecycle. Whether you're working with RAG-based applications, agentic architectures, or complex LLM integrations, this list is a must-have for developers, security professionals, and organizations looking to adopt AI securely.
+2025 OWASP 大型語言模型十大風險有哪些新內容？
 
-What's New in the 2025 OWASP Top 10 for LLMs?
+✅ 無限制消耗：擴展超出阻斷服務攻擊的範疇，納入大規模部署中的資源管理風險和意外成本問題。
+✅ 向量與嵌入弱點：解決檢索增強生成（RAG）和其他基於嵌入技術的安全風險問題。
+✅ 系統提示洩漏：新增的風險項目，針對真實世界中的漏洞利用，以及假設提示內容能保持隔離所帶來的風險。
+✅ 過度代理權限：隨著AI自主性的增長，此更新強調了代理架構在有限人類監督下的安全顧慮。
 
-✅ Unbounded Consumption: Expanding beyond denial of service to include risks of resource management and unexpected costs in large-scale deployments.
-✅ Vectors & Embeddings Security: Addressing security risks in Retrieval-Augmented Generation (RAG) and other embedding-based techniques.
-✅ System Prompt Leakage: A newly added entry tackling real-world exploits and the {risks of assuming prompts remain isolated.
-✅ Excessive Agency: As AI autonomy grows, this update highlights security concerns around agentic architectures with limited human oversight.
+加入我們! 💡
 
-Join the Effort! 💡
+這個專案之所以蓬勃發展，是因為背後有一個令人驚嘆的全球社群支持。如果您對AI安全充滿熱情，我們邀請您為翻譯、研究和指導作出貢獻，以擴展這項重要的倡議。讓我們一起使 AI 安全在全球更加普及！
+📢 快來看以下的翻譯版本:
+ 🔗 西班牙文: 
+ 🔗 德文: 
+ 🔗 簡體中文: 
+ 🔗 繁體中文: 
+ 🔗 葡萄牙文: 
+ 🔗 俄文: 
 
-This project thrives because of the amazing global community behind it. If you’re passionate about AI security, we invite you to contribute to translations, research, and guidance to expand this critical initiative. Let’s make AI security accessible worldwide!
-📢 Check out the translations below:
- 🔗 Spanish: 
- 🔗 German: 
- 🔗 Simplified Chinese: 
- 🔗 Traditional Chinese: 
- 🔗 Portuguese: 
- 🔗 Russian: 
-
-Interested in getting involved? Comment below or reach out! Together, we can build a more secure AI-driven future. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
+有興趣參與嗎？請在下方留言或與我們聯繫！透過大家的努力，我們能夠建立一個更安全的 AI 去驅動未來。 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
