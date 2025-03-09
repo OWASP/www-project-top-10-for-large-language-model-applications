@@ -15,7 +15,7 @@ Todos os materiais gerados pelo projeto são desenvolvidos pela comunidade, orie
 ## Social Media
 🚀 Super Novidade! Traduções disponíveis para o OWASP Top 10 para Aplicações de LLM e IA Generativa (2025) 🌍
 
-Temos o prazer de anunciar que o OWASP Top 10 para Aplicações de LLM e IA Generativa 2025 já está disponível em Espanhol, Persa, Chinês Simplificado, Chinês Tradicional, Português-Brasileiro e Russo!
+Temos o prazer de anunciar que o OWASP Top 10 para Aplicações de LLM e IA Generativa 2025 já está disponível em Espanhol, Alemão, Chinês Simplificado, Chinês Tradicional, Português-Brasileiro e Russo!
 
 Esta atualização oferece um recurso abrangente e atualizado que aborda os principais riscos, vulnerabilidades e medidas de proteção para garantir a segurança das aplicações de IA Generativa e LLMs em todo o seu ciclo de vida de desenvolvimento, implantação e gestão. Se você trabalha com aplicações baseadas em RAG, arquiteturas com agentes ou integrações complexas de LLMs, esta lista é essencial para desenvolvedores, profissionais de segurança e organizações que buscam adotar IA de maneira segura.
 
