@@ -1,78 +1,78 @@
-## LLM10:2025 Unbounded Consumption
+## LLM10:2025 Απεριόριστη κατανάλωση
 
-### Description
+### Περιγραφή
 
-Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
+Η απεριόριστη κατανάλωση αναφέρεται στη διαδικασία κατά την οποία ένα Μεγάλο Γλωσσικό Μοντέλο (LLM) παράγει εξόδους με βάση ερωτήματα ή προτροπές εισόδου. Η εξαγωγή συμπερασμάτων είναι μια κρίσιμη λειτουργία των LLM, που περιλαμβάνει την εφαρμογή των διδαχθέντων προτύπων και γνώσεων για την παραγωγή σχετικών απαντήσεων ή προβλέψεων.
 
-Attacks designed to disrupt service, deplete the target's financial resources, or even steal intellectual property by cloning a model’s behavior all depend on a common class of security vulnerability in order to succeed. Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to risks such as denial of service (DoS), economic losses, model theft, and service degradation. The high computational demands of LLMs, especially in cloud environments, make them vulnerable to resource exploitation and unauthorized usage.
+Οι επιθέσεις που αποσκοπούν στη διακοπή της παροχής υπηρεσιών, στην εξάντληση των οικονομικών πόρων του στόχου ή ακόμη και στην κλοπή πνευματικής ιδιοκτησίας μέσω της κλωνοποίησης της συμπεριφοράς ενός μοντέλου εξαρτώνται από μια κοινή κατηγορία τρωτών σημείων ασφαλείας προκειμένου να επιτύχουν. Η απεριόριστη κατανάλωση συμβαίνει όταν μια εφαρμογή μεγάλου γλωσσικού μοντέλου (LLM) επιτρέπει στους χρήστες να διεξάγουν υπερβολικά και ανεξέλεγκτα συμπεράσματα, οδηγώντας σε κινδύνους όπως άρνηση παροχής υπηρεσιών (DoS), οικονομικές απώλειες, κλοπή μοντέλων και υποβάθμιση υπηρεσιών. Οι υψηλές υπολογιστικές απαιτήσεις των LLM, ιδίως σε περιβάλλοντα νέφους, τα καθιστούν ευάλωτα στην εκμετάλλευση πόρων και στη μη εξουσιοδοτημένη χρήση.
 
-### Common Examples of Vulnerability
+### Συνήθη παραδείγματα ευπάθειας
 
-#### 1. Variable-Length Input Flood
-  Attackers can overload the LLM with numerous inputs of varying lengths, exploiting processing inefficiencies. This can deplete resources and potentially render the system unresponsive, significantly impacting service availability.
-#### 2. Denial of Wallet (DoW)
-  By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
-#### 3. Continuous Input Overflow
-  Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
-#### 4. Resource-Intensive Queries
-  Submitting unusually demanding queries involving complex sequences or intricate language patterns can drain system resources, leading to prolonged processing times and potential system failures.
-#### 5. Model Extraction via API
-  Attackers may query the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model. This not only poses risks of intellectual property theft but also undermines the integrity of the original model.
-#### 6. Functional Model Replication
-  Using the target model to generate synthetic training data can allow attackers to fine-tune another foundational model, creating a functional equivalent. This circumvents traditional query-based extraction methods, posing significant risks to proprietary models and technologies.
-#### 7. Side-Channel Attacks
-  Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
+#### 1. Κορεσμός εισόδου μεταβλητού μήκους
+  Οι επιτιθέμενοι μπορούν να υπερφορτώσουν το LLM με πολυάριθμες εισόδους διαφορετικού μήκους, εκμεταλλευόμενοι την αναποτελεσματικότητα της επεξεργασίας. Αυτό μπορεί να εξαντλήσει τους πόρους και ενδεχομένως να καταστήσει το σύστημα μη ανταποκρινόμενο, επηρεάζοντας σημαντικά τη διαθεσιμότητα των υπηρεσιών.
+#### 2. Άρνηση πορτοφολιού (DoW)
+  Με την έναρξη μεγάλου όγκου λειτουργιών, οι επιτιθέμενοι εκμεταλλεύονται το μοντέλο κόστους ανά χρήση των υπηρεσιών ΤΝ που βασίζονται στο νέφος, οδηγώντας σε μη βιώσιμες οικονομικές επιβαρύνσεις για τον πάροχο και διακινδυνεύοντας την οικονομική καταστροφή.
+#### 3. Συνεχής υπερχείλιση εισόδου
+  Η συνεχής αποστολή εισροών που υπερβαίνουν το παράθυρο περιεχομένου του LLM μπορεί να οδηγήσει σε υπερβολική χρήση υπολογιστικών πόρων, με αποτέλεσμα την υποβάθμιση των υπηρεσιών και τη διακοπή της λειτουργίας.
+#### 4. Ερωτήματα απαιτητικά σε πόρους
+  Η υποβολή ασυνήθιστα απαιτητικών ερωτημάτων που περιλαμβάνουν πολύπλοκες ακολουθίες ή περίπλοκα γλωσσικά μοτίβα μπορεί να εξαντλήσει τους πόρους του συστήματος, οδηγώντας σε παρατεταμένους χρόνους επεξεργασίας και πιθανές αποτυχίες του συστήματος.
+#### 5. Εξαγωγή μοντέλου μέσω API
+  Οι επιτιθέμενοι μπορεί να κάνουν ερωτήματα στο API του μοντέλου χρησιμοποιώντας ειδικά διαμορφωμένες εισόδους και τεχνικές prompt injection για να συλλέξουν επαρκείς εξόδους ώστε να αναπαράγουν ένα μερικό μοντέλο ή να δημιουργήσουν ένα σκιώδες μοντέλο. Αυτό δεν ενέχει μόνο κινδύνους κλοπής πνευματικής ιδιοκτησίας αλλά υπονομεύει επίσης την ακεραιότητα του αρχικού μοντέλου.
+#### 6. Αντιγραφή λειτουργίας μοντέλου
+  Η χρήση του μοντέλου-στόχου για τη δημιουργία συνθετικών δεδομένων εκπαίδευσης μπορεί να επιτρέψει στους επιτιθέμενους να τελειοποιήσουν ένα άλλο θεμελιώδες μοντέλο, δημιουργώντας ένα λειτουργικό ισοδύναμο. Αυτό παρακάμπτει τις παραδοσιακές μεθόδους εξαγωγής βάσει ερωτημάτων, θέτοντας σημαντικούς κινδύνους για τα μοντέλα και τις τεχνολογίες αποκλειστικής ιδιοκτησίας.
+#### 7. Επιθέσεις πλευρικού καναλιού
+  Οι κακόβουλοι επιτιθέμενοι μπορούν να εκμεταλλευτούν τις τεχνικές φιλτραρίσματος εισόδου του LLM για να εκτελέσουν επιθέσεις πλευρικού καναλιού, συλλέγοντας βάρη μοντέλων και πληροφορίες αρχιτεκτονικής. Αυτό θα μπορούσε να θέσει σε κίνδυνο την ασφάλεια του μοντέλου και να οδηγήσει σε περαιτέρω εκμετάλλευση.
 
-### Prevention and Mitigation Strategies
+### Στρατηγικές πρόληψης και αντιμετώπισης
 
-#### 1. Input Validation
-  Implement strict input validation to ensure that inputs do not exceed reasonable size limits.
-#### 2. Limit Exposure of Logits and Logprobs
-  Restrict or obfuscate the exposure of `logit_bias` and `logprobs` in API responses. Provide only the necessary information without revealing detailed probabilities.
-#### 3. Rate Limiting
-  Apply rate limiting and user quotas to restrict the number of requests a single source entity can make in a given time period.
-#### 4. Resource Allocation Management
-  Monitor and manage resource allocation dynamically to prevent any single user or request from consuming excessive resources.
-#### 5. Timeouts and Throttling
-  Set timeouts and throttle processing for resource-intensive operations to prevent prolonged resource consumption.
-#### 6.Sandbox Techniques
-  Restrict the LLM's access to network resources, internal services, and APIs.
-  - This is particularly significant for all common scenarios as it encompasses insider risks and threats. Furthermore, it governs the extent of access the LLM application has to data and resources, thereby serving as a crucial control mechanism to mitigate or prevent side-channel attacks.
-#### 7. Comprehensive Logging, Monitoring and Anomaly Detection
-  Continuously monitor resource usage and implement logging to detect and respond to unusual patterns of resource consumption.
-#### 8. Watermarking
-  Implement watermarking frameworks to embed and detect unauthorized use of LLM outputs.
-#### 9. Graceful Degradation
-  Design the system to degrade gracefully under heavy load, maintaining partial functionality rather than complete failure.
-#### 10. Limit Queued Actions and Scale Robustly
-  Implement restrictions on the number of queued actions and total actions, while incorporating dynamic scaling and load balancing to handle varying demands and ensure consistent system performance.
-#### 11. Adversarial Robustness Training
-  Train models to detect and mitigate adversarial queries and extraction attempts.
-#### 12. Glitch Token Filtering
-  Build lists of known glitch tokens and scan output before adding it to the model’s context window.
-#### 13. Access Controls
-  Implement strong access controls, including role-based access control (RBAC) and the principle of least privilege, to limit unauthorized access to LLM model repositories and training environments.
-#### 14. Centralized ML Model Inventory
-  Use a centralized ML model inventory or registry for models used in production, ensuring proper governance and access control.
-#### 15. Automated MLOps Deployment
-  Implement automated MLOps deployment with governance, tracking, and approval workflows to tighten access and deployment controls within the infrastructure.
+#### 1. Επικύρωση εισόδου
+  Εφαρμόστε αυστηρή επικύρωση εισόδου για να διασφαλίσετε ότι οι είσοδοι δεν υπερβαίνουν τα λογικά όρια μεγέθους.
+#### 2. Περιορισμός της έκθεσης των Logits και Logprobs
+  Περιορίστε ή αποκρύψτε την έκθεση των `logit_bias` και `logprobs` στις αποκρίσεις API. Παρέχετε μόνο τις απαραίτητες πληροφορίες χωρίς να αποκαλύπτετε λεπτομερείς πιθανότητες.
+#### 3. Περιορισμός ρυθμού χρήσης
+  Εφαρμόστε περιορισμό ρυθμού χρήσης και ποσοστώσεις χρηστών για να περιορίσετε τον αριθμό των αιτήσεων που μπορεί να κάνει μια μεμονωμένη πηγαία οντότητα σε μια δεδομένη χρονική περίοδο.
+#### 4. Διαχείριση κατανομής πόρων
+  Παρακολουθήστε και διαχειριστείτε δυναμικά την κατανομή των πόρων για να αποτρέψετε την υπερβολική κατανάλωση πόρων από κάθε μεμονωμένο χρήστη ή αίτηση.
+#### 5. Χρονοδιακόπτες και περιορισμός χρόνου
+  Ορίστε χρονικά όρια και περιορίστε την επεξεργασία για λειτουργίες με υψηλή χρήση πόρων για να αποτρέψετε την παρατεταμένη κατανάλωση πόρων.
+#### 6.Τεχνικές Sandbox
+  Περιορίστε την πρόσβαση του LLM σε πόρους δικτύου, εσωτερικές υπηρεσίες και API.
+  - Αυτό είναι ιδιαίτερα σημαντικό για όλα τα κοινά σενάρια, καθώς περιλαμβάνει κινδύνους και απειλές εκ των έσω. Επιπλέον, ρυθμίζει την έκταση της πρόσβασης που έχει η εφαρμογή LLM σε δεδομένα και πόρους, αποτελώντας έτσι έναν κρίσιμο μηχανισμό ελέγχου για τον μετριασμό ή την αποτροπή επιθέσεων πλευρικού καναλιού.
+#### 7. Ολοκληρωμένη καταγραφή, παρακολούθηση και ανίχνευση ανωμαλιών
+  Συνεχής παρακολούθηση της χρήσης των πόρων και εφαρμογή της καταγραφής για τον εντοπισμό και την αντιμετώπιση ασυνήθιστων προτύπων κατανάλωσης πόρων.
+#### 8. Υδατογράφημα
+  Εφαρμογή πλαισίων υδατογραφήματος για την ενσωμάτωση και την ανίχνευση μη εξουσιοδοτημένης χρήσης των αποτελεσμάτων της LLM.
+#### 9. Ευγενής υποβάθμιση
+  Σχεδιάστε το σύστημα ώστε να υποβαθμίζεται με ασφάλεια κάτω από μεγάλο φορτίο, διατηρώντας τη μερική λειτουργικότητα αντί της πλήρους αποτυχίας.
+#### 10. Περιορισμός των ενεργειών σε αναμονή και εύρωστη κλιμάκωση
+  Εφαρμόστε περιορισμούς σχετικά με τον αριθμό των ενεργειών σε ουρά αναμονής και το σύνολο των ενεργειών, ενσωματώνοντας παράλληλα δυναμική κλιμάκωση και εξισορρόπηση φορτίου για την αντιμετώπιση διαφορετικών απαιτήσεων και τη διασφάλιση σταθερής απόδοσης του συστήματος.
+#### 11. Εκπαίδευση ανθεκτικότητας σε αντικείμενα ανταγωνισμού
+  Εκπαίδευση μοντέλων για την ανίχνευση και τον μετριασμό ανταγωνιστικών ερωτημάτων και προσπαθειών εξαγωγής.
+#### 12. Φιλτράρισμα Glitch Token
+  Δημιουργήστε λίστες γνωστών σημείων δυσλειτουργίας και σαρώστε την έξοδο πριν την προσθήκη της στο παράθυρο περιβάλλοντος του μοντέλου.
+#### 13. Έλεγχοι πρόσβασης
+  Εφαρμογή ισχυρών ελέγχων πρόσβασης, συμπεριλαμβανομένου του ελέγχου πρόσβασης βάσει ρόλων (RBAC) και της αρχής των ελαχίστων προνομίων, για τον περιορισμό της μη εξουσιοδοτημένης πρόσβασης στα αποθετήρια μοντέλων LLM και στα περιβάλλοντα εκπαίδευσης.
+#### 14. Κεντρική απογραφή μοντέλων ML
+  Χρησιμοποιήστε έναν κεντρικό κατάλογο ή μητρώο μοντέλων ML για τα μοντέλα που χρησιμοποιούνται στην παραγωγή, εξασφαλίζοντας τη σωστή διακυβέρνηση και τον έλεγχο πρόσβασης.
+#### 15. Αυτοματοποιημένη ανάπτυξη MLOps
+  Εφαρμογή αυτοματοποιημένης ανάπτυξης MLOps με ροές εργασίας διακυβέρνησης, παρακολούθησης και έγκρισης για την αυστηροποίηση των ελέγχων πρόσβασης και ανάπτυξης εντός της υποδομής.
 
-### Example Attack Scenarios
+### Παραδείγματα σεναρίων επίθεσης
 
-#### Scenario #1: Uncontrolled Input Size
-  An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
-#### Scenario #2: Repeated Requests
-  An attacker transmits a high volume of requests to the LLM API, causing excessive consumption of computational resources and making the service unavailable to legitimate users.
-#### Scenario #3: Resource-Intensive Queries
-  An attacker crafts specific inputs designed to trigger the LLM's most computationally expensive processes, leading to prolonged CPU usage and potential system failure.
-#### Scenario #4: Denial of Wallet (DoW)
-  An attacker generates excessive operations to exploit the pay-per-use model of cloud-based AI services, causing unsustainable costs for the service provider.
-#### Scenario #5: Functional Model Replication
-  An attacker uses the LLM's API to generate synthetic training data and fine-tunes another model, creating a functional equivalent and bypassing traditional model extraction limitations.
-#### Scenario #6: Bypassing System Input Filtering
-  A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
+#### Σενάριο #1: Μη ελεγχόμενο μέγεθος εισόδου
+  Ένας επιτιθέμενος υποβάλλει μια ασυνήθιστα μεγάλη είσοδο σε μια εφαρμογή LLM που επεξεργάζεται δεδομένα κειμένου, με αποτέλεσμα την υπερβολική χρήση μνήμης και φορτίου CPU, με αποτέλεσμα να καταρρεύσει ενδεχομένως το σύστημα ή να επιβραδυνθεί σημαντικά η υπηρεσία.
+#### Σενάριο #2: Επαναλαμβανόμενα αιτήματα
+  Ένας επιτιθέμενος διαβιβάζει μεγάλο όγκο αιτημάτων στο LLM API, προκαλώντας υπερβολική κατανάλωση υπολογιστικών πόρων και καθιστώντας την υπηρεσία μη διαθέσιμη στους νόμιμους χρήστες.
+#### Σενάριο #3: Ερωτήματα υψηλής χρήσης πόρων
+  Ένας επιτιθέμενος κατασκευάζει συγκεκριμένες εισόδους σχεδιασμένες να ενεργοποιούν τις πιο δαπανηρές υπολογιστικά διεργασίες του LLM, οδηγώντας σε παρατεταμένη χρήση της CPU και πιθανή αποτυχία του συστήματος.
+#### Σενάριο #4: Άρνηση πορτοφολιού (DoW)
+  Ένας επιτιθέμενος δημιουργεί υπερβολικές λειτουργίες για να εκμεταλλευτεί το μοντέλο πληρωμής ανά χρήση των υπηρεσιών ΤΝ που βασίζονται στο νέφος, προκαλώντας μη βιώσιμο κόστος για τον πάροχο υπηρεσιών.
+#### Σενάριο #5: Αντιγραφή λειτουργίας μοντέλου
+  Ένας εισβολέας χρησιμοποιεί το API του LLM για να δημιουργήσει συνθετικά δεδομένα εκπαίδευσης και να βελτιώσει ένα άλλο μοντέλο, δημιουργώντας ένα λειτουργικό ισοδύναμο και παρακάμπτοντας τους παραδοσιακούς περιορισμούς εξαγωγής μοντέλων.
+#### Σενάριο #6: Παράκαμψη του φιλτραρίσματος εισόδου του συστήματος
+  Ένας κακόβουλος επιτιθέμενος παρακάμπτει τις τεχνικές φιλτραρίσματος εισόδου και τις προεπιλογές του LLM για να εκτελέσει επίθεση πλευρικού καναλιού και να ανακτήσει πληροφορίες μοντέλου σε έναν απομακρυσμένο ελεγχόμενο πόρο υπό τον έλεγχό του.
 
-### Reference Links
+### Σύνδεσμοι αναφοράς
 
 1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**
@@ -85,9 +85,9 @@ Attacks designed to disrupt service, deplete the target's financial resources, o
 9. [Sponge Examples: Energy-Latency Attacks on Neural Networks: Arxiv White Paper](https://arxiv.org/abs/2006.03463) **arXiv**
 10. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
 
-### Related Frameworks and Taxonomies
+### Σχετικά πλαίσια και ταξινομήσεις
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Ανατρέξτε σε αυτή την ενότητα για αναλυτικές πληροφορίες, στρατηγικές σεναρίων σχετικά με την ανάπτυξη υποδομών, εφαρμοσμένους ελέγχους περιβάλλοντος και άλλες βέλτιστες πρακτικές.
 
 - [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
 - [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**
