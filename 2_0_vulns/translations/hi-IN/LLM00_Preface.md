@@ -43,7 +43,7 @@ LinkedIn: https://www.linkedin.com/in/dhruwen/
 ### Hindi Translation Reviewers
 Murali Krishna Kandula: [LinkedIn]
 Rachit Sood: [LinkedIn]
-Ojas Sharma: [LinkedIn]
+Ojas Sharma: https://www.linkedin.com/in/ojas-sharma-179948201/
 
 ### इस अनुवाद के बारे में
 "LLM applications के लिए OWASP शीर्ष 10" की तकनीकी एवं संवेदनशील प्रकृति को देखते हुँए, हमने इस अनुवाद के निर्माण में केवल मानव अनुवादकों का प्रयोग किया हैंं । सूचीबद्ध अनुवादक एवं समीक्षकों को न केवल मूल सामग्री का गहन तकनीकी ज्ञान है, बल्कि इस अनुवाद को सफल बनाने के लिए आवश्यक पृष्ठभूमि भी हैंं ।
