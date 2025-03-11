@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  github-llm-demo:
+    build: .
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - MODEL_ID
+      - REGION_NAME
+      - CREDENTIALS_PROFILE_NAME
+    volumes:
+      - ./github_token.json:/app/github_token.json:ro
+    # Keep container running for interactive use
+    stdin_open: true
+    tty: true 
