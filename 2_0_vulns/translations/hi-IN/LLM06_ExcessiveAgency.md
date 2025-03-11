@@ -2,12 +2,12 @@
 
 ### विवरण
 
-एक LLM आधारित system को अक्सर developers द्वारा degree of agency प्रदान की जाती हैं, मतलब की extension के माध्यम से अन्य system के साथ functions या interface को कॉल करने की क्षमता (जिसे अलग-अलग विक्रेताओं द्वारा tools, skills या plugins कहा जाता है) जिससे की एक prompts के जवाब में कार्रवाई की जा सकें । 
+एक LLM आधारित system को अक्सर developers द्वारा degree of agency प्रदान की जाती हैं, मतलब की extension के माध्यम से अन्य system के साथ functions या interface को कॉल करने की क्षमता (जिसे अलग-अलग विक्रेताओं द्वारा tools, skills या plugins कहाँ जाता है) जिससे की एक prompts के जवाब में कार्रवाई की जा सकें । 
 
-इनपुट Prompt या LLM आउटपुट के आधार पर, किस extension का प्रयोग (invoke) करें इसका निर्णय भी एक LLM 'एजेंट' को दिया जा सकता हैं । यहा नए होने वाले प्रयोगों (invocations) को ground (सरल तथा शुद्ध इक प्रकार से ) एवं direct (सिधा) रखने के लिए एजेंट पर आधारित system आम तौर पर पिछले उपयोगों (invocations) के आउटपुट का उपयोग करके LLM को बार-बार कॉल करते हैंं ।
+इनपुट Prompt या LLM आउटपुट के आधार पर, किस extension का प्रयोग (invoke) करें इसका निर्णय भी एक LLM 'एजेंट' को दिया जा सकता हैं । यहाँ नए होने वाले प्रयोगों (invocations) को ground (सरल तथा शुद्ध इक प्रकार से ) एवं direct (सिधा) रखने के लिए एजेंट पर आधारित system आम तौर पर पिछले उपयोगों (invocations) के आउटपुट का उपयोग करके LLM को बार-बार कॉल करते हैंं ।
 
 अत्यधिक एजेंसी एक Vulnerability हैं जो एक LLM के अनचाही, अस्पष्ट या हेरफेर किए गए आउटपुट की प्रतिक्रिया को हानिकारक बनाती हैं, बिना LLM की खराबी के कारण को जाने । इसके लिए सामान्य trigger निम्नलिखित है:
-* खराब तरह के बनाए सामान्य prompts या खराब प्रदर्शन करने वाले मॉडल के कारण hallucination/confabulation का होना;
+* खराब तरह के बनाएँ सामान्य prompts या खराब प्रदर्शन करने वाले मॉडल के कारण hallucination/confabulation का होना;
 * एक दुर्भावनापूर्ण user द्वारा प्रत्यक्ष/अप्रत्यक्ष (direct/indirect) Prompt इंजेक्शन, एक दुर्भावनापूर्ण/compromised extension का जरूरत से पहले आह्वान (invocation), या (मल्टी-एजेंट/सहयोगी (collaborative) system में) एक दुर्भावनापूर्ण/compromise किया गया साथी (peer) एजेंट ।
 
 अत्यधिक एजेंसी के मुख्य कारण आम तौर पर निम्नलिखित होता हैं:
@@ -28,7 +28,7 @@
 #### 3. अत्यधिक कार्यक्षमता
   एक open-ended कार्यक्षमता वाला LLM plugin बाहर के commands के इनपुट निर्देशों को ठीक से फ़िल्टर करने में विफल रहता हैं, जो की application के इच्छित संचालन के लिए आवश्यक हैं । उदाहरण के लिए, एक विशिष्ट shell command चलाने के लिए बना extension अन्य shell commands के execution को रोकने में विफल रहता हैं ।
 #### 4. अत्यधिक अनुमतियाँ
-  एक LLM extension के पास downstream systems की पहुँच हैं जो की application के लिए आवश्यक नहीं हैं । उदाहरण के लिए, डेटा पढ़ने का एक extension एक identity का उपयोग करके database server से connect करता हैं, जिसमें न केवल SELECT, बल्कि अनुमतियों जैसे की UPDATE एवं DELETE भी शामिल हैंं ।
+  एक LLM extension के पास downstream systems तक पहुँच हैं जो की application के लिए आवश्यक नहीं हैं । उदाहरण के लिए, डेटा पढ़ने का एक extension एक identity का उपयोग करके database server से connect करता हैं, जिसमें न केवल SELECT, बल्कि अनुमतियों जैसे की UPDATE एवं DELETE भी शामिल हैंं ।
 #### 5. अत्यधिक अनुमतियाँ
   एक LLM extension जो की एक user के लिए उसके operations करने के किये बनाया गया हैं, वह एक सामान्य उच्च-विशेषाधिकार प्राप्त पहचान (generic high-privileged identity) के साथ downstream system का उपयोग करता हैं । उदाहरण के लिए, एक user के दस्तावेज़ स्टोर को पढ़ने के लिए बनाया extension एक विशेषाधिकार (privileged) प्राप्त account के साथ दस्तावेज़ repository से connect होता हैं, जिसमें सभी users से संबंधित फ़ाइलों तक पहूँच (access) हैं ।
 #### 6. अत्यधिक स्वायत्तता (Autonomy)
@@ -39,11 +39,11 @@
 निम्नलिखित क्रियाएं अत्यधिक एजेंसी को रोक सकती हैंं:
 
 #### 1. Extensions का प्रयोग कम करें
-  LLM  agents के लिये approve (अनुमति मिले हुए ) हुए extension को न्यूनतम आवश्यक तक सीमित करें । उदाहरण के लिए, यदि LLM पर आधारित system को URL की सामग्री को fetch करने की क्षमता की आवश्यकता नहीं हैं, तो इस तरह के extension को LLM एजेंट में ना डाले ।
+  LLM  agents के लिये approve (अनुमति मिलना) हुँए extension को न्यूनतम आवश्यक तक सीमित करें । उदाहरण के लिए, यदि LLM पर आधारित system को URL की सामग्री को fetch करने की क्षमता की आवश्यकता नहीं हैं, तो इस तरह के extension को LLM एजेंट में ना डाले ।
 #### 2. Extensions की कार्यक्षमता कम करें
-  LLM extension में प्रयोग हुए functions को न्यूनतम आवश्यक तक सीमित करें । उदाहरण के लिए, एक extension जिसकी की user के मेलबॉक्स तक पहुंचता हैं emails का सारांश करने के लिए । हो सकता हैंं उसको केवल emails को पढ़ने की क्षमता की आवश्यकता हो, इसलिए extension में अन्य कार्यक्षमता नहीं होनी चाहिए जैसे कि संदेश delete या send करना ।
+  LLM extension में प्रयोग हुँए functions को न्यूनतम आवश्यक तक सीमित करें । उदाहरण के लिए, एक extension जिसकी की user के मेलबॉक्स तक पहुँंचता हैं emails का सारांश करने के लिए । हो सकता हैंं उसको केवल emails को पढ़ने की क्षमता की आवश्यकता हो, इसलिए extension में अन्य कार्यक्षमता नहीं होनी चाहिए जैसे कि संदेश delete या send करना ।
 #### 3. open-ended extension से बचें
-  जहां संभव हो, open-ended extensions के उपयोग से बचें (जैसे, एक shell commands चलाएं, एक URL fetch करें, आदि) एवं अधिक granular (छोटी-छोटी) कार्यक्षमता वाले extensions का उपयोग करें । उदाहरण के लिए, एक LLM पर आधारित app को फ़ाइल में कुछ आउटपुट को write करने की आवश्यकता हैं, यदि इसके लिये वह shell functions को run करने वाले extension का उपयोग करता है, तह दुर्भावनापूर्ण कार्यों के होने की गुंजाइश बड़ती हैं (किसी भी अन्य shell commands को execute किया जा सकता हैं) । एक अधिक सुरक्षित विकल्प हो सकता है, की एक विशिष्ट file-writing extension का निर्माण करना जो केवल उस विशिष्ट कार्य को ही करता हैं ।
+  जहाँं संभव हो, open-ended extensions के उपयोग से बचें (जैसे, एक shell commands चलाएं, एक URL fetch करें, आदि) एवं अधिक granular (छोटी-छोटी) कार्यक्षमता वाले extensions का उपयोग करें । उदाहरण के लिए, एक LLM पर आधारित app को फ़ाइल में कुछ आउटपुट को write करने की आवश्यकता हैं, यदि इसके लिये वह shell functions को run करने वाले extension का उपयोग करता है, तह दुर्भावनापूर्ण कार्यों के होने की गुंजाइश बड़ती हैं (किसी भी अन्य shell commands को execute किया जा सकता हैं) । एक अधिक सुरक्षित विकल्प हो सकता है, की एक विzzशिष्ट file-writing extension का निर्माण करना जो केवल उस विशिष्ट कार्य को ही करता हैं ।
 #### 4. Extension की अनुमतियों को कम करें
   LLM extension द्वारा अन्य system को दी गई अनुमतियों को न्यूनतम करें ताकि अवांछनीय कार्यों के होने की आशंकाए कम हो सकें । उदाहरण के लिए, एक LLM एजेंट जो उत्पाद डेटाबेस का उपयोग करके ग्राहक को खरीद की सिफारिशें देता हैं, उसे केवल 'उत्पादों' वाली table का read access ही चाहिए होगा, इसीलिए उसके पास अन्य tables तक पहूँच (access) नहीं होनी चाहिए, न ही रिकॉर्ड insert, update या delete करने की क्षमता । यह उपयुक्त डेटाबेस अनुमतियों को उपयुक्त पहचान (जो की LLM extension डेटाबेस से कनेक्ट करने के लिए उपयोग करता हैं) उसपर लगाकर लागू की जा सकती हैंं ।
 #### 5. User के संदर्भ में extension Execute/लागू करें
@@ -53,7 +53,7 @@
 #### 7. पूर्ण मध्यस्थता (Complete mediation)
   किसी कार्य की अनुमति (है या नहीं) को जाचने के लिए LLM पर भरोसे के बजाय downstream system में authorization लागू करें । पूर्ण मध्यस्थता के सिद्धांत को लागू करें ताकि extension द्वारा downstream system से किए सभी अनुरोध सुरक्षा नीतियों का पालन करें ।
 #### 8. LLM इनपुट एवं आउटपुट को Sanitise करें
-  secure coding best practices (सुरक्षित कोडिंग के लिए सर्वोत्तम कार्यों) का पालन करें, जैसे कि ASVS (Application Security Verification Standard) में OWASP की सिफारिशों को लागू करें, इनपुट Sanitisation का विशेष रूप ध्यान रखते हुए । इसी के साथ Static Application Security Testing (SAST) एवं Dynamic एवं Interactive application testing (DAST, IAST) का भी उपयोग करें ।
+  secure coding best practices (सुरक्षित कोडिंग के लिए सर्वोत्तम कार्यों) का पालन करें, जैसे कि ASVS (Application Security Verification Standard) में OWASP की सिफारिशों को लागू करें, इनपुट Sanitisation का विशेष रूप ध्यान रखते हुँए । इसी के साथ Static Application Security Testing (SAST) एवं Dynamic एवं Interactive application testing (DAST, IAST) का भी उपयोग करें ।
 
 निम्नलिखित विकल्प अत्यधिक एजेंसी लगाम के बजाए नुकसान के स्तर को सीमित कर सकते हैंं, जेसे की:
 

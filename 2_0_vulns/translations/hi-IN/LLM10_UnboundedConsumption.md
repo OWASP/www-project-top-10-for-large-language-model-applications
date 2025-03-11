@@ -42,14 +42,14 @@
 #### 8. Watermarking
   LLM आउटपुट के अनाधिकृत उपयोग को ढूँढने के लिए watermarking frameworks का प्रयोग करें ।
 #### 9. Graceful Degradation
-  System को इस प्रकार का बनाए की वह भारी लोड में भी धीरे-धीरे कार्यक्षमता को घटाँए जिससे की पूर्ण विफलता के बजाय आंशिक कार्यक्षमता (partial functionality) बनी रहे ।
+  System को इस प्रकार का बनाएँ की वह भारी लोड में भी धीरे-धीरे कार्यक्षमता को घटाँए जिससे की पूर्ण विफलता के बजाय आंशिक कार्यक्षमता (partial functionality) बनी रहे ।
 #### 10. कतारबद्ध कार्यों को सीमित करें एवं मजबूत रूप से स्केल करें
-  अलग-अलग मांगों को संभालने एवं system के consistent  प्रदर्शन के लिए Dynamic scaling एवं load balancing को शामिल करते हुए, कतारबद्ध कार्यों (queued actions) एवं कुल कार्यों (total actions) की संख्या पर प्रतिबंध लागू करें ।
+  अलग-अलग मांगों को संभालने एवं system के consistent  प्रदर्शन के लिए Dynamic scaling एवं load balancing को शामिल करते हुँए, कतारबद्ध कार्यों (queued actions) एवं कुल कार्यों (total actions) की संख्या पर प्रतिबंध लागू करें ।
 #### 11. प्रतिकूल मजबूती प्रशिक्षण
   प्रतिकूल प्रश्नों एवं extraction के प्रयासों का पता लगाने के लिए मॉडल्स को train करें ।
 #### 12. Glitch Token Filtering
-  मॉडल की context विंडो में जोड़ने से पहले ज्ञात glitch tokens एवं scan outputs की सूची बनाएँ ।
-#### 13. एक्सेस कंट्रोल
+  मॉडल की context विंडो में जोड़ने से पहले ज्ञात glitch tokens एवं scan outputs की सूची बनाएँँ ।
+#### 13. पहूँच का नियंत्रण (access control)
   LLM मॉडल repository एवं training environments तक अनाधिकृत पहूँच (unauthorized access) को सीमित करने के लिए role based access control (RBAC) एवं कम से कम विशेषाधिकार के सिद्धांत को मजबूती से लागू करें ।
 #### 14. Centralized ML Model Inventory
   उत्पादन में उपयोग किए जाने वाले मॉडल के लिए एक centralized ML model inventory या registry का उपयोग करें, उचित governance एवं access control सुनिश्चित करें ।
