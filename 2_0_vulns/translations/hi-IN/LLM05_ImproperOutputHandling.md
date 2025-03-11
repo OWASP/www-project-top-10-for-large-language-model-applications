@@ -3,13 +3,13 @@
 ### विवरण
 
 इसके अंतर्गत अपर्याप्त सत्यापन (validation), स्वच्छता (sanitization), एवं LLM के आउटपुट को विभिन्न क्षेत्रों (components एवं systems) तक पहुँचने से पहले ही संभालना शामिल हैं । चूंकि LLM से बनी सामग्री को Prompt के इनपुट से नियंत्रित कर सकते हैं, इसलिए यह users को कुछ अतिरिक्त कार्यक्षमता (additional functionality) तक अप्रत्यक्ष पहूँच (indirect access) प्रदान करने के समान हैं ।
-अनुचित प्रकार से आउटपुट को संभालना की प्रक्रिया, Overreliance से अलग हैं । इसमे आउटपुट को विभिन्न क्षेत्रों (components एवं systems) तक पहुँचने से पहले ही संभाल जाता हैंं, वही Overreliance LLM आउटपुट की सटीकता (accuracy) एवं उपयुक्तता (appropriateness) पर ज्यादा निर्भरता से जुड़ी चिंताओं पर ध्यान केंद्रित करता हैं ।
+अनुचित प्रकार से आउटपुट को संभालना की प्रक्रिया, Overreliance से अलग हैं । इसमें आउटपुट को विभिन्न क्षेत्रों (components एवं systems) तक पहुँचने से पहले ही संभाल जाता हैंं, वही Overreliance LLM आउटपुट की सटीकता (accuracy) एवं उपयुक्तता (appropriateness) पर ज्यादा निर्भरता से जुड़ी चिंताओं पर ध्यान केंद्रित करता हैं ।
 इसकी Vulnerability के exploition (फायदा उठान) से web browsers पर XSS एवं CSRF, SSRF, privilege escalation, या backend systems पर remote code execution जेसे खतरे पैदा 
 हो सकते हैंं ।
 निम्नलिखित स्थितियां में इन Vulnerabilities का प्रभाव बढ़ सकता हैंं:
 - Application द्वारा LLM को end users की जरूरत से ज्यादा विशेषाधिकारों दे दिए जाते हैं, जिससे की privileges escalation या remote code execution जेसे जोखिम पैदा हो जाते हैं ।
-- एक हमलावर (mallicious attacker) application पर अप्रत्यक्ष Prompt इंजेक्शन हमले से user के environment में विशेषाधिकार वाली पहूँच (privileged access) प्राप्त कर सकता हैं ।
-- Third-party extentions, इनपुटों को पर्याप्त तरह से validate (मान्यता के लिए परखना) नहीं करते ।
+- एक हमलावर (mallicious attacker) application पर अप्रत्यक्ष Prompt इंजेक्शन हमलें से user के environment में विशेषाधिकार वाली पहूँच (privileged access) प्राप्त कर सकता हैं ।
+- Third-party extentions, इनपुटों को पर्याप्त तरह से validate (मान्यता के लिए परखना) नहीं करतें ।
 - विभिन्न संदर्भों में उचित आउटपुट encoding की कमी (जैसे, HTML, JavaScript, SQL) ।
 - LLM आउटपुट की अपर्याप्त monitoring (निगरानी) एवं logging (जाँच के लिए सहेजना) होना ।
 - LLM उपयोग के लिए rate limiting या anomaly detection की अनुपस्थिति होना ।
@@ -20,7 +20,7 @@
 2. LLM से JavaScript तथा Markdown को बनाकर user को वापस किया जाता हैं । इसके पश्चात कोड को browser द्वारा interpret (समझना) किया जाता हैं, जिसके परिणामस्वरूप XSS होता हैं ।
 3. LLM द्वारा उत्पन्न SQL queries को बिना उचित parameterization (विभिन्न parameters की जाँच) के ही execute कर दिया जाता हैं, जिससे SQL इंजेक्शन होता हैं ।
 4. उचित sanitization के बिना ही LLM आउटपुट का उपयोग file paths को बनाने के लिए करने से path traversal vulnerabilities आ सकती हैंं ।
-5. बिना उचित escaping के email templates में LLM से बनी सामग्री के उपयोग से फ़िशिंग हमले हो सकते हैं ।
+5. बिना उचित escaping के email templates में LLM से बनी सामग्री के उपयोग से फ़िशिंग हमलें हो सकते हैं ।
 
 ### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
@@ -32,7 +32,7 @@
 6. LLM से बनी सामग्री से XSS हमलों के जोखिम को कम करने के लिए सख्त सामग्री सुरक्षा नीतियों (Content Security Policies (CSP)) को लागू करें ।
 7. LLM आउटपुट में असामान्य पैटर्न का पता लगाने के लिए robust logging एवं monitoring systems को लागू करें, जो exploit (फायदा उठाना) के प्रयासों को चिह्नित कर सकते हैं ।
 
-### उदाहरण स्वरूप हमले के परिदृश्य
+### उदाहरण स्वरूप हमलें के परिदृश्य
 
 #### परिद्रश्य 1
   एक application, चैटबॉट की प्रतिक्रियाएं के लिए LLM extension का उपयोग करती हैं । यह extension किसी अन्य विशेषाधिकार वाले LLM के लिए कई administrative functions भी प्रदान करता हैं । जब सामान्य प्रयोग वाला LLM सीधे अपनी प्रतिक्रिया, extension को बिना किसी आउटपुट validation के देता हैंं, वह extension को रखरखाव के लिए shut down कर देता हैं ।
