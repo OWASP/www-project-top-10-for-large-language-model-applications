@@ -1,93 +1,110 @@
-## LLM01:2025 Prompt Injection
+## LLM01:2025 Tấn công tiêm nhắc lệnh
 
-### Description
+### Mô tả
 
-A Prompt Injection Vulnerability occurs when user prompts alter the LLM’s behavior or output in unintended ways. These inputs can affect the model even if they are imperceptible to humans, therefore prompt injections do not need to be human-visible/readable, as long as the content is parsed by the model.
+Lỗ hổng Tấn công tiêm nhắc lệnh (Prompt Injection Vulnerability) xảy ra khi đầu vào của người dùng thay đổi hành vi hoặc đầu ra của mô hình ngôn ngữ lớn (LLM) theo cách không mong muốn. Những đầu vào này có thể ảnh hưởng đến mô hình ngay cả khi chúng không thể nhận biết bằng mắt thường, do đó nên tấn công tiêm nhắc lệnh không nhất thiết phải hiển thị hay đọc được bởi con người, miễn là nội dung được mô hình phân tích.
 
-Prompt Injection vulnerabilities exist in how models process prompts, and how input may force the model to incorrectly pass prompt data to other parts of the model, potentially causing them to violate guidelines, generate harmful content, enable unauthorized access, or influence critical decisions. While techniques like Retrieval Augmented Generation (RAG) and fine-tuning aim to make LLM outputs more relevant and accurate, research shows that they do not fully mitigate prompt injection vulnerabilities.
+Các lỗ hổng Tiêm nhắc lệnh tồn tại do cách mô hình xử lý lời nhắc (prompt) và cách truyền đầu vào có thể buộc mô hình truyền dữ liệu lời nhắc không chính xác đến các phần khác của mô hình, từ đó có khả năng khiến mô hình vi phạm nguyên tắc, tạo ra nội dung độc hại, cho phép truy cập trái phép hoặc ảnh hưởng đến các quyết định quan trọng. Mặc dù các kỹ thuật như Tạo tăng cường truy xuất (Retrieval-Augmented Generation - RAG) và tinh chỉnh (fine-tuning) nhằm mục đích làm cho đầu ra của mô hình ngôn ngữ lớn (LLM) trở nên phù hợp và chính xác hơn, nghiên cứu cho thấy rằng chúng không thể hoàn toàn khắc phục các lỗ hổng tiêm nhắc lệnh.
 
-While prompt injection and jailbreaking are related concepts in LLM security, they are often used interchangeably. Prompt injection involves manipulating model responses through specific inputs to alter its behavior, which can include bypassing safety measures. Jailbreaking is a form of prompt injection where the attacker provides inputs that cause the model to disregard its safety protocols entirely. Developers can build safeguards into system prompts and input handling to help mitigate prompt injection attacks, but effective prevention of jailbreaking requires ongoing updates to the model's training and safety mechanisms.
+Tấn công tiêm nhắc lệnh và bẻ khóa (jailbreak) là hai khái niệm liên quan trong bảo mật LLM và thường bị sử dụng thay thế nhau. Tấn công tiêm nhắc lệnh liên quan đến việc thao túng phản hồi của mô hình bằng đầu vào cụ thể để thay đổi hành vi của nó, bao gồm cả việc vượt qua các biện pháp an toàn. Bẻ khóa là một dạng Tấn công tiêm nhắc lệnh trong đó kẻ tấn công cung cấp đầu vào khiến mô hình bỏ qua hoàn toàn các giao thức an toàn. Các nhà phát triển có thể xây dựng cơ chế bảo vệ thông qua hệ thống prompt và kiểm soát đầu vào, nhưng để ngăn chặn hiệu quả việc bẻ khóa, cần cập nhật liên tục dữ liệu huấn luyện và cơ chế bảo mật của mô hình.
 
-### Types of Prompt Injection Vulnerabilities
+(Note: trong tài liệu của OWASP họ sử dụng từ jailbreak, tuy nhiên trong ngữ cảnh tiếng Việt có thể hiểu như sau:
+"Jailbreak" có thể được dịch theo nhiều cách tùy vào ngữ cảnh:
+- Bẻ khóa – Thường dùng trong ngữ cảnh thiết bị di động, như "bẻ khóa iPhone" để chỉ việc vượt qua các hạn chế của hệ điều hành.
+- Vượt rào bảo mật – Thường dùng khi nói về việc khai thác lỗ hổng trong mô hình AI để vượt qua các hạn chế bảo mật.
+- Phá vỡ giới hạn – Dùng trong ngữ cảnh bypass các kiểm soát hoặc cơ chế an toàn trong mô hình ngôn ngữ lớn (LLM).
+- Tấn công vượt kiểm soát – Dùng trong AI Security khi chỉ các kỹ thuật buộc mô hình LLM tạo ra đầu ra không mong muốn.)
 
-#### Direct Prompt Injections
-  Direct prompt injections occur when a user's prompt input directly alters the behavior of the model in unintended or unexpected ways. The input can be either intentional (i.e., a malicious actor deliberately crafting a prompt to exploit the model) or unintentional (i.e., a user inadvertently providing input that triggers unexpected behavior).
+### Các dạng tấn công tiêm nhắc lệnh
 
-#### Indirect Prompt Injections
-  Indirect prompt injections occur when an LLM accepts input from external sources, such as websites or files. The content may have in the external content data that when interpreted by the model, alters the behavior of the model in unintended or unexpected ways. Like direct injections, indirect injections can be either intentional or unintentional.
+#### Tấn công tiêm nhắc lệnh trực tiếp
+Tấn công tiêm nhắc lệnh trực tiếp xảy ra khi đầu vào của người dùng trực tiếp thay đổi hành vi của mô hình theo những cách ngoài ý muốn hoặc không mong đợi. Đầu vào này có thể là:
 
-The severity and nature of the impact of a successful prompt injection attack can vary greatly and are largely dependent on both the business context the model operates in, and the agency with which the model is architected. Generally, however, prompt injection can lead to unintended outcomes, including but not limited to:
+- Cố ý: Kẻ tấn công cố tình tạo ra một lời nhắc nhằm khai thác lỗ hổng của mô hình.
+- Vô ý: Người dùng vô tình nhập một lời nhắc dẫn đến hành vi không mong đợi.
 
-- Disclosure of sensitive information
-- Revealing sensitive information about AI system infrastructure or system prompts
-- Content manipulation leading to incorrect or biased outputs
-- Providing unauthorized access to functions available to the LLM
-- Executing arbitrary commands in connected systems
-- Manipulating critical decision-making processes
+#### Tấn công tiêm nhắc lệnh gián tiếp
+Tấn công tiêm nhắc lệnh gián tiếp xảy ra khi một mô hình ngôn ngữ lớn (LLM) nhận đầu vào từ các nguồn bên ngoài, chẳng hạn như trang web hoặc tệp tin. Nội dung từ các nguồn này có thể chứa dữ liệu mà khi mô hình diễn giải, nó sẽ làm thay đổi hành vi của mô hình theo những cách ngoài ý muốn hoặc không mong đợi. Tương tự như tấn công trực tiếp, tấn công gián tiếp cũng có thể là:
 
-The rise of multimodal AI, which processes multiple data types simultaneously, introduces unique prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
+- Cố ý: Nội dung bên ngoài được thiết kế để khai thác mô hình.
+- Vô ý: Nội dung vô tình chứa thông tin gây ra thay đổi không mong muốn trong mô hình.
 
-### Prevention and Mitigation Strategies
+Mức độ nghiêm trọng và bản chất của tác động từ một cuộc tấn công tiêm nhắc lệnh thành công có thể khác nhau đáng kể, tùy thuộc vào bối cảnh kinh doanh mà mô hình hoạt động cũng như cách mô hình được thiết kế. Tuy nhiên, nhìn chung, tấn công tiêm nhắc lệnh có thể dẫn đến những hậu quả ngoài ý muốn, bao gồm nhưng không giới hạn:
 
-Prompt injection vulnerabilities are possible due to the nature of generative AI. Given the stochastic influence at the heart of the way models work, it is unclear if there are fool-proof methods of prevention for prompt injection. However, the following measures can mitigate the impact of prompt injections:
+- Rò rỉ thông tin nhạy cảm
+- Tiết lộ thông tin quan trọng về cơ sở hạ tầng hệ thống AI hoặc các lời nhắc hệ thống
+- Thao túng nội dung, dẫn đến đầu ra sai lệch hoặc thiên vị
+- Cấp quyền truy cập trái phép vào các chức năng của mô hình ngôn ngữ lớn (LLM)
+- Thực thi các lệnh tùy ý trên các hệ thống được kết nối
+- Gây ảnh hưởng đến các quá trình ra quyết định quan trọng
 
-#### 1. Constrain model behavior
-  Provide specific instructions about the model's role, capabilities, and limitations within the system prompt. Enforce strict context adherence, limit responses to specific tasks or topics, and instruct the model to ignore attempts to modify core instructions.
-#### 2. Define and validate expected output formats
-  Specify clear output formats, request detailed reasoning and source citations, and use deterministic code to validate adherence to these formats.
-#### 3. Implement input and output filtering
-  Define sensitive categories and construct rules for identifying and handling such content. Apply semantic filters and use string-checking to scan for non-allowed content. Evaluate responses using the RAG Triad: Assess context relevance, groundedness, and question/answer relevance to identify potentially malicious outputs.
-#### 4. Enforce privilege control and least privilege access
-  Provide the application with its own API tokens for extensible functionality, and handle these functions in code rather than providing them to the model. Restrict the model's access privileges to the minimum necessary for its intended operations.
-#### 5. Require human approval for high-risk actions
-  Implement human-in-the-loop controls for privileged operations to prevent unauthorized actions.
-#### 6. Segregate and identify external content
-  Separate and clearly denote untrusted content to limit its influence on user prompts.
-#### 7. Conduct adversarial testing and attack simulations
-  Perform regular penetration testing and breach simulations, treating the model as an untrusted user to test the effectiveness of trust boundaries and access controls.
+Sự phát triển của AI đa phương thức (multimodal AI), vốn xử lý đồng thời nhiều loại dữ liệu khác nhau, cũng làm gia tăng rủi ro của tấn công tiêm nhắc lệnh. Kẻ tấn công có thể khai thác sự tương tác giữa các chế độ dữ liệu, chẳng hạn như ẩn các hướng dẫn độc hại trong hình ảnh đi kèm với văn bản vô hại. Độ phức tạp của các hệ thống này mở rộng bề mặt tấn công, khiến mô hình đa phương thức có thể dễ bị tấn công chéo giữa các chế độ dữ liệu, điều mà các kỹ thuật bảo mật hiện tại khó phát hiện và ngăn chặn. Do đó, phát triển các biện pháp bảo vệ chuyên biệt cho AI đa phương thức là một lĩnh vực quan trọng cần được nghiên cứu và cải tiến thêm.
 
-### Example Attack Scenarios
+### Chiến lược Phòng chống và Giảm thiểu
 
-#### Scenario #1: Direct Injection
-  An attacker injects a prompt into a customer support chatbot, instructing it to ignore previous guidelines, query private data stores, and send emails, leading to unauthorized access and privilege escalation.
-#### Scenario #2: Indirect Injection
-  A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, leading to exfiltration of the the private conversation.
-#### Scenario #3: Unintentional Injection
-  A company includes an instruction in a job description to identify AI-generated applications. An applicant, unaware of this instruction, uses an LLM to optimize their resume, inadvertently triggering the AI detection.
-#### Scenario #4: Intentional Model Influence
-  An attacker modifies a document in a repository used by a Retrieval-Augmented Generation (RAG) application. When a user's query returns the modified content, the malicious instructions alter the LLM's output, generating misleading results.
-#### Scenario #5: Code Injection
-  An attacker exploits a vulnerability (CVE-2024-5184) in an LLM-powered email assistant to inject malicious prompts, allowing access to sensitive information and manipulation of email content.
-#### Scenario #6: Payload Splitting
-  An attacker uploads a resume with split malicious prompts. When an LLM is used to evaluate the candidate, the combined prompts manipulate the model's response, resulting in a positive recommendation despite the actual resume contents.
-#### Scenario #7: Multimodal Injection
-  An attacker embeds a malicious prompt within an image that accompanies benign text. When a multimodal AI processes the image and text concurrently, the hidden prompt alters the model's behavior, potentially leading to unauthorized actions or disclosure of sensitive information.
-#### Scenario #8: Adversarial Suffix
-  An attacker appends a seemingly meaningless string of characters to a prompt, which influences the LLM's output in a malicious way, bypassing safety measures.
-#### Scenario #9: Multilingual/Obfuscated Attack
-  An attacker uses multiple languages or encodes malicious instructions (e.g., using Base64 or emojis) to evade filters and manipulate the LLM's behavior.
+Các lỗ hổng tấn công tiêm nhắc lệnh tồn tại do bản chất của AI tạo sinh. Do ảnh hưởng ngẫu nhiên trong cách các mô hình hoạt động, chưa có phương pháp nào được chứng minh là có thể ngăn chặn hoàn toàn tấn công tiêm nhắc lệnh. Tuy nhiên, các biện pháp sau có thể giúp giảm thiểu tác động của loại tấn công này:
 
-### Reference Links
+#### 1. Hạn chế hành vi của mô hình
+Cung cấp hướng dẫn cụ thể về vai trò, khả năng và giới hạn của mô hình trong lời nhắc hệ thống. Buộc mô hình tuân thủ chặt chẽ ngữ cảnh, giới hạn phản hồi trong các nhiệm vụ hoặc chủ đề cụ thể, đồng thời hướng dẫn mô hình bỏ qua các yêu cầu thay đổi hướng dẫn cốt lõi.
+#### 2. Xác định và xác thực định dạng đầu ra mong đợi
+Xác định rõ ràng định dạng đầu ra, yêu cầu mô hình cung cấp lập luận chi tiết và trích dẫn nguồn gốc. Sử dụng mã xác định (deterministic code) để kiểm tra việc tuân thủ các định dạng này.
+#### 3. Lọc đầu vào và đầu ra
+Xác định các danh mục nội dung nhạy cảm và thiết lập quy tắc để nhận diện và xử lý những nội dung đó. Áp dụng bộ lọc ngữ nghĩa và kiểm tra chuỗi văn bản để phát hiện nội dung không được phép. Đánh giá phản hồi bằng Tam giác RAG:
 
-1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
-2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
-3. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Arxiv**
-4. [Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1) **Research Square**
-5. [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499) **Cornell University**
-6. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf) **Kai Greshake**
-8. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Cornell University**
-9. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
-10. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
-11. [Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
-12. [2407.07403 A Survey of Attacks on Large Vision-Language Models: Resources, Advances, and Future Trends (arxiv.org)](https://arxiv.org/abs/2407.07403)
-13. [Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks](https://ieeexplore.ieee.org/document/10579515)
-14. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
-15. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
+Đánh giá mức độ phù hợp của ngữ cảnh,
+Kiểm tra tính có căn cứ,
+Xác minh tính liên quan của câu hỏi và câu trả lời để phát hiện các đầu ra tiềm ẩn nguy hiểm.
+#### 4. Kiểm soát quyền hạn và áp dụng nguyên tắc ít quyền nhất
+Cung cấp cho ứng dụng các API token riêng để mở rộng chức năng, thay vì cấp trực tiếp cho mô hình. Xử lý các chức năng quan trọng trong mã nguồn thay vì để mô hình đảm nhiệm. Hạn chế quyền truy cập của mô hình đến mức tối thiểu cần thiết cho hoạt động dự kiến.
+#### 5. Yêu cầu sự chấp thuận của con người đối với các hành động có rủi ro cao
+Triển khai kiểm soát con người trong vòng lặp (human-in-the-loop) đối với các thao tác đặc quyền nhằm ngăn chặn hành động trái phép.
+#### 6. Phân tách và nhận diện nội dung bên ngoài
+Tách biệt và đánh dấu rõ ràng nội dung không đáng tin cậy để hạn chế ảnh hưởng của nó đối với lời nhắc của người dùng.
+#### 7. Kiểm tra tấn công và mô phỏng vi phạm
+Thực hiện kiểm tra xâm nhập (penetration testing) và mô phỏng vi phạm (breach simulations) thường xuyên, coi mô hình như một người dùng không đáng tin cậy để kiểm tra hiệu quả của các ranh giới bảo mật và kiểm soát truy cập.
 
-### Related Frameworks and Taxonomies
+### Các Kịch Bản Tấn Công Mẫu
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+#### Kịch bản #1: Tiêm nhắc lệnh trực tiếp
+Kẻ tấn công chèn một nhắc lệnh vào chatbot hỗ trợ khách hàng, yêu cầu nó bỏ qua hướng dẫn trước đó, truy vấn kho dữ liệu riêng tư và gửi thư điện tử, dẫn đến truy cập trái phép và leo thang đặc quyền.
+#### Kịch bản #2: Tiêm nhắc lệnh gián tiếp
+Người dùng sử dụng LLM để tóm tắt một trang web có chứa hướng dẫn ẩn. Khi LLM xử lý trang này, nó chèn một hình ảnh liên kết đến URL, làm rò rỉ nội dung cuộc trò chuyện riêng tư.
+#### Kịch bản #3: Tiêm nhắc lệnh không chủ ý
+Một công ty thêm một hướng dẫn vào mô tả công việc để nhận diện đơn ứng tuyển do AI tạo ra. Một ứng viên, không biết điều này, sử dụng LLM để tối ưu hóa CV của mình, vô tình kích hoạt cơ chế phát hiện AI.
+#### Kịch bản #4: Tác động có chủ đích đến mô hình
+Kẻ tấn công chỉnh sửa tài liệu trong kho dữ liệu mà ứng dụng RAG sử dụng. Khi người dùng truy vấn, nội dung đã bị chỉnh sửa làm thay đổi đầu ra của LLM, dẫn đến kết quả sai lệch hoặc gây hiểu nhầm.
+#### Kịch bản #5: Tiêm mã độc
+Kẻ tấn công khai thác lỗ hổng bảo mật (CVE-2024-5184) trong trợ lý thư điện tử tích hợp LLM để chèn nhắc lệnh độc hại, cho phép truy cập thông tin nhạy cảm và thao túng nội dung thư điện tử.
+#### Kịch bản #6: Chia nhỏ tải trọng (Payload Splitting)
+Kẻ tấn công tải lên một CV có chứa các nhắc lệnh độc hại được chia nhỏ. Khi LLM đánh giá ứng viên, các nhắc lệnh này kết hợp lại, khiến mô hình đưa ra đánh giá tích cực không chính xác, dù nội dung thực tế của CV không đạt yêu cầu.
+#### Kịch bản #7: Tiêm nhắc lệnh đa phương thức
+Kẻ tấn công nhúng nhắc lệnh độc hại vào hình ảnh kèm theo văn bản hợp lệ. Khi AI đa phương thức xử lý đồng thời hình ảnh và văn bản, nhắc lệnh ẩn này thay đổi hành vi của mô hình, có thể dẫn đến hành động trái phép hoặc rò rỉ thông tin nhạy cảm.
+#### Kịch bản #8: Hậu tố đối kháng (Adversarial Suffix)
+Kẻ tấn công thêm một chuỗi ký tự tưởng như vô nghĩa vào cuối nhắc lệnh, nhưng nó lại tác động đến đầu ra của LLM theo cách độc hại, vượt qua các biện pháp an toàn.
+#### Kịch bản #9: Tấn công đa ngôn ngữ/giấu mã (Multilingual/Obfuscated Attack)
+Kẻ tấn công sử dụng nhiều ngôn ngữ hoặc mã hóa nhắc lệnh độc hại (ví dụ: Base64, emoji) để né tránh bộ lọc và thao túng hành vi của LLM.
 
-- [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
-- [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
-- [AML.T0054 - LLM Jailbreak Injection: Direct](https://atlas.mitre.org/techniques/AML.T0054) **MITRE ATLAS**
+### Liên kết tham khảo
+
+1. [Lỗ hổng Plugin ChatGPT - Trò chuyện với Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
+2. [Giả Mạo Yêu Cầu Giữa Các Plugin của ChatGPT và Tấn Công Tiêm Nhắc Lệnh](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
+3. [Không Như Những Gì Bạn Đăng Ký: Xâm Phạm Ứng Dụng Tích Hợp LLM Thực Tế Bằng Tấn Công Tiêm Nhắc Lệnh Gián Tiếp](https://arxiv.org/pdf/2302.12173.pdf) **Arxiv**
+4. [Bảo vệ ChatGPT khỏi Tấn Công Jailbreak bằng Cơ Chế Tự Nhắc Nhở](https://www.researchsquare.com/article/rs-2873090/v1) **Research Square**
+5. [Tấn công Tiêm Nhắc Lệnh vào Ứng Dụng Tích Hợp LLM](https://arxiv.org/abs/2306.05499) **Đại học Cornell**
+6. [Inject My PDF: Tấn công Tiêm Nhắc Lệnh vào Sơ Yếu Lý Lịch của Bạn](https://kai-greshake.de/posts/inject-my-pdf) **Kai Greshake**
+8. [Không như những gì bạn đã đăng ký: Xâm phạm các ứng dụng tích hợp LLM trong thực tế bằng Tấn công Tiêm Nhắc Lệnh Gián Tiếp](https://arxiv.org/pdf/2302.12173.pdf) **Đại học Cornell**
+9. [Mô hình hóa mối đe dọa cho các ứng dụng LLM](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
+10. [Giảm tác động của các cuộc tấn công tiêm nhắc lệnh thông qua thiết kế](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
+11. [Học máy đối kháng: Phân loại và thuật ngữ về các cuộc tấn công và biện pháp giảm thiểu (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
+12. [2407.07403 Khảo sát về các cuộc tấn công vào mô hình Ngôn ngữ-Thị giác lớn: Nguồn lực, tiến bộ và xu hướng tương lai (arxiv.org)](https://arxiv.org/abs/2407.07403)
+13. [Khai thác hành vi lập trình của LLMs: Sử dụng kép thông qua các cuộc tấn công bảo mật tiêu chuẩn](https://ieeexplore.ieee.org/document/10579515)
+14. [Các cuộc tấn công đối kháng phổ quát và có thể chuyển giao trên các mô hình ngôn ngữ được căn chỉnh (arxiv.org)](https://arxiv.org/abs/2307.15043)
+15. [Từ ChatGPT đến ThreatGPT: Tác động của AI tạo sinh đối với an ninh mạng và quyền riêng tư (arxiv.org)](https://arxiv.org/abs/2307.00691)
+
+### Các Khung Phân Loại và Thuật Ngữ Liên Quan
+
+Tham khảo phần này để có thông tin toàn diện, các kịch bản và chiến lược liên quan đến triển khai hạ tầng, kiểm soát môi trường áp dụng và các phương pháp tốt nhất khác.
+
+- [AML.T0051.000 - Tiêm nhắc lệnh LLM: Trực tiếp](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
+- [AML.T0051.001 - Tiêm nhắc lệnh LLM: Gián tiếp](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
+- [AML.T0054 - Tiêm nhắc lệnh vượt rào LLM: Trực tiếp](https://atlas.mitre.org/techniques/AML.T0054) **MITRE ATLAS**
