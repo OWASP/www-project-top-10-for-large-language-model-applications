@@ -6,11 +6,11 @@
 
 डेटा poisoning LLM जीवनचक्र के विभिन्न चरणों को लक्षित कर साकता हैं, जिसमें pre-training (सामान्य डेटा से सीखना), fine-tuning (विशिष्ट कार्यों के लिए मॉडल को अनुकूलित करना), embedding (texts को संख्यात्मक वैक्टर में परिवर्तित करना), एवं transfer learning (एक नए कार्य पर प्रशिक्षित मॉडल को बार-बार प्रयोग में लेना) । इन चरणों को समझने से यह पहचानने में मदद मिलती हैं कि vulnerabilities कहाँं से उत्पन्न हो सकती हैंं । डेटा poisoning को एक integrity (अखंडता) हमला माना जाता हैं क्योंकि प्रशिक्षण डेटा के साथ छेड़छाड़ करने से सटीक पूर्वानुमान लगाने की मॉडल की क्षमता प्रभावित होती हैं । बाहरी डेटा स्रोतों के साथ जोखिम अधिक होता हैंं, क्योंकि उसमे unverified या दुर्भावनापूर्ण (malicious) सामग्री हो सकती हैं ।
 
-इसके अलावा, shared repository या open-source platforms के माध्यम से वितरित किए गए मॉडल डेटा poisoning से अधिक बड़े जोखिम पैदा कर सकते हैंं, जैसे कि malicious pickling जैसी तकनीकों के माध्यम से malware की embedded, जो कि मॉडल के लोड होने के समय उसमे हानिकारक कोड को execute कर सकती हैं । इसके तरह poisoning, backdoor के implementation को भी अनुमति दे सकती हैं । इस तरह के backdoors मॉडल के व्यवहार में तब तक कुछ नहीं करते, जब तक कि एक निश्चित trigger इसे बदलने का संकेत नहीं देता या hit नहीं होता । यह इस तरह के परिवर्तनों के लिये परीक्षण एवं पता लगाने की क्षमता को कठिन बना सकता हैं, जो की मॉडल को sleeper agent बना देता हैं ।
+इसके अलावा, shared repository या open-source platforms के माध्यम से वितरित किए गए मॉडल डेटा poisoning से अधिक बड़े जोखिम पैदा कर सकते हैंं, जैसें कि malicious pickling जैसी तकनीकों के माध्यम से malware की embedded, जो कि मॉडल के लोड होने के समय उसमे हानिकारक कोड को execute कर सकती हैं । इसके तरह poisoning, backdoor के implementation को भी अनुमति दे सकती हैं । इस तरह के backdoors मॉडल के व्यवहार में तब तक कुछ नहीं करते, जब तक कि एक निश्चित trigger इसे बदलने का संकेत नहीं देता या hit नहीं होता । यह इस तरह के परिवर्तनों के लिये परीक्षण एवं पता लगाने की क्षमता को कठिन बना सकता हैं, जो की मॉडल को sleeper agent बना देता हैं ।
 
 ### Vulnerability के सामान्य उदाहरण
 
-1. दुर्भावनापूर्ण व्यक्ति प्रशिक्षण के दौरान हानिकारक डेटा डालते हैंं, जिससे पक्षपाती आउटपुट आता हैं । इसके लिए "Split-View Data Poisoning" या "Frontrunning Poisoning" जैसे तकनीकें के प्रयोग से मॉडल के प्रशिक्षण चक्र को exploit (फायदा उठाना) किया जाता हैंं ।
+1. दुर्भावनापूर्ण व्यक्ति प्रशिक्षण के दौरान हानिकारक डेटा डालते हैंं, जिससे पक्षपाती आउटपुट आता हैं । इसके लिए "Split-View Data Poisoning" या "Frontrunning Poisoning" जैसें तकनीकें के प्रयोग से मॉडल के प्रशिक्षण चक्र को exploit (फायदा उठाना) किया जाता हैंं ।
   (संदर्भित link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
   (संदर्भित link: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
 2. हमलावरों द्वारा हानिकारक सामग्री को सीधे प्रशिक्षण प्रक्रिया में inject (डालना) करके मॉडल की आउटपुट गुणवत्ता से compromise किया जा सकता हैंं ।
@@ -20,14 +20,14 @@
 
 ### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
-1. डेटा की उत्पत्ति एवं परिवरतानों पर OWASP Cyclonedx या ML-BOM जेसे tools का प्रयोग कर नज़र राखे, एवं इसके साथ tools जैसे की [Dyana] (https://github.com/dreadnode/dyana) का भी फ़ायदा उठा साकते हे, जिससे की third-party software का dynamic विश्लेषण कर सकते हैंं । मॉडल के सभी development चरणों के दौरान डेटा वैधता (legitimacy) को सत्यापित (Verify) करें ।
+1. डेटा की उत्पत्ति एवं परिवरतानों पर OWASP Cyclonedx या ML-BOM जेसे tools का प्रयोग कर नज़र राखे, एवं इसके साथ tools जैसें की [Dyana] (https://github.com/dreadnode/dyana) का भी फ़ायदा उठा साकते हे, जिससे की third-party software का dynamic विश्लेषण कर सकते हैंं । मॉडल के सभी development चरणों के दौरान डेटा वैधता (legitimacy) को सत्यापित (Verify) करें ।
 2. डेटा विक्रेताओं का कठोरता से मूल्यांकन करें, एवं poisoning का पता लगाने के लिए विश्वसनीय स्रोतों से मॉडल आउटपुट का मिलन करें ।
 3. मॉडल पर सख्त sandboxing लगाए, ताकी वह अस्वीकृत डेटा स्रोतों की पहुँच से दूर हो सकें । प्रतिकूल (adversarial) डेटा को फ़िल्टर करने के लिए anomaly detection की तकनीक का उपयोग करें ।
 4. विशिष्ट डेटासेट के प्रयोग से Fine-tuning करके मॉडल को खास कार्यक्षमताओ के लिए तैयार करें । यह खास लक्ष्यों के लिये अधिक सटीक आउटपुट पाने में मदद करता हैं ।
 5. मॉडल को unintended डेटा स्रोतों तक पहुँंचने से रोकने के लिए पर्याप्त infrastructure सुनिश्चित करें ।
 6. डेटासेट में परिवर्तन पर नज़र रखने एवं हेरफेर का पता लगाने के लिए data version control (DVC) का उपयोग करें । मॉडल अखंडता बनाएँ रखने के लिए Versioning बहुत महत्वपूर्ण हैं ।
 7. Vector database में user द्वारा दी गई जानकारी को संग्रहीत करें, जिससे की पूरे मॉडल को फिर से प्रशिक्षण किए बिना ही उसमे सुधार लिए जा सकेगे ।
-8. Red team campaigns एवं adversarial तकनीकों के साथ मॉडल की मजबूती (robustness) का प्रशिक्षण करें, जैसे कि federated learning का प्रयोग डेटा में अव्यवस्थाएं (perturbations) को कम किया जा सकता हैंं ।
+8. Red team campaigns एवं adversarial तकनीकों के साथ मॉडल की मजबूती (robustness) का प्रशिक्षण करें, जैसें कि federated learning का प्रयोग डेटा में अव्यवस्थाएं (perturbations) को कम किया जा सकता हैंं ।
 9. प्रशिक्षण के दौरान की हानि की निगरानी करें एवं poisoning की पहचान के लिए मॉडल के व्यवहार का विश्लेषण करें । विसंगतिपूर्ण (anomalous) आउटपुट का पता लगाने के लिए thresholds का उपयोग करें ।
 10. परामर्श पाने के दौरान hallucinations के जोखिम को कम करने के लिए Retrieval-Augmented Generation (RAG) एवं grounding तकनीकों को प्रयोग करें ।
 

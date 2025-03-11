@@ -24,7 +24,7 @@
   - एक extension को विकास चरण (development phase) के दौरान, बेहतर विकल्प की आड़ में जाँच कर हटाने के पश्चात भी, मूल plugin LLM एजेंट के लिए उपलब्ध हैं ।
   - एक open-ended कार्यक्षमता वाला LLM plugin बाहर के commands के इनपुट निर्देशों को ठीक से फ़िल्टर करने में विफल रहता हैं, जो की  application के इच्छित संचालन के लिए आवश्यक हैं । उदाहरण के लिए, एक विशिष्ट shell command चलाने के लिए बना extension अन्य shell commands के execution को रोकने में विफल रहता हैं ।
 #### 2. अत्यधिक अनुमतियाँ (excessive permissions)
-  - एक LLM extension के पास downstream systems तक पहुँच हैं जो की application के लिए आवश्यक नहीं हैं । उदाहरण के लिए, डेटा को पढ़ने वाला extension एक identity का उपयोग करके database server से connect करता हैं, जिसमें न केवल SELECT, बल्कि अनुमतियों जैसे की UPDATE एवं DELETE भी शामिल हैंं ।
+  - एक LLM extension के पास downstream systems तक पहुँच हैं जो की application के लिए आवश्यक नहीं हैं । उदाहरण के लिए, डेटा को पढ़ने वाला extension एक identity का उपयोग करके database server से connect करता हैं, जिसमें न केवल SELECT, बल्कि अनुमतियों जैसें की UPDATE एवं DELETE भी शामिल हैंं ।
   - एक user के व्यक्तिगत कार्यों के लिए बना LLM extensio, एक उच्च-विशेषाधिकार प्राप्त पहचान (generic high-privileged identity) के साथ downstream system का उपयोग करता हैं । उदाहरण के लिए, एक user के दस्तावेज़ स्टोर को पढ़ने के लिए बना extension एक विशेषाधिकार (privileged) प्राप्त account के साथ दस्तावेज़ repository से connect होता हैं, जिसमें अन्य सभी users से संबंधित files भी मौजूद हैं ।
 #### 3. अत्यधिक स्वायत्तता (excessive autonomy)
   एक LLM आधारित application या extension स्वतंत्र रूप से उच्च-प्रभाव कार्यों को जाँच एवं मंज़ूरी देने में विफल रहता हैं । उदाहरण के लिए एक extension जो की user के दस्तावेजों को delete करने के लिए हैं, वह user से पुष्टि के बिना ही deletions कर देता हैं ।
@@ -36,7 +36,7 @@
 #### 1. Extensions का प्रयोग कम करें
   LLM  agents के लिये approve (अनुमति मिलना) हुँए extension को न्यूनतम आवश्यक तक सीमित करें । उदाहरण के लिए, यदि LLM पर आधारित system को URL की सामग्री को fetch करने की क्षमता की आवश्यकता नहीं हैं, तो इस तरह के extension को LLM एजेंट में ना डाले ।
 #### 2. Extensions की कार्यक्षमता कम करें
-  LLM extension में प्रयोग हुँए functions को न्यूनतम आवश्यक तक सीमित करें । उदाहरण के लिए, एक extension जिसकी की emails का सारांश करने के लिए, user के मेलबॉक्स तक पहुँंच हैं । हो सकता हैंं उसको केवल emails को पढ़ने की क्षमता की आवश्यकता हो, इसलिए extension में अन्य कार्यक्षमता नहीं होनी चाहिए जैसे कि संदेश delete या send करना की ।
+  LLM extension में प्रयोग हुँए functions को न्यूनतम आवश्यक तक सीमित करें । उदाहरण के लिए, एक extension जिसकी की emails का सारांश करने के लिए, user के मेलबॉक्स तक पहुँंच हैं । हो सकता हैंं उसको केवल emails को पढ़ने की क्षमता की आवश्यकता हो, इसलिए extension में अन्य कार्यक्षमता नहीं होनी चाहिए जैसें कि संदेश delete या send करना की ।
 #### 3. open-ended extension से बचें
   जहाँं संभव हो, open-ended extensions के उपयोग से बचें (जैसे, एक shell commands चलाएं, एक URL fetch करें, आदि) एवं अधिक granular (छोटी-छोटी) कार्यक्षमता वाले extensions का उपयोग करें । उदाहरण के लिए, एक LLM पर आधारित app को फ़ाइल में कुछ आउटपुट को write करने की आवश्यकता हैं, यदि इसके लिये वह shell functions को run करने वाले extension का उपयोग करता है, तब दुर्भावनापूर्ण कार्यों के होने की गुंजाइश बड़ती हैं (किसी भी अन्य shell commands को execute किया जा सकता हैं) । एक अधिक सुरक्षित विकल्प हो सकता है, की एक विशिष्ट file-writing extension का निर्माण करना जो केवल उस विशिष्ट कार्य को ही करता हो ।
 #### 4. Extension की अनुमतियों को कम करें
@@ -48,7 +48,7 @@
 #### 7. पूर्ण मध्यस्थता (Complete mediation)
   किसी कार्य की अनुमति (है या नहीं) को जाँचनें के लिए LLM पर भरोसे के बजाय downstream system में authorization लागू करें । पूर्ण मध्यस्थता के सिद्धांत को लागू करें ताकि extension द्वारा downstream system से किए सभी अनुरोध सुरक्षा नीतियों का पालन करें ।
 #### 8. LLM इनपुट एवं आउटपुट को Sanitise करें
-  Secure coding best practices (सुरक्षित कोडिंग के लिए सर्वोत्तम कार्यों) का पालन करें, जैसे कि ASVS (Application Security Verification Standard) में OWASP की सिफारिशें, इनपुट Sanitisation का विशेष रूप ध्यान रखते हुँए । इसी के साथ Static Application Security Testing (SAST) एवं Dynamic/Interactive application testing (DAST, IAST) का भी उपयोग करें ।
+  Secure coding best practices (सुरक्षित कोडिंग के लिए सर्वोत्तम कार्यों) का पालन करें, जैसें कि ASVS (Application Security Verification Standard) में OWASP की सिफारिशें, इनपुट Sanitisation का विशेष रूप ध्यान रखते हुँए । इसी के साथ Static Application Security Testing (SAST) एवं Dynamic/Interactive application testing (DAST, IAST) का भी उपयोग करें ।
 
 निम्नलिखित विकल्प अत्यधिक एजेंसी पर लगाम के बजाए नुकसान के स्तर को सीमित कर सकते हैंं, जेसे की:
 
