@@ -8,7 +8,7 @@
 हो सकते हैंं ।
 निम्नलिखित स्थितियां में इन Vulnerabilities का प्रभाव बढ़ सकता हैंं:
 - Application द्वारा LLM को end users की जरूरत से ज्यादा विशेषाधिकारों दे दिए जातें हैं, जिससे की privileges escalation या remote code execution जेसे जोखिम पैदा हो जातें हैं ।
-- एक हमलावर (mallicious attacker) application पर अप्रत्यक्ष Prompt इंजेक्शन हमलें से user के environment में विशेषाधिकार वाली पहूँच (privileged access) प्राप्त कर सकता हैं ।
+- एक हमलावर (malicious attacker) application पर अप्रत्यक्ष Prompt इंजेक्शन हमलें से user के environment में विशेषाधिकार वाली पहूँच (privileged access) प्राप्त कर सकता हैं ।
 - Third-party extentions, इनपुटों को पर्याप्त तरह से validate (मान्यता के लिए परखना) नहीं करतें ।
 - विभिन्न संदर्भों में उचित आउटपुट encoding की कमी (जैसे, HTML, JavaScript, SQL) ।
 - LLM आउटपुट की अपर्याप्त monitoring (निगरानी) एवं logging (जाँच के लिए सहेजना) होना ।
@@ -41,9 +41,9 @@
 #### परिदृश्य#3
   एक LLM, users को चैट से बैकएंड डेटाबेस के लिए SQL query बनाने की सुविधा देता हैं । एक user डेटाबेस की किसी table को हटाने के लिए एक query माँगता हैं । यदि LLM से बनी इस query की जाँच (scrutinized) नहीं की जाती हैं, तो सभी डेटाबेस tables भी हट सकती हैंं ।
 #### परिदृश्य#4
-  एक वेब app बिना आउटपुट sanitization के, LLM से user texts prompts द्वारा सामग्री बनवा रहा हैं । अब Prompts की अपर्याप्त validation के कारण, एक हमलावर (mallicious attacker) तैयार किए Prompt द्वारा LLM से unsanitized JavaScript payload मगँवाता हैं, जिसे पीढ़ित के browser पर रेंडर करने से XSS हो सकता हैं ।
+  एक वेब app बिना आउटपुट sanitization के, LLM से user texts prompts द्वारा सामग्री बनवा रहा हैं । अब Prompts की अपर्याप्त validation के कारण, एक हमलावर (malicious attacker) तैयार किए Prompt द्वारा LLM से unsanitized JavaScript payload मगँवाता हैं, जिसे पीढ़ित के browser पर रेंडर करने से XSS हो सकता हैं ।
 #### परिदृश्य#5
-  एक LLM का उपयोग marketing campaign के लिए dynamic email template बनाने के लिए होता हैं । एक हमलावर (mallicious attacker) LLM में हेरफेर से, ईमेल सामग्री के भीतर दुर्भावनापूर्ण JavaScript डलवा देता हैं । यदि application LLM आउटपुट को ठीक से sanitize नहीं करती तो यह, vulnerable email clients पर ईमेल देखनें वाले  recipients पर XSS हमलों को जन्म दे सकता हैं ।
+  एक LLM का उपयोग marketing campaign के लिए dynamic email template बनाने के लिए होता हैं । एक हमलावर (malicious attacker) LLM में हेरफेर से, ईमेल सामग्री के भीतर दुर्भावनापूर्ण JavaScript डलवा देता हैं । यदि application LLM आउटपुट को ठीक से sanitize नहीं करती तो यह, vulnerable email clients पर ईमेल देखनें वाले  recipients पर XSS हमलों को जन्म दे सकता हैं ।
 #### परिदृश्य#6
   एक LLM का उपयोग software कंपनी में natural language इनपुट से code  उत्पन्न करने के लिए किया जाता हैं, जिससे की development कार्यों को सुव्यवस्थित कर सकें । कार्य-कुशल होने के बावजूत यह तरीका संवेदनशील जानकारी को उजागर करने (exposing sensitive information), असुरक्षित डेटा हैंंडलिंग विधियों को बनाने (reating insecure data handling methods), या SQL इंजेक्शन जैसी vulnerabilities के जोखिम को बड़ाता हैं । AI गैर-मौजूद software packages को भी hallucinate कर सकता हैं, जिससे की developers malware वाले resources को डाउनलोड करें । सुरक्षा उल्लंघनों (security breaches), अनाधिकृत पहूँच (unauthorized access) एवं सिस्टम समझौते (system compromises) को रोकने के लिए पूर्ण तरह से code का review एवं सुझाए गए packages का validation महत्वपूर्ण हैं ।
 

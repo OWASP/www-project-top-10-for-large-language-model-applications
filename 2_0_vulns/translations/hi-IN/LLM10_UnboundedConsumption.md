@@ -9,19 +9,19 @@
 ### Vulnerability के सामान्य उदाहरण
 
 #### 1. Variable-Length Input Flood
-  हमलावर (mallicious attacker) अलग-अलग लंबाई के कई इनपुट के साथ LLM को ओवरलोड कर सकते हैंं, जिससे की वह process करने में आ रही अक्षमताओं को exploit (फायदा उठाना) कर सकें । यह संसाधनों को खत्म करने एवं system को unresponsive बनती हैं, जिससे की service की availability प्रभावित होती हैं ।
+  हमलावर (malicious attacker) अलग-अलग लंबाई के कई इनपुट के साथ LLM को ओवरलोड कर सकते हैंं, जिससे की वह process करने में आ रही अक्षमताओं को exploit (फायदा उठाना) कर सकें । यह संसाधनों को खत्म करने एवं system को unresponsive बनती हैं, जिससे की service की availability प्रभावित होती हैं ।
 #### 2. Denial of Wallet (DoW)
-  एक उच्च मात्रा मे कार्यों को देकर, हमलावर (mallicious attacker) cloud पर आधारित AI सेवाओं की cost-per-use मॉडल का फायदा उठाते हैंं, जिससे की provider पर अस्थिर वित्तीय बोझ आता हैंं जो की उसे वित्तीय तौर पर बर्बाद कर सकता हैं ।
+  एक उच्च मात्रा मे कार्यों को देकर, हमलावर (malicious attacker) cloud पर आधारित AI सेवाओं की cost-per-use मॉडल का फायदा उठाते हैंं, जिससे की provider पर अस्थिर वित्तीय बोझ आता हैंं जो की उसे वित्तीय तौर पर बर्बाद कर सकता हैं ।
 #### 3. निरंतर होता Input Overflow
   LLM context विंडो से अधिक बड़े इनपुट को लगातार भेजने से अत्यधिक computational संसाधन उपयोग हो सकते हैं, जिसके परिणामस्वरूप सेवा में गिरावट (service degradation) एवं कार्यों में व्यवधान (operational disruptions) आ सकते हैंं ।
 #### 4. Resource-Intensive Queries
   जटिल क्रमों या जटिल भाषा पैटर्न से जुड़े असामान्य मांग वाली queries को प्रस्तुत करना system संसाधनों को खत्म कर सकता हैं, जिससे की लंबे processing time एवं संभावित system failures आ सकते हैंं ।
 #### 5. APIs के माध्यम से Model Extraction
-  हमलावर (mallicious attacker) एक आधा-अधूरा मॉडल या shadow मॉडल बनाने के लिए पर्याप्त आउटपुट एकत्र करता हैं । इसके लिए वह सावधानीपूर्वक तैयार किए गए इनपुट एवं Prompt इंजेक्शन तकनीकों का उपयोग करके मॉडल APIs से query करता हैंं । यह न केवल बौद्धिक संपदा(intellectual property) चोरी के जोखिम को पैदा करता हैं, बल्कि मूल मॉडल की अखंडता को भी गिरता हैं ।
+  हमलावर (malicious attacker) एक आधा-अधूरा मॉडल या shadow मॉडल बनाने के लिए पर्याप्त आउटपुट एकत्र करता हैं । इसके लिए वह सावधानीपूर्वक तैयार किए गए इनपुट एवं Prompt इंजेक्शन तकनीकों का उपयोग करके मॉडल APIs से query करता हैंं । यह न केवल बौद्धिक संपदा(intellectual property) चोरी के जोखिम को पैदा करता हैं, बल्कि मूल मॉडल की अखंडता को भी गिरता हैं ।
 #### 6. Functional Model Replication
   Synthetic प्रशिक्षण डेटा उत्पन्न करने के लिए लक्षित मॉडल का उपयोग करना हमलावरों को एक अन्य मूलभूत मॉडल को fine-tune करने की अनुमति देता हैं, जिससे वह एक functional equivalent बनाता हैं । यह पारंपरिक query पर आधारित extraction विधियों को तेज करता हैं, जो proprietary मॉडल एवं technologies के लिए एक महत्वपूर्ण जोखिम प्रस्तुत करता हैं ।
 #### 7. Side-Channel Attacks
-  हमलावर (mallicious attacker) side-channel attacks करने, model weights एवं architectural जानकारी पाने के लिए LLM की इनपुट फ़िल्टरिंग तकनीकों का फायदा उठते हैंं । यह मॉडल की सुरक्षा से compromise कर सकता हैं एवं आगे के exploit (फायदा उठाना) का कारण भी बन सकता हैं ।
+  हमलावर (malicious attacker) side-channel attacks करने, model weights एवं architectural जानकारी पाने के लिए LLM की इनपुट फ़िल्टरिंग तकनीकों का फायदा उठते हैंं । यह मॉडल की सुरक्षा से compromise कर सकता हैं एवं आगे के exploit (फायदा उठाना) का कारण भी बन सकता हैं ।
 
 ### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
@@ -59,17 +59,17 @@
 ### उदाहरण स्वरूप हमलें के परिदृश्य
 
 #### परिदृश्य#1: अनियंत्रित इनपुट आकार
-  एक हमलावर (mallicious attacker) ने LLM application (texts डेटा को process करने वाली) को एक असामान्य रूप से बड़ा इनपुट दिया, जिसके परिणामस्वरूप अत्यधिक memeory उपयोग, CPU ओवरलोड तथा system crash या काफी धीमा हो सकता हैं ।
+  एक हमलावर (malicious attacker) ने LLM application (texts डेटा को process करने वाली) को एक असामान्य रूप से बड़ा इनपुट दिया, जिसके परिणामस्वरूप अत्यधिक memeory उपयोग, CPU ओवरलोड तथा system crash या काफी धीमा हो सकता हैं ।
 #### परिदृश्य#2: बार-बार Requests
-  एक हमलावर (mallicious attacker) LLM API को अधिक मात्रा में अनुरोध भेजता हैं, जिससे computational संसाधनों की अत्यधिक खपत होती हैं एवं वैध users के लिए सेवा अनुपलब्ध हो जाती हैं ।
+  एक हमलावर (malicious attacker) LLM API को अधिक मात्रा में अनुरोध भेजता हैं, जिससे computational संसाधनों की अत्यधिक खपत होती हैं एवं वैध users के लिए सेवा अनुपलब्ध हो जाती हैं ।
 #### परिदृश्य#3: संसाधन-गहन queries
-  एक हमलावर (mallicious attacker) खास इनपुट्स से LLM की computationallly सबसे महंगी प्रक्रियाओं को trigger कराता हैं,CPU का लंबे समय तक  उपयोग एवं संभावित system विफलताएँ उत्पन्न होते हैं ।
+  एक हमलावर (malicious attacker) खास इनपुट्स से LLM की computationallly सबसे महंगी प्रक्रियाओं को trigger कराता हैं,CPU का लंबे समय तक  उपयोग एवं संभावित system विफलताएँ उत्पन्न होते हैं ।
 #### परिदृश्य#4: Denial of Wallet (DoW)
-  एक हमलावर (mallicious attacker) cloud पर आधारित AI सेवाओं के pay-per-use मॉडल को exploit करने (फायदा उठाने) के लिए अत्यधिक कार्यों (operations) को उत्पन्न करता हैं, जिससे service provider को आर्थिक नुकसान हो सकता हैं ।
+  एक हमलावर (malicious attacker) cloud पर आधारित AI सेवाओं के pay-per-use मॉडल को exploit करने (फायदा उठाने) के लिए अत्यधिक कार्यों (operations) को उत्पन्न करता हैं, जिससे service provider को आर्थिक नुकसान हो सकता हैं ।
 #### परिदृश्य#5: Functional Model Replication
-  एक हमलावर (mallicious attacker) LLM API से synthetic प्रशिक्षण डेटा बनाकर एक मॉडल को fine-tune करता हैं, जिससे की वह एक functional equivalent बना सकें एवं पारंपरिक मॉडल extraction की सीमाओं को bypass कर सकें ।
+  एक हमलावर (malicious attacker) LLM API से synthetic प्रशिक्षण डेटा बनाकर एक मॉडल को fine-tune करता हैं, जिससे की वह एक functional equivalent बना सकें एवं पारंपरिक मॉडल extraction की सीमाओं को bypass कर सकें ।
 #### परिदृश्य#6: System इनपुट फ़िल्टरिंग को bypass करना
-  एक हमलावर (mallicious attacker) इनपुट फ़िल्टरिंग तकनीकों एवं LLM के प्रीएंबल को bypass करके एक side-channel हमला करता हैं, ताकि वह मॉडल की जानकारी को अपने नियंत्रित एक remotely controlled resource तक पहुँचा सकें ।
+  एक हमलावर (malicious attacker) इनपुट फ़िल्टरिंग तकनीकों एवं LLM के प्रीएंबल को bypass करके एक side-channel हमला करता हैं, ताकि वह मॉडल की जानकारी को अपने नियंत्रित एक remotely controlled resource तक पहुँचा सकें ।
 
 ### संबंधित लिंक
 1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
