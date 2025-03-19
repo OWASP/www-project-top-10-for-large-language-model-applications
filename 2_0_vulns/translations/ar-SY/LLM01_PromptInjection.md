@@ -1,73 +1,73 @@
-## LLM01:2025 Prompt Injection
+## LLM01:2025 حقن التعلميات
 
-### Description
+### الوصف
 
-A Prompt Injection Vulnerability occurs when user prompts alter the LLM’s behavior or output in unintended ways. These inputs can affect the model even if they are imperceptible to humans, therefore prompt injections do not need to be human-visible/readable, as long as the content is parsed by the model.
+تحدث ثغرة حقن التعلميات عندما تقوم تعلميات المستخدم بتغيير سلوك أو مخرجات نموذج اللغة الكبير (LLM) بطرق غير مقصودة. يمكن أن تؤثر هذه المدخلات على النموذج حتى لو كانت غير مرئية للبشر، لذلك لا تحتاج حقن التعلميات إلى أن تكون مرئية/مقروءة للبشر، طالما أن المحتوى يتم تحليله بواسطة النموذج.
 
-Prompt Injection vulnerabilities exist in how models process prompts, and how input may force the model to incorrectly pass prompt data to other parts of the model, potentially causing them to violate guidelines, generate harmful content, enable unauthorized access, or influence critical decisions. While techniques like Retrieval Augmented Generation (RAG) and fine-tuning aim to make LLM outputs more relevant and accurate, research shows that they do not fully mitigate prompt injection vulnerabilities.
+توجد ثغرات حقن التعلميات في كيفية معالجة النماذج للتعلميات، وكيف يمكن للمدخلات أن تجبر النموذج على تمرير بيانات التعلميات بشكل غير صحيح إلى أجزاء أخرى من النموذج، مما قد يتسبب في انتهاكها للإرشادات الرئيسية، أو توليد محتوى ضار، أو تمكين الوصول غير المصرح به، أو التأثير على القرارات الحرجة. بينما تهدف تقنيات مثل توليد المعلومات المعزز بالاسترجاع (RAG) والضبط الدقيق (fine-tuning) إلى جعل مخرجات النموذج أكثر ملاءمة ودقة، تظهر الأبحاث أنها لا تخفف تمامًا من ثغرات حقن التعلميات.
 
-While prompt injection and jailbreaking are related concepts in LLM security, they are often used interchangeably. Prompt injection involves manipulating model responses through specific inputs to alter its behavior, which can include bypassing safety measures. Jailbreaking is a form of prompt injection where the attacker provides inputs that cause the model to disregard its safety protocols entirely. Developers can build safeguards into system prompts and input handling to help mitigate prompt injection attacks, but effective prevention of jailbreaking requires ongoing updates to the model's training and safety mechanisms.
+بينما يعتبر حقن التعلميات وكسر الحماية (jailbreaking) مفاهيم ذات صلة في أمان النماذج اللغوية الكبيرة، إلا أنهما غالبًا ما يُستخدمان بشكل متبادل. يتضمن حقن التعلميات التلاعب باستجابات النموذج من خلال مدخلات محددة لتغيير سلوكه، مما يمكن أن يشمل تجاوز تدابير الأمان. كسر الحماية هو شكل من أشكال حقن التعلميات حيث يقدم المهاجم مدخلات تتسبب في تجاهل النموذج لبروتوكولات الأمان الخاصة به تمامًا. يمكن للمطورين بناء تدابير حماية في تعلميات النظام ومعالجة المدخلات للمساعدة في تخفيف هجمات حقن التعلميات، ولكن الوقاية الفعالة من كسر الحماية تتطلب تحديثات مستمرة لتدريب النموذج وآليات الأمان.
 
-### Types of Prompt Injection Vulnerabilities
+### أنواع ثغرات حقن التعلميات
 
-#### Direct Prompt Injections
-  Direct prompt injections occur when a user's prompt input directly alters the behavior of the model in unintended or unexpected ways. The input can be either intentional (i.e., a malicious actor deliberately crafting a prompt to exploit the model) or unintentional (i.e., a user inadvertently providing input that triggers unexpected behavior).
+#### حقن التعلميات المباشرة
+تحدث حقن التعلميات المباشرة عندما يقوم مدخل تعلميات المستخدم بتغيير سلوك النموذج بشكل مباشر بطرق غير مقصودة أو غير متوقعة. يمكن أن تكون المدخلات إما متعمدة (أي، جهة خبيثة تصمم تعلمية لاستغلال النموذج) أو غير متعمدة (أي، مستخدم يقدم مدخلاً عن غير قصد يؤدي إلى سلوك غير متوقع).
 
-#### Indirect Prompt Injections
-  Indirect prompt injections occur when an LLM accepts input from external sources, such as websites or files. The content may have in the external content data that when interpreted by the model, alters the behavior of the model in unintended or unexpected ways. Like direct injections, indirect injections can be either intentional or unintentional.
+#### حقن التعلميات غير المباشرة
+تحدث حقن التعلميات غير المباشرة عندما يقبل النموذج اللغوي الكبير مدخلات من مصادر خارجية، مثل المواقع الإلكترونية أو الملفات. قد تحتوي المحتويات الخارجية على بيانات تؤدي عند تفسيرها من قبل النموذج إلى تغيير سلوك النموذج بطرق غير مقصودة أو غير متوقعة. مثل الحقن المباشر، يمكن أن تكون الحقن غير المباشرة إما متعمدة أو غير متعمدة.
 
-The severity and nature of the impact of a successful prompt injection attack can vary greatly and are largely dependent on both the business context the model operates in, and the agency with which the model is architected. Generally, however, prompt injection can lead to unintended outcomes, including but not limited to:
+يمكن أن تختلف شدة وطبيعة تأثير هجوم حقن التعلميات الناجح بشكل كبير وتعتمد بشكل كبير على كل من سياق العمل الذي يعمل فيه النموذج، والوكالة التي يتم بها تصميم النموذج. بشكل عام، يمكن أن يؤدي حقن التعلميات إلى نتائج غير مقصودة، بما في ذلك على سبيل المثال لا الحصر:
 
-- Disclosure of sensitive information
-- Revealing sensitive information about AI system infrastructure or system prompts
-- Content manipulation leading to incorrect or biased outputs
-- Providing unauthorized access to functions available to the LLM
-- Executing arbitrary commands in connected systems
-- Manipulating critical decision-making processes
+- الإفصاح عن معلومات حساسة
+- الكشف عن معلومات حساسة حول بنية نظام الذكاء الاصطناعي أو تعلميات النظام
+- التلاعب بالمحتوى مما يؤدي إلى مخرجات غير صحيحة أو متحيزة
+- توفير وصول غير مصرح به إلى الوظائف المتاحة للنموذج اللغوي الكبير
+- تنفيذ أوامر اعتباطية في الأنظمة المتصلة
+- التلاعب بعمليات اتخاذ القرارات الحرجة
 
-The rise of multimodal AI, which processes multiple data types simultaneously, introduces unique prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
+يقدم صعود الذكاء الاصطناعي متعدد الوسائط (multimodal AI)، الذي يعالج أنواع بيانات متعددة في وقت واحد، مخاطر فريدة لحقن التعلميات. يمكن للجهات الخبيثة استغلال التفاعلات بين الوسائط، مثل إخفاء التعليمات في الصور التي تصاحب النصوص البريئة. تزيد تعقيد هذه الأنظمة من سطح الهجوم. قد تكون النماذج متعددة الوسائط أيضًا عرضة لهجمات جديدة عبر الوسائط التي يصعب اكتشافها وتخفيفها باستخدام التقنيات الحالية. تعتبر الدفاعات القوية الخاصة بالوسائط المتعددة منطقة مهمة لمزيد من البحث والتطوير.
 
-### Prevention and Mitigation Strategies
+### استراتيجيات الوقاية والتخفيف
 
-Prompt injection vulnerabilities are possible due to the nature of generative AI. Given the stochastic influence at the heart of the way models work, it is unclear if there are fool-proof methods of prevention for prompt injection. However, the following measures can mitigate the impact of prompt injections:
+تكون ثغرات حقن التعلميات ممكنة بسبب طبيعة الذكاء الاصطناعي المولّد. نظرًا للتأثير العشوائي في قلب طريقة عمل النماذج، من غير الواضح ما إذا كانت هناك طرق مضمونة للوقاية من حقن التعلميات. ومع ذلك، يمكن أن تخفف التدابير التالية من تأثير حقن التعلميات:
 
-#### 1. Constrain model behavior
-  Provide specific instructions about the model's role, capabilities, and limitations within the system prompt. Enforce strict context adherence, limit responses to specific tasks or topics, and instruct the model to ignore attempts to modify core instructions.
-#### 2. Define and validate expected output formats
-  Specify clear output formats, request detailed reasoning and source citations, and use deterministic code to validate adherence to these formats.
-#### 3. Implement input and output filtering
-  Define sensitive categories and construct rules for identifying and handling such content. Apply semantic filters and use string-checking to scan for non-allowed content. Evaluate responses using the RAG Triad: Assess context relevance, groundedness, and question/answer relevance to identify potentially malicious outputs.
-#### 4. Enforce privilege control and least privilege access
-  Provide the application with its own API tokens for extensible functionality, and handle these functions in code rather than providing them to the model. Restrict the model's access privileges to the minimum necessary for its intended operations.
-#### 5. Require human approval for high-risk actions
-  Implement human-in-the-loop controls for privileged operations to prevent unauthorized actions.
-#### 6. Segregate and identify external content
-  Separate and clearly denote untrusted content to limit its influence on user prompts.
-#### 7. Conduct adversarial testing and attack simulations
-  Perform regular penetration testing and breach simulations, treating the model as an untrusted user to test the effectiveness of trust boundaries and access controls.
+#### 1. تقييد سلوك النموذج
+تقديم تعليمات محددة حول دور النموذج وقدراته وقيوده ضمن تعلمية النظام. فرض الالتزام الصارم بالسياق، وتقييد الردود على مهام أو مواضيع محددة، وتوجيه النموذج لتجاهل المحاولات لتعديل التعليمات الأساسية.
+#### 2. تحديد والتحقق من تنسيقات المخرجات المتوقعة
+تحديد تنسيقات مخرجات واضحة، وطلب تفسير مفصل واستشهادات بالمصادر، واستخدام كود قطعي للتحقق من الالتزام بهذه التنسيقات.
+#### 3. تنفيذ تصفية المدخلات والمخرجات
+تحديد الفئات الحساسة وبناء قواعد لتحديد ومعالجة مثل هذا المحتوى. تطبيق المرشحات الدلالية واستخدام فحص السلاسل النصية للبحث عن المحتوى غير المسموح به. تقييم الردود باستخدام ثلاثية RAG: تقييم ملاءمة السياق، والاستناد للواقع وملاءمة السؤال/الإجابة لتحديد المخرجات المحتملة الخبيثة.
+#### 4. فرض التحكم في الامتيازات والوصول الأقل امتيازًا
+تزويد التطبيق برموز API خاصة به للوظائف القابلة للتوسع، ومعالجة هذه الوظائف في الكود بدلاً من تقديمها للنموذج. تقييد امتيازات الوصول للنموذج إلى الحد الأدنى الضروري لعملياته المقصودة.
+#### 5. طلب الموافقة البشرية على الإجراءات عالية المخاطر
+تنفيذ ضوابط الإنسان في الحلقة للعمليات المميزة لمنع الإجراءات غير المصرح بها.
+#### 6. فصل وتحديد المحتوى الخارجي
+فصل وتحديد المحتوى غير الموثوق به بوضوح للحد من تأثيره على تعلميات المستخدم.
+#### 7. إجراء اختبارات هجومية ومحاكاة الهجمات
+إجراء اختبارات اختراق منتظمة ومحاكاة الاختراق، ومعاملة النموذج كمستخدم غير موثوق به لاختبار فعالية حدود الثقة وضوابط الوصول.
 
-### Example Attack Scenarios
+### سيناريوهات هجوم مثال
 
-#### Scenario #1: Direct Injection
-  An attacker injects a prompt into a customer support chatbot, instructing it to ignore previous guidelines, query private data stores, and send emails, leading to unauthorized access and privilege escalation.
-#### Scenario #2: Indirect Injection
-  A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, leading to exfiltration of the the private conversation.
-#### Scenario #3: Unintentional Injection
-  A company includes an instruction in a job description to identify AI-generated applications. An applicant, unaware of this instruction, uses an LLM to optimize their resume, inadvertently triggering the AI detection.
-#### Scenario #4: Intentional Model Influence
-  An attacker modifies a document in a repository used by a Retrieval-Augmented Generation (RAG) application. When a user's query returns the modified content, the malicious instructions alter the LLM's output, generating misleading results.
-#### Scenario #5: Code Injection
-  An attacker exploits a vulnerability (CVE-2024-5184) in an LLM-powered email assistant to inject malicious prompts, allowing access to sensitive information and manipulation of email content.
-#### Scenario #6: Payload Splitting
-  An attacker uploads a resume with split malicious prompts. When an LLM is used to evaluate the candidate, the combined prompts manipulate the model's response, resulting in a positive recommendation despite the actual resume contents.
-#### Scenario #7: Multimodal Injection
-  An attacker embeds a malicious prompt within an image that accompanies benign text. When a multimodal AI processes the image and text concurrently, the hidden prompt alters the model's behavior, potentially leading to unauthorized actions or disclosure of sensitive information.
-#### Scenario #8: Adversarial Suffix
-  An attacker appends a seemingly meaningless string of characters to a prompt, which influences the LLM's output in a malicious way, bypassing safety measures.
-#### Scenario #9: Multilingual/Obfuscated Attack
-  An attacker uses multiple languages or encodes malicious instructions (e.g., using Base64 or emojis) to evade filters and manipulate the LLM's behavior.
+#### السيناريو #1: حقن مباشر
+يقوم مهاجم بحقن تعلمية في روبوت دردشة دعم العملاء، يوجهه لتجاهل الإرشادات السابقة، واستعلام مخازن البيانات الخاصة، وإرسال رسائل بريد إلكتروني، مما يؤدي إلى وصول غير مصرح به وتصعيد الامتيازات.
+#### السيناريو #2: حقن غير مباشر
+يستخدم مستخدم نموذج اللغة الكبير لتلخيص صفحة ويب تحتوي على تعليمات مخفية تتسبب في إدراج النموذج لصورة ترتبط بعنوان URL، مما يؤدي إلى تسريب المحادثة الخاصة.
+#### السيناريو #3: حقن غير مقصود
+تدرج شركة تعليمية في وصف وظيفة لكشف الطلبات التي تم إنشاؤها بواسطة الذكاء الاصطناعي. يستخدم مقدم طلب، غير مدرك لهذه التعليمات، نموذج اللغة الكبير لتحسين سيرته الذاتية، مما يؤدي عن غير قصد إلى تشغيل الكشف عن الذكاء الاصطناعي.
+#### السيناريو #4: تأثير متعمد على النموذج
+يقوم مهاجم بتعديل مستند في مستودع يستخدمه تطبيق توليد المعلومات المعزز بالاسترجاع (RAG). عندما يعيد استعلام المستخدم المحتوى المعدل، تقوم التعليمات الخبيثة بتغيير مخرجات النموذج، مما يؤدي إلى نتائج مضللة.
+#### السيناريو #5: حقن كود
+يستغل مهاجم ثغرة (CVE-2024-5184) في مساعد البريد الإلكتروني المدعوم بالنموذج اللغوي الكبير لحقن تعلميات خبيثة، مما يسمح بالوصول إلى معلومات حساسة والتلاعب بمحتوى البريد الإلكتروني.
+#### السيناريو #6: تقسيم الحمولة
+يقوم مهاجم بتحميل سيرة ذاتية تحتوي على تعلميات خبيثة مخفية. عندما يتم استخدام النموذج اللغوي الكبير لتقييم المرشح، تقوم التعلميات المخفية بالتلاعب باستجابة النموذج، مما يؤدي إلى توصية إيجابية على الرغم من محتويات السيرة الذاتية الفعلية.
+#### السيناريو #7: حقن متعدد الوسائط
+يقوم مهاجم بتضمين تعلمية خبيثة داخل صورة ترافق نصًا بريئًا. عندما يعالج الذكاء الاصطناعي متعدد الوسائط الصورة والنص في وقت واحد، تقوم التعلمية المخفية بتغيير سلوك النموذج، مما قد يؤدي إلى إجراءات غير مصرح بها أو الكشف عن معلومات حساسة.
+#### السيناريو #8: لاحقة عدائية
+يقوم مهاجم بإضافة سلسلة من الأحرف التي تبدو بلا معنى إلى تعلمية، مما يؤثر على مخرجات النموذج اللغوي الكبير بطريقة خبيثة، متجاوزًا تدابير الأمان.
+#### السيناريو #9: هجوم متعدد اللغات/مبهم
+يستخدم مهاجم لغات متعددة أو يشفر التعليمات الخبيثة (مثل استخدام Base64 أو الرموز التعبيرية) لتجنب المرشحات والتلاعب بسلوك النموذج اللغوي الكبير.
 
-### Reference Links
+### روابط مرجعية
 
 1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
 2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
@@ -84,9 +84,9 @@ Prompt injection vulnerabilities are possible due to the nature of generative AI
 14. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
 15. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
 
-### Related Frameworks and Taxonomies
+### الأطر والتصنيفات ذات الصلة
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+راجع هذا القسم للحصول على معلومات شاملة، واستراتيجيات السيناريوهات المتعلقة بنشر البنية التحتية، وضوابط البيئة المطبقة وغيرها من أفضل الممارسات.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
 - [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
