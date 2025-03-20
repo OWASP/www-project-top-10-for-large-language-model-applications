@@ -20,39 +20,41 @@ LLM にさらなる自律性を与えることができるエージェントア�
 
 これをまとめるのに協力してくれた皆さん、そしてそれを使用し改善し続けてくれた皆さんに感謝します。皆さんと一緒にこの取り組みに参加できることに感謝しています。
 
-###@ Steve Wilson
+#### Steve Wilson
 Project Lead
 OWASP Top 10 for Large Language Model Applications
 LinkedIn: https://www.linkedin.com/in/wilsonsd/
 
-###@ Ads Dawson
+#### Ads Dawson
 Technical Lead & Vulnerability Entries Lead
 OWASP Top 10 for Large Language Model Applications
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
-###@ Talesh Seeparsan
-
-Translation Lead, OWASP Top 10 for AI Applications LLM
-LinkedIn: https://www.linkedin.com/in/talesh/
+---
 
 ### Japanese Translation Team
 
-###@ Teresa Tsukiji (築地 テレサ)
+#### Teresa Tsukiji (築地 テレサ)
 Japanese Localization Co-Lead
 LinkedIn: https://www.linkedin.com/in/teresatsukiji/
 
-###@ Yuki Kashiwada (柏田 祐樹)
+#### Yuki Kashiwada (柏田 祐樹)
 Japanese Localization Co-Lead
 LinkedIn: https://www.linkedin.com/in/yuki-kashiwada/
 
-###@ Riotaro Okada (岡田 良太郎)
+#### Riotaro Okada (岡田 良太郎)
 Japanese Localization Reviewer
 LinkedIn: https://www.linkedin.com/in/riotaro/
 
-###@ Takahiro Aoyama
+#### Takahiro Aoyama
 Japanese Localization Reviewer
 LinkedIn: https://www.linkedin.com/in/takahiro-aoyama-323a3a13/
 
 ### この翻訳について
 
 OWASP Top 10 for Large Language Model Applications は、技術的かつ重要な性質を持つドキュメントであると私たちは認識しています。そのため、この翻訳版の作成にあたっては意識的に人間の翻訳者のみを起用しました。上記の翻訳者たちは、原文に関する深い技術的知識だけでなく、この翻訳を成功させるために必要とされる日本語の流暢さも兼ね備えています。
+
+#### Talesh Seeparsan
+
+Translation Lead, OWASP Top 10 for AI Applications LLM
+LinkedIn: https://www.linkedin.com/in/talesh/
