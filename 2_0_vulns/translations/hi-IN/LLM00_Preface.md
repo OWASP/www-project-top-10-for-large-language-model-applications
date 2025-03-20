@@ -31,6 +31,7 @@ Technical Lead & Vulnerability Entries Lead
 OWASP Top 10 for Large Language Model Applications
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
+---
 
 ### Hindi Translation Team
 
