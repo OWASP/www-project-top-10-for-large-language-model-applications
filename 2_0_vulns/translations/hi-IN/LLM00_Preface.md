@@ -32,18 +32,19 @@ OWASP Top 10 for Large Language Model Applications
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
 
-### अनुवादक की ओर से 
-मेरे लिये हिन्दी मानव मूल्यों एवं भावनाओं को प्रकट करने का एक अनमोल जरिया हे । यह भाषा भारत (India) एवं सनातन की तर्ज पर हर व्यक्तिव को बिना किसी भेद-भाव के अपने अंदर समेटती हैंं । भारत में भाषाओं की सामाजिक एवं राजनीतिक स्थिति को समझते हुँए, मैं मानता हूँ, की इसमें कुछ मात्राओं की गलतियाँ होगी, जो की कुछ phonetic keyboard एवं कुछ मेरी अज्ञानता के कारण आ सकती हैंं, पर भविष्य में उम्मीद करता हूँ की आप भी इस प्रकार के कार्यों में साहियोग देंगे । 
-सभी भाषाओं की एक बात होती हैंं की कुछ शब्दों की प्रासांगिकता का अनुवाद या तो आसंभाव होता हे या संभव हे तो आम जनमानस के लिये समझना कठिन होता हैंं । इसिलिये मैंने कोशिश की हैंं की इस संस्करण को अधिक से अधिक साधारण, सहज एवं सामान्य, एवं कुछ शब्दों को बिना अनुवाद के ही रखू । में जानता हूँ की इसमें कुछ मानव त्रुटिया हो सकती है, तो आप मुझे सुझाव भेज सकते हैंं ।
+### Hindi Translation Team
 
 #### Dhruv Agarwal
-Hindi Translation Lead, OWASP Top 10 for AI Applications LLM
-LinkedIn: https://www.linkedin.com/in/dhruwen/
+LinkedIn: [Dhruv Agarwal](https://www.linkedin.com/in/dhruwen/)
 
-### Contributors
-Murali Krishna Kandula: https://www.linkedin.com/in/mkkandula/
-Rachit Sood: [LinkedIn]
-Ojas Sharma: https://www.linkedin.com/in/ojas-sharma-179948201/
+#### Murali Krishna Kandula
+LinkedIn: [Murali Krishna Kandula](https://www.linkedin.com/in/mkkandula/)
+
+#### Rachit Sood
+LinkedIn: [Rachit Sood](https://www.linkedin.com/in/sn4kecharmer/)
+
+#### Ojas Sharma
+LinkedIn: [Ojas Sharma](https://www.linkedin.com/in/ojas-sharma-179948201/)
 
 ### इस अनुवाद के बारे में
 "LLM applications के लिए OWASP शीर्ष 10" की तकनीकी एवं संवेदनशील प्रकृति को देखते हुँए, हमने इस अनुवाद के निर्माण में केवल मानव अनुवादकों का प्रयोग किया हैंं । सूचीबद्ध अनुवादक एवं समीक्षकों को न केवल मूल सामग्री का गहन तकनीकी ज्ञान है, बल्कि इस अनुवाद को सफल बनाने के लिए आवश्यक पृष्ठभूमि भी हैंं ।
