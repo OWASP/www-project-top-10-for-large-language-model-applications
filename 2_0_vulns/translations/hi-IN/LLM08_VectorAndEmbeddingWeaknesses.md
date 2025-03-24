@@ -1,4 +1,4 @@
-## LLM08:2025 Vector एवं Embedding की कमजोरीयां
+## LLM08:2025 Vector एवं Embedding Weaknesses
 
 ### विवरण
 
