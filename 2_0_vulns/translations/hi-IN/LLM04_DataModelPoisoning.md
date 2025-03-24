@@ -59,7 +59,7 @@ hit नहीं होता । यह इस तरह के परिवर
 10. [arXiv:2401.05566 Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://www.anthropic.com/news/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training) **Anthropic (arXiv)**
 11. [Backdoor Attacks on AI Models](https://www.cobalt.io/blog/backdoor-attacks-on-ai-models) **Cobalt**
 
-### संबंधित फ्रेमवर्क एवं टैक्सोनॉमी
+### संबंधित फ्रेमवर्क (frameworks) एवं टैक्सोनॉमी (taxonomies)
 
 Infrastructure deployment, applied environment controls तथा अन्य सर्वोत्तम उपायों से संबंधित व्यापक जानकारी, परिदृश्यों की रणनीतियों के लिए इस खंड का संदर्भ लें ।
 
