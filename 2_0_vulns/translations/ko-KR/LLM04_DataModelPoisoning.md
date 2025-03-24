@@ -1,4 +1,4 @@
-## LLM04: 데이터 및 모델 오염
+## LLM04: 2025 데이터 및 모델 오염
 
 ### 설명
 
@@ -10,7 +10,7 @@
 
 ### 일반적 취약점 예시
 
-1. 악의적인 행위자들이 학습 과정에서 유해한 데이터를 인젝션하여 편향된 출력을 유도합니다. "분할보기 데이터 오염(Split-View Data Poisoning)" 또는 "프론트런닝 오염(Frontrunning Poisoning)"과 같은 기술들은 모델 학습 동적을 악용하여 이를 달성합니다.
+1. 악의적인 행위자들이 학습 과정에서 유해한 데이터를 인젝션하여 편향된 출력을 유도합니다. "분할보기 데이터 오염(Split-View Data Poisoning)" 또는 "프론트런닝 오염(Frontrunning Poisoning)"과 같은 기술들은 모델 학습 역학을 악용하여 이를 달성합니다.
   (참조 링크: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
   (참조 링크: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
 2. 공격자들은 학습 과정에 유해한 콘텐츠를 직접 인젝션하여 모델의 출력 품질을 손상시킬 수 있습니다.

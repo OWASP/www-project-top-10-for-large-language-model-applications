@@ -53,7 +53,7 @@
   이용자가 시스템의 초기 설정을 재정의하거나 액세스할 수 있는 기능을 제한하여 내부 구성에 유출될 위험을 줄입니다.
 #### 2. 보안 구성 오류 모범 사례 참조
   오류 메시지나 설정 세부 정보를 통해 민감 정보가 유출되지 않도록 "OWASP API8:2023 보안 구성 오류"와 같은 지침을 따르세요.
-  (참조 링크:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+  (참조 링크: [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
 #### 고급 기술:
 
