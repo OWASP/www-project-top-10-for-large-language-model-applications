@@ -6,7 +6,7 @@
 
 डेटा poisoning LLM जीवनचक्र के विभिन्न चरणों को लक्षित कर साकता हैं, जिसमें pre-training (सामान्य डेटा से सीखना), fine-tuning (विशिष्ट कार्यों के लिए मॉडल को अनुकूल बनाना), embedding (texts को संख्यात्मक वैक्टर में परिवर्तित करना), एवं transfer learning (नए कार्यों पर प्रशिक्षित मॉडल को बार-बार प्रयोग में लेना) शामिल हैं । इन चरणों को समझने से यह पहचानने में मदद मिलती हैं कि vulnerabilities कहाँं से उत्पन्न हो सकती हैंं । डेटा poisoning को एक integrity (अखंडता) हमला माना जाता हैं, क्योंकि प्रशिक्षण डेटा से छेड़छाड़ करने से सटीक पूर्वानुमान लगाने वाली मॉडल की क्षमता प्रभावित होती हैं । बाहरी डेटा स्रोतों से जोखिम अधिक होता हैंं, क्योंकि उनमें unverified या दुर्भावनापूर्ण सामग्री हो सकती हैं ।
 
-इसके अलावा, shared repository या open-source platforms से वितरित किए गए मॉडल डेटा poisoning से अधिक बड़े जोखिम पैदा कर सकते हैंं, जैसें कि malicious pickling जैसी तकनीकों से malware डालना (embed), जो कि मॉडल के लोड होने पर उसमें हानिकारक code  execute कर सकता हैं । इसके तरह poisoning, backdoor के implementation को भी अनुमति दे सकती हैं । इस तरह के backdoors मॉडल के व्यवहार में तब तक कुछ नहीं करतें, जब तक कि एक निश्चित trigger संकेत नहीं देता या 
+इसके अलावा, shared repository या open-source platforms से वितरित किए गए मॉडल डेटा poisoning से अधिक बड़े जोखिम पैदा कर सकते हैंं, जैसें कि malicious pickling जैसी तकनीकों से malware डालना (embed), जो कि मॉडल के लोड होने पर उसमें हानिकारक code execute कर सकता हैं । इसके तरह poisoning, backdoor के implementation को भी अनुमति दे सकती हैं । इस तरह के backdoors मॉडल के  व्यवहार में तब तक कुछ नहीं करतें, जब तक कि एक निश्चित trigger संकेत नहीं देता या 
 hit नहीं होता । यह इस तरह के परिवर्तनों के लिये परीक्षण एवं पता लगाने की क्षमता को कठिन बना सकता हैं, जो की मॉडल को sleeper agent बना देता हैं ।
 
 ### Vulnerability के सामान्य उदाहरण
@@ -59,7 +59,7 @@ hit नहीं होता । यह इस तरह के परिवर
 10. [arXiv:2401.05566 Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://www.anthropic.com/news/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training) **Anthropic (arXiv)**
 11. [Backdoor Attacks on AI Models](https://www.cobalt.io/blog/backdoor-attacks-on-ai-models) **Cobalt**
 
-### संबंधित फ्रेमवर्क एवं टैक्सोनॉमी
+### संबंधित फ्रेमवर्क (frameworks) एवं टैक्सोनॉमी (taxonomies)
 
 Infrastructure deployment, applied environment controls तथा अन्य सर्वोत्तम उपायों से संबंधित व्यापक जानकारी, परिदृश्यों की रणनीतियों के लिए इस खंड का संदर्भ लें ।
 

@@ -83,7 +83,7 @@
 9. [Sponge Examples: Energy-Latency Attacks on Neural Networks: Arxiv White Paper](https://arxiv.org/abs/2006.03463) **arXiv**
 10. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
 
-### संबंधित फ्रेमवर्क एवं टैक्सोनॉमी
+### संबंधित फ्रेमवर्क (frameworks) एवं टैक्सोनॉमी (taxonomies)
 
 Infrastructure deployment, applied environment controls तथा अन्य सर्वोत्तम उपायों से संबंधित व्यापक जानकारी, परिदृश्यों की रणनीतियों के लिए इस खंड का संदर्भ लें ।
 

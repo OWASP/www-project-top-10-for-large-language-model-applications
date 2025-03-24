@@ -21,16 +21,16 @@ LLM, विशेष रूप से जब applications में जोड़े
 
 #### Sanitization:
 
-#### 1 । डेटा sanitization तकनीकों को जोड़े
+#### 1. डेटा sanitization तकनीकों को जोड़े
   उपयोगकर्ता डेटा को प्रशिक्षण मॉडल में प्रवेश करने से रोकने के लिए डेटा sanitization को लागू करें । इसके अंतर्गत प्रशिक्षण में उपयोग किए जाने से पहले संवेदनशील सामग्री की scrubbing (छाँट कर हटाना) या masking (चुप देना) करें ।
-#### 2 । मजबूत इनपुट validation ( मापदंड के अनुसार वैधीकरण)
+#### 2. मजबूत इनपुट validation ( मापदंड के अनुसार वैधीकरण)
   संभावित रूप से हानिकारक या संवेदनशील डेटा इनपुट का पता लगाने एवं फ़िल्टर करने के लिए सख्त इनपुट validations का प्रयोग करें ,यह सुनिश्चित करें कि वे मॉडल को compromise तो नहीं कर रहे ।
 
 #### Access Controls:
 
-#### 1 । सख्त Access Controls लागू करें
+#### 1. सख्त Access Controls लागू करें
   कम से कम privilege (विशेषाधिकार) के आधार पर संवेदनशील डेटा तक पहूँच (access) को सीमित करें । केवल उस डेटा तक पहूँच (access) प्रदान करें जो विशिष्ट user या process (प्रक्रिया) के लिए आवश्यक हैं ।
-#### 2 । डेटा स्रोतों को प्रतिबंधित करें
+#### 2. डेटा स्रोतों को प्रतिबंधित करें
   बाहरी डेटा स्रोतों तक मॉडल की पहूँच (access) को सीमित करें, और सुनिश्चित करें कि runtime डेटा orchestration को अनचाहे डेटा रिसाव से बचने के लिए सुरक्षित रूप से संभाला जा रहा हो ।
 
 #### Federated Learning एवं गोपनीयता तकनीकें (Privacy Techniques):
@@ -40,7 +40,7 @@ LLM, विशेष रूप से जब applications में जोड़े
 #### 2. Differential गोपनीयता को शामिल करें
   ऐसी तकनीकों को लागू करें जो डेटा या आउटपुट में noise जोड़ती हैंं, जिससे की हमलावरों को व्यक्तिगत डेटा बिंदुओं को reverse-engineer करना मुश्किल हो जाता हैं ।
 
-#### Users के लिय शिक्षा और पारदर्शिता:
+#### Users के लिय शिक्षा और पारदर्शिता :
 
 #### 1. LLM के सुरक्षित उपयोग के प्रती users को शिक्षित करें
   संवेदनशील जानकारीयों के इनपुट में न देने के लिए उनका मार्गदर्शन करें एवं सुरक्षित रूप से LLM के प्रयोग के प्रती प्रशिक्षण दे ।
@@ -52,8 +52,7 @@ LLM, विशेष रूप से जब applications में जोड़े
 #### 1. सिस्टम प्राइमबल को Conceal (जो न्यूनतम परिवर्तन हो ) करें 
   आंतरिक configuration से संपर्क के जोखिमों को कम करने के लिये ,users द्वारा सिस्टम की प्रारंभिक settings को ओवरराइड करने या पहुँचने (access) की क्षमता को सीमित करें ।
 #### 2. सुरक्षा से जुड़े Misconfiguration के संदर्भ में उच्च practices
-  Error messages या configuration details के माध्यम से संवेदनशील जानकारियों को लीक होने से रोकने के लिए "OWASP API8: 2023 Security Misconfiguration" जैसें दिशानिर्देशों का पालन करें ।
-  (संदर्भ link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+  Error messages या configuration details के माध्यम से संवेदनशील जानकारियों को लीक होने से रोकने के लिए "OWASP API8: 2023 Security Misconfiguration" जैसें दिशानिर्देशों का पालन करें । (संदर्भ link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
 #### उन्नत तकनीके 
 
@@ -79,7 +78,7 @@ LLM, विशेष रूप से जब applications में जोड़े
 4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
 5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 
-### संबंधित फ्रेमवर्क और टैक्सोनॉमी
+### संबंधित फ्रेमवर्क (frameworks) एवं टैक्सोनॉमी (taxonomies)
 
 Infrastructure deployment, applied environment controls तथा अन्य सर्वोत्तम उपायों से संबंधित व्यापक जानकारी, परिदृश्यों की रणनीतियों के लिए इस खंड का संदर्भ लें ।
 
