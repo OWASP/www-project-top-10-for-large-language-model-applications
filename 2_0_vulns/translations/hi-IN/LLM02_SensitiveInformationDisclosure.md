@@ -21,9 +21,9 @@ LLM, विशेष रूप से जब applications में जोड़े
 
 #### Sanitization:
 
-#### 1 । डेटा sanitization तकनीकों को जोड़े
+#### 1. डेटा sanitization तकनीकों को जोड़े
   उपयोगकर्ता डेटा को प्रशिक्षण मॉडल में प्रवेश करने से रोकने के लिए डेटा sanitization को लागू करें । इसके अंतर्गत प्रशिक्षण में उपयोग किए जाने से पहले संवेदनशील सामग्री की scrubbing (छाँट कर हटाना) या masking (चुप देना) करें ।
-#### 2 । मजबूत इनपुट validation ( मापदंड के अनुसार वैधीकरण)
+#### 2. मजबूत इनपुट validation ( मापदंड के अनुसार वैधीकरण)
   संभावित रूप से हानिकारक या संवेदनशील डेटा इनपुट का पता लगाने एवं फ़िल्टर करने के लिए सख्त इनपुट validations का प्रयोग करें ,यह सुनिश्चित करें कि वे मॉडल को compromise तो नहीं कर रहे ।
 
 #### Access Controls:
@@ -78,7 +78,7 @@ LLM, विशेष रूप से जब applications में जोड़े
 4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
 5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 
-### संबंधित फ्रेमवर्क और टैक्सोनॉमी
+### संबंधित फ्रेमवर्क (frameworks) एवं टैक्सोनॉमी (taxonomies)
 
 Infrastructure deployment, applied environment controls तथा अन्य सर्वोत्तम उपायों से संबंधित व्यापक जानकारी, परिदृश्यों की रणनीतियों के लिए इस खंड का संदर्भ लें ।
 
