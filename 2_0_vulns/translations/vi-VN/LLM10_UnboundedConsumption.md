@@ -1,16 +1,16 @@
-## LLM10:2025 Unbounded Consumption
+ ## LLM10:2025 Chiếm dụng không giới hạn
 
-### Description
+### Mô tả
 
-Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
+Chiếm dụng không giới hạn (Unbounded Consumption) là quá trình khi Mô hình Ngôn ngữ lớn cho các kết quả dựa trên các truy vấn hoặc câu lệnh đầu vào. Suy luận (Inference) là một chức năng quan trọng của Mô hình Ngôn ngữ lớn, trong đó mô hình áp dung các mẫu đã học và kiến thức để đưa ra các phản hồi hoặc các dự đoán phù hợp.
 
-Attacks designed to disrupt service, deplete the target's financial resources, or even steal intellectual property by cloning a model’s behavior all depend on a common class of security vulnerability in order to succeed. Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to risks such as denial of service (DoS), economic losses, model theft, and service degradation. The high computational demands of LLMs, especially in cloud environments, make them vulnerable to resource exploitation and unauthorized usage.
+Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm cạn kiệt nguồn lực tài chính của mục tiêu, hoặc đánh cắp tài sản trí tuệ bằng cách sao chép hành vi của mô hình đều khai thác một điểm yếu chung về bảo mật. Chiếm dụng không giới hạn xảy ra khi một Mô hình Ngôn ngữ lớn cho phép người dùng thực hiện các suy luận quá mức và không kiểm soát, dẫn đến các nguy cơ như từ chối dịch vụ (DoS), thiệt hại tài chính, đánh cắp mô hình và làm giảm chất lượng dịch vụ. Do Mô hình Ngôn ngữ lớn yêu cầu tài nguyên tính toán lớn, đặc biệt trong môi trường đám mây, do vậy dễ là lỗ hổng để khai thác tài nguyên và sử dụng trái phép. 
 
-### Common Examples of Vulnerability
+### Các ví dụ phổ biến về lỗ hổng
 
-#### 1. Variable-Length Input Flood
-  Attackers can overload the LLM with numerous inputs of varying lengths, exploiting processing inefficiencies. This can deplete resources and potentially render the system unresponsive, significantly impacting service availability.
-#### 2. Denial of Wallet (DoW)
+#### 1. Tấn công tràn với đầu vào có độ dài linh hoạt
+  Kẻ tấn công làm quá tải hệ thống khi nhập đầu vào vớ độ dài đa dạng, khai thác sự kém hiệu quả khi xử lý dữ liệu. Việc này có thể làm tiêu tốn tài nguyên và có khả năng làm hệ thống không thể phản hồi, ảnh nghiêm trọng đến khả năng cung cấp dịch vụ. 
+#### 2. Tấn công từ chối ví (DoW)
   By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
 #### 3. Continuous Input Overflow
   Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
