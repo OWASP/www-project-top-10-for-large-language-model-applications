@@ -12,22 +12,22 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
   Kẻ tấn công làm quá tải hệ thống khi nhập đầu vào vớ độ dài đa dạng, khai thác sự kém hiệu quả khi xử lý dữ liệu. Việc này có thể làm tiêu tốn tài nguyên và có khả năng làm hệ thống không thể phản hồi, ảnh nghiêm trọng đến khả năng cung cấp dịch vụ. 
 #### 2. Tấn công từ chối ví (DoW)
   By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
-#### 3. Continuous Input Overflow
+#### 3. Tấn công tràn đầu vào liên tục 
   Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
-#### 4. Resource-Intensive Queries
+#### 4. Tấn công bằng các truy vấn tốn tài nguyên
   Submitting unusually demanding queries involving complex sequences or intricate language patterns can drain system resources, leading to prolonged processing times and potential system failures.
-#### 5. Model Extraction via API
+#### 5. Trích xuất mô hình qua API
   Attackers may query the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model. This not only poses risks of intellectual property theft but also undermines the integrity of the original model.
-#### 6. Functional Model Replication
+#### 6. Sao chép mô hình chức năng
   Using the target model to generate synthetic training data can allow attackers to fine-tune another foundational model, creating a functional equivalent. This circumvents traditional query-based extraction methods, posing significant risks to proprietary models and technologies.
-#### 7. Side-Channel Attacks
+#### 7. Tấn công qua kênh phụ
   Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
 
-### Prevention and Mitigation Strategies
+### Chiến lược phòng ngừa và giảm thiểu
 
-#### 1. Input Validation
+#### 1. Xác thực đầu vào
   Implement strict input validation to ensure that inputs do not exceed reasonable size limits.
-#### 2. Limit Exposure of Logits and Logprobs
+#### 2. Hạn chế khả năng tiếp cận Logits và Logprobs
   Restrict or obfuscate the exposure of `logit_bias` and `logprobs` in API responses. Provide only the necessary information without revealing detailed probabilities.
 #### 3. Rate Limiting
   Apply rate limiting and user quotas to restrict the number of requests a single source entity can make in a given time period.
@@ -59,20 +59,20 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
 
 ### Example Attack Scenarios
 
-#### Scenario #1: Uncontrolled Input Size
+#### Kịch bản #1: Uncontrolled Input Size
   An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
-#### Scenario #2: Repeated Requests
+#### Kịch bản #2: Repeated Requests
   An attacker transmits a high volume of requests to the LLM API, causing excessive consumption of computational resources and making the service unavailable to legitimate users.
-#### Scenario #3: Resource-Intensive Queries
+#### Kịch bản #3: Resource-Intensive Queries
   An attacker crafts specific inputs designed to trigger the LLM's most computationally expensive processes, leading to prolonged CPU usage and potential system failure.
 #### Scenario #4: Denial of Wallet (DoW)
   An attacker generates excessive operations to exploit the pay-per-use model of cloud-based AI services, causing unsustainable costs for the service provider.
-#### Scenario #5: Functional Model Replication
+#### Kịch bản #5: Functional Model Replication
   An attacker uses the LLM's API to generate synthetic training data and fine-tunes another model, creating a functional equivalent and bypassing traditional model extraction limitations.
-#### Scenario #6: Bypassing System Input Filtering
+#### Kịch bản #6: Bypassing System Input Filtering
   A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
 
-### Reference Links
+### Liên kết tham khảo
 
 1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**
@@ -85,7 +85,7 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
 9. [Sponge Examples: Energy-Latency Attacks on Neural Networks: Arxiv White Paper](https://arxiv.org/abs/2006.03463) **arXiv**
 10. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
 
-### Related Frameworks and Taxonomies
+### Các khung chuẩn và hệ thống phân loại liên quan
 
 Tham khảo phần này để có thông tin toàn diện, các chiến lược tình huống liên quan đến triển khai hạ tầng, kiểm soát môi trường được áp dụng và các thực hành tốt nhất.
 
