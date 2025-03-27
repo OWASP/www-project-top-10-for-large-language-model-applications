@@ -42,7 +42,7 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
   Liên tục theo dõi việc sử dụng tài nguyên và áp dụng ghi log để phát hiện và phản ứng trong trường hợp chiếm dụng tài nguyên bất thường.
 #### 8. Dấu chìm
   Sử dụng các khung chuẩn cho dấu chìm để chèn và phát hiện các hành vi sử dụng trái phép các kết quả đầu ra của Mô hình Ngôn ngữ lớn.
-#### 9. Xuống cấp có kiểm soát
+#### 9. Hạ cấp có kiểm soát
   Thiết kế hệ thống để hạ cấp có kiểm soát khi bị tải nặng, duy trì một phần chức năng thay vì ngừng hoạt động hoàn toàn.
 #### 10. Giới hạn tác vụ chờ và mở rộng
   Giới hạn số lượng các tác vụ chờ và tổng số tác vụ, đồng thời kết hợp mở rộng linh hoạt và can bằng tải để xử lý các nhu cầu đa dạng và đảm bảo hoạt động ổn định của hệ thống.
