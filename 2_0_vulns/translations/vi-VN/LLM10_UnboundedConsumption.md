@@ -11,17 +11,17 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
 #### 1. Tấn công tràn với đầu vào có độ dài linh hoạt
   Kẻ tấn công làm quá tải hệ thống khi nhập đầu vào vớ độ dài đa dạng, khai thác sự kém hiệu quả khi xử lý dữ liệu. Việc này có thể làm tiêu tốn tài nguyên và có khả năng làm hệ thống không thể phản hồi, ảnh nghiêm trọng đến khả năng cung cấp dịch vụ. 
 #### 2. Tấn công từ chối ví (DoW)
-  By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
+  Kẻ tấn công khởi tạo một số lượng lớn các tác vụ, khai tác mô hình tính phí theo mức sử dụng của các dịch vụ AI trên đám mây, dẫn đến gánh nặng tài chính cho nhà cung cấp và nguy cơ phá sản.
 #### 3. Tấn công tràn đầu vào liên tục 
-  Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
+  Việc dữ liệu đầu vào được gửi liên tục làm quá tải cửa sổ ngữ cảnh của mô hình có thể dẫn đến việc tiêu thụ tài nguyên tính toán quá mức, gây hạ cấp dịch vụ và gián đoạn hoạt động.
 #### 4. Tấn công bằng các truy vấn tốn tài nguyên
-  Submitting unusually demanding queries involving complex sequences or intricate language patterns can drain system resources, leading to prolonged processing times and potential system failures.
+  Việc gửi các truy vấn có đòi hỏi cao bất thường bao gồm các chuỗi và các mẫu ngôn ngữ phức tạp có thể làm cạn kiệt tài nguyên của hệ thống, dẫn đến thời gian xử lý kéo dài hoặc hệ thống ngừng hoạt động.
 #### 5. Trích xuất mô hình qua API
-  Attackers may query the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model. This not only poses risks of intellectual property theft but also undermines the integrity of the original model.
+  Kẻ tấn công có thể truy vấn mô hình API bằng cách sử dụng các dữ liệu nhập vào được thiết kế riêng và kỹ thuật chèn lệnh để thu thập kết quả đầu ra nhằm sao chép một phần mô hình hoặc tạo ra một bóng mô hình. Việc này không chỉ gây rủi ro bị đánh cắp tài sản trí tuệ mà còn đe dọa tính toàn vẹn của mô hình ban đầu.
 #### 6. Sao chép mô hình chức năng
-  Using the target model to generate synthetic training data can allow attackers to fine-tune another foundational model, creating a functional equivalent. This circumvents traditional query-based extraction methods, posing significant risks to proprietary models and technologies.
+  Sử dụng mô hình mục tiêu để tạo ra dữ liệu huấn luyện nhân tạo giúp kẻ tấn công tinh chỉnh mô hình nền tảng khác, tạo ra mô hình chức năng tương đương. Việc này vượt qua các phương pháp trích xuất dựa trên truy vấn thông thường, tạo ra nguy cơ lớn cho công nghệ và các mô hình độc quyền.
 #### 7. Tấn công qua kênh phụ
-  Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
+  Kẻ tấn công có thể khai thác kỹ thuật lọc đầu vào của mô hình để thực hiện tấn công qua kênh phụ, thu thập trọng số và thông tin kiến trúc của mô hình.
 
 ### Chiến lược phòng ngừa và giảm thiểu
 
@@ -36,28 +36,28 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
 #### 5. Giới hạn thời gian và điều chỉnh tốc độ
   Đặt giới hạn thời gian và giới hạn tốc độ xử lý cho các tác vụ tốn tài nguyên để phòng chống việc chiếm dụng tài nguyên kéo dài.
 #### 6. Kỹ thuật Sandbox
-  Restrict the LLM's access to network resources, internal services, and APIs.
-  - This is particularly significant for all common scenarios as it encompasses insider risks and threats. Furthermore, it governs the extent of access the LLM application has to data and resources, thereby serving as a crucial control mechanism to mitigate or prevent side-channel attacks.
-#### 7. Comprehensive Logging, Monitoring and Anomaly Detection
-  Continuously monitor resource usage and implement logging to detect and respond to unusual patterns of resource consumption.
+  Hạn chế quyền truy cập của mô hình vào tài nguyên mạng, dịch vụ nội bộ và API.
+  - Điều này rất quan trọng trong tất cả các tình huống phổ biến vì nó bao gồm rủi ro và các mối đe dọa trong nội bộ. HƠn nữa, nó còn kiểm soát phạm vi truy cập của ứng dụng mô hình vào dữ liệu và tài nguyên, do vậy nó có vai trò như một cơ chế giảm thiểu hoặc phòng chống các loại tấn công qua kênh phụ.
+#### 7. Ghi log, theo dõi và phát hiện bất thường đầy đủ
+  Liên tục theo dõi việc sử dụng tài nguyên và áp dụng ghi log để phát hiện và phản ứng trong trường hợp chiếm dụng tài nguyên bất thường.
 #### 8. Dấu chìm
   Sử dụng các khung chuẩn cho dấu chìm để chèn và phát hiện các hành vi sử dụng trái phép các kết quả đầu ra của Mô hình Ngôn ngữ lớn.
 #### 9. Xuống cấp có kiểm soát
   Thiết kế hệ thống để hạ cấp có kiểm soát khi bị tải nặng, duy trì một phần chức năng thay vì ngừng hoạt động hoàn toàn.
-#### 10. Limit Queued Actions and Scale Robustly
-  Implement restrictions on the number of queued actions and total actions, while incorporating dynamic scaling and load balancing to handle varying demands and ensure consistent system performance.
-#### 11. Adversarial Robustness Training
-  Train models to detect and mitigate adversarial queries and extraction attempts.
-#### 12. Glitch Token Filtering
-  Build lists of known glitch tokens and scan output before adding it to the model’s context window.
-#### 13. Access Controls
-  Implement strong access controls, including role-based access control (RBAC) and the principle of least privilege, to limit unauthorized access to LLM model repositories and training environments.
-#### 14. Centralized ML Model Inventory
-  Use a centralized ML model inventory or registry for models used in production, ensuring proper governance and access control.
-#### 15. Automated MLOps Deployment
-  Implement automated MLOps deployment with governance, tracking, and approval workflows to tighten access and deployment controls within the infrastructure.
+#### 10. Giới hạn tác vụ chờ và mở rộng
+  Giới hạn số lượng các tác vụ chờ và tổng số tác vụ, đồng thời kết hợp mở rộng linh hoạt và can bằng tải để xử lý các nhu cầu đa dạng và đảm bảo hoạt động ổn định của hệ thống.
+#### 11. Đào tạo chống tấn công
+  Đào tạo mô hình để phát hiện và giảm thiểu các truy vấn thù địch và các nỗ lực nhằm trích xuất dữ liệu
+#### 12. Lọc token lỗi
+  Xây dựng danh sách các token lỗi đã biết và quét các kết quả đầu ra trước khi thêm chúng vào cửa sổ ngữ cảnh của mô hình.
+#### 13. Kiểm soát truy cập
+  Thực hiện cơ chế kiểm soát truy cập mạnh, bao gồm kiểm soát truy cập dựa trên vai trò (RBAC) và nguyên tắc đặc quyền tối thiểu, để hạn chế các truy cập trái phép vào kho lưu trữ và môi trường đào tạo của mô hình.
+#### 14. Lưu trữ mô hình máy học (ML) tập trung
+  Sử dụng kho lưu trữ tập trung hoặc hệ thống quản lý tập trung cho các mô hình máy học sử dụng trong môi trường triển khai, để đảm bảo quản trị và kiểm soát truy cập phù hợp. 
+#### 15. Triển khai vận hành máy học (MLOps) tự động
+  Thực hiện triển khai vận hành máy học tự động cùng với việc quản trị, theo dõi và quy trình phê duyệt để kiểm soát truy cập và triển khai chặt chẽ hơn trong hạ tầng.
 
-### Example Attack Scenarios
+### Các kịch bản tấn công mẫu
 
 #### Kịch bản #1: Uncontrolled Input Size
   An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
