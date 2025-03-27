@@ -60,17 +60,17 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
 ### Các kịch bản tấn công mẫu
 
 #### Kịch bản #1: Uncontrolled Input Size
-  An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
-#### Kịch bản #2: Repeated Requests
-  An attacker transmits a high volume of requests to the LLM API, causing excessive consumption of computational resources and making the service unavailable to legitimate users.
-#### Kịch bản #3: Resource-Intensive Queries
-  An attacker crafts specific inputs designed to trigger the LLM's most computationally expensive processes, leading to prolonged CPU usage and potential system failure.
-#### Scenario #4: Denial of Wallet (DoW)
-  An attacker generates excessive operations to exploit the pay-per-use model of cloud-based AI services, causing unsustainable costs for the service provider.
-#### Kịch bản #5: Functional Model Replication
-  An attacker uses the LLM's API to generate synthetic training data and fine-tunes another model, creating a functional equivalent and bypassing traditional model extraction limitations.
-#### Kịch bản #6: Bypassing System Input Filtering
-  A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
+  Kẻ tấn công nhập dữ liệu lớn bất thường vào ứng dụng LLM xử lý dữ liệu văn bản, dẫn đến việc làm quá tải bộ nhớ và CPU, có thể gây sập hệ thống hoặc làm dịch vụ bị chậm đi đáng kể.
+#### Kịch bản #2: Yêu cầu lặp lại
+  Kẻ tấn công gửi một số lượng lớn các yêu cầu đến LLM API, gây ra việc tiêu tốn tài nguyên tính toán quá mức, dẫn đến việc những người dùng thật không thể sử dụng dịch vụ.
+#### Kịch bản #3: Các truy vấn chiếm dụng tài nguyên
+  Kẻ tấn công dùng những dữ liệu nhập đầu vào đặc biệt được thiết kế để kích hoạt các quá trình tiêu tốn nhiều tài nguyên tính toán nhất của LLM, dẫn đến việc sử dụng CPU kéo dài và có thể làm sập hệ thống.
+#### Kịch bản #4: Từ chối ví
+  Kẻ tấn công thực hiện số lượng lớn các tác vụ nhằm lợi dụng mô hình tính phí theo mức sử dụng của các dịch vụ AI đám mây, gây ra các chi phí không thể duy trì cho các nhà cung cấp dịch vụ. 
+#### Kịch bản #5: Sao chép mô hình chức năng
+  Kẻ tấn công sử dụng API của LLM để tạo ra dữ liệu huấn luyện nhân tạo và tinh chỉnh mô hình khác, tạo ra mô hình tương đương và qua mặt các giới hạn trích xuất mô hình thông thường.
+#### Kịch bản #6: Qua mặt hệ thống lọc dữ liệu nhập vào
+  A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control. Kẻ tấn công qua mặt kỹ thuật lọc dữ liệu nhập vào và phần hướng dẫn của LLM để thực hiện tấn công qua kênh phụ và thu thập thông tin mô hìnd để chuyển vào những tài nguyên mà chúng kiểm soát từ xa.
 
 ### Liên kết tham khảo
 
@@ -87,7 +87,7 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
 
 ### Các khung chuẩn và hệ thống phân loại liên quan
 
-Tham khảo phần này để có thông tin toàn diện, các chiến lược tình huống liên quan đến triển khai hạ tầng, kiểm soát môi trường được áp dụng và các thực hành tốt nhất.
+Tham khảo phần này để có thông tin toàn diện, các chiến lược kịch bản liên quan đến triển khai hạ tầng, kiểm soát môi trường được áp dụng và các thực hành tốt nhất.
 
 - [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
 - [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**
