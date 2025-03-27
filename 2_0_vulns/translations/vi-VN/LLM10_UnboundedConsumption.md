@@ -45,7 +45,7 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
 #### 9. Hạ cấp có kiểm soát
   Thiết kế hệ thống để hạ cấp có kiểm soát khi bị tải nặng, duy trì một phần chức năng thay vì ngừng hoạt động hoàn toàn.
 #### 10. Giới hạn tác vụ chờ và mở rộng
-  Giới hạn số lượng các tác vụ chờ và tổng số tác vụ, đồng thời kết hợp mở rộng linh hoạt và can bằng tải để xử lý các nhu cầu đa dạng và đảm bảo hoạt động ổn định của hệ thống.
+  Giới hạn số lượng các tác vụ chờ và tổng số tác vụ, đồng thời kết hợp mở rộng linh hoạt và cân bằng tải để xử lý các nhu cầu đa dạng và đảm bảo hoạt động ổn định của hệ thống.
 #### 11. Đào tạo chống tấn công
   Đào tạo mô hình để phát hiện và giảm thiểu các truy vấn thù địch và các nỗ lực nhằm trích xuất dữ liệu
 #### 12. Lọc token lỗi
@@ -70,7 +70,7 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
 #### Kịch bản #5: Sao chép mô hình chức năng
   Kẻ tấn công sử dụng API của LLM để tạo ra dữ liệu huấn luyện nhân tạo và tinh chỉnh mô hình khác, tạo ra mô hình tương đương và qua mặt các giới hạn trích xuất mô hình thông thường.
 #### Kịch bản #6: Qua mặt hệ thống lọc dữ liệu nhập vào
-  Kẻ tấn công qua mặt kỹ thuật lọc dữ liệu nhập vào và phần hướng dẫn của LLM để thực hiện tấn công qua kênh phụ và thu thập thông tin mô hìnd để chuyển vào những tài nguyên mà chúng kiểm soát từ xa.
+  Kẻ tấn công qua mặt kỹ thuật lọc dữ liệu nhập vào và phần hướng dẫn của LLM để thực hiện tấn công qua kênh phụ và thu thập thông tin mô hình để chuyển vào những tài nguyên mà chúng kiểm soát từ xa.
 
 ### Liên kết tham khảo
 
