@@ -26,24 +26,24 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
 ### Chiến lược phòng ngừa và giảm thiểu
 
 #### 1. Xác thực đầu vào
-  Implement strict input validation to ensure that inputs do not exceed reasonable size limits.
+  Thực hiện xác thực đầu vào nghiêm ngặt để đảm bảo dữ liệu nhập vào không vượt quá giới hạn kích thước thông thường.
 #### 2. Hạn chế khả năng tiếp cận Logits và Logprobs
-  Restrict or obfuscate the exposure of `logit_bias` and `logprobs` in API responses. Provide only the necessary information without revealing detailed probabilities.
-#### 3. Rate Limiting
-  Apply rate limiting and user quotas to restrict the number of requests a single source entity can make in a given time period.
-#### 4. Resource Allocation Management
-  Monitor and manage resource allocation dynamically to prevent any single user or request from consuming excessive resources.
-#### 5. Timeouts and Throttling
-  Set timeouts and throttle processing for resource-intensive operations to prevent prolonged resource consumption.
-#### 6.Sandbox Techniques
+  Giới hạn và ẩn khả năng tiếp cận `logit_bias` và `logprobs` trong các phản hồi API. Chỉ cung cấp các thông tin cần thiết mà không làm lộ ra các xác suất chi tiết.
+#### 3. Giới hạn số lượng
+  Đặt giới hạn số lượng và hạn mức sử dụng cho người dùng để giới hạn số lượng yêu cầu mà một nguồn đơn lẻ có thể thực hiện.
+#### 4. Quản lý phân bổ tài nguyên
+  Giám sát và quản lý phân bổ tài nguyên một cách linh hoạt để phòng chống việc một người dùng hoặc một yêu cầu sử dung quá nhiều tài nguyên. 
+#### 5. Giới hạn thời gian và điều chỉnh tốc độ
+  Đặt giới hạn thời gian và giới hạn tốc độ xử lý cho các tác vụ tốn tài nguyên để phòng chống việc chiếm dụng tài nguyên kéo dài.
+#### 6. Kỹ thuật Sandbox
   Restrict the LLM's access to network resources, internal services, and APIs.
   - This is particularly significant for all common scenarios as it encompasses insider risks and threats. Furthermore, it governs the extent of access the LLM application has to data and resources, thereby serving as a crucial control mechanism to mitigate or prevent side-channel attacks.
 #### 7. Comprehensive Logging, Monitoring and Anomaly Detection
   Continuously monitor resource usage and implement logging to detect and respond to unusual patterns of resource consumption.
-#### 8. Watermarking
-  Implement watermarking frameworks to embed and detect unauthorized use of LLM outputs.
-#### 9. Graceful Degradation
-  Design the system to degrade gracefully under heavy load, maintaining partial functionality rather than complete failure.
+#### 8. Dấu chìm
+  Sử dụng các khung chuẩn cho dấu chìm để chèn và phát hiện các hành vi sử dụng trái phép các kết quả đầu ra của Mô hình Ngôn ngữ lớn.
+#### 9. Xuống cấp có kiểm soát
+  Thiết kế hệ thống để hạ cấp có kiểm soát khi bị tải nặng, duy trì một phần chức năng thay vì ngừng hoạt động hoàn toàn.
 #### 10. Limit Queued Actions and Scale Robustly
   Implement restrictions on the number of queued actions and total actions, while incorporating dynamic scaling and load balancing to handle varying demands and ensure consistent system performance.
 #### 11. Adversarial Robustness Training
