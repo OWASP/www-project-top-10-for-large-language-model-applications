@@ -59,7 +59,7 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
 
 ### Các kịch bản tấn công mẫu
 
-#### Kịch bản #1: Uncontrolled Input Size
+#### Kịch bản #1: Không kiểm soát kích cỡ của dữ liệu nhập vào
   Kẻ tấn công nhập dữ liệu lớn bất thường vào ứng dụng LLM xử lý dữ liệu văn bản, dẫn đến việc làm quá tải bộ nhớ và CPU, có thể gây sập hệ thống hoặc làm dịch vụ bị chậm đi đáng kể.
 #### Kịch bản #2: Yêu cầu lặp lại
   Kẻ tấn công gửi một số lượng lớn các yêu cầu đến LLM API, gây ra việc tiêu tốn tài nguyên tính toán quá mức, dẫn đến việc những người dùng thật không thể sử dụng dịch vụ.
@@ -70,7 +70,7 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
 #### Kịch bản #5: Sao chép mô hình chức năng
   Kẻ tấn công sử dụng API của LLM để tạo ra dữ liệu huấn luyện nhân tạo và tinh chỉnh mô hình khác, tạo ra mô hình tương đương và qua mặt các giới hạn trích xuất mô hình thông thường.
 #### Kịch bản #6: Qua mặt hệ thống lọc dữ liệu nhập vào
-  A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control. Kẻ tấn công qua mặt kỹ thuật lọc dữ liệu nhập vào và phần hướng dẫn của LLM để thực hiện tấn công qua kênh phụ và thu thập thông tin mô hìnd để chuyển vào những tài nguyên mà chúng kiểm soát từ xa.
+  Kẻ tấn công qua mặt kỹ thuật lọc dữ liệu nhập vào và phần hướng dẫn của LLM để thực hiện tấn công qua kênh phụ và thu thập thông tin mô hìnd để chuyển vào những tài nguyên mà chúng kiểm soát từ xa.
 
 ### Liên kết tham khảo
 
