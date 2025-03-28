@@ -23,7 +23,7 @@ Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm 
 #### 7. Tấn công qua kênh phụ
   Kẻ tấn công có thể khai thác kỹ thuật lọc đầu vào của mô hình để thực hiện tấn công qua kênh phụ, thu thập trọng số và thông tin kiến trúc của mô hình.
 
-### Chiến lược phòng ngừa và giảm thiểu
+### Chiến lược ngăn chặn và giảm thiểu
 
 #### 1. Xác thực đầu vào
   Thực hiện xác thực đầu vào nghiêm ngặt để đảm bảo dữ liệu nhập vào không vượt quá giới hạn kích thước thông thường.
