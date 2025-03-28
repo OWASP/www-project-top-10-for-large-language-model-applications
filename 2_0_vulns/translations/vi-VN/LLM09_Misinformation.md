@@ -1,29 +1,29 @@
-## LLM09:2025 Misinformation
+﻿## LLM09:2025 Thông tin sai lệch
 
-### Description
+### Mô tả
 
-Misinformation from LLMs poses a core vulnerability for applications relying on these models. Misinformation occurs when LLMs produce false or misleading information that appears credible. This vulnerability can lead to security breaches, reputational damage, and legal liability.
+Thông tin sai lệch từ các Mô hình Ngôn ngữ lớn (LLM) là một điểm yếu lớn đối với các ứng dụng phụ thuộc vào các mô hình này. Thông tin sai lệch xuất hiện khi các LLM tạo ra các thông tin sai hoặc gây hiểu lầm nhưng trông lại có vẻ đáng tin cậy. Lỗ hổng này có  thể dẫn đến các vi phạm bảo mật, ảnh hưởng danh tiếng và trách nhiệm pháp lý.
 
-One of the major causes of misinformation is hallucination—when the LLM generates content that seems accurate but is fabricated. Hallucinations occur when LLMs fill gaps in their training data using statistical patterns, without truly understanding the content. As a result, the model may produce answers that sound correct but are completely unfounded. While hallucinations are a major source of misinformation, they are not the only cause; biases introduced by the training data and incomplete information can also contribute.
+Một trong những nguyên nhân chính của thông tin sai lệch là hiện tượng ảo giác – khi LLM đưa ra các nội dung có vẻ chính xác nhưng thật ra chúng đã tạo ra các nội dung này. Ảo giác sinh ra khi LLM tự điền vào những khoảng trống trong dữ liệu huấn luyện dựa trên các mẫu thống kê, mà không thực sự hiểu các nội dung này. Kết quả là, mô hình có thể tạo ra các câu trả lời nghe có vẻ đúng nhưng hoàn toàn không có căn cứ. Ảo giác là guyên nhân chính dẫn đến thông tin sai lệch, nhưng đó không phải là nguyên nhân duy nhất; các thiên kiến trong dữ liệu huấn luyện và thông tin không hoàn chỉnh cũng là một trong các tác nhân. 
 
-A related issue is overreliance. Overreliance occurs when users place excessive trust in LLM-generated content, failing to verify its accuracy. This overreliance exacerbates the impact of misinformation, as users may integrate incorrect data into critical decisions or processes without adequate scrutiny.
+Một vấn đề liên quan đó là sự phụ thuộc quá mức vào mô hình. Sự phụ thuộc quá mức xuất hiện khi người dùng tin tưởng quả mức vào các nội dung được tạo ra bởi LLM, và không kiểm tra lại độ chính xác của các nội dung này. Việc phụ thuộc quá mức làm cho thông tin sai lệch gây hậu quả lớn hơn, do người dùng có thể dựa trên các dữ liệu sai để đưa ra các quyết định quan trọng mà không có sự xem xét kỹ lưỡng.
 
-### Common Examples of Risk
+### Các ví dụ phổ biến về lỗ hổng
 
-#### 1. Factual Inaccuracies
-  The model produces incorrect statements, leading users to make decisions based on false information. For example, Air Canada's chatbot provided misinformation to travelers, leading to operational disruptions and legal complications. The airline was successfully sued as a result.
-  (Ref. link: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
-#### 2. Unsupported Claims
-  The model generates baseless assertions, which can be especially harmful in sensitive contexts such as healthcare or legal proceedings. For example, ChatGPT fabricated fake legal cases, leading to significant issues in court.
-  (Ref. link: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
-#### 3. Misrepresentation of Expertise
-  The model gives the illusion of understanding complex topics, misleading users regarding its level of expertise. For example, chatbots have been found to misrepresent the complexity of health-related issues, suggesting uncertainty where there is none, which misled users into believing that unsupported treatments were still under debate.
-  (Ref. link: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
-#### 4. Unsafe Code Generation
-  The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems. For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks.
-  (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
+#### 1. Thông tin sai sự thật
+  Mô hình đưa ra các khẳng định sai, dẫn đến việc người dùng ra quyết định dựa trên thông tin sai. Ví dụ, chatbot của hãng hàng không Air Canada cung cấp thông tin sai lệch cho hành khách, dẫn đến gián đoạn hoạt động và rắc rối về pháp lý. Kết quả là hãng hàng không đã bị thua kiện. 
+  (Liên kết tham khảo: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
+#### 2. Những khẳng định vô căn cứ
+  Mô hình tạo ra các khẳng định vô căn cứ, điều đó đặc biệt nguy hiểm trong các lĩnh vực nhạy cảm như y tế hoặc pháp lý. Ví dụ, ChatGPT đã tạo ra các vụ kiện giả, dẫn đến các vấn đề nghiêm trọng ở tòa án.
+  (Liên kết tham khảo: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
+#### 3. Giả chuyên môn
+  Mô hình tạo ra cảm giác hiểu rõ các chủ đề phức tạp, đánh lừa người dùng về trình độ chuyên môn của nó. Ví dụ, các chatbot đã bị phát hiện đưa ra các thông tin sai về độ phức tạp của các vấn đề liên quan đến sức khỏe, gợi ý sự không chắc chắn trong khi không phải như vậy, làm cho người dùng tin rằng phương pháp điều trị vẫn còn đang trong giai đoạn thảo luận.
+  (Liên kết tham khảo: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
+#### 4. Tạo mã không an toàn
+  Mô hình đề xuất thư viện mã không tồn tại hoặc không bảo mật, điều đó có thể dẫn đến lỗ hổng bảo mật khi tích hợp vào hệ thống phần mềm. Ví dụ, LLM đề xuất sử dụng thư viện mã không bảo mật của bên thứ ba, mà thư viện mã này nếu được sử dụng mà không kiểm tra lại, sẽ dẫn đến các nguy cơ về bảo mật.
+  (Liên kết tham khảo: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
-### Prevention and Mitigation Strategies
+### Chiến lược ngăn chặn và giảm thiểu
 
 #### 1. Retrieval-Augmented Generation (RAG)
   Use Retrieval-Augmented Generation to enhance the reliability of model outputs by retrieving relevant and verified information from trusted external databases during response generation. This helps mitigate the risk of hallucinations and misinformation.
@@ -42,14 +42,14 @@ A related issue is overreliance. Overreliance occurs when users place excessive 
 #### 8. Training and Education
   Provide comprehensive training for users on the limitations of LLMs, the importance of independent verification of generated content, and the need for critical thinking. In specific contexts, offer domain-specific training to ensure users can effectively evaluate LLM outputs within their field of expertise.
 
-### Example Attack Scenarios
+### Các kịch bản tấn công mẫu
 
-#### Scenario #1
-  Attackers experiment with popular coding assistants to find commonly hallucinated package names. Once they identify these frequently suggested but nonexistent libraries, they publish malicious packages with those names to widely used repositories. Developers, relying on the coding assistant's suggestions, unknowingly integrate these poised packages into their software. As a result, the attackers gain unauthorized access, inject malicious code, or establish backdoors, leading to significant security breaches and compromising user data.
-#### Scenario #2
-  A company provides a chatbot for medical diagnosis without ensuring sufficient accuracy. The chatbot provides poor information, leading to harmful consequences for patients. As a result, the company is successfully sued for damages. In this case, the safety and security breakdown did not require a malicious attacker but instead arose from the insufficient oversight and reliability of the LLM system. In this scenario, there is no need for an active attacker for the company to be at risk of reputational and financial damage.
+#### Kịch bản #1
+  Attackers experiment with popular coding assistants to find commonly hallucinated package names. Once they identify these frequently suggested but nonexistent libraries, they publish malicious packages with those names to widely used repositories. Developers, relying on the coding assistant's suggestions, unknowingly integrate these poised packages into their software. As a result, the attackers gain unauthorized access, inject malicious code, or establish backdoors, leading to significant security breaches and compromising user data. Kẻ tấn công thử nghiệm với 
+#### Kịch bản #2
+  Một công ty cung cấp chatbot để chẩn đoán y tế mà không đảm bảo độ chính xác cần thiết. Chatbot cung cấp thông tin không đúng, dẫn đến hậu quả cho bệnh nhân. Kết quả là, công ty bị thua kiện vì những thiệt hại đã xảy ra. Trong trường hợp này, không cần kẻ tấn công thù địch, sự an toàn và bảo mật đã bị ảnh hưởng bởi sơ xuất trong việc giám sát và độ tin cậy của hệ thống LLM. Trong kịch bản này, mặc dù không có kẻ tấn công trực tiếp, công ty đã có nguy cơ bị ảnh hưởng danh tiếng và thiệt hại tài chính. 
 
-### Reference Links
+### Liên kết tham khảo
 
 1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
 2. [Air Canada Chatbot Misinformation: What Travellers Should Know](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know): **BBC**
@@ -63,8 +63,8 @@ A related issue is overreliance. Overreliance occurs when users place excessive 
 10. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
 11. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
 
-### Related Frameworks and Taxonomies
+### Các khung chuẩn và hệ thống phân loại liên quan
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Tham khảo phần này để có thông tin toàn diện, các chiến lược kịch bản liên quan đến triển khai hạ tầng, kiểm soát môi trường được áp dụng và các thực hành tốt nhất.
 
 - [AML.T0048.002 - Societal Harm](https://atlas.mitre.org/techniques/AML.T0048) **MITRE ATLAS**
