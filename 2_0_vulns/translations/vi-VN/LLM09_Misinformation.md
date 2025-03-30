@@ -25,27 +25,27 @@ Một vấn đề liên quan đó là sự phụ thuộc quá mức vào mô hì
 
 ### Chiến lược ngăn chặn và giảm thiểu
 
-#### 1. Retrieval-Augmented Generation (RAG)
-  Use Retrieval-Augmented Generation to enhance the reliability of model outputs by retrieving relevant and verified information from trusted external databases during response generation. This helps mitigate the risk of hallucinations and misinformation.
-#### 2. Model Fine-Tuning
-  Enhance the model with fine-tuning or embeddings to improve output quality. Techniques such as parameter-efficient tuning (PET) and chain-of-thought prompting can help reduce the incidence of misinformation.
-#### 3. Cross-Verification and Human Oversight
-  Encourage users to cross-check LLM outputs with trusted external sources to ensure the accuracy of the information. Implement human oversight and fact-checking processes, especially for critical or sensitive information. Ensure that human reviewers are properly trained to avoid overreliance on AI-generated content.
-#### 4. Automatic Validation Mechanisms
-  Implement tools and processes to automatically validate key outputs, especially output from high-stakes environments.
-#### 5. Risk Communication
-  Identify the risks and possible harms associated with LLM-generated content, then clearly communicate these risks and limitations to users, including the potential for misinformation.
-#### 6. Secure Coding Practices
-  Establish secure coding practices to prevent the integration of vulnerabilities due to incorrect code suggestions.
-#### 7. User Interface Design
-  Design APIs and user interfaces that encourage responsible use of LLMs, such as integrating content filters, clearly labeling AI-generated content and informing users on limitations of reliability and accuracy. Be specific about the intended field of use limitations.
-#### 8. Training and Education
-  Provide comprehensive training for users on the limitations of LLMs, the importance of independent verification of generated content, and the need for critical thinking. In specific contexts, offer domain-specific training to ensure users can effectively evaluate LLM outputs within their field of expertise.
+#### 1. Tạo tăng cường truy xuất (RAG)
+  Sử dụng kỹ thuật tạo tăng cường truy xuất để làm tăng độ tin cậy của các kết quả đầu ra của mô hình bằng cách truy xuất các thông tin liên quan và đã được kiểm chứng từ các cơ sở dữ liệu đáng tin cậy trong quá trình tạo phản hồi. Điều này sẽ giúp giảm thiểu rủi ro ảo giác và thông tin sai lệch. 
+#### 2. Tinh chỉnh mô hình
+  Cải thiện mô hình bằng tinh chỉnh hoặc biểu diễn vector để cải thiện chất lượng đầu ra. Các kỹ thuật như tinh chỉnh tham số hiệu quả (PET) và lệnh chuỗi suy luận (chain-of-thought prompting) có thể giúp giảm các tình huống xuất hiện thông tin sai lệch. 
+#### 3. Xác minh chèo và giám sát con người
+  Khuyến khích người dùng kiểm tra chèo các kết quả của LLM với các nguồn tin cậy bên ngoài để đảm bảo độ chính xác của thông tin. Áp dụng quy trình giám sát con người và kiểm chứng thông tin, đặc biệt đối với thông tin quan trọng hoặc nhạy cảm. Đảm bảo người kiểm duyệt được đào tạo đầy đủ để tránh phụ thuộc quá mức vào nội dung AI tạo ra. 
+#### 4. Cơ chế xác thực tự động
+  Ấp dụng các công cụ và quy trình để xác thực các đầu ra quan trọng một cách tự động, đặc biệt trong những môi trường có rủi ro cao.
+#### 5. Truyền đạt về rủi ro
+  Xác định các rủi và mối nguy tiềm tàng liên quan đến nội dung do LLM tạo ra, sau đó truyền đạt các rủi ro này và các hạn chế tới người dùng, bao gồm các khả năng về thông tin sai lệch. 
+#### 6. Thực hành lập trình an toàn
+  dựng các quy trình lập trình an toàn để tránh tích hợp các lỗ hổng do các gợi ý lập trình sai gây ra. 
+#### 7. Thiết kế giao diện người dùng
+  Thiết kế API và giao diện người dùng để khuyến khích việc sử dụng LLM có trách nhiệm, ví dụ tích hợp các bộ lọc nội dụng, dán nhãn rõ ràng đối với các nội dung do AI tạo ra và thông báo cho người dùng về các hạn chế về độ tin tưởng và độ chính xác của nó. Cần nêu rõ giới hạn về phạm vi sử dụng của thông tin.
+#### 8. Đào tạo và giáo dục
+  Cung cấp đào tạo toàn diện cho người dùng về các hạn chế của LLM, tầm quan trọng của việc xác minh các nội dung được LLM tạo ra, và sự cần thiết của tư duy phản biện. Trong các ngữ cảnh cụ thể, cung cấp đào tạo chuyên sâu để đảm bảo người dùng đánh giá được đầu ra của LLM một cách hiệu quả trong lĩnh vực chuyên môn của họ. 
 
 ### Các kịch bản tấn công mẫu
 
 #### Kịch bản #1
-  Attackers experiment with popular coding assistants to find commonly hallucinated package names. Once they identify these frequently suggested but nonexistent libraries, they publish malicious packages with those names to widely used repositories. Developers, relying on the coding assistant's suggestions, unknowingly integrate these poised packages into their software. As a result, the attackers gain unauthorized access, inject malicious code, or establish backdoors, leading to significant security breaches and compromising user data. Kẻ tấn công thử nghiệm với 
+  Kẻ tấn công thử nghiệm với các trợ lý lập trình phổ biến để tìm ra tên các gói thường bị ảo giác (hallucinate). Sau khi xác định được các thư viện thường hay được gợi ý nhưng không thực sự tồn tại này, chúng đăng các gói độc hại với tên giống như vậy lên các kho mã nguồn được sử dụng rộng rãi. Các nhà phát triển, phụ thuộc vào các gợi ý của trợ lý lập trình, vô tình tích hợp các gói độc hại này vào phần mềm của họ. Kết quả là, kẻ tấn công chiếm được quyền truy cập trái phép, chèn mã độc, tạo cửa sau (backdoor), dẫn đến vi phạm bảo mật nghiêm trọng và làm lộ dữ liệu người dùng. 
 #### Kịch bản #2
   Một công ty cung cấp chatbot để chẩn đoán y tế mà không đảm bảo độ chính xác cần thiết. Chatbot cung cấp thông tin không đúng, dẫn đến hậu quả cho bệnh nhân. Kết quả là, công ty bị thua kiện vì những thiệt hại đã xảy ra. Trong trường hợp này, không cần kẻ tấn công thù địch, sự an toàn và bảo mật đã bị ảnh hưởng bởi sơ xuất trong việc giám sát và độ tin cậy của hệ thống LLM. Trong kịch bản này, mặc dù không có kẻ tấn công trực tiếp, công ty đã có nguy cơ bị ảnh hưởng danh tiếng và thiệt hại tài chính. 
 
