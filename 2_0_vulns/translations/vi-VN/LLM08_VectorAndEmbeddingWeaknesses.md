@@ -42,9 +42,9 @@ Tạo tăng cường truy xuất (RAG) là một kỹ thuật điều chỉnh m�
   Cơ sở dữ liệu vector có nhận thức về phân quyền nên được áp dụng để giới hạn truy cập và đảm bảo chỉ có các nhóm được quyền mới có thể truy cập vào các thông tin cụ thể của họ. 
 #### Kịch bản #3: Thay đổi hành vi của mô hình nền tảng
   Sau khi Truy xuất tăng cường, hành vi của mô hình nền tảng có thể bị thay đổi một cách tinh tế, chẳng hạn như giảm trí tuệ cảm xúc hoặc sự đồng cảm trong các phản hồi. Ví dụ, khi một người dùng hỏi, 
-    >"Tôi cảm thấy bị choáng ngợp vì khoản nợ sinh viên của mình. Tôi nên làm gì?"
+    >" Tôi cảm thấy bị choáng ngợp vì khoản nợ sinh viên của mình. Tôi nên làm gì?"
   phản hồi ban đầu có thể đưa ra lời khuyên đồng cảm như,
-    >"Tôi hiểu việc quản lý khoản nợ sinh viên có thể gây căng thẳng. Hãy cân nhắc các kế hoạch trả nợ dựa trên thu nhập của bạn."
+    >" Tôi hiểu việc quản lý khoản nợ sinh viên có thể gây căng thẳng. Hãy cân nhắc các kế hoạch trả nợ dựa trên thu nhập của bạn."
   Tuy nhiên, sau Tăng cường Truy xuất, phàn hồi có thể trở nên thuần thúy thực tế, ví dụ như,
 
     >" Bạn nên cố gắng trả các khoản nợ sinh viên càng nhanh càng tốt để tránh lãi suất tích lũy. Hãy cân nhắc cắt giảm các khoản chi tiêu không cần thiết và phân bổ nhiều tiền hơn vào việc thanh toán nợ."
