@@ -47,7 +47,7 @@ Tạo tăng cường truy xuất (RAG) là một kỹ thuật điều chỉnh m�
     >"Tôi hiểu việc quản lý khoản nợ sinh viên có thể gây căng thẳng. Hãy cân nhắc các kế hoạch trả nợ dựa trên thu nhập của bạn."
   Tuy nhiên, sau Tăng cường Truy xuất, phàn hồi có thể trở nên thuần thúy thực tế, ví dụ như,
 
-    >"Bạn nên cố gắng trả các khoản nợ sinh viên càng nhanh càng tốt để tránh lãi suất tích lũy. Hãy cân nhắc cắt giảm các khoản chi tiêu không cần thiết và phân bổ nhiều tiền hơn vào việc thanh toán nợ."
+    >" Bạn nên cố gắng trả các khoản nợ sinh viên càng nhanh càng tốt để tránh lãi suất tích lũy. Hãy cân nhắc cắt giảm các khoản chi tiêu không cần thiết và phân bổ nhiều tiền hơn vào việc thanh toán nợ."
   Trong khi phản hồi đã được sửa lại này thực tế là đúng, nhưng nó lại thiếu sự thông cảm, khiến ứng dụng kém hữu ích hơn.
 #### Giảm thiểu rủi ro
   Ảnh hưởng của RAG đối với hành vi của các mô hình nền tảng cần được theo dõi và đánh giá, đồng thời điều chỉnh quá trình tăng cường (augumentation) để duy trì các phẩm chất mong muốn như sự đồng cảm (Tham khảo #8).
