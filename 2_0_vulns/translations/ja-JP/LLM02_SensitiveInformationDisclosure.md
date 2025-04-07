@@ -72,7 +72,8 @@ LLM は、特にアプリケーションに組み込まれた場合、その出�
 
 #### 2. 参考 セキュリティの誤設定のベストプラクティス
 
-「OWASP API8:2023 Security Misconfiguration」のようなガイドラインに従って、エラーメッセージや設定の詳細から機密情報が漏れるのを防いでください。 (参考リンク:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+「OWASP API8:2023 Security Misconfiguration」のようなガイドラインに従って、エラーメッセージや設定の詳細から機密情報が漏れるのを防いでください。
+(参考リンク:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
 ###@ 高度なテクニック:
 

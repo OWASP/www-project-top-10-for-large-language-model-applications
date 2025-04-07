@@ -10,7 +10,9 @@
 
 ### 脆弱性の一般的な例
 
-1. 悪意のある行為者は、トレーニング中に有害なデータを導入し、偏った出力を導きます。「Split-View Data Poisoning」や「Frontrunning Poisoning」のようなテクニックは、モデルのトレーニングダイナミクスを悪用してこれを実現します。 (参考リンク: [スプリット・ビュー・データ・ポイズニング](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg)) (参考リンク: [フロントランニング・ポイズニング](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
+1. 悪意のある行為者は、トレーニング中に有害なデータを導入し、偏った出力を導きます。「Split-View Data Poisoning」や「Frontrunning Poisoning」のようなテクニックは、モデルのトレーニングダイナミクスを悪用してこれを実現します。
+  (参考リンク: [スプリット・ビュー・データ・ポイズニング](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
+  (参考リンク: [フロントランニング・ポイズニング](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
 2. 攻撃者は、有害なコンテンツを学習プロセスに直接注入し、モデルの出力品質を損なうことができます。
 3. ユーザーは、対話中に機密情報や専有情報を無意識のうちに注入し、それが後続の出力で暴露される可能性があります。
 4. 未検証のトレーニングデータは、偏った出力や誤った出力のリスクを高めます。
