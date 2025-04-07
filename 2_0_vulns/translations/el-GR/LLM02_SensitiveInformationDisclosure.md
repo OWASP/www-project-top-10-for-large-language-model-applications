@@ -53,7 +53,7 @@
   Περιορίστε τη δυνατότητα των χρηστών να παρακάμπτουν ή να έχουν πρόσβαση στις αρχικές ρυθμίσεις του συστήματος, μειώνοντας τον κίνδυνο έκθεσης σε εσωτερικές ρυθμίσεις.
 #### 2. Βέλτιστες Πρακτικές Αποφυγής Λανθασμένων Ρυθμίσεων Ασφαλείας
   Ακολουθήστε οδηγίες όπως το «OWASP API8:2023 Security Misconfiguration» για να αποφύγετε τη διαρροή ευαίσθητων πληροφοριών μέσω μηνυμάτων σφάλματος ή λεπτομερειών διαμόρφωσης.
-  (Σύνδεσμος Αναφοράς:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+  (Σύνδεσμος Αναφοράς: [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
 #### Προχωρημένες Τεχνικές:
 
