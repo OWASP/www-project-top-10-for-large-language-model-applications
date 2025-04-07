@@ -50,6 +50,10 @@ LinkedIn: https://www.linkedin.com/in/riotaro/
 Japanese Localization Reviewer
 LinkedIn: https://www.linkedin.com/in/takahiro-aoyama-323a3a13/
 
+#### Riki Ota (太田 吏城)
+Japanese Localization Reviewer
+LinkedIn: https://www.linkedin.com/in/riki-o-10b72816/
+
 ### この翻訳について
 
 OWASP Top 10 for Large Language Model Applications は、技術的かつ重要な性質を持つドキュメントであると私たちは認識しています。そのため、この翻訳版の作成にあたっては意識的に人間の翻訳者のみを起用しました。上記の翻訳者たちは、原文に関する深い技術的知識だけでなく、この翻訳を成功させるために必要とされる日本語の流暢さも兼ね備えています。
