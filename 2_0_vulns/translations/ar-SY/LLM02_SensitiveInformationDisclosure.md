@@ -1,77 +1,93 @@
-## LLM02:2025 Sensitive Information Disclosure
+## LLM02:2025 كشف المعلومات الحساسة (Sensitive Information Disclosure)
 
-### Description
+### الوصف
 
-Sensitive information can affect both the LLM and its application context. This includes personal identifiable information (PII), financial details, health records, confidential business data, security credentials, and legal documents. Proprietary models may also have unique training methods and source code considered sensitive, especially in closed or foundation models.
+يمكن أن تؤثر المعلومات الحساسة على كل من نموذج اللغة الكبير (LLM) وسياق التطبيق الذي يُستخدم فيه.وتشمل هذه المعلومات: البيانات الشخصية المُعرِّفة (PII)، التفاصيل المالية، السجلات الصحية، بيانات الأعمال السرّية، بيانات الاعتماد الأمنية، والمستندات القانونية. كما قد تحتوي النماذج المملوكة (Proprietary Models) على أساليب تدريب فريدة أو شيفرة مصدر تُعد معلومات حساسة، خاصة في حالة النماذج المغلقة أو النماذج الأساسية (Foundation Models).
 
-LLMs, especially when embedded in applications, risk exposing sensitive data, proprietary algorithms, or confidential details through their output. This can result in unauthorized data access, privacy violations, and intellectual property breaches. Consumers should be aware of how to interact safely with LLMs. They need to understand the risks of unintentionally providing sensitive data, which may later be disclosed in the model's output.
+تواجه نماذج اللغة الكبيرة (LLMs)، خاصة عند تضمينها داخل التطبيقات، مخاطر كشف بيانات حساسة أو خوارزميات مملوكة أو تفاصيل سرّية من خلال مخرجاتها. وقد يؤدي ذلك إلى وصول غير مصرح به للمعلومات، وانتهاكات للخصوصية، وتسريبات لحقوق الملكية الفكرية. يجب على المستخدمين أن يكونوا على دراية بكيفية التفاعل الآمن مع هذه النماذج، وأن يفهموا المخاطر المرتبطة بتقديم بيانات حساسة عن غير قصد، والتي قد يتم الكشف عنها لاحقًا في مخرجات النموذج.
 
-To reduce this risk, LLM applications should perform adequate data sanitization to prevent user data from entering the training model. Application owners should also provide clear Terms of Use policies, allowing users to opt out of having their data included in the training model. Adding restrictions within the system prompt about data types that the LLM should return can provide mitigation against sensitive information disclosure. However, such restrictions may not always be honored and could be bypassed via prompt injection or other methods.
+ولتقليل هذا الخطر، ينبغي على تطبيقات LLM أن تُجري عمليات تنظيف ومعالجة مناسبة للبيانات (Data Sanitization) لمنع دخول بيانات المستخدم إلى النموذج أثناء التدريب. كما ينبغي على مالكي التطبيقات توفير سياسات واضحة لشروط الاستخدام (Terms of Use)، تتيح للمستخدمين خيار الانسحاب من استخدام بياناتهم في التدريب. ويمكن أن يُسهم تضمين قيود داخل التعليمات النظامية (System Prompt) توضح أنواع البيانات التي يُسمح للنموذج بإرجاعها في الحد من خطر الكشف عن معلومات حساسة، إلا أن هذه القيود قد لا تُحترم دائمًا، وقد يتم تجاوزها عبر حقن التعليمات (Prompt Injection) أو وسائل أخرى.
 
-### Common Examples of Vulnerability
+### أمثلة شائعة على الثغرات
 
-#### 1. PII Leakage
-  Personal identifiable information (PII) may be disclosed during interactions with the LLM.
-#### 2. Proprietary Algorithm Exposure
-  Poorly configured model outputs can reveal proprietary algorithms or data. Revealing training data can expose models to inversion attacks, where attackers extract sensitive information or reconstruct inputs. For instance, as demonstrated in the 'Proof Pudding' attack (CVE-2019-20634), disclosed training data facilitated model extraction and inversion, allowing attackers to circumvent security controls in machine learning algorithms and bypass email filters.
-#### 3. Sensitive Business Data Disclosure
-  Generated responses might inadvertently include confidential business information.
+#### 1. تسريب المعلومات الشخصية (PII Leakage)
+قد يتم الكشف عن معلومات تعريفية شخصية (PII) أثناء التفاعل مع نموذج اللغة الكبير (LLM)، مما يؤدي إلى انتهاكات للخصوصية أو تسريبات غير مقصودة للبيانات الحساسة.
 
-### Prevention and Mitigation Strategies
+#### 2. كشف الخوارزميات المملوكة (Proprietary Algorithm Exposure)
+يمكن أن تؤدي مخرجات النموذج غير المحكمة إلى كشف خوارزميات أو بيانات مملوكة. وقد يؤدي كشف بيانات التدريب إلى تعريض النماذج لهجمات الانعكاس (Inversion Attacks)، حيث يستطيع المهاجمون استخراج معلومات حساسة أو إعادة بناء المدخلات الأصلية.
+على سبيل المثال، كما تم توثيقه في هجوم "Proof Pudding" (CVE-2019-20634)، أدى الكشف عن بيانات التدريب إلى تسهيل استخراج النموذج وتنفيذ هجمات انعكاس، مما مكّن المهاجمين من تجاوز ضوابط الأمان في خوارزميات تعلم الآلة وتخطي فلاتر البريد الإلكتروني.
 
-#### Sanitization:
+#### 3. كشف بيانات الأعمال الحساسة (Sensitive Business Data Disclosure)
+قد تتضمّن المخرجات التي يُولّدها النموذج معلومات أعمال سرّية عن غير قصد، مما يؤدي إلى تسريب غير مصرّح به لمحتوى داخلي أو استراتيجي.
 
-#### 1. Integrate Data Sanitization Techniques
-  Implement data sanitization to prevent user data from entering the training model. This includes scrubbing or masking sensitive content before it is used in training.
-#### 2. Robust Input Validation
-  Apply strict input validation methods to detect and filter out potentially harmful or sensitive data inputs, ensuring they do not compromise the model.
 
-#### Access Controls:
+### استراتيجيات الوقاية والتخفيف
 
-#### 1. Enforce Strict Access Controls
-  Limit access to sensitive data based on the principle of least privilege. Only grant access to data that is necessary for the specific user or process.
-#### 2. Restrict Data Sources
-  Limit model access to external data sources, and ensure runtime data orchestration is securely managed to avoid unintended data leakage.
+#### تنقية البيانات (Sanitization):
 
-#### Federated Learning and Privacy Techniques:
+#### 1. دمج تقنيات تنقية البيانات (Integrate Data Sanitization Techniques)
+قم بتطبيق تقنيات تنقية البيانات لمنع إدخال بيانات المستخدم في نموذج التدريب. يشمل ذلك إزالة أو إخفاء (Masking) المحتوى الحساس قبل استخدامه لأغراض التدريب.
 
-#### 1. Utilize Federated Learning
-  Train models using decentralized data stored across multiple servers or devices. This approach minimizes the need for centralized data collection and reduces exposure risks.
-#### 2. Incorporate Differential Privacy
-  Apply techniques that add noise to the data or outputs, making it difficult for attackers to reverse-engineer individual data points.
+#### 2. التحقق الصارم من المدخلات (Robust Input Validation)
+طبّق أساليب تحقق قوية من المدخلات لاكتشاف وتصنيف البيانات التي قد تكون ضارة أو حساسة، وضمان عدم تأثيرها على النموذج أو اختراقه.
 
-#### User Education and Transparency:
+#### ضوابط الوصول (Access Controls):
 
-#### 1. Educate Users on Safe LLM Usage
-  Provide guidance on avoiding the input of sensitive information. Offer training on best practices for interacting with LLMs securely.
-#### 2. Ensure Transparency in Data Usage
-  Maintain clear policies about data retention, usage, and deletion. Allow users to opt out of having their data included in training processes.
+#### 1. فرض ضوابط وصول صارمة (Enforce Strict Access Controls)
+قيّد الوصول إلى البيانات الحساسة استنادًا إلى مبدأ الحد الأدنى من الامتيازات (Least Privilege).
+يجب منح الوصول فقط إلى البيانات التي يحتاجها المستخدم أو العملية المحددة لأداء مهامها.
 
-#### Secure System Configuration:
+#### 2. تقييد مصادر البيانات (Restrict Data Sources)
+حدد بدقة مصادر البيانات الخارجية التي يمكن للنموذج الوصول إليها، وتأكد من إدارة تنظيم البيانات أثناء التشغيل (Runtime Data Orchestration) بطريقة آمنة، لتجنب تسرب البيانات غير المقصود.
 
-#### 1. Conceal System Preamble
-  Limit the ability for users to override or access the system's initial settings, reducing the risk of exposure to internal configurations.
-#### 2. Reference Security Misconfiguration Best Practices
-  Follow guidelines like "OWASP API8:2023 Security Misconfiguration" to prevent leaking sensitive information through error messages or configuration details.
-  (Ref. link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+#### التعلم الاتحادي وتقنيات الخصوصية (Federated Learning and Privacy Techniques):
 
-#### Advanced Techniques:
+#### 1. استخدام التعلم الاتحادي (Utilize Federated Learning)
+درّب النماذج باستخدام بيانات موزّعة مخزنة عبر عدة خوادم أو أجهزة، بدلاً من تجميع البيانات مركزيًا.
+يساهم هذا النهج في تقليل الحاجة إلى جمع البيانات في موقع مركزي ويُخفف من مخاطر تعريض البيانات الحساسة.
 
-#### 1. Homomorphic Encryption
-  Use homomorphic encryption to enable secure data analysis and privacy-preserving machine learning. This ensures data remains confidential while being processed by the model.
-#### 2. Tokenization and Redaction
-  Implement tokenization to preprocess and sanitize sensitive information. Techniques like pattern matching can detect and redact confidential content before processing.
+#### 2. دمج الخصوصية التفاضلية (Incorporate Differential Privacy)
+طبّق تقنيات تضيف ضوضاء (Noise) إلى البيانات أو المخرجات، مما يصعّب على المهاجمين إعادة بناء بيانات الأفراد بدقة، وبالتالي تعزز حماية الخصوصية.
 
-### Example Attack Scenarios
+#### توعية المستخدم والشفافية (User Education and Transparency):
 
-#### Scenario #1: Unintentional Data Exposure
-  A user receives a response containing another user's personal data due to inadequate data sanitization.
-#### Scenario #2: Targeted Prompt Injection
-  An attacker bypasses input filters to extract sensitive information.
-#### Scenario #3: Data Leak via Training Data
-  Negligent data inclusion in training leads to sensitive information disclosure.
+#### 1. توعية المستخدمين بكيفية استخدام نماذج اللغة بأمان (Educate Users on Safe LLM Usage)
+قدّم إرشادات توضح أهمية تجنّب إدخال المعلومات الحساسة.
+وفّر تدريبًا على أفضل الممارسات للتفاعل الآمن مع نماذج اللغة الكبيرة (LLMs).
 
-### Reference Links
+#### 2. ضمان الشفافية في استخدام البيانات (Ensure Transparency in Data Usage)
+ضع سياسات واضحة بشأن الاحتفاظ بالبيانات، واستخدامها، وآليات حذفها.
+أتح للمستخدمين خيار الانسحاب من استخدام بياناتهم في عمليات تدريب النماذج.
+
+#### تهيئة النظام بشكل آمن (Secure System Configuration):
+
+#### 1. إخفاء التهيئة الأولية للنظام (Conceal System Preamble)
+قيّد قدرة المستخدمين على الوصول إلى إعدادات النظام الأولية أو تعديلها، مما يقلّل من مخاطر كشف التكوينات الداخلية أو تجاوز التعليمات المبدئية.
+#### 2. الرجوع إلى أفضل الممارسات في التهيئة الأمنية (Reference Security Misconfiguration Best Practices)
+اتبع إرشادات موثوقة مثل "OWASP API8:2023 – التهيئة الأمنية غير الصحيحة" لتجنّب تسريب معلومات حساسة من خلال رسائل الخطأ أو تفاصيل التكوين.
+(رابط مرجعي: OWASP API8:2023 Security Misconfiguration)
+  (Ref. link:[](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+
+#### التقنيات المتقدمة (Advanced Techniques):
+
+#### 1. التشفير المتماثل أثناء المعالجة (Homomorphic Encryption)
+استخدم التشفير المتماثل القابل للمعالجة لتمكين تحليل البيانات بشكل آمن وتعلم آلي يحافظ على الخصوصية.
+تضمن هذه التقنية بقاء البيانات في حالة مُشفّرة حتى أثناء المعالجة من قبل النموذج، مما يعزز السرية.
+#### 2. الترميز والحجب (Tokenization and Redaction)
+طبّق تقنيات الترميز (Tokenization) كمرحلة تمهيدية لتنقية المعلومات الحساسة قبل معالجتها.
+يمكن استخدام أدوات مثل مطابقة الأنماط (Pattern Matching) لاكتشاف المحتوى السري وحجبه قبل أن تتم معالجته من قبل النموذج
+### سيناريوهات هجوم توضيحية (Example Attack Scenarios)
+
+#### السيناريو #1: كشف غير مقصود للبيانات (Unintentional Data Exposure)
+يتلقى أحد المستخدمين استجابة تحتوي على بيانات شخصية لمستخدم آخر، نتيجة غياب أو ضعف في آليات تنقية البيانات (Data Sanitization).
+
+#### السيناريو #2: حقن تعليمات مستهدف (Targeted Prompt Injection)
+يتمكن مهاجم من تجاوز فلاتر الإدخال لاستخراج معلومات حساسة من النموذج، باستخدام تعليمات مصمّمة بعناية.
+
+#### السيناريو #3: تسريب بيانات من خلال بيانات التدريب (Data Leak via Training Data)
+يؤدي الإهمال في اختيار بيانات التدريب إلى تضمين معلومات حساسة، مما يؤدي إلى تسريبها لاحقًا عبر مخرجات النموذج.
+
+### روابط مرجعية
 
 1. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
 2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
@@ -79,9 +95,9 @@ To reduce this risk, LLM applications should perform adequate data sanitization 
 4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
 5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 
-### Related Frameworks and Taxonomies
+### الأطر والتصنيفات ذات الصلة
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+راجع هذا القسم للحصول على معلومات شاملة، واستراتيجيات السيناريوهات المتعلقة بنشر البنية التحتية، وضوابط البيئة التطبيقية، وأفضل الممارسات الأخرى.
 
 - [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
 - [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**
