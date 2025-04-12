@@ -1,4 +1,5 @@
-## LLM08:2025 Αδυναμίες Διανυσμάτων και Ενσωμάτωσης (Vector and Embedding Weaknesses)
+#$ LLM08:2025 Αδυναμίες Διανυσμάτων και Ενσωμάτωσης  
+##            (Vector and Embedding Weaknesses)
 
 ### Περιγραφή
 
