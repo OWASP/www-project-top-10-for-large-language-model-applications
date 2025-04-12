@@ -1,4 +1,5 @@
-## LLM10:2025 Απεριόριστη Κατανάλωση (Unbounded Consumption)
+#$ LLM10:2025 Απεριόριστη Κατανάλωση  
+##            (Unbounded Consumption)
 
 ### Περιγραφή
 
