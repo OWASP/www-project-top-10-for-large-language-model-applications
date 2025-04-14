@@ -52,7 +52,7 @@ LLM, विशेष रूप से जब applications में जोड़े
 #### 1. सिस्टम प्राइमबल को Conceal (जो न्यूनतम परिवर्तन हो ) करें 
   आंतरिक configuration से संपर्क के जोखिमों को कम करने के लिये ,users द्वारा सिस्टम की प्रारंभिक settings को ओवरराइड करने या पहुँचने (access) की क्षमता को सीमित करें ।
 #### 2. सुरक्षा से जुड़े Misconfiguration के संदर्भ में उच्च practices
-  Error messages या configuration details के माध्यम से संवेदनशील जानकारियों को लीक होने से रोकने के लिए "OWASP API8: 2023 Security Misconfiguration" जैसें दिशानिर्देशों का पालन करें । (संदर्भ link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+  Error messages या configuration details के माध्यम से संवेदनशील जानकारियों को लीक होने से रोकने के लिए "OWASP API8: 2023 Security Misconfiguration" जैसें दिशानिर्देशों का पालन करें । (संदर्भ link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/)
 
 #### उन्नत तकनीके 
 
