@@ -12,8 +12,8 @@ hit नहीं होता । यह इस तरह के परिवर
 ### Vulnerability के सामान्य उदाहरण
 
 1. दुर्भावनापूर्ण व्यक्ति प्रशिक्षण के दौरान हानिकारक डेटा डालते हैंं, जिससे पक्षपाती आउटपुट आता हैं । इसके लिए "Split-View Data Poisoning" या "Frontrunning Poisoning" जैसें तकनीकें के प्रयोग से मॉडल के प्रशिक्षण चक्र को exploit (फायदा उठाना) किया जाता हैंं ।
-  (संदर्भित link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
-  (संदर्भित link: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
+संदर्भित link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg)
+संदर्भित link: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg)
 2. हमलावरों द्वारा हानिकारक सामग्री को सीधे प्रशिक्षण प्रक्रिया में inject (डालना) करके मॉडल की आउटपुट गुणवत्ता से compromise किया जा सकता हैंं ।
 3. User अनजाने में ही उपयोग के दौरान संवेदनशील या proprietary जानकारी को दे देता हैंं, जो की बादमे आउटपुट में उजागर हो सकती हैं ।
 4. Unverified (अस्वीकृत) प्रशिक्षण डेटा पक्षपाती या गलत आउटपुट के जोखिम को बढ़ा सकता हैं ।
@@ -21,7 +21,7 @@ hit नहीं होता । यह इस तरह के परिवर
 
 ### रोकथाम एवं बचाव के लिये रणनीतियाँ
 
-1. डेटा की उत्पत्ति एवं परिवरतानों पर OWASP Cyclonedx या ML-BOM जेसे tools का प्रयोग कर नज़र राखें, एवं इसके साथ tools जैसें की [Dyana] (https://github.com/dreadnode/dyana) का भी फ़ायदा उठा साकते हैंं, जिससे की third-party software का dynamic विश्लेषण कर सकते हैंं । मॉडल के सभी development चरणों के दौरान डेटा वैधता (legitimacy) को सत्यापित (Verify) करें ।
+1. डेटा की उत्पत्ति एवं परिवरतानों पर OWASP Cyclonedx या ML-BOM जेसे tools का प्रयोग कर नज़र राखें, एवं इसके साथ tools जैसें की   [Dyana](https://github.com/dreadnode/dyana) का भी फ़ायदा उठा साकते हैंं, जिससे की third-party software का dynamic विश्लेषण कर सकते हैंं । मॉडल के सभी development चरणों के दौरान डेटा वैधता (legitimacy) को सत्यापित (Verify) करें ।
 2. डेटा विक्रेताओं का कठोरता से मूल्यांकन करें, एवं poisoning का पता लगाने के लिए विश्वसनीय स्रोतों से मॉडल आउटपुट का मिलन करें ।
 3. मॉडल पर सख्त sandboxing लगाएँ, ताकी वह अस्वीकृत डेटा स्रोतों की पहुँच से दूर रहें । प्रतिकूल (adversarial) डेटा को फ़िल्टर करने के लिए anomaly detection की तकनीक का उपयोग करें ।
 4. विशिष्ट डेटासेट के प्रयोग से Fine-tuning करके मॉडल को खास कार्यक्षमताओें के लिए तैयार करें । यह खास लक्ष्यों के लिये अधिक सटीक आउटपुट पाने में मदद करता हैं ।
