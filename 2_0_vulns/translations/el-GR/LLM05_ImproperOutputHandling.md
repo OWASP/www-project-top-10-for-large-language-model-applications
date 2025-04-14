@@ -1,4 +1,5 @@
-## LLM05:2025 Πλημμελής Xειρισμός Eξόδου (Improper Output Handling)
+#$ LLM05:2025 Πλημμελής Xειρισμός  
+## Eξόδου (Improper Output Handling)
 
 ### Περιγραφή
 
