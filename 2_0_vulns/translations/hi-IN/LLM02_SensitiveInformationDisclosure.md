@@ -60,7 +60,7 @@ LLM, विशेष रूप से जब applications में जोड़े
 #### 1. Homomorphic Encryption
   सुरक्षित data analysis एवं privacy-preserving machine learning को सक्षम करने के  लिए Homomorphic Encryption का उपयोग करें । यह सुनिश्चित करता हैं कि मॉडल द्वारा process किए जाने के  दौरान डेटा गोपनीय रहे ।
 #### 2. Tokenization evam Redaction
-  Preprocess के  लिए tokenization को लागू करें एवं संवेदनशील जानकारी को sanitize करें । Pattern matching जैसी तकनिकें के  द्वारा processing से पहले गोपनीय सामग्री का पता लगाया जा सकता हैं और फिर से बनाया जा सकता हैं ।
+  Preprocess के  लिए tokenization को लागू करें एवं संवेदनशील जानकारी को sanitize करें । Pattern matching जैसी तकनिकें  के  द्वारा processing से पहले गोपनीय सामग्री का पता लगाया जा सकता हैं और फिर से बनाया जा सकता हैं ।
 
 ### उदाहरण स्वरूप हमलें के परिदृश्य
 
