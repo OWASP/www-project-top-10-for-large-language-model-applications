@@ -9,8 +9,8 @@
 * एक दुर्भावनापूर्ण user द्वारा प्रत्यक्ष/अप्रत्यक्ष (direct/indirect) Prompt इंजेक्शन, एक compromised extension का जरूरत से पहले आह्वान (invocation) , या (मल्टी-एजेंट/सहयोगी (collaborative) system में) एक compromise किया गया साथी (peer) एजेंट ।
 
 अत्यधिक एजेंसी के  मुख्य कारण आम तौर पर निम्नलिखित होता हैं:
-* अत्यधिक कार्यक्षमता (excessive functionality);
-* अत्यधिक अनुमतियाँ (excessive permissions);
+* अत्यधिक कार्यक्षमता (excessive functionality) ;
+* अत्यधिक अनुमतियाँ (excessive permissions) ;
 * अत्यधिक स्वायत्तता (excessive autonomy) ।
 
 अत्यधिक एजेंसी गोपनीयता, अखंडता एवं उपलब्धता के  समीकरणों में विस्तृत रूप में प्रभाव डाल सकती हैं, एवं यह इस बात पर भी निर्भर हैं कि LLM पर आधारित app किस system के  साथ कार्य करतें हैं ।
