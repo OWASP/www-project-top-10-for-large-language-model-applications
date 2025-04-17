@@ -11,11 +11,11 @@ Retrieval Augmented Generation (RAG) एक मॉडल adaptation तकनी
 #### 1. अनाधिकृत पहूँच (unauthorized Access) एवं डेटा का प्रकटीकरण (data Leakage)
   अपर्याप्त या गलत तरह से पहूँच को नियंत्रित (access controls) करने से संवेदनशील जानकारीयों वाली embeddings तक अनाधिकृत पहूँच (unauthorized access) बन सकती हैं । यदि ठीक से संभाले नहीं गया, तो मॉडल व्यक्तिगत डेटा, proprietary की जानकारी, या अन्य संवेदनशील सामग्री को प्राप्त कर उनका खुलासा कर सकता हैं । Augmentation के  दौरान डेटा की उपयोग नीतियों के  साथ copyrighted material या non-compliance के  अनाधिकृत उपयोग से कानूनी तकलीफ़े आ सकती हैंं ।
 #### 2. Cross-Context Information Leaks एवं Data federation knowledge conflict
-  Multi-tenant environments में जहाँं users या application के  कई वर्ग एक ही vector database साझा करतें हैंं, वहाँ users या queries के  बीच context leakage का जोखिम बड़ता हैं । Data federation knowledge conflict तब होता हैंं जब कई स्रोतों एक दूसरे के  विरोधाभास data रखते हो (Ref #2) । यह तब भी हो सकता हैं जब एक LLM पुरानें knowledge base जिसे उसने प्रशिक्षण के  दौरान सीखा हैं, उसको नए Retrieval Augmentation वाले के  साथ नहीं संभाल पता ।
+  Multi-tenant environments में जहाँं  users या application के  कई वर्ग एक ही vector database साझा करतें हैंं, वहाँ users या queries के  बीच context leakage का जोखिम बड़ता हैं । Data federation knowledge conflict तब होता हैंं जब कई स्रोतों एक दूसरे के  विरोधाभास data रखते हो (Ref #2) । यह तब भी हो सकता हैं जब एक LLM पुरानें knowledge base जिसे उसने प्रशिक्षण के  दौरान सीखा हैं, उसको नए Retrieval Augmentation वाले के  साथ नहीं संभाल पता ।
 #### 3. Inversion Attacks को Embed करना 
   हमलावर (malicious attacker) embeddings को invert या स्रोत की महत्वपूर्ण जानकारीयों को र्प्राप्त करने के  लिए vulnerabilities को exploit (फायदा उठाना) उठा सकते हैंं, जिससे डेटा की गोपनीयता भी compromise हो सकती हैंं । (Ref #3, #4) 
 #### 4. डेटा poisoning हमलों
-  डेटा poisoning हमलें या तो जानबूझकर दुर्भावनापूर्ण व्यक्तिओं (Ref #5, #6, #7) द्वारा या अनजाने में किसी गलती से हो सकते हैं । यह poisoning data  या तो insiders, prompts, data seeding, या फिर unverified data providers के  कारण भी उत्पन्न हो सकता हैं, जिससे मॉडल के  आउटपुट में हेरफेर कि जा सकती हैं ।
+  डेटा poisoning हमलें या तो जानबूझकर दुर्भावनापूर्ण व्यक्तिओं (Ref #5, #6, #7) द्वारा या अनजाने में किसी गलती से हो सकते हैं । यह poisoning data या तो insiders, prompts, data seeding, या फिर unverified data providers के  कारण भी उत्पन्न हो सकता हैं, जिससे मॉडल के  आउटपुट में हेरफेर कि जा सकती हैं ।
 #### 5. व्यवहार में परिवर्तन
   Retrieval Augmentation अनजाने में मूलभूत मॉडल के  व्यवहार को बदल सकती हैं । उदाहरण के  लिए, जब तथ्यात्मक सटीकता (factual accuracy) एवं प्रासंगिकता (relevance) बढ़ सकती हैं, तब भावनात्मक बुद्धिमत्ता (emotional intelligence) या सहानुभूति (empathy) जैसें पहलू कम हो सकते हैंं, जो कुछ applications में मॉडल की प्रभावशीलता को कम करतें हैंं । (परिदृश्य #3)
 
@@ -24,7 +24,7 @@ Retrieval Augmented Generation (RAG) एक मॉडल adaptation तकनी
 #### 1. Permission एवं access control
   Fine-grained access controls एवं permission-aware vector तथा embeddings के  स्टोर को लागू करें । Users या विभिन्न groups के  विभिन्न वर्गों के  बीच अनाधिकृत पहूँच (unauthorized access) को रोकने के  लिए, vector database में dataset पर सख्त logical तथा access partitioning को सुनिश्चित करें ।
 #### 2. Data validation एवं source authentication
-  ज्ञान स्रोतों (knowledge sources) के  लिए मजबूत डेटा validation pipelines को लागू करें । Hidden codes एवं data poisoning के  लिए, knowledge base की नियमित रूप से auditing एवं integrity validation करें । केवल विश्वसनीय एवं सत्यापित स्रोतों से ही डेटा स्वीकार करें ।
+  ज्ञान स्रोतों (knowledge sources) के  लिए मजबूत डेटा validation pipelines को लागू करें । Hidden codes एवं data poisoning के  लिए, knowledge base की नियमित रूप से auditing एवं integrity validation करें । केवल  विश्वसनीय एवं सत्यापित स्रोतों से ही डेटा स्वीकार करें ।
 #### 3. Combination एवं classification के लिए Data review
   विभिन्न स्रोतों से आए डेटा का संयोजन करतें समय, combined डेटासेट की अच्छी तरह से समीक्षा करें । पहूँच के  स्तर (access levels) को नियंत्रित करने एवं data mismatch errors को रोकने के  लिए, knowledge base के  भीतर डेटा को Tag तथा classify करें ।
 #### 4. Monitoring एवं Logging
@@ -46,7 +46,7 @@ Retrieval Augmented Generation (RAG) एक मॉडल adaptation तकनी
     > "मैं समझता हूँं कि छात्र ऋण का प्रबंधन करना तनावपूर्ण हो सकता हैं । पुनः भुगतान (repayment) योजनाओं पर विचार करें जो आपकी आय पर आधारित हैंं ।" लेकिन, Retrieval Augmentation के  बाद, प्रतिक्रिया विशुद्ध रूप से तथ्यात्मक हो सकती हैं, जैसें कि,
     > "आपको ब्याज से बचने के  लिए अपने छात्र ऋण का भुगतान करने की कोशिश करनी चाहिए ।" तथ्यात्मक रूप से सही होने पर भी संशोधित प्रतिक्रिया में सहानुभूति की कमी हैं, जिससे की application की प्रासंगिकता घटती हैं ।
 #### बचाव के लिए
-  Foundational model के  व्यवहार पर RAG के  प्रभाव की निगरानी तथा मूल्यांकन करना चाहिए, इसके  साथ augmentation process में भी फेरबदल करें जिसमें की सहानुभूति (Ref #8) जैसें गुणो समायोजीत हो सकें  ।(Ref #8).
+  Foundational model के  व्यवहार पर RAG के  प्रभाव की निगरानी तथा मूल्यांकन करना चाहिए, इसके  साथ augmentation process में भी फेरबदल करें जिसमें की सहानुभूति (Ref #8) जैसें गुणो समायोजीत हो सकें  । (Ref #8).
 
 ### संबंधित लिंक
 
