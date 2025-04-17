@@ -4,12 +4,12 @@
 
 अनियंत्रित खपत में LLM, इनपुट query या Prompt के  आधार पर आउटपुट उत्पन्न करता हैं । अनुमान लगाना LLM का एक महत्वपूर्ण कार्य है, जिसमें प्रासंगिक प्रतिक्रियाओं तथा पूर्व आकलानों (predictions) को उत्पादन करने के  लिए learned patterns एवं knowledge का प्रयोग करतें हैं ।
 
-सेवा को बाधित (disrupt service) करने वाले हमले, अक्सर लक्ष्य के  वित्तीय संसाधनों को क्षति पहुँचाते हैंं, यहां तक ​​कि एक मॉडल के  व्यवहार को क्लोन करके  intellectual property को भी चोरी करतें हैंं, इन सभी को सफल होने के  लिए सामान्य वर्ग की Vulnerability पर निर्भर होना होता हैंं । अनियंत्रित खपत तब होती हैं, जब एक LLM application users को अत्यधिक एवं अनियंत्रित निष्कर्षों का संचालन करने देती हैं, जिससे denial of service (DoS), economic losses, model theft, एवं service degradation जैसें जोखिम उत्पन्न होते हैंं । LLM की उच्च computational मांगें, विशेष रूप से cloud environments में, उन्हें संसाधन को exploit (फायदा उठाना) करने एवं अनाधिकृत उपयोग के  लिए असुरक्षित बनाती हैंं ।
+सेवा को बाधित (disrupt service) करने वाले हमले, अक्सर लक्ष्य के  वित्तीय संसाधनों को क्षति पहुँचाते हैंं, यहां तक ​​कि एक मॉडल के  व्यवहार को क्लोन करके  intellectual property को भी चोरी करतें हैंं, इन सभी को सफल होने के  लिए सामान्य वर्ग की Vulnerability पर निर्भर होना होता हैंं । अनियंत्रित खपत तब होती हैं, जब एक LLM application users को अत्यधिक एवं अनियंत्रित निष्कर्षों का संचालन करने देती हैं, जिससे denial of service (DoS) , economic losses, model theft, एवं service degradation जैसें जोखिम उत्पन्न होते हैंं । LLM की उच्च computational मांगें, विशेष रूप से cloud environments में, उन्हें संसाधन को exploit (फायदा उठाना) करने एवं अनाधिकृत उपयोग के  लिए असुरक्षित बनाती हैंं ।
 
 ### Vulnerability के सामान्य उदाहरण
 
 #### 1. Variable-Length Input Flood
-  हमलावर (malicious attacker) अलग-अलग लंबाई के  कई इनपुट के  साथ LLM को ओवरलोड कर सकते हैंं, जिससे की वह process करने में आ रही अक्षमताओं को exploit (फायदा उठाना) कर सकें । यह संसाधनों को खत्म करने एवं system को unresponsive बनती हैं, जिससे की service की availability प्रभावित होती हैं ।
+  हमलावर (malicious attacker) अलग-अलग लंबाई के  कई इनपुट के  साथ LLM को ओवरलोड कर सकते हैंं, जिससे की वह process करने में आ रही अक्षमताओं को exploit (फायदा उठाना) कर सकें  । यह संसाधनों को खत्म करने एवं system को unresponsive बनती हैं, जिससे की service की availability प्रभावित होती हैं ।
 #### 2. Denial of Wallet (DoW)
   एक उच्च मात्रा मे कार्यों को देकर, हमलावर (malicious attacker) cloud पर आधारित AI सेवाओं की cost-per-use मॉडल का फायदा उठाते हैंं, जिससे की provider पर अस्थिर वित्तीय बोझ आता हैंं जो की उसे वित्तीय तौर पर बर्बाद कर सकता हैं ।
 #### 3. निरंतर होता Input Overflow
@@ -67,9 +67,9 @@
 #### परिदृश्य#4: Denial of Wallet (DoW)
   एक हमलावर (malicious attacker) cloud पर आधारित AI सेवाओं के  pay-per-use मॉडल को exploit करने (फायदा उठाने) के  लिए अत्यधिक कार्यों (operations) को उत्पन्न करता हैं, जिससे service provider को आर्थिक नुकसान हो सकता हैं ।
 #### परिदृश्य#5: Functional Model Replication
-  एक हमलावर (malicious attacker) LLM API से synthetic प्रशिक्षण डेटा बनाकर एक मॉडल को fine-tune करता हैं, जिससे की वह एक functional equivalent बना सकें एवं पारंपरिक मॉडल extraction की सीमाओं को bypass कर सकें ।
+  एक हमलावर (malicious attacker) LLM API से synthetic प्रशिक्षण डेटा बनाकर एक मॉडल को fine-tune करता हैं, जिससे की वह एक functional equivalent बना सकें  एवं पारंपरिक मॉडल extraction की सीमाओं को bypass कर सकें  ।
 #### परिदृश्य#6: System इनपुट फ़िल्टरिंग को bypass करना
-  एक हमलावर (malicious attacker) इनपुट फ़िल्टरिंग तकनीकों एवं LLM के  प्रीएंबल को bypass करके  एक side-channel हमला करता हैं, ताकि वह मॉडल की जानकारी को अपने नियंत्रित एक remotely controlled resource तक पहुँचा सकें ।
+  एक हमलावर (malicious attacker) इनपुट फ़िल्टरिंग तकनीकों एवं LLM के  प्रीएंबल को bypass करके  एक side-channel हमला करता हैं, ताकि वह मॉडल की जानकारी को अपने नियंत्रित एक remotely controlled resource तक पहुँचा सकें  ।
 
 ### संबंधित लिंक
 1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
