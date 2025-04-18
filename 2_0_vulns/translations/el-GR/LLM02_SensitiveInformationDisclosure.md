@@ -1,5 +1,4 @@
-#$ LLM02:2025 Αποκάλυψη Ευαίσθητων  
-##  Πληροφοριών (Sensitive Information Disclosure)
+## LLM02:2025 Αποκάλυψη Ευαίσθητων   Πληροφοριών (Sensitive Information Disclosure)
 
 ### Περιγραφή
 

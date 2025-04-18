@@ -1,5 +1,4 @@
-#$ LLM01:2025 Έγχυση Προτροπών  
-##            (Prompt Injection)
+## LLM01:2025 Έγχυση Προτροπών   (Prompt Injection)
 
 ### Περιγραφή
 
