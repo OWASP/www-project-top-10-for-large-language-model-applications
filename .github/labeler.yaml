@@ -1,0 +1,76 @@
+---
+# Area Labels
+area/docs:
+  - changed-files:
+      - any-glob-to-any-file: "docs/**/*"
+
+area/examples:
+  - changed-files:
+      - any-glob-to-any-file: "examples/**/*"
+
+area/github:
+  - changed-files:
+      - any-glob-to-any-file: ".github/**/*"
+
+area/pre-commit:
+  - changed-files:
+      - any-glob-to-any-file: ".pre-commit-config.yaml"
+      - any-glob-to-any-file: ".hooks/**/*"
+
+area/python:
+  - changed-files:
+      - any-glob-to-any-file: "pyproject.toml"
+      - any-glob-to-any-file: "requirements.txt"
+      - any-glob-to-any-file: "*.py"
+
+area/security:
+  - changed-files:
+      - any-glob-to-any-file: "SECURITY.md"
+      - any-glob-to-any-file: "secrets.baseline"
+
+area/taskfiles:
+  - changed-files:
+      - any-glob-to-any-file: "Taskfile.yaml"
+
+area/tests:
+  - changed-files:
+      - any-glob-to-any-file: "tests/**/*"
+
+area/workspace:
+  - changed-files:
+      - any-glob-to-any-file: "python.code-workspace"
+
+# Development Labels
+area/dev:
+  - changed-files:
+      - any-glob-to-any-file: "dev/**/*"
+
+# Semantic Type Labels
+type/digest:
+  - head-branch: ["^renovate/"]
+  - head-branch: ["^deps/"]
+
+type/patch:
+  - any: ["title:/^(?:Fix|Patch|Update)/"]
+
+type/minor:
+  - any: ["title:/^(?:Add|Feature|Improve)/"]
+
+type/major:
+  - any: ["title:/^(?:BREAKING)/"]
+
+type/break:
+  - any: ["body:/BREAKING CHANGE:/"]
+
+# Documentation Labels
+type/docs:
+  - changed-files:
+      - any-glob-to-any-file: "docs/**/*"
+      - any-glob-to-any-file: "*.md"
+
+# Core Files Labels
+type/core:
+  - changed-files:
+      - any-glob-to-any-file: "CODEOWNERS"
+      - any-glob-to-any-file: "LICENSE"
+      - any-glob-to-any-file: "README.md"
