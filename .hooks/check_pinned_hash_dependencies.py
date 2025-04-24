@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import re
 import sys
 from pathlib import Path
@@ -17,9 +18,19 @@ class GitHubActionChecker:
         # Pattern for all uses statements
         self.all_uses_pattern = re.compile(r"uses:\s+([^@\s]+)@([^\s\n]+)")
 
-    def get_line_numbers(
-        self, content: str, pattern: re.Pattern
-    ) -> List[Tuple[str, int]]:
+    def format_terminal_link(self, file_path: str, line_number: int) -> str:
+        """Format a terminal link to a file and line number.
+
+        Args:
+            file_path: Path to the file
+            line_number: Line number in the file
+
+        Returns:
+            str: Formatted string with file path and line number
+        """
+        return f"{file_path}:{line_number}"
+
+    def get_line_numbers(self, content: str, pattern: re.Pattern) -> List[Tuple[str, int]]:
         """Find matches with their line numbers."""
         matches = []
         for i, line in enumerate(content.splitlines(), 1):
@@ -51,9 +62,7 @@ class GitHubActionChecker:
         # Track all found actions for validation
         found_actions = set()
         for match, _ in pinned_matches + unpinned_matches:
-            action_name = self.pinned_pattern.match(
-                match
-            ) or self.unpinned_pattern.match(match)
+            action_name = self.pinned_pattern.match(match) or self.unpinned_pattern.match(match)
             if action_name:
                 found_actions.add(action_name.group(1))
 
@@ -83,9 +92,7 @@ class GitHubActionChecker:
                 )
 
         # Print summary
-        total_actions = (
-            len(pinned_matches) + len(unpinned_matches) + len(unpinned_without_hash)
-        )
+        total_actions = len(pinned_matches) + len(unpinned_matches) + len(unpinned_without_hash)
         if total_actions == 0:
             print("\033[93m[!] No GitHub Actions found in this file\033[0m")
         else:
