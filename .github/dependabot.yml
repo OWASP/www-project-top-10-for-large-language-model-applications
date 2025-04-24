@@ -1,0 +1,51 @@
+# .github/dependabot.yml
+version: 2
+updates:
+  # Enable version updates for npm/yarn (JavaScript/TypeScript dependencies)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Ignore the agent_security_initiative directory as it contains deliberately insecure code
+    ignore:
+      - dependency-name: "*"
+        paths:
+          - "initiatives/agent_security_initiative/**"
+    labels:
+      - "dependencies"
+      - "security"
+
+  # Enable version updates for Python dependencies (pip/pipenv/poetry)
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+        paths:
+          - "initiatives/agent_security_initiative/**"
+    labels:
+      - "dependencies"
+      - "security"
+
+  # Enable version updates for Docker
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+        paths:
+          - "initiatives/agent_security_initiative/**"
+    labels:
+      - "dependencies"
+      - "security"
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "ci"
