@@ -1,50 +1,72 @@
-## LLM07:2025 System Prompt Leakage
+## LLM07:2025 تسريب التعليمة النظامية (System Prompt Leakage)
 
-### Description
+### الوصف
+تشير ثغرة تسريب التعليمة النظامية (System Prompt Leakage) في نماذج اللغة الكبيرة (LLMs) إلى الخطر المتمثل في أن التعليمات النظامية أو التوجيهات (System Prompts) المستخدمة لتوجيه سلوك النموذج قد تحتوي أيضًا على معلومات حساسة لم يكن من المفترض كشفها.
+تُصمم التعليمات النظامية لتوجيه مخرجات النموذج بناءً على متطلبات التطبيق، لكنها قد تحتوي عن غير قصد على أسرار.
+عند اكتشاف هذه المعلومات، يمكن استغلالها لتسهيل تنفيذ هجمات أخرى.
 
-The system prompt leakage vulnerability in LLMs refers to the risk that the system prompts or instructions used to steer the behavior of the model can also contain sensitive information that was not intended to be discovered. System prompts are designed to guide the model's output based on the requirements of the application, but may inadvertently contain secrets. When discovered, this information can be used to facilitate other attacks.
+من المهم أن نفهم أن التعليمات النظامية لا يجب اعتبارها سرًا، ولا يجب استخدامها كوسيلة للتحكم الأمني (Security Control).
+وبالتالي، يجب ألا تحتوي لغة التعليمات النظامية على بيانات حساسة مثل بيانات الاعتماد (Credentials)، أو سلاسل الاتصال (Connection Strings)، أو ما شابه.
 
-It's important to understand that the system prompt should not be considered a secret, nor should it be used as a security control. Accordingly, sensitive data such as credentials, connection strings, etc. should not be contained within the system prompt language.
+وبالمثل، إذا احتوت التعليمات النظامية على معلومات تصف أدوار وصلاحيات مختلفة، أو بيانات حساسة مثل سلاسل الاتصال أو كلمات المرور، فإنه رغم أن كشف هذه المعلومات قد يكون مفيدًا، إلا أن الخطر الأمني الأساسي لا يكمن في مجرد كشفها، بل يكمن في أن التطبيق يسمح بتجاوز إدارة الجلسات الصارمة وفحوصات التفويض (Authorization Checks) عبر تفويض هذه المهام إلى نموذج اللغة الكبير (LLM)، وأيضًا في أن البيانات الحساسة يتم تخزينها في مكان لا ينبغي تخزينها فيه.
 
-Similarly, if a system prompt contains information describing different roles and permissions, or sensitive data like connection strings or passwords, while the disclosure of such information may be helpful, the fundamental security risk is not that these have been disclosed, it is that the application allows bypassing strong session management and authorization checks by delegating these to the LLM, and that sensitive data is being stored in a place that it should not be.
+بإيجاز: كشف التعليمات النظامية بحد ذاته لا يمثل الخطر الحقيقي — الخطر الأمني يكمن في العناصر الأساسية المرتبطة، سواء كان ذلك كشف معلومات حساسة (Sensitive Information Disclosure)، أو تجاوز حواجز الحماية للنظام (System Guardrails Bypass)، أو الفصل غير السليم للصلاحيات (Improper Separation of Privileges)، وغيرها.
+حتى لو لم يتم الكشف عن الصياغة الدقيقة للتعليمات النظامية، سيتمكن المهاجمون الذين يتفاعلون مع النظام، تقريبًا بشكل مؤكد، من استنتاج العديد من حواجز الحماية (Guardrails) والقيود على التنسيق (Formatting Restrictions) الموجودة ضمن لغة التعليمات النظامية، من خلال استخدام التطبيق، وإرسال مدخلات للنموذج، وملاحظة النتائج.
 
-In short: disclosure of the system prompt itself does not present the real risk -- the security risk lies with the underlying elements, whether that be sensitive information disclosure, system guardrails bypass, improper separation of privileges, etc. Even if the exact wording is not disclosed, attackers interacting with the system will almost certainly be able to determine many of the guardrails and formatting restrictions that are present in system prompt language in the course of using the application, sending utterances to the model, and observing the results.
 
-### Common Examples of Risk
+### أمثلة شائعة على المخاطر (Common Examples of Risk)
 
-#### 1. Exposure of Sensitive Functionality
-  The system prompt of the application may reveal sensitive information or functionality that is intended to be kept confidential, such as sensitive system architecture, API keys, database credentials, or user tokens.  These can be extracted or used by attackers to gain unauthorized access into the application. For example, a system prompt that contains the type of database used for a tool could allow the attacker to target it for SQL injection attacks.
-#### 2. Exposure of Internal Rules
-  The system prompt of the application reveals information on internal decision-making processes that should be kept confidential. This information allows attackers to gain insights into how the application works which could allow attackers to exploit weaknesses or bypass controls in the application. For example - There is a banking application that has a chatbot and its system prompt may reveal information like 
-    >"The Transaction limit is set to $5000 per day for a user. The Total Loan Amount for a user is $10,000".
-  This information allows the attackers to bypass the security controls in the application like doing transactions more than the set limit or bypassing the total loan amount.
-#### 3. Revealing of Filtering Criteria
-  A system prompt might ask the model to filter or reject sensitive content. For example, a model might have a system prompt like,
-    >“If a user requests information about another user, always respond with ‘Sorry, I cannot assist with that request’”.
-#### 4. Disclosure of Permissions and User Roles
-  The system prompt could reveal the internal role structures or permission levels of the application. For instance, a system prompt might reveal,
-    >“Admin user role grants full access to modify user records.”
-  If the attackers learn about these role-based permissions, they could look for a privilege escalation attack.
+#### 1. كشف الوظائف الحساسة (Exposure of Sensitive Functionality)
+ قد تكشف التعليمة النظامية (System Prompt) للتطبيق عن معلومات أو وظائف حساسة كان من المفترض أن تبقى سرية، مثل بنية النظام الحساسة (Sensitive System Architecture)، مفاتيح واجهات البرمجة (API Keys)، بيانات اعتماد قواعد البيانات (Database Credentials)، أو رموز المستخدمين (User Tokens).
+يمكن استخراج هذه المعلومات أو استغلالها من قِبل المهاجمين للحصول على وصول غير مصرح به إلى التطبيق.
+على سبيل المثال، قد يؤدي وجود نوع قاعدة البيانات ضمن التعليم النظامي إلى استهدافها بهجمات الحقن (SQL Injection Attacks).
+#### 2. كشف القواعد الداخلية (Exposure of Internal Rules)
+  قد تكشف التعليمة النظامية (System Prompt) للتطبيق عن معلومات تتعلق بعمليات اتخاذ القرار الداخلي والتي يجب أن تبقى سرية.
+تُمكّن هذه المعلومات المهاجمين من فهم كيفية عمل التطبيق، مما قد يسمح لهم باستغلال نقاط الضعف أو تجاوز الضوابط داخل التطبيق.
+على سبيل المثال — في تطبيق مصرفي يحتوي على روبوت دردشة (Chatbot)، قد يكشف التعليم النظامي معلومات مثل:
 
-### Prevention and Mitigation Strategies
+>"تم تحديد حد المعاملات اليومية للمستخدم بمبلغ 5000 دولار. وإجمالي مبلغ القرض المسموح به للمستخدم هو 10,000 دولار."
 
-#### 1. Separate Sensitive Data from System Prompts
-  Avoid embedding any sensitive information (e.g. API keys, auth keys, database names, user roles, permission structure of the application) directly in the system prompts. Instead, externalize such information to the systems that the model does not directly access.
-#### 2. Avoid Reliance on System Prompts for Strict Behavior Control
-  Since LLMs are susceptible to other attacks like prompt injections which can alter the system prompt, it is recommended to avoid using system prompts to control the model behavior where possible.  Instead, rely on systems outside of the LLM to ensure this behavior.  For example, detecting and preventing harmful content should be done in external systems.
-#### 3. Implement Guardrails
-  Implement a system of guardrails outside of the LLM itself.  While training particular behavior into a model can be effective, such as training it not to reveal its system prompt, it is not a guarantee that the model will always adhere to this.  An independent system that can inspect the output to determine if the model is in compliance with expectations is preferable to system prompt instructions.
-#### 4. Ensure that security controls are enforced independently from the LLM
-  Critical controls such as privilege separation, authorization bounds checks, and similar must not be delegated to the LLM, either through the system prompt or otherwise. These controls need to occur in a deterministic, auditable manner, and LLMs are not (currently) conducive to this. In cases where an agent is performing tasks, if those tasks require different levels of access, then multiple agents should be used, each configured with the least privileges needed to perform the desired tasks.
+تسمح هذه المعلومات للمهاجمين بتجاوز ضوابط الأمان مثل إجراء معاملات تتجاوز الحد اليومي أو تجاوز إجمالي القرض المسموح به.
 
-### Example Attack Scenarios
+#### 3. كشف معايير التصفية (Revealing of Filtering Criteria)
+قد تضمن التعليمة النظامية (System Prompt) طلبًا من النموذج بتصفية أو رفض محتوى حساس. على سبيل المثال، قد يحتوي التعليم النظامي للنموذج على:
+>"إذا طلب المستخدم معلومات عن مستخدم آخر، دائمًا رد بـ: 'عذرًا، لا يمكنني المساعدة في هذا الطلب'."
 
-#### Scenario #1
-   An LLM has a system prompt that contains a set of credentials used for a tool that it has been given access to.  The system prompt is leaked to an attacker, who then is able to use these credentials for other purposes.
-#### Scenario #2
-  An LLM has a system prompt prohibiting the generation of offensive content, external links, and code execution. An attacker extracts this system prompt and then uses a prompt injection attack to bypass these instructions, facilitating a remote code execution attack.
+#### 4. كشف الصلاحيات وأدوار المستخدمين (Disclosure of Permissions and User Roles)
+  قد تكشف التعليمة النظامية (System Prompt) للتطبيق عن بنية الأدوار الداخلية (Internal Role Structures) أو مستويات الصلاحيات (Permission Levels) في التطبيق.
+على سبيل المثال، قد تكشف تعليمة نظامية (System Prompt) ما يلي:
 
-### Reference Links
+>"دور المستخدم الإداري (Admin User Role) يمنح صلاحية كاملة لتعديل سجلات المستخدمين."
+
+إذا علم المهاجمون بهذه الصلاحيات المعتمدة على الأدوار (Role-Based Permissions)، فقد يحاولون تنفيذ هجوم تصعيد الامتيازات (Privilege Escalation Attack).
+
+### استراتيجيات الوقاية والتخفيف (Prevention and Mitigation Strategies)
+
+#### 1. فصل البيانات الحساسة عن التعليمات النظامية (Separate Sensitive Data from System Prompts)
+تجنب تضمين أي معلومات حساسة (مثل مفاتيح واجهات البرمجة (API Keys)، مفاتيح المصادقة (Auth Keys)، أسماء قواعد البيانات (Database Names)، أدوار المستخدمين (User Roles)، أو بنية صلاحيات التطبيق (Permission Structure of the Application)) مباشرةً ضمن التعليمات النظامية (System Prompts). بدلاً من ذلك، قم بفصل هذه المعلومات إلى أنظمة لا يصل إليها النموذج بشكل مباشر.
+
+#### 2. تجنب الاعتماد على التعليمات النظامية للتحكم الصارم في السلوك (Avoid Reliance on System Prompts for Strict Behavior Control)
+نظرًا لأن نماذج اللغة الكبيرة (LLMs) عرضة لهجمات أخرى مثل حقن التعليمات (Prompt Injections) التي يمكن أن تغير التعليمة النظامية (System Prompt)، يُوصى بتجنب استخدام التعليمات النظامية للتحكم في سلوك النموذج حيثما أمكن. 
+بدلاً من ذلك، يجب الاعتماد على أنظمة خارجية عن نموذج اللغة الكبير (LLM) لضمان هذا السلوك. على سبيل المثال، يجب أن يتم اكتشاف المحتوى الضار ومنعه عبر أنظمة خارجية (External Systems).
+
+#### 3. تطبيق حواجز الحماية (Implement Guardrails)
+قم بتنفيذ نظام لحواجز الحماية (Guardrails) خارج نموذج اللغة الكبير (LLM) نفسه. رغم أن تدريب النموذج على سلوك معين مثل عدم كشف التعليمات النظامية قد يكون فعالًا، إلا أنه لا يضمن دائمًا التزام النموذج بذلك. يُفضل وجود نظام مستقل قادر على فحص المخرجات للتأكد من التزام النموذج بالتوقعات بدلاً من الاعتماد فقط على التعليمات النظامية.
+
+#### 4. التأكد من أن الضوابط الأمنية تُفرض بشكل مستقل عن LLM (Ensure that Security Controls are Enforced Independently from the LLM)
+يجب ألا يتم تفويض الضوابط الأساسية مثل فصل الصلاحيات (Privilege Separation)، وفحوصات حدود التفويض (Authorization Bounds Checks)، وما شابه، إلى نموذج اللغة الكبير (LLM)، سواء من خلال التعليمات النظامية أو بطرق أخرى.
+يجب تنفيذ هذه الضوابط بطريقة حتمية وقابلة للتدقيق، وهو ما لا تدعمه نماذج LLM حاليًا. وفي الحالات التي يقوم فيها وكيل (Agent) بتنفيذ مهام تتطلب مستويات وصول مختلفة، يجب استخدام عدة وكلاء، بحيث يتم تهيئة كل وكيل بأقل امتيازات لازمة لتنفيذ المهام المطلوبة.
+
+### سيناريوهات هجوم توضيحية (Example Attack Scenarios)
+
+#### السيناريو  #1
+   يمتلك نموذج اللغة الكبير (LLM) تعليمًا نظاميًا يحتوي على مجموعة من بيانات الاعتماد (Credentials) المستخدمة لأداة تم منح النموذج حق الوصول إليها. يتم تسريب التعليم النظامي إلى مهاجم، مما يمكنه من استخدام هذه البيانات لأغراض أخرى.
+
+#### السيناريو  #2
+يمتلك نموذج اللغة الكبير (LLM) تعليمًا نظاميًا يمنع توليد محتوى مسيء، أو الروابط الخارجية، أو تنفيذ الشيفرة البرمجية.
+يقوم مهاجم باستخراج هذا التعليم النظامي، ثم يستخدم هجوم حقن التعليمات (Prompt Injection) لتجاوز هذه التعليمات، مما يسهل تنفيذ هجوم تنفيذ تعليمات برمجية عن بُعد (Remote Code Execution Attack).
+
+### روابط مرجعية
 
 1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
 2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): Prompt Security
@@ -52,8 +74,8 @@ In short: disclosure of the system prompt itself does not present the real risk 
 4. [leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts): Jujumilk3
 5. [OpenAI Advanced Voice Mode System Prompt](https://x.com/Green_terminals/status/1839141326329360579): Green_Terminals
 
-### Related Frameworks and Taxonomies
+### الأطر والتصنيفات ذات الصلة
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+راجع هذا القسم للحصول على معلومات شاملة، وسيناريوهات واستراتيجيات تتعلق بنشر البنية التحتية (Infrastructure Deployment)، وضوابط البيئة التطبيقية (Applied Environment Controls)، وأفضل الممارسات الأخرى.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
