@@ -2,7 +2,7 @@
 2025 Top 10 Risks & Mitigations for LLMs and Gen AI Apps
 
 ## शीर्षक
-2025 एलएलएम और जेन एआई ऐप्स के लिए शीर्ष 10 जोखिम और न्यूनीकरण
+2025 के संदर्भ में LLM और Gen AI Apps के लिए शीर्ष 10 जोखिम एवं न्यूनीकरण
 
 
 ## Short Description
