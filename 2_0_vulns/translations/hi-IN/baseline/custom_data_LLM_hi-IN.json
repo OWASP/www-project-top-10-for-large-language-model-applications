@@ -2,8 +2,8 @@
     "doc_template_type": "modern_blue",
     "doc_cover": true,
     "doc_title": [
-        "OWASP Top 10 for",
-        "LLM Applications 2025"
+        "2025 में LLM Applications",
+        "के लिए OWASP के शीर्ष 10"
     ],
     "doc_title_pivot.pt_x": 72,
     "doc_title_pivot.pt_y": 505,
@@ -12,8 +12,8 @@
         "",
         "",
         "",
-        "Version 2025",
-        "November 18, 2024"
+        "संस्करण 2025",
+        "कार्तिक 27, 2081 विक्रम सम्वत (2024-11-18)"
     ],
     "doc_site_name": "genai.owasp.org",
     "doc_site_url": "https://genai.owasp.org/",
@@ -23,19 +23,19 @@
     "doc_legal_notice": true,
     "doc_owasp_logo": false,
     "doc_revision_history": [
-        "    2023-08-01 Version 1.0 Release",
-        "    2023-10-16 Version 1.1 Release",
-        "    2024-11-18 Version 2025 Release"
+        "   15 श्रावण, 2080 (2023-08-01) संस्करण 1.0 रिलीज़",
+        "   02 आश्विन, 2080 (2023-10-16) संस्करण 1.1 रिलीज़",
+        "   27 कार्तिक, 2081 (2024-11-18) संस्करण 2025 रिलीज़"
     ],
     "doc_toc": true,
     "doc_authors_toc": false,
     "doc_toc_title_pivot.pt_x": 72,
     "doc_toc_title_pivot.pt_y": 172,
-    "doc_toc_contents_title": "Table of Contents",
-    "doc_toc_figures_title": "Figures",
+    "doc_toc_contents_title": "विषय सूची",
+    "doc_toc_figures_title": "चित्रण",
     "doc_watermark": true,
     "doc_appendix_titles": [
-        "Appendix 1: LLM Application Architecture and Threat Modeling"
+        "Appendix 1: LLM Applications का Architecture एवं खतरों की Modeling"
     ],
     "doc_sponsor_page_titles": [
         "Project Sponsors",
