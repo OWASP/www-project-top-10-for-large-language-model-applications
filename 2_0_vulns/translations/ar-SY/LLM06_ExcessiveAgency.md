@@ -1,73 +1,100 @@
-## LLM06:2025 Excessive Agency
+## LLM06:2025 الإفراط في الاستقلالية (Excessive Agency)
 
-### Description
+### الوصف 
 
-An LLM-based system is often granted a degree of agency by its developer - the ability to call functions or interface with other systems via extensions (sometimes referred to as tools, skills or plugins by different vendors) to undertake actions in response to a prompt. The decision over which extension to invoke may also be delegated to an LLM 'agent' to dynamically determine based on input prompt or LLM output. Agent-based systems will typically make repeated calls to an LLM using output from previous invocations to ground and direct subsequent invocations.
+عادةً ما يتم منح نظام قائم على نموذج لغة كبير (LLM) قدرًا من الاستقلالية من قِبل مطوّره — أي القدرة على استدعاء وظائف أو التفاعل مع أنظمة أخرى عبر الإضافات (Extensions)، والتي يُشار إليها أحيانًا باسم الأدوات (Tools) أو المهارات (Skills) أو المكونات الإضافية (Plugins) حسب المورد. قد يتم أيضًا تفويض القرار بشأن أي إضافة يتم استدعاؤها إلى "وكيل" LLM (LLM Agent) لتحديدها ديناميكيًا بناءً على مدخلات التعليمات أو مخرجات النموذج. غالبًا ما تقوم الأنظمة المعتمدة على الوكلاء بإجراء استدعاءات متكررة للنموذج باستخدام مخرجات الاستدعاءات السابقة كأساس لتوجيه الاستدعاءات اللاحقة.
 
-Excessive Agency is the vulnerability that enables damaging actions to be performed in response to unexpected, ambiguous or manipulated outputs from an LLM, regardless of what is causing the LLM to malfunction. Common triggers include:
-* hallucination/confabulation caused by poorly-engineered benign prompts, or just a poorly-performing model;
-* direct/indirect prompt injection from a malicious user, an earlier invocation of a malicious/compromised extension, or (in multi-agent/collaborative systems) a malicious/compromised peer agent.
 
-The root cause of Excessive Agency is typically one or more of:
-* excessive functionality;
-* excessive permissions;
-* excessive autonomy.
 
-Excessive Agency can lead to a broad range of impacts across the confidentiality, integrity and availability spectrum, and is dependent on which systems an LLM-based app is able to interact with.
+الإفراط في الاستقلالية (Excessive Agency) هو ثغرة تمكّن من تنفيذ إجراءات ضارة استجابةً لمخرجات غير متوقعة أو غامضة أو متلاعب بها من نموذج اللغة الكبير (LLM)، بغض النظر عن السبب الذي أدى إلى خلل في أداء النموذج.
+تشمل المحفزات الشائعة ما يلي:
+الهلاوس/الاختلاقات الناتجة عن تعليمات سليمة ولكن مصممة بشكل سيئ، أو ببساطة عن أداء ضعيف للنموذج؛
+حقن التعليمات المباشر أو غير المباشر من قِبل مستخدم خبيث، أو من خلال استدعاء سابق لإضافة خبيثة أو مخترقة، أو (في الأنظمة متعددة الوكلاء/التعاونية) من وكيل نظير خبيث أو مخترق.
 
-Note: Excessive Agency differs from Insecure Output Handling which is concerned with insufficient scrutiny of LLM outputs.
+السبب الجذري للإفراط في الاستقلالية (Excessive Agency) يعود عادةً إلى واحد أو أكثر من العوامل التالية:
+* الإفراط في الوظائف (Excessive Functionality)؛
+* الإفراط في الصلاحيات (Excessive Permissions)؛
+* الإفراط في الاستقلالية (Excessive Autonomy).
 
-### Common Examples of Risks
+يمكن أن يؤدي الإفراط في الاستقلالية إلى مجموعة واسعة من الآثار التي تطال جوانب السرية والنزاهة والتوافر، وذلك اعتمادًا على الأنظمة التي يتمكن تطبيق قائم على نموذج لغة كبير (LLM-based app) من التفاعل معها.
 
-#### 1. Excessive Functionality
-  An LLM agent has access to extensions which include functions that are not needed for the intended operation of the system. For example, a developer needs to grant an LLM agent the ability to read documents from a repository, but the 3rd-party extension they choose to use also includes the ability to modify and delete documents.
-#### 2. Excessive Functionality
-  An extension may have been trialled during a development phase and dropped in favor of a better alternative, but the original plugin remains available to the LLM agent.
-#### 3. Excessive Functionality
-  An LLM plugin with open-ended functionality fails to properly filter the input instructions for commands outside what's necessary for the intended operation of the application. E.g., an extension to run one specific shell command fails to properly prevent other shell commands from being executed.
-#### 4. Excessive Permissions
-  An LLM extension has permissions on downstream systems that are not needed for the intended operation of the application. E.g., an extension intended to read data connects to a database server using an identity that not only has SELECT permissions, but also UPDATE, INSERT and DELETE permissions.
-#### 5. Excessive Permissions
-  An LLM extension that is designed to perform operations in the context of an individual user accesses downstream systems with a generic high-privileged identity. E.g., an extension to read the current user's document store connects to the document repository with a privileged account that has access to files belonging to all users.
-#### 6. Excessive Autonomy
-  An LLM-based application or extension fails to independently verify and approve high-impact actions. E.g., an extension that allows a user's documents to be deleted performs deletions without any confirmation from the user.
+ملاحظة: يختلف الإفراط في الاستقلالية عن التعامل غير السليم مع المخرجات (Insecure Output Handling)، حيث أن الأخير يتعلق بعدم التدقيق الكافي في مخرجات نموذج اللغة الكبير.
 
-### Prevention and Mitigation Strategies
+### أمثلة شائعة على المخاطر (Common Examples of Risks)
 
-The following actions can prevent Excessive Agency:
+#### 1. الإفراط في الوظائف (Excessive Functionality)
+يمتلك وكيل نموذج اللغة الكبير (LLM) حق الوصول إلى إضافات تتضمن وظائف لا تُعد ضرورية للتشغيل المقصود للنظام.
+على سبيل المثال، يحتاج مطور إلى منح وكيل LLM القدرة على قراءة مستندات من مستودع، لكن الإضافة الخارجية التي اختار استخدامها تتضمن أيضًا إمكانية تعديل وحذف المستندات.
 
-#### 1. Minimize extensions
-  Limit the extensions that LLM agents are allowed to call to only the minimum necessary. For example, if an LLM-based system does not require the ability to fetch the contents of a URL then such an extension should not be offered to the LLM agent.
-#### 2. Minimize extension functionality
-  Limit the functions that are implemented in LLM extensions to the minimum necessary. For example, an extension that accesses a user's mailbox to summarise emails may only require the ability to read emails, so the extension should not contain other functionality such as deleting or sending messages.
-#### 3. Avoid open-ended extensions
-  Avoid the use of open-ended extensions where possible (e.g., run a shell command, fetch a URL, etc.) and use extensions with more granular functionality. For example, an LLM-based app may need to write some output to a file. If this were implemented using an extension to run a shell function then the scope for undesirable actions is very large (any other shell command could be executed). A more secure alternative would be to build a specific file-writing extension that only implements that specific functionality.
-#### 4. Minimize extension permissions
-  Limit the permissions that LLM extensions are granted to other systems to the minimum necessary in order to limit the scope of undesirable actions. For example, an LLM agent that uses a product database in order to make purchase recommendations to a customer might only need read access to a 'products' table; it should not have access to other tables, nor the ability to insert, update or delete records. This should be enforced by applying appropriate database permissions for the identity that the LLM extension uses to connect to the database.
-#### 5. Execute extensions in user's context
-  Track user authorization and security scope to ensure actions taken on behalf of a user are executed on downstream systems in the context of that specific user, and with the minimum privileges necessary. For example, an LLM extension that reads a user's code repo should require the user to authenticate via OAuth and with the minimum scope required.
-#### 6. Require user approval
-  Utilise human-in-the-loop control to require a human to approve high-impact actions before they are taken. This may be implemented in a downstream system (outside the scope of the LLM application) or within the LLM extension itself. For example, an LLM-based app that creates and posts social media content on behalf of a user should include a user approval routine within the extension that implements the 'post' operation.
-#### 7. Complete mediation
-  Implement authorization in downstream systems rather than relying on an LLM to decide if an action is allowed or not. Enforce the complete mediation principle so that all requests made to downstream systems via extensions are validated against security policies.
-#### 8. Sanitise LLM inputs and outputs
-  Follow secure coding best practice, such as applying OWASP’s recommendations in ASVS (Application Security Verification Standard), with a particularly strong focus on input sanitisation. Use Static Application Security Testing (SAST) and Dynamic and Interactive application testing (DAST, IAST) in development pipelines.
+#### 2. الإفراط في الوظائف (Excessive Functionality)
+قد تتم تجربة إضافة خلال مرحلة التطوير ويتم التخلي عنها لاحقًا لصالح بديل أفضل، إلا أن الإضافة الأصلية تظل متاحة لوكيل LLM.
 
-The following options will not prevent Excessive Agency, but can limit the level of damage caused:
+#### 3. الإفراط في الوظائف (Excessive Functionality)
+تفشل إضافة نموذج اللغة الكبير (LLM) ذات الوظائف المفتوحة في تصفية تعليمات الإدخال بشكل صحيح لمنع تنفيذ أوامر تتجاوز ما هو مطلوب للتشغيل المقصود للتطبيق. على سبيل المثال، إضافة مخصصة لتنفيذ أمر واحد في غلاف النظام (Shell) تفشل في منع تنفيذ أوامر أخرى.
 
-- Log and monitor the activity of LLM extensions and downstream systems to identify where undesirable actions are taking place, and respond accordingly.
-- Implement rate-limiting to reduce the number of undesirable actions that can take place within a given time period, increasing the opportunity to discover undesirable actions through monitoring before significant damage can occur.
+#### 4. الإفراط في الصلاحيات (Excessive Permissions)
+تمتلك إضافة نموذج اللغة الكبير (LLM) صلاحيات على الأنظمة الفرعية تتجاوز ما هو ضروري للتشغيل المقصود للتطبيق.
+على سبيل المثال، إضافة مخصصة لقراءة البيانات تتصل بخادم قاعدة بيانات باستخدام هوية تملك ليس فقط صلاحيات SELECT بل أيضًا صلاحيات UPDATE وINSERT وDELETE.
 
-### Example Attack Scenarios
+#### 5. الإفراط في الصلاحيات (Excessive Permissions)
+إضافة نموذج اللغة الكبير (LLM) مصممة لتنفيذ عمليات في سياق مستخدم فردي، تصل إلى الأنظمة الفرعية باستخدام هوية عامة ذات امتيازات عالية. على سبيل المثال، إضافة مصممة لقراءة مستودع مستندات المستخدم الحالي تتصل بمستودع المستندات عبر حساب ذي امتيازات يتيح الوصول إلى ملفات جميع المستخدمين.
 
-An LLM-based personal assistant app is granted access to an individual’s mailbox via an extension in order to summarise the content of incoming emails. To achieve this functionality, the extension requires the ability to read messages, however the plugin that the system developer has chosen to use also contains functions for sending messages. Additionally, the app is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the agent to scan the user's inbox for senitive information and forward it to the attacker's email address. This could be avoided by:
-* eliminating excessive functionality by using an extension that only implements mail-reading capabilities,
-* eliminating excessive permissions by authenticating to the user's email service via an OAuth session with a read-only scope, and/or
-* eliminating excessive autonomy by requiring the user to manually review and hit 'send' on every mail drafted by the LLM extension.
 
-Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
+#### 6. الإفراط في الاستقلالية (Excessive Autonomy)
+  فشل تطبيق أو إضافة قائمة على نموذج اللغة الكبير (LLM) في التحقق والموافقة بشكل مستقل على العمليات ذات التأثير الكبير. على سبيل المثال، إضافة تتيح حذف مستندات المستخدم تقوم بعمليات الحذف دون أي تأكيد من المستخدم.
 
-### Reference Links
+
+### استراتيجيات الوقاية والتخفيف (Prevention and Mitigation Strategies)
+
+تساعد الإجراءات التالية في منع الإفراط في الاستقلالية (Excessive Agency):
+
+#### 1. تقليل الإضافات (Minimize Extensions)
+  قلل الإضافات التي يُسمح لوكلاء نموذج اللغة الكبير (LLM) باستدعائها إلى الحد الأدنى اللازم فقط. على سبيل المثال، إذا لم يكن نظام قائم على LLM يحتاج إلى القدرة على جلب محتويات عنوان URL، فلا ينبغي تقديم مثل هذه الإضافة إلى وكيل LLM.
+
+#### 2. تقليل وظائف الإضافات (Minimize Extension Functionality)
+حدّد الوظائف المنفذة ضمن إضافات نموذج اللغة الكبير (LLM) إلى الحد الأدنى الضروري فقط. على سبيل المثال، قد تتطلب إضافة للوصول إلى صندوق بريد المستخدم بغرض تلخيص الرسائل فقط القدرة على قراءة الرسائل، ولا ينبغي أن تحتوي على وظائف إضافية مثل حذف الرسائل أو إرسالها.
+
+#### 3. تجنب الإضافات المفتوحة (Avoid Open-Ended Extensions)
+تجنب استخدام الإضافات ذات النطاق المفتوح قدر الإمكان (مثل تنفيذ أوامر Shell أو جلب عنوان URL) واستخدم إضافات ذات وظائف أكثر دقة. على سبيل المثال، قد يحتاج تطبيق قائم على نموذج اللغة الكبير (LLM) إلى كتابة مخرجات إلى ملف. إذا تم تنفيذ ذلك عبر إضافة لتنفيذ أمر Shell، فإن مجال تنفيذ أوامر غير مرغوبة يصبح واسعًا جدًا (أي أمر Shell آخر قد يتم تنفيذه). البديل الأكثر أمانًا هو بناء إضافة مخصصة لكتابة الملفات لا تنفذ سوى هذه الوظيفة المحددة.
+
+#### 4. تقليل صلاحيات الإضافات (Minimize Extension Permissions)
+حد من الصلاحيات التي تُمنح لإضافات نموذج اللغة الكبير (LLM) على الأنظمة الأخرى إلى الحد الأدنى اللازم لتقليل مجال الأفعال غير المرغوبة.
+على سبيل المثال، قد يحتاج وكيل نموذج اللغة الكبير (LLM) يستخدم قاعدة بيانات منتجات لإعطاء توصيات شراء إلى حق الوصول للقراءة فقط إلى جدول "المنتجات"، ويجب ألا يكون لديه حق الوصول إلى جداول أخرى أو القدرة على إدخال أو تعديل أو حذف السجلات.
+ينبغي فرض ذلك من خلال تطبيق صلاحيات قاعدة بيانات مناسبة على الهوية التي تستخدمها الإضافة للاتصال بقاعدة البيانات.
+
+#### 5. تنفيذ الإضافات في سياق المستخدم (Execute Extensions in User's Context)
+تتبع تفويض المستخدم ونطاق الأمان لضمان أن جميع العمليات التي تتم بالنيابة عن المستخدم تُنفذ في الأنظمة الفرعية ضمن سياق هذا المستخدم المحدد ومع أقل امتيازات ممكنة. على سبيل المثال، يجب أن تتطلب إضافة نموذج اللغة الكبير (LLM) التي تقرأ مستودع كود المستخدم أن يصادق المستخدم عبر OAuth مع أقل نطاق صلاحيات مطلوب.
+
+#### 6. اشتراط موافقة المستخدم (Require User Approval)
+استخدم آلية "الإنسان في الحلقة" (Human-in-the-Loop) لطلب موافقة بشرية على العمليات ذات التأثير الكبير قبل تنفيذها.
+قد يتم تنفيذ هذه الآلية في نظام فرعي (خارج نطاق تطبيق LLM) أو داخل الإضافة نفسها. على سبيل المثال، يجب أن يتضمن تطبيق قائم على LLM ينشئ منشورات على وسائل التواصل الاجتماعي نيابة عن المستخدم، روتينًا لموافقة المستخدم داخل الإضافة التي تنفذ عملية النشر.
+
+#### 7. تطبيق الوساطة الكاملة (Complete Mediation)
+نفّذ آليات التحقق من الصلاحيات داخل الأنظمة الفرعية بدلاً من الاعتماد على نموذج اللغة الكبير (LLM) في تحديد ما إذا كان الإجراء مسموحًا أم لا. طبّق مبدأ الوساطة الكاملة لضمان التحقق من جميع الطلبات المرسلة إلى الأنظمة الفرعية عبر الإضافات ضد السياسات الأمنية.
+
+#### 8. تنقية مدخلات ومخرجات نموذج اللغة الكبير (Sanitise LLM Inputs and Outputs)
+اتبع أفضل ممارسات البرمجة الآمنة، مثل تطبيق توصيات OWASP ضمن معيار التحقق من أمان التطبيقات (ASVS)، مع التركيز بشكل خاص على تنقية المدخلات. استخدم اختبار أمان البرمجيات الثابت (SAST) واختبار البرمجيات الديناميكي والتفاعلي (DAST وIAST) ضمن خطوط تطوير البرمجيات.
+
+الخيارات التالية لن تمنع الإفراط في الاستقلالية (Excessive Agency)، ولكن يمكنها الحد من مستوى الضرر الناتج:
+
+- سجل وراقب نشاط إضافات LLM والأنظمة الفرعية المرتبطة بها لتحديد أماكن حدوث الأفعال غير المرغوبة، والاستجابة لها بشكل مناسب.
+- نفّذ قيودًا على معدل الطلبات (Rate-Limiting) لتقليل عدد الأفعال غير المرغوبة التي يمكن أن تحدث خلال فترة زمنية معينة، مما يزيد من فرصة اكتشاف الأفعال غير المرغوبة عبر المراقبة قبل حدوث ضرر كبير.
+
+### سيناريوهات هجوم توضيحية (Example Attack Scenarios)
+
+يُمنح تطبيق مساعد شخصي قائم على نموذج اللغة الكبير (LLM) حق الوصول إلى صندوق بريد فردي عبر إضافة (Extension) بغرض تلخيص محتوى الرسائل الواردة.
+لتنفيذ هذه الوظيفة، تتطلب الإضافة القدرة على قراءة الرسائل، ومع ذلك فإن المكون الإضافي الذي اختاره مطور النظام يحتوي أيضًا على وظائف لإرسال الرسائل.
+
+بالإضافة إلى ذلك، يكون التطبيق عرضة لهجوم حقن تعليمات غير مباشر (Indirect Prompt Injection)، حيث تقوم رسالة بريد إلكتروني خبيثة مصممة خصيصًا بخداع النموذج وإصدار أمر للوكيل (Agent) بفحص صندوق بريد المستخدم بحثًا عن معلومات حساسة وإرسالها إلى عنوان البريد الإلكتروني الخاص بالمهاجم. يمكن تجنب ذلك عبر:
+
+* التخلص من الإفراط في الوظائف (Excessive Functionality) عبر استخدام إضافة تنفذ فقط إمكانيات قراءة البريد؛
+* التخلص من الإفراط في الصلاحيات (Excessive Permissions) عبر المصادقة على خدمة بريد المستخدم باستخدام جلسة OAuth بنطاق قراءة فقط (Read-Only Scope)؛
+* أو التخلص من الإفراط في الاستقلالية (Excessive Autonomy) عبر اشتراط مراجعة المستخدم يدويًا والنقر على "إرسال" لكل رسالة يتم إعدادها بواسطة إضافة نموذج اللغة الكبير (LLM Extension).
+
+بديلًا عن ذلك، يمكن تقليل الضرر الناتج عبر تطبيق قيود على معدل إرسال الرسائل (Rate-Limiting) من خلال واجهة إرسال البريد.
+
+
+### روابط مرجعية
 
 1. [Slack AI data exfil from private channels](https://promptarmor.substack.com/p/slack-ai-data-exfiltration-from-private): **PromptArmor**
 2. [Rogue Agents: Stop AI From Misusing Your APIs](https://www.twilio.com/en-us/blog/rogue-ai-agents-secure-your-apis): **Twilio**
