@@ -1,38 +1,38 @@
-## Title
-2025 Top 10 Risk & Mitigations for LLMs and Gen AI Apps
+## 제목
+2025년 LLM 및 Gen AI 앱의 Top 10 위험 및 완화 조치
 
-## Short Description
-Expore the latest Top 10 risks, vulnerabilities and mitigations for developing and securing generative AI and large language model applications across the development, deployment and management lifecycle.
+## 개요
+개발, 배포 및 관리 수명 주기 전반에 걸쳐 생성형 AI 및 LLM 애플리케이션을 개발하고 보호하기 위한 최신 Top 10 위험, 취약성 및 완화 방법을 살펴보세요.
 
-## Long Description
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+## 내용
+LLM 애플리케이션을 위한 OWASP Top 10은 2023년 AI 애플리케이션 관련 보안 문제를 해결하기 위한 커뮤니티 주도의 노력으로 시작되었습니다. 그로부터 이 기술은 산업과 애플리케이션 전반에 걸쳐 계속 확산되어 왔으며 관련 위험도 함께 증가하였습니다. 고객과의 상호 작용부터 내부 운영까지 모든 분야에 LLM이 더욱 깊숙이 포함되면서 개발자와 보안 전문가들은 새로운 취약점과 이에 대응할 수 있는 방법을 찾고 있습니다.
 
-## Sponsorship
-We appreciate our Project Sponsors’ funding contributions to help support the objectives of the project and help to cover operational and outreach costs augmenting the resources the OWASP.org foundation provides. The OWASP Top 10 for LLM and Generative AI Project continues to maintain a vendor neutral and unbiased approach. Sponsors do not receive special governance considerations as part of their support. Sponsors do receive recognition for their contributions in our materials and web properties.
-All materials the project generates are community developed, driven and released under open source and creative commons licenses. For more information on becoming a sponsor Visit the Sponsorship Section on our Website to learn more about helping to sustain the project through sponsorship.
+## 스폰서십
+프로젝트 후원자들이 프로젝트의 목표를 지원하고 OWASP.org 재단이 제공하는 리소스를 보강하기 위한 운영 및 홍보 비용을 충당하는 데 도움을 주셔서 감사드립니다. LLM 및 생성형 AI 프로젝트를 위한 OWASP Top 10은 벤더 중립적이고 편향되지 않은 접근 방식을 계속 유지합니다. 스폰서는 지원의 일부로 특별한 거버넌스 고려사항을 받지 않습니다. 후원자는 자료와 웹 자산에 대한 기여에 대한 인정을 받습니다.
+프로젝트에서 생성되는 모든 자료는 오픈소스 및 크리에이티브 커먼즈 라이선스에 따라 커뮤니티가 개발하고 주도하며 공개합니다. 스폰서 참여에 대한 자세한 내용은 웹사이트의 스폰서십 섹션을 방문하여 후원을 통해 프로젝트를 지속하는 방법에 대해 자세히 알아보세요
 
-## Social Media
-🚀 Exciting News! New Translations Available for the OWASP Top 10 for LLM & Generative AI (2025) 🌍
+## 소셜 미디어
+🚀 신나는 소식! LLM 및 제너레이티브 AI(2025년)를 위한 OWASP Top 10에 새로운 번역 제공 🌍
 
-We’re thrilled to announce that the OWASP Top 10 for LLM Applications and Generative AI 2025 is now available in Greek, Hindi, Japanese, Korean and Persian!
+이제 그리스어, 힌디어, 일본어, 한국어, 페르시아어로 'LLM 애플리케이션 및 생성형 AI 2025를 위한 OWASP Top 10'이 제공된다는 소식을 전하게 되어 매우 기쁩니다!
 
-This update provides a refreshed and comprehensive resource addressing the top risks, vulnerabilities, and mitigations for securing Generative AI and LLM applications across their development, deployment, and management lifecycle. Whether you're working with RAG-based applications, agentic architectures, or complex LLM integrations, this list is a must-have for developers, security professionals, and organizations looking to adopt AI securely.
+이 업데이트는 개발, 배포, 관리 수명 주기 전반에 걸쳐 생성형 AI 및 LLM 애플리케이션을 안전하게 보호하기 위한 주요 위험, 취약성 및 완화 방법을 다루는 새롭고 포괄적인 리소스를 제공합니다. RAG 기반 애플리케이션, 에이전트 아키텍처, 복잡한 LLM 통합 등 어떤 활동에서도 AI를 안전하게 도입하고자 하는 개발자, 보안 전문가 및 조직에 꼭 필요한 자료입니다.
 
-What's New in the 2025 OWASP Top 10 for LLMs?
+LLM 애플리케이션을 위한 OWASP Top 10 2025의 새로운 기능은 무엇인가요?
 
-✅ Unbounded Consumption: Expanding beyond denial of service to include risks of resource management and unexpected costs in large-scale deployments.
-✅ Vectors & Embeddings Security: Addressing security risks in Retrieval-Augmented Generation (RAG) and other embedding-based techniques.
-✅ System Prompt Leakage: A newly added entry tackling real-world exploits and the {risks of assuming prompts remain isolated.
-✅ Excessive Agency: As AI autonomy grows, this update highlights security concerns around agentic architectures with limited human oversight.
+✅ 무제한 소비: 서비스 거부를 넘어 리소스 관리의 위험과 대규모 배포의 예상치 못한 비용까지 확장합니다.
+✅ 벡터 및 임베딩 취약점: 검색증강생성(Retrieval-Augmented Generation, RAG) 및 기타 임베딩 기반 기술의 보안 위험을 해결합니다.
+✅ 시스템 프롬프트 누출: 실제 익스플로잇과 프롬프트가 격리되어 있다고 가정할 때의 위험을 다루는 항목이 새로 추가되었습니다.
+✅ 과도한 위임: AI의 자율성이 커짐에 따라 이번 업데이트에서는 사람에 의한 감독이 제한적인 에이전트 아키텍처에 대한 보안 문제를 강조합니다.
 
-Join the Effort! 💡
+노력에 동참하세요! 💡
 
-This project thrives because of the amazing global community behind it. If you’re passionate about AI security, we invite you to contribute to translations, research, and guidance to expand this critical initiative. Let’s make AI security accessible worldwide!
-📢 Check out the translations below:
- 🔗 Greek:
- 🔗 Hindi:
- 🔗 Japanese:
- 🔗 Korean:
- 🔗 Persian:
+이 프로젝트는 놀라운 글로벌 커뮤니티 덕분에 성공할 수 있었습니다. AI 보안에 대한 열정이 있다면 이 중요한 이니셔티브를 확장하기 위한 번역, 연구 및 안내에 기여해 주세요. 전 세계가 AI 보안을 이용할 수 있도록 만들어 주세요!
+📢 아래 번역본을 확인하세요.
+ 🔗 그리스어:
+ 🔗 힌디어:
+ 🔗 일본어:
+ 🔗 한국어:
+ 🔗 페르시아어:
 
-Interested in getting involved? Comment below or reach out! Together, we can build a more secure AI-driven future. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
+참여하는것에 관심이 있으신가요? 아래에 댓글을 달거나 문의해 주세요! 함께라면 더욱 안전한 AI 기반의 미래를 만들 수 있습니다. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP

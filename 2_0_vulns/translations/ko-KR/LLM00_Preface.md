@@ -33,8 +33,7 @@ LinkedIn: https://www.linkedin.com/in/adamdawson0/
 ### 한국어 번역팀
 #### 전영재(Youngjae Jeon)
 LLM 애플리케이션을 위한 OWASP Top 10 한국어 번역 리더
-LinkedIn: https://www.linkedin.com/in/youngjae-jeon-4a368163/
-FaceBook: https://www.facebook.com/nanuminfo/about/
+LinkedIn: https://www.linkedin.com/in/whitehat-kr/
 
 #### 성지연(Jiyeon Sung)
 LLM 애플리케이션을 위한 OWASP Top 10 한국어 번역 참여자
