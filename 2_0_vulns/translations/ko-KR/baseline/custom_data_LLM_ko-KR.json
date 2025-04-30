@@ -64,7 +64,8 @@
     "doc_toc_figures_title": "그림",
     "doc_watermark": true,
     "doc_appendix_titles": [
-        "부록 1: LLM 애플리케이션 아키텍처 및 위협 모델링"
+        "부록 1: LLM 애플리케이션 아키텍처 및 위협 모델링",
+        "부록 2: 2023:24 -> 2025 변경사항"
     ],
     "doc_sponsor_page_titles": [],
     "doc_title_font.size": 36,
