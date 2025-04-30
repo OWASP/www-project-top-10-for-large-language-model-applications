@@ -1,55 +1,65 @@
-## LLM09:2025 Misinformation
+## LLM09:2025 المعلومات المضللة (Misinformation)
 
-### Description
+### الوصف 
 
-Misinformation from LLMs poses a core vulnerability for applications relying on these models. Misinformation occurs when LLMs produce false or misleading information that appears credible. This vulnerability can lead to security breaches, reputational damage, and legal liability.
+تشكل المعلومات المضللة الناتجة عن نماذج اللغة الكبيرة (LLMs) ثغرة أساسية في التطبيقات التي تعتمد على هذه النماذج.
+تحدث المعلومات المضللة (Misinformation) عندما تُنتج النماذج معلومات زائفة أو مضللة تبدو موثوقة.
+يمكن أن تؤدي هذه الثغرة إلى اختراقات أمنية، وإلحاق ضرر بالسمعة، والتعرض للمسؤولية القانونية.
 
-One of the major causes of misinformation is hallucination—when the LLM generates content that seems accurate but is fabricated. Hallucinations occur when LLMs fill gaps in their training data using statistical patterns, without truly understanding the content. As a result, the model may produce answers that sound correct but are completely unfounded. While hallucinations are a major source of misinformation, they are not the only cause; biases introduced by the training data and incomplete information can also contribute.
+من أبرز أسباب المعلومات المضللة ظاهرة الهلاوس (Hallucinations) — وهي عندما يُنتج النموذج محتوى يبدو دقيقًا، لكنه في الحقيقة مفبرك.
+تحدث الهلاوس عندما يحاول النموذج سد الثغرات في بيانات التدريب اعتمادًا على الأنماط الإحصائية، دون أن يفهم فعليًا المحتوى.
+ونتيجة لذلك، قد يقدم النموذج إجابات تبدو صحيحة لغويًا أو منطقيًا لكنها بلا أساس حقيقي.
+ورغم أن الهلاوس تُعد مصدرًا رئيسيًا للمعلومات المضللة، إلا أنها ليست السبب الوحيد؛ فـالتحيزات في بيانات التدريب ونقص المعلومات قد يسهمان أيضًا في ظهور نتائج مضللة.
 
-A related issue is overreliance. Overreliance occurs when users place excessive trust in LLM-generated content, failing to verify its accuracy. This overreliance exacerbates the impact of misinformation, as users may integrate incorrect data into critical decisions or processes without adequate scrutiny.
+قضية ذات صلة هي الاعتماد المفرط (Overreliance)، وهي تحدث عندما يُظهر المستخدمون ثقة مفرطة في محتوى LLM دون التحقق من دقته.
+هذا الاعتماد الزائد يُفاقم من أثر المعلومات المضللة، إذ قد يدمج المستخدمون بيانات غير صحيحة في قرارات أو عمليات حساسة دون تدقيق كافٍ.
 
-### Common Examples of Risk
+### أمثلة شائعة على المخاطر (Common Examples of Risk)
 
-#### 1. Factual Inaccuracies
-  The model produces incorrect statements, leading users to make decisions based on false information. For example, Air Canada's chatbot provided misinformation to travelers, leading to operational disruptions and legal complications. The airline was successfully sued as a result.
-  (Ref. link: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
-#### 2. Unsupported Claims
-  The model generates baseless assertions, which can be especially harmful in sensitive contexts such as healthcare or legal proceedings. For example, ChatGPT fabricated fake legal cases, leading to significant issues in court.
-  (Ref. link: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
-#### 3. Misrepresentation of Expertise
-  The model gives the illusion of understanding complex topics, misleading users regarding its level of expertise. For example, chatbots have been found to misrepresent the complexity of health-related issues, suggesting uncertainty where there is none, which misled users into believing that unsupported treatments were still under debate.
+#### 1. حقائق غير دقيقة (Factual Inaccuracies)
+
+يُنتج النموذج تصريحات خاطئة، مما يدفع المستخدمين إلى اتخاذ قرارات مبنية على معلومات زائفة.
+على سبيل المثال، قدّم روبوت الدردشة التابع لشركة Air Canada معلومات خاطئة للمسافرين، مما أدى إلى اضطرابات تشغيلية وتبعات قانونية.
+(Ref. link: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
+#### 2. ادعاءات غير مدعومة (Unsupported Claims)
+ينتج النموذج ادعاءات بلا أساس، ويكون ذلك خطيرًا بشكل خاص في السياقات الحساسة مثل الرعاية الصحية أو الإجراءات القانونية.
+على سبيل المثال، قام ChatGPT باختلاق قضايا قانونية وهمية مما تسبب بمشاكل كبيرة أمام المحكمة.
+(Ref. link: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
+#### 3. تمثيل مضلل للخبرة (Misrepresentation of Expertise)
+يعطي النموذج انطباعًا زائفًا بفهمه لموضوعات معقدة، مما يضلل المستخدمين بشأن مستوى خبرته. على سبيل المثال، أساءت روبوتات الدردشة عرض تعقيدات بعض القضايا الصحية، مما أوحى للمستخدمين أن بعض العلاجات غير المثبتة ما تزال قيد الدراسة.
   (Ref. link: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
-#### 4. Unsafe Code Generation
-  The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems. For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks.
-  (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
+#### 4. توليد أكواد برمجية غير آمنة (Unsafe Code Generation)
+يقترح النموذج مكتبات برمجية غير آمنة أو غير موجودة، مما يؤدي إلى إدخال ثغرات في أنظمة البرمجيات. على سبيل المثال، اقترحت نماذج LLM استخدام مكتبات خارجية غير آمنة، وعند الاعتماد عليها دون تحقق، أدت إلى مخاطر أمنية.
+(Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
-### Prevention and Mitigation Strategies
+### استراتيجيات الوقاية والتخفيف (Prevention and Mitigation Strategies)
 
-#### 1. Retrieval-Augmented Generation (RAG)
-  Use Retrieval-Augmented Generation to enhance the reliability of model outputs by retrieving relevant and verified information from trusted external databases during response generation. This helps mitigate the risk of hallucinations and misinformation.
-#### 2. Model Fine-Tuning
-  Enhance the model with fine-tuning or embeddings to improve output quality. Techniques such as parameter-efficient tuning (PET) and chain-of-thought prompting can help reduce the incidence of misinformation.
-#### 3. Cross-Verification and Human Oversight
-  Encourage users to cross-check LLM outputs with trusted external sources to ensure the accuracy of the information. Implement human oversight and fact-checking processes, especially for critical or sensitive information. Ensure that human reviewers are properly trained to avoid overreliance on AI-generated content.
-#### 4. Automatic Validation Mechanisms
-  Implement tools and processes to automatically validate key outputs, especially output from high-stakes environments.
-#### 5. Risk Communication
-  Identify the risks and possible harms associated with LLM-generated content, then clearly communicate these risks and limitations to users, including the potential for misinformation.
-#### 6. Secure Coding Practices
-  Establish secure coding practices to prevent the integration of vulnerabilities due to incorrect code suggestions.
-#### 7. User Interface Design
-  Design APIs and user interfaces that encourage responsible use of LLMs, such as integrating content filters, clearly labeling AI-generated content and informing users on limitations of reliability and accuracy. Be specific about the intended field of use limitations.
-#### 8. Training and Education
-  Provide comprehensive training for users on the limitations of LLMs, the importance of independent verification of generated content, and the need for critical thinking. In specific contexts, offer domain-specific training to ensure users can effectively evaluate LLM outputs within their field of expertise.
+#### 1. التوليد المعزز بالاسترجاع (Retrieval-Augmented Generation - RAG)
+استخدم تقنية RAG لتحسين موثوقية مخرجات النموذج من خلال جلب معلومات موثوقة من قواعد بيانات خارجية أثناء توليد الردود، مما يقلل من احتمالية الهلاوس والمعلومات المضللة.
+#### 2.ضبط النموذج (Model Fine-Tuning)
+قم بتحسين أداء النموذج من خلال التضمين (Embeddings) أو ضبط المعلمات بكفاءة (Parameter-Efficient Tuning)، واستخدم تقنيات مثل Chain-of-Thought Prompting لتقليل احتمالية ظهور معلومات مضللة.
+#### 3. التحقق المتبادل والمراجعة البشرية (Cross-Verification and Human Oversight)
+شجع المستخدمين على التحقق من مخرجات النموذج باستخدام مصادر موثوقة. قم بتطبيق عمليات مراجعة بشرية، خاصة في السياقات الحساسة، مع تدريب المراجعين لتجنّب الاعتماد المفرط على المحتوى المُولد.
+#### 4. آليات التحقق التلقائي (Automatic Validation Mechanisms)
+قم بتطبيق أدوات تتحقق تلقائيًا من مخرجات النموذج، خاصة في البيئات عالية الحساسية.
+#### 5. التواصل حول المخاطر (Risk Communication)
+حدد المخاطر المرتبطة بالمحتوى المُولد، وأبلغ المستخدمين بشكل واضح عن تلك المخاطر، بما في ذلك احتمال وجود معلومات مضللة.
+#### 6. ممارسات البرمجة الآمن (Secure Coding Practices)
+اعتمد ممارسات برمجية آمنة تمنع دمج تعليمات برمجية غير صحيحة أو تحتوي على ثغرات.
+#### 7. تصميم واجهة المستخدم (User Interface Design)
+صمم واجهات الاستخدام وواجهات البرمجة (APIs) بحيث تشجع على الاستخدام المسؤول للنموذج، بما في ذلك استخدام فلاتر المحتوى، وضع علامات واضحة على المحتوى المُولد بالذكاء الاصطناعي، وتوضيح حدود الاعتمادية والدقة.
+#### 8. التدريب والتثقيف (Training and Education)
+وفّر تدريبًا شاملاً للمستخدمين حول حدود قدرات النماذج، وأهمية التحقق من المحتوى المُولد، والتفكير النقدي. في السياقات التخصصية، قدم تدريبًا مخصصًا لضمان قدرة المستخدمين على تقييم المخرجات بفعالية ضمن مجالاتهم.
+### سيناريوهات هجوم توضيحية (Example Attack Scenarios)
 
-### Example Attack Scenarios
+#### السيناريو  #1
+يقوم المهاجمون باختبار مساعدين برمجيين شائعين لاكتشاف أسماء مكتبات يتم "هلاوستها" بشكل متكرر. وبعد تحديد أسماء المكتبات الوهمية التي تقترحها النماذج، ينشرون حزمًا خبيثة بتلك الأسماء في مستودعات عامة.
+يقوم المطورون، دون وعي، بدمج تلك الحزم المقترحة من المساعد البرمجي في تطبيقاتهم، مما يسمح للمهاجمين بالوصول غير المصرح به أو بحقن برمجيات ضارة أو إنشاء أبواب خلفية، وبالتالي اختراق أمني كبير وتسريب بيانات المستخدمين.
+#### السيناريو  #2
+تقدّم شركة ما روبوت دردشة للتشخيص الطبي دون التأكد من دقة المعلومات المقدمة بشكل كافٍ. يقدّم الروبوت معلومات ضعيفة الجودة، مما يؤدي إلى عواقب ضارة للمرضى. ونتيجة لذلك، يتم رفع دعوى قضائية ضد الشركة ويتم الحكم لصالح المتضررين. في هذه الحالة، لم يكن هناك حاجة إلى مهاجم خبيث، بل نشأ الخلل في الأمان والسلامة نتيجة نقص الإشراف وضعف موثوقية نظام نموذج اللغة الكبير (LLM).
+في هذا السيناريو، لم تكن هناك حاجة لوجود مهاجم نشط حتى تتعرض الشركة لمخاطر على مستوى السمعة والخسائر المالية.
 
-#### Scenario #1
-  Attackers experiment with popular coding assistants to find commonly hallucinated package names. Once they identify these frequently suggested but nonexistent libraries, they publish malicious packages with those names to widely used repositories. Developers, relying on the coding assistant's suggestions, unknowingly integrate these poised packages into their software. As a result, the attackers gain unauthorized access, inject malicious code, or establish backdoors, leading to significant security breaches and compromising user data.
-#### Scenario #2
-  A company provides a chatbot for medical diagnosis without ensuring sufficient accuracy. The chatbot provides poor information, leading to harmful consequences for patients. As a result, the company is successfully sued for damages. In this case, the safety and security breakdown did not require a malicious attacker but instead arose from the insufficient oversight and reliability of the LLM system. In this scenario, there is no need for an active attacker for the company to be at risk of reputational and financial damage.
-
-### Reference Links
+### روابط مرجعية
 
 1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
 2. [Air Canada Chatbot Misinformation: What Travellers Should Know](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know): **BBC**
