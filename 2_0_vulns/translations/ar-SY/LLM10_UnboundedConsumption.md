@@ -1,78 +1,88 @@
-## LLM10:2025 Unbounded Consumption
+## LLM10:2025 الاستهلاك غير المحدود (Unbounded Consumption)
 
-### Description
+### الوصف 
 
-Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
+يشير مصطلح الاستهلاك غير المحدود (Unbounded Consumption) إلى العملية التي يقوم فيها نموذج اللغة الكبير (LLM) بتوليد مخرجات استنادًا إلى استعلامات أو مطالبات الإدخال.
+تُعد الاستدلالات (Inference) وظيفة أساسية لنماذج LLM، حيث تتضمن تطبيق الأنماط والمعرفة المكتسبة لإنتاج استجابات أو تنبؤات ذات صلة.
 
-Attacks designed to disrupt service, deplete the target's financial resources, or even steal intellectual property by cloning a model’s behavior all depend on a common class of security vulnerability in order to succeed. Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to risks such as denial of service (DoS), economic losses, model theft, and service degradation. The high computational demands of LLMs, especially in cloud environments, make them vulnerable to resource exploitation and unauthorized usage.
+تعتمد الهجمات المصممة لتعطيل الخدمة، أو استنزاف الموارد المالية للهدف، أو حتى سرقة الملكية الفكرية عن طريق استنساخ سلوك النموذج، على نوع شائع من الثغرات الأمنية لتحقيق النجاح.
+يحدث الاستهلاك غير المحدود عندما يسمح تطبيق يعتمد على نموذج لغة كبير (LLM) للمستخدمين بإجراء استدلالات مفرطة وغير مضبوطة، مما يؤدي إلى مخاطر مثل حجب الخدمة (DoS)، والخسائر الاقتصادية، وسرقة النموذج، وتدهور الخدمة.
+تجعل المتطلبات الحسابية العالية لنماذج LLM، خاصة في البيئات السحابية، هذه النماذج عرضة لاستغلال الموارد والاستخدام غير المصرح به.
 
-### Common Examples of Vulnerability
+### أمثلة شائعة على الثغرات (Common Examples of Vulnerability)
 
-#### 1. Variable-Length Input Flood
-  Attackers can overload the LLM with numerous inputs of varying lengths, exploiting processing inefficiencies. This can deplete resources and potentially render the system unresponsive, significantly impacting service availability.
-#### 2. Denial of Wallet (DoW)
-  By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
-#### 3. Continuous Input Overflow
-  Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
-#### 4. Resource-Intensive Queries
-  Submitting unusually demanding queries involving complex sequences or intricate language patterns can drain system resources, leading to prolonged processing times and potential system failures.
-#### 5. Model Extraction via API
-  Attackers may query the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model. This not only poses risks of intellectual property theft but also undermines the integrity of the original model.
-#### 6. Functional Model Replication
-  Using the target model to generate synthetic training data can allow attackers to fine-tune another foundational model, creating a functional equivalent. This circumvents traditional query-based extraction methods, posing significant risks to proprietary models and technologies.
-#### 7. Side-Channel Attacks
-  Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
+#### 1. إغراق الإدخال بطول متغير (Variable-Length Input Flood)
+يمكن للمهاجمين تحميل نموذج اللغة الكبير (LLM) بعدد كبير من المدخلات ذات الأطوال المختلفة، مستغلين أوجه القصور في المعالجة. يمكن أن يؤدي ذلك إلى استنزاف الموارد وقد يتسبب في جعل النظام غير مستجيب، مما يؤثر بشكل كبير على توفر الخدمة.
 
-### Prevention and Mitigation Strategies
+#### 2. حجب المحفظة (Denial of Wallet - DoW)
+من خلال إطلاق حجم كبير من العمليات، يستغل المهاجمون نموذج التكلفة حسب الاستخدام لخدمات الذكاء الاصطناعي السحابية، مما يؤدي إلى أعباء مالية غير مستدامة على المزود ويهدد بإحداث خسائر مالية جسيمة.
 
-#### 1. Input Validation
-  Implement strict input validation to ensure that inputs do not exceed reasonable size limits.
-#### 2. Limit Exposure of Logits and Logprobs
-  Restrict or obfuscate the exposure of `logit_bias` and `logprobs` in API responses. Provide only the necessary information without revealing detailed probabilities.
-#### 3. Rate Limiting
-  Apply rate limiting and user quotas to restrict the number of requests a single source entity can make in a given time period.
-#### 4. Resource Allocation Management
-  Monitor and manage resource allocation dynamically to prevent any single user or request from consuming excessive resources.
-#### 5. Timeouts and Throttling
-  Set timeouts and throttle processing for resource-intensive operations to prevent prolonged resource consumption.
-#### 6.Sandbox Techniques
-  Restrict the LLM's access to network resources, internal services, and APIs.
-  - This is particularly significant for all common scenarios as it encompasses insider risks and threats. Furthermore, it governs the extent of access the LLM application has to data and resources, thereby serving as a crucial control mechanism to mitigate or prevent side-channel attacks.
-#### 7. Comprehensive Logging, Monitoring and Anomaly Detection
-  Continuously monitor resource usage and implement logging to detect and respond to unusual patterns of resource consumption.
-#### 8. Watermarking
-  Implement watermarking frameworks to embed and detect unauthorized use of LLM outputs.
-#### 9. Graceful Degradation
-  Design the system to degrade gracefully under heavy load, maintaining partial functionality rather than complete failure.
-#### 10. Limit Queued Actions and Scale Robustly
-  Implement restrictions on the number of queued actions and total actions, while incorporating dynamic scaling and load balancing to handle varying demands and ensure consistent system performance.
-#### 11. Adversarial Robustness Training
-  Train models to detect and mitigate adversarial queries and extraction attempts.
-#### 12. Glitch Token Filtering
-  Build lists of known glitch tokens and scan output before adding it to the model’s context window.
-#### 13. Access Controls
-  Implement strong access controls, including role-based access control (RBAC) and the principle of least privilege, to limit unauthorized access to LLM model repositories and training environments.
-#### 14. Centralized ML Model Inventory
-  Use a centralized ML model inventory or registry for models used in production, ensuring proper governance and access control.
-#### 15. Automated MLOps Deployment
-  Implement automated MLOps deployment with governance, tracking, and approval workflows to tighten access and deployment controls within the infrastructure.
+#### 3. تدفق الإدخال المستمر (Continuous Input Overflow)
+ إرسال مدخلات بشكل مستمر تتجاوز نافذة السياق للنموذج يمكن أن يؤدي إلى استخدام مفرط للموارد الحاسوبية، مما يتسبب في تدهور الخدمة واضطرابات تشغيلية.
+#### 4. استعلامات كثيفة الموارد (Resource-Intensive Queries)
+تقديم استعلامات تتطلب موارد عالية بشكل غير عادي تتضمن تسلسلات معقدة أو أنماط لغوية دقيقة يمكن أن يستهلك موارد النظام بشكل مفرط، مما يؤدي إلى أوقات معالجة طويلة واحتمال حدوث أعطال في النظام.
 
-### Example Attack Scenarios
+#### 5. استخراج النموذج عبر واجهة (Model Extraction via API)
+قد يقوم المهاجمون باستدعاء واجهة برمجة التطبيقات للنموذج باستخدام مدخلات مصممة بعناية وتقنيات حقن التعليمات (Prompt Injection) لجمع مخرجات كافية تتيح لهم استنساخ نموذج جزئي أو إنشاء نموذج ظل. يمثل ذلك خطرًا على الملكية الفكرية ويقوض سلامة النموذج الأصلي.
 
-#### Scenario #1: Uncontrolled Input Size
-  An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
-#### Scenario #2: Repeated Requests
-  An attacker transmits a high volume of requests to the LLM API, causing excessive consumption of computational resources and making the service unavailable to legitimate users.
-#### Scenario #3: Resource-Intensive Queries
-  An attacker crafts specific inputs designed to trigger the LLM's most computationally expensive processes, leading to prolonged CPU usage and potential system failure.
-#### Scenario #4: Denial of Wallet (DoW)
-  An attacker generates excessive operations to exploit the pay-per-use model of cloud-based AI services, causing unsustainable costs for the service provider.
-#### Scenario #5: Functional Model Replication
-  An attacker uses the LLM's API to generate synthetic training data and fine-tunes another model, creating a functional equivalent and bypassing traditional model extraction limitations.
-#### Scenario #6: Bypassing System Input Filtering
-  A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
+#### 6. استنساخ النموذج الوظيفي (Functional Model Replication)
+باستخدام النموذج المستهدف لتوليد بيانات تدريب اصطناعية، يمكن للمهاجمين ضبط نموذج أساسي آخر وإنشاء نموذج مكافئ وظيفيًا. يتيح هذا النهج تجاوز طرق الاستخراج التقليدية المعتمدة على الاستعلامات، مما يشكل تهديدًا كبيرًا للنماذج والتقنيات المملوكة.
 
-### Reference Links
+#### 7. هجمات القنوات الجانبية (Side-Channel Attacks)
+قد يستغل المهاجمون الخبيثون تقنيات تصفية المدخلات الخاصة بنموذج اللغة الكبير (LLM) لتنفيذ هجمات القنوات الجانبية (Side-Channel Attacks)، لجمع أوزان النموذج ومعلومات حول هيكليته. يمكن أن يؤدي ذلك إلى تعريض أمن النموذج للخطر وفتح المجال لمزيد من الاستغلال.
+
+
+### استراتيجيات الوقاية والتخفيف (Prevention and Mitigation Strategies)
+
+#### 1. التحقق من المدخلات (Input Validation)
+نفّذ عمليات تحقق صارمة من المدخلات لضمان عدم تجاوز المدخلات للحدود الحجمية المعقولة.
+#### 2. تقييد إظهار Logits و Logprobs
+قيّد أو قم بإخفاء كشف معلومات logit_bias وlogprobs في ردود واجهة API. قدّم فقط المعلومات الضرورية دون الكشف عن الاحتمالات التفصيلية.
+#### 3. تحديد المعدل (Rate Limiting)
+طبّق تحديد المعدل (Rate Limiting) وحصص المستخدمين لتقييد عدد الطلبات التي يمكن لكيان واحد إرسالها خلال فترة زمنية محددة.
+#### 4. إدارة تخصيص الموارد (Resource Allocation Management)
+راقب وادرس تخصيص الموارد بشكل ديناميكي لمنع أي مستخدم أو طلب واحد من استهلاك موارد مفرطة.
+#### 5. تحديد المهلة وتخفيض السرعة (Timeouts and Throttling)
+قم بتعيين مهلات (Timeouts) وتخفيض سرعة المعالجة (Throttling) للعمليات التي تستهلك موارد بكثافة لمنع الاستهلاك المطوّل للموارد.
+#### 6.تقنيات العزل (Sandbox Techniques)
+قيّد وصول نموذج اللغة الكبير (LLM) إلى الموارد الشبكية، والخدمات الداخلية، وواجهات برمجة التطبيقات (APIs).
+  - يُعد ذلك بالغ الأهمية في جميع السيناريوهات الشائعة لأنه يشمل مخاطر وتهديدات من الداخل. علاوة على ذلك، فإنه يتحكم في مدى وصول تطبيق LLM إلى البيانات والموارد، ما يجعله آلية تحكم حاسمة للتخفيف من هجمات القنوات الجانبية أو منعها.
+#### 7. التسجيل الشامل والمراقبة والكشف عن الشذوذ (Comprehensive Logging, Monitoring and Anomaly Detection)
+قم بمراقبة استخدام الموارد باستمرار وتنفيذ تسجيلات لاكتشاف أنماط استهلاك غير معتادة والاستجابة لها.
+#### 8. وضع العلامات المائية (Watermarking)
+قم بتنفيذ أطر عمل لوضع العلامات المائية (Watermarking) لاكتشاف الاستخدام غير المصرح به لمخرجات نموذج LLM.
+#### 9. التدهور التدريجي (Graceful Degradation)
+صمّم النظام بحيث يتدهور تدريجيًا عند التحميل الزائد، مع الحفاظ على بعض الوظائف بدلاً من الانهيار الكامل.
+#### 10. تقييد الإجراءات المنتظرة والتوسع الديناميكي (Limit Queued Actions and Scale Robustly)
+طبّق قيودًا على عدد الإجراءات المنتظرة والإجراءات الإجمالية، مع دمج التوسع الديناميكي (Dynamic Scaling) وموازنة الأحمال (Load Balancing) للتعامل مع الطلبات المتغيرة وضمان أداء النظام باستمرار.
+#### 11. تدريب على مقاومة الهجمات التلاعبية (Adversarial Robustness Training)
+درّب النماذج لاكتشاف الاستعلامات الهجومية ومحاولات الاستخراج والتخفيف من آثارها.
+#### 12. تصفية الرموز المعطوبة (Glitch Token Filtering)
+أنشئ قوائم بالرموز المعطوبة المعروفة وقم بفحص المخرجات قبل إضافتها إلى نافذة السياق للنموذج.
+#### 13. ضوابط الوصول (Access Controls)
+قم بتنفيذ ضوابط وصول قوية، بما في ذلك التحكم بالوصول المعتمد على الأدوار (RBAC) ومبدأ أقل امتياز (Least Privilege) للحد من الوصول غير المصرح به إلى مستودعات النماذج وبيئات التدريب.
+#### 14. سجل مركزي للنماذج (Centralized ML Model Inventory)
+استخدم سجل مركزي أو مستودع نماذج (Model Registry) للنماذج المستخدمة في بيئة الإنتاج لضمان الحوكمة المناسبة والتحكم في الوصول.
+#### 15. النشر الآلي لعمليات إدارة نماذج التعلم الآلي (Automated MLOps Deployment)
+قم بتنفيذ نشر آلي لعمليات MLOps يتضمن الحوكمة، والتتبع، وتدفقات الموافقة (Approval Workflows) لتعزيز ضوابط الوصول والنشر داخل البنية التحتية.
+
+
+### سيناريوهات هجوم توضيحية (Example Attack Scenarios)
+
+#### السيناريو  #1: حجم إدخال غير منضبط (Uncontrolled Input Size)
+يقوم مهاجم بإرسال إدخال كبير بشكل غير معتاد إلى تطبيق نموذج اللغة الكبير (LLM) يعالج بيانات نصية، مما يؤدي إلى استخدام مفرط للذاكرة وحمل زائد على وحدة المعالجة المركزية (CPU)، وقد يتسبب ذلك في تعطل النظام أو إبطاء الخدمة بشكل كبير.
+#### السيناريو  #2: الطلبات المتكررة (Repeated Requests)
+يرسل المهاجم حجمًا كبيرًا من الطلبات إلى واجهة API الخاصة بـ LLM، مما يؤدي إلى استهلاك مفرط للموارد الحاسوبية ويجعل الخدمة غير متاحة للمستخدمين الشرعيين.
+#### السيناريو  #3: استعلامات كثيفة الموارد (Resource-Intensive Queries)
+يصمم المهاجم مدخلات محددة مصممة لتفعيل أكثر العمليات استهلاكًا للموارد في نموذج LLM، مما يؤدي إلى استخدام مطوّل لوحدة المعالجة المركزية واحتمال تعطل النظام.
+#### السيناريو  #4: حجب المحفظة (Denial of Wallet - DoW)
+يقوم المهاجم بإنشاء عمليات مفرطة لاستغلال نموذج الدفع مقابل الاستخدام لخدمات الذكاء الاصطناعي السحابية، مما يتسبب في تكاليف غير مستدامة لمزود الخدمة.
+#### السيناريو  #5: استنساخ النموذج الوظيفي (Functional Model Replication)
+يستخدم المهاجم واجهة API الخاصة بنموذج اللغة الكبير (LLM) لتوليد بيانات تدريب اصطناعية ويقوم بضبط نموذج آخر، مما يؤدي إلى إنشاء نموذج مكافئ وظيفيًا ويتجاوز القيود التقليدية لاستخراج النماذج.
+#### السيناريو  #6: تجاوز تصفية مدخلات النظام (Bypassing System Input Filtering)
+يقوم مهاجم خبيث بتجاوز تقنيات تصفية المدخلات ومقدمات النموذج (Preambles) لتنفيذ هجوم القنوات الجانبية (Side-Channel Attack) واسترجاع معلومات النموذج إلى مورد يتم التحكم به عن بُعد.
+
+### روابط مرجعية
 
 1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**
@@ -85,9 +95,9 @@ Attacks designed to disrupt service, deplete the target's financial resources, o
 9. [Sponge Examples: Energy-Latency Attacks on Neural Networks: Arxiv White Paper](https://arxiv.org/abs/2006.03463) **arXiv**
 10. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
 
-### Related Frameworks and Taxonomies
+### الأطر والتصنيفات ذات الصلة 
+راجع هذا القسم للحصول على معلومات شاملة، استراتيجيات وسيناريوهات متعلقة بنشر البنية التحتية، ضوابط البيئة التطبيقية، وأفضل الممارسات الأخرى.
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
 
 - [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
 - [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**
