@@ -1,85 +1,109 @@
-## LLM03:2025 Supply Chain
+## LLM03:2025 سلاسل التوريد (Supply Chain)
 
-### Description
+### الوصف 
+سلاسل توريد نماذج اللغة الكبيرة (LLM Supply Chains) عرضة لمجموعة متنوعة من الثغرات، والتي يمكن أن تؤثر على سلامة بيانات التدريب، النماذج، ومنصات النشر.
+قد تؤدي هذه المخاطر إلى مخرجات متحيزة، أو اختراقات أمنية، أو أعطال في الأنظمة.
 
-LLM supply chains are susceptible to various vulnerabilities, which can affect the integrity of training data, models, and deployment platforms. These risks can result in biased outputs, security breaches, or system failures. While traditional software vulnerabilities focus on issues like code flaws and dependencies, in ML the risks also extend to third-party pre-trained models and data.
+بينما تركز الثغرات في البرمجيات التقليدية على قضايا مثل عيوب الشيفرة البرمجية والاعتماديات، تمتد المخاطر في تعلم الآلة (ML) أيضًا إلى النماذج المدربة مسبقًا من أطراف ثالثة والبيانات المستخدمة.
 
-These external elements can be manipulated through tampering or poisoning attacks.
+يمكن التلاعب بهذه العناصر الخارجية من خلال هجمات التلاعب (Tampering) أو تسميم البيانات (Poisoning Attacks).
 
-Creating LLMs is a specialized task that often depends on third-party models. The rise of open-access LLMs and new fine-tuning methods like "LoRA" (Low-Rank Adaptation)  and "PEFT" (Parameter-Efficient Fine-Tuning), especially on platforms like Hugging Face, introduce new supply-chain risks. Finally, the emergence of on-device LLMs increase the attack surface and supply-chain risks for LLM applications.
+يُعد إنشاء نماذج اللغة الكبيرة (LLM) مهمة متخصصة غالبًا ما تعتمد على نماذج من أطراف ثالثة.
+يؤدي انتشار نماذج LLM مفتوحة الوصول (Open-Access LLMs) وطرق الضبط الجديدة مثل LoRA (التكيف منخفض الرتبة – Low-Rank Adaptation) وPEFT (الضبط الفعّال للمعلمات – Parameter-Efficient Fine-Tuning)، خاصة على منصات مثل Hugging Face، إلى ظهور مخاطر جديدة في سلسلة التوريد.
 
-Some of the risks discussed here are also discussed in "LLM04 Data and Model Poisoning." This entry focuses on the supply-chain aspect of the risks.
-A simple threat model can be found [here](https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-LLM%20Supply%20Chain.png).
+وأخيرًا، فإن ظهور نماذج LLM على الأجهزة (On-Device LLMs) يزيد من مساحة الهجوم ويعزز مخاطر سلسلة التوريد لتطبيقات LLM.
 
-### Common Examples of Risks
+بعض المخاطر التي تمت مناقشتها هنا تم تناولها أيضًا في قسم LLM04: تسميم البيانات والنموذج (Data and Model Poisoning).
+يركّز هذا الإدخال تحديدًا على الجانب المتعلق بسلسلة التوريد من هذه المخاطر.
 
-#### 1. Traditional Third-party Package Vulnerabilities
-  Such as outdated or deprecated components, which attackers can exploit to compromise LLM applications. This is similar to "A06:2021 – Vulnerable and Outdated Components" with increased risks when components are used during model development or finetuning.
-  (Ref. link: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
-#### 2. Licensing Risks
-  AI development often involves diverse software and dataset licenses, creating risks if not properly managed. Different open-source and proprietary licenses impose varying legal requirements. Dataset licenses may restrict usage, distribution, or commercialization.
-#### 3. Outdated or Deprecated Models
-  Using outdated or deprecated models that are no longer maintained leads to security issues.
-#### 4. Vulnerable Pre-Trained Model
-  Models are binary black boxes and unlike open source, static inspection can offer little to security assurances. Vulnerable pre-trained models can contain hidden biases, backdoors, or other malicious features that have not been identified through  the safety evaluations of model repository. Vulnerable models can be created by both poisoned datasets and direct model tampering using techniques such as ROME also known as lobotomisation.
-#### 5. Weak Model Provenance
-  Currently there are no strong provenance assurances in published models. Model Cards and associated documentation provide model information and relied upon users, but they offer no guarantees on the origin of the model. An attacker can compromise supplier account on a model repo or create a similar one and combine it with social engineering techniques to compromise the supply-chain of an LLM application.
-#### 6. Vulnerable LoRA adapters
-  LoRA is a popular fine-tuning technique that enhances modularity by allowing pre-trained layers to be bolted onto an existing LLM. The method increases efficiency but create new risks, where a malicious LorA adapter compromises the integrity and security of the pre-trained base model. This can happen both in collaborative model merge environments but also exploiting the support for LoRA from popular inference deployment platforms such as vLMM and OpenLLM where adapters can be downloaded and applied to a deployed model.
-#### 7. Exploit Collaborative Development Processes
-  Collaborative model merge and model handling services (e.g. conversions) hosted in shared environments can be exploited to introduce vulnerabilities in shared models. Model merging is is very popular on Hugging Face with model-merged models topping the OpenLLM leaderboard and can be exploited to bypass reviews. Similarly, services such as conversation bot have been proved to be vulnerable to maniputalion and introduce malicious code in models.
-#### 8. LLM Model on Device supply-chain vulnerabilities
-  LLM models on device increase the supply attack surface with compromised manufactured processes and exploitation of device OS or fimware vulnerabilities to compromise models. Attackers can reverse engineer and re-package applications with tampered models.
-#### 9. Unclear T&Cs and Data Privacy Policies
-  Unclear T&Cs and data privacy policies of the model operators lead to the application's sensitive data being used for model training and subsequent sensitive information exposure. This may also apply to risks from using copyrighted material by the model supplier.
 
-### Prevention and Mitigation Strategies
+يمكن العثور على مثال لنموذج تهديد بسيط. [هنا](https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-LLM%20Supply%20Chain.png).
 
-1. Carefully vet data sources and suppliers, including T&Cs and their privacy policies, only using trusted suppliers. Regularly review and audit supplier Security and Access, ensuring no changes in their security posture or T&Cs.
-2. Understand and apply the mitigations found in the OWASP Top Ten's "A06:2021 – Vulnerable and Outdated Components." This includes vulnerability scanning, management, and patching components. For development environments with access to sensitive data, apply these controls in those environments, too.
-  (Ref. link: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
-3. Apply comprehensive AI Red Teaming and Evaluations when selecting a third party model. Decoding Trust is an example of a Trustworthy AI benchmark for LLMs but models can finetuned to by pass published benchmarks. Use extensive AI Red Teaming to evaluate the model, especially in the use cases you are planning to use the model for.
-4. Maintain an up-to-date inventory of components using a Software Bill of Materials (SBOM) to ensure you have an up-to-date, accurate, and signed inventory, preventing tampering with deployed packages. SBOMs can be used to detect and alert for new, zero-date vulnerabilities quickly. AI BOMs and ML SBOMs are an emerging area and you should evaluate options starting with OWASP CycloneDX
-5. To mitigate AI licensing risks, create an inventory of all types of licenses involved using BOMs and conduct regular audits of all software, tools, and datasets, ensuring compliance and transparency through BOMs. Use automated license management tools for real-time monitoring and train teams on licensing models. Maintain detailed licensing documentation in BOMs and leverage tools such as [Dyana](https://github.com/dreadnode/dyana) to perform dynamic analysis of third-party software.
-6. Only use models from verifiable sources and use third-party model integrity checks with signing and file hashes to compensate for the lack of strong model provenance. Similarly, use code signing for externally supplied code.
-7. Implement strict monitoring and auditing practices for collaborative model development environments to prevent and quickly detect any abuse. "HuggingFace SF_Convertbot Scanner" is an example of automated scripts to use.
-  (Ref. link: [HuggingFace SF_Convertbot Scanner](https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163))
-8. Anomaly detection and adversarial robustness tests on supplied models and data can help detect tampering and poisoning as discussed in "LLM04 Data and Model Poisoning; ideally, this should be part of MLOps and LLM pipelines; however, these are emerging techniques and may be easier to implement as part of red teaming exercises.
-9. Implement a patching policy to mitigate vulnerable or outdated components. Ensure the application relies on a maintained version of APIs and underlying model.
-10. Encrypt models deployed at AI edge with integrity checks and use vendor attestation APIs to prevent tampered apps and models and terminate applications of unrecognized firmware.
+### أمثلة شائعة على المخاطر (Common Examples of Risks)
 
-### Sample Attack Scenarios
+#### 1. ثغرات الحزم البرمجية التقليدية من أطراف ثالثة (Traditional Third-party Package Vulnerabilities)
+مثل المكونات القديمة أو المتوقفة، التي يمكن للمهاجمين استغلالها لاختراق تطبيقات نماذج اللغة الكبيرة (LLM). هذا مشابه لمعيار A06:2021 – المكونات الضعيفة والمتقادمة (Vulnerable and Outdated Components) مع زيادة المخاطر عندما تُستخدم هذه المكونات أثناء تطوير النموذج أو ضبطه الدقيق (Fine-Tuning).
+  (المرجع: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
+#### 2. مخاطر التراخيص (Licensing Risks)
+غالبًا ما ينطوي تطوير الذكاء الاصطناعي على استخدام برامج وتراخيص مجموعات بيانات متنوعة، مما يخلق مخاطر إذا لم تتم إدارتها بشكل صحيح.
+تفرض التراخيص مفتوحة المصدر والخاصة متطلبات قانونية مختلفة. وقد تقيّد تراخيص مجموعات البيانات الاستخدام أو التوزيع أو الأعمال التجارية.
+#### 3. النماذج القديمة أو المتوقفة (Outdated or Deprecated Models)
+استخدام نماذج قديمة أو متوقفة لم تعد مدعومة يؤدي إلى مشاكل أمنية.
+#### 4.  نموذج مدرب مسبقًا يحتوي على ثغرات (Vulnerable Pre-Trained Model)
+النماذج عبارة عن صناديق سوداء (Binary Black Boxes)، وعلى عكس البرمجيات مفتوحة المصدر، لا توفر عمليات الفحص الثابتة ضمانات أمنية كافية.
+قد تحتوي النماذج المدربة مسبقًا على تحيزات خفية، أو أبواب خلفية، أو ميزات خبيثة أخرى لم يتم اكتشافها من خلال تقييمات أمان مستودع النماذج.
+يمكن إنشاء النماذج الضعيفة من خلال مجموعات بيانات مسمومة أو عبر التلاعب المباشر بالنموذج باستخدام تقنيات مثل ROME المعروفة أيضًا باسم Lobotomisation.
+#### 5. ضعف مصدرية النموذج (Weak Model Provenance)
+حاليًا لا توجد ضمانات قوية لمصداقية مصدر النماذج المنشورة. تقدم بطاقات النموذج (Model Cards) والوثائق المرتبطة بها معلومات حول النموذج يتم الاعتماد عليها من قبل المستخدمين، لكنها لا تقدم أي ضمانات حول أصل النموذج.
+يمكن للمهاجم اختراق حساب المورد في مستودع النماذج أو إنشاء حساب مشابه ودمجه مع تقنيات الهندسة الاجتماعية لاختراق سلسلة التوريد الخاصة بتطبيق LLM.
+#### 6. محولات LoRA الضعيفة (Vulnerable LoRA Adapters)
+تُعد LoRA تقنية ضبط دقيق (Fine-Tuning) شائعة تعزز قابلية التركيب من خلال السماح بربط طبقات مدربة مسبقًا على نموذج لغة كبير (LLM) قائم.
+تزيد هذه الطريقة من الكفاءة لكنها تخلق مخاطر جديدة، حيث يمكن لمحولات LoRA الخبيثة أن تُعرض سلامة وأمن النموذج الأساسي للخطر.
+يمكن أن يحدث ذلك سواء في بيئات دمج النماذج التعاونية أو من خلال استغلال الدعم لمحولات LoRA من منصات النشر الشائعة مثل vLLM وOpenLLM حيث يمكن تنزيل المحولات وتطبيقها على نموذج منشور.
+#### 7. استغلال عمليات التطوير التعاونية (Exploit Collaborative Development Processes)
+يمكن استغلال عمليات دمج النماذج التعاونية وخدمات إدارة النماذج (مثل التحويلات) المستضافة في بيئات مشتركة لإدخال ثغرات في النماذج المشتركة. يُعد دمج النماذج شائعًا جدًا على منصة Hugging Face، حيث تتصدر النماذج المدمجة قائمة OpenLLM، ويمكن استغلال ذلك لتجاوز المراجعات. وبالمثل، ثبت أن خدمات مثل Conversation Bot معرضة للتلاعب وإدخال شيفرات خبيثة في النماذج.
+#### 8. ثغرات سلسلة توريد نموذج LLM على الأجهزة (LLM Model on Device Supply-Chain Vulnerabilities)
+تزيد نماذج اللغة الكبيرة (LLM) على الأجهزة من مساحة الهجوم على سلسلة التوريد من خلال عمليات التصنيع المخترقة واستغلال ثغرات نظام تشغيل الجهاز أو البرامج الثابتة (Firmware) لاختراق النماذج. يمكن للمهاجمين إجراء هندسة عكسية وإعادة تغليف التطبيقات بنماذج معدلة.
+#### 9. شروط الخدمة وسياسات الخصوصية غير الواضحة (Unclear T&Cs and Data Privacy Policies)
+تؤدي شروط الخدمة وسياسات الخصوصية غير الواضحة الخاصة بمشغلي النماذج إلى استخدام بيانات التطبيق الحساسة لتدريب النموذج، مما يؤدي إلى تسريب المعلومات الحساسة لاحقًا.
+وقد ينطبق هذا أيضًا على المخاطر الناتجة عن استخدام مواد محمية بحقوق النشر من قبل مورّد النموذج.
 
-#### Scenario #1: Vulnerable Python Library
-  An attacker exploits a vulnerable Python library to compromise an LLM app. This happened in the first Open AI data breach.  Attacks on  the PyPi package registry  tricked model developers into downloading a compromised PyTorch dependency with malware in a model development environment.  A more sophisticated example of this type of attack is Shadow Ray attack on the Ray AI framework used by many vendors to manage AI infrastructure.  In this attack, five vulnerabilities are believed to have been exploited in the wild affecting many servers.
-#### Scenario #2: Direct Tampering
-  Direct Tampering and publishing a model to spread misinformation. This is an actual attack with PoisonGPT bypassing Hugging Face safety features by directly changing model parameters.
-#### Scenario #3: Finetuning Popular Model
-  An attacker finetunes a popular open access model to remove key safety features and perform high in a specific domain (insurance). The model is finetuned to score highly on safety benchmarks but  has very targeted  triggers. They deploy it on Hugging Face for victims to use it exploiting their trust on  benchmark assurances.
-#### Scenario #4: Pre-Trained Models
-  An LLM system deploys pre-trained models from a widely used repository without thorough verification. A compromised model introduces malicious code, causing biased outputs in certain contexts and leading to harmful or manipulated outcomes
-#### Scenario #5: Compromised Third-Party Supplier
-  A compromised third-party supplier provides a vulnerable LorA adapter that is being merged to an LLM using model merge on Hugging Face.
-#### Scenario #6: Supplier Infiltration
-  An attacker infiltrates a third-party supplier and compromises the production of a LoRA (Low-Rank Adaptation) adapter intended for integration with an on-device LLM deployed using frameworks like vLLM or OpenLLM. The compromised LoRA adapter is subtly altered to include hidden vulnerabilities and malicious code. Once this adapter is merged with the LLM, it provides the attacker with a covert entry point into the system. The malicious code can activate during model operations, allowing the attacker to manipulate the LLM’s outputs.
-#### Scenario #7: CloudBorne and CloudJacking Attacks
-  These attacks target cloud infrastructures, leveraging shared resources and vulnerabilities in the virtualization layers. CloudBorne involves exploiting firmware vulnerabilities in shared cloud environments, compromising the physical servers hosting virtual instances. CloudJacking refers to malicious control or misuse of cloud instances, potentially leading to unauthorized access to critical LLM deployment platforms. Both attacks represent significant risks for supply chains reliant on cloud-based ML models, as compromised environments could expose sensitive data or facilitate further attacks.
-#### Scenario #8: LeftOvers (CVE-2023-4969)
-  LeftOvers exploitation of leaked GPU local memory to recover sensitive data. An attacker can use this attack to exfiltrate sensitive data in production servers and development workstations or laptops.
-#### Scenario #9: WizardLM
-  Following the removal of WizardLM, an attacker exploits the interest in this model and publish a fake version of the model with the same name but containing malware and backdoors.
-#### Scenario #10: Model Merge/Format Conversion Service
-  An attacker stages an attack with a model merge or format conversation service to compromise a publicly available access model to inject malware. This is an actual attack published by vendor HiddenLayer.
-#### Scenario #11: Reverse-Engineer Mobile App
-  An attacker reverse-engineers an mobile app to replace the model with a tampered version that leads the user to scam sites. Users are encouraged to download the app directly via social engineering techniques. This is a "real attack on predictive AI" that affected 116 Google Play apps including popular security and safety-critical applications used for as cash recognition, parental control, face authentication, and financial service.
-  (Ref. link: [real attack on predictive AI](https://arxiv.org/abs/2006.08131))
-#### Scenario #12: Dataset Poisoning
-  An attacker poisons publicly available datasets to help create a back door when fine-tuning models. The back door subtly favors certain companies in different markets.
-#### Scenario #13: T&Cs and Privacy Policy
-  An LLM operator changes its T&Cs and Privacy Policy to require an explicit opt out from using application data for model training, leading to the memorization of sensitive data.
+### استراتيجيات الوقاية والتخفيف (Prevention and Mitigation Strategies)
 
-### Reference Links
+1. تحقق بدقة من مصادر البيانات والموردين، بما في ذلك شروط الخدمة (T&Cs) وسياسات الخصوصية الخاصة بهم، ولا تستخدم إلا الموردين الموثوقين.
+راجع وقم بتدقيق أمان الموردين وإمكانية وصولهم بانتظام، وتأكد من عدم حدوث أي تغييرات في وضعهم الأمني أو شروط الخدمة الخاصة بهم.
+2. افهم وطبّق إجراءات التخفيف الواردة في معيار OWASP Top Ten "A06:2021 – المكونات الضعيفة والمتقادمة."
+يشمل ذلك فحص الثغرات، إدارتها، وتصحيح المكونات. بالنسبة لبيئات التطوير التي تصل إلى بيانات حساسة، طبّق هذه الضوابط في تلك البيئات أيضًا. ( المرجع: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
+3. قم بإجراء تقييمات شاملة واختبارات هجومية للذكاء الاصطناعي (AI Red Teaming) عند اختيار نموذج من طرف ثالث.
+ننن Decoding Trust هو مثال على معيار موثوقية الذكاء الاصطناعي للنماذج اللغوية الكبيرة (LLMs)، لكن يمكن ضبط النماذج لتجاوز هذه المعايير المنشورة.
+استخدم اختبارات هجومية شاملة لتقييم النموذج، خاصة في حالات الاستخدام التي تخطط لاستخدام النموذج فيها.
+4. حافظ على سجل محدث للمكونات باستخدام فاتورة مواد البرمجيات (SBOM) لضمان توفر سجل دقيق وموقع يمنع التلاعب بالحزم المنشورة.
+يمكن استخدام SBOM لاكتشاف الثغرات الجديدة (Zero-Day) والتنبيه بشأنها بسرعة. تعد AI BOMs و ML SBOMs مجالات ناشئة، ويجب تقييم الخيارات بدءًا من OWASP CycloneDX.
+5. للتخفيف من مخاطر تراخيص الذكاء الاصطناعي، أنشئ سجلًا بجميع أنواع التراخيص المستخدمة باستخدام BOMs وأجرِ تدقيقات منتظمة لجميع البرامج، الأدوات، ومجموعات البيانات لضمان الامتثال والشفافية من خلال BOMs. استخدم أدوات إدارة التراخيص المؤتمتة للمراقبة الفورية، ودرب الفرق على نماذج التراخيص.
+حافظ على وثائق ترخيص مفصلة ضمن BOMs، واستخدم أدوات مثل [Dyana](https://github.com/dreadnode/dyana) لإجراء تحليل ديناميكي للبرمجيات من طرف ثالث.
+6. استخدم فقط النماذج من مصادر يمكن التحقق منها، وطبّق فحوصات سلامة النماذج من طرف ثالث باستخدام التوقيعات و تجزئة الملفات (File Hashes) لتعويض نقص إثبات المصدر القوي للنموذج. وبالمثل، استخدم توقيع الكود (Code Signing) للشفرة المقدمة من مصادر خارجية.
+7. طبّق ممارسات صارمة للمراقبة والتدقيق في بيئات تطوير النماذج التعاونية لاكتشاف أي إساءة استخدام بسرعة ومنعها. يُعد HuggingFace SF_Convertbot Scanner مثالًا على البرامج النصية المؤتمتة التي يمكن استخدامها.
+(المرجع: [HuggingFace SF_Convertbot Scanner](https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163))
+9. يمكن لاكتشاف الشذوذ واختبارات مقاومة الهجمات التلاعبية (Adversarial Robustness) على النماذج والبيانات الموردة أن تساعد في اكتشاف التلاعب والتسميم، كما هو موضح في قسم LLM04: تسميم البيانات والنموذج (Data and Model Poisoning).
+من المثالي أن يكون هذا جزءًا من عمليات MLOps و أنابيب نماذج اللغة الكبيرة (LLM)؛ ومع ذلك، فإن هذه تقنيات ناشئة وقد يكون من الأسهل تنفيذها كجزء من التمارين الهجومية (Red Teaming).
+10. نفّذ سياسة التحديث (patching policy) للتخفيف من مخاطر المكونات الضعيفة أو المتقادمة. تأكد من أن التطبيق يعتمد على إصدار مُدار من واجهات برمجة التطبيقات (APIs) والنموذج الأساسي.
+11. قم بتشفير النماذج المنشورة على أطراف الذكاء الاصطناعي (AI Edge) باستخدام فحوصات السلامة، واستخدم واجهات برمجة التطبيقات الخاصة بإثبات الموردين (Vendor Attestation APIs) لمنع التطبيقات والنماذج المُعدّلة، وإنهاء تشغيل التطبيقات التي تحتوي على برامج ثابتة غير معترف بها.
 
+### أمثلة على سيناريوهات الهجوم (Sample Attack Scenarios)
+
+#### السيناريو  #1: مكتبة لغة البرمجة بايثون تحتوي على ثغرة (Vulnerable Python Library)
+  يستغل مهاجم مكتبة Python تحتوي على ثغرة لاختراق تطبيق نموذج اللغة الكبير (LLM). حدث هذا بالفعل في أول خرق بيانات لشركة OpenAI. استهدفت الهجمات على سجل حزم PyPi مطوري النماذج عبر خداعهم لتحميل اعتماد PyTorch مخترق يحتوي على برمجيات خبيثة في بيئة تطوير النماذج.
+مثال أكثر تعقيدًا لهذا النوع من الهجمات هو هجوم Shadow Ray على إطار عمل Ray AI المستخدم من قبل العديد من الموردين لإدارة بنية الذكاء الاصطناعي.
+في هذا الهجوم، يُعتقد أنه تم استغلال خمس ثغرات في الطبيعة أثرت على العديد من الخوادم.
+#### السيناريو  #2: التلاعب المباشر (Direct Tampering)
+  التلاعب المباشر ونشر نموذج لنشر معلومات مضللة. هذا هجوم حقيقي حيث استخدم PoisonGPT تقنيات لتجاوز ميزات الأمان في Hugging Face عن طريق تغيير معلمات النموذج مباشرة.
+#### السيناريو  #3: ضبط دقيق لنموذج شائع (Finetuning Popular Model)
+  يقوم مهاجم بضبط دقيق (Finetune) لنموذج مفتوح الوصول شائع لإزالة ميزات أمان رئيسية وتحسين أدائه في مجال محدد (التأمين).
+تم ضبط النموذج ليحقق نتائج عالية في اختبارات السلامة ولكنه يحتوي على محفزات مستهدفة جدًا.
+ينشر المهاجم النموذج على Hugging Face ليستخدمه الضحايا معتمدين على ضمانات نتائج الاختبارات.
+#### السيناريو  #4: النماذج المدربة مسبقًا (Pre-Trained Models)
+  ينشر نظام نموذج اللغة الكبير (LLM) نماذج مدربة مسبقًا من مستودع شائع الاستخدام دون التحقق الدقيق. يُدخل نموذج مخترق شيفرة خبيثة تؤدي إلى مخرجات متحيزة في سياقات معينة وتؤدي إلى نتائج ضارة أو مُتلاعَب بها.
+#### السيناريو  #5: مورد طرف ثالث مخترق (Compromised Third-Party Supplier)
+  يوفر مورد طرف ثالث مخترق محول LoRA يحتوي على ثغرات يتم دمجه مع نموذج اللغة الكبير (LLM) باستخدام دمج النماذج على Hugging Face.
+#### السيناريو  #6: تسلل المورد (Supplier Infiltration)
+  يتسلل مهاجم إلى مورد طرف ثالث ويخترق إنتاج محول LoRA (Low-Rank Adaptation) مُعد للدمج مع نموذج LLM على الجهاز باستخدام أطر عمل مثل vLLM أو OpenLLM. يتم تعديل محول LoRA المخترق بشكل خفي ليشمل ثغرات مخفية وشيفرة خبيثة. بمجرد دمجه مع LLM، يوفر ذلك للمهاجم نقطة دخول خفية إلى النظام. يمكن أن تنشط الشيفرة الخبيثة أثناء عمليات النموذج، مما يسمح للمهاجم بالتلاعب بمخرجات LLM.
+#### السيناريو  #7: هجمات CloudBorne و CloudJacking
+ تستهدف هذه الهجمات البنى التحتية السحابية، مستغلة الموارد المشتركة والثغرات في طبقات المحاكاة الافتراضية. يشمل هجوم CloudBorne استغلال ثغرات البرامج الثابتة في البيئات السحابية المشتركة، مما يؤدي إلى اختراق الخوادم الفعلية التي تستضيف الحالات الافتراضية. أما CloudJacking فيشير إلى التحكم الخبيث أو إساءة استخدام الحالات السحابية، مما قد يؤدي إلى الوصول غير المصرح به إلى منصات نشر LLM الحرجة. تمثل هذه الهجمات مخاطر كبيرة لسلاسل التوريد المعتمدة على نماذج ML القائمة على السحابة، حيث يمكن للبيئات المخترقة أن تكشف عن بيانات حساسة أو تسهل المزيد من الهجمات.
+#### السيناريو  #8: ثغرات (LeftOvers - CVE-2023-4969)
+  استغلال LeftOvers لذاكرة GPU المحلية المُسرّبة لاسترجاع بيانات حساسة. يمكن للمهاجم استخدام هذا الهجوم لاستخراج بيانات حساسة من خوادم الإنتاج ومحطات عمل أو أجهزة الحاسوب المحمولة أثناء التطوير.
+#### السيناريو  #9: نموذج WizardLM
+  بعد إزالة نموذج WizardLM، يستغل مهاجم الاهتمام بهذا النموذج وينشر نسخة مزيفة من النموذج بالاسم نفسه لكنها تحتوي على برمجيات خبيثة وأبواب خلفية.
+#### السيناريو  #10: خدمة دمج/تحويل تنسيق النماذج (Model Merge/Format Conversion Service)
+  يعدّ المهاجم هجومًا باستخدام خدمة دمج النماذج أو تحويل تنسيقها لاختراق نموذج متاح للوصول العام وحقن برمجيات خبيثة. هذا هجوم فعلي تم نشره بواسطة المورد HiddenLayer.
+#### السيناريو  #11: الهندسة العكسية لتطبيق الهاتف المحمول (Reverse-Engineer Mobile App)
+  يُجري مهاجم هندسة عكسية لتطبيق هاتف محمول لاستبدال النموذج بإصدار تم التلاعب به يؤدي بالمستخدم إلى مواقع احتيالية. يتم تشجيع المستخدمين على تنزيل التطبيق مباشرة عبر تقنيات الهندسة الاجتماعية.
+هذا هجوم فعلي على الذكاء الاصطناعي التنبؤي أثّر على 116 تطبيقًا على Google Play بما في ذلك تطبيقات شهيرة تتعلق بالأمان والسلامة مثل التعرف على الأموال النقدية، الرقابة الأبوية، التحقق من الوجه، وخدمات مالية.
+  (المرجع: [real attack on predictive AI](https://arxiv.org/abs/2006.08131))
+#### السيناريو  #12: تسميم مجموعات البيانات (Dataset Poisoning)
+  يسمم المهاجم مجموعات البيانات المتاحة علنًا لإنشاء باب خلفي عند ضبط النماذج. يفضل هذا الباب الخلفي شركات معينة في أسواق مختلفة بشكل خفي.
+#### السيناريو  #13: شروط الخدمة وسياسة الخصوصية (T&Cs and Privacy Policy)
+يغيّر مشغّل نموذج اللغة الكبير (LLM) شروط الخدمة وسياسة الخصوصية ليتطلب اختيار الانسحاب الصريح (Explicit Opt-Out) من استخدام بيانات التطبيق في تدريب النموذج، مما يؤدي إلى حفظ البيانات الحساسة في ذاكرة النموذج.
+### روابط مرجعية
 1. [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news)
 2. [Large Language Models On-Device with MediaPipe and TensorFlow Lite](https://developers.googleblog.com/en/large-language-models-on-device-with-mediapipe-and-tensorflow-lite/)
 3. [Hijacking Safetensors Conversion on Hugging Face](https://hiddenlayer.com/research/silent-sabotage/)
@@ -91,8 +115,7 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 9. [Thousands of servers hacked due to insecurely deployed Ray AI framework](https://www.csoonline.com/article/2075540/thousands-of-servers-hacked-due-to-insecurely-deployed-ray-ai-framework.html)
 10. [LeftoverLocals: Listening to LLM responses through leaked GPU local memory](https://blog.trailofbits.com/2024/01/16/leftoverlocals-listening-to-llm-responses-through-leaked-gpu-local-memory/)
 
-### Related Frameworks and Taxonomies
-
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+### الأطر والتصنيفات ذات الصلة 
+راجع هذا القسم للحصول على معلومات شاملة، استراتيجيات وسيناريوهات متعلقة بنشر البنية التحتية، ضوابط البيئة التطبيقية، وأفضل الممارسات الأخرى.
 
 - [ML Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010) -  **MITRE ATLAS**
