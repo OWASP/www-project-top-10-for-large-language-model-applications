@@ -14,7 +14,7 @@
 قضية ذات صلة هي الاعتماد المفرط (Overreliance)، وهي تحدث عندما يُظهر المستخدمون ثقة مفرطة في محتوى LLM دون التحقق من دقته.
 هذا الاعتماد الزائد يُفاقم من أثر المعلومات المضللة، إذ قد يدمج المستخدمون بيانات غير صحيحة في قرارات أو عمليات حساسة دون تدقيق كافٍ.
 
-### أمثلة شائعة على المخاطر (Common Examples of Risk)
+### أمثلة شائعة على المخاطر
 
 #### 1. حقائق غير دقيقة (Factual Inaccuracies)
 
@@ -32,11 +32,11 @@
 يقترح النموذج مكتبات برمجية غير آمنة أو غير موجودة، مما يؤدي إلى إدخال ثغرات في أنظمة البرمجيات. على سبيل المثال، اقترحت نماذج LLM استخدام مكتبات خارجية غير آمنة، وعند الاعتماد عليها دون تحقق، أدت إلى مخاطر أمنية.
 (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
-### استراتيجيات الوقاية والتخفيف (Prevention and Mitigation Strategies)
+### استراتيجيات الوقاية والتخفيف
 
 #### 1. التوليد المعزز بالاسترجاع (Retrieval-Augmented Generation - RAG)
 استخدم تقنية RAG لتحسين موثوقية مخرجات النموذج من خلال جلب معلومات موثوقة من قواعد بيانات خارجية أثناء توليد الردود، مما يقلل من احتمالية الهلاوس والمعلومات المضللة.
-#### 2.ضبط النموذج (Model Fine-Tuning)
+#### 2. ضبط النموذج (Model Fine-Tuning)
 قم بتحسين أداء النموذج من خلال التضمين (Embeddings) أو ضبط المعلمات بكفاءة (Parameter-Efficient Tuning)، واستخدم تقنيات مثل Chain-of-Thought Prompting لتقليل احتمالية ظهور معلومات مضللة.
 #### 3. التحقق المتبادل والمراجعة البشرية (Cross-Verification and Human Oversight)
 شجع المستخدمين على التحقق من مخرجات النموذج باستخدام مصادر موثوقة. قم بتطبيق عمليات مراجعة بشرية، خاصة في السياقات الحساسة، مع تدريب المراجعين لتجنّب الاعتماد المفرط على المحتوى المُولد.
@@ -44,13 +44,14 @@
 قم بتطبيق أدوات تتحقق تلقائيًا من مخرجات النموذج، خاصة في البيئات عالية الحساسية.
 #### 5. التواصل حول المخاطر (Risk Communication)
 حدد المخاطر المرتبطة بالمحتوى المُولد، وأبلغ المستخدمين بشكل واضح عن تلك المخاطر، بما في ذلك احتمال وجود معلومات مضللة.
-#### 6. ممارسات البرمجة الآمن (Secure Coding Practices)
+#### 6. ممارسات البرمجة الآمنة (Secure Coding Practices)
 اعتمد ممارسات برمجية آمنة تمنع دمج تعليمات برمجية غير صحيحة أو تحتوي على ثغرات.
 #### 7. تصميم واجهة المستخدم (User Interface Design)
 صمم واجهات الاستخدام وواجهات البرمجة (APIs) بحيث تشجع على الاستخدام المسؤول للنموذج، بما في ذلك استخدام فلاتر المحتوى، وضع علامات واضحة على المحتوى المُولد بالذكاء الاصطناعي، وتوضيح حدود الاعتمادية والدقة.
 #### 8. التدريب والتثقيف (Training and Education)
 وفّر تدريبًا شاملاً للمستخدمين حول حدود قدرات النماذج، وأهمية التحقق من المحتوى المُولد، والتفكير النقدي. في السياقات التخصصية، قدم تدريبًا مخصصًا لضمان قدرة المستخدمين على تقييم المخرجات بفعالية ضمن مجالاتهم.
-### سيناريوهات هجوم توضيحية (Example Attack Scenarios)
+
+### أمثلة على سيناريوهات الهجوم
 
 #### السيناريو  #1
 يقوم المهاجمون باختبار مساعدين برمجيين شائعين لاكتشاف أسماء مكتبات يتم "هلاوستها" بشكل متكرر. وبعد تحديد أسماء المكتبات الوهمية التي تقترحها النماذج، ينشرون حزمًا خبيثة بتلك الأسماء في مستودعات عامة.
@@ -73,8 +74,9 @@
 10. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
 11. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
 
-### Related Frameworks and Taxonomies
+### الأطر والتصنيفات ذات الصلة
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+راجع هذا القسم للحصول على معلومات شاملة، واستراتيجيات السيناريوهات المتعلقة بنشر البنية التحتية، وضوابط البيئة التطبيقية، وأفضل الممارسات الأخرى.
+
 
 - [AML.T0048.002 - Societal Harm](https://atlas.mitre.org/techniques/AML.T0048) **MITRE ATLAS**
