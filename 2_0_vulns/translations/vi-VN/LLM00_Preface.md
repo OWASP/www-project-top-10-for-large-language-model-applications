@@ -35,8 +35,10 @@ LinkedIn: https://www.linkedin.com/in/adamdawson0/
 #### Anh Ta
 LinkedIn: https://www.linkedin.com/in/qta1014/
 
-#### Name2
-LinkedIn: 
+#### Ninh Pham
+
+#### Tuan Anh Giang
+LinkedIn: https://www.linkedin.com/in/tuan-anh-g-131497176/
 
 ### Về bản dịch này
 Nhận thức được tính chuyên môn và mức độ quan trọng của OWASP Top 10 cho Các ứng dụng Mô hình Ngôn ngữ lớn, chúng tôi đã chủ động lựa chọn chỉ sử dụng người dịch trong quá trình thực hiện bản dịch này. Những dịch giả được liệt kê trên đây không chỉ có kiến thức kỹ thuật sâu sắc về nội dung bản gốc, mà còn có trình độ ngôn ngữ cần thiết để đảm bảo bản dịch thành công. 
