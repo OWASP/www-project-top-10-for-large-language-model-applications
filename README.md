@@ -8,7 +8,7 @@ OWASP Foundation Web Repository
 [![Current version in-flight](https://img.shields.io/badge/current_version-v2.0-purple)](https://www.linkedin.com/posts/wilsonsd_announcing-the-version-2-project-its-time-activity-7157734167244378113-s2v2?utm_source=share&utm_medium=member_ios)
 [![OWASP Lab Status project](https://img.shields.io/badge/owasp-labstatus-blue.svg)](https://owasp.org/projects/)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-[![llmtop10.com](https://img.shields.io/badge/officialsite-llmtop10.com-032CFA.svg)](https://llmtop10.com)
+[![genai.owasp.org](https://img.shields.io/badge/officialsite-genai.owasp.org-032CFA.svg)](https://genai.owasp.org)
 
 Welcome to the official repository for the OWASP Top 10 for Large Language Model Applications!
 
