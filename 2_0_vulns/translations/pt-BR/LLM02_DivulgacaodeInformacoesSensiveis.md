@@ -1,4 +1,4 @@
-## LLM02:2025 Divulgação de Informações  Sensíveis
+## LLM02:2025 Divulgação de Informações Sensíveis
 
 ### Descrição
 
@@ -11,64 +11,92 @@ Para reduzir esse risco, aplicações que utilizam LLMs devem realizar uma sanit
 ### Exemplos Comuns de Vulnerabilidades
 
 #### 1. Vazamento de PII
+
   Informações pessoais identificáveis (PII) podem ser divulgadas durante interações com o LLM.
+
 #### 2. Exposição de Algoritmo Proprietário
+
   Saídas de modelo mal configuradas podem revelar algoritmos ou dados proprietários. A divulgação de dados de treinamento pode expor modelos a ataques de inversão, nos quais atacantes extraem informações sensíveis ou reconstroem entradas. Por exemplo, como demonstrado no ataque 'Proof Pudding' (CVE-2019-20634), dados de treinamento divulgados facilitaram a extração e inversão do modelo, permitindo que atacantes contornassem controles de segurança em algoritmos de aprendizado de máquina e burlassem filtros de e-mail.
+
 #### 3. Divulgação de Dados Sensíveis do Negócio
+
   Respostas geradas podem, inadvertidamente, incluir informações confidenciais de negócios.
 
 ### Estratégias de Prevenção e Mitigação
 
-###@ Sanitização:
+### Sanitização
 
 #### 1. Integrar Técnicas de Sanitização de Dados
+
   Implemente sanitização de dados para evitar que dados dos usuários sejam incluídos no treinamento do modelo. Isso inclui limpar ou mascarar conteúdos sensíveis antes que sejam utilizados no treinamento.
+
 #### 2. Validação Rigorosa de Entradas
+
   Aplique métodos rigorosos de validação de entradas para detectar e filtrar dados potencialmente prejudiciais ou sensíveis, garantindo que não comprometam o modelo.
 
-###@ Controles de Acesso:
+### Controles de Acesso
 
 #### 1. Impor Controles de Acesso Rigorosos
+
   Limite o acesso a dados sensíveis com base no princípio do menor privilégio. Conceda acesso somente aos dados necessários para o usuário ou processo específico.
+
 #### 2. Restringir Fontes de Dados
+
   Limite o acesso do modelo a fontes de dados externas e garanta a orquestração de dados em tempo de execução de forma segura para evitar vazamentos de dados não intencionais.
 
-###@ Aprendizado Federado e Técnicas de Privacidade:
+### Aprendizado Federado e Técnicas de Privacidade
 
 #### 1. Utilizar Aprendizado Federado
+
   Treine modelos utilizando dados descentralizados armazenados em múltiplos servidores ou dispositivos. Essa abordagem minimiza a necessidade de coleta centralizada de dados e reduz os riscos de exposição.
+
 #### 2. Incorporar Privacidade Diferencial
+
   Aplique técnicas que adicionam ruído aos dados ou saídas, dificultando que atacantes façam engenharia reversa de dados individuais.
 
-###@ Educação do Usuário e Transparência:
+### Educação do Usuário e Transparência
 
 #### 1. Educar Usuários sobre o Uso Seguro de LLMs
+
   Forneça orientações sobre como evitar inserir informações sensíveis. Ofereça treinamento sobre melhores práticas para interagir com LLMs de forma segura.
+
 #### 2. Garantir Transparência no Uso de Dados
+
   Mantenha políticas claras sobre retenção, uso e exclusão de dados. Permita que os usuários optem por não incluir seus dados nos processos de treinamento.
 
-###@ Configuração Segura do Sistema:
+### Configuração Segura do Sistema
 
 #### 1. Ocultar Configuração Inicial do Sistema
+
   Limite a capacidade dos usuários de sobrescrever ou acessar as configurações iniciais do sistema, reduzindo o risco de exposição de configurações internas.
+
 #### 2. Consulte as Melhores Práticas para Configuração de Segurança
+
   Siga diretrizes como "OWASP API8:2023 Security Misconfiguration" para evitar a exposição de informações sensíveis por meio de mensagens de erro ou detalhes de configuração.
   (Ref. link: [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
-###@ Técnicas Avançadas:
+### Técnicas Avançadas
 
 #### 1. Criptografia Homomórfica
+
   Use criptografia homomórfica para possibilitar análise de dados segura e aprendizado de máquina preservando a privacidade. Isso garante que os dados permaneçam confidenciais enquanto são processados pelo modelo.
+
 #### 2. Tokenização e Expurgo
+
   Implemente tokenização para pré-processar e sanitizar informações sensíveis. Técnicas como correspondência de padrões podem detectar e expurgar conteúdos confidenciais antes do processamento.
 
 ### Exemplos de Cenários de Ataque
 
 #### Cenário #1: Exposição Não Intencional de Dados
+
   Um usuário recebe uma resposta contendo dados pessoais de outro usuário devido à sanitização inadequada de dados.
+
 #### Cenário #2: Injeção de Prompt Direcionada
+
   Um atacante contorna filtros de entrada para extrair informações sensíveis.
+
 #### Cenário #3: Vazamento de Dados via Dados de Treinamento
+
   Inclusão negligente de dados no treinamento leva à divulgação de informações sensíveis.
 
 ### Links de Referência

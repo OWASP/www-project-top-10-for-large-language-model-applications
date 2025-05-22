@@ -9,91 +9,119 @@ Ataques podem explorar essa vulnerabilidade para interromper serviços, esgotar 
 ### Exemplos Comuns de Vulnerabilidades
 
 #### 1. Ataque de Sobrecarga por Entradas Variáveis
+
   Atacantes enviam uma grande quantidade de entradas com tamanhos variados para explorar falhas no processamento do LLM, causando lentidão ou indisponibilidade. Isso pode esgotar recursos e potencialmente tornar o sistema não responsivo, impactando significativamente a disponibilidade do serviço.
 
 #### 2. Ataque de Exaustão Financeira (DoW)
+
   Atacantes disparam um grande volume de requisições para explorar o custo por uso de serviços de IA, forçando o provedor a pagar quantias exorbitantes até o serviço se tornar inviável.
 
 #### 3. Ataque de Entrada Contínua
+
   Ao enviar repetidamente entradas que excedem a capacidade do LLM, o atacante força a realocação excessiva de memória e processamento, degradando o serviço e interrupções operacionais.
 
 #### 4. Ataque por Consultas Exigentes
+
   Consultas extremamente complexas forçam o LLM a consumir grandes quantidades de memória e processamento, tornando o sistema lento ou indisponível. Isso pode levar a tempos de processamento prolongados e possíveis falhas do sistema.
 
 #### 5. Extração de Modelos via API
+
   Por meio de consultas repetidas e manipulação de prompts, atacantes extraem respostas suficientes para reconstruir parte do modelo original ou criar uma cópia não autorizada. Isso representa riscos de roubo de propriedade intelectual e compromete a integridade do modelo original.
 
 #### 6. Criação de Modelo Clandestino
+
   Atacantes usam o modelo-alvo para gerar dados sintéticos e treinar um novo modelo clandestino, replicando seu comportamento sem necessidade de acesso direto ao original. Isso contorna métodos tradicionais de extração baseados em consultas, representando riscos significativos para modelos e tecnologias proprietárias.
 
 #### 7. Ataques Laterais para Coleta de Dados
+
   Atacantes analisam padrões de resposta do LLM para inferir detalhes da arquitetura e dos pesos do modelo, possibilitando sua replicação ou exploração de vulnerabilidades. Isso pode comprometer a segurança do modelo e levar a explorações adicionais.
 
 ### Estratégias de Prevenção e Mitigação
 
 #### 1. Validação de Entrada
+
   Implemente validação estrita para garantir que as entradas não excedam limites de tamanho razoáveis.
 
 #### 2. Limitação de Exposição de Logits e Logprobs
+
   Restrinja ou ofusque a exposição de `logit_bias` e `logprobs` nas respostas da API, fornecendo apenas as informações necessárias sem revelar probabilidades detalhadas.
 
 #### 3. Rate Limit (controle de taxa) e Cotas de Uso
+
   Aplique limitação de taxa e cotas de usuários para restringir o número de solicitações que uma única entidade pode fazer em um determinado período.
 
 #### 4. Gestão Inteligente de Recursos
+
   Monitore e gerencie a alocação de recursos dinamicamente para evitar que um único usuário ou solicitação consuma recursos excessivos.
 
 #### 5. Timeouts e Controle de Velocidade
+
   Configure limites de tempo e controle de velocidade para operações de alto consumo de recursos, prevenindo o uso prolongado de recursos.
 
 #### 6. Técnicas de Sandbox
+
   Restrinja o acesso do LLM a recursos de rede, serviços internos e APIs, reduzindo riscos internos e ameaças externas.
 
 #### 7. Monitoramento Contínuo e Detecção de Anomalias
+
   Monitore continuamente o uso de recursos e implemente registros para detectar e responder a padrões incomuns de consumo de recursos.
 
 #### 8. Marca d'Água de Conteúdo
+
   Aplique técnicas de *watermarking* (marca d'água) para rastrear e identificar o uso não autorizado das respostas do LLM, dificultando tentativas de cópia e extração do modelo.
 
 #### 9. Gerenciamento de Degradação Sob Carga
+
   Projete o sistema para degradar gradualmente sob carga pesada, mantendo funcionalidade parcial em vez de falha completa.
 
 #### 10. Limite de Ações Enfileiradas e Escalabilidade Robusta
+
   Restrinja o número de ações enfileiradas e totais, enquanto incorpora escalabilidade dinâmica e balanceamento de carga para lidar com demandas variáveis.
 
 #### 11. Treinamento de Robustez Adversarial
+
   Treine modelos para detectar e mitigar consultas adversariais e tentativas de extração.
 
 #### 12. Detecção e Bloqueio de Tokens Anômalos
+
   Construa listas de tokens problemáticos conhecidos e analise a saída antes de adicioná-los à janela de contexto do modelo.
 
 #### 13. Controles de Acesso
+
   Implemente controles de acesso fortes, incluindo controle de acesso baseado em função (RBAC) e o princípio do menor privilégio, para limitar o acesso não autorizado a repositórios e ambientes de treinamento de modelos LLM.
 
 #### 14. Inventário Centralizado de Modelos de ML
+
   Use um inventário ou registro centralizado de modelos para garantir governança e controle de acesso adequados.
 
 #### 15. Implantação Automatizada de MLOps
+
   Implemente implantação automatizada de MLOps com governança, rastreamento e fluxos de trabalho de aprovação para restringir o acesso e controle dentro da infraestrutura.
 
 ### Exemplos de Cenários de Ataques
 
 #### Cenário #1: Ataque de Sobrecarga com Entradas Massivas
+
   Um atacante submete uma entrada incomumente grande a uma aplicação LLM que processa dados textuais, resultando em uso excessivo de memória e CPU, potencialmente travando o sistema ou desacelerando significativamente o serviço.
 
 #### Cenário #2: Ataque de Exaustão por Solicitações Repetitivas
+
   Um atacante transmite um alto volume de solicitações para a API do LLM, causando consumo excessivo de recursos computacionais e tornando o serviço indisponível para usuários legítimos.
 
 #### Cenário #3: Exploração de Consultas para Esgotamento de Recursos
+
   Um atacante elabora entradas específicas projetadas para acionar os processos mais exigentes do LLM, levando a uso prolongado de CPU e possíveis falhas do sistema.
 
 #### Cenário #4: Exploração Financeira via Denial of Wallet (DoW)
+
   Um atacante gera operações excessivas para explorar o modelo de pagamento por uso de serviços de IA em nuvem, causando custos insustentáveis para o provedor.
 
 #### Cenário #5: Roubo de Modelo via Treinamento com Dados Sintéticos
+
   Um atacante usa a API do LLM para gerar dados de treinamento sintéticos e ajusta outro modelo, criando um equivalente funcional e contornando as limitações tradicionais de extração de modelos.
 
 #### Cenário #6: Evasão de Filtros para Vazamento de Dados
+
   Um atacante malicioso contorna técnicas de filtragem de entrada e preâmbulos do LLM para realizar um ataque de canal lateral e recuperar informações do modelo para um recurso remoto sob seu controle.
 
 ### Links de Referência
