@@ -1,4 +1,4 @@
-## LLM02:2025 Offenlegung sensibler  Informationen
+## LLM02:2025 Offenlegung sensibler Informationen
 
 ### Beschreibung
 

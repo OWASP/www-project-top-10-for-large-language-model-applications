@@ -1,4 +1,4 @@
-## LLM05:2025 Fehlerhafte  Ausgabeverarbeitung
+## LLM05:2025 Fehlerhafte Ausgabeverarbeitung
 
 ### Beschreibung
 

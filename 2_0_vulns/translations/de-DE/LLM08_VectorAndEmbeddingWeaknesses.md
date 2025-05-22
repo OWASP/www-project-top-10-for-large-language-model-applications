@@ -1,4 +1,4 @@
-## LLM08:2025 Schwachstellen in Vektoren  und Embeddings
+## LLM08:2025 Schwachstellen in Vektoren und Embeddings
 
 ### Beschreibung
 

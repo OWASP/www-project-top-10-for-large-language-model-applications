@@ -1,4 +1,4 @@
-## LLM07:2025 Offenlegung des  Systems Prompts
+## LLM07:2025 Offenlegung des Systems Prompts
 
 ### Beschreibung
 
