@@ -14,19 +14,20 @@
 
 **過度代理授權 (Excessive Agency)** 亦已擴充，呼應現在愈發普及的代理人 (Agentic) 架構在 LLM 應用中的使用。當 LLM 作為代理或透過外掛進行作業時，若未妥善限制和確認其授權，便可能帶來意料之外或高風險的行為，因此此項目比以往更為重要。
 
-**展望未來**
+### 展望未來
 
 如同技術本身的進化，這份名單的產出依舊仰賴開源社群的見解與實務經驗，來自各行各業的開發者、資料科學家與資安專家的貢獻，皆以共同建立更安全的 AI 應用為目標。我們很榮幸能在此與您分享 2025 年版的名單，並期望這份資料能為您提供更有效保障 LLM 安全的工具與知識。
 
 感謝所有為此專案付出心力的人，以及所有持續使用並改進這份名單的成員。我們深感榮幸能與您一起推進這個專案。
 
-
 #### Steve Wilson
+
 專案負責人
 OWASP 大型語言模型應用 Top 10
-LinkedIn: https://www.linkedin.com/in/wilsonsd/
+LinkedIn: <https://www.linkedin.com/in/wilsonsd/>
 
 #### Ads Dawson
+
 技術負責人與弱點項目負責人
 OWASP 大型語言模型應用 Top 10
 
@@ -35,21 +36,25 @@ OWASP 大型語言模型應用 Top 10
 ### 繁體中文翻譯團隊
 
 #### Henry Hu / 胡辰澔
+
 Traditional Chinese Translation Group / Group Leader
-LinkedIn: https://www.linkedin.com/in/ninedter/
+LinkedIn: <https://www.linkedin.com/in/ninedter/>
 
 #### Will Huang / 黃保翕
+
 Traditional Chinese Translation Group / Reviewer
-Facebook: https://www.facebook.com/will.fans
+Facebook: <https://www.facebook.com/will.fans>
 
 #### Yingzi Jin
+
 Traditional Chinese Translation Group / Reviewer
-LinkedIn: https://www.linkedin.com/in/yingzi-j-77606122a/
+LinkedIn: <https://www.linkedin.com/in/yingzi-j-77606122a/>
 
 ### 關於本次翻譯
 
 有鑑於大型語言模型應用程式 (LLM Applications) 前十大風險的高度技術性與關鍵性，我們特別選擇完全由人工翻譯進行此版本的製作。上述列出的翻譯人員不僅對原始內容擁有深厚的技術理解，更具備相應的語言流暢度，以確保本次翻譯的品質與成功。
 
 #### Talesh Seeparsan
+
 Translation Lead, OWASP Top 10 for AI Applications LLM
-LinkedIn: https://www.linkedin.com/in/talesh/
+LinkedIn: <https://www.linkedin.com/in/talesh/>
