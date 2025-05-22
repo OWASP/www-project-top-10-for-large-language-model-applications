@@ -20,37 +20,42 @@
 
 Спасибо всем, кто помог создать эту версию, и тем, кто продолжает ее использовать и совершенствовать. Мы благодарны за то, что вместе с вами участвуем в этой работе.
 
-
 #### Стив Уилсон
+
 Руководитель проекта
 OWASP Top 10 для приложений на базе больших языковых моделей
-LinkedIn: https://www.linkedin.com/in/wilsonsd/
+LinkedIn: <https://www.linkedin.com/in/wilsonsd/>
 
 #### Адс Доусон
+
 Технический руководитель и ведущий специалист по поиску уязвимостей
 OWASP Top 10 для приложений на базе больших языковых моделей
-LinkedIn: https://www.linkedin.com/in/adamdawson0/
-
-
+LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 
 ### Команда переводчиков на русский язык
+
 #### Анна Тищенко
-Github: https://github.com/anntish
+
+Github: <https://github.com/anntish>
 
 #### Богдан Минко
-LinkedIn: https://linkedin.com/in/bogdan-minko-05a867322
+
+LinkedIn: <https://linkedin.com/in/bogdan-minko-05a867322>
 
 #### Тимур Низамов
-Github: https://github.com/nizamovtimur
+
+Github: <https://github.com/nizamovtimur>
 
 #### Александр Буянтуев
-LinkedIn: https://www.linkedin.com/in/alexander-buyantuev-063785223/
+
+LinkedIn: <https://www.linkedin.com/in/alexander-buyantuev-063785223/>
 
 ### Об этом переводе
+
 Признавая технический и критический характер OWASP Top 10 for Large Language Model Applications, мы сознательно выбрали только человеческих переводчиков для создания этого перевода. Переводчики, перечисленные выше, обладают не только глубокими техническими знаниями оригинального контента, но и свободным владением языком, необходимым для успешного выполнения этого перевода.
 
 #### Талеш Сепарсан
+
 Руководитель перевода
 OWASP Top 10 для приложений на базе больших языковых моделей
-LinkedIn: https://www.linkedin.com/in/talesh/
-
+LinkedIn: <https://www.linkedin.com/in/talesh/>
