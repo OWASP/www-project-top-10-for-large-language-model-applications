@@ -11,66 +11,92 @@ Um dieses Risiko zu verringern, sollten LLM-Anwendungen eine angemessene Datenbe
 ### Gängige Beispiele für Schwachstellen
 
 #### 1. Verlust personenbezogener Daten
+
    Bei Interaktionen mit dem LLM können personenbezogene Daten offengelegt werden.
+
 #### 2. Offenlegung proprietärer Algorithmen
+
   Schlecht konfigurierte Modellausgaben können proprietäre Algorithmen oder Daten offenlegen. Durch die Offenlegung von Trainingsdaten können Modelle Inversionsangriffen ausgesetzt werden, bei denen Angreifende sensible Informationen extrahieren oder Eingaben rekonstruieren. Wie beispielsweise beim „Proof Pudding“-Angriff (CVE-2019-20634) gezeigt wurde, erleichterten offengelegte Trainingsdaten die Extraktion und Inversion von Modellen, sodass Angreifende Sicherheitskontrollen in Algorithmen für maschinelles Lernen umgehen und E-Mail-Filter überlisten konnten.
+
 #### 3. Offenlegung sensibler Geschäftsdaten
+
   Die generierten Antworten können versehentlich vertrauliche Geschäftsinformationen enthalten.
 
 ### Präventions- und Mitigationsstrategien
 
-###@ Sanitization:
+### Sanitization:
 
 #### 1. Integrieren Sie Techniken zur Datenbereinigung
+
   Implementieren Sie eine Datenbereinigung, um sicherzustellen, dass keine Personendaten in das Trainingsmodell gelangen. Bereinigen oder maskieren Sie sensible Inhalte, bevor diese im Training verwendet werden.
+
 #### 2. Robuste Eingabevalidierung
+
   Wenden Sie strenge Methoden zur Eingabevalidierung an, erkennen und filtern Sie potenziell schädliche oder sensible Dateneingaben heraus, und stellen Sie sicher, dass diese das Modell nicht beeinträchtigen.
 
-###@ Zugriffskontrollen:
+### Zugriffskontrollen:
 
 #### 1. Strenge Zugriffskontrollen durchsetzen
+
   Beschränken Sie den Zugriff auf sensible Daten nach dem Prinzip der geringsten Privilegien. Gewähren Sie ausschließlich Zugriff auf Daten, die für die jeweiligen Benutzenden oder Prozess erforderlich sind.
+
 #### 2. Datenquellen einschränken
+
   Beschränken Sie den Modellzugriff auf externe Datenquellen und stellen Sie sicher, dass die Orchestrierung von Laufzeitdaten sicher verwaltet wird, um unbeabsichtigte Datenlecks zu verhindern.
 
-###@ Föderiertes Lernen und Datenschutztechniken:
+### Föderiertes Lernen und Datenschutztechniken:
 
 #### 1. Föderiertes Lernen nutzen
+
   Trainieren Sie Modelle mit dezentralen Daten, die auf mehreren Servern oder Geräten gespeichert sind. Minimieren Sie die Notwendigkeit einer zentralen Datenerfassung und reduzieren Sie die Risiken der Offenlegung.
+
 #### 2. Differential Privacy einbeziehen
+
   Wenden Sie Techniken an, die die Daten oder Ausgaben mit Rauschen versehen, um es Angreifenden zu erschweren, einzelne Datenpunkte zurückzuentwickeln.
 
-###@ Nutzerschulungen und Transparenz:
+### Nutzerschulungen und Transparenz:
 
 #### 1. Nutzer über die sichere Nutzung von LLM aufklären
+
   Stellen Sie eine Anleitung zur Vermeidung der Eingabe sensibler Informationen bereit. Bieten Sie Schulungen zu bewährten Verfahren für den sicheren Umgang mit LLMs an.
+
 #### 2. Transparenz bei der Datennutzung sicherstellen
+
   Befolgen Sie klare Richtlinien für die Aufbewahrung, Nutzung und Löschung von Daten. Ermöglichen Sie Nutzern, die Aufnahme ihrer Daten in Schulungsprozesse abzulehnen.
 
-###@ Sichere Systemkonfiguration:
+### Sichere Systemkonfiguration:
 
 #### 1. Verbergen der System Präambel
+
   Schränken Sie die Möglichkeit für Nutzende ein, die ursprünglichen Einstellungen des Systems zu überschreiben oder darauf zuzugreifen, um das Risiko einer Offenlegung interner Konfigurationen zu verringern.
-###$ 2. Best Practices für bewährte Verfahren zur Sicherheit bei
-####     Fehlkonfigurationen berücksichtigen
+
+#### 2. Best Practices für bewährte Verfahren zur Sicherheit bei Fehlkonfigurationen berücksichtigen
+
   Befolgen Sie Richtlinien wie „OWASP API8:2023 Security Misconfiguration“, um zu verhindern, dass vertrauliche Informationen durch Fehlermeldungen oder Konfigurationsdetails durchsickern.
   (Ref. link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
-
-###@ Fortgeschrittene Techniken:
+### Fortgeschrittene Techniken:
 
 #### 1. Homomorphe Verschlüsselung
+
   Verwenden Sie homomorphe Verschlüsselung, um eine sichere Datenanalyse und datenschutzkonformes maschinelles Lernen zu ermöglichen. Stellen Sie sicher, dass die Daten während der Verarbeitung durch das Modell vertraulich bleiben.
+
 #### 2. Tokenisierung und Schwärzung
+
   Implementieren Sie Tokenisierung, um sensible Informationen vorzuverarbeiten und zu bereinigen. Erkennen und schwärzen Sie vertrauliche Inhalte vor der Verarbeitung mithilfe von Techniken wie Mustererkennung.
 
 ### Beispiele für Angriffsszenarien
 
 #### Szenario 1: Unbeabsichtigte Offenlegung von Daten
+
   Eine Person erhält eine Antwort, die die personenbezogenen Daten einer anderen Person enthält, weil die Daten nicht ordnungsgemäß bereinigt wurden.
+
 #### Szenario 2: Gezielte Eingabeaufforderung
+
   Angreifende umgehen Eingabefilter, um vertrauliche Informationen zu extrahieren.
+
 #### Szenario 3: Datenleck über Trainingsdaten
+
   Die fahrlässige Einbeziehung von Daten in das Training führt zur Offenlegung vertraulicher Informationen.
 
 ### Referenzlinks
