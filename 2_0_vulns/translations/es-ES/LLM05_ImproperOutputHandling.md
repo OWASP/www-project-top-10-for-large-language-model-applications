@@ -9,6 +9,7 @@ El manejo inadecuado de la salida difiere de la sobredependencia en que se ocupa
 La explotación exitosa de una vulnerabilidad de manejo inadecuado de la salida puede resultar en XSS (Cross-Site Scripting) y CSRF (Cross-Site Request Forgery) en navegadores web, así como SSRF (Server-Side Request Forgery), escalada de privilegios o ejecución remota de código en sistemas "backend".
 
 Las siguientes condiciones pueden aumentar el impacto de esta vulnerabilidad:
+
 - La aplicación otorga al LLM privilegios más allá de lo previsto para los usuarios finales, permitiendo la escalada de privilegios o la ejecución remota de código.
 - La aplicación es vulnerable a ataques de inyección indirecta de prompts, que podrían permitir a un atacante obtener acceso privilegiado al ambiente de un usuario objetivo.
 - Las extensiones de terceros no validan adecuadamente las entradas.
@@ -37,16 +38,27 @@ Las siguientes condiciones pueden aumentar el impacto de esta vulnerabilidad:
 ### Ejemplos de escenarios de ataque
 
 #### Escenario #1
+
   Una aplicación utiliza una extensión LLM para generar respuestas para una funcionalidad de chatbot. La extensión también ofrece una serie de funciones administrativas accesibles por otro LLM privilegiado. El LLM de propósito general pasa directamente su respuesta, sin la validación de salida apropiada, a la extensión causando que esta se deshabilite por mantenimiento.
+
 #### Escenario #2
+
   Un usuario utiliza una herramienta de resumen de sitios web impulsada por un LLM para generar un resumen conciso de un artículo. El sitio web incluye una inyección de prompt indicando al LLM que capture contenido confidencial, ya sea del sitio web o de la conversación del usuario. Desde allí, el LLM puede codificar los datos sensibles y enviarlos, sin ninguna validación o filtrado de salida, a un servidor controlado por el atacante.
+
 #### Escenario #3
+
   Un LLM permite a los usuarios crear consultas SQL para una base de datos de "backend" a través de una función similar a un chat. Un usuario solicita una consulta para eliminar todas las tablas de la base de datos. Si la consulta creada desde el LLM no se analiza, se eliminarán todas las tablas de la base de datos.
+
 #### Escenario #4
+
   Una aplicación web utiliza un LLM para generar contenido a partir de prompts de texto del usuario sin saneo de salida. Un atacante podría enviar un prompt maliciosamente diseñado que haga que el LLM devuelva una carga útil de JavaScript no saneada, causando XSS cuando se procesa en el navegador de la víctima. La validación insuficiente de prompts permite este ataque.
+
 #### Escenario #5
+
   Se utiliza un LLM para generar plantillas dinámicas de correo electrónico para una campaña de marketing. Un atacante manipula el LLM para incluir JavaScript malicioso dentro del contenido del mensaje. Si la aplicación no sanea adecuadamente la salida del LLM, esto podría conducir a ataques XSS en los destinatarios que ven el mensaje en clientes de correo electrónico vulnerables.
+
 #### Escenario #6
+
   Se utiliza un LLM para generar código a partir de entradas de lenguaje natural en una empresa de software, apuntando a agilizar las tareas de desarrollo. Aunque eficiente, este enfoque corre el riesgo de exponer información sensible, crear métodos inseguros de manejo de datos o introducir vulnerabilidades como la inyección SQL. La IA también puede alucinar con paquetes de software inexistentes, llevando potencialmente a los desarrolladores a descargar recursos infectados con malware. La revisión minuciosa del código y la verificación de los paquetes sugeridos son cruciales para evitar brechas de seguridad, accesos no autorizados y compromisos del sistema.
 
 ### Enlaces de referencia
