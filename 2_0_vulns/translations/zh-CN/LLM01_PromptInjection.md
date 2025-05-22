@@ -118,21 +118,21 @@
 
 6. [注入我的PDF：简历中的提示词注入](https://kai-greshake.de/posts/inject-my-pdf) **Kai Greshake**
 
-8. [并非你所签署的：利用间接提示词注入破坏现实世界中的LLM集成应用](https://arxiv.org/pdf/2302.12173.pdf) **Cornell University**
+7. [并非你所签署的：利用间接提示词注入破坏现实世界中的LLM集成应用](https://arxiv.org/pdf/2302.12173.pdf) **Cornell University**
 
-9. [威胁建模LLM应用程序](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
+8. [威胁建模LLM应用程序](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
 
-10. [通过设计减少提示词注入攻击的影响](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
+9. [通过设计减少提示词注入攻击的影响](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
 
-11. [对抗性机器学习：攻击和缓解措施的分类与术语](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
+10. [对抗性机器学习：攻击和缓解措施的分类与术语](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
 
-12. [针对大型视觉语言模型的攻击：资源、进展及未来趋势调查](https://arxiv.org/abs/2407.07403)
+11. [针对大型视觉语言模型的攻击：资源、进展及未来趋势调查](https://arxiv.org/abs/2407.07403)
 
-13. [利用标准安全攻击探索LLMs的程序化行为：双重用途](https://ieeexplore.ieee.org/document/10579515)
+12. [利用标准安全攻击探索LLMs的程序化行为：双重用途](https://ieeexplore.ieee.org/document/10579515)
 
-14. [对齐语言模型上的通用和可转移对抗性攻击](https://arxiv.org/abs/2307.15043)
+13. [对齐语言模型上的通用和可转移对抗性攻击](https://arxiv.org/abs/2307.15043)
 
-15. [从ChatGPT到威胁GPT：生成式AI在网络安全与隐私领域的影响力](https://arxiv.org/abs/2307.00691)
+14. [从ChatGPT到威胁GPT：生成式AI在网络安全与隐私领域的影响力](https://arxiv.org/abs/2307.00691)
 
 ### 相关框架和分类法
 
