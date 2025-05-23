@@ -36,6 +36,7 @@ LinkedIn: https://www.linkedin.com/in/adamdawson0/
 ### Ομάδα Ελληνικής Μετάφρασης
 Aristeidis Zoumpakis
 LinkedIn: https://www.linkedin.com/in/aristeidis-zoumpakis-9652532b/
+
 Georgios Vyzaniaris
 LinkedIn: https://www.linkedin.com/in/georgevizaniaris/
 
