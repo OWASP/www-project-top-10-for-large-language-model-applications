@@ -1,38 +1,38 @@
 ## Title
-2025 Top 10 Risk & Mitigations for LLMs and Gen AI Apps
+Τοπ-10 Κίνδυνοι & Μέθοδοι Αντιμετώπισης για LLMs και Εφαρμογές Παραγωγικής ΤΝ – 2025
 
 ## Short Description
-Expore the latest Top 10 risks, vulnerabilities and mitigations for developing and securing generative AI and large language model applications across the development, deployment and management lifecycle.
+Εξερευνήστε τους πιο πρόσφατους 10 κορυφαίους κινδύνους, ευπάθειες και μεθόδους αντιμετώπισής τους για την ανάπτυξη και την ασφάλεια εφαρμογών Παραγωγικής ΤΝ και μεγάλων γλωσσικών μοντέλων στον κύκλο ζωής ανάπτυξης, παραγωγής και διαχείρισης.
 
 ## Long Description
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+Το OWASP Τοπ-10 για Εφαρμογές Μεγάλων Γλωσσικών Μοντέλων ξεκίνησε το 2023 ως κοινοτική πρωτοβουλία με στόχο να επισημάνει και να αντιμετωπίσει ζητήματα ασφάλειας ειδικά για εφαρμογές ΤΝ. Έκτοτε, η τεχνολογία εξαπλώθηκε σε πλήθος κλάδων και μαζί της και οι σχετικοί κίνδυνοι. Καθώς τα LLM ενσωματώνονται όλο και περισσότερο από τις αλληλεπιδράσεις με πελάτες έως κρίσιμες εσωτερικές λειτουργίες, προγραμματιστές και επαγγελματίες ασφάλειας ανακαλύπτουν νέες ευπάθειες και τρόπους αντιμετώπισής τους.
 
 ## Sponsorship
-We appreciate our Project Sponsors’ funding contributions to help support the objectives of the project and help to cover operational and outreach costs augmenting the resources the OWASP.org foundation provides. The OWASP Top 10 for LLM and Generative AI Project continues to maintain a vendor neutral and unbiased approach. Sponsors do not receive special governance considerations as part of their support. Sponsors do receive recognition for their contributions in our materials and web properties.
-All materials the project generates are community developed, driven and released under open source and creative commons licenses. For more information on becoming a sponsor Visit the Sponsorship Section on our Website to learn more about helping to sustain the project through sponsorship.
+Εκτιμούμε ιδιαίτερα τις οικονομικές συνεισφορές των Χορηγών του Έργου, που στηρίζουν τους στόχους του έργου και καλύπτουν λειτουργικά και επικοινωνιακά έξοδα, συμπληρωματικά προς τους πόρους που παρέχει το ίδρυμα OWASP.org. Το έργο OWASP Τοπ-10 για LLM and Παραγωγική ΤΝ παραμένει αυστηρά ουδέτερο και αμερόληπτο. Οι χορηγοί δεν αποκτούν ειδικά δικαιώματα διακυβέρνησης. Παρέχεται όμως αναγνώριση για τη συμβολή τους σε υλικό και διαδικτυακές ιδιοκτησίες. 
+Όλο το παραγόμενο υλικό του έργου αναπτύσσεται, καθοδηγείται και διανέμεται από την κοινότητα με άδειες ανοιχτού κώδικα. Για περισσότερες πληροφορίες προκειμένου να γίνετε χορηγός επισκεφθείτε την ενότητα Χορηγίες στον ιστότοπό μας για να μάθετε πώς μπορείτε να στηρίξετε τη συνέχιση του έργου.
 
 ## Social Media
-🚀 Exciting News! New Translations Available for the OWASP Top 10 for LLM & Generative AI (2025) 🌍
+🚀 Συναρπαστικά νέα! Διαθέσιμες νέες μεταφράσεις του OWASP Τοπ-10 για LLM & Παραγωγική ΤΝ (2025) 🌍
 
-We’re thrilled to announce that the OWASP Top 10 for LLM Applications and Generative AI 2025 is now available in Greek, Hindi, Japanese, Korean and Persian!
+Είμαστε στην ευχάριστη θέση να ανακοινώσουμε ότι ο κατάλογος OWASP Τοπ-10 για Εφαρμογές LLM και Παραγωγική ΤΝ 2025 είναι πλέον διαθέσιμος στα Ελληνικά, Χίντι, Ιαπωνικά, Κορεατικά και Περσικά!
 
-This update provides a refreshed and comprehensive resource addressing the top risks, vulnerabilities, and mitigations for securing Generative AI and LLM applications across their development, deployment, and management lifecycle. Whether you're working with RAG-based applications, agentic architectures, or complex LLM integrations, this list is a must-have for developers, security professionals, and organizations looking to adopt AI securely.
+Αυτή η έκδοση παρέχει έναν ανανεωμένο και ολοκληρωμένο οδηγό για τους κορυφαίους κινδύνους, ευπάθειες και μεθόδους αντιμετώπισής τους, στον κύκλο ζωής ανάπτυξης, παραγωγής και διαχείρισης εφαρμογών Παραγωγικής ΤΝ και Μεγάλων Γλωσσικών Μοντέλων (LLM). Είτε εργάζεστε με λύσεις RAG, αρχιτεκτονικές πρακτόρων είτε πολύπλοκες ενσωματώσεις LLM, αυτή η λίστα είναι απαραίτητη για προγραμματιστές, επαγγελματίες ασφάλειας και οργανισμούς που επιδιώκουν ασφαλή υιοθέτηση ΤΝ.
 
-What's New in the 2025 OWASP Top 10 for LLMs?
+Τι νέο υπάρχει στο OWASP Τοπ-10 2025 για LLMs;
 
-✅ Unbounded Consumption: Expanding beyond denial of service to include risks of resource management and unexpected costs in large-scale deployments.
-✅ Vectors & Embeddings Security: Addressing security risks in Retrieval-Augmented Generation (RAG) and other embedding-based techniques.
-✅ System Prompt Leakage: A newly added entry tackling real-world exploits and the {risks of assuming prompts remain isolated.
-✅ Excessive Agency: As AI autonomy grows, this update highlights security concerns around agentic architectures with limited human oversight.
+✅ Απεριόριστη Κατανάλωση: Επεκτείνεται πέρα από την άρνηση υπηρεσιών (DoS), καλύπτοντας κινδύνους διαχείρισης πόρων και απροσδόκητο κόστος σε μεγάλης κλίμακας εγκαταστάσεις.
+✅ Ασφάλεια Διανυσμάτων & Ενσωματώσεων: Αντιμετώπιση κινδύνων σε τεχνικές Retrieval-Augmented Generation (RAG) και άλλες μεθόδους ενσωμάτωσης.
+✅ Διαρροή Prompt Συστήματος: Νέα προσθήκη που εξετάζει πραγματικές εκμεταλλεύσεις και τον κίνδυνο να θεωρούμε τα prompts απομονωμένα.
+✅ Υπερβολική Αυτονομία: Με την αυξανόμενη αυτονομία της ΤΝ, τονίζονται οι ανησυχίες ασφαλείας σε αρχιτεκτονικές πρακτόρων με περιορισμένο ανθρώπινο έλεγχο.
 
-Join the Effort! 💡
+Συμμετέχετε στην προσπάθεια! 💡
 
-This project thrives because of the amazing global community behind it. If you’re passionate about AI security, we invite you to contribute to translations, research, and guidance to expand this critical initiative. Let’s make AI security accessible worldwide!
-📢 Check out the translations below:
- 🔗 Greek:
- 🔗 Hindi:
- 🔗 Japanese:
- 🔗 Korean:
- 🔗 Persian:
+Το έργο αυτό ευδοκιμεί χάρη στην εκπληκτική παγκόσμια κοινότητα που το στηρίζει. Αν σας παθιάζει η ασφάλεια ΤΝ, η συνεισφορά σε μεταφράσεις, έρευνα και καθοδήγιση για να επεκτείνουμε αυτή την κρίσιμη πρωτοβουλία. Ας κάνουμε την ασφάλεια της ΤΝ προσβάσιμη σε όλο τον κόσμο!
+📢 Δείτε τις μεταφράσεις εδώ:
+ 🔗 Ελληνικά:
+ 🔗 Χίντι:
+ 🔗 Ιαπωνικά:
+ 🔗 Κορεάτικα:
+ 🔗 Περσικά:
 
-Interested in getting involved? Comment below or reach out! Together, we can build a more secure AI-driven future. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
+Ενδιαφέρεστε να εμπλακείτε; Σχολιάστε παρακάτω ή επικοινωνήστε μαζί μας! Μαζί μπορούμε να οικοδομήσουμε ένα πιο ασφαλές καθοδηγούμενο από την ΤΝ μέλλον. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
