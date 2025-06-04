@@ -1,45 +1,46 @@
-## Letter from the Project Leads
+## رسالة من قادة المشروع
 
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+بدأ مشروع OWASP لأهم 10 مخاطر في تطبيقات النماذج اللغوية الكبيرة في عام 2023 كمبادرة يقودها المجتمع لتسليط الضوء على مشكلات الأمان الخاصة بتطبيقات الذكاء الاصطناعي ومعالجتها. ومنذ ذلك الحين, استمرت هذه التقنية في الانتشار عبر مختلف الصناعات والتطبيقات, وكذلك ازدادت المخاطر المرتبطة بها. ومع تكامل النماذج اللغوية الكبيرة بشكل أعمق في كل شيء, من تفاعلات العملاء إلى العمليات الداخلية, بدأ المطورون ومتخصصو الأمن في اكتشاف ثغرات جديدة وطرق لمعالجتها.
 
-The 2023 list was a big success in raising awareness and building a foundation for secure LLM usage, but we've learned even more since then. In this new 2025 version, we’ve worked with a larger, more diverse group of contributors worldwide who have all helped shape this list. The process involved brainstorming sessions, voting, and real-world feedback from professionals in the thick of LLM application security, whether by contributing or refining those entries through feedback. Each voice was critical to making this new release as thorough and practical as possible.
+كانت قائمة عام 2023 ناجحة في رفع مستوى الوعي وبناء أساس لاستخدام آمن للنماذج اللغوية الكبيرة, لكننا تعلمنا المزيد منذ ذلك الحين. في إصدار 2025 الجديد هذا, عملنا مع مجموعة أكبر وأكثر تنوعًا من المساهمين من جميع أنحاء العالم, ساهموا جميعًا في تشكيل هذه القائمة. شمل هذا العمل جلسات عصف ذهني, وتصويتات, وتعليقات من الواقع العملي قدمها متخصصون في أمن تطبيقات النماذج اللغوية, سواء من خلال المساهمة أو تحسين الإدخالات استنادًا إلى الملاحظات. كانت كل مساهمة ضرورية لجعل هذا الإصدار الجديد شاملًا وعمليًا قدر الإمكان.
 
-### What’s New in the 2025 Top 10
+### ما الجديد في قائمة 2025 لأهم 10 مخاطر
 
-The 2025 list reflects a better understanding of existing risks and introduces critical updates on how LLMs are used in real-world applications today. For instance, **Unbounded Consumption** expands on what was previously Denial of Service to include risks around resource management and unexpected costs—a pressing issue in large-scale LLM deployments.
+تعكس قائمة 2025 فهمًا أعمق للمخاطر الحالية وتقدم تحديثات مهمة حول كيفية استخدام النماذج اللغوية الكبيرة في التطبيقات الواقعية اليوم. على سبيل المثال, توسعت فئة **الاستهلاك غير المحدود** عما كان يُعرف سابقًا بـ "نفي الخدمة" لتشمل المخاطر المتعلقة بإدارة الموارد والتكاليف غير المتوقعة, وهي مسألة ملحّة في عمليات النشر الواسعة للنماذج اللغوية.
 
-The **Vector and Embeddings** entry responds to the community’s requests for guidance on securing Retrieval-Augmented Generation (RAG) and other embedding-based methods, now core practices for grounding model outputs.
+جاء إدخال **المتجهات والتضمين** استجابةً لطلب المجتمع تقديم إرشادات حول تأمين أساليب "التوليد المعزز بالاسترجاع (RAG)" وطرق التضمين الأخرى, والتي أصبحت ممارسات أساسية لتأصيل مخرجات النماذج.
 
-We’ve also added **System Prompt Leakage** to address an area with real-world exploits that were highly requested by the community. Many applications assumed prompts were securely isolated, but recent incidents have shown that developers cannot safely assume that information in these prompts remains secret.
+أضفنا أيضًا فئة **تسريب التعليمات النظامية** لمعالجة منطقة ظهرت فيها استغلالات واقعية, وكانت من أكثر المواضيع طلبًا من قبل المجتمع. افترضت العديد من التطبيقات أن التعليمات محفوظة بشكل آمن, لكن الحوادث الأخيرة أظهرت أن المطورين لا يمكنهم الاعتماد على بقاء هذه المعلومات سرية.
 
-**Excessive Agency** has been expanded, given the increased use of agentic architectures that can give the LLM more autonomy.  With LLMs acting as agents or in plug-in settings, unchecked permissions can lead to unintended or risky actions, making this entry more critical than ever.
+تم توسيع فئة **الاستقلالية المفرطة** نظرًا للاستخدام المتزايد للهياكل التي تمنح النموذج مزيدًا من الاستقلالية. ومع تصرف النماذج اللغوية كعوامل أو ضمن بيئات إضافية (Plug-ins), يمكن أن تؤدي الأذونات غير المضبوطة إلى سلوكيات غير مقصودة أو محفوفة بالمخاطر, مما يجعل هذه الفئة أكثر أهمية من أي وقت مضى.
 
-### Moving Forward
+### المضي قدمًا
 
-Like the technology itself, this list is a product of the open-source community’s insights and experiences. It has been shaped by contributions from developers, data scientists, and security experts across sectors, all committed to building safer AI applications. We’re proud to share this 2025 version with you, and we hope it provides you with the tools and knowledge to secure LLMs effectively.
+مثلها مثل التكنولوجيا نفسها, هذه القائمة هي نتاج رؤى وخبرات مجتمع المصادر المفتوحة. تم تشكيلها من خلال مساهمات من مطورين, وعلماء بيانات, وخبراء أمن من مختلف القطاعات, جميعهم ملتزمون ببناء تطبيقات ذكاء اصطناعي أكثر أمانًا. نحن فخورون بمشاركة إصدار 2025 هذا معكم, ونأمل أن يزودكم بالأدوات والمعرفة اللازمة لتأمين استخدام النماذج اللغوية الكبيرة بفعالية.
 
-Thank you to everyone who helped bring this together and those who continue to use and improve it. We’re grateful to be part of this work with you.
+شكرًا لكل من ساهم في إنجاز هذا العمل, ولكل من يواصل استخدامه وتحسينه. نحن ممتنون لكوننا جزءًا من هذا الجهد معكم.
 
-
-#### Steve Wilson
-Project Lead
-OWASP Top 10 for Large Language Model Applications
+#### ستيف ويلسون  
+قائد المشروع  
+OWASP لأهم 10 مخاطر في تطبيقات النماذج اللغوية الكبيرة  
 LinkedIn: https://www.linkedin.com/in/wilsonsd/
 
-#### Ads Dawson
-Technical Lead & Vulnerability Entries Lead
-OWASP Top 10 for Large Language Model Applications
+#### آدز دوسون  
+القائد التقني وقائد إدخالات الثغرات  
+OWASP لأهم 10 مخاطر في تطبيقات النماذج اللغوية الكبيرة  
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
+### فريق الترجمة العربية  
+#### ليث رستناوي
+LinkedIn: https://www.linkedin.com/in/laith-rastanawi/
 
- 
-### Arabic Translation Team
-Name
-LinkedIn
+#### عمر العقاد
+LinkedIn: https://www.linkedin.com/in/omar-a-994238200
 
-### About this translation
-Recognizing the technical and critical nature of the OWASP Top 10 for Large Language Model Applications, we consciously chose to employ only human translators in the creation of this translation. The translators listed above not only have a deep technical knowledge of the original content, but also the fluency required to make this translation a success.
 
-#### Talesh Seeparsan
-Translation Lead, OWASP Top 10 for AI Applications LLM
+### حول هذه الترجمة  
+نظرًا للطبيعة التقنية والحساسة لقائمة OWASP لأهم 10 مخاطر في تطبيقات النماذج اللغوية الكبيرة, فقد اخترنا عمدًا الاعتماد على مترجمين بشريين فقط في إعداد هذه الترجمة. يتمتع المترجمون المدرجون أعلاه بمعرفة تقنية عميقة بالمحتوى الأصلي, إلى جانب الطلاقة اللغوية اللازمة لإنجاح هذه الترجمة.
+
+#### تالِش سيبارسان  
+قائد الترجمة, OWASP لأهم 10 مخاطر في تطبيقات الذكاء الاصطناعي (LLM)  
 LinkedIn: https://www.linkedin.com/in/talesh/
