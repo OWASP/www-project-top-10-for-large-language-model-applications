@@ -34,14 +34,23 @@
 ### نمونه‌هایی از فرانامه‌های حمله
 
 #### فرانامه #۱
+
   مهاجم با دست‌کاری داده‌های آموزش یا استفاده از روش‌های تزریق پرامپت، خروجی‌های مدل را مغرضانه کرده و اطلاعات نادرست را منتشر می‌کند.
+
 #### فرانامه #۲
+
   داده‌های سمی بدون پالایش مناسب می‌توانند منجر به خروجی‌های زیان‌بار یا مغرضانه شوند و اطلاعات خطرناکی را منتشر کنند.
+
 #### فرانامه #۳
+
   یک عامل مخرب یا رقیب مدارک جعلی برای آموزش ایجاد می‌کند که منجر به تولید خروجی‌هایی از مدل می‌شود که این نادرستی‌ها را منعکس می‌کند.
+
 #### فرانامه #۴
+
   پالایش ناکافی به مهاجم این امکان را می‌دهد که داده‌های گمراه‌کننده را از طریق تزریق دستور وارد کند و منجر به تولید خروجی‌های آسیب‌دیده شود.
+
 #### فرانامه #۵
+
   مهاجم از روش‌های مسموم‌سازی برای وارد کردن یک فعال‌ساز درب پشتی (backdoor trigger) به مدل استفاده می‌کند. این کار می‌تواند شما را در معرض دور خوردن احراز هویت، خروج داده یا اجرای مخفیانه دستورات قرار دهد.
 
 ### پیوند‌های مرجع
@@ -49,7 +58,7 @@
 1. [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html): **CSO Online**
 2. [MITRE ATLAS (framework) Tay Poisoning](https://atlas.mitre.org/studies/AML.CS0009/): **MITRE ATLAS**
 3. [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news/): **Mithril Security**
-4. [Poisoning Language Models During Instruction](https://arxiv.org/abs/2305.00944): **Arxiv White Paper 2305.00944** 
+4. [Poisoning Language Models During Instruction](https://arxiv.org/abs/2305.00944): **Arxiv White Paper 2305.00944**
 5. [Poisoning Web-Scale Training Datasets - Nicholas Carlini | Stanford MLSys #75](https://www.youtube.com/watch?v=h9jf1ikcGyk): **Stanford MLSys Seminars YouTube Video**
 6. [ML Model Repositories: The Next Big Supply Chain Attack Target](https://www.darkreading.com/cloud-security/ml-model-repositories-next-big-supply-chain-attack-target) **OffSecML**
 7. [Data Scientists Targeted by Malicious Hugging Face ML Models with Silent Backdoor](https://jfrog.com/blog/data-scientists-targeted-by-malicious-hugging-face-ml-models-with-silent-backdoor/) **JFrog**

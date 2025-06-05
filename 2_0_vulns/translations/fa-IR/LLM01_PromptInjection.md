@@ -11,9 +11,11 @@
 ### انواع آسیب‌پذیری‌های تزریق پرامپت
 
 #### تزریق‌های مستقیم پرامپت
+
   تزریق‌های مستقیم پرامپت زمانی رخ می‌دهند که ورودیِ پرامپت کاربر، رفتار مدل را به شیوه‌ای ناخواسته یا غیرمنتظره مستقیماً تغییر دهد. این ورودی می‌تواند هم عمدی باشد (یعنی یک عامل مخرب عمداً پرامپتی را برای بهره‌برداری از مدل طراحی کند) و هم غیرعمدی (یعنی یک کاربر سهواً ورودی‌ای ارائه دهد که باعث بروز رفتار غیرمنتظره شود).
 
 #### تزریق‌های غیرمستقیم پرامپت
+
   تزریق‌های غیرمستقیم پرامپت زمانی رخ می‌دهند که یک مدل زبانی بزرگ (LLM) ورودی را از منابع خارجی، مانند تارنماها یا فایل‌ها، می‌پذیرد. ممکن است در محتوای خارجی داده‌هایی وجود داشته باشد که وقتی توسط مدل تفسیر می‌شوند، رفتار مدل را به شیوه‌های ناخواسته یا غیرمنتظره‌ای تغییر دهند. مانند تزریق‌های مستقیم، تزریق‌های غیرمستقیم نیز می‌توانند عمدی یا غیرعمدی باشند.
 
 شدت و ماهیت تأثیر یک حمله موفقیت‌آمیز تزریق پرامپت می‌تواند بسیار متفاوت باشد و تا حد زیادی به زمینه کسب‌وکاری که مدل در آن فعالیت می‌کند و نیز چارچوبی که مدل با آن ساخته شده است، بستگی دارد. با این حال، به‌طور کلی، تزریق پرامپت می‌تواند منجر به پیامدهای ناخواسته‌ای شود، از جمله:
@@ -32,39 +34,69 @@
 آسیب‌پذیری‌های تزریق پرامپت به دلیل ماهیت هوش مصنوعی مولد (generative AI) امکان‌پذیر هستند. با توجه به تأثیر تصادفی (stochastic) در بطن شیوه کار اینگونه مدل‌ها، مشخص نیست که آیا روش‌های کاملاً مطمئنی برای جلوگیری از تزریق پرامپت وجود دارد یا خیر. با این حال، اقدامات زیر می‌توانند تأثیر تزریق پرامپت را کاهش دهند:
 
 #### ۱. محدود کردن رفتار مدل
+
   فرمان‌های ویژه‌ای درباره‌ی نقش، قابلیت‌ها و محدودیت‌های مدل در پرامپت سیستم (system prompt) ارائه دهید. پایبندی دقیق به زمینه معنایی (context) را الزامی کنید، پاسخ‌ها را به وظایف یا موضوعات مشخض محدود کنید، و به مدل دستور دهید که تلاش‌ها برای تغییر دستورالعمل‌های اصلی را نادیده بگیرد.
+
 #### ۲. تعریف و اعتبارسنجی قالب‌های خروجی مورد انتظار
+
   قالب‌های خروجی مشخصی تعین کنید و از مدل بخواهید دلایل و استنادهای دقیقی را به منابع ارائه دهد، و از کد قطعی (deterministic code) برای اطمینان از رعایت این قالب‌ها استفاده کنید.
+
 #### ۳. پیاده‌سازی پالایش ورودی و خروجی
+
   دسته‌بندی‌های حساس را تعریف کنید و قوانینی برای شناسایی و مدیریت چنین محتوایی تدوین کنید. از پالایشگرهای معنایی (semantic filtering) و از روش بررسی رشته کاراکتر (string-checking) برای جستجوی محتوای غیرمجاز استفاده کنید. پاسخ‌ها را با استفاده از سه‌گانه‌ی RAG ارزیابی کنید: میزان ارتباط با زمینه معنایی (context relevance)، مستدل بودن (groundedness) و میزان ارتباط با سؤال/پاسخ (question/answer relevance) را برآورد کنید تا خروجی‌های بالقوه‌ی مخرب شناسایی شوند.
+
 #### ۴. اعمال کنترل و حداقل امتیاز دسترسی
+
   برای عملکردهای توسعه‌پذیر، توکن‌های API مختص به برنامه را فراهم کنید و این عملکردها را در کد مدیریت کنید به جای اینکه آن‌ها را در اختیار مدل قرار دهید. دسترسی‌های مدل را به حداقلِ لازم برای عملکردهای مورد نظرش محدود کنید.
+
 #### ۵. نیاز به تأیید انسانی برای اقدامات پرخطر
+
   برای عملیات‌های ممتاز، کنترل‌های «انسان در حلقه» (human-in-the-loop) را پیاده‌سازی کنید تا از اقدامات غیرمجاز جلوگیری شود.
+
 #### ۶. تفکیک و شناسایی محتوای خارجی
+
   محتوای غیرقابل اعتماد را جدا و صریحا مشخص کنید تا تأثیر آن بر روی پرامپت‌های کاربر محدود شود.
+
 #### ۷. انجام آزمون‌های خصمانه و شبیه‌سازی حمله
+
   آزمون‌های نفوذ (penetration testing) و شبیه‌سازی‌های نقض امنیت (breach simulation) را به‌طور منظم انجام دهید و با مدل همانند یک کاربر غیرقابل اعتماد رفتار کنید تا اثربخشی مرزهای اعتماد و کنترل‌های دسترسی را آزمایش کنید.
 
 ### نمونه فرانامه‌های حمله
 
 #### فرانامه #۱: تزریق مستقیم
+
   مهاجم پرامپتی را داخل چت‌بات پشتیبانی مشتری تزریق می‌کند و به آن دستور می‌دهد تا دستورالعمل‌های قبلی را نادیده بگیرد، به پایگاه داده‌های خصوصی دسترسی پیدا کند و ایمیل ارسال کند که منجر به دسترسی غیرمجاز و افزایش سطح دسترسی می‌شود.
+
 #### فرانامه #۲: تزریق غیرمستقیم
+
   کاربری از یک مدل زبانی بزرگ (LLM) برای خلاصه‌سازی صفحه‌ی وبی استفاده می‌کند که حاوی فرمان‌های پنهانی است. این فرمان‌های پنهان باعث می‌شوند LLM تصویری را که به یک URL لینک شده است، درج کند و در نتیجه منجر به نشت مکالمه‌ی خصوصی شود.
+
 #### فرانامه #۳: تزریق غیرعمدی
+
   یک شرکت فرمانی را در توضیحات شغلی برای شناسایی درخواست‌های تولید شده توسط هوش مصنوعی گنجانده است. متقاضی که از این موضوع بی‌خبر است، از یک مدل زبان بزرگ (LLM) برای بهینه‌سازی رزومه خود استفاده می‌کند و به طور ناخواسته باعث فعال شدن سامانه شناسایی هوش مصنوعی می‌شود.
+
 #### فرانامه #۴: تأثیرگذاری عمدی بر مدل
+
   مهاجم سندی را در مخزنی که توسط یک برنامه‌ی RAG  (Retrieval-Augmented Generation) از آن استفاده می‌شود، تغییر می‌دهد. هنگامی که جستجوی کاربر، محتوای اصلاح‌شده را برمی‌گرداند، فرمان‌های مخرب، خروجی مدل زبانی بزرگ (LLM) را تغییر داده و نتایج گمراه‌کننده‌ای تولید می‌کنند.
+
 #### فرانامه #۵: تزریق کد
+
   مهاجم با سوءاستفاده از آسیب‌پذیری (CVE-2024-5184) در دستیار رایانامه‌ی مبتنی بر LLM، فرمان‌های مخرب تزریق می‌کند که امکان دسترسی به اطلاعات حساس و دستکاری محتوای رایانامه را فراهم می‌سازد.
+
 #### فرانامه #۶: ارسال تکه‌تکۀ داده‌های مخرب
+
   مهاجم رزومه‌ای را با پرامپت‌های مخرب تکه‌تکه شده بارگذاری می‌کند. هنگامی که از یک LLM برای ارزیابی متقاضی استفاده می‌شود، پرامپت‌های ترکیب‌شده، پاسخ مدل را دستکاری می‌کنند و در نتیجه علی رغم محتوای واقعی رزومه، توصیه مثبتی ارائه می‌شود.
+
 #### فرانامه #۷: تزریق چندوجهی
+
   مهاجم یک پرامپت مخرب را درون تصویری که همراه با متنی بی‌خطر است، جاسازی می‌کند. هنگامی که هوش مصنوعی چندوجهی تصویر و متن را به‌طور همزمان پردازش می‌کند، پرامپت پنهان، رفتار مدل را تغییر می‌دهد که می‌تواند منجر به اقدامات غیرمجاز یا افشای اطلاعات حساس شود.
+
 #### فرانامه #۸: پسوند مخرب
+
   مهاجم یک رشته به ظاهر بی‌معنی از کاراکترها را به یک پرامپت اضافه می‌کند که به طور مخرب بر خروجی LLM تأثیر می‌گذارد و تدابیر ایمنی را دور می‌زند.
+
 #### فرانامه #۹: حمله‌ی چندزبانه/مبهم‌سازی‌شده
+
   مهاجم از چندین زبان گوناگون استفاده می‌کند یا بر روی فرمان‌های مخرب کدگذاری می‌کند (مثلاً با استفاده از Base64 یا شکلک‌ها) تا پالایشگرها را دور بزند و رفتار LLM را دستکاری کند.
 
 ### پیوندهای مرجع
@@ -75,14 +107,14 @@
 4. [Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1) **Research Square**
 5. [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499) **Cornell University**
 6. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf) **Kai Greshake**
-8. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Cornell University**
-9. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
-10. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
-11. [Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
-12. [2407.07403 A Survey of Attacks on Large Vision-Language Models: Resources, Advances, and Future Trends (arxiv.org)](https://arxiv.org/abs/2407.07403)
-13. [Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks](https://ieeexplore.ieee.org/document/10579515)
-14. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
-15. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
+7. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Cornell University**
+8. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
+9. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
+10. [Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
+11. [2407.07403 A Survey of Attacks on Large Vision-Language Models: Resources, Advances, and Future Trends (arxiv.org)](https://arxiv.org/abs/2407.07403)
+12. [Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks](https://ieeexplore.ieee.org/document/10579515)
+13. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
+14. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
 
 ### چارچوب‌ها و طبقه‌بندی‌های مرتبط
 

@@ -20,12 +20,11 @@
 
 از تمامی عزیزانی که در تدوین این مجموعه یاری رساندند و همچنین از کلیه کسانی که از این فهرست استفاده نموده و در بهبود آن مشارکت می‌جویند، صمیمانه سپاسگزاریم. از اینکه در این مسیر با شما همگام و هم‌قدم هستیم، خرسند و مفتخریم.
 
-
 #### Steve Wilson
 
 رهبر پروژه «10 آسیب‌پذیری برتر امنیتی OWASP برای برنامه‌های کاربردی مدل‌های زبانی بزرگ»
 
-لینکدین: https://www.linkedin.com/in/wilsonsd/
+لینکدین: <https://www.linkedin.com/in/wilsonsd/>
 
 #### Ads Dawson
 
@@ -33,23 +32,24 @@
 
 رهبر پروژه «10 آسیب‌پذیری برتر امنیتی OWASP برای برنامه‌های کاربردی مدل‌های زبانی بزرگ»
 
-LinkedIn: https://www.linkedin.com/in/adamdawson0/
-
+LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 
 ### تیم ترجمه فارسی
+
 #### Hamed Salimian
 
-LinkedIn: https://www.linkedin.com/in/hamed-salimian
+LinkedIn: <https://www.linkedin.com/in/hamed-salimian>
 
 #### Arian Gharedaghi
 
-LinkedIn: https://www.linkedin.com/in/arian-gharedaghi
+LinkedIn: <https://www.linkedin.com/in/arian-gharedaghi>
 
 ### درباره ترجمه
+
 با توجه به ماهیت فنی و حیاتی OWASP Top 10 برای برنامه‌های مدل زبان بزرگ (LLM)، ما به طور آگاهانه تصمیم گرفتیم که در تهیه این ترجمه تنها از مترجمان انسانی استفاده کنیم. مترجمان ذکرشده در بالا نه تنها دانش فنی عمیقی از محتوای اصلی دارند، بلکه تسلط لازم برای انجام موفقیت‌آمیز این ترجمه را نیز دارا هستند.
 
 #### Talesh Seeparsan
 
 رهبر ترجمه «10 آسیب‌پذیری برتر امنیتی OWASP برای برنامه‌های کاربردی مدل‌های زبانی بزرگ»
 
-LinkedIn: https://www.linkedin.com/in/talesh/
+LinkedIn: <https://www.linkedin.com/in/talesh/>
