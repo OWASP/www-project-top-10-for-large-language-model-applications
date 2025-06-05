@@ -20,33 +20,38 @@
 
 이 프로젝트에 도움을 주신 모든 분들과 계속해서 사용하고 개선해 주시는 모든 분들께 감사드립니다. 여러분과 함께 이 작업에 참여하게 되어 감사하게 생각합니다.
 
-
 #### Steve Wilson
-LLM 애플리케이션을 위한 OWASP Top 10 프로젝트 리더
-LinkedIn: https://www.linkedin.com/in/wilsonsd/
+
+LLM 애플리케이션을 위한 OWASP Top 10 프로젝트 리더  
+LinkedIn: <https://www.linkedin.com/in/wilsonsd/>
 
 #### Ads Dawson
-LLM 애플리케이션을 위한 OWASP Top 10 기술 리더 및 취약점 항목 리더
-LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
+LLM 애플리케이션을 위한 OWASP Top 10 기술 리더 및 취약점 항목 리더  
+LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 
 ### 한국어 번역팀
+
 #### 전영재(Youngjae Jeon)
-LLM 애플리케이션을 위한 OWASP Top 10 한국어 번역 리더
-LinkedIn: https://www.linkedin.com/in/whitehat-kr/
+
+LLM 애플리케이션을 위한 OWASP Top 10 한국어 번역 리더  
+LinkedIn: <https://www.linkedin.com/in/whitehat-kr/>
 
 #### 성지연(Jiyeon Sung)
-LLM 애플리케이션을 위한 OWASP Top 10 한국어 번역 참여자
-LinkedIn: https://www.linkedin.com/in/ji-yeon-sung-8a3326b9/
+
+LLM 애플리케이션을 위한 OWASP Top 10 한국어 번역 참여자  
+LinkedIn: <https://www.linkedin.com/in/ji-yeon-sung-8a3326b9/>
 
 #### 송현석(Hyunseok Song)
-LLM 애플리케이션을 위한 OWASP Top 10 한국어 번역 참여자
-LinkedIn: https://www.linkedin.com/in/hyun-seok-song-07b27b176/
 
+LLM 애플리케이션을 위한 OWASP Top 10 한국어 번역 참여자  
+LinkedIn: <https://www.linkedin.com/in/hyun-seok-song-07b27b176/>
 
 ### 번역 정보
+
 LLM 애플리케이션을 위한 OWASP Top 10의 기술적이고 중요한 특성을 고려하여 이 번역을 제작할 때 오로지 번역자가 직접 진행하기로 결정하였습니다. 위에 나열된 번역자들은 원본 콘텐츠에 대한 깊은 기술적 지식을 갖추고 있을 뿐만 아니라, 이 번역을 성공적으로 수행하는 데 필요한 언어적 유창함도 갖추고 있습니다.
 
 #### Talesh Seeparsan
-대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 번역 리더
-LinkedIn: https://www.linkedin.com/in/talesh/
+
+대규모 언어 모델 애플리케이션을 위한 OWASP Top 10 번역 리더  
+LinkedIn: <https://www.linkedin.com/in/talesh/>
