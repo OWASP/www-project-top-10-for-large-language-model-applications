@@ -20,29 +20,32 @@
 
 Ευχαριστούμε όλους όσους βοήθησαν να υλοποιηθεί η λίστα και όσους συνεχίζουν να τη χρησιμοποιούν και να τη βελτιώνουν. Είμαστε ευγνώμονες που συμμετέχουμε σε αυτό το έργο μαζί σας.
 
-
 #### Steve Wilson
-Επικεφαλής έργου
-OWASP Top 10 for Large Language Model Applications
-LinkedIn: https://www.linkedin.com/in/wilsonsd/
+
+Επικεφαλής έργου  
+OWASP Top 10 for Large Language Model Applications  
+LinkedIn: <https://www.linkedin.com/in/wilsonsd/>
 
 #### Ads Dawson
-Τεχνικός Υπεύθυνος & Επικεφαλής Καταχωρήσεων Ευπαθειών
-OWASP Top 10 for Large Language Model Applications
-LinkedIn: https://www.linkedin.com/in/adamdawson0/
 
-
+Τεχνικός Υπεύθυνος & Επικεφαλής Καταχωρήσεων Ευπαθειών  
+OWASP Top 10 for Large Language Model Applications  
+LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 
 ### Ομάδα Ελληνικής Μετάφρασης
-Aristeidis Zoumpakis
-LinkedIn: https://www.linkedin.com/in/aristeidis-zoumpakis-9652532b/
 
-Georgios Vyzaniaris
-LinkedIn: https://www.linkedin.com/in/georgevizaniaris/
+Aristeidis Zoumpakis  
+LinkedIn: <https://www.linkedin.com/in/aristeidis-zoumpakis-9652532b/>
+
+Georgios Vyzaniaris  
+LinkedIn: <https://www.linkedin.com/in/georgevizaniaris/>
 
 ### Σχετικά με αυτή τη μετάφραση
+
 Αναγνωρίζοντας τον τεχνικό και κρίσιμο χαρακτήρα του OWASP Top 10 for Large Language Model Applications, επιλέξαμε συνειδητά να χρησιμοποιήσουμε μόνο φυσικούς μεταφραστές για τη δημιουργία αυτής της μετάφρασης. Οι μεταφραστές που αναφέρονται παραπάνω δεν έχουν μόνο βαθιά τεχνική γνώση του αρχικού περιεχομένου, αλλά και την ευχέρεια που απαιτείται για να επιτύχει αυτή η μετάφραση.
 
 #### Talesh Seeparsan
-Translation Lead, OWASP Top 10 for AI Applications LLM
-LinkedIn: https://www.linkedin.com/in/talesh/
+
+Translation Lead  
+OWASP Top 10 for AI Applications LLM  
+LinkedIn: <https://www.linkedin.com/in/talesh/>
