@@ -2,7 +2,7 @@
 
 "LLM applications के  लिए OWASP के  शीर्ष 10" 2023 में शुरू हुआ एक समुदाय-संचालित प्रयास हैं, जो AI applications के   सुरक्षा मुद्दों को उजागर एवं संबोधित करता हैं । आज टेक्नॉलोजी ने उद्योगों एवं applications में जो बदलाव किये गए हैं, उससे कई जोखिमों को जन्म मिला हैंं । चूंकि LLM, ग्राहक के प्रयोग से लेकर आंतरिक संचालन तक हर जगह गहराई से पहुँच चुका हैंं, इसलिये developers तथा सुरक्षा पेशेवर नई vulnerabilities की खोज एवं  उनसे मुकाबला  करने  के  तरीकें  खोज  रहे  हैं ।
 
-2023 की सूची जागरूकता बढ़ाने और सुरक्षित LLM उपयोग के  लिए एक नींव का पत्थर बनी हैं, लेकिन तब से अब तक हमने और भी अधिक सीखा हैं । इस नए 2025 के  संस्करण में, हमने दुनियाभर में योगदानकर्ताओं के  एक बड़े, अधिक विविध समूह के  साथ काम किया हैं, जिन्होंने  इस सूची को इस आकार मे ढाला हैं । इस प्रक्रिया में हमने विचार-विमर्श, मतदान, पेशेवरों  से मंथन एवं फीडबैक को  माध्यम बनाया हैं । प्रत्येक हाथ की माजबूती ने इस रिलीज को यथासंभव एवं व्यावहारिक 
+2023 की सूची जागरूकता बढ़ाने और सुरक्षित LLM उपयोग के  लिए एक नींव का पत्थर बनी हैं, लेकिन तब से अब तक हमने और भी अधिक सीखा हैं । इस नए 2025 के  संस्करण में, हमने दुनियाभर में योगदानकर्ताओं के  एक बड़े, अधिक विविध समूह के  साथ काम किया हैं, जिन्होंने  इस सूची को इस आकार मे ढाला हैं । इस प्रक्रिया में हमने विचार-विमर्श, मतदान, पेशेवरों  से मंथन एवं फीडबैक को  माध्यम बनाया हैं । प्रत्येक हाथ की माजबूती ने इस रिलीज को यथासंभव एवं व्यावहारिक
  बनाने  में  महत्वपूर्ण  भूमिका  निभाई  हैं ।
 
 ### 2025 की सूची में क्या नया हैं
@@ -21,36 +21,44 @@ Agent पर आधारित ढ़ाचे का बढ़ते उपयो
 
 हम सभी को धन्यवाद करतें हैं जिन्होंने इसे एक साथ लाने में मदद की और जो इसके  उपयोग एवं सुधार के  लिये सुदृढ़ हैंं । हम आपके  साथ इस कार्य का हिस्सा बनने के  लिए आभारी हैंं ।
 
-
 #### Steve Wilson
-Project Lead
-OWASP Top 10 for Large Language Model Applications
-LinkedIn: https://www.linkedin.com/in/wilsonsd/
+
+Project Lead  
+OWASP Top 10 for Large Language Model Applications  
+LinkedIn: <https://www.linkedin.com/in/wilsonsd/>
 
 #### Ads Dawson
-Technical Lead & Vulnerability Entries Lead
-OWASP Top 10 for Large Language Model Applications
-LinkedIn: https://www.linkedin.com/in/adamdawson0/
+
+Technical Lead & Vulnerability Entries Lead  
+OWASP Top 10 for Large Language Model Applications  
+LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 
 ---
 
 ### हिंदी अनुवादक टीम
 
 #### Dhruv Agarwal
-LinkedIn: [Dhruv Agarwal](https://www.linkedin.com/in/dhruwen/)
+
+LinkedIn: <https://www.linkedin.com/in/dhruwen/>
 
 #### Murali Krishna Kandula
-LinkedIn: [Murali Krishna Kandula](https://www.linkedin.com/in/mkkandula/)
+
+LinkedIn: <https://www.linkedin.com/in/mkkandula/>
 
 #### Rachit Sood
-LinkedIn: [Rachit Sood](https://www.linkedin.com/in/sn4kecharmer/)
+
+LinkedIn: <https://www.linkedin.com/in/sn4kecharmer/>
 
 #### Ojas Sharma
-LinkedIn: [Ojas Sharma](https://www.linkedin.com/in/ojas-sharma-179948201/)
+
+LinkedIn: <https://www.linkedin.com/in/ojas-sharma-179948201/>
 
 ### इस अनुवाद के बारे में
+
 "LLM applications के  लिए OWASP शीर्ष 10" की तकनीकी एवं संवेदनशील प्रकृति  को देखते हुँए, हमने इस अनुवाद के  निर्माण में केवल  मानव अनुवादकों का प्रयोग किया हैंं । सूचीबद्ध अनुवादक एवं समीक्षकों को न केवल  मूल सामग्री का गहन तकनीकी ज्ञान है, बल्कि इस अनुवाद को सफल बनाने के  लिए आवश्यक पृष्ठभूमि भी हैंं ।
 
 #### Talesh Seeparsan
-Translation Lead, OWASP Top 10 for AI Applications LLM
-LinkedIn: https://www.linkedin.com/in/talesh/
+
+Translation Lead  
+OWASP Top 10 for AI Applications LLM  
+LinkedIn: <https://www.linkedin.com/in/talesh/>
