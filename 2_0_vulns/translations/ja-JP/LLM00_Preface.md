@@ -21,38 +21,45 @@ LLM にさらなる自律性を与えることができるエージェントア�
 これをまとめるのに協力してくれた皆さん、そしてそれを使用し改善し続けてくれた皆さんに感謝します。皆さんと一緒にこの取り組みに参加できることに感謝しています。
 
 #### Steve Wilson
-Project Lead
-OWASP Top 10 for Large Language Model Applications
-LinkedIn: https://www.linkedin.com/in/wilsonsd/
+
+Project Lead  
+OWASP Top 10 for Large Language Model Applications  
+LinkedIn: <https://www.linkedin.com/in/wilsonsd/>
 
 #### Ads Dawson
-Technical Lead & Vulnerability Entries Lead
-OWASP Top 10 for Large Language Model Applications
-LinkedIn: https://www.linkedin.com/in/adamdawson0/
+
+Technical Lead & Vulnerability Entries Lead  
+OWASP Top 10 for Large Language Model Applications  
+LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 
 ---
 
 ### Japanese Translation Team
 
 #### Teresa Tsukiji (築地 テレサ)
-Japanese Localization Co-Lead
-LinkedIn: https://www.linkedin.com/in/teresatsukiji/
+
+Japanese Localization Co-Lead  
+LinkedIn: <https://www.linkedin.com/in/teresatsukiji/>
 
 #### Yuki Kashiwada (柏田 祐樹)
-Japanese Localization Co-Lead
-LinkedIn: https://www.linkedin.com/in/yuki-kashiwada/
+
+Japanese Localization Co-Lead  
+LinkedIn: <https://www.linkedin.com/in/yuki-kashiwada/>
 
 #### Riotaro Okada (岡田 良太郎)
-Japanese Localization Reviewer
-LinkedIn: https://www.linkedin.com/in/riotaro/
+
+Japanese Localization Reviewer  
+LinkedIn: <https://www.linkedin.com/in/riotaro/>
 
 #### Takahiro Aoyama
-Japanese Localization Reviewer
-LinkedIn: https://www.linkedin.com/in/takahiro-aoyama-323a3a13/
+
+Japanese Localization Reviewer  
+LinkedIn: <https://www.linkedin.com/in/takahiro-aoyama-323a3a13/>
 
 #### Riki Ota (太田 吏城)
-Japanese Localization Reviewer
-LinkedIn: https://www.linkedin.com/in/riki-o-10b72816/
+
+Japanese Localization Reviewer  
+LinkedIn: <https://www.linkedin.com/in/riki-o-10b72816/>
 
 ### この翻訳について
 
@@ -60,5 +67,6 @@ OWASP Top 10 for Large Language Model Applications は、技術的かつ重要�
 
 #### Talesh Seeparsan
 
-Translation Lead, OWASP Top 10 for AI Applications LLM
-LinkedIn: https://www.linkedin.com/in/talesh/
+Translation Lead  
+OWASP Top 10 for AI Applications LLM  
+LinkedIn: <https://www.linkedin.com/in/talesh/>
