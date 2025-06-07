@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
 .smalllogo {
   text-align: center;
@@ -32,7 +32,7 @@
   text-transform: uppercase;
   font-weight: bold;
   font-size: 17px;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: 900;
   padding: 5px 10px;
   margin: 0 280px;
@@ -62,7 +62,9 @@
   font-style: italic;
 }
 body {
-  font-family: 'Barlow', sans-serif;
+  text-align: justify;
+  word-break: keep-all;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: 400;
   font-size: 15px;
   line-height: 20px;
@@ -83,7 +85,7 @@ h1 {
   margin-bottom: 100px;
   text-align: left;
   vertical-align: middle;
-  font-family: "Poppins", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 56px;
@@ -108,10 +110,10 @@ h2 {
   margin-bottom: 30px;
   text-align: left;
   vertical-align: middle;
-  font-family: "Poppins", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 42px;
+  font-size: 36px;
   page-break-after: avoid;
   letter-spacing: -0.02em;
   page-break-before: always;
@@ -123,7 +125,7 @@ h2 {
 }
 
 h3 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   font-size: 28px;
   line-height: 36px;
@@ -136,7 +138,7 @@ h3 {
 }
 
 h4 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 20px;
@@ -149,7 +151,7 @@ h4 {
 }
 
 h5 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 17px;
   font-weight: 600;
   list-style-type: none;
@@ -169,7 +171,7 @@ h6 {
   margin-bottom: 30px;
   text-align: left;
   vertical-align: middle;
-  font-family: "Poppins", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 42px;
@@ -227,7 +229,7 @@ table {
 }
 
 table td {
-  font-family: "Poppins", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 20px;
   font-weight: 400;
   list-style-type: none;

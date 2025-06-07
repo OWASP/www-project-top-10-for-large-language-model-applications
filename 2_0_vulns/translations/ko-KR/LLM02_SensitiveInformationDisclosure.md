@@ -1,4 +1,4 @@
-## LLM02:2025 민감 정보 유출
+## LLM02: 2025 민감 정보 유출
 
 ### 설명
 
@@ -24,66 +24,35 @@
 
 ### 예방 및 완화 전략
 
-#### 정제(Sanitization)
+#### 1. 정제(Sanitization)
 
-#### 1. 데이터 정제 기술 통합
+- **데이터 정제 기술 통합:** 이용자 데이터가 훈련 모델에 들어가지 않도록 데이터를 정제하도록 구현합니다. 여기에는 훈련에 사용되기 전에 민감한 콘텐츠를 삭제하거나 마스킹하는 것이 포함됩니다.
+- **강력한 입력 검증:** 모델이 손상되지 않도록 잠재적으로 유해하거나 민감한 데이터 입력을 감지하고 필터링하기 위해 엄격한 입력 검증 방법을 적용하십시오.
 
-  이용자 데이터가 훈련 모델에 들어가지 않도록 데이터를 정제하도록 구현합니다. 여기에는 훈련에 사용되기 전에 민감한 콘텐츠를 삭제하거나 마스킹하는 것이 포함됩니다.
+#### 2. 액세스 제어
 
-#### 2. 강력한 입력 검증
+- **엄격한 액세스 제어 시행:** 최소 권한 원칙에 따라 민감한 데이터에 대한 액세스를 제한합니다. 특정 이용자 또는 프로세스에 필요한 데이터에만 액세스 권한을 부여하세요.
+- **데이터 소스 제한:** 외부 데이터 소스에 대한 모델 액세스를 제한하고, 의도치 않은 데이터 유출을 방지하기 위해 런타임 데이터 오케스트레이션을 안전하게 관리하세요.
 
-  모델이 손상되지 않도록 잠재적으로 유해하거나 민감한 데이터 입력을 감지하고 필터링하기 위해 엄격한 입력 검증 방법을 적용하십시오.
+#### 3. 연합 학습 및 개인정보 보호 기술
 
-#### 액세스 제어
+- **연합 학습 활용:** 여러 서버 또는 디바이스에 저장된 분산형 데이터를 사용하여 모델을 훈련합니다. 이 접근 방식은 중앙 집중식 데이터 수집의 필요성을 최소화하고 유출 위험을 줄입니다.
+- **차등 개인정보 보호 통합:** 데이터 또는 출력에 노이즈를 추가하는 기술을 적용하여 공격자가 개별 데이터 포인트를 리버스 엔지니어링하기 어렵게 만듭니다.
 
-#### 1. 엄격한 액세스 제어 시행
+#### 4. 이용자 교육 및 투명성
 
-  최소 권한 원칙에 따라 민감한 데이터에 대한 액세스를 제한합니다. 특정 이용자 또는 프로세스에 필요한 데이터에만 액세스 권한을 부여하세요.
+- **이용자에게 안전한 LLM 사용법 교육:** 민감 정보를 입력하지 않도록 안내합니다. LLM과 안전하게 상호 작용하기 위한 모범 사례에 대한 교육을 제공하세요.
+- **데이터 사용의 투명성 보장:** 데이터 보존, 사용 및 삭제에 대한 명확한 정책을 유지합니다. 이용자가 자신의 데이터가 교육 프로세스에 포함되는 것을 거부할 수 있도록 합니다.
 
-#### 2. 데이터 소스 제한
+#### 5. 보안 시스템 구성
 
-  외부 데이터 소스에 대한 모델 액세스를 제한하고, 의도치 않은 데이터 유출을 방지하기 위해 런타임 데이터 오케스트레이션을 안전하게 관리하세요.
+- **시스템 프리앰블 은닉:** 이용자가 시스템의 초기 설정을 재정의하거나 액세스할 수 있는 기능을 제한하여 내부 구성에 유출될 위험을 줄입니다.
+- **보안 구성 오류 모범 사례 참조:** 오류 메시지나 설정 세부 정보를 통해 민감 정보가 유출되지 않도록 "OWASP API8:2023 보안 구성 오류"와 같은 지침을 따르세요. (참조 링크: [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
-#### 연합 학습 및 개인정보 보호 기술
+#### 6. 고급 기술
 
-#### 1. 연합 학습 활용
-
-  여러 서버 또는 디바이스에 저장된 분산형 데이터를 사용하여 모델을 훈련합니다. 이 접근 방식은 중앙 집중식 데이터 수집의 필요성을 최소화하고 유출 위험을 줄입니다.
-
-#### 2. 차등 개인정보 보호 통합
-
-  데이터 또는 출력에 노이즈를 추가하는 기술을 적용하여 공격자가 개별 데이터 포인트를 리버스 엔지니어링하기 어렵게 만듭니다.
-
-#### 이용자 교육 및 투명성
-
-#### 1. 이용자에게 안전한 LLM 사용법 교육
-
-  민감 정보를 입력하지 않도록 안내합니다. LLM과 안전하게 상호 작용하기 위한 모범 사례에 대한 교육을 제공하세요.
-
-#### 2. 데이터 사용의 투명성 보장
-
-  데이터 보존, 사용 및 삭제에 대한 명확한 정책을 유지합니다. 이용자가 자신의 데이터가 교육 프로세스에 포함되는 것을 거부할 수 있도록 합니다.
-
-#### 보안 시스템 구성
-
-#### 1. 시스템 프리앰블 은닉
-
-  이용자가 시스템의 초기 설정을 재정의하거나 액세스할 수 있는 기능을 제한하여 내부 구성에 유출될 위험을 줄입니다.
-
-#### 2. 보안 구성 오류 모범 사례 참조
-
-  오류 메시지나 설정 세부 정보를 통해 민감 정보가 유출되지 않도록 "OWASP API8:2023 보안 구성 오류"와 같은 지침을 따르세요.
-  (참조 링크: [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
-
-#### 고급 기술
-
-#### 1. 동형 암호화(Homomorphic Encryption)
-
-  동형 암호화를 사용하여 안전한 데이터 분석 및 개인정보 보호 머신러닝을 가능하게 합니다. 이를 통해 데이터가 모델에 의해 처리되는 동안 기밀성을 유지합니다.
-
-#### 2. 토큰화 및 비공개 처리
-
-  민감 정보를 전처리하고 정화하기 위해 토큰화를 구현합니다. 패턴 매칭과 같은 기술은 처리하기 전에 기밀 콘텐츠를 감지하고 삭제할 수 있습니다.
+- **동형 암호화(Homomorphic Encryption):** 동형 암호화를 사용하여 안전한 데이터 분석 및 개인정보 보호 머신러닝을 가능하게 합니다. 이를 통해 데이터가 모델에 의해 처리되는 동안 기밀성을 유지합니다.
+- **토큰화 및 비공개 처리:** 민감 정보를 전처리하고 정화하기 위해 토큰화를 구현합니다. 패턴 매칭과 같은 기술은 처리하기 전에 기밀 콘텐츠를 감지하고 삭제할 수 있습니다.
 
 ### 공격 시나리오 예시
 
@@ -101,16 +70,16 @@
 
 ### 참조 링크
 
-1. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
-2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
-3. [ChatGPT Spit Out Sensitive Data When Told to Repeat ‘Poem’ Forever](https://www.wired.com/story/chatgpt-poem-forever-security-roundup/): **Wired**
-4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
-5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/): **AVID** (`moohax` & `monoxgas`)
+1. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): Cybernews
+2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): Fox Business
+3. [ChatGPT Spit Out Sensitive Data When Told to Repeat ‘Poem’ Forever](https://www.wired.com/story/chatgpt-poem-forever-security-roundup/): Wired
+4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): Neptune Blog
+5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/): AVID (moohax & monoxgas)
 
 ### 관련 프레임워크 및 분류
 
 인프라 구축과 관련된 종합적인 정보, 시나리오 전략, 적용된 환경 제어 및 기타 모범 사례는 이 섹션을 참조하세요.
 
-- [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000): **MITRE ATLAS**
-- [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001): **MITRE ATLAS**
-- [AML.T0024.002 - Extract ML Model](https://atlas.mitre.org/techniques/AML.T0024.002): **MITRE ATLAS**
+- [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000): MITRE ATLAS
+- [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001): MITRE ATLAS
+- [AML.T0024.002 - Extract ML Model](https://atlas.mitre.org/techniques/AML.T0024.002): MITRE ATLAS

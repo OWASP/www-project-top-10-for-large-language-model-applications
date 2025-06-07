@@ -1,4 +1,4 @@
-## LLM03:2025 공급망
+## LLM03: 2025 공급망
 
 ### 설명
 
@@ -6,7 +6,7 @@ LLM 공급망은 다양한 취약점이 존재하며, 이는 학습 데이터, �
 
 이러한 외부 요소는 변조 또는 오염 공격(Poisoning Attack)을 통해 조작할 수 있습니다.
 
-LLM 생성은 종종 타사 모델에 의존하는 전문 작업입니다. 특히 허깅페이스(Hugging Face)와 같은 플랫폼에서 오픈 액세스 LLM과 "LoRA(Low-Rank Adaptation)" 및 "PEFT(Parameter-Efficient Fine-Tuning)"와 같은 새로운 미세 조정 방법이 등장하면서 새로운 공급망 리스크가 발생합니다. 마지막으로 온디바이스 LLM의 등장으로 LLM 애플리케이션의 공격 표면과 공급망 위험이 증가합니다.
+LLM 생성은 종종 타사 모델에 의존하는 전문 작업입니다. 특히 허깅페이스(Hugging Face)와 같은 플랫폼에서 오픈 액세스 LLM과 "LoRA(Low-Rank Adaptation)" 및 "PEFT (Parameter-Efficient Fine-Tuning)"와 같은 새로운 미세 조정 방법이 등장하면서 새로운 공급망 리스크가 발생합니다. 마지막으로 온디바이스 LLM의 등장으로 LLM 애플리케이션의 공격 표면과 공급망 위험이 증가합니다.
 
 여기서 논의되는 위험 중 일부는 "LLM04 데이터 및 모델 오염"에서도 설명합니다. 이 항목에서는 위험의 공급망 측면에 초점을 맞춥니다.
 간단한 위협 모델은 [여기](https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-LLM%20Supply%20Chain.png)에서 확인할 수 있습니다.
@@ -53,16 +53,12 @@ LLM 생성은 종종 타사 모델에 의존하는 전문 작업입니다. 특�
 ### 예방 및 완화 전략
 
 1. 신뢰할 수 있는 공급업체만 사용하며, 이용약관 및 개인정보 보호 정책을 포함하여 데이터 소스 및 공급업체를 신중하게 검토합니다. 공급업체의 보안 및 액세스를 정기적으로 검토하고 감사하여 보안상태나 이용약관에 변화가 없는지 확인합니다.
-2. OWASP Top 10의 "A06:2021 - 취약하고 오래된 구성 요소"에 나와 있는 완화 조치를 이해하고 적용하세요. 여기에는 취약점 검사, 관리 및 패치 구성 요소가 포함됩니다. 민감한 데이터에 액세스할 수 있는 개발 환경의 경우 해당 환경에도 이러한 제어를 적용하세요.
-  (참조 링크: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
+2. OWASP Top 10의 "A06:2021 - 취약하고 오래된 구성 요소"에 나와 있는 완화 조치를 이해하고 적용하세요. 여기에는 취약점 검사, 관리 및 패치 구성 요소가 포함됩니다. 민감한 데이터에 액세스할 수 있는 개발 환경의 경우 해당 환경에도 이러한 제어를 적용하세요. (참조 링크: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
 3. 타사 모델을 선택할 때는 포괄적인 AI 레드팀 및 평가를 수행하세요. 디코딩 신뢰도는 LLM에 대한 신뢰할 수 있는 AI 벤치마크의 예이지만, 공개된 벤치마크를 통과하여 모델을 미세 조정할 수 있습니다. 특히 모델을 사용하려는 사용 사례에서 모델을 평가하려면 광범위한 AI 레드팀을 활용하세요.
-4. 소프트웨어 자재 명세서(Software Bill Of Materials, SBOM)를 사용하여 구성 요소의 최신 인벤토리를 유지하여 배포된 패키지의 변조를 방지하고, 정확하게 서명된 최신 인벤토리를 확보하세요. SBOM을 사용하면 새로운 제로데이 취약점을 신속하게 탐지하고 경고할 수 있습니다. AI BOM 및 ML SBOM은 새롭게 떠오르는 분야이므로 OWASP CycloneDX를 시작으로 옵션을 평가해야 합니다.
-  (참조 링크: [OWASP CycloneDX](https://cyclonedx.org/))
-5. AI 라이선싱 위험을 완화하려면 BOM을 사용하여 관련된 모든 유형의 라이선스 인벤토리를 생성하고 모든 소프트웨어, 도구 및 데이터셋에 대한 정기적인 감사를 수행하여 BOM을 통해 규정 준수와 투명성을 보장하세요. 자동화된 라이선스 관리 도구를 사용하여 실시간 모니터링하고 라이선스 모델에 대한 팀 교육을 실시하세요. BOM에 상세한 라이선스 문서를 유지하고 Dyana와 같은 도구를 활용하여 타사 소프트웨어에 대한 동적 분석을 수행하세요.
-  (참조 링크: [Dyana](https://github.com/dreadnode/dyana))
+4. 소프트웨어 자재 명세서(Software Bill Of Materials, SBOM)를 사용하여 구성 요소의 최신 인벤토리를 유지하여 배포된 패키지의 변조를 방지하고, 정확하게 서명된 최신 인벤토리를 확보하세요. SBOM을 사용하면 새로운 제로데이 취약점을 신속하게 탐지하고 경고할 수 있습니다. AI BOM 및 ML SBOM은 새롭게 떠오르는 분야이므로 OWASP CycloneDX를 시작으로 옵션을 평가해야 합니다. (참조 링크: [OWASP CycloneDX](https://cyclonedx.org/))
+5. AI 라이선싱 위험을 완화하려면 BOM을 사용하여 관련된 모든 유형의 라이선스 인벤토리를 생성하고 모든 소프트웨어, 도구 및 데이터셋에 대한 정기적인 감사를 수행하여 BOM을 통해 규정 준수와 투명성을 보장하세요. 자동화된 라이선스 관리 도구를 사용하여 실시간 모니터링하고 라이선스 모델에 대한 팀 교육을 실시하세요. BOM에 상세한 라이선스 문서를 유지하고 Dyana와 같은 도구를 활용하여 타사 소프트웨어에 대한 동적 분석을 수행하세요. (참조 링크: [Dyana](https://github.com/dreadnode/dyana))
 6. 검증 가능한 출처의 모델만 사용하고 서명 및 파일 해시와 함께 타사 모델 무결성 검사를 사용하여 강력한 모델 출처의 부족을 보완하세요. 마찬가지로 외부에서 제공된 코드에는 코드 서명을 사용하세요.
-7. 협업 모델 개발 환경에 대한 엄격한 모니터링 및 감사 관행을 구현하여 남용을 방지하고 신속하게 탐지하세요. 자동화된 스크립트의 예로 "HuggingFace SF_Convertbot Scanner"를 사용할 수 있습니다.
-  (참조 링크: [HuggingFace SF_Convertbot Scanner](https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163))
+7. 협업 모델 개발 환경에 대한 엄격한 모니터링 및 감사 관행을 구현하여 남용을 방지하고 신속하게 탐지하세요. 자동화된 스크립트의 예로 "HuggingFace SF_Convertbot Scanner"를 사용할 수 있습니다. (참조 링크: [HuggingFace SF_Convertbot Scanner](https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163))
 8. 제공된 모델과 데이터에 대한 이상 징후 탐지 및 적대적 견고성 테스트는 "LLM04 데이터 및 모델 오염"에서 설명하는대로 변조 및 오염을 탐지하는 데 도움이 될 수 있으며, 이상적으로는 MLOps 및 LLM 파이프라인의 일부가 되어야 하지만 이는 새로운 기술이며 레드팀 구성 연습의 일환으로 구현하는 것이 더 쉬울 수 있습니다.
 9. 취약하거나 오래된 구성 요소를 완화하기 위해 패치 정책을 구현합니다. 애플리케이션이 유지 관리되는 버전의 API 및 기본 모델에 의존하는지 확인합니다.
 10. 무결성 검사를 통해 AI 엣지에 배포된 모델을 암호화하고 공급업체 증명 API를 사용하여 변조된 앱과 모델을 방지하고 인식되지 않는 펌웨어의 애플리케이션을 종료합니다.
@@ -139,4 +135,4 @@ LLM 생성은 종종 타사 모델에 의존하는 전문 작업입니다. 특�
 
 인프라 구축과 관련된 종합적인 정보, 시나리오 전략, 적용된 환경 제어 및 기타 모범 사례는 이 섹션을 참조하세요.
 
-- [ML Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010):  **MITRE ATLAS**
+- [ML Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010):  MITRE ATLAS
