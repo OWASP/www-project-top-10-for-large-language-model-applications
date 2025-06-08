@@ -24,7 +24,7 @@
 
 رهبر پروژه «10 آسیب‌پذیری برتر امنیتی OWASP برای برنامه‌های کاربردی مدل‌های زبانی بزرگ»
 
-لینکدین: <https://www.linkedin.com/in/wilsonsd/>
+LinkedIn: <https://www.linkedin.com/in/wilsonsd>
 
 #### Ads Dawson
 
@@ -32,7 +32,7 @@
 
 رهبر پروژه «10 آسیب‌پذیری برتر امنیتی OWASP برای برنامه‌های کاربردی مدل‌های زبانی بزرگ»
 
-LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
+LinkedIn: <https://www.linkedin.com/in/adamdawson0>
 
 ### تیم ترجمه فارسی
 
@@ -52,4 +52,4 @@ LinkedIn: <https://www.linkedin.com/in/arian-gharedaghi>
 
 رهبر ترجمه «10 آسیب‌پذیری برتر امنیتی OWASP برای برنامه‌های کاربردی مدل‌های زبانی بزرگ»
 
-LinkedIn: <https://www.linkedin.com/in/talesh/>
+LinkedIn: <https://www.linkedin.com/in/talesh>
