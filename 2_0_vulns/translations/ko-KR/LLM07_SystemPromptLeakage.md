@@ -1,4 +1,4 @@
-## LLM07:2025 시스템 프롬프트 유출
+## LLM07: 2025 시스템 프롬프트 유출
 
 ### 설명
 
@@ -63,14 +63,14 @@ LLM에서 시스템 프롬프트 유출 취약점은 시스템 프롬프트나 �
 
 ### 참조 링크
 
-1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): **Pliny the prompter**
-2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): **Prompt Security**
-3. [chatgpt_system_prompt](https://github.com/LouisShark/chatgpt_system_prompt): **LouisShark**
-4. [leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts): **Jujumilk3**
-5. [OpenAI Advanced Voice Mode System Prompt](https://x.com/Green_terminals/status/1839141326329360579): **Green_Terminals**
+1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
+2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): Prompt Security
+3. [chatgpt_system_prompt](https://github.com/LouisShark/chatgpt_system_prompt): LouisShark
+4. [leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts): Jujumilk3
+5. [OpenAI Advanced Voice Mode System Prompt](https://x.com/Green_terminals/status/1839141326329360579): Green_Terminals
 
 ### 관련 프레임워크 및 분류
 
 인프라 구축과 관련된 종합적인 정보, 시나리오 전략, 적용된 환경 제어 및 기타 모범 사례는 이 섹션을 참조하세요.
 
-- [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000): **MITRE ATLAS**
+- [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000): MITRE ATLAS

@@ -1,4 +1,4 @@
-## LLM01:2025 프롬프트 인젝션
+## LLM01: 2025 프롬프트 인젝션
 
 ### 설명
 
@@ -6,7 +6,7 @@
 
 프롬프트 인젝션 취약점은 모델이 프롬프트를 처리하는 방식과 입력으로 인해 모델이 프롬프트 데이터를 모델의 다른 부분으로 잘못 전달하여 지침을 위반하거나, 유해한 콘텐츠를 생성하거나, 무단 액세스를 가능하게 하거나, 중요한 결정에 영향을 미칠 수 있는 가능성이 존재합니다. RAG 및 미세 조정과 같은 기술은 LLM 출력을 보다 관련성 있고 정확성을 높이는 것을 목표로 하지만, 연구 결과에 따르면 프롬프트 인젝션 취약점을 완전히 완화하지는 못하는 것으로 나타났습니다.
 
-프롬프트 인젝션과 탈옥은 LLM 보안에서 관련 개념이지만 종종 같은 의미로 사용됩니다. 프롬프트 인젝션은 특정 입력을 통해 모델 응답을 조작하여 동작을 변경하는 것으로 여기에는 안전 조치를 우회하는 것이 포함될 수 있습니다. 탈옥은 공격자가 모델이 안전 프로토콜을 완전히 무시하도록 하는 입력을 제공하는 일종의 프롬프트 인젝션의 한 종류입니다. 개발자는 시스템 프롬프트와 입력 처리에 안전 장치를 구축하여 프롬프트 인젝션 공격을 완화할 수 있지만, 탈옥을 효과적으로 방지하려면 모델의 학습 및 안전 메커니즘을 지속적으로 업데이트해야 합니다.
+프롬프트 인젝션과 탈옥은 LLM 보안에서 관련 개념이지만 종종 같은 의미로 사용됩니다. 프롬프트 인젝션은 특정 입력을 통해 모델 응답을 조작하여 동작을 변경하는 것으로 여기에는 안전 조치를 우회하는 것이 포함될 수 있습니다. 탈옥은 공격자가 모델이 안전 프로토콜을 완전히 무시하도록 하는 입력을 제공하는 일종의 프롬프트 인젝션의 한 종류입니다. 개발자는 시스템 프롬프트와 입력 처리에 안전 장치를 구축하여 프롬프트 인젝션 공격을 완화할 수 있지만, 탈옥을 효과적으로 방지하려면 모델의 학습 및 안전 메커니즘을 지속적으로 업데이트 해야 합니다.
 
 ### 일반적 취약점 예시
 
@@ -102,14 +102,14 @@
 
 ### 참조 링크
 
-1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/): **Embrace the Red**
-2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./): **Embrace the Red**
-3. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf): **Arxiv**
-4. [Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1): **Research Square**
-5. [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499): **Cornell University**
-6. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf): **Kai Greshake**
-7. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/): **AI Village**
-8. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/): **Kudelski Security**
+1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/): Embrace the Red
+2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./): Embrace the Red
+3. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf): Arxiv
+4. [Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1): Research Square
+5. [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499): Cornell University
+6. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf): Kai Greshake
+7. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/): AI Village
+8. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/): Kudelski Security
 9. [Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
 10. [2407.07403 A Survey of Attacks on Large Vision-Language Models: Resources, Advances, and Future Trends (arxiv.org)](https://arxiv.org/abs/2407.07403)
 11. [Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks](https://ieeexplore.ieee.org/document/10579515)
@@ -120,6 +120,6 @@
 
 인프라 구축과 관련된 종합적인 정보, 시나리오 전략, 적용된 환경 제어 및 기타 모범 사례는 이 섹션을 참조하세요.
 
-- [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000): **MITRE ATLAS**
-- [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001): **MITRE ATLAS**
-- [AML.T0054 - LLM Jailbreak Injection: Direct](https://atlas.mitre.org/techniques/AML.T0054): **MITRE ATLAS**
+- [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000): MITRE ATLAS
+- [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001): MITRE ATLAS
+- [AML.T0054 - LLM Jailbreak Injection: Direct](https://atlas.mitre.org/techniques/AML.T0054): MITRE ATLAS
