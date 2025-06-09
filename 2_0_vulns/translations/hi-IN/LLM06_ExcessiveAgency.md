@@ -24,14 +24,12 @@
 #### 1. अत्यधिक कार्यक्षमता (excessive functionality)
 
 * एक LLM एजेंट के  पास कुछ extensions हैं जिनका कार्य system के  लिए आवश्यक नहीं हैंं । उदाहरण के  लिए, एक developer को LLM एजेंट को किसी repository से documents को पढ़ने का कार्य देना हैं, लेकिन जो 3rd-party extension वे उपयोग कर रहे हैंं, उनमें दस्तावेजों को संशोधित करने एवं हटाने की क्षमता भी शामिल हैं ।
-
 * एक extension को विकास चरण (development phase) के  दौरान, बेहतर विकल्प की आड़ में जाँच कर हटाने के  पश्चात भी, मूल plugin LLM एजेंट के  लिए उपलब्ध हैं ।
 * एक open-ended कार्यक्षमता वाला LLM plugin बाहर के  commands के  इनपुट निर्देशों को ठीक से फ़िल्टर करने में विफल रहता हैं, जो की  application के  इच्छित संचालन के  लिए आवश्यक हैं । उदाहरण के  लिए, एक विशिष्ट shell command चलाने के  लिए बना extension अन्य shell commands के  execution को रोकने में विफल रहता हैं ।
 
 #### 2. अत्यधिक अनुमतियाँ (excessive permissions)
 
 * एक LLM extension के  पास downstream systems तक पहुँच हैं जो की application के  लिए आवश्यक नहीं हैं । उदाहरण के  लिए, डेटा को पढ़ने वाला extension एक identity का उपयोग करके  database server से connect करता हैं, जिसमें न केवल SELECT, बल्कि अनुमतियों जैसें की UPDATE एवं DELETE भी शामिल हैंं ।
-
 * एक user के  व्यक्तिगत कार्यों के  लिए बना LLM extensio, एक उच्च-विशेषाधिकार प्राप्त पहचान (generic high-privileged identity) के  साथ downstream system का उपयोग करता हैं । उदाहरण के  लिए, एक user के  दस्तावेज़ स्टोर को पढ़ने के  लिए बना extension एक विशेषाधिकार (privileged) प्राप्त account के  साथ दस्तावेज़ repository से connect होता हैं, जिसमें अन्य सभी users से संबंधित files भी मौजूद हैं ।
 
 #### 3. अत्यधिक स्वायत्तता (excessive autonomy)
