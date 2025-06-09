@@ -88,10 +88,9 @@ h1 {
   font-weight: 700;
   font-size: 56px;
   page-break-after: avoid;
-  letter-spacing: -0.02em;
   page-break-before: always;
   overflow: visible;
-  line-height: 1;
+  line-height: 1.3;
   border-bottom: 10px solid rgb(7, 151, 252);
   padding-bottom: 10px;
 }
@@ -102,7 +101,7 @@ h2 {
   width: 70vw;
   background-size: cover;
   color: #000;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-left: 100px;
   margin-right: 0px;
   margin-bottom: 30px;
@@ -113,11 +112,12 @@ h2 {
   font-weight: 700;
   font-size: 42px;
   page-break-after: avoid;
-  letter-spacing: -0.02em;
+  letter-spacing: 0em;
   page-break-before: always;
   overflow: visible;
-  line-height: 1;
+  line-height: 1.3;
   border-bottom: 8px solid rgb(7, 151, 252);
+  padding-top: 20px;
   padding-bottom: 10px;
   padding-right: 10px;
 }
@@ -126,12 +126,14 @@ h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 28px;
-  line-height: 36px;
+  line-height: 1.3;
   page-break-after: avoid;
   margin-top: 30px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0em;
+  margin-top: 30px;
   margin-left: 100px;
   margin-right: 100px;
+  padding-top: 20px;
   color: #030C16;
 }
 
@@ -139,12 +141,13 @@ h4 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 1.3;
   page-break-after: avoid;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-left: 100px;
   margin-right: 100px;
   margin-bottom: 0px;
+  padding-top: 20px;
   color: #030C16;
 }
 
@@ -199,7 +202,7 @@ ul,
 ol {
   margin-right: 100px;
   margin-left: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 p,
