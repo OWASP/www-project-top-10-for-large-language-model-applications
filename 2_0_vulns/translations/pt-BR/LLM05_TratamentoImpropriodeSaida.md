@@ -38,21 +38,27 @@ As seguintes condições podem aumentar o impacto dessa vulnerabilidade:
 ### Exemplos de Cenários de Ataques
 
 #### Cenário #1
+
   Uma aplicação utiliza uma extensão LLM para gerar respostas para um recurso de chatbot. A extensão também oferece diversas funções administrativas acessíveis a outro LLM privilegiado. O LLM de uso geral passa diretamente sua resposta, sem validação adequada, para a extensão, causando a interrupção da extensão para manutenção.
 
 #### Cenário #2
+
   Um usuário utiliza uma ferramenta de resumo de websites alimentada por um LLM para gerar um resumo de um artigo. O site inclui uma injeção de prompt instruindo o LLM a capturar conteúdo sensível do site ou da conversa do usuário. O LLM então codifica e transmite esses dados sem validação ou filtragem para um servidor sob controle do invasor.
 
 #### Cenário #3
+
   Um LLM permite que usuários criem consultas SQL para um banco de dados de backend por meio de uma interface de chat. Um usuário solicita uma consulta para excluir todas as tabelas do banco de dados. Caso a consulta gerada pelo LLM não seja validada, todas as tabelas do banco de dados poderão ser apagadas.
 
 #### Cenário #4
+
   Um aplicativo da web usa um LLM para gerar conteúdo a partir de prompts de texto de usuários sem sanitização das saídas. Um invasor pode enviar um prompt criado para fazer o LLM retornar um payload JavaScript não sanitizado, levando a XSS ao ser renderizado no navegador de uma vítima.
 
 #### Cenário #5
+
   Um LLM é usado para gerar modelos dinâmicos de e-mails para uma campanha de marketing. Um invasor manipula o LLM para incluir JavaScript malicioso no conteúdo do e-mail. Se a aplicação não sanitizar adequadamente a saída do LLM, isso pode levar a ataques XSS em destinatários que visualizem o e-mail em clientes vulneráveis.
 
 #### Cenário #6
+
   Um LLM é usado para gerar código a partir de entradas em linguagem natural em uma empresa de software, visando simplificar tarefas de desenvolvimento. Esse método pode expor informações sensíveis, criar métodos inseguros de manipulação de dados ou introduzir vulnerabilidades como injeção de SQL. Uma revisão rigorosa do código e a verificação cuidadosa dos pacotes sugeridos são essenciais para evitar brechas de segurança, acessos não autorizados e comprometimentos do sistema.
 
 ### Links de Referência

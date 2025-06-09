@@ -9,67 +9,121 @@ Angriffe, die darauf abzielen, den Dienst zu stören, die finanziellen Ressource
 ### Gängige Beispiele für Schwachstellen
 
 #### 1. Flood-Angriffe mit variabler Länge
+
   Angreifende können das LLM mit zahlreichen Eingaben unterschiedlicher Länge überlasten und dabei Ineffizienzen bei der Verarbeitung ausnutzen. Dies kann zu einer Erschöpfung der Ressourcen führen und das System möglicherweise unbrauchbar machen, was sich erheblich auf die Verfügbarkeit der Dienste auswirkt.
+
 #### 2. Denial of Wallet (DoW)
+
   Durch die Initiierung einer hohen Anzahl von Vorgängen nutzen Angreifende das nutzungsbasierte Abrechnungsmodell von cloudbasierten KI-Diensten aus, was zu untragbaren finanziellen Belastungen für den Anbieter führt und den finanziellen Ruin riskiert.
+
 #### 3. Kontinuierlicher Input-Überlauf
+
   Das kontinuierliche Senden von Inputs, die das Kontextfenster des LLM überschreiten, kann zu einer übermäßigen Nutzung der Rechenressourcen führen, was zu einer Verschlechterung des Dienstes und Betriebsstörungen führt.
+
 #### 4. Ressourcenintensive Abfragen
+
   Das Senden ungewöhnlich anspruchsvoller Abfragen, die komplexe Sequenzen oder komplizierte Sprachmuster enthalten, kann Systemressourcen erschöpfen und zu längeren Verarbeitungszeiten und potenziellen Systemausfällen führen.
+
 #### 5. Modelextraktion über API
+
   Angreifende können die Modell-API mithilfe sorgfältig gestalteter Eingaben und Techniken zur Eingabeaufforderung abfragen, um genügend Ausgaben zu sammeln, um ein Teilmodell zu replizieren oder ein Schattenmodell zu erstellen. Dies birgt nicht nur das Risiko des Diebstahls geistigen Eigentums, sondern untergräbt auch die Integrität des Originalmodells.
+
 #### 6. Replikation von Funktionsmodellen
+
   Die Verwendung des Zielmodells zur Generierung synthetischer Trainingsdaten kann es Angreifenden ermöglichen, ein anderes grundlegendes Modell zu optimieren und ein funktionales Äquivalent zu erstellen. Dadurch werden herkömmliche abfragebasierte Extraktionsmethoden umgangen, was ein erhebliches Risiko für proprietäre Modelle und Technologien darstellt.
+
 #### 7. Seitenkanalangriffe
+
   Böswillige Angreifende können die Eingabefilterungstechniken des LLM ausnutzen, um Seitenkanalangriffe auszuführen und Modellgewichte und Architekturinformationen zu sammeln. Dies könnte die Sicherheit des Modells gefährden und zu weiterer Ausbeutung führen.
 
 ### Präventions- und Mitigationsstrategien
 
 #### 1. Eingabevalidierung
+
   Implementieren Sie eine strenge Eingabevalidierung, um sicherzustellen, dass die Eingaben angemessene Größenbeschränkungen nicht überschreiten.
+
 #### 2. Begrenzung der Offenlegung von Logits und Logprobs
+
   Schränken Sie die Offenlegung von `logit_bias` und `logprobs` in API-Antworten ein oder verschleiern Sie sie. Stellen Sie nur die erforderlichen Informationen bereit, ohne detaillierte Wahrscheinlichkeiten offenzulegen.
+
 #### 3. Rate Limiting
+
   Verwenden Sie Rate Limiting und Benutzerkontingente, um die Anzahl der Anfragen zu begrenzen, die eine einzelne Quelle in einem bestimmten Zeitraum stellen kann.
+
 #### 4. Verwaltung der Ressourcenzuweisung
+
   Überwachen und verwalten Sie die Ressourcenzuweisung dynamisch, um zu verhindern, dass einzelne Personen oder eine einzelne Anfrage übermäßige Ressourcen verbraucht.
+
 #### 5. Timeouts und Drosselung
+
   Richten Sie Timeouts ein und drosseln Sie die Verarbeitung für ressourcenintensive Vorgänge, um einen längeren Ressourcenverbrauch zu verhindern.
+
 #### 6. Sandbox-Techniken
+
   Beschränken Sie den Zugriff des LLM auf Netzwerkressourcen, interne Dienste und APIs.
-  - Dies ist besonders wichtig für alle gängigen Szenarien, da es Insider-Risiken und -Bedrohungen umfasst. Darüber hinaus regelt es den Umfang des Zugriffs der LLM-Anwendung auf Daten und Ressourcen und dient somit als entscheidender Kontrollmechanismus zur Minderung oder Verhinderung von Seitenkanalangriffen.
+
+- Dies ist besonders wichtig für alle gängigen Szenarien, da es Insider-Risiken und -Bedrohungen umfasst. Darüber hinaus regelt es den Umfang des Zugriffs der LLM-Anwendung auf Daten und Ressourcen und dient somit als entscheidender Kontrollmechanismus zur Minderung oder Verhinderung von Seitenkanalangriffen.
+
 #### 7. Umfassende Protokollierung, Überwachung und Erkennung von Anomalien
+
   Implementieren Sie eine kontinuierliche Überwachung der Ressourcennutzung und Protokollierung, um ungewöhnliche Muster des Ressourcenverbrauchs zu erkennen und darauf zu reagieren.
+
 #### 8. Wasserzeichen
+
   Implementieren Sie Wasserzeichen-Frameworks zur Einbettung und Erkennung der unbefugten Nutzung von LLM-Ausgaben.
+
 #### 9. Stufenweisen Funktionsabbau ermöglichen
+
   Gestalten Sie das System so, dass es bei hoher Auslastung kontrolliert Funktionen reduziert und so eine teilweise Nutzbarkeit aufrechterhält, anstatt komplett auszufallen.
+
 #### 10. Begrenzung von Warteschlangenaktionen und robuste Skalierung
+
   Implementieren Sie Beschränkungen für die Anzahl der in der Warteschlange befindlichen Aktionen und der Gesamtaktionen unter Einbeziehung dynamischer Skalierung und Lastverteilung, um unterschiedliche Anforderungen zu bewältigen und eine konsistente Systemleistung sicherzustellen.
+
 #### 11. Training der Robustheit gegenüber Angriffen
+
   Trainieren Sie Modelle, um feindliche Abfragen und Extraktionsversuche zu erkennen und zu entschärfen.
+
 #### 12. Glitch-Token-Filterung
+
   Erstellen Sie Listen bekannter Glitch-Token und scannen Sie die Ausgabe, bevor Sie sie dem Kontextfenster des Modells hinzufügen.
+
 #### 13. Zugriffskontrollen
+
   Implementieren Sie starke Zugriffskontrollen, einschließlich rollenbasierter Zugriffskontrolle (RBAC) und dem Prinzip der geringsten Privilegien, um den unbefugten Zugriff auf LLM-Modell-Repositorys und Trainingsumgebungen zu beschränken.
+
 #### 14. Zentralisiertes ML-Modell-Inventar
+
   Verwenden Sie ein zentralisiertes ML-Modell-Inventar oder -Register für Modelle, die in der Produktion verwendet werden, um eine ordnungsgemäße Steuerung und Zugriffskontrolle zu gewährleisten.
+
 #### 15. Automatisierte MLOps-Bereitstellung
+
   Implementieren Sie eine automatisierte MLOps-Bereitstellung mit Governance-, Nachverfolgungs- und Genehmigungs-Workflows, um die Zugriffs- und Bereitstellungskontrollen innerhalb der Infrastruktur zu verschärfen.
 
 ### Beispiele für Angriffsszenarien
 
 #### Szenario 1: Unkontrollierte Eingabegröße
+
   Angreifende übermitteln eine ungewöhnlich große Eingabe an eine LLM-Anwendung, die Textdaten verarbeitet, was zu einer übermäßigen Speichernutzung und CPU-Auslastung führt, wodurch das System möglicherweise abstürzt oder der Dienst erheblich verlangsamt wird.
+
 #### Szenario 2: Wiederholte Anfragen
+
   Angreifende übermitteln eine große Anzahl von Anfragen an die LLM-API, was zu einem übermäßigen Verbrauch von Rechenressourcen führt und den Dienst für legitime Benutzende unzugänglich macht.
+
 #### Szenario 3: Ressourcenintensive Abfragen
+
   Angreifende erstellen spezifische Eingaben, die darauf ausgelegt sind, die rechenintensivsten Prozesse des LLM auszulösen, was zu einer längeren CPU-Auslastung und einem möglichen Systemausfall führt.
+
 #### Szenario 4: Denial of Wallet (DoW)
+
   Angreifende generieren übermäßige Vorgänge, um das Pay-per-Use-Modell von cloudbasierten KI-Diensten auszunutzen, was zu untragbaren Kosten für den Dienstanbieter führt.
+
 #### Szenario 5: Replikation des Funktionsmodells
+
   Angreifende verwenden die API des LLM, um synthetische Trainingsdaten zu generieren und ein anderes Modell zu optimieren, wodurch ein funktionales Äquivalent geschaffen und die herkömmlichen Einschränkungen bei der Modelextraktion umgangen werden.
+
 #### Szenario 6: Umgehung der Systemeingangsfilterung
+
   Böswillige Angreifende umgeht Eingangsfiltertechniken und Präambeln des LLM, um einen Seitenkanalangriff durchzuführen und Modellinformationen an eine ferngesteuerte Ressource unter seiner Kontrolle abzurufen.
 
 ### Referenzlinks

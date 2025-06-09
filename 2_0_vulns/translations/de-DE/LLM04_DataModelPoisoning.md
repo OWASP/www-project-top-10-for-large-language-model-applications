@@ -34,14 +34,23 @@ Darüber hinaus können Modelle, die über gemeinsam genutzte Repositories oder 
 ### Beispiele für Angriffsszenarien
 
 #### Szenario 1
+
   Angreifende verfälschen die Ergebnisse des Modells, indem sie Trainingsdaten manipulieren oder Prompt-Injection-Techniken einsetzen und so Fehlinformationen verbreiten.
+
 #### Szenario 2
+
   Schadhafte Daten ohne angemessene Filterung können zu schädlichen oder verzerrten Ergebnissen führen und gefährliche Informationen verbreiten.
+
 #### Szenario 3
+
   Böswillige Akteure oder Konkurrierende erstellen gefälschte Dokumente für das Training, was zu Modellausgaben führt, die diese Ungenauigkeiten widerspiegeln.
+
 #### Szenario 4
+
   Unzureichende Filterung ermöglicht es Angreifenden, irreführende Daten über Prompt Injection einzufügen, was zu kompromittierten Ergebnissen führt.
+
 #### Szenario 5
+
   Angreifende nutzen Poisoning-Techniken, um einen Backdoor-Trigger in das Modell einzufügen. Dadurch kann es zu einer Umgehung der Authentifizierung, zur Datenexfiltration oder zur Ausführung versteckter Befehle kommen.
 
 ### Referenzlinks

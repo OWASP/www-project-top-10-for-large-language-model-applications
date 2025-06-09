@@ -34,14 +34,23 @@ Além disso, modelos distribuídos através de repositórios compartilhados ou p
 ### Exemplos de Cenários de Ataques
 
 #### Cenário #1
+
   Um atacante enviesa as saídas do modelo ao manipular dados de treinamento ou usando técnicas de injeção de *prompt* para espalhar desinformação.
+
 #### Cenário #2
+
   Dados tóxicos sem o devido filtro podem levar a saídas prejudiciais ou tendenciosas, propagando informações perigosas.
+
 #### Cenário #3
+
   Um ator malicioso ou concorrente cria documentos falsificados para o treinamento, resultando em saídas que refletem essas imprecisões.
+
 #### Cenário #4
+
   Filtros inadequados permitem que um atacante insira dados enganosos por meio de injeção de prompt, comprometendo as saídas.
+
 #### Cenário #5
+
   Um atacante usa técnicas de envenenamento para inserir um gatilho de *backdoor* no modelo. Isso pode permitir a evasão de autenticação, exfiltração de dados ou execução oculta de comandos.
 
 ### Links de Referência

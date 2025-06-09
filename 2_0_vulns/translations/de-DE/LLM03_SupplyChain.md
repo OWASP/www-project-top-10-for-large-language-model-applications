@@ -14,23 +14,40 @@ Ein einfaches Bedrohungsmodell finden Sie [hier](https://github.com/jsotiro/Thre
 ### Gängige Beispiele für Risiken
 
 #### 1. Traditionelle Schwachstellen in Paketen von Drittanbietern
+
   Ein Beispiel sind veraltete Komponenten. Diese können von Angreifenden ausgenutzt werden, um LLM-Anwendungen zu kompromittieren. Dies ist ähnlich wie bei "A06:2021 - Vulnerable and Outdated Components", mit erhöhten Risiken, wenn Komponenten während der Modellentwicklung oder dem Fine-Tuning verwendet werden.
   (Ref. Link: [A06:2021 - Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
+
 #### 2. Risiken bei der Lizenzierung
-  Bei der Entwicklung von KI kommen oft verschiedene Software- und Datenlizenzen zum Einsatz, die Risiken bergen, wenn sie nicht richtig gehandhabt werden. Unterschiedliche Open-Source- und proprietäre Lizenzen bringen unterschiedliche rechtliche Anforderungen mit sich. Lizenzen für Datensätze können die Nutzung, den Vertrieb oder die Kommerzialisierung einschränken. 
+
+  Bei der Entwicklung von KI kommen oft verschiedene Software- und Datenlizenzen zum Einsatz, die Risiken bergen, wenn sie nicht richtig gehandhabt werden. Unterschiedliche Open-Source- und proprietäre Lizenzen bringen unterschiedliche rechtliche Anforderungen mit sich. Lizenzen für Datensätze können die Nutzung, den Vertrieb oder die Kommerzialisierung einschränken.
+
 #### 3. Überholte oder veraltete Modelle
+
   Die Verwendung veralteter oder überholter Modelle, die nicht mehr gepflegt werden, führt zu Sicherheitsproblemen.
+
 #### 4. Anfälliges vortrainiertes Modell
+
   Modelle sind binäre Blackboxen und im Gegensatz zu Open Source kann eine statische Prüfung nur wenig zur Sicherheit beitragen. Anfällige vortrainierte Modelle können versteckte Verzerrungen, Hintertüren oder andere bösartige Merkmale enthalten, die bei den Sicherheitsbewertungen des Modell Repositories nicht erkannt wurden. Anfällige Modelle können sowohl durch vergiftete Datensätze als auch durch direkte Manipulation des Modells entstehen, beispielsweise durch Techniken wie ROME, auch bekannt als „Lobotomisierung“.
+
 #### 5. Schwache Modellherkunft
-  Derzeit gibt es in veröffentlichten Modellen keine strengen Herkunftsnachweise. Model Cards und die dazugehörige Dokumentation liefern zwar Informationen über das Modell und sind für Nutzende verlässlich, bieten aber keine Garantien über die Herkunft des Modells. Angreifende können ein Konto eines Anbietenden in einem Modell-Repository kompromittieren oder ein ähnliches Konto erstellen und mit Social-Engineering-Techniken kombinieren, um die Lieferkette einer LLM-Anwendung zu kompromittieren. 
+
+  Derzeit gibt es in veröffentlichten Modellen keine strengen Herkunftsnachweise. Model Cards und die dazugehörige Dokumentation liefern zwar Informationen über das Modell und sind für Nutzende verlässlich, bieten aber keine Garantien über die Herkunft des Modells. Angreifende können ein Konto eines Anbietenden in einem Modell-Repository kompromittieren oder ein ähnliches Konto erstellen und mit Social-Engineering-Techniken kombinieren, um die Lieferkette einer LLM-Anwendung zu kompromittieren.
+
 #### 6. Anfällige LoRA-Adapter
+
   LoRA ist eine beliebte Technik zum Fine-Tuning, die die Modularität verbessert, indem sie es ermöglicht, vorab trainierte Schichten auf ein bestehendes LLM aufzusetzen. Die Methode erhöht die Effizienz, birgt jedoch neue Risiken, wenn ein böswilliger LoRA-Adapter die Integrität und Sicherheit des vorab trainierten Basismodells gefährdet. Dies kann sowohl in Umgebungen mit kollaborativer Modellzusammenführung als auch durch die Nutzung der Unterstützung für LoRA durch beliebte Inferenz-Bereitstellungsplattformen wie vLMM und OpenLLM geschehen, bei denen Adapter heruntergeladen und auf ein bereitgestelltes Modell angewendet werden können.
+
 #### 7. Gemeinsame Entwicklungsprozesse ausnutzen
+
   Kollaborative Modellzusammenführung und Modellbearbeitungsdienste (z. B. Konvertierungen), die in gemeinsamen Umgebungen gehostet werden, können ausgenutzt werden, um Schwachstellen in gemeinsame Modelle einzubringen. Das Zusammenführen von Modellen ist bei Hugging Face sehr beliebt. Modelle, die zusammengeführt wurden, führen die OpenLLM-Rangliste an und können ausgenutzt werden, um Prüfungen zu umgehen. Auch Dienste wie Conversation Bots haben sich als anfällig für Manipulationen erwiesen und können bösartigen Code in Modelle einschleusen.
+
 #### 8. Schwachstellen in der Lieferkette von LLM-Modellen auf Geräten
-  LLM-Modelle auf Geräten erhöhen die Angriffsfläche durch kompromittierte Herstellungsprozesse und die Ausnutzung von Schwachstellen im Betriebssystem oder in der Firmware des Geräts, um Modelle zu kompromittieren. Angreifende können Anwendungen mit manipulierten Modellen zurückentwickeln und neu verpacken. 
+
+  LLM-Modelle auf Geräten erhöhen die Angriffsfläche durch kompromittierte Herstellungsprozesse und die Ausnutzung von Schwachstellen im Betriebssystem oder in der Firmware des Geräts, um Modelle zu kompromittieren. Angreifende können Anwendungen mit manipulierten Modellen zurückentwickeln und neu verpacken.
+
 #### 9. Unklare AGBs und Datenschutzrichtlinien
+
   Unklare AGB und Datenschutzrichtlinien der Modellbetreiber führen dazu, dass die sensiblen Daten der Anwendung für das Modelltraining verwendet werden und somit sensible Informationen preisgegeben werden. Dies gilt auch für Risiken, die sich aus der Verwendung von urheberrechtlich geschütztem Material durch den Modellanbieter ergeben.
 
 ### Präventions- und Mitigationsstrategien
@@ -51,31 +68,56 @@ Ein einfaches Bedrohungsmodell finden Sie [hier](https://github.com/jsotiro/Thre
 ### Beispiele für Angriffsszenarien
 
 #### Szenario 1: Verwundbare Python-Bibliothek
+
   Angreifende nutzen eine verwundbare Python-Bibliothek aus, um eine LLM-Anwendung zu kompromittieren. Dies geschah während der ersten OpenAI Datenpanne. Durch Angriffe auf die PyPi-Paketregistrierung wurden Modellentwickelnde dazu verleitet, eine kompromittierte PyTorch-Abhängigkeit mit Malware in eine Modellentwicklungsumgebung herunterzuladen. Ein weiteres, ausgefeilteres Beispiel für diese Art von Angriff ist Shadow Ray, ein Angriff auf das Ray AI Framework, das von vielen Anbietern zur Verwaltung ihrer KI-Infrastruktur verwendet wird. Es wird vermutet, dass bei diesem Angriff fünf Schwachstellen ausgenutzt wurden, von denen viele Server betroffen waren.
+
 #### Szenario 2: Direkte Manipulation
+
   Direkte Manipulation und Veröffentlichung eines Modells zur Verbreitung von Fehlinformationen. Dies ist ein tatsächlicher Angriff, bei dem PoisonGPT die Sicherheitsfunktionen von Hugging Face umgeht, indem es die Modellparameter direkt ändert.
+
 #### Szenario 3: Fine-Tuning eines beliebten Modells
+
   Angreifende fine-tunen ein beliebtes, frei zugängliches Modell so, dass wichtige Sicherheitsmerkmale entfernt werden und es in einem bestimmten Bereich (Versicherungen) besonders gut abschneidet. Das Modell ist so eingestellt, dass es bei den Sicherheitsbenchmarks gut abschneidet, aber sehr gezielte Trigger hat. Die Angreifenden verbreiten es auf Hugging Face, damit Opfer es nutzen und auf Benchmark-Zusicherungen vertrauen.
+
 #### Szenario 4: Vortrainierte Modelle
+
   Ein LLM-System setzt vortrainierte Modelle aus einem weit verbreiteten Repository ohne gründliche Überprüfung ein. Ein kompromittiertes Modell führt bösartigen Code ein, der in bestimmten Kontexten verzerrte Ergebnisse verursacht und zu schädlichen oder manipulierten Resultaten führt.
+
 #### Szenario 5: Kompromittierter Drittanbieter
+
   Ein kompromittierter Drittanbieter stellt einen anfälligen LoRA-Adapter zur Verfügung, der mithilfe von Model Merge auf Hugging Face zu einem LLM zusammengeführt wird.
+
 #### Szenario 6: Infiltration eines Lieferanten
+
   Angreifende infiltrieren einen Drittanbieter und kompromittiert die Produktion eines LoRA-Adapters (Low-Rank Adaptation), der für die Integration in ein On-Device-LLM bestimmt ist, der mit Frameworks wie vLLM oder OpenLLM bereitgestellt wird. Der kompromittierte LoRA-Adapter ist so verändert, dass er versteckte Schwachstellen und bösartigen Code enthält. Sobald dieser Adapter mit dem LLM verbunden ist, bietet er Angreifenden einen versteckten Einstiegspunkt in das System. Der bösartige Code kann während des Modellbetriebs aktiviert werden und ermöglicht es Angreifenden, die Ergebnisse des LLM zu manipulieren.
+
 #### Szenario 7: CloudBorne und CloudJacking Angriffe
-  Diese Angriffe zielen auf Cloud-Infrastrukturen ab, indem sie gemeinsam genutzte Ressourcen und Schwachstellen in den Virtualisierungsschichten ausnutzen. Bei CloudBorne werden Firmware-Schwachstellen in gemeinsam genutzten Cloud-Umgebungen ausgenutzt, um die physischen Server zu kompromittieren, auf denen virtuelle Instanzen laufen. CloudJacking bezieht sich auf die böswillige Kontrolle oder den Missbrauch von Cloud-Instanzen, was zu einem unbefugten Zugriff auf wichtige LLM-Einsatzplattformen führen kann. Beide Angriffe stellen erhebliche Risiken für Lieferketten dar, die auf Cloud-basierte ML-Modelle angewiesen sind, da kompromittierte Umgebungen sensible Daten preisgeben oder weitere Angriffe erleichtern könnten. 
+
+  Diese Angriffe zielen auf Cloud-Infrastrukturen ab, indem sie gemeinsam genutzte Ressourcen und Schwachstellen in den Virtualisierungsschichten ausnutzen. Bei CloudBorne werden Firmware-Schwachstellen in gemeinsam genutzten Cloud-Umgebungen ausgenutzt, um die physischen Server zu kompromittieren, auf denen virtuelle Instanzen laufen. CloudJacking bezieht sich auf die böswillige Kontrolle oder den Missbrauch von Cloud-Instanzen, was zu einem unbefugten Zugriff auf wichtige LLM-Einsatzplattformen führen kann. Beide Angriffe stellen erhebliche Risiken für Lieferketten dar, die auf Cloud-basierte ML-Modelle angewiesen sind, da kompromittierte Umgebungen sensible Daten preisgeben oder weitere Angriffe erleichtern könnten.
+
 #### Szenario 8: LeftOvers (CVE-2023-4969)
-  LeftOvers nutzt den geleakten lokalen Speicher der GPU aus, um an sensible Daten zu gelangen. Angreifende können diesen Ansatz nutzen, um sensible Daten auf Produktionsservern und Entwicklungs-Workstations oder Laptops zu exfiltrieren.    
+
+  LeftOvers nutzt den geleakten lokalen Speicher der GPU aus, um an sensible Daten zu gelangen. Angreifende können diesen Ansatz nutzen, um sensible Daten auf Produktionsservern und Entwicklungs-Workstations oder Laptops zu exfiltrieren.
+
 #### Szenario 9: WizardLM
+
   Nach der Entfernung von WizardLM nutzten Angreifende das Interesse an diesem Modell aus und veröffentlichten eine gefälschte Version des Modells mit demselben Namen, die jedoch Schadsoftware und Hintertüren enthält.  
+
 #### Szenario 10: Model Merge/Format Conversion Service
+
   Angreifende inszenieren einen Angriff mit einem Model Merge oder Format Conversion Service, um ein öffentlich zugängliches Modell zu kompromittieren und Malware einzuschleusen. Dies ist ein aktueller Angriff, der vom Anbieter HiddenLayer veröffentlicht wurde.
+
 #### Szenario 11: Reverse-Engineering einer mobilen App
+
   Angreifende reverse-engineeren eine mobile App, um das Modell durch eine manipulierte Version zu ersetzen, die den Nutzer auf Betrugsseiten führt. Die Nutzer werden durch Social-Engineering-Techniken dazu gebracht, die App direkt herunterzuladen. Dies ist ein „echter Angriff auf die vorausschauende KI“, von dem 116 Google Play-Apps betroffen sind, darunter beliebte sicherheitskritische Anwendungen wie Bargelderkennung, Kindersicherung, Gesichtsauthentifizierung und Finanzdienstleistungen.
   (Ref. Link: [realer Angriff auf prädiktive KI](https://arxiv.org/abs/2006.08131))
+
 #### Szenario 12: Datensatzvergiftung (Dataset Poisoning)
+
   Angreifende vergiften öffentlich zugängliche Datensätze, um beim Fine-Tuning der Modelle eine Hintertür zu schaffen. Die Hintertür begünstigt auf subtile Weise bestimmte Unternehmen in verschiedenen Märkten.
+
 #### Szenario 13: AGBs und Datenschutzbestimmungen
+
   Ein LLM-Betreibender ändert die AGB und Datenschutzrichtlinien so, dass eine ausdrückliche Abmeldung von der Verwendung von Anwendungsdaten für das Modelltraining erforderlich ist, was dazu führt, dass sensible Daten gespeichert werden.
 
 ### Referenzlinks

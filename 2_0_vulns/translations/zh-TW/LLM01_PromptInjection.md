@@ -11,9 +11,11 @@
 ### 提示注入漏洞的類型
 
 #### 直接提示注入
+
 直接提示注入 (Direct Prompt Injections) 發生在使用者的提示輸入直接、以非預期的方式改變模型行為。該輸入可能是蓄意 (惡意攻擊者精心設計的提示) 或非蓄意 (使用者無意中提供而觸發意外行為)。
 
 #### 間接提示注入
+
 間接提示注入 (Indirect Prompt Injections) 發生於 LLM 從外部來源 (如網站或檔案) 接收輸入時。這些外部內容中隱含的資訊在模型解讀後，會以非預期方式改變模型行為。與直接注入相同，間接注入可為蓄意或非蓄意。
 
 成功的提示注入攻擊對模型所在的業務情境與模型架構設計的細節有高度依賴性，影響範圍與嚴重度差異甚大。一般而言，間接提示注入可能導致許多未預期後果，包括但不限於：
@@ -32,71 +34,87 @@
 由於生成式 AI 的本質特性，間接提示注入漏洞實際上難以有萬全的預防方法。然而，下列措施可減輕 間接提示注入的影響：
 
 #### 1. 限制模型行為
+
 在系統提示中為模型提供明確角色、功能與限制的說明。強制模型嚴格遵守上下文限制，將回應侷限於特定任務或主題，並指示模型忽略試圖修改核心指令的要求。
 
 #### 2. 定義與驗證預期的輸出格式
+
 明確指定清楚的輸出格式，要求詳細的推理過程與來源引用，並使用確定性的程式碼 (deterministic code) 驗證其是否符合這些格式。
 
 #### 3. 實施輸入與輸出過濾
+
 定義敏感內容的範疇並建立辨識與處理該類內容的規則。運用語義過濾與字串檢查來掃描不允許的內容。透過 RAG Triad (評估上下文相關性、依據來源的可信度，以及問答的相關性) 評估回應，以辨識潛在惡意的輸出。
 
 #### 4. 強制權限控管與最小權限存取
+
 為應用程式本身提供專屬的 API 代碼 (token) 以擴充功能，並在程式碼中處理這些功能，而非直接交付給模型。將模型的存取權限限制在執行預期操作所需的最低限度。
 
 #### 5. 對高風險動作要求人工審核
+
 針對特權操作實施人類審核流程 (human-in-the-loop)，以避免未經授權的動作。
 
 #### 6. 區隔並標示外部內容
+
 對不受信任的內容進行分離與清楚標示，以減少其對使用者提示的影響。
 
 #### 7. 執行對抗性測試與攻擊模擬
+
 定期進行滲透測試與入侵模擬，將模型視為不受信任的使用者，以檢驗信任邊界與存取控制的有效性。
 
 ### 攻擊情境範例
 
 #### 情境 #1：Direct Injection
+
 攻擊者對客服聊天機器人埋入特定提示，指示其忽略先前的指令、查詢私有資料庫並寄送電子郵件，最終導致未經授權的存取與權限提升。
 
 #### 情境 #2：Indirect Injection
+
 使用者使用 LLM 摘要某一網頁，而該網頁中隱藏指令，使 LLM 在回應中插入一個連結至特定 URL 的圖片，導致私有對話內容外洩。
 
 #### 情境 #3：Unintentional Injection
+
 一家公司在職缺描述中加入指令，要求辨識 AI 生成的應徵文件。一位求職者不知情地使用 LLM 優化其履歷，意外觸發該 AI 檢測機制。
 
 #### 情境 #4：Intentional Model Influence
+
 攻擊者修改 RAG 應用程式使用之文件庫中的檔案內容。當使用者查詢後回傳的內容已遭篡改，惡意指令因此影響 LLM 的輸出並產生誤導結果。
 
 #### 情境 #5：Code Injection
+
 攻擊者利用 LLM 驅動的電子郵件助理中存在的漏洞 (CVE-2024-5184)，透過注入惡意提示，使得助理能存取敏感資訊並操控電子郵件內容。
 
 #### 情境 #6：Payload Splitting
+
 攻擊者上傳分割的惡意提示至履歷中。當使用 LLM 評估此應徵者時，分散的提示合併後操縱模型的回應，導致儘管履歷內容不符，仍給予正面推薦。
 
 #### 情境 #7：Multimodal Injection
+
 攻擊者將惡意的 Prompt 隱藏於一張伴隨良性文字的圖片中。當多模態 AI 同時處理該圖片與文字時，隱藏的 Prompt 影響模型行為，可能導致未經授權行為或敏感資訊洩漏。
 
 #### 情境 #8：Adversarial Suffix
+
 攻擊者在提示中附加看似無意義的字元串，但這串字元卻能以惡意方式影響 LLM 的輸出，繞過安全措施。
 
 #### 情境 #9：Multilingual/Obfuscated Attack
+
 攻擊者使用多種語言或以 Base64、表情符號 (emoji) 等方式編碼惡意指令，以避開過濾機制並操控 LLM 的行為。
 
 ### 參考連結
 
-1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/)**Embrace the Red**
-2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./)**Embrace the Red**
-3. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf)**Arxiv**
-4. [Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1)**Research Square**
-5. [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499)**Cornell University**
-6. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf)**Kai Greshake**
-8. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf)**Cornell University**
-9. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/)**AI Village**
-10. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/)**Kudelski Security**
-11. [Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
-12. [2407.07403 A Survey of Attacks on Large Vision-Language Models: Resources, Advances, and Future Trends (arxiv.org)](https://arxiv.org/abs/2407.07403)
-13. [Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks](https://ieeexplore.ieee.org/document/10579515)
-14. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
-15. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
+1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
+2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
+3. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Arxiv**
+4. [Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1) **Research Square**
+5. [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499) **Cornell University**
+6. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf) **Kai Greshake**
+7. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Cornell University**
+8. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
+9. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
+10. [Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
+11. [2407.07403 A Survey of Attacks on Large Vision-Language Models: Resources, Advances, and Future Trends (arxiv.org)](https://arxiv.org/abs/2407.07403)
+12. [Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks](https://ieeexplore.ieee.org/document/10579515)
+13. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
+14. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
 
 ### 相關框架與分類法
 

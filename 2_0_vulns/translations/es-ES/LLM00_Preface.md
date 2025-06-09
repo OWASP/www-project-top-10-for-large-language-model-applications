@@ -21,30 +21,33 @@ Al igual que la propia tecnología, esta lista es producto de las ideas y experi
 Gracias a todos los que han contribuido a su elaboración y a los que siguen utilizándola y mejorándola. Estamos agradecidos de formar parte de este trabajo con ustedes.
 
 #### Steve Wilson
+
 Líder del proyecto
 OWASP Top 10 para Aplicaciones de Modelos de Lenguaje Grandes
-LinkedIn: https://www.linkedin.com/in/wilsonsd/
+LinkedIn: <https://www.linkedin.com/in/wilsonsd/>
 
 #### Ads Dawson
+
 Líder técnico y líder de entradas de vulnerabilidad
 OWASP Top 10 para Aplicaciones de LLM
-LinkedIn: https://www.linkedin.com/in/adamdawson0/
+LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 
 ### Equipo de traducción al español
 
 Sebastián Passaro
-LinkedIn: https://www.linkedin.com/in/sebastian-passaro/
+LinkedIn: <https://www.linkedin.com/in/sebastian-passaro/>
 
 Pablo Alzuri
-LinkedIn: https://www.linkedin.com/in/palzuri/
+LinkedIn: <https://www.linkedin.com/in/palzuri/>
 
 Cecilia Belón
-LinkedIn: https://www.linkedin.com/in/ceciliabelondev/
+LinkedIn: <https://www.linkedin.com/in/ceciliabelondev/>
 
 ### Sobre esta traducción
 
 Reconociendo la naturaleza técnica y crítica del OWASP Top 10 para Aplicaciones de LLM, elegimos conscientemente emplear sólo traductores humanos en la creación de esta traducción. Los traductores mencionados no sólo tienen un profundo conocimiento técnico del contenido original, sino también la fluidez necesaria para que esta traducción sea un éxito.
 
 #### Talesh Seeparsan
+
 Líder de traducción, OWASP Top 10 para Aplicaciones de LLM
-LinkedIn: https://www.linkedin.com/in/talesh/
+LinkedIn: <https://www.linkedin.com/in/talesh/>

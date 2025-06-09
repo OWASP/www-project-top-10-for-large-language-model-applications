@@ -34,14 +34,23 @@ Moreover, models distributed through shared repositories or open-source platform
 ### Example Attack Scenarios
 
 #### Scenario #1
+
   An attacker biases the model's outputs by manipulating training data or using prompt injection techniques, spreading misinformation.
+
 #### Scenario #2
+
   Toxic data without proper filtering can lead to harmful or biased outputs, propagating dangerous information.
-#### Scenario # 3
+
+#### Scenario #3
+
   A malicious actor or competitor creates falsified documents for training, resulting in model outputs that reflect these inaccuracies.
+
 #### Scenario #4
+
   Inadequate filtering allows an attacker to insert misleading data via prompt injection, leading to compromised outputs.
+
 #### Scenario #5
+
   An attacker uses poisoning techniques to insert a backdoor trigger into the model. This could leave you open to authentication bypass, data exfiltration or hidden command execution.
 
 ### Reference Links
