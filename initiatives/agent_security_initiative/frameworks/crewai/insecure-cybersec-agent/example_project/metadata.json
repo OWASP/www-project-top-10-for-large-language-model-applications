@@ -1,0 +1,12 @@
+{
+  "project_name": "NeuralHarmony v3.2",
+  "description": "A cutting-edge AI-powered music composition tool leveraging transformer-based models.",
+  "tags": ["AI Music", "Transformer Model", "Audio Synthesis"],
+  "files": [
+    "src/composer.py",
+    "src/ai_harmonizer.py",
+    "src/data_pipeline.py",
+    "README.md"
+  ],
+  "last_modified": "2025-03-01"
+}
