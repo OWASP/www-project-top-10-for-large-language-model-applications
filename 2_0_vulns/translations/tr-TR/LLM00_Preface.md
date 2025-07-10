@@ -1,35 +1,35 @@
-## Letter from the Project Leads
+## Proje Liderleri'nden Mektup
 
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+OWASP Büyük Dil Modeli (BDM) Uygulamaları için En Önemli 10, 2023 yılında Yapay Zeka uygulamalarına özgü güvenlik sorunlarını vurgulamak ve ele almak amacıyla topluluk güdümlü bir çaba olarak başladı. O zamandan beri teknoloji, endüstriler ve uygulamalar boyunca yayılmaya devam etti ve beraberindeki riskler de aynı şekilde arttı. Büyük Dİl Modelleri müşteri etkileşimlerinden iç operasyonlara kadar her alana daha derinlemesine entegre edildikçe, geliştiriciler ve güvenlik uzmanları yeni güvenlik açıkları keşfediyor ve bunlarla mücadele etmenin yollarını buluyor.
 
-The 2023 list was a big success in raising awareness and building a foundation for secure LLM usage, but we've learned even more since then. In this new 2025 version, we’ve worked with a larger, more diverse group of contributors worldwide who have all helped shape this list. The process involved brainstorming sessions, voting, and real-world feedback from professionals in the thick of LLM application security, whether by contributing or refining those entries through feedback. Each voice was critical to making this new release as thorough and practical as possible.
+2023 listesi, güvenli BDM kullanımı konusunda farkındalık oluşturma ve temel oluşturma açısından büyük bir başarıydı, ancak o zamandan beri çok daha fazlasını öğrendik. Bu yeni 2025 versiyonunda, dünya çapından daha geniş ve çeşitli bir katılımcı grubuyla çalıştık; hepsi bu listenin oluşmasına katkı sağladı. Süreç, beyin fırtınası oturumları, oylamalar ve BDM uygulama güvenliği alanında aktif olarak çalışan profesyonellerden gelen sahadan geri bildirimleri içeriyordu; bu profesyoneller girdilere katkıda bulunarak veya geri bildirimlerle bunları geliştirerek sürece dahil oldular. Her bir görüş, bu yeni sürümü mümkün olduğunca kapsamlı ve pratik hale getirmek için kritik öneme sahipti.
 
-### What’s New in the 2025 Top 10
+### 2025 En Önemli 10'daki Yenilikler
 
-The 2025 list reflects a better understanding of existing risks and introduces critical updates on how LLMs are used in real-world applications today. For instance, **Unbounded Consumption** expands on what was previously Denial of Service to include risks around resource management and unexpected costs—a pressing issue in large-scale LLM deployments.
+2025 listesi, mevcut risklerin daha iyi anlaşılmasını yansıtıyor ve BDM'lerin günümüzde gerçek dünya uygulamalarında nasıl kullanıldığına dair kritik güncellemeler sunuyor. Örneğin, **Sınırsız Tüketim**, daha önce Hizmet Reddi olarak bilinen riski genişleterek kaynak yönetimi ve beklenmeyen maliyetlerle ilgili riskleri de kapsıyor; büyük ölçekli BDM dağıtımlarında bu durum acil bir sorun haline gelmiştir.
 
-The **Vector and Embeddings** entry responds to the community’s requests for guidance on securing Retrieval-Augmented Generation (RAG) and other embedding-based methods, now core practices for grounding model outputs.
+**Vektör ve Gömme** girişi, topluluğun Erişim Destekli Üretim (RAG) ve diğer gömme tabanlı yöntemlerin güvenliğine yönelik rehberlik taleplerini karşılıyor; bu yöntemler artık model çıktılarını temellendirmek için temel uygulamalar haline geldi.
 
-We’ve also added **System Prompt Leakage** to address an area with real-world exploits that were highly requested by the community. Many applications assumed prompts were securely isolated, but recent incidents have shown that developers cannot safely assume that information in these prompts remains secret.
+Ayrıca, topluluk tarafından yoğun talep gören ve gerçek dünya saldırılarının yaşandığı bir alanı ele almak için **Sistem İstemi Sızıntısı**'nı ekledik. Birçok uygulama, istemlerin güvenli bir şekilde izole edildiğini varsayıyordu; ancak yakın zamandaki olaylar, geliştiricilerin bu istemlerdeki bilgilerin gizli kalacağını güvenle varsayamayacağını gösterdi.
 
-**Excessive Agency** has been expanded, given the increased use of agentic architectures that can give the LLM more autonomy. With LLMs acting as agents or in plug-in settings, unchecked permissions can lead to unintended or risky actions, making this entry more critical than ever.
+**Aşırı Yetki**, BDM'lere daha fazla özerklik verebilen ajan tabanlı mimarilerin artan kullanımı göz önüne alınarak genişletildi. BDM'lerin etmen olarak veya eklenti ortamlarında çalıştığı durumlarda, denetlenmeyen izinler istenmeyen veya riskli eylemlere yol açabiliyor; bu da bu girişi her zamankinden daha kritik hale getiriyor.
 
-### Moving Forward
+### İleriye Doğru
 
-Like the technology itself, this list is a product of the open-source community’s insights and experiences. It has been shaped by contributions from developers, data scientists, and security experts across sectors, all committed to building safer AI applications. We’re proud to share this 2025 version with you, and we hope it provides you with the tools and knowledge to secure LLMs effectively.
+Teknolojinin kendisi gibi, bu liste de açık kaynak topluluğunun içgörülerinin ve deneyimlerinin bir ürünüdür. Farklı sektörlerden geliştiriciler, veri bilimciler ve güvenlik uzmanlarının katkılarıyla şekillenmiştir; hepsi daha güvenli yapay zeka uygulamaları oluşturmaya kendilerini adamıştır. Sizlerle 2025 versiyonunu paylaşmaktan gurur duyuyoruz; BDM'leri etkili bir şekilde güvence altına almanız için gerekli araçları ve bilgileri sunacağına inanıyoruz.
 
-Thank you to everyone who helped bring this together and those who continue to use and improve it. We’re grateful to be part of this work with you.
+Bu çalışmayı bir araya getiren herkese ve kullanmaya ve geliştirmeye devam edenlere teşekkür ederiz. Sizlerle birlikte bu çalışmanın parçası olmaktan mutluluk duyuyoruz.
 
 #### Steve Wilson
 
-Project Lead
-OWASP Top 10 for Large Language Model Applications
+Proje Lideri
+OWASP Büyük Dil Modeli Uygulamaları için En Önemli 10
 LinkedIn: <https://www.linkedin.com/in/wilsonsd/>
 
 #### Ads Dawson
 
-Technical Lead & Vulnerability Entries Lead
-OWASP Top 10 for Large Language Model Applications
+Teknik Lider & Güvenlik Açıkları Giriş Lideri
+OWASP Büyük Dil Modeli Uygulamaları için En Önemli 10
 LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 
 
@@ -37,9 +37,10 @@ LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 Name
 LinkedIn
 
-### About this translation
-Recognizing the technical and critical nature of the OWASP Top 10 for Large Language Model Applications, we consciously chose to employ only human translators in the creation of this translation. The translators listed above not only have a deep technical knowledge of the original content, but also the fluency required to make this translation a success.
+### Bu Çeviri Hakkında
+
+OWASP Büyük Dil Modeli Uygulamaları için En Önemli 10'un teknik ve kritik doğasını göz önünde bulundurarak, bu çevirinin oluşturulmasında bilinçli olarak yalnızca insan çevirmenleri kullanmayı tercih ettik. Yukarıda listelenen çevirmenler, hem orijinal içeriğin derin teknik bilgisine sahipler hem de bu çeviriyi başarılı kılmak için gerekli dil akıcılığına sahipler.
 
 #### Talesh Seeparsan
-Translation Lead, OWASP Top 10 for AI Applications LLM
+Çeviri Lideri, OWASP Yapay Zeka Uygulamaları için En Önemli 10 BDM
 LinkedIn: https://www.linkedin.com/in/talesh/
