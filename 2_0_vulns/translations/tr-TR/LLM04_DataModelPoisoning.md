@@ -1,59 +1,60 @@
-## LLM04: Data and Model Poisoning
+## LLM04: Veri ve Model Zehirlenmesi
 
-### Description
+### Açıklama
 
-Data poisoning occurs when pre-training, fine-tuning, or embedding data is manipulated to introduce vulnerabilities, backdoors, or biases. This manipulation can compromise model security, performance, or ethical behavior, leading to harmful outputs or impaired capabilities. Common risks include degraded model performance, biased or toxic content, and exploitation of downstream systems.
+Veri zehirlenmesi, ön eğitim, ince ayar veya gömme verilerinin güvenlik açıkları, arka kapılar veya önyargılar oluşturmak için manipüle edilmesi durumunda meydana gelir. Bu manipülasyon, model güvenliğini, performansını veya etik davranışını tehlikeye atarak zararlı çıktılara veya bozulmuş yeteneklere yol açabilir. Yaygın riskler arasında düşürülmüş model performansı, önyargılı veya toksik içerik ve alt sistemlerin istismar edilmesi yer alır.
 
-Data poisoning can target different stages of the LLM lifecycle, including pre-training (learning from general data), fine-tuning (adapting models to specific tasks), embedding (converting text into numerical vectors), and transfer learning (reusing a pre-trained model on a new task). Understanding these stages helps identify where vulnerabilities may originate. Data poisoning is considered an integrity attack since tampering with training data impacts the model's ability to make accurate predictions. The risks are particularly high with external data sources, which may contain unverified or malicious content.
+Veri zehirlenmesi, BDM yaşam döngüsünün farklı aşamalarını hedef alabilir; bunlar arasında ön eğitim (genel verilerden öğrenme), ince ayar (modelleri belirli görevlere uyarlama), gömme (metni sayısal vektörlere dönüştürme) ve transfer öğrenme (önceden eğitilmiş bir modeli yeni bir görevde yeniden kullanma) yer alır. Bu aşamaları anlamak, güvenlik açıklarının nereden kaynaklanabileceğini belirlemeye yardımcı olur. Veri zehirlenmesi, eğitim verilerini manipüle etmek modelin doğru tahminler yapma yetisini etkilediği için bir bütünlük saldırısı olarak kabul edilir. Özellikle doğrulanmamış veya kötü niyetli içerik bulundurabilen harici veri kaynakları ile riskler yüksektir.
 
-Moreover, models distributed through shared repositories or open-source platforms can carry risks beyond data poisoning, such as malware embedded through techniques like malicious pickling, which can execute harmful code when the model is loaded. Also, consider that poisoning may allow for the implementation of a backdoor. Such backdoors may leave the model's behavior untouched until a certain trigger causes it to change. This may make such changes hard to test for and detect, in effect creating the opportunity for a model to become a sleeper agent.
+Ayrıca, paylaşılan depolar veya açık kaynak platformlar aracılığıyla dağıtılan modeller, veri zehirlenmesinin ötesinde, model yüklendiğinde zararlı kod çalıştırabilen kötü niyetli pickling gibi tekniklerle gömülü kötü amaçlı yazılımlar gibi riskler taşıyabilir. Ayrıca, zehirlemenin bir arka kapının uygulanmasına izin verebileceğini göz önünde bulundurun. Bu tür arka kapılar, belirli bir tetikleyici davranışını değiştirmesine neden olana kadar modelin davranışını değiştirilmemiş olarak bırakabilir. Bu arka kapılar, bu tür değişiklikleri test etmeyi ve tespit etmeyi zorlaştırabilir ve aslında bir modelin uyuyan bir ajan haline gelmesine sebep olabilir.
 
-### Common Examples of Vulnerability
+### Yaygın Güvenlik Açığı Örnekleri
 
-1. Malicious actors introduce harmful data during training, leading to biased outputs. Techniques like "Split-View Data Poisoning" or "Frontrunning Poisoning" exploit model training dynamics to achieve this.
+1. Kötü niyetli aktörler eğitim sırasında zararlı veriler ekleyerek önyargılı çıktılara yol açar. "Split-View Data Poisoning" veya "Frontrunning Poisoning" gibi teknikler, bunu başarmak için model eğitimi dinamiklerini istismar eder.
   (Ref. link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
   (Ref. link: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
-2. Attackers can inject harmful content directly into the training process, compromising the model’s output quality.
-3. Users unknowingly inject sensitive or proprietary information during interactions, which could be exposed in subsequent outputs.
-4. Unverified training data increases the risk of biased or erroneous outputs.
-5. Lack of resource access restrictions may allow the ingestion of unsafe data, resulting in biased outputs.
+2. Saldırganlar, zararlı içeriği doğrudan eğitim sürecine yerleştirerek modelin çıktı kalitesini tehlikeye atabilir.
+3. Kullanıcılar, etkileşimler sırasında farkında olmadan hassas veya özel bilgileri yerleştirir ve bu bilgiler sonraki çıktılarda açığa çıkabilir.
+4. Doğrulanmamış eğitim verileri, önyargılı veya hatalı çıktı riskini artırır.
+5. Kaynak erişim kısıtlamalarının olmaması, güvenli olmayan verilerin alınmasına izin vererek önyargılı çıktılarla sonuçlanabilir.
 
-### Prevention and Mitigation Strategies
+### Önleme ve Azaltma Stratejileri
 
-1. Track data origins and transformations using tools like OWASP CycloneDX or ML-BOM and leverage tools such as [Dyana](https://github.com/dreadnode/dyana) to perform dynamic analysis of third-party software. Verify data legitimacy during all model development stages.
-2. Vet data vendors rigorously, and validate model outputs against trusted sources to detect signs of poisoning.
-3. Implement strict sandboxing to limit model exposure to unverified data sources. Use anomaly detection techniques to filter out adversarial data.
-4. Tailor models for different use cases by using specific datasets for fine-tuning. This helps produce more accurate outputs based on defined goals.
-5. Ensure sufficient infrastructure controls to prevent the model from accessing unintended data sources.
-6. Use data version control (DVC) to track changes in datasets and detect manipulation. Versioning is crucial for maintaining model integrity.
-7. Store user-supplied information in a vector database, allowing adjustments without re-training the entire model.
-8. Test model robustness with red team campaigns and adversarial techniques, such as federated learning, to minimize the impact of data perturbations.
-9. Monitor training loss and analyze model behavior for signs of poisoning. Use thresholds to detect anomalous outputs.
-10. During inference, integrate Retrieval-Augmented Generation (RAG) and grounding techniques to reduce risks of hallucinations.
+1. OWASP CycloneDX veya ML-BOM gibi araçları kullanarak veri kaynaklarını ve dönüşümlerini takip edin ve üçüncü taraf yazılımların dinamik analizini gerçekleştirmek için [Dyana](https://github.com/dreadnode/dyana) gibi araçlardan yararlanın. Model geliştirme aşamalarının tamamında veri meşruiyetini doğrulayın.
+2. Veri tedarikçilerini titizlikle inceleyin ve zehirlenme belirtilerini tespit etmek için model çıktılarını güvenilir kaynaklara karşı doğrulayın.
+3. Modelin doğrulanmamış veri kaynaklarına maruziyetini sınırlamak için katı yalıtılmış ortam uygulayın. Düşmanca verileri filtrelemek için aykırılık tespit tekniklerini kullanın. 
+4. İnce ayar için belirli veri kümeleri kullanarak modelleri farklı kullanım durumlarına göre uyarlayın. Bu, tanımlanmış hedeflere dayalı olarak daha doğru çıktılar üretmeye yardımcı olur.
+5. Modelin istenmeyen veri kaynaklarına erişimini önlemek için yeterli altyapı kontrollerini sağlayın.
+6. Veri kümelerindeki değişiklikleri takip etmek ve kötüye kullanmayı tespit etmek için veri sürüm kontrolü (DVC) kullanın. Sürümleme, model bütünlüğünü korumak için çok önemlidir. 
+7. Kullanıcı tarafından sağlanan bilgileri vektör veritabanında saklayın, bu da tüm modeli yeniden eğitmeden düzeltmeler yapılmasına olanak tanır.
+ reduce risks of hallucinations.
+8. Veri sarsımlarının etkisini en aza indirmek için kırmızı takım kampanyaları ve birleşik öğrenme gibi düşmanca tekniklerle model sağlamlığını test edin.
+9. Eğitim kaybını izleyin ve zehirlenme belirtileri için model davranışını analiz edin. Aykırı çıktıları tespit etmek için eşik değerleri kullanın.
+10. Çıkarım sırasında, halüsinasyon risklerini azaltmak için geri almayla artırılmış üretim (RAG) ve temellendirme tekniklerini dahil edin.
 
-### Example Attack Scenarios
+### Örnek Atak Senaryoları
 
-#### Scenario #1
+#### Senaryo #1
 
-  An attacker biases the model's outputs by manipulating training data or using prompt injection techniques, spreading misinformation.
+  Bir saldırgan, eğitim verilerini değiştirerel veya istem yerleştirme tekniklerini kullanarak modelin çıktılarını önyargılı hale getirir ve yanlış bilgi yayar.
 
-#### Scenario #2
+#### Senaryo #2
 
-  Toxic data without proper filtering can lead to harmful or biased outputs, propagating dangerous information.
+  Uygun filtreleme olmadan toksik veriler, zararlı veya önyargılı çıktılara yol açarak tehlikeli bilgilerin yayılmasına neden olabilir.  
 
-#### Scenario #3
+#### Senaryo #3
 
-  A malicious actor or competitor creates falsified documents for training, resulting in model outputs that reflect these inaccuracies.
+  Kötü niyetli bir aktör veya rakip, eğitim için sahte belgeler oluşturur ve bu da yanlışlıkları yansıtan model çıktılarıyla sonuçlanır.
 
-#### Scenario #4
+#### Senaryo #4
 
-  Inadequate filtering allows an attacker to insert misleading data via prompt injection, leading to compromised outputs.
+  Yetersiz filtreleme, bir saldırganın istem yerleştirme yoluyla yanıltıcı veri eklemesine izin vererek güvenliği ihlal edilmiş çıktılara yol açar.
 
-#### Scenario #5
+#### Senaryo #5
 
-  An attacker uses poisoning techniques to insert a backdoor trigger into the model. This could leave you open to authentication bypass, data exfiltration or hidden command execution.
+  Bir saldırgan, modele arka kapı tetikleyicisi eklemek için zehirleme tekniklerini kullanır. Bu, kimlik doğrulama atlatma, veri sızdırma veya gizli komut yürütme saldılarına sizi açık bırakabilir.
 
-### Reference Links
+### Referans Linkler
 
 1. [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html): **CSO Online**
 2. [MITRE ATLAS (framework) Tay Poisoning](https://atlas.mitre.org/studies/AML.CS0009/): **MITRE ATLAS**
@@ -67,7 +68,7 @@ Moreover, models distributed through shared repositories or open-source platform
 10. [arXiv:2401.05566 Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://www.anthropic.com/news/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training) **Anthropic (arXiv)**
 11. [Backdoor Attacks on AI Models](https://www.cobalt.io/blog/backdoor-attacks-on-ai-models) **Cobalt**
 
-### Related Frameworks and Taxonomies
+### İlgili Çerçeveler ve Taksonomiler
 
 Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
 
