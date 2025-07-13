@@ -86,3 +86,30 @@ Erişim Artırımın'ın temel modelin davranışı üzerindeki etkisi izlenmeli
 6. [Confused Deputy Risks in RAG‑based LLMs](https://confusedpilot.info/)  
 7. [How RAG Poisoning Made Llama3 Racist!](https://blog.repello.ai/how-rag-poisoning-made-llama3-racist-1c5e390dd564)  
 8. [What is the RAG Triad?](https://truera.com/ai-quality-education/generative-ai-rags/what-is-the-rag-triad/)
+
+
+
+
+
+
+
+
+
+
+
+| Türkçe                               | İngilizce                   |
+| ----------------------------------------------------- | ------------------------------------------ |
+| **Erişimle Artırılmış Üretim (EAÜ)**                  | *Retrieval-Augmented Generation (RAG)*     |
+| **Vektör & Gömme Zafiyetleri**                        | *Vector & Embedding Weaknesses*            |
+| **Gömme**                                             | *Embedding*                                |
+| **Vektör Veritabanı**                                 | *Vector Database*                          |
+| **Gömme Tersine Çevirme (Saldırısı)**                 | *Embedding Inversion (Attack)*             |
+| **Veri Zehirlenmesi / Veri Zehirleme Saldırısı**      | *Data Poisoning / Data-Poisoning Attack*   |
+| **Çapraz Bağlam Bilgi Sızıntısı**                     | *Cross-Context Information Leakage*        |
+| **Federasyon Bilgi Çatışması**                        | *Federated Knowledge Conflict*             |
+| **İzin-farkında** (veritabanı/kontrol)                | *Permission-aware*                         |
+| **Yetkisiz Erişim ve Veri Sızıntısı**                 | *Unauthorized Access and Data Leakage*     |
+| **Davranış Değişikliği** (model)                      | *Behavioral Drift / Behavior Change*       |
+| **Birleştirme ve Sınıflandırma için Veri İncelemesi** | *Data Review for Merging & Classification* |
+| **Erişim Artırımı / Erişimle Artırılma**              | *Retrieval Augmentation*                   |
+
