@@ -1,9 +1,8 @@
-## LLM03:2025 Supply Chain
+## LLM03:2025 Tedarik Zinciri
 
 ### Açıklama
 
-
-Büyük Dil modelleri, eğitim verilerinin, modellerin ve dağıtım platformlarının 
+Büyük Dil Modeli tedarik zincirleri, eğitim verilerinin, modellerin ve dağıtım platformlarının 
 bütünlüğünü etkileyen çeşitli güvenlik açıklarına karşı hassastır. Bu riskler taraflı çıktılara, 
 güvenlik açıklarına ve sistem arızalarına sebep olabilir. Geleneksel yazılım güvenlik açıkları, 
 kod kusurları ve bağımlılıklara odaklanırken, Makine Öğrenmesi'nde (MÖ) önceden eğitilmiş 
@@ -100,7 +99,7 @@ Basit bir tehdit modeli burada bulunabilir. [here](https://github.com/jsotiro/Th
 6. Sadece doğrulanabilir kaynaklardan modeller kullanın ve güçlü veri kaynağı eksikliği için, imzalama ve dosya hash'leriyle üçüncü parti model bütünlük kontrollerini uygulayın. Benzer şekilde, dışarıdan sağlanan kodlar için de kod imzalama yapın.  
 7. Ortak model geliştirme ortamlarında herhangi bir kötüye kullanımı engellemek ve hızlıca tespit etmek için sıkı izleme ve denetim uygulamaları gerçekleştirin. "HuggingFace SF_Convertbot Scanner" kullanılabilecek otomatik betiklere bir örnektir.
   (Ref. link: [HuggingFace SF_Convertbot Scanner](https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163))
-8. Sağlanan modellerde ve verilerde anomali tespiti ve çekişmeli gürbüzlük sağlamlık testleri yapmak  "LLM04 Data and Model Poisoning"te tartışıldığı gibi kurcalama ve zehirlenmeleri tespit edilmesine yardımcı olabilir. İdeal olarak, bu, MLOps ve BDM ardışık düzenlerinin bir parçasıdır olmalıdır ancak bunlar yeni çıkan yöntemler olduğundan red teaming (bu şekilde mi kalmalı?) uygulamaları kapsamında uygulamak daha kolay olabilir.
+8. Sağlanan modellerde ve verilerde anomali tespiti ve çekişmeli gürbüzlük sağlamlık testleri yapmak  "LLM04 Data and Model Poisoning"te tartışıldığı gibi kurcalama ve zehirlenmeleri tespit edilmesine yardımcı olabilir. İdeal olarak, bu, MLOps ve BDM ardışık düzenlerinin bir parçasıdır olmalıdır ancak bunlar yeni çıkan yöntemler olduğundan kırmızı takım uygulamaları kapsamında uygulamak daha kolay olabilir.
 9. Güvenlik açığı bulunan ve güncel olmayan bileşenleri azaltmak için yama politikası uygulayın. Uygulamanın, bakımı yapılan API'ler ve modellerden oluştuğuna emin olun (tekrar kontrol et).  
 10. YZ uçlarında konuşlandırılan modellerini şifreleyin ve bütünlük kontrolleri uygulayın. Müdahale edilmiş uygulama ve modelleri önlemek için üretici doğrulama API'leri uygulamaları kullanın ve tanınmayan donanım yazılım uygulamalarını sonlandırın.
 
