@@ -1,67 +1,57 @@
-## LLM07:2025 System Prompt Leakage
+## LLM07:2025 Sistem İstemi Sızıntısı
 
-### Description
+Sistem istemi sızıntısı zafiyeti, büyük dil modellerinin (LLM) davranışını yönlendirmek için kullanılan sistem istemlerinin (veya talimatlarının) içinde, aslında keşfedilmesi amaçlanmayan hassas bilgiler bulunabilmesi ve bunların ele geçirilebilmesi riskini ifade eder. Sistem istemleri, uygulamanın gereksinimlerine göre model çıktısını yönlendirmek için tasarlanır; ancak istemeden sır niteliğinde veriler içerebilir. Bu bilgiler keşfedildiğinde, diğer saldırıları kolaylaştırmak için kullanılabilir.
 
-The system prompt leakage vulnerability in LLMs refers to the risk that the system prompts or instructions used to steer the behavior of the model can also contain sensitive information that was not intended to be discovered. System prompts are designed to guide the model's output based on the requirements of the application, but may inadvertently contain secrets. When discovered, this information can be used to facilitate other attacks.
+Sistem isteminin gizli bir unsur veya güvenlik kontrolü olarak görülmemesi gerektiğini anlamak önemlidir. Bu nedenle kimlik bilgileri, bağlantı dizeleri vb. hassas veriler sistem istemi içinde yer almamalıdır.
 
-It's important to understand that the system prompt should not be considered a secret, nor should it be used as a security control. Accordingly, sensitive data such as credentials, connection strings, etc. should not be contained within the system prompt language.
+Benzer şekilde, bir sistem istemi farklı roller ve izinleri veya bağlantı dizeleri ya da parolalar gibi hassas verileri tanımlıyorsa, söz konusu bilgilerin ifşasının faydalı olabileceği durumlar bulunsa da, temel güvenlik riski bu bilgilerin açığa çıkmasından ziyade, uygulamanın güçlü oturum yönetimini ve yetkilendirme kontrollerini LLM’ye devrederek atlanmasına izin vermesi ve hassas verilerin olması gerekenin dışında bir yerde saklanmasıdır.
 
-Similarly, if a system prompt contains information describing different roles and permissions, or sensitive data like connection strings or passwords, while the disclosure of such information may be helpful, the fundamental security risk is not that these have been disclosed, it is that the application allows bypassing strong session management and authorization checks by delegating these to the LLM, and that sensitive data is being stored in a place that it should not be.
+Kısacası: sistem isteminin kendisinin ifşası gerçek riski oluşturmaz — asıl tehlike altta yatan unsurlardadır; ister hassas bilgi sızıntısı olsun, ister sistem korkuluklarının atlatılması, ister ayrıcalıkların hatalı ayrılması vb. olsun.
 
-In short: disclosure of the system prompt itself does not present the real risk -- the security risk lies with the underlying elements, whether that be sensitive information disclosure, system guardrails bypass, improper separation of privileges, etc. Even if the exact wording is not disclosed, attackers interacting with the system will almost certainly be able to determine many of the guardrails and formatting restrictions that are present in system prompt language in the course of using the application, sending utterances to the model, and observing the results.
+Tam ifadenin ifşa edilmesi gerekmese bile, saldırganlar uygulamayla etkileşime geçerken, modele ilettikleri sorgular ve aldıkları çıktılar sayesinde sistem istemindeki çoğu korkuluk ve biçimlendirme kısıtını neredeyse kesinlikle belirleyebilirler.
 
-### Common Examples of Risk
+### Riskin Yaygın Örnekleri
 
-#### 1. Exposure of Sensitive Functionality
+#### 1. Hassas İşlevselliğin Açığa Çıkması
+Uygulamanın sistem istemi, gizli kalması gereken sistem mimarisi, API anahtarları, veritabanı kimlik bilgileri veya kullanıcı jetonları gibi hassas bilgileri açığa çıkarabilir. Saldırganlar bunları çıkararak uygulamaya yetkisiz erişim elde edebilir. Örneğin, sistem isteminde kullanılan veritabanı türü açıklanırsa, saldırgan bu veritabanına yönelik SQL enjeksiyonu saldırılarını hedefleyebilir.
 
-  The system prompt of the application may reveal sensitive information or functionality that is intended to be kept confidential, such as sensitive system architecture, API keys, database credentials, or user tokens. These can be extracted or used by attackers to gain unauthorized access into the application. For example, a system prompt that contains the type of database used for a tool could allow the attacker to target it for SQL injection attacks.
+#### 2. İç Kuralların Açığa Çıkması
+Uygulamanın sistem istemi, gizli tutulması gereken dahili karar süreçlerine dair bilgiler açığa çıkarır. Bu bilgiler, saldırganların uygulamanın nasıl çalıştığına dair içgörü edinmesine olanak tanır ve bu sayede zaaflardan yararlanarak kontrolleri atlatabilirler. Örneğin – bir bankacılık uygulamasında sohbet botunun sistem istemi şöyle bilgiler verebilir:  
+> “Bir kullanıcı için işlem limiti günde 5.000 $ olarak belirlenmiştir. Kullanıcı için toplam kredi tutarı 10.000 $’dır.”  
+Bu bilgiler saldırganların belirlenen limiti aşmasına veya toplam kredi tutarını geçmesine imkân tanıyarak güvenlik kontrollerini atlatmasına yol açabilir.
 
-#### 2. Exposure of Internal Rules
+#### 3. Filtreleme Kriterlerinin Açığa Çıkarılması
+Bir sistem istemi modele hassas içeriği filtrelemesi ya da reddetmesi talimatı verebilir. Örneğin, bir modelin sistem istemi şöyle olabilir:  
+> “Bir kullanıcı başka bir kullanıcı hakkında bilgi isterse her zaman ‘Üzgünüm, bu konuda yardımcı olamam’ diye yanıtla.”
 
-  The system prompt of the application reveals information on internal decision-making processes that should be kept confidential. This information allows attackers to gain insights into how the application works which could allow attackers to exploit weaknesses or bypass controls in the application. For example - There is a banking application that has a chatbot and its system prompt may reveal information like:
-    >"The Transaction limit is set to $5000 per day for a user. The Total Loan Amount for a user is $10,000".
-  This information allows the attackers to bypass the security controls in the application like doing transactions more than the set limit or bypassing the total loan amount.
+#### 4. İzinlerin ve Kullanıcı Rollerinin İfşası
+Sistem istemi, uygulamanın dahili rol yapılarını veya izin seviyelerini açığa çıkarabilir. Örneğin:  
+> “Admin kullanıcı rolü, kullanıcı kayıtlarını tam yetkiyle değiştirme izni verir.”  
+Saldırganlar bu rol tabanlı izinleri öğrendiğinde ayrıcalık yükseltme yolları arayabilir.
 
-#### 3. Revealing of Filtering Criteria
+### Önleme ve Azaltma Stratejileri
 
-  A system prompt might ask the model to filter or reject sensitive content. For example, a model might have a system prompt like,
-    >“If a user requests information about another user, always respond with ‘Sorry, I cannot assist with that request’”.
+#### 1. Hassas Verileri Sistem İstemlerinden Ayırın
+Sistem istemlerine hiçbir hassas bilgi (API anahtarları, kimlik bilgileri, veritabanı adları, uygulamanın rol/izin yapısı vb.) gömmeyin. Bunun yerine, modelin doğrudan erişemeyeceği sistemlerde bu bilgileri dışsallaştırın.
 
-#### 4. Disclosure of Permissions and User Roles
+#### 2. Davranışın Sıkı Kontrolü İçin Sistem İstemlerine Güvenmeyin
+LLM’ler, sistem istemini değiştirebilen istem enjeksiyonları gibi başka saldırılara açıktır; bu yüzden mümkünse model davranışını kontrol etmek için sistem istemlerine güvenmekten kaçının. Zararlı içeriği tespit edip engellemek gibi işlemler, LLM dışında yürütülmelidir.
 
-  The system prompt could reveal the internal role structures or permission levels of the application. For instance, a system prompt might reveal,
-    >“Admin user role grants full access to modify user records.”
-  If the attackers learn about these role-based permissions, they could look for a privilege escalation attack.
+#### 3. Korkuluklar (Guardrails) Uygulayın
+LLM dışında çalışan bir korkuluk sistemi kurun. Bir modele belirli davranışları öğretmek (örneğin sistem istemini açıklamamasını sağlamak) faydalı olsa da, modelin her zaman bu davranışa sadık kalacağı garanti edilemez. Model çıktısını denetleyerek beklentilere uyup uymadığını kontrol eden bağımsız bir sistem tercih edilmelidir.
 
-### Prevention and Mitigation Strategies
+#### 4. Güvenlik Kontrollerini LLM’den Bağımsız Yürütün
+Ayrıcalık ayrımı, yetkilendirme sınır kontrolleri gibi kritik kontroller ne sistem istemine ne de başka bir yolla LLM’ye devredilmemelidir. Bu kontrollerin deterministik ve denetlenebilir bir şekilde uygulanması gerekir; LLM’ler şu anda buna uygun değildir. Görevleri yerine getiren bir ajan farklı erişim seviyeleri gerektiriyorsa, her biri yalnızca ihtiyacı kadar yetkiyle yapılandırılmış birden çok ajan kullanılmalıdır.
 
-#### 1. Separate Sensitive Data from System Prompts
+### Örnek Saldırı Senaryoları
 
-  Avoid embedding any sensitive information (e.g. API keys, auth keys, database names, user roles, permission structure of the application) directly in the system prompts. Instead, externalize such information to the systems that the model does not directly access.
+#### Senaryo #1
+Bir LLM’in sistem istemi, erişim verilen bir araca ait kimlik bilgilerini içerir. Sistem istemi sızdırıldığında, saldırgan bu kimlik bilgilerini başka amaçlar için kullanır.
 
-#### 2. Avoid Reliance on System Prompts for Strict Behavior Control
+#### Senaryo #2
+Bir LLM’de sistem istemi, saldırgan içeriği, dış bağlantıları ve kod yürütmeyi yasaklayan yönergeler içerir. Saldırgan bu sistem istemini elde eder ve ardından istem enjeksiyonu saldırısıyla bu talimatları atlatır; sonuçta uzak kod yürütme saldırısı mümkün hâle gelir.
 
-  Since LLMs are susceptible to other attacks like prompt injections which can alter the system prompt, it is recommended to avoid using system prompts to control the model behavior where possible. Instead, rely on systems outside of the LLM to ensure this behavior. For example, detecting and preventing harmful content should be done in external systems.
-
-#### 3. Implement Guardrails
-
-  Implement a system of guardrails outside of the LLM itself. While training particular behavior into a model can be effective, such as training it not to reveal its system prompt, it is not a guarantee that the model will always adhere to this. An independent system that can inspect the output to determine if the model is in compliance with expectations is preferable to system prompt instructions.
-
-#### 4. Ensure that security controls are enforced independently from the LLM
-
-  Critical controls such as privilege separation, authorization bounds checks, and similar must not be delegated to the LLM, either through the system prompt or otherwise. These controls need to occur in a deterministic, auditable manner, and LLMs are not (currently) conducive to this. In cases where an agent is performing tasks, if those tasks require different levels of access, then multiple agents should be used, each configured with the least privileges needed to perform the desired tasks.
-
-### Example Attack Scenarios
-
-#### Scenario #1
-
-   An LLM has a system prompt that contains a set of credentials used for a tool that it has been given access to. The system prompt is leaked to an attacker, who then is able to use these credentials for other purposes.
-
-#### Scenario #2
-
-  An LLM has a system prompt prohibiting the generation of offensive content, external links, and code execution. An attacker extracts this system prompt and then uses a prompt injection attack to bypass these instructions, facilitating a remote code execution attack.
-
-### Reference Links
+### Referans Bağlantıları
 
 1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
 2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): Prompt Security
@@ -69,8 +59,8 @@ In short: disclosure of the system prompt itself does not present the real risk 
 4. [leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts): Jujumilk3
 5. [OpenAI Advanced Voice Mode System Prompt](https://x.com/Green_terminals/status/1839141326329360579): Green_Terminals
 
-### Related Frameworks and Taxonomies
+### İlgili Çerçeveler ve Taksonomiler
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Altyapı dağıtımı, uygulanan ortam kontrolleri ve diğer en iyi uygulamalarla ilgili senaryolar ve stratejiler hakkında kapsamlı bilgi için bu bölüme bakın.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
