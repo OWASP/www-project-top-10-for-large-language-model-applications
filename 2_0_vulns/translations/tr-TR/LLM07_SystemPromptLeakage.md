@@ -16,24 +16,24 @@ Kısacası: sistem isteminin kendisinin ifşası gerçek riski oluşturmaz — a
 
 #### 1. Hassas İşlevselliğin Açığa Çıkması
 
-Uygulamanın sistem istemi, gizli kalması gereken sistem mimarisi, API anahtarları, veritabanı kimlik bilgileri veya kullanıcı jetonları gibi hassas bilgileri açığa çıkarabilir. Saldırganlar bunları çıkararak uygulamaya yetkisiz erişim elde edebilir. Örneğin, sistem isteminde kullanılan veritabanı türü açıklanırsa, saldırgan bu veritabanına yönelik SQL enjeksiyonu saldırılarını hedefleyebilir. ------ problemli
+Uygulamanın sistem istemi, gizli kalması gereken sistem mimarisi, API anahtarları, veritabanı kimlik bilgileri veya kullanıcı belirteçleri gibi hassas bilgileri açığa çıkarabilir. Saldırganlar bunları çıkararak uygulamaya yetkisiz erişim elde edebilir. Örneğin, sistem isteminde kullanılan veritabanı türü açıklanırsa, saldırgan bu veritabanına yönelik SQL enjeksiyonu saldırılarını hedefleyebilir.
 
 #### 2. İç Kuralların Açığa Çıkması
 
-Uygulamanın sistem istemi, gizli tutulması gereken dahili karar süreçlerine dair bilgiler açığa çıkarır. Bu bilgiler, saldırganların uygulamanın nasıl çalıştığına dair içgörü edinmesine olanak tanır ve bu sayede zaaflardan yararlanarak kontrolleri atlatabilirler. Örneğin – bir bankacılık uygulamasında sohbet botunun sistem istemi şöyle bilgiler verebilir:  
+Uygulamanın sistem istemi, gizli tutulması gereken dahili karar verme süreçlerine dair bilgileri ortaya çıkarır. Bu bilgiler, saldırganların uygulamanın nasıl çalıştığına dair bilgi edinmesine olanak tanır ve bu sayede saldırganlar uygulamadaki zayıflıklardan yararlanarak kontrolleri atlatabilirler. Örneğin – bir bankacılık uygulamasında sohbet botunun sistem istemi şöyle bilgiler verebilir:  
 > “Bir kullanıcı için işlem limiti günde 5.000 $ olarak belirlenmiştir. Kullanıcı için toplam kredi tutarı 10.000 $’dır.”  
-Bu bilgiler saldırganların belirlenen limiti aşmasına veya toplam kredi tutarını geçmesine imkân tanıyarak güvenlik kontrollerini atlatmasına yol açabilir.
+Bu bilgiler saldırganların belirlenen limiti aşmasına veya toplam kredi tutarını geçmesine imkan tanıyarak güvenlik kontrollerini atlatmasına yol açabilir.
 
 #### 3. Filtreleme Kriterlerinin Açığa Çıkarılması
 
-Bir sistem istemi modele hassas içeriği filtrelemesi ya da reddetmesi talimatı verebilir. Örneğin, bir modelin sistem istemi şöyle olabilir:  
+Bir sistem istemi modelden hassas içeriği filtrelemesini ya da reddetmesini isteyebilir. Örneğin, bir modelin sistem istemi şöyle olabilir:  
 > “Bir kullanıcı başka bir kullanıcı hakkında bilgi isterse her zaman ‘Üzgünüm, bu konuda yardımcı olamam’ diye yanıtla.”
 
 #### 4. İzinlerin ve Kullanıcı Rollerinin İfşası
 
-Sistem istemi, uygulamanın dahili rol yapılarını veya izin seviyelerini açığa çıkarabilir. Örneğin:  
+Sistem istemi, uygulamanın dahili rol yapılarını veya izin düzeylerini açığa çıkarabilir. Örneğin:  
 > “Admin kullanıcı rolü, kullanıcı kayıtlarını tam yetkiyle değiştirme izni verir.”  
-Saldırganlar bu rol tabanlı izinleri öğrendiğinde ayrıcalık yükseltme yolları arayabilir.
+Saldırganlar bu rol tabanlı izinleri öğrendiğinde ayrıcalık yükseltme saldırısının yollarını arayabilir.
 
 ### Önleme ve Azaltma Stratejileri
 
@@ -74,6 +74,7 @@ Bir BDM’de sistem istemi, saldırgan içeriği, dış bağlantıları ve kod y
 Altyapı dağıtımı, uygulanan ortam kontrolleri ve diğer en iyi uygulamalarla ilgili senaryolar ve stratejiler hakkında kapsamlı bilgi için bu bölüme bakın.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
+
 
 
 
