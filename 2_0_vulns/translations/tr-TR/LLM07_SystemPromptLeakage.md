@@ -74,3 +74,27 @@ Bir BDM’de sistem istemi, saldırgan içeriği, dış bağlantıları ve kod y
 Altyapı dağıtımı, uygulanan ortam kontrolleri ve diğer en iyi uygulamalarla ilgili senaryolar ve stratejiler hakkında kapsamlı bilgi için bu bölüme bakın.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
+
+
+
+
+
+
+
+
+
+
+| Türkçe                                                            | İngilizce                            |
+| ----------------------------------------------------------------- | ------------------------------------ |
+| **Büyük Dil Modeli (BDM)**                                        | *Large Language Model (LLM)*         |
+| **Sistem İstemi**                                                 | *System Prompt*                      |
+| **İstem Enjeksiyonu**                                             | *Prompt Injection*                   |
+| **Korkuluk**                                                      | *Guardrail*                          |
+| **Hassas İşlevselliğin Açığa Çıkması**                            | *Sensitive Functionality Disclosure* |
+| **İç Kuralların Açığa Çıkması**                                   | *Internal Rules Disclosure*          |
+| **Filtreleme Kriterlerinin Açığa Çıkarılması**                    | *Filter Criteria Exposure*           |
+| **İzinlerin ve Kullanıcı Rollerinin İfşası**                      | *Permission & Role Exposure*         |
+| **Kısıt Atlatma (Risk)** (metinde “…korkuluklarının atlatılması”) | *Bypassing Restrictions*             |
+| **Ayrıcalık Yükseltme**                                           | *Privilege Escalation*               |
+| **Uzak Kod Yürütme**                                              | *Remote Code Execution (RCE)*        |
+
