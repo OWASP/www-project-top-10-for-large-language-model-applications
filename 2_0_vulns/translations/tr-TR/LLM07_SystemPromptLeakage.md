@@ -1,5 +1,7 @@
 ## LLM07:2025 Sistem İstemi Sızıntısı
 
+### Açıklama
+
 Sistem istemi sızıntısı zafiyeti, büyük dil modellerinin (BDM) davranışını yönlendirmek için kullanılan sistem istemlerinin (veya talimatlarının) içinde, aslında keşfedilmesi amaçlanmayan hassas bilgiler bulunabilmesi ve bunların ele geçirilebilmesi riskini ifade eder. Sistem istemleri, uygulamanın gereksinimlerine göre model çıktısını yönlendirmek için tasarlanır; ancak istemeden sır niteliğinde veriler içerebilir. Bu bilgiler keşfedildiğinde, diğer saldırıları kolaylaştırmak için kullanılabilir.
 
 Sistem isteminin gizli bir unsur veya güvenlik kontrolü olarak görülmemesi gerektiğini anlamak önemlidir. Bu nedenle kimlik bilgileri, bağlantı dizeleri vb. hassas veriler sistem istemi içinde yer almamalıdır.
