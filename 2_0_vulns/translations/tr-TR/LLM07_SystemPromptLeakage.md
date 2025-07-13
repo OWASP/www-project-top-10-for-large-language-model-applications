@@ -38,29 +38,30 @@ Saldırganlar bu rol tabanlı izinleri öğrendiğinde ayrıcalık yükseltme sa
 ### Önleme ve Azaltma Stratejileri
 
 #### 1. Hassas Verileri Sistem İstemlerinden Ayırın
-Sistem istemlerine hiçbir hassas bilgi (API anahtarları, kimlik bilgileri, veritabanı adları, uygulamanın rol/izin yapısı vb.) gömmeyin. Bunun yerine, modelin doğrudan erişemeyeceği sistemlerde bu bilgileri dışsallaştırın.
+
+Sistem istemlerine hiçbir hassas bilgi (API anahtarları, kimlik bilgileri, veritabanı adları, uygulamanın rol/izin yapısı vb.) gömmeyin. Bunun yerine, bu tür bilgileri modelin doğrudan erişemeyeceği sistemlerde bağımsız olarak tutun(dışsallaştırın ya da ayrı tutun da olabilir).
 
 #### 2. Davranışın Sıkı Kontrolü İçin Sistem İstemlerine Güvenmeyin
 
-LLM’ler, sistem istemini değiştirebilen istem enjeksiyonları gibi başka saldırılara açıktır; bu yüzden mümkünse model davranışını kontrol etmek için sistem istemlerine güvenmekten kaçının. Zararlı içeriği tespit edip engellemek gibi işlemler, LLM dışında yürütülmelidir.
+BDM'ler, sistem istemini değiştirebilen istem enjeksiyonları gibi başka saldırılara karşı açık olduğundan mümkünse model davranışını kontrol etmek için sistem istemleri yerine, bu davranışı sağlamak için BDM dışındaki sistemlere güvenin. Örneğin, zararlı içeriği tespit edip engellemek gibi işlemler, LLM dışında yürütülmelidir.
 
 #### 3. Korkuluk (Guardrails) Uygulayın
 
-BDM dışında çalışan bir korkuluk sistemi kurun. Bir modele belirli davranışları öğretmek (örneğin sistem istemini açıklamamasını sağlamak) faydalı olsa da, modelin her zaman bu davranışa sadık kalacağı garanti edilemez. Model çıktısını denetleyerek beklentilere uyup uymadığını kontrol eden bağımsız bir sistem tercih edilmelidir.
+BDM dışında çalışan bir korkuluk sistemi kurun. Bir modele belirli davranışları öğretmek, örneğin sistem istemini göstermemesi için onu eğitmek etkili olsa da, modelin her zaman bu davranışa her zaman uyacağı garanti edilemez. Model çıktısını denetleyerek beklentilere uyup uymadığını kontrol eden bağımsız bir sistem tercih edilmelidir.
 
 #### 4. Güvenlik Kontrollerini BDM’den Bağımsız Yürütün
 
-Ayrıcalık ayrımı, yetkilendirme sınır kontrolleri gibi kritik kontroller ne sistem istemine ne de başka bir yolla BDM’ye devredilmemelidir. Bu kontrollerin deterministik ve denetlenebilir bir şekilde uygulanması gerekir; BDM’ler şu anda buna uygun değildir. Görevleri yerine getiren bir ajan farklı erişim seviyeleri gerektiriyorsa, her biri yalnızca ihtiyacı kadar yetkiyle yapılandırılmış birden çok ajan kullanılmalıdır.
+Ayrıcalık ayrımı, yetkilendirme sınır kontrolleri gibi kritik kontroller ne sistem isteminde ne de başka bir yolla BDM’ye devredilmemelidir. Bu kontrollerin deterministik ve denetlenebilir bir şekilde uygulanması gerekir; BDM’ler (şu anda) buna elverişli değildir. Görevleri yerine getiren bir ajan, bu görevler farklı erişim seviyeleri gerektiriyorsa, her biri istenen görevleri yerine getirmek için gereken en az yetkiyle yapılandırılmış birden çok ajan kullanılmalıdır.
 
 ### Örnek Saldırı Senaryoları
 
 #### Senaryo #1
-    Bir BDM’nin sistem istemi, erişim verilen bir araca ait kimlik bilgilerini içerir. Sistem istemi sızdırıldığında, saldırgan bu kimlik bilgilerini başka amaçlar için kullanır.
+
+    Bir BDM’nin sistem istemi, erişim verilen bir araca ait kimlik bilgilerini içerir. Sistem istemi, daha sonra bu kimlik bilgilerini başka amaçlar için kullanabilecek bir saldırgana sızdırılır.
 
 #### Senaryo #2
 
-Bir BDM’de sistem istemi, saldırgan içeriği, dış bağlantıları ve kod yürütmeyi yasaklayan yönergeler içerir. Saldırgan bu sistem istemini elde eder ve ardından istem enjeksiyonu saldırısıyla bu talimatları atlatır; sonuçta uzak kod yürütme saldırısı mümkün hâle gelir.
-
+    Bir BDM’de sistem istemi, saldırgan içeriği, dış bağlantıları ve kod yürütmeyi yasaklayan yönergeler içerir. Saldırgan bu sistem istemini elde eder ve ardından istem enjeksiyonu saldırısı kullanarak uzaktan kod yürütme saldırısını kolaylaştırır.
 ### Referans Bağlantıları
 
 1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
@@ -71,9 +72,10 @@ Bir BDM’de sistem istemi, saldırgan içeriği, dış bağlantıları ve kod y
 
 ### İlgili Çerçeveler ve Taksonomiler
 
-Altyapı dağıtımı, uygulanan ortam kontrolleri ve diğer en iyi uygulamalarla ilgili senaryolar ve stratejiler hakkında kapsamlı bilgi için bu bölüme bakın.
+Altyapı dağıtımı, uygulanan ortam kontrolleri ve diğer en iyi uygulamalarla ilgili senaryo stratejileri hakkında kapsamlı bilgi için bu bölüme bakın.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
+
 
 
 
