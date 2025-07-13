@@ -1,10 +1,10 @@
 ## LLM07:2025 Sistem İstemi Sızıntısı
 
-Sistem istemi sızıntısı zafiyeti, büyük dil modellerinin (LLM) davranışını yönlendirmek için kullanılan sistem istemlerinin (veya talimatlarının) içinde, aslında keşfedilmesi amaçlanmayan hassas bilgiler bulunabilmesi ve bunların ele geçirilebilmesi riskini ifade eder. Sistem istemleri, uygulamanın gereksinimlerine göre model çıktısını yönlendirmek için tasarlanır; ancak istemeden sır niteliğinde veriler içerebilir. Bu bilgiler keşfedildiğinde, diğer saldırıları kolaylaştırmak için kullanılabilir.
+Sistem istemi sızıntısı zafiyeti, büyük dil modellerinin (BDM) davranışını yönlendirmek için kullanılan sistem istemlerinin (veya talimatlarının) içinde, aslında keşfedilmesi amaçlanmayan hassas bilgiler bulunabilmesi ve bunların ele geçirilebilmesi riskini ifade eder. Sistem istemleri, uygulamanın gereksinimlerine göre model çıktısını yönlendirmek için tasarlanır; ancak istemeden sır niteliğinde veriler içerebilir. Bu bilgiler keşfedildiğinde, diğer saldırıları kolaylaştırmak için kullanılabilir.
 
 Sistem isteminin gizli bir unsur veya güvenlik kontrolü olarak görülmemesi gerektiğini anlamak önemlidir. Bu nedenle kimlik bilgileri, bağlantı dizeleri vb. hassas veriler sistem istemi içinde yer almamalıdır.
 
-Benzer şekilde, bir sistem istemi farklı roller ve izinleri veya bağlantı dizeleri ya da parolalar gibi hassas verileri tanımlıyorsa, söz konusu bilgilerin ifşasının faydalı olabileceği durumlar bulunsa da, temel güvenlik riski bu bilgilerin açığa çıkmasından ziyade, uygulamanın güçlü oturum yönetimini ve yetkilendirme kontrollerini LLM’ye devrederek atlanmasına izin vermesi ve hassas verilerin olması gerekenin dışında bir yerde saklanmasıdır.
+Benzer şekilde, bir sistem istemi farklı roller ve izinleri veya bağlantı dizeleri ya da parolalar gibi hassas verileri tanımlıyorsa, söz konusu bilgilerin ifşasının faydalı olabileceği durumlar bulunsa da, temel güvenlik riski bu bilgilerin açığa çıkmasından ziyade, uygulamanın güçlü oturum yönetimini ve yetkilendirme kontrollerini BDM’ye devrederek atlanmasına izin vermesi ve hassas verilerin olması gerekenin dışında bir yerde saklanmasıdır.
 
 Kısacası: sistem isteminin kendisinin ifşası gerçek riski oluşturmaz — asıl tehlike altta yatan unsurlardadır; ister hassas bilgi sızıntısı olsun, ister sistem korkuluklarının atlatılması, ister ayrıcalıkların hatalı ayrılması vb. olsun.
 
@@ -38,18 +38,18 @@ Sistem istemlerine hiçbir hassas bilgi (API anahtarları, kimlik bilgileri, ver
 LLM’ler, sistem istemini değiştirebilen istem enjeksiyonları gibi başka saldırılara açıktır; bu yüzden mümkünse model davranışını kontrol etmek için sistem istemlerine güvenmekten kaçının. Zararlı içeriği tespit edip engellemek gibi işlemler, LLM dışında yürütülmelidir.
 
 #### 3. Korkuluklar (Guardrails) Uygulayın
-LLM dışında çalışan bir korkuluk sistemi kurun. Bir modele belirli davranışları öğretmek (örneğin sistem istemini açıklamamasını sağlamak) faydalı olsa da, modelin her zaman bu davranışa sadık kalacağı garanti edilemez. Model çıktısını denetleyerek beklentilere uyup uymadığını kontrol eden bağımsız bir sistem tercih edilmelidir.
+BDM dışında çalışan bir korkuluk sistemi kurun. Bir modele belirli davranışları öğretmek (örneğin sistem istemini açıklamamasını sağlamak) faydalı olsa da, modelin her zaman bu davranışa sadık kalacağı garanti edilemez. Model çıktısını denetleyerek beklentilere uyup uymadığını kontrol eden bağımsız bir sistem tercih edilmelidir.
 
-#### 4. Güvenlik Kontrollerini LLM’den Bağımsız Yürütün
-Ayrıcalık ayrımı, yetkilendirme sınır kontrolleri gibi kritik kontroller ne sistem istemine ne de başka bir yolla LLM’ye devredilmemelidir. Bu kontrollerin deterministik ve denetlenebilir bir şekilde uygulanması gerekir; LLM’ler şu anda buna uygun değildir. Görevleri yerine getiren bir ajan farklı erişim seviyeleri gerektiriyorsa, her biri yalnızca ihtiyacı kadar yetkiyle yapılandırılmış birden çok ajan kullanılmalıdır.
+#### 4. Güvenlik Kontrollerini BDM’den Bağımsız Yürütün
+Ayrıcalık ayrımı, yetkilendirme sınır kontrolleri gibi kritik kontroller ne sistem istemine ne de başka bir yolla BDM’ye devredilmemelidir. Bu kontrollerin deterministik ve denetlenebilir bir şekilde uygulanması gerekir; BDM’ler şu anda buna uygun değildir. Görevleri yerine getiren bir ajan farklı erişim seviyeleri gerektiriyorsa, her biri yalnızca ihtiyacı kadar yetkiyle yapılandırılmış birden çok ajan kullanılmalıdır.
 
 ### Örnek Saldırı Senaryoları
 
 #### Senaryo #1
-Bir LLM’in sistem istemi, erişim verilen bir araca ait kimlik bilgilerini içerir. Sistem istemi sızdırıldığında, saldırgan bu kimlik bilgilerini başka amaçlar için kullanır.
+Bir BDM’nin sistem istemi, erişim verilen bir araca ait kimlik bilgilerini içerir. Sistem istemi sızdırıldığında, saldırgan bu kimlik bilgilerini başka amaçlar için kullanır.
 
 #### Senaryo #2
-Bir LLM’de sistem istemi, saldırgan içeriği, dış bağlantıları ve kod yürütmeyi yasaklayan yönergeler içerir. Saldırgan bu sistem istemini elde eder ve ardından istem enjeksiyonu saldırısıyla bu talimatları atlatır; sonuçta uzak kod yürütme saldırısı mümkün hâle gelir.
+Bir BDM’de sistem istemi, saldırgan içeriği, dış bağlantıları ve kod yürütmeyi yasaklayan yönergeler içerir. Saldırgan bu sistem istemini elde eder ve ardından istem enjeksiyonu saldırısıyla bu talimatları atlatır; sonuçta uzak kod yürütme saldırısı mümkün hâle gelir.
 
 ### Referans Bağlantıları
 
