@@ -78,7 +78,7 @@ Basit bir tehdit modeli burada bulunabilir. [here](https://github.com/jsotiro/Th
 
 #### 8. Cihaz Üzerinde Çalışan Büyük Dil Modellerinde Tedarik Zinciri Zafiyetleri
   
-  Cihaz Üzerinde Çalışan Büyük Dil Modelleri, tedarik zinciri yüzeyini arttırır. Bu, üretim süreçlerinin istimasrıyla ve
+  Cihaz üzerinde çalışan büyük dil modelleri, tedarik zinciri yüzeyini arttırır. Bu, üretim süreçlerinin istimasrıyla ve
   cihazın işletim sisteminin ya da çerçeve açıklarının kullanılmasıyla modellerin ele geçirilmesi ele geçirilmesine neden olabilir.
 
 
@@ -100,11 +100,11 @@ Basit bir tehdit modeli burada bulunabilir. [here](https://github.com/jsotiro/Th
 6. Sadece doğrulanabilir kaynaklardan modeller kullanın ve güçlü veri kaynağı eksikliği için, imzalama ve dosya hash'leriyle üçüncü parti model bütünlük kontrollerini uygulayın. Benzer şekilde, dışarıdan sağlanan kodlar için de kod imzalama yapın.  
 7. Ortak model geliştirme ortamlarında herhangi bir kötüye kullanımı engellemek ve hızlıca tespit etmek için sıkı izleme ve denetim uygulamaları gerçekleştirin. "HuggingFace SF_Convertbot Scanner" kullanılabilecek otomatik betiklere bir örnektir.
   (Ref. link: [HuggingFace SF_Convertbot Scanner](https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163))
-8. Sağlanan modellerde ve verilerde anomali tespiti ve adverserial sağlamlık testleri (*** terim bul) yapmak  "LLM04 Data and Model Poisoning"te tartışıldığı gibi kurcalama ve zehirlenmeleri tespit edilmesine yardımcı olabilir. İdeal olarak, bu, MLOps ve BDM ardışık düzenlerinin bir parçasıdır olmalıdır ancak bunlar yeni çıkan yöntemler olduğundan red teaming (bu şekilde mi kalmalı?) uygulamaları kapsamında uygulamak daha kolay olabilir.
+8. Sağlanan modellerde ve verilerde anomali tespiti ve çekişmeli gürbüzlük sağlamlık testleri yapmak  "LLM04 Data and Model Poisoning"te tartışıldığı gibi kurcalama ve zehirlenmeleri tespit edilmesine yardımcı olabilir. İdeal olarak, bu, MLOps ve BDM ardışık düzenlerinin bir parçasıdır olmalıdır ancak bunlar yeni çıkan yöntemler olduğundan red teaming (bu şekilde mi kalmalı?) uygulamaları kapsamında uygulamak daha kolay olabilir.
 9. Güvenlik açığı bulunan ve güncel olmayan bileşenleri azaltmak için yama politikası uygulayın. Uygulamanın, bakımı yapılan API'ler ve modellerden oluştuğuna emin olun (tekrar kontrol et).  
 10. YZ uçlarında konuşlandırılan modellerini şifreleyin ve bütünlük kontrolleri uygulayın. Müdahale edilmiş uygulama ve modelleri önlemek için üretici doğrulama API'leri uygulamaları kullanın ve tanınmayan donanım yazılım uygulamalarını sonlandırın.
 
-### Sample Attack Scenarios
+### Örnek Saldırı Senaryoları
 
 #### Senaryo #1: Savunmasız Python Kütüphanesi
 
@@ -151,7 +151,7 @@ Basit bir tehdit modeli burada bulunabilir. [here](https://github.com/jsotiro/Th
 
   Bu saldırılar, paylaşımlı kaynakları ve sanallaştırma katmanlarındaki açıkları kullanarak bulut 
   mimarilerini hedefler. CloudBorne paylaşımlı bulut ortamlarında, donanım yazılım açıklarını kullanmayı içerir ve
-  sanal örnekleri (makineleri) barındıran fiziksel sunucuları ele geçirilmesine yol açabilir. CloudJacking, 
+  sanal örnekleri barındıran fiziksel sunucuları ele geçirilmesine yol açabilir. CloudJacking, 
   bulut örneklerinin kötü niyetli kullanımını ve kötü bir şekilde kontorl edilmesini ifade eder ve kritik 
   BDM dağıtım platformlarına yetkisiz erişime sebep olabilir.
 
@@ -199,7 +199,7 @@ Basit bir tehdit modeli burada bulunabilir. [here](https://github.com/jsotiro/Th
 
 ### İlgili Çerçeveler ve Sınıflandırmalar
 
-  Altyapı dağıtımı, uygulamalı ortam kontrolleri, ve diğer en iyi uygulama (iyi uygulama) pratikleri ile alakalı
+  Altyapı dağıtımı, uygulamalı ortam kontrolleri, ve diğer en iyi uygulama pratikleri ile alakalı
   kapsamlı bilgiler, senaryolar ve stratejiler için bu bölüme başvurun.
 
 - [ML Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010) -  **MITRE ATLAS**
