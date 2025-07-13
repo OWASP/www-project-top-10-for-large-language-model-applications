@@ -2,21 +2,21 @@
 
 ### Açıklama
 
-Sistem istemi sızıntısı zafiyeti, büyük dil modellerinin (BDM) davranışını yönlendirmek için kullanılan sistem istemlerinin (veya talimatlarının) içinde, aslında keşfedilmesi amaçlanmayan hassas bilgiler bulunabilmesi ve bunların ele geçirilebilmesi riskini ifade eder. Sistem istemleri, uygulamanın gereksinimlerine göre model çıktısını yönlendirmek için tasarlanır; ancak istemeden sır niteliğinde veriler içerebilir. Bu bilgiler keşfedildiğinde, diğer saldırıları kolaylaştırmak için kullanılabilir.
+Sistem istemi sızıntısı zafiyeti, büyük dil modellerinin (BDM) davranışını yönlendirmek için kullanılan sistem istemlerinin veya talimatlarının içinde, aslında keşfedilmesi amaçlanmayan hassas bilgiler bulunabilmesi ve bunların ele geçirilebilmesi riskini ifade eder. Sistem istemleri, uygulamanın gereksinimlerine göre model çıktısını yönlendirmek için tasarlanır; ancak istemeden sır niteliğinde veriler içerebilir. Bu bilgiler keşfedildiğinde, diğer saldırıları kolaylaştırmak için kullanılabilir.
 
-Sistem isteminin gizli bir unsur veya güvenlik kontrolü olarak görülmemesi gerektiğini anlamak önemlidir. Bu nedenle kimlik bilgileri, bağlantı dizeleri vb. hassas veriler sistem istemi içinde yer almamalıdır.
+Sistem isteminin gizli bir unsur veya güvenlik kontrolü olarak görülmemesi gerektiğini anlamak önemlidir. Bu nedenle kimlik bilgileri, bağlantı dizeleri ve benzeri gibi hassas veriler sistem istemi içinde yer almamalıdır.
 
-Benzer şekilde, bir sistem istemi farklı roller ve izinleri veya bağlantı dizeleri ya da parolalar gibi hassas verileri tanımlıyorsa, söz konusu bilgilerin ifşasının faydalı olabileceği durumlar bulunsa da, temel güvenlik riski bu bilgilerin açığa çıkmasından ziyade, uygulamanın güçlü oturum yönetimini ve yetkilendirme kontrollerini BDM’ye devrederek atlanmasına izin vermesi ve hassas verilerin olması gerekenin dışında bir yerde saklanmasıdır.
+Benzer şekilde, bir sistem istemi farklı rolleri ve izinleri veya bağlantı dizeleri ya da parolalar gibi hassas veriler bulunuyorsa, söz konusu bilgilerin ifşasının faydalı olabileceği durumlar bulunsa da, temel güvenlik riski bu bilgilerin açığa çıkmasından ziyade, uygulamanın güçlü oturum yönetimini ve yetkilendirme kontrollerini BDM’ye devrederek atlanmasına izin vermesi ve hassas verilerin olması gerekenin dışında bir yerde saklanmasıdır.
 
 Kısacası: sistem isteminin kendisinin ifşası gerçek riski oluşturmaz — asıl tehlike altta yatan unsurlardadır; ister hassas bilgi sızıntısı olsun, ister sistem korkuluklarının atlatılması, ister ayrıcalıkların hatalı ayrılması vb. olsun.
 
-Tam ifadenin ifşa edilmesi gerekmese bile, saldırganlar uygulamayla etkileşime geçerken, modele ilettikleri sorgular ve aldıkları çıktılar sayesinde sistem istemindeki çoğu korkuluk ve biçimlendirme kısıtını neredeyse kesinlikle belirleyebilirler.
+İfadeler tam olarak açıklanmasa bile, sistemle etkileşime giren saldırganlar, uygulamayı kullanırken, modele ifadeler gönderirken ve sonuçları gözlemlerken sistem istem dilinde mevcut olan korkulukların ve biçimlendirme kısıtlamalarının çoğunu neredeyse kesin olarak belirleyebileceklerdir.
 
 ### Riskin Yaygın Örnekleri
 
 #### 1. Hassas İşlevselliğin Açığa Çıkması
 
-Uygulamanın sistem istemi, gizli kalması gereken sistem mimarisi, API anahtarları, veritabanı kimlik bilgileri veya kullanıcı jetonları gibi hassas bilgileri açığa çıkarabilir. Saldırganlar bunları çıkararak uygulamaya yetkisiz erişim elde edebilir. Örneğin, sistem isteminde kullanılan veritabanı türü açıklanırsa, saldırgan bu veritabanına yönelik SQL enjeksiyonu saldırılarını hedefleyebilir.
+Uygulamanın sistem istemi, gizli kalması gereken sistem mimarisi, API anahtarları, veritabanı kimlik bilgileri veya kullanıcı jetonları gibi hassas bilgileri açığa çıkarabilir. Saldırganlar bunları çıkararak uygulamaya yetkisiz erişim elde edebilir. Örneğin, sistem isteminde kullanılan veritabanı türü açıklanırsa, saldırgan bu veritabanına yönelik SQL enjeksiyonu saldırılarını hedefleyebilir. ------ problemli
 
 #### 2. İç Kuralların Açığa Çıkması
 
@@ -74,6 +74,7 @@ Bir BDM’de sistem istemi, saldırgan içeriği, dış bağlantıları ve kod y
 Altyapı dağıtımı, uygulanan ortam kontrolleri ve diğer en iyi uygulamalarla ilgili senaryolar ve stratejiler hakkında kapsamlı bilgi için bu bölüme bakın.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
+
 
 
 
