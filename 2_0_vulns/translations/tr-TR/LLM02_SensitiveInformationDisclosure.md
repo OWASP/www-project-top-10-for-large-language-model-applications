@@ -1,105 +1,105 @@
-## LLM02:2025 Sensitive Information Disclosure
+## LLM02:2025 Hassas Bilgi İfşası
 
-### Description
+### Açıklama
 
-Sensitive information can affect both the LLM and its application context. This includes personal identifiable information (PII), financial details, health records, confidential business data, security credentials, and legal documents. Proprietary models may also have unique training methods and source code considered sensitive, especially in closed or foundation models.
+Hassas bilgiler hem LLM'yi hem de uygulama bağlamını etkileyebilir. Bu, kişisel tanımlanabilir bilgiler (PII), finansal detaylar, sağlık kayıtları, gizli iş verileri, güvenlik kimlik bilgileri ve yasal belgeleri içerir. Tescilli modeller ayrıca özellikle kapalı veya temel modellerde hassas kabul edilen benzersiz eğitim yöntemleri ve kaynak kodlarına sahip olabilir.
 
-LLMs, especially when embedded in applications, risk exposing sensitive data, proprietary algorithms, or confidential details through their output. This can result in unauthorized data access, privacy violations, and intellectual property breaches. Consumers should be aware of how to interact safely with LLMs. They need to understand the risks of unintentionally providing sensitive data, which may later be disclosed in the model's output.
+LLM'ler, özellikle uygulamalara gömüldüklerinde, çıktıları aracılığıyla hassas verileri, tescilli algoritmaları veya gizli detayları ifşa etme riski taşır. Bu, yetkisiz veri erişimi, gizlilik ihlalleri ve fikri mülkiyet ihlalleri ile sonuçlanabilir. Tüketiciler LLM'lerle güvenli şekilde nasıl etkileşime gireceğinin farkında olmalıdır. Daha sonra modelin çıktısında ifşa edilebilecek hassas verileri istemeden sağlama risklerini anlamaları gerekir.
 
-To reduce this risk, LLM applications should perform adequate data sanitization to prevent user data from entering the training model. Application owners should also provide clear Terms of Use policies, allowing users to opt out of having their data included in the training model. Adding restrictions within the system prompt about data types that the LLM should return can provide mitigation against sensitive information disclosure. However, such restrictions may not always be honored and could be bypassed via prompt injection or other methods.
+Bu riski azaltmak için LLM uygulamaları, kullanıcı verilerinin eğitim modeline girmesini önlemek için yeterli veri temizleme gerçekleştirmelidir. Uygulama sahipleri ayrıca kullanıcıların verilerinin eğitim modeline dahil edilmesini reddetmelerine olanak tanıyan açık Kullanım Şartları politikaları sağlamalıdır. LLM'nin döndürmesi gereken veri türleri hakkında sistem istemi içinde kısıtlamalar eklemek, hassas bilgi ifşasına karşı hafifletme sağlayabilir. Ancak bu tür kısıtlamalar her zaman onurlandırılmayabilir ve istem enjeksiyonu veya diğer yöntemlerle atlatılabilir.
 
-### Common Examples of Vulnerability
+### Yaygın Zafiyet Örnekleri
 
-#### 1. PII Leakage
+#### 1. PII Sızıntısı
 
-  Personal identifiable information (PII) may be disclosed during interactions with the LLM.
+  BDM ile etkileşimler sırasında kişisel tanımlanabilir bilgiler (PII) ifşa edilebilir.
 
-#### 2. Proprietary Algorithm Exposure
+#### 2. Tescilli Algoritma İfşası
 
-  Poorly configured model outputs can reveal proprietary algorithms or data. Revealing training data can expose models to inversion attacks, where attackers extract sensitive information or reconstruct inputs. For instance, as demonstrated in the 'Proof Pudding' attack (CVE-2019-20634), disclosed training data facilitated model extraction and inversion, allowing attackers to circumvent security controls in machine learning algorithms and bypass email filters.
+  Kötü yapılandırılmış model çıktıları tescilli algoritmaları veya verileri açığa çıkarabilir. Eğitim verilerinin açığa çıkarılması, modelleri saldırganların hassas bilgileri çıkardığı veya girdileri yeniden yapılandırdığı tersine çevirme saldırılarına maruz bırakabilir. Örneğin, 'Proof Pudding' saldırısında (CVE-2019-20634) gösterildiği gibi, ifşa edilen eğitim verileri model çıkarma ve tersine çevirmeyi kolaylaştırarak saldırganların makine öğrenmesi algoritmalarındaki güvenlik kontrollerini aşmasına ve e-posta filtrelerini atlatmasına olanak sağladı.
 
-#### 3. Sensitive Business Data Disclosure
+#### 3. Hassas İş Verisi İfşası
 
-  Generated responses might inadvertently include confidential business information.
+  Üretilen yanıtlar istemeden gizli iş bilgilerini içerebilir.
 
-### Prevention and Mitigation Strategies
+### Önleme ve Hafifletme Stratejileri
 
-#### Sanitization
+#### Temizleme
 
-#### 1. Integrate Data Sanitization Techniques
+#### 1. Veri Temizleme Tekniklerini Entegre Etme
 
-  Implement data sanitization to prevent user data from entering the training model. This includes scrubbing or masking sensitive content before it is used in training.
+  Kullanıcı verilerinin eğitim modeline girmesini önlemek için veri temizleme uygulayın. Bu, eğitimde kullanılmadan önce hassas içeriği silme veya maskelemeyi içerir.
 
-#### 2. Robust Input Validation
+#### 2. Güçlü Girdi Doğrulama
 
-  Apply strict input validation methods to detect and filter out potentially harmful or sensitive data inputs, ensuring they do not compromise the model.
+  Potansiyel olarak zararlı veya hassas veri girdilerini tespit etmek ve filtrelemek için sıkı girdi doğrulama yöntemleri uygulayın, modeli tehlikeye atmamalarını sağlayın.
 
-#### Access Controls
+#### Erişim Kontrolleri
 
-#### 1. Enforce Strict Access Controls
+#### 1. Sıkı Erişim Kontrolleri Uygulama
 
-  Limit access to sensitive data based on the principle of least privilege. Only grant access to data that is necessary for the specific user or process.
+  En az ayrıcalık ilkesine dayalı olarak hassas verilere erişimi sınırlayın. Yalnızca belirli kullanıcı veya süreç için gerekli olan verilere erişim verin.
 
-#### 2. Restrict Data Sources
+#### 2. Veri Kaynaklarını Kısıtlama
 
-  Limit model access to external data sources, and ensure runtime data orchestration is securely managed to avoid unintended data leakage.
+  Modelin harici veri kaynaklarına erişimini sınırlayın ve istenmeyen veri sızıntısını önlemek için çalışma zamanı veri düzenlemesinin güvenli şekilde yönetilmesini sağlayın.
 
-#### Federated Learning and Privacy Techniques
+#### Federasyonlu Öğrenme ve Gizlilik Teknikleri
 
-#### 1. Utilize Federated Learning
+#### 1. Federasyonlu Öğrenme Kullanma
 
-  Train models using decentralized data stored across multiple servers or devices. This approach minimizes the need for centralized data collection and reduces exposure risks.
+  Birden fazla sunucu veya cihazda depolanan merkezi olmayan veri kullanarak modelleri eğitin. Bu yaklaşım merkezi veri toplama ihtiyacını en aza indirir ve maruz kalma risklerini azaltır.
 
-#### 2. Incorporate Differential Privacy
+#### 2. Diferansiyel Gizliliği Dahil Etme
 
-  Apply techniques that add noise to the data or outputs, making it difficult for attackers to reverse-engineer individual data points.
+  Saldırganların bireysel veri noktalarını tersine mühendislik yapmasını zorlaştıran verilere veya çıktılara gürültü ekleyen teknikler uygulayın.
 
-#### User Education and Transparency
+#### Kullanıcı Eğitimi ve Şeffaflık
 
-#### 1. Educate Users on Safe LLM Usage
+#### 1. Kullanıcıları Güvenli BDM Kullanımı Konusunda Eğitme
 
-  Provide guidance on avoiding the input of sensitive information. Offer training on best practices for interacting with LLMs securely.
+  Hassas bilgi girdisinden kaçınma konusunda rehberlik sağlayın. BDM'lerle güvenli etkileşim için en iyi uygulamalar konusunda eğitim sunun.
 
-#### 2. Ensure Transparency in Data Usage
+#### 2. Veri Kullanımında Şeffaflığı Sağlama
 
-  Maintain clear policies about data retention, usage, and deletion. Allow users to opt out of having their data included in training processes.
+  Veri saklama, kullanım ve silme konusunda açık politikalar sürdürün. Kullanıcıların verilerinin eğitim süreçlerine dahil edilmesini reddetmelerine olanak tanıyın.
 
-#### Secure System Configuration
+#### Güvenli Sistem Yapılandırması
 
-#### 1. Conceal System Preamble
+#### 1. Sistem Giriş Metnini Gizleme
 
-  Limit the ability for users to override or access the system's initial settings, reducing the risk of exposure to internal configurations.
+  Kullanıcıların sistemin başlangıç ayarlarını geçersiz kılma veya erişme yeteneğini sınırlayın, iç yapılandırmalara maruz kalma riskini azaltın.
 
-#### 2. Reference Security Misconfiguration Best Practices
+#### 2. Güvenlik Yanlış Yapılandırması En İyi Uygulamalarına Başvurma
 
-  Follow guidelines like "OWASP API8:2023 Security Misconfiguration" to prevent leaking sensitive information through error messages or configuration details.
+  Hata mesajları veya yapılandırma detayları aracılığıyla hassas bilgi sızıntısını önlemek için "OWASP API8:2023 Security Misconfiguration" gibi yönergeleri takip edin.
   (Ref. link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
-#### Advanced Techniques
+#### Gelişmiş Teknikler
 
-#### 1. Homomorphic Encryption
+#### 1. Homomorfik Şifreleme
 
-  Use homomorphic encryption to enable secure data analysis and privacy-preserving machine learning. This ensures data remains confidential while being processed by the model.
+  Güvenli veri analizi ve gizliliği koruyan makine öğrenmesini mümkün kılmak için homomorfik şifreleme kullanın. Bu, veriler model tarafından işlenirken gizli kalmasını sağlar.
 
-#### 2. Tokenization and Redaction
+#### 2. Token Haline Getirme ve Redaksiyon
 
-  Implement tokenization to preprocess and sanitize sensitive information. Techniques like pattern matching can detect and redact confidential content before processing.
+  Hassas bilgileri ön işleme ve temizleme için token haline getirme uygulayın. Desen eşleme gibi teknikler, işlemeden önce gizli içeriği tespit edip redakte edebilir.
 
-### Example Attack Scenarios
+### Örnek Saldırı Senaryoları
 
-#### Scenario #1: Unintentional Data Exposure
+#### Senaryo #1: Kasıtsız Veri İfşası
 
-  A user receives a response containing another user's personal data due to inadequate data sanitization.
+  Kullanıcı, yetersiz veri temizleme nedeniyle başka bir kullanıcının kişisel verilerini içeren yanıt alır.
 
-#### Scenario #2: Targeted Prompt Injection
+#### Senaryo #2: Hedefli İstem Enjeksiyonu
 
-  An attacker bypasses input filters to extract sensitive information.
+  Saldırgan, hassas bilgileri çıkarmak için girdi filtrelerini atlatır.
 
-#### Scenario #3: Data Leak via Training Data
+#### Senaryo #3: Eğitim Verileri Aracılığıyla Veri Sızıntısı
 
-  Negligent data inclusion in training leads to sensitive information disclosure.
+  Eğitimde ihmalkar veri dahil etme, hassas bilgi ifşasına yol açar.
 
-### Reference Links
+### Referanslar
 
 1. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
 2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
@@ -107,9 +107,9 @@ To reduce this risk, LLM applications should perform adequate data sanitization 
 4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
 5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 
-### Related Frameworks and Taxonomies
+### İlgili Çerçeveler ve Taksonomiler
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Altyapı dağıtımı, uygulanan ortam kontrolleri ve diğer en iyi uygulamalarla ilgili kapsamlı bilgi, senaryo stratejileri için bu bölüme başvurun.
 
 - [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
 - [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**

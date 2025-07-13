@@ -1,105 +1,105 @@
-## LLM01:2025 Prompt Injection
+## LLM01:2025 Komut İstemi Enjeksiyonu
 
-### Description
+### Açıklama
 
-A Prompt Injection Vulnerability occurs when user prompts alter the LLM’s behavior or output in unintended ways. These inputs can affect the model even if they are imperceptible to humans, therefore prompt injections do not need to be human-visible/readable, as long as the content is parsed by the model.
+İstem Enjeksiyonu Zafiyeti, kullanıcı istemlerinin LLM'nin davranışını veya çıktısını istenmeyen şekillerde değiştirmesi durumunda ortaya çıkar. Bu girdiler, insanlar tarafından algılanamaz olsalar bile modeli etkileyebilir, bu nedenle istem enjeksiyonlarının insan tarafından görülebilir/okunabilir olması gerekmez, içerik model tarafından işlendiği sürece yeterlidir.
 
-Prompt Injection vulnerabilities exist in how models process prompts, and how input may force the model to incorrectly pass prompt data to other parts of the model, potentially causing them to violate guidelines, generate harmful content, enable unauthorized access, or influence critical decisions. While techniques like Retrieval Augmented Generation (RAG) and fine-tuning aim to make LLM outputs more relevant and accurate, research shows that they do not fully mitigate prompt injection vulnerabilities.
+İstem Enjeksiyonu zafiyetleri, modellerin istemleri nasıl işlediğinde ve girdinin modeli, istem verilerini modelin diğer bölümlerine yanlış şekilde iletmeye nasıl zorlayabileceğinde bulunur; bu durum potansiyel olarak kılavuzları ihlal etmelerine, zararlı içerik üretmelerine, yetkisiz erişime olanak sağlamalarına veya kritik kararları etkilemelerine neden olabilir. Erişimle Artırılmış Üretim (RAG) ve ince ayarlama gibi teknikler Büyük Dil Modeli çıktılarını daha alakalı ve doğru hale getirmeyi amaçlasa da, araştırmalar bunların istem enjeksiyonu zafiyetlerini tam olarak hafifletmediğini göstermektedir.
 
-While prompt injection and jailbreaking are related concepts in LLM security, they are often used interchangeably. Prompt injection involves manipulating model responses through specific inputs to alter its behavior, which can include bypassing safety measures. Jailbreaking is a form of prompt injection where the attacker provides inputs that cause the model to disregard its safety protocols entirely. Developers can build safeguards into system prompts and input handling to help mitigate prompt injection attacks, but effective prevention of jailbreaking requires ongoing updates to the model's training and safety mechanisms.
+İstem enjeksiyonu ve güvenlik aşırma (jailbreaking) BDM güvenliğinde ilişkili kavramlar olsa da, genellikle birbirlerinin yerine kullanılırlar. İstem enjeksiyonu, modelin davranışını değiştirmek için belirli girdiler yoluyla model yanıtlarını manipüle etmeyi içerir ve bu güvenlik önlemlerini atlatmayı da kapsayabilir. Güvenlik aşırma, saldırganın modelin güvenlik protokollerini tamamen görmezden gelmesine neden olan girdiler sağladığı bir istem enjeksiyonu türüdür. Geliştiriciler istem enjeksiyonu saldırılarını hafifletmeye yardımcı olmak için sistem istemlerine ve girdi işlemeye güvenlik önlemleri yerleştirebilir, ancak güvenlik aşırma'nın etkili şekilde önlenmesi, modelin eğitimi ve güvenlik mekanizmalarına sürekli güncellemeler gerektirir.
 
-### Types of Prompt Injection Vulnerabilities
+### İstem Enjeksiyonu Zafiyet Türleri
 
-#### Direct Prompt Injections
+#### Doğrudan İstem ENjeksiyonları
 
-  Direct prompt injections occur when a user's prompt input directly alters the behavior of the model in unintended or unexpected ways. The input can be either intentional (i.e., a malicious actor deliberately crafting a prompt to exploit the model) or unintentional (i.e., a user inadvertently providing input that triggers unexpected behavior).
+  Doğrudan istem enjeksiyonları, kullanıcının istem girdisinin modelin davranışını istenmeyen veya beklenmeyen şekillerde doğrudan değiştirmesi durumunda ortaya çıkar. Girdi kasıtlı (yani kötü niyetli bir aktörün modeli sömürmek için bilinçli olarak bir istem hazırlaması) veya kasıtsız (yani kullanıcının fark etmeden beklenmeyen davranışları tetikleyen girdi sağlaması) olabilir.
 
-#### Indirect Prompt Injections
+#### Dolaylı İstem Enjeksiyonları
+  Dolaylı istem enjeksiyonları, bir BDM'nin web siteleri veya dosyalar gibi harici kaynaklardan girdi kabul etmesi durumunda ortaya çıkar. Harici kaynak, model tarafından yorumlandığında modelin davranışını istenmeyen veya beklenmeyen şekillerde değiştiren içerik verilerine sahip olabilir. Doğrudan enjeksiyonlar gibi, dolaylı enjeksiyonlar da kasıtlı veya kasıtsız olabilir.
 
-  Indirect prompt injections occur when an LLM accepts input from external sources, such as websites or files. The external source may have content data that when interpreted by the model, alters the behavior of the model in unintended or unexpected ways. Like direct injections, indirect injections can be either intentional or unintentional.
+Başarılı bir istem enjeksiyonu saldırısının etkisinin ciddiyeti ve doğası büyük ölçüde değişebilir ve büyük oranda hem modelin çalıştığı iş bağlamına hem de modelin tasarlandığı yetkiye bağlıdır. Ancak genel olarak, istem enjeksiyonu aşağıdakilerle sınırlı olmamak üzere istenmeyen sonuçlara yol açabilir:
 
-The severity and nature of the impact of a successful prompt injection attack can vary greatly and are largely dependent on both the business context the model operates in, and the agency with which the model is architected. Generally, however, prompt injection can lead to unintended outcomes, including but not limited to:
+- Hassas bilgilerin ifşası
+- AI sistemi altyapısı veya sistem istemleri hakkında hassas bilgilerin açığa çıkarılması
+- Yanlış veya önyargılı çıktılara yol açan içerik manipülasyonu
+- BDM'nin erişebildiği fonksiyonlara yetkisiz erişim sağlanması
+- Bağlı sistemlerde keyfi komutların çalıştırılması
+- Kritik karar verme süreçlerinin manipüle edilmesi
 
-- Disclosure of sensitive information
-- Revealing sensitive information about AI system infrastructure or system prompts
-- Content manipulation leading to incorrect or biased outputs
-- Providing unauthorized access to functions available to the LLM
-- Executing arbitrary commands in connected systems
-- Manipulating critical decision-making processes
+Birden fazla veri türünü eş zamanlı işleyen çok kipli yapay zekanın yükselişi, benzersiz istem enjeksiyonu riskleri getirmektedir. Kötü niyetli aktörler, zararsız metinle birlikte gelen görsellerde talimatları gizlemek gibi kipler arası etkileşimleri sömürebilir. Bu sistemlerin karmaşıklığı saldırı yüzeyini genişletir. Çok kipli modeller ayrıca mevcut tekniklerle tespit edilmesi ve hafifletilmesi zor olan yeni çapraz kipli saldırılara karşı da savunmasız olabilir. Güçlü çok kipli özgü savunmalar, daha fazla araştırma ve geliştirme için önemli bir alandır.
 
-The rise of multimodal AI, which processes multiple data types simultaneously, introduces unique prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
+### Önleme ve Hafifletme Stratejileri
 
-### Prevention and Mitigation Strategies
+İstem enjeksiyonu zafiyetleri üretici yapay zekanın doğası gereği mümkündür. Modellerin çalışma şeklinin merkezindeki stokastik etki göz önüne alındığında, istem enjeksiyonu için kesin önleme yöntemlerinin var olup olmadığı belirsizdir. Ancak aşağıdaki önlemler istem enjeksiyonlarının etkisini hafifletebilir:
 
-Prompt injection vulnerabilities are possible due to the nature of generative AI. Given the stochastic influence at the heart of the way models work, it is unclear if there are fool-proof methods of prevention for prompt injection. However, the following measures can mitigate the impact of prompt injections:
+#### 1. Model davranışını kısıtlama
 
-#### 1. Constrain model behavior
+Sistem istemi içinde modelin rolü, yetenekleri ve sınırları hakkında spesifik talimatlar sağlayın. Sıkı bağlam uyumunu zorunlu kılın, yanıtları belirli görevler veya konularla sınırlayın ve modele temel talimatları değiştirme girişimlerini görmezden gelmesi talimatını verin.
 
-  Provide specific instructions about the model's role, capabilities, and limitations within the system prompt. Enforce strict context adherence, limit responses to specific tasks or topics, and instruct the model to ignore attempts to modify core instructions.
+#### 2. Beklenen çıktı formatlarını tanımlama ve doğrulama
 
-#### 2. Define and validate expected output formats
+  Net çıktı formatları belirleyin, detaylı gerekçe ve kaynak alıntıları talep edin, ve bu formatlara uygunluğu doğrulamak için deterministik kod kullanın.
 
-  Specify clear output formats, request detailed reasoning and source citations, and use deterministic code to validate adherence to these formats.
+#### 3. Girdi ve çıktı filtreleme uygulama
 
-#### 3. Implement input and output filtering
+  Hassas kategorileri tanımlayın ve bu tür içerikleri tanımlama ve ele alma için kurallar oluşturun. Semantik filtreler uygulayın ve izin verilmeyen içeriği taramak için dize kontrolü kullanın. Potansiyel kötü niyetli çıktıları tanımlamak için RAG Üçlüsü kullanarak yanıtları değerlendirin: Bağlam alakası, temellendirme ve soru/cevap alakasını değerlendirin.
 
-  Define sensitive categories and construct rules for identifying and handling such content. Apply semantic filters and use string-checking to scan for non-allowed content. Evaluate responses using the RAG Triad: Assess context relevance, groundedness, and question/answer relevance to identify potentially malicious outputs.
+#### 4. Ayrıcalık kontrolü ve en az ayrıcalık erişimi uygulama
 
-#### 4. Enforce privilege control and least privilege access
+  Uygulamaya genişletilebilir işlevsellik için kendi API tokenlarını sağlayın ve bu işlevleri modele vermek yerine kodda ele alın. Modelin erişim ayrıcalıklarını amaçlanan işlemleri için gerekli minimumla sınırlayın.
 
-  Provide the application with its own API tokens for extensible functionality, and handle these functions in code rather than providing them to the model. Restrict the model's access privileges to the minimum necessary for its intended operations.
 
-#### 5. Require human approval for high-risk actions
+#### 5. Yüksek riskli eylemler için insan onayı gerektirme
+  Yetkisiz eylemleri önlemek için ayrıcalıklı işlemler için döngüde insan kontrolleri uygulayın.
 
-  Implement human-in-the-loop controls for privileged operations to prevent unauthorized actions.
+#### 6. Harici içeriği ayırma ve tanımlama
 
-#### 6. Segregate and identify external content
+  Kullanıcı istemleri üzerindeki etkisini sınırlamak için güvenilmez içeriği ayırın ve açıkça belirtin.
 
-  Separate and clearly denote untrusted content to limit its influence on user prompts.
+#### 7. Karşıt testler ve saldırı simülasyonları yürütme
 
-#### 7. Conduct adversarial testing and attack simulations
+  Güven sınırlarının ve erişim kontrollerinin etkinliğini test etmek için modeli güvenilmez bir kullanıcı olarak ele alarak düzenli sızma testleri ve ihlal simülasyonları gerçekleştirin.
 
-  Perform regular penetration testing and breach simulations, treating the model as an untrusted user to test the effectiveness of trust boundaries and access controls.
 
-### Example Attack Scenarios
+### Örnek Saldırı Senaryoları
 
-#### Scenario #1: Direct Injection
+#### Senaryo #1: Doğrudan Enjeksiyon
 
-  An attacker injects a prompt into a customer support chatbot, instructing it to ignore previous guidelines, query private data stores, and send emails, leading to unauthorized access and privilege escalation.
+  Saldırgan, müşteri destek chatbotuna önceki yönergeleri görmezden gelmesi, özel veri depolarını sorgulaması ve e-posta göndermesi talimatını enjekte ederek yetkisiz erişim ve ayrıcalık yükseltmesine yol açar.
 
-#### Scenario #2: Indirect Injection
+#### Senaryo #2: Dolaylı Enjeksiyon
 
-  A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, leading to exfiltration of the the private conversation.
+  Kullanıcı, LLM'yi gizli talimatlar içeren bir web sayfasını özetlemek için kullanır; bu talimatlar LLM'nin bir URL'ye bağlantı veren görsel eklemesine neden olarak özel konuşmanın sızdırılmasına yol açar.
 
-#### Scenario #3: Unintentional Injection
+#### Senaryo #3: Kasıtsız Enjeksiyon
 
-  A company includes an instruction in a job description to identify AI-generated applications. An applicant, unaware of this instruction, uses an LLM to optimize their resume, inadvertently triggering the AI detection.
+  Şirket iş ilanına AI-üretimli başvuruları tanımlama talimatı ekler. Bu talimattan habersiz başvuran, özgeçmişini optimize etmek için LLM kullanarak istemeden AI tespitini tetikler.
 
-#### Scenario #4: Intentional Model Influence
+#### Senaryo #4: Kasıtlı Model Etkileme
 
-  An attacker modifies a document in a repository used by a Retrieval-Augmented Generation (RAG) application. When a user's query returns the modified content, the malicious instructions alter the LLM's output, generating misleading results.
+  Saldırgan, Erişimle Artırılmış Üretim (RAG) uygulamasının kullandığı depodaki bir belgeyi değiştirir. Kullanıcının sorgusu değiştirilmiş içeriği döndürdüğünde, kötü niyetli talimatlar LLM çıktısını değiştirerek yanıltıcı sonuçlar üretir.
 
-#### Scenario #5: Code Injection
+#### Senaryo #5: Kod Enjeksiyonu
 
-  An attacker exploits a vulnerability (CVE-2024-5184) in an LLM-powered email assistant to inject malicious prompts, allowing access to sensitive information and manipulation of email content.
+  Saldırgan, LLM destekli e-posta asistanındaki zafiyeti (CVE-2024-5184) sömürerek kötü niyetli istemler enjekte eder, hassas bilgilere erişim ve e-posta içeriği manipülasyonuna olanak sağlar.
 
-#### Scenario #6: Payload Splitting
+#### Senaryo #6: Yük Bölme
 
-  An attacker uploads a resume with split malicious prompts. When an LLM is used to evaluate the candidate, the combined prompts manipulate the model's response, resulting in a positive recommendation despite the actual resume contents.
+  Saldırgan, bölünmüş kötü niyetli istemler içeren özgeçmiş yükler. LLM adayı değerlendirmek için kullanıldığında, birleştirilmiş istemler gerçek özgeçmiş içeriğine rağmen olumlu tavsiye ile sonuçlanan model yanıtını manipüle eder.
 
-#### Scenario #7: Multimodal Injection
+#### Senaryo #7: Çok Kipli Enjeksiyon
 
-  An attacker embeds a malicious prompt within an image that accompanies benign text. When a multimodal AI processes the image and text concurrently, the hidden prompt alters the model's behavior, potentially leading to unauthorized actions or disclosure of sensitive information.
+  Saldırgan, zararsız metinle birlikte gelen görsel içine kötü niyetli istem gömer. Çok kipli AI görseli ve metni eş zamanlı işlediğinde, gizli istem modelin davranışını değiştirerek yetkisiz eylemlere veya hassas bilgi ifşasına yol açabilir.
 
-#### Scenario #8: Adversarial Suffix
+#### Senaryo #8: Karşıt Ek
 
-  An attacker appends a seemingly meaningless string of characters to a prompt, which influences the LLM's output in a malicious way, bypassing safety measures.
+  Saldırgan, LLM çıktısını kötü niyetli şekilde etkileyen ve güvenlik önlemlerini atlatan görünürde anlamsız karakter dizisini isteme ekler.
 
-#### Scenario #9: Multilingual/Obfuscated Attack
+#### Senaryo #9: Çok Dilli/Gizlenmiş Saldırı
 
-  An attacker uses multiple languages or encodes malicious instructions (e.g., using Base64 or emojis) to evade filters and manipulate the LLM's behavior.
+  Saldırgan, filtreleri atlatmak ve LLM davranışını manipüle etmek için birden fazla dil kullanır veya kötü niyetli talimatları kodlar (örn. Base64 veya emoji kullanarak).
 
-### Reference Links
+### Referanslar
 
 1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
 2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
@@ -116,9 +116,9 @@ Prompt injection vulnerabilities are possible due to the nature of generative AI
 13. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
 14. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
 
-### Related Frameworks and Taxonomies
+### İlgili Çerçeveler ve Taksonomiler
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Altyapı dağıtımı, uygulanan ortam kontrolleri ve diğer en iyi uygulamalarla ilgili kapsamlı bilgi, senaryo stratejileri için bu bölüme başvurun.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
 - [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
