@@ -1,95 +1,95 @@
 ## LLM09:2025 Misinformation
 
-### Description
+### Açıklama
 
-Misinformation from LLMs poses a core vulnerability for applications relying on these models. Misinformation occurs when LLMs produce false or misleading information that appears credible. This vulnerability can lead to security breaches, reputational damage, and legal liability.
+Büyük Dil Modellerinden (BDM'ler) kaynaklanan yanlış bilgi, bu modellere dayanan uygulamalar için temel bir zafiyettir. Yanlış bilgi, BDM’lerin güvenilir gibi görünen ancak gerçekte yanlış ya da yanıltıcı içerikler üretmesiyle ortaya çıkar. Bu durum, güvenlik açıklarına, itibar kayıplarına ve hukuki sorumluluklara yol açabilir.
 
-One of the major causes of misinformation is hallucination—when the LLM generates content that seems accurate but is fabricated. Hallucinations occur when LLMs fill gaps in their training data using statistical patterns, without truly understanding the content. As a result, the model may produce answers that sound correct but are completely unfounded. While hallucinations are a major source of misinformation, they are not the only cause; biases introduced by the training data and incomplete information can also contribute.
+Yanlış bilginin başlıca nedenlerinden biri halüsinasyondur — BDM’lerin doğruymuş gibi görünen ancak tamamen uydurma içerikler üretmesidir. Halüsinasyonlar, modellerin eğitim verilerindeki boşlukları istatistiksel kalıplarla doldurarak, içeriği gerçekten anlamadan yanıt üretmesiyle meydana gelir. Bu nedenle model, kulağa doğru gelen ancak temeli olmayan bilgiler sunabilir. Halüsinasyon önemli bir yanlış bilgi kaynağı olsa da tek neden değildir; eğitim verilerinden gelen önyargılar ve eksik bilgiler de bu soruna katkı sağlar.
 
-A related issue is overreliance. Overreliance occurs when users place excessive trust in LLM-generated content, failing to verify its accuracy. This overreliance exacerbates the impact of misinformation, as users may integrate incorrect data into critical decisions or processes without adequate scrutiny.
+Bununla ilişkili bir diğer sorun da aşırı güvendir. Aşırı güven, kullanıcıların BDM tarafından üretilen içeriğe fazlasıyla güvenmesi ve doğruluğunu yeterince sorgulamadan kullanması durumudur. Bu durum, yanlış bilginin etkisini artırır çünkü kullanıcılar hatalı bilgileri doğrulama sürecinden geçirmeden kritik karar ve işlemlerde kullanabilir.
 
-### Common Examples of Risk
 
-#### 1. Factual Inaccuracies
+### Yaygın Risk Örnekleri
 
-  The model produces incorrect statements, leading users to make decisions based on false information. For example, Air Canada's chatbot provided misinformation to travelers, leading to operational disruptions and legal complications. The airline was successfully sued as a result.
+#### 1. Yanıltıcı Beyanlar
+
+  Model, hatalı ifadeler üreterek kullanıcıların yanlış bilgilere dayalı kararlar almasına neden olabilir. Örneğin, Air Canada’nın sohbet botu yolculara yanlış bilgi vererek operasyonel aksaklıklara ve hukuki sorunlara yol açmıştır. Sonuç olarak havayolu şirketine karşı açılan dava kazanılmıştır.
   (Ref. link: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
 
-#### 2. Unsupported Claims
+#### 2. Desteklenmeyen İddialar
 
-  The model generates baseless assertions, which can be especially harmful in sensitive contexts such as healthcare or legal proceedings. For example, ChatGPT fabricated fake legal cases, leading to significant issues in court.
-  (Ref. link: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
+  Model, hiçbir temele dayanmayan iddialar üretebilir; bu durum özellikle sağlık hizmetleri veya hukuki süreçler gibi hassas bağlamlarda son derece zararlı olabilir. Örneğin, ChatGPT uydurma dava dosyaları oluşturmuş ve bu durum mahkemede ciddi sorunlara yol açmıştır. (Ref. link: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
 
-#### 3. Misrepresentation of Expertise
+#### 3. Uzmanlık Yanıltması
 
-  The model gives the illusion of understanding complex topics, misleading users regarding its level of expertise. For example, chatbots have been found to misrepresent the complexity of health-related issues, suggesting uncertainty where there is none, which misled users into believing that unsupported treatments were still under debate.
+  Model, karmaşık konuları anlıyormuş izlenimi vererek kullanıcıları sahip olduğu uzmanlık düzeyi konusunda yanıltabilir. Örneğin, sohbet botlarının sağlıkla ilgili konuların karmaşıklığını yanlış yansıttığı görülmüştür; bazı durumlarda, bilimsel olarak desteklenmeyen tedaviler hâlâ tartışmalıymış gibi gösterilmiş ve bu da kullanıcıların gerçekte olmayan bir belirsizlik olduğuna inanmasına yol açmıştır.
   (Ref. link: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
 
-#### 4. Unsafe Code Generation
+#### 4. Güvensiz Kod Üretimi
 
-  The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems. For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks.
+  Model, güvensiz ya da gerçekte var olmayan yazılım kütüphaneleri önerebilir ve bu da entegre edildiğinde yazılım sistemlerinde güvenlik açıklarına yol açabilir. Örneğin, Büyük Dil Modelleri (BDM’ler), güvenli olmayan üçüncü taraf kütüphanelerin kullanımını önerebilir; bu öneriler doğrulanmadan kullanıldığında ciddi güvenlik riskleri ortaya çıkabilir.
   (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
-### Prevention and Mitigation Strategies
+### Önleme ve Hafifletme Stratejileri
 
-#### 1. Retrieval-Augmented Generation (RAG)
+#### 1. Bilgiyle Zenginleştirilmiş Yanıtlama (RAG)
 
-  Use Retrieval-Augmented Generation to enhance the reliability of model outputs by retrieving relevant and verified information from trusted external databases during response generation. This helps mitigate the risk of hallucinations and misinformation.
+  Yanıt üretimi sırasında güvenilir harici veri tabanlarından doğrulanmış ve ilgili bilgileri getirerek Bilgiyle Zenginleştirilmiş Yanıtlama (RAG) yöntemini kullanmak, model çıktılarının güvenilirliğini artırır. Bu yaklaşım, halüsinasyon ve yanlış bilgi riskini azaltmaya yardımcı olur.
 
-#### 2. Model Fine-Tuning
+#### 2. Model İnce Ayarı 
 
-  Enhance the model with fine-tuning or embeddings to improve output quality. Techniques such as parameter-efficient tuning (PET) and chain-of-thought prompting can help reduce the incidence of misinformation.
+  Model çıktılarının kalitesini artırmak için ince ayar (fine-tuning) veya gömülü temsiller (embedding) ile geliştirme yapılabilir. Parametre-verimli ayarlama (PET) ve düşünce zinciri tetiklemesi (chain-of-thought prompting) gibi teknikler, yanlış bilgi üretme olasılığını azaltmada etkili olabilir.
 
-#### 3. Cross-Verification and Human Oversight
+#### 3. Çapraz Doğrulama ve İnsan Denetimi
 
-  Encourage users to cross-check LLM outputs with trusted external sources to ensure the accuracy of the information. Implement human oversight and fact-checking processes, especially for critical or sensitive information. Ensure that human reviewers are properly trained to avoid overreliance on AI-generated content.
+  Kullanıcıların, Büyük Dil Modelleri (BDM) tarafından üretilen içerikleri güvenilir harici kaynaklarla karşılaştırarak doğrulaması teşvik edilmelidir. Özellikle kritik veya hassas bilgiler söz konusu olduğunda, insan denetimi ve doğruluk kontrolü süreçleri uygulanmalıdır. Ayrıca, insan denetçilerin yapay zeka tarafından üretilen içeriğe aşırı güvenin risklerini anlayacak şekilde eğitilmiş olmaları sağlanmalıdır.
 
-#### 4. Automatic Validation Mechanisms
+#### 4. Otomatik Doğrulama Mekanizmaları
 
-  Implement tools and processes to automatically validate key outputs, especially output from high-stakes environments.
+  Özellikle yüksek risk taşıyan ortamlarda üretilen çıktılar için, kritik çıktıları otomatik olarak doğrulayacak araç ve süreçler uygulanmalıdır.
 
-#### 5. Risk Communication
+#### 5. Risk İletişimi
 
-  Identify the risks and possible harms associated with LLM-generated content, then clearly communicate these risks and limitations to users, including the potential for misinformation.
+  Büyük Dil Modelleri (BDM) tarafından üretilen içeriklerle ilişkili riskleri ve olası zararları belirleyin; ardından, yanlış bilgi üretme ihtimali de dahil olmak üzere bu riskleri ve sınırlamaları açık bir şekilde kullanıcılara iletin.
 
-#### 6. Secure Coding Practices
+#### 6. Güvenli Kodlama Uygulamaları
 
-  Establish secure coding practices to prevent the integration of vulnerabilities due to incorrect code suggestions.
+  Hatalı kod önerilerinden kaynaklanabilecek güvenlik açıklarının entegrasyonunu önlemek için güvenli kodlama uygulamaları oluşturun.
 
-#### 7. User Interface Design
+#### 7. Kullanıcı Arayüzü Tasarımı
 
-  Design APIs and user interfaces that encourage responsible use of LLMs, such as integrating content filters, clearly labeling AI-generated content and informing users on limitations of reliability and accuracy. Be specific about the intended field of use limitations.
+  İçerik filtreleri entegre etmek, yapay zeka tarafından üretilen içeriği açıkça etiketlemek ve kullanıcıları güvenilirlik ve doğruluk sınırlamaları hakkında bilgilendirmek gibi yöntemlerle, Büyük Dil Modellerinin (BDM) sorumlu kullanımını teşvik eden Uygulama Programlama Arabirimler (API) ve kullanıcı arayüzleri tasarlayın. Kullanım alanındaki sınırlamaları da açık ve net bir şekilde belirtin.
 
-#### 8. Training and Education
+#### 8. Eğitim ve Bilinçlendirme
 
-  Provide comprehensive training for users on the limitations of LLMs, the importance of independent verification of generated content, and the need for critical thinking. In specific contexts, offer domain-specific training to ensure users can effectively evaluate LLM outputs within their field of expertise.
+  Kullanıcılara, Büyük Dil Modellerinin (BDM) sınırlamaları, üretilen içeriğin bağımsız olarak doğrulanmasının önemi ve eleştirel düşünmenin gerekliliği konularında kapsamlı eğitim sağlayın. Belirli bağlamlarda, kullanıcıların kendi uzmanlık alanlarında BDM çıktılarının doğruluğunu etkin bir şekilde değerlendirebilmeleri için alanına özel eğitimler sunun.
 
-### Example Attack Scenarios
+### Örnek Saldırı Senaryoları
 
-#### Scenario #1
+#### Senaryo #1
 
-  Attackers experiment with popular coding assistants to find commonly hallucinated package names. Once they identify these frequently suggested but nonexistent libraries, they publish malicious packages with those names to widely used repositories. Developers, relying on the coding assistant's suggestions, unknowingly integrate these poised packages into their software. As a result, the attackers gain unauthorized access, inject malicious code, or establish backdoors, leading to significant security breaches and compromising user data.
+  Saldırganlar, popüler kodlama asistanlarını kullanarak sıkça halüsinasyon sonucu önerilen paket adlarını tespit eder. Bu sıklıkla önerilen ancak gerçekte var olmayan kütüphaneleri belirledikten sonra, aynı adlarla kötü amaçlı paketleri yaygın kullanılan yazılım depolarına yüklerler. Geliştiriciler ise, kodlama asistanının önerilerine güvenerek bu zararlı paketleri farkında olmadan yazılımlarına entegre eder. Sonuç olarak, saldırganlar yetkisiz erişim elde edebilir, zararlı kod enjekte edebilir ya da arka kapılar oluşturarak ciddi güvenlik ihlallerine ve kullanıcı verilerinin tehlikeye girmesine yol açabilir.
 
-#### Scenario #2
+#### Senaryo #2
 
-  A company provides a chatbot for medical diagnosis without ensuring sufficient accuracy. The chatbot provides poor information, leading to harmful consequences for patients. As a result, the company is successfully sued for damages. In this case, the safety and security breakdown did not require a malicious attacker but instead arose from the insufficient oversight and reliability of the LLM system. In this scenario, there is no need for an active attacker for the company to be at risk of reputational and financial damage.
+  Bir şirket, yeterli doğruluk sağlamadan tıbbi teşhis amacıyla bir sohbet botu sunar. Sohbet botu hatalı bilgiler vererek hastalar için zararlı sonuçlara yol açar. Bunun sonucunda, şirket maddi tazminat ödemeye mahkum edilir. Bu durumda, güvenlik ve emniyet zafiyeti kötü niyetli bir saldırgana ihtiyaç duymadan, doğrudan Büyük Dil Modeli (BDM) sisteminin yetersiz denetimi ve güvenilirliğinden kaynaklanmıştır. Yani, bu senaryoda aktif bir saldırganın varlığı gerekmeden şirket ciddi itibar ve finansal kayıplarla karşı karşıya kalabilir.
 
-### Reference Links
+### Referans Linkleri
 
-1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
-2. [Air Canada Chatbot Misinformation: What Travellers Should Know](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know): **BBC**
-3. [ChatGPT Fake Legal Cases: Generative AI Hallucinations](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/): **LegalDive**
-4. [Understanding LLM Hallucinations](https://towardsdatascience.com/llm-hallucinations-ec831dcd7786): **Towards Data Science**
-5. [How Should Companies Communicate the Risks of Large Language Models to Users?](https://techpolicy.press/how-should-companies-communicate-the-risks-of-large-language-models-to-users/): **Techpolicy**
-6. [A news site used AI to write articles. It was a journalistic disaster](https://www.washingtonpost.com/media/2023/01/17/cnet-ai-articles-journalism-corrections/): **Washington Post**
-7. [Diving Deeper into AI Package Hallucinations](https://www.lasso.security/blog/ai-package-hallucinations): **Lasso Security**
-8. [How Secure is Code Generated by ChatGPT?](https://arxiv.org/abs/2304.09655): **Arvix**
-9. [How to Reduce the Hallucinations from Large Language Models](https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models/): **The New Stack**
-10. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
-11. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
+1. [Sağlık Bilgi Kaynağı Olarak Yapay Zeka Sohbet Botları: Uzmanlık Yanıltması](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
+2. [Air Canada Sohbet Botu Yanlış Bilgi Vakası: Seyahat Edenlerin Bilmesi Gerekenler](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know): **BBC**
+3. [ChatGPT Uydurma Dava Dosyaları: Üretken Yapay Zekâ Halüsinasyonları](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/): **LegalDive**
+4. [Büyük Dil Modellerinde Halüsinasyonları Anlamak](https://towardsdatascience.com/llm-hallucinations-ec831dcd7786): **Towards Data Science**
+5. [Şirketler Büyük Dil Modellerinin Risklerini Kullanıcılara Nasıl Anlatmalı?](https://techpolicy.press/how-should-companies-communicate-the-risks-of-large-language-models-to-users/): **Techpolicy**
+6. [Bir Haber Sitesi Makaleleri Yapay Zeka ile Yazdı: Gazetecilikte Felaket](https://www.washingtonpost.com/media/2023/01/17/cnet-ai-articles-journalism-corrections/): **Washington Post**
+7. [Yapay Zeka Paket Halüsinasyonlarına Derinlemesine Bakış](https://www.lasso.security/blog/ai-package-hallucinations): **Lasso Security**
+8. [ChatGPT Tarafından Oluşturulan Kod Ne Kadar Güvenli?](https://arxiv.org/abs/2304.09655): **Arvix**
+9. [Büyük Dil Modellerinden Kaynaklı Halüsinasyonlar Nasıl Azaltılır?](https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models/): **The New Stack**
+10. [Halüsinasyonları Azaltmaya Yönelik Pratik Adımlar](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
+11. [Yapay Zeka Aracılığıyla Kurumsal Bilgiye Erişimin Sonuçlarını Keşfetme Çatısı](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
 
-### Related Frameworks and Taxonomies
+### İlgili Çatılar ve Sınıflandırmalar
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Altyapı dağıtımı, uygulama ortamı kontrolleri ve diğer en iyi uygulamalara ilişkin kapsamlı bilgi, senaryolar ve stratejiler için bu bölüme başvurun.
 
-- [AML.T0048.002 - Societal Harm](https://atlas.mitre.org/techniques/AML.T0048) **MITRE ATLAS**
+- [AML.T0048.002 - Toplumsal Zarar](https://atlas.mitre.org/techniques/AML.T0048) **MITRE ATLAS**
