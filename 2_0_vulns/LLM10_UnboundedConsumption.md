@@ -1,155 +1,153 @@
-## LLM10:2025 Sınırsız Tüketim
+## LLM10:2025 Unbounded Consumption
 
 ### Description
 
-Sınırsız Tüketim, Büyük Dil Modellerinin (BDM) girdilere dayalı olarak çıktılar üretme sürecini ifade eder. Çıkarım (inference), LLM’lerin öğrenilmiş kalıpları ve bilgileri kullanarak ilgili yanıtlar ya da tahminler üretmesini içeren kritik bir işlevdir.
+Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
 
-Servis kesintisi yaratmak, hedefin finansal kaynaklarını tüketmek ya da bir modelin davranışını klonlayarak fikri mülkiyeti çalmak gibi saldırılar, genellikle ortak bir güvenlik açığı sınıfına dayanır. Sınırsız Tüketim, LLM tabanlı uygulamaların kullanıcılara kontrolsüz ve sınırsız sayıda çıkarsama (inference) yapma imkânı vermesiyle ortaya çıkar ve şu risklere yol açabilir: hizmet reddi saldırısı (DoS), ekonomik kayıplar, modelin çalınması ve hizmet kalitesinin düşmesi. Özellikle bulut ortamlarında LLM'lerin yüksek hesaplama gereksinimleri, onları kaynak sömürüsüne ve yetkisiz kullanıma karşı savunmasız hale getirir.
+Attacks designed to disrupt service, deplete the target's financial resources, or even steal intellectual property by cloning a model’s behavior all depend on a common class of security vulnerability in order to succeed. Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to risks such as denial of service (DoS), economic losses, model theft, and service degradation. The high computational demands of LLMs, especially in cloud environments, make them vulnerable to resource exploitation and unauthorized usage.
 
-### Yaygın Güvenlik Açığı Örnekleri
+### Common Examples of Vulnerability
 
+#### 1. Variable-Length Input Flood
 
-#### 1. Değişken Uzunlukta Girdi Taşması
+  Attackers can overload the LLM with numerous inputs of varying lengths, exploiting processing inefficiencies. This can deplete resources and potentially render the system unresponsive, significantly impacting service availability.
 
-  Saldırganlar, farklı uzunluklarda çok sayıda girdi göndererek modelin işlem verimsizliklerinden faydalanabilir. Bu durum kaynak tüketimini artırır ve sistemi yanıt veremez hale getirebilir.
+#### 2. Denial of Wallet (DoW)
 
-#### 2. Cüzdan Reddi Saldırıları (DoW – Denial of Wallet)
+  By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
 
-  Saldırganlar, bulut tabanlı AI hizmetlerinin kullanım başına ödeme modelini sömürerek aşırı sayıda işlem başlatır. Bu da hizmet sağlayıcıya ağır finansal yük getirerek iflasa neden olabilir.
+#### 3. Continuous Input Overflow
 
-#### 3. Sürekli Girdi Taşması
+  Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
 
-  Modelin bağlam penceresini (context window) aşan sürekli veri akışı, kaynak tüketimini artırarak performans düşüklüğü ve sistemde aksamalar yaratır.
+#### 4. Resource-Intensive Queries
 
-#### 4. Kaynak Yoğun Sorgular
+  Submitting unusually demanding queries involving complex sequences or intricate language patterns can drain system resources, leading to prolonged processing times and potential system failures.
 
-  Karmaşık dil kalıpları veya uzun işlem süresi gerektiren girdiler, sistem kaynaklarını tüketerek işlem gecikmelerine ve hatta sistem çökmesine neden olabilir.
+#### 5. Model Extraction via API
 
-#### 5. API Üzerinden Model Çıkarma
+  Attackers may query the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model. This not only poses risks of intellectual property theft but also undermines the integrity of the original model.
 
-  Saldırganlar, dikkatlice hazırlanmış girdilerle API'yi sorgulayarak yeterli çıktı toplar ve modelin bir kısmını klonlamaya çalışır. Bu, fikri mülkiyet hırsızlığına ve model bütünlüğünün bozulmasına yol açar.
+#### 6. Functional Model Replication
 
-#### 6. Fonksiyonel Model Replikasyonu
+  Using the target model to generate synthetic training data can allow attackers to fine-tune another foundational model, creating a functional equivalent. This circumvents traditional query-based extraction methods, posing significant risks to proprietary models and technologies.
 
-  Saldırgan, hedef modelden yapay eğitim verisi üretip başka bir temel modeli buna göre ince ayar yaparak işlevsel eşdeğer bir model geliştirir. Bu yöntem, geleneksel sorguya dayalı çıkarım yollarını atlatır.
+#### 7. Side-Channel Attacks
 
-#### 7. Yan Kanal Saldırıları (Side-Channel Attacks)
+  Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
 
-  Saldırganlar, LLM’lerin girdi filtreleme davranışlarını istismar ederek modelin ağırlıkları veya mimarisi hakkında bilgi elde edebilir. Bu durum, model güvenliğini daha da tehlikeye atar.
+### Prevention and Mitigation Strategies
 
-### Önleme ve Hafifletme Stratejileri
+#### 1. Input Validation
 
-#### 1. Girdi Doğrulama
+  Implement strict input validation to ensure that inputs do not exceed reasonable size limits.
 
-  Girdi boyutlarını makul sınırlar içinde tutmak için sıkı doğrulama mekanizmaları uygulayın.
+#### 2. Limit Exposure of Logits and Logprobs
 
-#### 2. Logit ve Logprob Sızıntılarını Engelleme
+  Restrict or obfuscate the exposure of `logit_bias` and `logprobs` in API responses. Provide only the necessary information without revealing detailed probabilities.
 
-  Uygulama Programlama Arabirimi (API) tarafından üretilen yanıtlarda `logit_bias` ve `logprobs` gibi ayrıntılı olasılık bilgilerini sınırlandırın veya belirsizleştirin.
+#### 3. Rate Limiting
 
-#### 3. Hız Sınırlaması (Rate Limiting)
+  Apply rate limiting and user quotas to restrict the number of requests a single source entity can make in a given time period.
 
-  Bir kullanıcı veya kaynak varlığının belirli bir zaman diliminde yapabileceği istek sayısını sınırlayın.
+#### 4. Resource Allocation Management
 
-#### 4. Kaynak Dağıtım Yönetimi
+  Monitor and manage resource allocation dynamically to prevent any single user or request from consuming excessive resources.
 
-  Tek bir kullanıcı veya isteğin aşırı kaynak tüketimini önlemek için dinamik kaynak yönetimi uygulayın.
+#### 5. Timeouts and Throttling
 
-#### 5. Zaman Aşımı ve İşlem Yavaşlatma
+  Set timeouts and throttle processing for resource-intensive operations to prevent prolonged resource consumption.
 
-  Kaynak tüketimi yüksek işlemler için zaman aşımı ve işlem hızı sınırlamaları belirleyin.
+#### 6.Sandbox Techniques
 
-#### 6.Korumalı Alan (Sandboxing) Teknikleri
+  Restrict the LLM's access to network resources, internal services, and APIs.
 
-  BDM'lerin ağ kaynaklarına, dahili servislere ve API'lara erişimini kısıtlayın.
+- This is particularly significant for all common scenarios as it encompasses insider risks and threats. Furthermore, it governs the extent of access the LLM application has to data and resources, thereby serving as a crucial control mechanism to mitigate or prevent side-channel attacks.
 
-- Bu, özellikle tüm yaygın senaryolar için önemlidir çünkü içeriden gelen riskleri ve tehditleri kapsar. Ayrıca, BDM uygulamasının veri ve kaynaklara ne ölçüde erişebileceğini belirleyerek, yan kanal saldırılarını azaltmak veya önlemek için kritik bir kontrol mekanizması görevi görür.
+#### 7. Comprehensive Logging, Monitoring and Anomaly Detection
 
-#### 7. Kapsamlı Günlük Kaydı ,İzleme ve Anomali Tespiti
+  Continuously monitor resource usage and implement logging to detect and respond to unusual patterns of resource consumption.
 
-  Kaynak kullanımını sürekli izleyin, olağandışı kullanım kalıplarını tespit etmek için günlükleme ve anomali tespiti mekanizmaları kurun.
+#### 8. Watermarking
 
-#### 8. Metin Damgalama (Waterwaking)
+  Implement watermarking frameworks to embed and detect unauthorized use of LLM outputs.
 
-  BDM çıktılarının izinsiz kullanımını tespit etmek ve önlemek için metin damgalama (watermarking) çatılarını uygulayın.
+#### 9. Graceful Degradation
 
-#### 9. Kademeli Hizmet Azaltımı (Graceful Degradation)
+  Design the system to degrade gracefully under heavy load, maintaining partial functionality rather than complete failure.
 
-  Aşırı yüklenme durumunda sistemin tamamen çökmesi yerine, sınırlı işlevsellikle çalışmaya devam etmesini sağlayın.
+#### 10. Limit Queued Actions and Scale Robustly
 
-#### 10. Kuyruk Sınırlandırma ve Ölçeklenebilirlik
+  Implement restrictions on the number of queued actions and total actions, while incorporating dynamic scaling and load balancing to handle varying demands and ensure consistent system performance.
 
-  İşlem kuyrukları ve toplam işlem hacmi için sınırlar belirleyin; yük dengeleme ve otomatik ölçekleme sistemleri ile sistemi istikrarlı tutun.
+#### 11. Adversarial Robustness Training
 
-#### 11. Çekişmeli (Adversarial) Dayanıklılık Eğitimi
+  Train models to detect and mitigate adversarial queries and extraction attempts.
 
-  Modeli, saldırgan amaçlı sorguları tanıma ve etkisizleştirme becerisiyle eğitin.
+#### 12. Glitch Token Filtering
 
-#### 12. Bozuk Token Filtreleme (Glitch Token Filtering)
+  Build lists of known glitch tokens and scan output before adding it to the model’s context window.
 
-  Modelin bağlamına eklenecek çıktılarda önceden bilinen hatalı token'ları tarayarak filtreleyin.
+#### 13. Access Controls
 
-#### 13. Erişim Kontrolleri
+  Implement strong access controls, including role-based access control (RBAC) and the principle of least privilege, to limit unauthorized access to LLM model repositories and training environments.
 
-  Yetkisiz erişimi önlemek için rol tabanlı erişim (RBAC) ve en az ayrıcalık ilkesi gibi güçlü erişim kontrolleri uygulayın.
+#### 14. Centralized ML Model Inventory
 
-#### 14. Merkezi Model Envanteri
+  Use a centralized ML model inventory or registry for models used in production, ensuring proper governance and access control.
 
-  Üretim ortamında kullanılan modellerin denetimi için merkezi bir makine öğrenimi model envanteri oluşturun.
+#### 15. Automated MLOps Deployment
 
-#### 15. Otomatik MLOps Dağıtımı
+  Implement automated MLOps deployment with governance, tracking, and approval workflows to tighten access and deployment controls within the infrastructure.
 
-  Yönetişim, izleme ve onay süreçlerini içeren otomatik MLOps sistemleriyle erişim ve dağıtım kontrollerini sıkılaştırın.
+### Example Attack Scenarios
 
-### Örnek Saldırı Senaryoları
+#### Scenario #1: Uncontrolled Input Size
 
-#### Senaryo #1: Kontrolsüz Girdi Boyutu
+  An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
 
-  Saldırgan, olağanüstü büyük boyutlu bir girdi göndererek sistemde aşırı bellek ve işlemci kullanımı yaratır; bu da sistemin çökmesine veya ciddi yavaşlamasına neden olabilir.
+#### Scenario #2: Repeated Requests
 
-#### Senaryo #2: Tekrarlayan İstekler
+  An attacker transmits a high volume of requests to the LLM API, causing excessive consumption of computational resources and making the service unavailable to legitimate users.
 
-  Saldırgan, Uygulama Programlama Arabirimine yüksek hacimli istek göndererek sistem kaynaklarını tüketir ve meşru kullanıcılar için hizmetin kullanılamaz hale gelmesine yol açar.
+#### Scenario #3: Resource-Intensive Queries
 
-#### Senaryo #3: Kaynak Yoğun Sorgular
+  An attacker crafts specific inputs designed to trigger the LLM's most computationally expensive processes, leading to prolonged CPU usage and potential system failure.
 
-  Saldırgan, modelin en çok işlemci gücü gerektiren süreçlerini tetikleyen özel girdiler tasarlar ve sistemde aşırı yüklenmeye neden olur.
+#### Scenario #4: Denial of Wallet (DoW)
 
-#### Senaryo #4: Cüzdan Reddi (Denial of Wallet)
+  An attacker generates excessive operations to exploit the pay-per-use model of cloud-based AI services, causing unsustainable costs for the service provider.
 
-  Saldırgan, aşırı sayıda işlem başlatarak kullanım başına ödeme yapan sağlayıcılarda maliyetin sürdürülemez hâle gelmesine yol açar.
+#### Scenario #5: Functional Model Replication
 
-#### Senaryo #5: Fonksiyonel Model Replikasyonu
+  An attacker uses the LLM's API to generate synthetic training data and fine-tunes another model, creating a functional equivalent and bypassing traditional model extraction limitations.
 
-  Saldırgan, BDM Uygulama Programlama Arabirimini kullanarak yapay eğitim verileri üretir ve başka bir modeli bu verilerle eğiterek işlevsel bir eşdeğer model oluşturur.
+#### Scenario #6: Bypassing System Input Filtering
 
-#### Senaryo #6: Sistem Girdi Filtrelemesini Atlatma
-
-  Saldırgan, BDM’in ön tanımlı filtrelerini ve başlangıç yönlendirmelerini atlatır ve yan kanal saldırısı gerçekleştirerek model bilgilerini uzaktan kontrol edilen bir kaynağa aktarır.
-
+  A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
 
 ### Reference Links
 
-1. [Proof Pudding (Deneyerek Anlamak) (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
-2. [arXiv:2403.06634 Üretim Aşamasındaki Bir Dil Modelinin Bir Kısmının Çalınması](https://arxiv.org/abs/2403.06634) **arXiv**
-3. [Kontrolden Çıkan LLaMA | Meta'nın LLaMA NLP Modelinin Sızdırılması](https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked/): **Deep Learning Blog**
-4. [Bir Yapay Zekâyı indirmezdin : Mobil Uygulamalardan Yapay Zekâ Modellerinin Sızdırılması](https://altayakkus.substack.com/p/you-wouldnt-download-an-ai): **Substack blog**
-5. [Model Çıkarma Saldırılarına Karşı Kapsamlı Bir Savunma Çatısı](https://ieeexplore.ieee.org/document/10080996): **IEEE**
-6. [Alpaca: Güçlü ve Tekrarlanabilir Bir Talimat-Takip Eden Model](https://crfm.stanford.edu/2023/03/13/alpaca.html): **Stanford Center on Research for Foundation Models (CRFM)**
-7. [Metin Damgalama (Watermarking), LLM’lerin Potansiyel Risklerini Azaltmada Nasıl Yardımcı Olabilir?](https://www.kdnuggets.com/2023/03/watermarking-help-mitigate-potential-risks-llms.html): **KD Nuggets**
-8. [Yapay Zekâ Model Ağırlıklarını Güvence Altına Almak: Gelişmiş Modellerin Çalınmasını ve Kötüye Kullanımını Önleme](https://www.rand.org/content/dam/rand/pubs/research_reports/RRA2800/RRA2849-1/RAND_RRA2849-1.pdf)
-9. [Sponge Örnekleri: Sinir Ağlarına Yönelik Enerji-Gecikme Saldırıları | Arxiv Preprint'ı](https://arxiv.org/abs/2006.03463) **arXiv**
-10. [Sourcegraph Güvenlik Olayı: API Limitlerini Manipüle Etme ve Hizmet Engelleme (DoS) Saldırısı](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
+1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
+2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**
+3. [Runaway LLaMA | How Meta's LLaMA NLP model leaked](https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked/): **Deep Learning Blog**
+4. [You wouldn't download an AI, Extracting AI models from mobile apps](https://altayakkus.substack.com/p/you-wouldnt-download-an-ai): **Substack blog**
+5. [A Comprehensive Defense Framework Against Model Extraction Attacks](https://ieeexplore.ieee.org/document/10080996): **IEEE**
+6. [Alpaca: A Strong, Replicable Instruction-Following Model](https://crfm.stanford.edu/2023/03/13/alpaca.html): **Stanford Center on Research for Foundation Models (CRFM)**
+7. [How Watermarking Can Help Mitigate The Potential Risks Of LLMs?](https://www.kdnuggets.com/2023/03/watermarking-help-mitigate-potential-risks-llms.html): **KD Nuggets**
+8. [Securing AI Model Weights Preventing Theft and Misuse of Frontier Models](https://www.rand.org/content/dam/rand/pubs/research_reports/RRA2800/RRA2849-1/RAND_RRA2849-1.pdf)
+9. [Sponge Examples: Energy-Latency Attacks on Neural Networks: Arxiv White Paper](https://arxiv.org/abs/2006.03463) **arXiv**
+10. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
 
-### İlgili Çatılar ve Sınıflandırmalar
+### Related Frameworks and Taxonomies
 
-Aşağıdaki bağlantılar, altyapı dağıtımı, uygulama kontrolleri ve en iyi uygulamalara ilişkin kapsamlı bilgi, senaryo ve stratejiler sunar:
+Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
 
-- [MITRE CWE-400: Kontrolsüz Kaynak Tüketimi ](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
-- [AML.TA0000 ML Model Erişimi: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 ML Yorumlama API’si Üzerinden Veri Dışarı Aktarımı ](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**
-- [AML.T0029 - ML Servis Engelleme](https://atlas.mitre.org/techniques/AML.T0029) **MITRE ATLAS**
-- [AML.T0034 - Maliyet Toplama (Cost Harvesting)](https://atlas.mitre.org/techniques/AML.T0034) **MITRE ATLAS**
-- [AML.T0025 - Siber Yöntemlerle Bilgi Sızdırmaa](https://atlas.mitre.org/techniques/AML.T0025) **MITRE ATLAS**
-- [OWASP Makine Öğrenmesi Güvenliğinde En Çok Görülen 10 Risk – ML05:2023 Model Hırsızlığı](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML05_2023-Model_Theft.html) **OWASP ML Top 10**
-- [API4:2023 - Sınırsız Kaynak Tüketimi](https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/) **OWASP Web Uygulaması Top 10**
-- [OWASP Kaynak Yönetimi](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/) **OWASP Güvenli Kodlama Partikleri**
+- [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
+- [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**
+- [AML.T0029 - Denial of ML Service](https://atlas.mitre.org/techniques/AML.T0029) **MITRE ATLAS**
+- [AML.T0034 - Cost Harvesting](https://atlas.mitre.org/techniques/AML.T0034) **MITRE ATLAS**
+- [AML.T0025 - Exfiltration via Cyber Means](https://atlas.mitre.org/techniques/AML.T0025) **MITRE ATLAS**
+- [OWASP Machine Learning Security Top Ten - ML05:2023 Model Theft](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML05_2023-Model_Theft.html) **OWASP ML Top 10**
+- [API4:2023 - Unrestricted Resource Consumption](https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/) **OWASP Web Application Top 10**
+- [OWASP Resource Management](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/) **OWASP Secure Coding Practices**
