@@ -5,7 +5,7 @@
 Expore the latest Top 10 risks, vulnerabilities and mitigations for developing and securing generative AI and large language model applications across the development, deployment and management lifecycle.
 
 ## Long Description
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+大規模言語モデル（LLM）アプリケーションに関するOWASP Top 10は、AIアプリケーション特有のセキュリティ問題を浮き彫りにし、対処するためのコミュニティ主導の取り組みとして2023年に開始されました。それ以来、この技術はさまざまな業界やアプリケーションに広がり続け、それに伴うリスクも増大しています。LLMが顧客とのやり取りから社内業務に至るまで、あらゆるものに深く組み込まれるにつれて、開発者やセキュリティ専門家は新たな脆弱性を発見し、その対策案に貢献しています。
 
 ## Sponsorship
 We appreciate our Project Sponsors’ funding contributions to help support the objectives of the project and help to cover operational and outreach costs augmenting the resources the OWASP.org foundation provides. The OWASP Top 10 for LLM and Generative AI Project continues to maintain a vendor neutral and unbiased approach. Sponsors do not receive special governance considerations as part of their support. Sponsors do receive recognition for their contributions in our materials and web properties.
