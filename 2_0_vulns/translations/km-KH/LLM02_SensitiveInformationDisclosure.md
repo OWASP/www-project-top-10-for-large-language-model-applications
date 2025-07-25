@@ -1,88 +1,121 @@
-## LLM02:2025 Sensitive Information Disclosure
+## LLM02:2025 ការបង្ហាញព័ត៌មានដែលមានលក្ខណៈសម្ងាត់
 
-### Description
+### ការពិពណ៌នា
 
-Sensitive information can affect both the LLM and its application context. This includes personal identifiable information (PII), financial details, health records, confidential business data, security credentials, and legal documents. Proprietary models may also have unique training methods and source code considered sensitive, especially in closed or foundation models.
+ព័ត៌មានដែលមានលក្ខណៈសម្ងាត់អាចមានឥទ្ធិពលទាំងលើ LLM និងបរិបទនៃកម្មវិធីរបស់វា។ ទាំងនេះរួមមាន ព័ត៌មានផ្ទាល់ខ្លួនដែលអាចកំណត់អត្តសញ្ញាណ (PII), ព័ត៌មានហិរញ្ញវត្ថុ, កំណត់ត្រាសុខភាព, ទិន្នន័យអាជីវកម្មសម្ងាត់, លិខិតសម្គាល់សុវត្ថិភាព និងឯកសារស្របច្បាប់។ ម៉ូឌែលដែលមានម្ចាស់កម្មសិទ្ធិ អាចមានវិធីសាស្រ្តបណ្តុះបណ្តាលឯកជន និងកូដប្រភព ដែលត្រូវបានចាត់ទុកថាជាព័ត៌មានសម្ងាត់ ជាពិសេសសម្រាប់ម៉ូឌែលបិទ ឬម៉ូឌែលមូលដ្ឋាន​ផងដែរ។
 
-LLMs, especially when embedded in applications, risk exposing sensitive data, proprietary algorithms, or confidential details through their output. This can result in unauthorized data access, privacy violations, and intellectual property breaches. Consumers should be aware of how to interact safely with LLMs. They need to understand the risks of unintentionally providing sensitive data, which may later be disclosed in the model's output.
+ម៉ូឌែលភាសាធំៗ (LLMs) ជាពិសេសនៅពេលត្រូវបានបញ្ចូលជាផ្នែកមួយនៃកម្មវិធី មានហានិភ័យក្នុងការបង្ហាញព័ត៌មានសម្ងាត់, អាល់ហ្គូរីធម៍ដែលមានម្ចាស់កម្មសិទ្ធិ (proprietary algorithms), ឬព័ត៌មានសំខាន់ផ្សេងទៀតតាមរយៈលទ្ធផលដែលវាបង្ហាញ។
+ហេតុផលទាំងនេះអាចនាំឱ្យមានការចូលប្រើទិន្នន័យដោយគ្មានការអនុញ្ញាត, ការរំលោភលើឯកជនភាព, និងការរំលោភសិទ្ធិបញ្ញា។
+អ្នកប្រើគួរត្រូវបានបណ្តុះបណ្តាលឲ្យដឹងពីរបៀបប្រើប្រាស់ LLMs ដោយមានសុវត្ថិភាព។ ពួកគេត្រូវយល់ដឹងអំពីហានិភ័យនៃការផ្តល់ព័ត៌មានសម្ងាត់ដោយអចេតនា ដែលអាចត្រូវបានបង្ហាញវិញក្នុងលទ្ធផលរបស់ម៉ូឌែលនាពេលក្រោយ។
 
-To reduce this risk, LLM applications should perform adequate data sanitization to prevent user data from entering the training model. Application owners should also provide clear Terms of Use policies, allowing users to opt out of having their data included in the training model. Adding restrictions within the system prompt about data types that the LLM should return can provide mitigation against sensitive information disclosure. However, such restrictions may not always be honored and could be bypassed via prompt injection or other methods.
+ដើម្បីកាត់បន្ថយហានិភ័យនេះ កម្មវិធី LLM គួរត្រូវអនុវត្តន៍នូវដំណើរការសម្អាតទិន្នន័យ (data sanitization) ឲ្យបានគ្រប់គ្រាន់ ដើម្បីបង្ការមិនឲ្យទិន្នន័យរបស់អ្នកប្រើចូលទៅក្នុងម៉ូឌែលបណ្ដុះបណ្ដាល។
+ម្ចាស់កម្មវិធីក៏គួរផ្ដល់នូវគោលការណ៍ប្រើប្រាស់ (Terms of Use) ដែលមានភាពច្បាស់លាស់ ដើម្បីឲ្យអ្នកប្រើអាចជ្រើសរើសមិនឲ្យទិន្នន័យរបស់ពួកគេត្រូវបានប្រើក្នុងការបណ្ដុះបណ្ដាលម៉ូឌែល។
+ការបន្ថែមដែនកំណត់ក្នុង system prompt អំពីប្រភេទទិន្នន័យដែល LLM គួរត្រូវបង្ហាញ អាចជួយកាត់បន្ថយហានិភ័យនៃការបង្ហាញព័ត៌មានសម្ងាត់។
+ទោះជាយ៉ាងណាក៏ដោយ ដែនកំណត់ទាំងនេះមិនប្រាកដថានឹងត្រូវគោរពជានិច្ចឡើយ ហើយអាចត្រូវបានបំប្លែង (bypassed) តាមរយៈ prompt injection ឬវិធីសាស្ត្រផ្សេងទៀតបានផងដែរ។
 
-### Common Examples of Vulnerability
+### ឧទាហរណ៍ទូទៅនៃចំណុចងាយរងហានិភ័យ
 
-#### 1. PII Leakage
-  Personal identifiable information (PII) may be disclosed during interactions with the LLM.
-#### 2. Proprietary Algorithm Exposure
-  Poorly configured model outputs can reveal proprietary algorithms or data. Revealing training data can expose models to inversion attacks, where attackers extract sensitive information or reconstruct inputs. For instance, as demonstrated in the 'Proof Pudding' attack (CVE-2019-20634), disclosed training data facilitated model extraction and inversion, allowing attackers to circumvent security controls in machine learning algorithms and bypass email filters.
-#### 3. Sensitive Business Data Disclosure
-  Generated responses might inadvertently include confidential business information.
+#### ១. ការលេចធ្លាយ PII
 
-### Prevention and Mitigation Strategies
+  ព័ត៌មានផ្ទាល់ខ្លួនដែលអាចកំណត់អត្តសញ្ញាណ (PII) អាចត្រូវបានបង្ហាញក្នុងអំឡុងពេលមានការប្រាស្រ័យទាក់ទងជាមួយ LLM។
 
-#### Sanitization:
+#### ២. ការបង្ហាញអាល់ហ្គូរីធម៍ (algorithms) ដែលមានម្ចាស់កម្មសិទ្ធិ
 
-#### 1. Integrate Data Sanitization Techniques
-  Implement data sanitization to prevent user data from entering the training model. This includes scrubbing or masking sensitive content before it is used in training.
-#### 2. Robust Input Validation
-  Apply strict input validation methods to detect and filter out potentially harmful or sensitive data inputs, ensuring they do not compromise the model.
+  លទ្ធផលរបស់ម៉ូឌែលដែលមិនបានកំណត់លក្ខណៈត្រឹមត្រូវអាចបង្ហាញអាល់ហ្គូរីធម៍ (algorithms) ឬទិន្នន័យដែលមានម្ចាស់កម្មសិទ្ធិ។ ការបង្ហាញទិន្នន័យបណ្តុះបណ្តាលអាចធ្វើឲ្យម៉ូឌែលរងការវាយប្រហារប្រភេទ inversion ដែលអាចឲ្យអ្នកវាយប្រហារស្រង់យកព័ត៌មានសម្ងាត់ ឬស្ដារឡើងវិញនូវទិន្នន័យបញ្ចូល។ ឧទាហរណ៍ ដូចដែលបានបង្ហាញក្នុងការវាយប្រហារ "Proof Pudding" (CVE-2019-20634) ទិន្នន័យបណ្ដុះបណ្ដាលដែលត្រូវបានបង្ហាញ បានជួយឲ្យមានការដកយក និងបម្លែងម៉ូឌែលបានយ៉ាងងាយស្រួល។ អ្នកវាយប្រហារអាចរំលងការគ្រប់គ្រងសុវត្ថិភាពនៅក្នុង​ machine learning algorithms និងអាចជៀសវាងអាចជៀសវាងប្រព័ន្ធច្រោះអ៊ីមែលបានផងដែរ។
 
-#### Access Controls:
+#### ៣. ការបង្ហាញទិន្នន័យអាជីវកម្មសម្ងាត់
 
-#### 1. Enforce Strict Access Controls
-  Limit access to sensitive data based on the principle of least privilege. Only grant access to data that is necessary for the specific user or process.
-#### 2. Restrict Data Sources
-  Limit model access to external data sources, and ensure runtime data orchestration is securely managed to avoid unintended data leakage.
+  ចម្លើយដែលម៉ូឌែលបង្កើតឡើងអាចមានព័ត៌មានសម្ងាត់របស់អាជីវកម្ម ដែលបានបញ្ចូលដោយអចេតនា ឬដោយចៃដន្យ។
 
-#### Federated Learning and Privacy Techniques:
+### យុទ្ធសាស្ត្រការពារ និងការបន្ធូរបន្ថយ
 
-#### 1. Utilize Federated Learning
-  Train models using decentralized data stored across multiple servers or devices. This approach minimizes the need for centralized data collection and reduces exposure risks.
-#### 2. Incorporate Differential Privacy
-  Apply techniques that add noise to the data or outputs, making it difficult for attackers to reverse-engineer individual data points.
+#### ការសម្អាតទិន្នន័យ
 
-#### User Education and Transparency:
+#### ១. បញ្ចូលបច្ចេកទេសសម្អាតទិន្នន័យ
 
-#### 1. Educate Users on Safe LLM Usage
-  Provide guidance on avoiding the input of sensitive information. Offer training on best practices for interacting with LLMs securely.
-#### 2. Ensure Transparency in Data Usage
-  Maintain clear policies about data retention, usage, and deletion. Allow users to opt out of having their data included in training processes.
+  អនុវត្តន៍ការសម្អាតទិន្នន័យ ដើម្បីបង្ការមិនឲ្យទិន្នន័យអ្នកប្រើចូលទៅក្នុងម៉ូឌែលបណ្តុះបណ្តាល។  វារួមមានការលុបចោល ឬបិទបាំងព័ត៌មានសម្ងាត់ មុននឹងប្រើវាក្នុងការបណ្តុះបណ្តាល។
 
-#### Secure System Configuration:
+#### ២. ការផ្ទៀងផ្ទាត់ទិន្នន័យបញ្ចូលយ៉ាងរឹងមាំ
 
-#### 1. Conceal System Preamble
-  Limit the ability for users to override or access the system's initial settings, reducing the risk of exposure to internal configurations.
-#### 2. Reference Security Misconfiguration Best Practices
-  Follow guidelines like "OWASP API8:2023 Security Misconfiguration" to prevent leaking sensitive information through error messages or configuration details.
-  (Ref. link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+  អនុវត្តវិធីសាស្ត្រផ្ទៀងផ្ទាត់ទិន្នន័យបញ្ចូលយ៉ាងតឹងរ៉ឹង ដើម្បីស្វែងរក និងច្រោះចោលទិន្នន័យដែលអាចបង្កគ្រោះថ្នាក់ ឬមានលក្ខណៈសម្ងាត់ ដើម្បីធានាថាវាមិនប៉ះពាល់ដល់សុវត្ថិភាពនៃម៉ូឌែលនោះទេ។
 
-#### Advanced Techniques:
+#### ការគ្រប់គ្រងសិទ្ធិចូលប្រើ
 
-#### 1. Homomorphic Encryption
-  Use homomorphic encryption to enable secure data analysis and privacy-preserving machine learning. This ensures data remains confidential while being processed by the model.
-#### 2. Tokenization and Redaction
-  Implement tokenization to preprocess and sanitize sensitive information. Techniques like pattern matching can detect and redact confidential content before processing.
+#### ១. អនុវត្តការគ្រប់គ្រងសិទ្ធិចូលប្រើយ៉ាងតឹងរឹង
 
-### Example Attack Scenarios
+  កំណត់សិទ្ធិចូលប្រើទិន្នន័យសម្ងាត់ដោយផ្អែកលើគោលការណ៍អនុញ្ញាតតិចបំផុត (least privilege)។ ផ្ដល់ការចូលប្រើតែទៅលើទិន្នន័យដែលចាំបាច់សម្រាប់អ្នកប្រើ ឬដំណើរការពាក់ព័ន្ធប៉ុណ្ណោះ។
 
-#### Scenario #1: Unintentional Data Exposure
-  A user receives a response containing another user's personal data due to inadequate data sanitization.
-#### Scenario #2: Targeted Prompt Injection
-  An attacker bypasses input filters to extract sensitive information.
-#### Scenario #3: Data Leak via Training Data
-  Negligent data inclusion in training leads to sensitive information disclosure.
+#### ២. កំណត់ប្រភពទិន្នន័យ
 
-### Reference Links
+  កំណត់ការចូលប្រើម៉ូឌែលទៅកាន់ប្រភពទិន្នន័យខាងក្រៅ ហើយធានាថាការគ្រប់គ្រងទិន្នន័យនៅពេលដំណើរការត្រូវបានគ្រប់គ្រងយ៉ាងមានសុវត្ថិភាព ដើម្បីជៀសវាងការលេចធ្លាយទិន្នន័យដោយអចេតនា។
 
-1. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
-2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
-3. [ChatGPT Spit Out Sensitive Data When Told to Repeat ‘Poem’ Forever](https://www.wired.com/story/chatgpt-poem-forever-security-roundup/): **Wired**
-4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
-5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
+#### បច្ចេកវិធី Federated Learning និងភាពឯកជន
 
-### Related Frameworks and Taxonomies
+#### ១. ប្រើប្រាស់ Federated Learning
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+  បណ្តុះបណ្តាលម៉ូឌែលដោយប្រើទិន្នន័យដែលបានផ្ទុកចែកចាយនៅលើម៉ាស៊ីនមេ ឬឧបករណ៍ជាច្រើន។ វិធីនេះជួយកាត់បន្ថយការប្រមូលទិន្នន័យមកកន្លែងមួយ និងបន្ថយហានិភ័យនៃការលេចធ្លោព័ត៌មានផ្ទាល់ខ្លួន។
 
-- [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
-- [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**
-- [AML.T0024.002 - Extract ML Model](https://atlas.mitre.org/techniques/AML.T0024.002) **MITRE ATLAS**
+#### ២. បញ្ចូលបច្ចេកវិទ្យាសុវត្ថិភាពឯកជនខុសគ្នា
+
+  អនុវត្តបច្ចេកទេសដែលបន្ថែមសំឡេងរំខាន (noise) ទៅលើទិន្នន័យ ឬលទ្ធផល ដើម្បីធ្វើឲ្យអ្នកវាយប្រហារកាន់តែពិបាកធ្វើការស្ដារឡើងវិញលើទិន្នន័យបុគ្គលម្នាក់ៗ។
+
+#### ការអប់រំអ្នកប្រើប្រាស់ និងភាពច្បាស់លាស់
+
+#### ១. បណ្តុះបណ្តាលអ្នកប្រើអំពីការប្រើប្រាស់ LLM ឲ្យមានសុវត្ថិភាព
+
+  ផ្ដល់ដំបូន្មានអំពីការជៀសវាងការបញ្ចូលព័ត៌មានសម្ងាត់។ ផ្ដល់ការបណ្តុះបណ្តាលលើការអនុវត្តន៍ល្អបំផុតសម្រាប់ការប្រាស្រ័យទាក់ទងជាមួយ LLM ដោយមានសុវត្ថិភាព។
+
+#### ២. បង្កើនភាពច្បាស់លាស់អំពីការប្រើប្រាស់ទិន្នន័យ
+
+  រក្សាគោលការណ៍ច្បាស់លាស់អំពីការរក្សាទុក ការប្រើប្រាស់ និងការលុបទិន្នន័យ។ អនុញ្ញាតឲ្យអ្នកប្រើប្រាស់អាចបដិសេធមិនឲ្យទិន្នន័យរបស់ពួកគេត្រូវបានបញ្ចូលទៅក្នុងដំណើរការបណ្តុះបណ្តាល។
+
+#### ការកំណត់ប្រព័ន្ធឱ្យមានសុវត្ថិភាព
+
+#### ១. លាក់ការកំណត់ដំបូងរបស់ប្រព័ន្ធ
+
+  កំណត់កម្រិតសិទ្ធិអ្នកប្រើមិនឲ្យអាចបំប្លែង (override) ឬចូលដំណើរការការកំណត់ដំបូងរបស់ប្រព័ន្ធ ដើម្បីកាត់បន្ថយហានិភ័យនៃការបង្ហាញការកំណត់ផ្ទៃខាងក្នុង។
+  
+#### ២.យោងតាមលក្ខណៈល្អបំផុតសម្រាប់ការកំណត់រចនាសម្ព័ន្ធសុវត្ថិភាព
+
+  អនុវត្តតាមមគ្គុទេសក៍ដូចជា "OWASP API8:2023 Security Misconfiguration" ដើម្បីបង្ការការលេចធ្លាយព័ត៌មានសម្ងាត់តាមរយៈសារកំហុស ឬព័ត៌មានលម្អិតអំពីការកំណត់រចនាសម្ព័ន្ធ។
+  (តំណភ្ជាប់៖ [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+
+#### បច្ចេកទេសកម្រិតខ្ពស់
+
+#### ១. ការអ៊ិនគ្រីប Homomorphic
+
+  ប្រើប្រាស់ការអ៊ិនគ្រីប homomorphic​ ដើម្បីអនុញ្ញាតឲ្យវិភាគទិន្នន័យយ៉ាងមានសុវត្ថិភាព និង machine learning ដោយរក្សាភាពឯកជន។ វានឹងធានាថាទិន្នន័យនៅតែសម្ងាត់ពេលកំពុងដំណើរការដោយម៉ូឌែល។
+
+#### ២. ការធ្វើ Tokenization និងការលាក់ព័ត៌មាន
+
+  អនុវត្ត tokenization ដើម្បីដំណើរការនិងសម្អាតព័ត៌មានសម្ងាត់ជាមុន។ បច្ចេកទេសដូចជា pattern matching អាចរកឃើញ និងលាក់ (redact) ខ្លឹមសារសម្ងាត់មុនពេលដំណើរការ។
+
+### ឧទាហរណ៍សេនារីយ៉ូនៃការវាយប្រហារ
+
+#### សេនារីយោ #១៖ ការបង្ហាញទិន្នន័យដោយអចេតនា
+
+  អ្នកប្រើម្នាក់ទទួលបានចម្លើយដែលមានទិន្នន័យផ្ទាល់ខ្លួនរបស់អ្នកប្រើផ្សេងទៀត ដោយសារការសម្អាតទិន្នន័យមិនគ្រប់គ្រាន់។
+
+#### សេនារីយោ #២៖ គោលដៅ Prompt Injection
+
+  អ្នកវាយប្រហារបំប្លែងតម្រងបញ្ចូល (input filters) ដើម្បីស្រង់យកព័ត៌មានសម្ងាត់។
+
+#### សេនារីយោ #៣៖ ការលេចធ្លាយទិន្នន័យតាមរយៈទិន្នន័យបណ្តុះបណ្តាល
+
+  ការបញ្ចូលទិន្នន័យដោយមិនប្រុងប្រយ័ត្នក្នុងដំណើរការបណ្តុះបណ្តាលអាចបណ្តាលឲ្យមានការបង្ហាញព័ត៌មានសម្ងាត់។
+
+### បញ្ជីយោង និង តំណភ្ជាប់
+
+១. [មេរៀនពីការលេចធ្លាយទិន្នន័យរបស់ ChatGPT នៅក្រុមហ៊ុន Samsung](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
+២. [វិបត្តិការលេចធ្លាយទិន្នន័យ AI៖ ឧបករណ៍ថ្មីការពារព័ត៌មានសម្ងាត់ក្រុមហ៊ុនមិនឲ្យចូលទៅ ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
+៣. [ChatGPT បានបង្ហាញទិន្នន័យសម្ងាត់ នៅពេលត្រូវបានបញ្ជាឲ្យធ្វើការឡើងវិញ ‘Poem’ ដដែលៗជារៀងរហូត](https://www.wired.com/story/chatgpt-poem-forever-security-roundup/): **Wired**
+៤. [ការប្រើ Differential Privacy ដើម្បីបង្កើតម៉ូឌែលមានសុវត្ថិភាព](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
+៥. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
+
+### ស៊ុមផែនការ និងប្រភេទបែងចែកដែលពាក់ព័ន្ធ
+
+សូមយោងទៅផ្នែកនេះសម្រាប់ព័ត៌មានពេញលេញ សេចក្តីពិពណ៌នាសេណារីយូ និងយុទ្ធសាស្ត្រដែលពាក់ព័ន្ធនឹងការដាក់ចូលប្រព័ន្ធហេដ្ឋារចនាសម្ព័ន្ធ ការគ្រប់គ្រងបរិបទដែលបានអនុវត្ត និងវិធានការល្អបំផុតក្នុងការអនុវត្ត។
+
+- [AML.T0024.000 - ការទាញយកសមាជិកទិន្នន័យបណ្តុះបណ្តាល](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
+- [AML.T0024.001 - បម្លែងម៉ូឌែល ML (Invert ML Model)](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**
+- [AML.T0024.002 - ស្រង់យកម៉ូឌែល ML (Extract ML Model)](https://atlas.mitre.org/techniques/AML.T0024.002) **MITRE ATLAS**

@@ -1,55 +1,80 @@
-## LLM09:2025 Misinformation
+## LLM09:2025 ព័ត៌មានមិនត្រឹមត្រូវ
 
-### Description
+### ការពិពណ៌នា
 
-Misinformation from LLMs poses a core vulnerability for applications relying on these models. Misinformation occurs when LLMs produce false or misleading information that appears credible. This vulnerability can lead to security breaches, reputational damage, and legal liability.
+ព័ត៌មានមិនពិតដែលចេញពីម៉ូដែល LLM គឺជារឿងសំខាន់មួយដែលអាចបង្កបញ្ហាដល់កម្មវិធីដែលពឹងផ្អែកលើម៉ូដែលទាំងនេះ។ ព័ត៌មានមិនពិតកើតឡើងនៅពេលដែល LLM បង្កើតព័ត៌មានខុស ឬបំភាន់ ដែលមើលទៅគួរឱ្យជឿទុកចិត្ត។ បញ្ហានេះអាចនាំឱ្យមានការបំពានសន្តិសុខ ការខូចខាតកេរ្តិ៍ឈ្មោះ និងការជាប់គាំងផ្លូវច្បាប់។
 
-One of the major causes of misinformation is hallucination—when the LLM generates content that seems accurate but is fabricated. Hallucinations occur when LLMs fill gaps in their training data using statistical patterns, without truly understanding the content. As a result, the model may produce answers that sound correct but are completely unfounded. While hallucinations are a major source of misinformation, they are not the only cause; biases introduced by the training data and incomplete information can also contribute.
+មូលហេតុធំមួយនៃព័ត៌មានមិនពិតគឺ ការភាន់ច្រឡំ (hallucination) — គឺនៅពេលដែល LLM បង្កើតខ្លឹមសារដែលហាក់ដូចជាត្រឹមត្រូវ ប៉ុន្តែការពិតវាជាការប្រឌិត។ ការភាន់ច្រឡំកើតឡើងនៅពេលដែល LLM បំពេញចន្លោះទទេនៅក្នុងទិន្នន័យដែលវាត្រូវបានបង្រៀន ដោយប្រើលំនាំស្ថិតិ ដោយមិនបានយល់ខ្លឹមសារពិតប្រាកដ។ ដូច្នេះ ម៉ូដែលអាចផ្តល់ចម្លើយដែលស្ដាប់ទៅសមហេតុផល ប៉ុន្តែគ្មានមូលដ្ឋានទាល់តែសោះ។ ទោះបីជាការភាន់ច្រឡំជាប្រភពសំខាន់នៃព័ត៌មានមិនពិតក៏ដោយ វាមិនមែនជាមូលហេតុតែមួយគត់ទេ ព្រោះភាពលម្អៀងពីទិន្នន័យបង្រៀន និងព័ត៌មានមិនពេញលេញក៏អាចរួមចំណែកផងដែរ។
 
-A related issue is overreliance. Overreliance occurs when users place excessive trust in LLM-generated content, failing to verify its accuracy. This overreliance exacerbates the impact of misinformation, as users may integrate incorrect data into critical decisions or processes without adequate scrutiny.
+បញ្ហាពាក់ព័ន្ធមួយទៀតគឺ ការទុកចិត្តហួសហេតុ (overreliance) ។ ការទុកចិត្តហួសហេតុកើតឡើងនៅពេលដែលអ្នកប្រើប្រាស់ជឿជាក់ខ្លាំងពេកលើខ្លឹមសារដែលបង្កើតដោយ LLM ដោយមិនបានផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវរបស់វា។ ការទុកចិត្តហួសហេតុនេះធ្វើឱ្យផលប៉ះពាល់នៃព័ត៌មានមិនពិតកាន់តែធ្ងន់ធ្ងរ ព្រោះអ្នកប្រើប្រាស់អាចយកទិន្នន័យខុសទៅប្រើក្នុងការសម្រេចចិត្ត ឬដំណើរការសំខាន់ៗដោយមិនបានពិនិត្យឱ្យបានល្អិតល្អន់។
 
-### Common Examples of Risk
+### ឧទាហរណ៍ហានិភ័យទូទៅ
 
-#### 1. Factual Inaccuracies
-  The model produces incorrect statements, leading users to make decisions based on false information. For example, Air Canada's chatbot provided misinformation to travelers, leading to operational disruptions and legal complications. The airline was successfully sued as a result.
-  (Ref. link: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
-#### 2. Unsupported Claims
-  The model generates baseless assertions, which can be especially harmful in sensitive contexts such as healthcare or legal proceedings. For example, ChatGPT fabricated fake legal cases, leading to significant issues in court.
-  (Ref. link: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
-#### 3. Misrepresentation of Expertise
-  The model gives the illusion of understanding complex topics, misleading users regarding its level of expertise. For example, chatbots have been found to misrepresent the complexity of health-related issues, suggesting uncertainty where there is none, which misled users into believing that unsupported treatments were still under debate.
+#### ១. ព័ត៌មានខុសពីការពិត
+
+  ម៉ូដែលផ្តល់សេចក្ដីថ្លែងការណ៍មិនត្រឹមត្រូវ ដែលនាំឱ្យអ្នកប្រើប្រាស់ធ្វើការសម្រេចចិត្តដោយផ្អែកលើព័ត៌មានមិនពិត។ ឧទាហរណ៍ chatbot របស់ក្រុមហ៊ុនអាកាសចរណ៍ Air Canada បានផ្តល់ព័ត៌មានខុសដល់អ្នកដំណើរ ដែលបណ្ដាលឱ្យមានបញ្ហាប្រតិបត្តិការ និងការប្ដឹងផ្ដល់ផ្លូវច្បាប់។ ជាលទ្ធផល ក្រុមហ៊ុនត្រូវបានប្ដឹងឈ្នះ។
+  (យោង: [BBC](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know))
+
+#### ២. ការអះអាងគ្មានមូលដ្ឋាន
+
+  ម៉ូដែលបង្កើតការអះអាងដែលគ្មានភស្តុតាង ដែលអាចបង្កគ្រោះថ្នាក់ជាពិសេសក្នុងស្ថានភាពរសើបដូចជាផ្នែកសុខភាព ឬកិច្ចការច្បាប់។ ឧទាហរណ៍ ChatGPT បានប្រឌិតករណីតុលាការក្លែងក្លាយ ដែលបង្កបញ្ហាសំខាន់ៗនៅក្នុងតុលាការ។
+  (យោង: [LegalDive](https://www.legaldive.com/news/chatgpt-fake-legal-cases-generative-ai-hallucinations/651557/))
+
+#### ៣. ការបង្ហាញជំនាញមិនត្រឹមត្រូវ
+
+  ម៉ូដែលធ្វើឱ្យអ្នកប្រើប្រាស់គិតថាវាយល់ច្បាស់ពីប្រធានបទស្មុគស្មាញ ដែលបំភាន់ពួកគេអំពីកម្រិតជំនាញរបស់ម៉ូដែល។ ឧទាហរណ៍ chatbots ត្រូវបានគេរកឃើញថាបង្ហាញពីភាពស្មុគស្មាញនៃបញ្ហាសុខភាពមិនត្រឹមត្រូវ ដោយនិយាយថាមានការសង្ស័យទាំងដែលគ្មាន ដែលធ្វើឱ្យអ្នកប្រើប្រាស់ជឿថាការព្យាបាលដែលគ្មានមូលដ្ឋាននៅតែជាប្រធានបទដែលត្រូវពិភាក្សា។
   (Ref. link: [KFF](https://www.kff.org/health-misinformation-monitor/volume-05/))
-#### 4. Unsafe Code Generation
-  The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems. For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks.
+
+#### ៤. ការបង្កើតកូដមិនសុវត្ថិភាព
+
+  ម៉ូដែលណែនាំបណ្ណាល័យកូដដែលគ្មានសុវត្ថិភាព ឬមិនមាន ដែលអាចបង្កឱ្យមានចន្លោះប្រហោងនៅពេលបញ្ចូលទៅក្នុងប្រព័ន្ធកម្មវិធី។ ឧទាហរណ៍ LLM ស្នើឱ្យប្រើបណ្ណាល័យពីភាគីទីបីដែលគ្មានសុវត្ថិភាព ដែលប្រសិនបើត្រូវបានជឿទុកចិត្តដោយមិនបានផ្ទៀងផ្ទាត់ នឹងនាំឱ្យមានហានិភ័យសន្តិសុខ។
   (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
-### Prevention and Mitigation Strategies
+### វិធីសាស្រ្តការពារ និងកាត់បន្ថយហានិភ័យ
 
-#### 1. Retrieval-Augmented Generation (RAG)
-  Use Retrieval-Augmented Generation to enhance the reliability of model outputs by retrieving relevant and verified information from trusted external databases during response generation. This helps mitigate the risk of hallucinations and misinformation.
-#### 2. Model Fine-Tuning
-  Enhance the model with fine-tuning or embeddings to improve output quality. Techniques such as parameter-efficient tuning (PET) and chain-of-thought prompting can help reduce the incidence of misinformation.
-#### 3. Cross-Verification and Human Oversight
-  Encourage users to cross-check LLM outputs with trusted external sources to ensure the accuracy of the information. Implement human oversight and fact-checking processes, especially for critical or sensitive information. Ensure that human reviewers are properly trained to avoid overreliance on AI-generated content.
-#### 4. Automatic Validation Mechanisms
-  Implement tools and processes to automatically validate key outputs, especially output from high-stakes environments.
-#### 5. Risk Communication
-  Identify the risks and possible harms associated with LLM-generated content, then clearly communicate these risks and limitations to users, including the potential for misinformation.
-#### 6. Secure Coding Practices
-  Establish secure coding practices to prevent the integration of vulnerabilities due to incorrect code suggestions.
-#### 7. User Interface Design
-  Design APIs and user interfaces that encourage responsible use of LLMs, such as integrating content filters, clearly labeling AI-generated content and informing users on limitations of reliability and accuracy. Be specific about the intended field of use limitations.
-#### 8. Training and Education
-  Provide comprehensive training for users on the limitations of LLMs, the importance of independent verification of generated content, and the need for critical thinking. In specific contexts, offer domain-specific training to ensure users can effectively evaluate LLM outputs within their field of expertise.
+#### ១. ការបង្កើតដោយពង្រីកការទាញយក (Retrieval-Augmented Generation - RAG)
 
-### Example Attack Scenarios
+  ប្រើប្រាស់ Retrieval-Augmented Generation ដើម្បីបង្កើនភាពជឿជាក់នៃលទ្ធផលម៉ូដែល ដោយទាញយកព័ត៌មានពាក់ព័ន្ធ និងបានផ្ទៀងផ្ទាត់ពីមូលដ្ឋានទិន្នន័យខាងក្រៅដែលគួរឱ្យទុកចិត្ត ក្នុងពេលបង្កើតចម្លើយ។ នេះជួយកាត់បន្ថយបញ្ហាការភាន់ច្រឡំ (hallucinations) និងព័ត៌មានមិនពិត។
 
-#### Scenario #1
-  Attackers experiment with popular coding assistants to find commonly hallucinated package names. Once they identify these frequently suggested but nonexistent libraries, they publish malicious packages with those names to widely used repositories. Developers, relying on the coding assistant's suggestions, unknowingly integrate these poised packages into their software. As a result, the attackers gain unauthorized access, inject malicious code, or establish backdoors, leading to significant security breaches and compromising user data.
-#### Scenario #2
-  A company provides a chatbot for medical diagnosis without ensuring sufficient accuracy. The chatbot provides poor information, leading to harmful consequences for patients. As a result, the company is successfully sued for damages. In this case, the safety and security breakdown did not require a malicious attacker but instead arose from the insufficient oversight and reliability of the LLM system. In this scenario, there is no need for an active attacker for the company to be at risk of reputational and financial damage.
+#### ២. ការកែសម្រួលម៉ូដែល (Model Fine-Tuning)
 
-### Reference Links
+  កែលម្អម៉ូដែលដោយការកែសម្រួល (fine-tuning) ឬ embeddings ដើម្បីបង្កើនគុណភាពលទ្ធផល។ បច្ចេកទេសដូចជាការលៃតម្រូវប៉ារ៉ាម៉ែត្រប្រកបដោយប្រសិទ្ធភាព (parameter-efficient tuning - PET) និងការជំរុញតាមខ្សែសង្វាក់គំនិត (chain-of-thought prompting) អាចជួយកាត់បន្ថយការកើតឡើងនៃព័ត៌មានមិនពិត។
+
+#### ៣. ការផ្ទៀងផ្ទាត់ទ្វេដង និងការត្រួតពិនិត្យដោយមនុស្ស
+
+  លើកទឹកចិត្តអ្នកប្រើប្រាស់ឱ្យពិនិត្យផ្ទៀងផ្ទាត់លទ្ធផល LLM ជាមួយប្រភពខាងក្រៅដែលគួរឱ្យទុកចិត្ត ដើម្បីធានាភាពត្រឹមត្រូវនៃព័ត៌មាន។ អនុវត្តការត្រួតពិនិត្យដោយមនុស្ស និងដំណើរការផ្ទៀងផ្ទាត់ការពិត ជាពិសេសសម្រាប់ព័ត៌មានសំខាន់ៗ ឬរសើប។ ត្រូវប្រាកដថាអ្នកពិនិត្យជាមនុស្សត្រូវបានបង្រៀនត្រឹមត្រូវ ដើម្បីជៀសវាងការទុកចិត្តហួសហេតុលើខ្លឹមសារដែលបង្កើតដោយ AI។
+
+#### ៤. យន្តការផ្ទៀងផ្ទាត់ដោយស្វ័យប្រវត្តិ
+
+  អនុវត្តឧបករណ៍ និងប្រព័ន្ធដើម្បីផ្ទៀងផ្ទាត់លទ្ធផល (Output) សំខាន់ៗដោយស្វ័យប្រវត្តិ ជាពិសេសលទ្ធផលពីស្ថានភាពដែលមានហានិភ័យខ្ពស់។
+
+#### ៥. ការទំនាក់ទំនងហានិភ័យ
+
+  កំណត់ហានិភ័យ និងផលប៉ះពាល់អាក្រក់ដែលអាចកើតមានដែលទាក់ទងនឹងខ្លឹមសារដែលបង្កើតដោយ LLM បន្ទាប់មកទំនាក់ទំនងហានិភ័យ និងដែនកំណត់ទាំងនេះទៅកាន់អ្នកប្រើប្រាស់ឱ្យបានច្បាស់លាស់ រួមទាំងលទ្ធភាពនៃព័ត៌មានមិនពិត។
+
+#### ៦. ការអនុវត្តសរសេរកូដប្រកបដោយសុវត្ថិភាព
+
+  បង្កើតការអនុវត្តសរសេរកូដប្រកបដោយសុវត្ថិភាព ដើម្បីការពារការបញ្ចូលចន្លោះប្រហោងដោយសារការណែនាំកូដមិនត្រឹមត្រូវ។
+
+#### ៧. ការរចនាចំណុចប្រទាក់អ្នកប្រើប្រាស់
+
+  រចនា API និងចំណុចប្រទាក់អ្នកប្រើប្រាស់ដែលលើកទឹកចិត្តឱ្យប្រើប្រាស់ LLM ប្រកបដោយការទទួលខុសត្រូវ ដូចជាការបញ្ចូលប្រព័ន្ធច្រោះខ្លឹមសារ ការដាក់ស្លាកខ្លឹមសារដែលបង្កើតដោយ AI ឱ្យបានច្បាស់លាស់ និងការជូនដំណឹងដល់អ្នកប្រើប្រាស់អំពីដែនកំណត់នៃភាពជឿជាក់ និងភាពត្រឹមត្រូវ។ ត្រូវបញ្ជាក់ឱ្យច្បាស់លាស់អំពីដែនកំណត់នៃការប្រើប្រាស់ដែលបានគ្រោងទុក។
+
+#### ៨. ការបណ្ដុះបណ្ដាល និងការអប់រំ
+
+  ផ្តល់ការបណ្ដុះបណ្ដាលពេញលេញសម្រាប់អ្នកប្រើប្រាស់អំពីដែនកំណត់របស់ LLM ភាពសំខាន់នៃការផ្ទៀងផ្ទាត់ឯករាជ្យនៃខ្លឹមសារដែលបានបង្កើត និងតម្រូវការសម្រាប់ការគិតបែបត្រិះរិះពិចារណា។ ក្នុងបរិបទជាក់លាក់ ផ្តល់ការបណ្ដុះបណ្ដាលជាក់លាក់តាមជំនាញ ដើម្បីធានាថាអ្នកប្រើប្រាស់អាចវាយតម្លៃលទ្ធផល LLM ប្រកបដោយប្រសិទ្ធភាពក្នុងវិស័យជំនាញរបស់ពួកគេ។
+
+### ឧទាហរណ៍សេណារីយោវាយប្រហារ
+
+#### សេណារីយ៉ូ #1
+
+អ្នកវាយប្រហារសាកល្បងជាមួយជំនួយការសរសេរកូដល្បីៗ ដើម្បីរកឈ្មោះកញ្ចប់កម្មវិធី (package names) ដែលតែងតែត្រូវបានភាន់ច្រឡំ។ នៅពេលពួកគេរកឃើញបណ្ណាល័យទាំងនេះដែលត្រូវបានណែនាំញឹកញាប់ ប៉ុន្តែការពិតគ្មាននោះ ពួកគេបោះពុម្ពកញ្ចប់កម្មវិធីដែលមានគ្រោះថ្នាក់ដែលមានឈ្មោះទាំងនោះទៅកាន់ឃ្លាំងផ្ទុក (repositories) ដែលត្រូវបានប្រើប្រាស់យ៉ាងទូលំទូលាយ។ អ្នកអភិវឌ្ឍន៍ ដោយសារតែទុកចិត្តលើការណែនាំរបស់ជំនួយការសរសេរកូដ បានបញ្ចូលកញ្ចប់កម្មវិធីដែលមានគ្រោះថ្នាក់ទាំងនេះទៅក្នុងកម្មវិធីរបស់ពួកគេដោយមិនដឹងខ្លួន។ ជាលទ្ធផល អ្នកវាយប្រហារទទួលបានការចូលប្រើប្រាស់ដោយគ្មានការអនុញ្ញាត បញ្ចូលកូដដែលមានគ្រោះថ្នាក់ ឬបង្កើតច្រកសម្ងាត់ (backdoors) ដែលនាំឱ្យមានការបំពានសន្តិសុខយ៉ាងធ្ងន់ធ្ងរ និងការលួចទិន្នន័យអ្នកប្រើប្រាស់។
+
+#### សេណារីយ៉ូ #2
+
+  ក្រុមហ៊ុនមួយផ្តល់ chatbot សម្រាប់វិនិច្ឆ័យជំងឺដោយមិនបានធានាភាពត្រឹមត្រូវគ្រប់គ្រាន់។ chatbot នេះបានផ្តល់ព័ត៌មានមិនត្រឹមត្រូវ ដែលនាំឱ្យមានផលវិបាកអាក្រក់សម្រាប់អ្នកជំងឺ។ ជាលទ្ធផល ក្រុមហ៊ុនត្រូវបានប្ដឹងឈ្នះសម្រាប់ការខូចខាត។ ក្នុងករណីនេះ បញ្ហាសុវត្ថិភាព និងសន្តិសុខមិនតម្រូវឱ្យមានអ្នកវាយប្រហារព្យាបាទនោះទេ ប៉ុន្តែផ្ទុយទៅវិញ កើតចេញពីការត្រួតពិនិត្យ និងភាពជឿជាក់មិនគ្រប់គ្រាន់នៃប្រព័ន្ធ LLM។ នៅក្នុងសេណារីយ៉ូនេះ មិនចាំបាច់មានអ្នកវាយប្រហារសកម្មសម្រាប់ក្រុមហ៊ុនដើម្បីប្រឈមមុខនឹងហានិភ័យនៃការខូចខាតកេរ្តិ៍ឈ្មោះ និងហិរញ្ញវត្ថុនោះទេ។
+
+### បញ្ជីយោង និង តំណភ្ជាប់
 
 1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
 2. [Air Canada Chatbot Misinformation: What Travellers Should Know](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know): **BBC**
@@ -63,8 +88,8 @@ A related issue is overreliance. Overreliance occurs when users place excessive 
 10. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
 11. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
 
-### Related Frameworks and Taxonomies
+### ក្របខ័ណ្ឌ និងតាក់សូណូមីដែលទាក់ទង
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+  សូមមើលផ្នែកនេះសម្រាប់ព័ត៌មានពេញលេញ សេណារីយ៉ូ យុទ្ធសាស្ត្រដែលទាក់ទងនឹងការដាក់ពង្រាយប្រព័ន្ធ ការត្រួតពិនិត្យបរិស្ថានដែលបានអនុវត្ត និងការអនុវត្តល្អបំផុតផ្សេងទៀត។
 
 - [AML.T0048.002 - Societal Harm](https://atlas.mitre.org/techniques/AML.T0048) **MITRE ATLAS**

@@ -1,67 +1,80 @@
-## LLM04: Data and Model Poisoning
+## LLM04៖ ការបំពុលទិន្នន័យ និងម៉ូឌែល
 
-### Description
+### ការពិពណ៌នា
 
-Data poisoning occurs when pre-training, fine-tuning, or embedding data is manipulated to introduce vulnerabilities, backdoors, or biases. This manipulation can compromise model security, performance, or ethical behavior, leading to harmful outputs or impaired capabilities. Common risks include degraded model performance, biased or toxic content, and exploitation of downstream systems.
+ការបំពុលទិន្នន័យ កើតឡើងនៅពេលដែលទិន្នន័យសម្រាប់បណ្តុះបណ្តាលដំបូង (pre-training), បណ្តុះបណ្តាលបន្ថែម (fine-tuning), ឬការបំលែងទិន្នន័យទៅជាវ៉ិចទ័រ (embedding) ត្រូវបានកែប្រែ ដោយមានគោលបំណងបញ្ចូល ភាពងាយរងគ្រោះ (vulnerabilities), backdoors ឬ ភាពលំអៀង (biases)។ ការកែប្រែទាំងនេះអាចប៉ះពាល់ដល់សុវត្ថិភាព, ប្រសិទ្ធភាព, ឬឥរិយាបថនៃម៉ូឌែល ដោយបង្កើតលទ្ធផលដែលអាចមានគ្រោះថ្នាក់ ឬប៉ះពាល់ដល់សមត្ថភាពរបស់វា។
+ហានិភ័យទូទៅរួមមាន ការធ្លាក់ចុះនៃប្រសិទ្ធភាពម៉ូឌែល, ខ្លឹមសារដែលមានភាពលំអៀង ឬមាតិកាដែលបង្កឲ្យប៉ះពាល់អាក្រក់, ការប្រើប្រាស់ម៉ូឌែលដើម្បីកេងប្រវ័ញ្ចលើប្រព័ន្ធដែលពឹងផ្អែកលើវា។
 
-Data poisoning can target different stages of the LLM lifecycle, including pre-training (learning from general data), fine-tuning (adapting models to specific tasks), embedding (converting text into numerical vectors), and transfer learning (reusing a pre-trained model on a new task). Understanding these stages helps identify where vulnerabilities may originate. Data poisoning is considered an integrity attack since tampering with training data impacts the model's ability to make accurate predictions. The risks are particularly high with external data sources, which may contain unverified or malicious content.
+ការបំពុលទិន្នន័យ អាចវាយប្រហារតាមជំហានផ្សេងៗនៃដំណើរការអភិវឌ្ឍម៉ូឌែលភាសាធំ (LLM) រួមមាន៖ វគ្គបណ្តុះបណ្តាលដំបូង (ដែលសិក្សាពីទិន្នន័យទូទៅ),​ វគ្គបណ្តុះបណ្តាលបន្ថែម (ដើម្បីកែតម្រូវម៉ូឌែលឲ្យសមនឹងកិច្ចការជាក់លាក់),​ embedding (ការបម្លែងអត្ថបទទៅជាចំនួនលេខ), និង ការផ្ទេរការសិក្សា (ការប្រើម៉ូឌែលដែលបានបណ្តុះបណ្តាលរួច មកប្រើសម្រាប់កិច្ចការថ្មី)។
+ការយល់ដឹងអំពីជំហានទាំងនេះ ជួយកំណត់កន្លែងដែលភាពងាយរងគ្រោះដែលអាចកើតមាន។ ការបំពុលទិន្នន័យ ត្រូវបានចាត់ទុកថាជាការវាយប្រហារលើភាពត្រឹមត្រូវ (integrity attack) ពីព្រោះការកែប្រែទិន្នន័យបណ្តុះបណ្តាល នឹងប៉ះពាល់ដល់សមត្ថភាពរបស់ម៉ូឌែលក្នុងការទាយទុកបានត្រឹមត្រូវ។ ហានិភ័យកើតមានខ្លាំងជាពិសេសនៅពេលប្រើប្រាស់ប្រភពទិន្នន័យខាងក្រៅ ដែលអាចមានមាតិកាមិនបានផ្ទៀងផ្ទាត់ ឬមានគោលបំណងអាក្រក់។
 
-Moreover, models distributed through shared repositories or open-source platforms can carry risks beyond data poisoning, such as malware embedded through techniques like malicious pickling, which can execute harmful code when the model is loaded. Also, consider that poisoning may allow for the implementation of a backdoor. Such backdoors may leave the model's behavior untouched until a certain trigger causes it to change. This may make such changes hard to test for and detect, in effect creating the opportunity for a model to become a sleeper agent.
+បន្ថែមពីនេះ ម៉ូឌែលដែលចែកចាយតាមបណ្តាញឬវេទិកា open-source អាចមានហានិភ័យលើសពីការបំពុលទិន្នន័យ ដូចជាការបញ្ចូលមេរោគតាមរយៈបច្ចេកទេសជាច្រើន ដូចជា malicious pickling ដែលអាចអនុវត្តកូដគួរឱ្យគ្រោះថ្នាក់នៅពេលផ្ទុកម៉ូឌែល។ ការបំពុលទិន្នន័យក៏អាចអនុញ្ញាតឲ្យបង្កើត backdoor បានផងដែរ។ Backdoor ទាំងនេះអាចធ្វើឲ្យឥរិយាបថម៉ូឌែលនៅដដែលរហូតដល់មានសញ្ញាបង្ហាញជាក់លាក់មួយបណ្តាលឲ្យវាប្រែប្រួល។ វាធ្វើឲ្យការផ្លាស់ប្តូរទាំងនេះពិបាកសាកល្បង និងរកឃើញ ដោយបង្កើតឱកាសឲ្យម៉ូឌែលក្លាយជាភ្នាក់ងារដែលស្ងៀមស្ងាត់ (sleeper agent)។
 
-### Common Examples of Vulnerability
+### ឧទាហរណ៍ទូទៅនៃភាពងាយរងគ្រោះ
 
-1. Malicious actors introduce harmful data during training, leading to biased outputs. Techniques like "Split-View Data Poisoning" or "Frontrunning Poisoning" exploit model training dynamics to achieve this.
-  (Ref. link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
-  (Ref. link: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
-2. Attackers can inject harmful content directly into the training process, compromising the model’s output quality.
-3. Users unknowingly inject sensitive or proprietary information during interactions, which could be exposed in subsequent outputs.
-4. Unverified training data increases the risk of biased or erroneous outputs.
-5. Lack of resource access restrictions may allow the ingestion of unsafe data, resulting in biased outputs.
+១. អ្នកវាយប្រហារអាចបញ្ចូលទិន្នន័យគួរឱ្យគ្រោះថ្នាក់ក្នុងដំណើរការបណ្តុះបណ្តាល ដើម្បីបង្កឱ្យមានលទ្ធផលលំអៀង។ បច្ចេកទេសដូចជា "Split-View Data Poisoning" ឬ "Frontrunning Poisoning" អាចប្រើប្រាស់លើលក្ខណៈ dynamic នៃការបណ្តុះបណ្តាលម៉ូឌែល ដើម្បីសម្រេចគោលបំណងនេះ។
+  (តំណភ្ជាប់៖ [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
+  (តំណភ្ជាប់៖ [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
 
-### Prevention and Mitigation Strategies
+២. អ្នកវាយប្រហារអាចបញ្ចូលមាតិកាគ្រោះថ្នាក់ដោយផ្ទាល់ទៅក្នុងដំណើរការបណ្តុះបណ្តាល ដោយធ្វើឱ្យគុណភាពលទ្ធផលនៃម៉ូឌែលកាន់តែថយចុះ។
+៣. អ្នកប្រើប្រាស់អាចបញ្ចូលព័ត៌មានសម្ងាត់ ឬព័ត៌មានកម្មសិទ្ធិដោយមិនដឹងខ្លួនក្នុងពេលប្រើប្រាស់ ដែលអាចត្រូវបង្ហាញឡើងវិញក្នុងលទ្ធផលបន្ទាប់។
+៤. ទិន្នន័យបណ្តុះបណ្តាលដែលមិនបានផ្ទៀងផ្ទាត់អាចបង្កើនហានិភ័យនៃលទ្ធផលដែលមានភាពលំអៀង ឬខុសប្រក្រតី។
+៥. ការខ្វះការកំណត់សិទ្ធិចូលប្រើធនធានអាចអនុញ្ញាតឲ្យម៉ូឌែលទទួលទិន្នន័យគ្មានសុវត្ថិភាព បណ្តាលឲ្យមានលទ្ធផលដែលមានភាពលំអៀង។
 
-1. Track data origins and transformations using tools like OWASP CycloneDX or ML-BOM and leverage tools such as [Dyana](https://github.com/dreadnode/dyana) to perform dynamic analysis of third-party software. Verify data legitimacy during all model development stages.
-2. Vet data vendors rigorously, and validate model outputs against trusted sources to detect signs of poisoning.
-3. Implement strict sandboxing to limit model exposure to unverified data sources. Use anomaly detection techniques to filter out adversarial data.
-4. Tailor models for different use cases by using specific datasets for fine-tuning. This helps produce more accurate outputs based on defined goals.
-5. Ensure sufficient infrastructure controls to prevent the model from accessing unintended data sources.
-6. Use data version control (DVC) to track changes in datasets and detect manipulation. Versioning is crucial for maintaining model integrity.
-7. Store user-supplied information in a vector database, allowing adjustments without re-training the entire model.
-8. Test model robustness with red team campaigns and adversarial techniques, such as federated learning, to minimize the impact of data perturbations.
-9. Monitor training loss and analyze model behavior for signs of poisoning. Use thresholds to detect anomalous outputs.
-10. During inference, integrate Retrieval-Augmented Generation (RAG) and grounding techniques to reduce risks of hallucinations.
+### វិធីសាស្រ្តការពារ និងបង្រួមហានិភ័យ
 
-### Example Attack Scenarios
+១. តាមដានប្រភពទិន្នន័យ និងដំណើរការបម្លែងទិន្នន័យ ដោយប្រើឧបករណ៍ដូចជា OWASP CycloneDX ឬ ML-BOM និងប្រើឧបករណ៍ [Dyana](https://github.com/dreadnode/dyana) សម្រាប់វិភាគ dynamic លើកម្មវិធីភាគីទីបី​ (third-party)។ ផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវនៃទិន្នន័យគ្រប់ដំណាក់កាលអភិវឌ្ឍម៉ូឌែល។
+២. ពិនិត្យប្រភពផ្គត់ផ្គង់ទិន្នន័យយ៉ាងម៉ត់ចត់ និងផ្ទៀងផ្ទាត់លទ្ធផលម៉ូឌែលជាមួយប្រភពដែលទុកចិត្តបាន ដើម្បីរកសញ្ញានៃការបំពុល។
+៣. អនុវត្ត sandboxing យ៉ាងតឹងរឹង ដើម្បីកំណត់ការប៉ះពាល់របស់ម៉ូឌែលទៅប្រភពទិន្នន័យដែលមិនបានផ្ទៀងផ្ទាត់។ ប្រើបច្ចេកទេសរកឃើញភាពខុសប្រក្រតី ដើម្បីបំបាត់ទិន្នន័យប្រឆាំង។
+៤. កំណត់ម៉ូឌែលឲ្យសមនឹងករណីប្រើប្រាស់នីមួយៗ ដោយប្រើសំណុំទិន្នន័យជាក់លាក់សម្រាប់ការបណ្តុះបណ្តាលបន្ថែម។ វាជួយឲ្យលទ្ធផលបានត្រឹមត្រូវតាមគោលបំណង។
+៥. ប្រាកដថាមានការគ្រប់គ្រងហេដ្ឋារចនាសម្ព័ន្ធគ្រប់គ្រាន់ ដើម្បីការពារម៉ូឌែលមិនឲ្យចូលប្រើប្រភពទិន្នន័យដែលមិនបានចង់អោយចូល។
+៦. ប្រើ Data Version Control (DVC) ដើម្បីតាមដានការផ្លាស់ប្ដូរនៃសំណុំទិន្នន័យ និងរកឃើញការកែប្រែដោយបំណងអាក្រក់។ កំណែទម្រង់គឺសំខាន់សម្រាប់រក្សាទុកភាពត្រឹមត្រូវរបស់ម៉ូឌែល។
+៧. រក្សាទុកព័ត៌មានដែលអ្នកប្រើប្រាស់ផ្តល់នៅក្នុង vector database ដើម្បីអាចកែប្រែ ឬកែសម្រួលព័ត៌មានដោយមិនចាំបាច់បណ្តុះបណ្តាលម៉ូឌែលឡើងវិញទាំងមូល។
+៨. សាកល្បងភាពរឹងមាំរបស់ម៉ូឌែលដោយប្រើយុទ្ធនាការក្រុមក្រហម (red team) និងបច្ចេកទេសប្រឆាំង (adversarial techniques) ដូចជា federated learning ដើម្បីកាត់បន្ថយផលប៉ះពាល់ពីការរំខានទិន្នន័យ។
+៩. ត្រួតពិនិត្យការបាត់បង់ក្នុងវគ្គបណ្តុះបណ្តាល និងវិភាគឥរិយាបថរបស់ម៉ូឌែលសម្រាប់សញ្ញានៃការបំពុល។
+ប្រើកម្រិតកំណត់ (thresholds) ដើម្បីរកឃើញលទ្ធផលខុសប្រក្រតី។
+១០. នៅពេលបង្ហាញលទ្ធផល (inference) បញ្ចូលបច្ចេកទេស Retrieval-Augmented Generation (RAG) និង grounding ដើម្បីកាត់បន្ថយហានិភ័យនៃការបង្ហាញលទ្ធផលមិនត្រឹមត្រូវ។
 
-#### Scenario #1
-  An attacker biases the model's outputs by manipulating training data or using prompt injection techniques, spreading misinformation.
-#### Scenario #2
-  Toxic data without proper filtering can lead to harmful or biased outputs, propagating dangerous information.
-#### Scenario # 3
-  A malicious actor or competitor creates falsified documents for training, resulting in model outputs that reflect these inaccuracies.
-#### Scenario #4
-  Inadequate filtering allows an attacker to insert misleading data via prompt injection, leading to compromised outputs.
-#### Scenario #5
-  An attacker uses poisoning techniques to insert a backdoor trigger into the model. This could leave you open to authentication bypass, data exfiltration or hidden command execution.
+### ឧទាហរណ៍ សេណារីយ៉ូ វាយប្រហារ
 
-### Reference Links
+#### សេណារីយ៉ូ #១
 
-1. [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html): **CSO Online**
-2. [MITRE ATLAS (framework) Tay Poisoning](https://atlas.mitre.org/studies/AML.CS0009/): **MITRE ATLAS**
-3. [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news/): **Mithril Security**
-4. [Poisoning Language Models During Instruction](https://arxiv.org/abs/2305.00944): **Arxiv White Paper 2305.00944**
-5. [Poisoning Web-Scale Training Datasets - Nicholas Carlini | Stanford MLSys #75](https://www.youtube.com/watch?v=h9jf1ikcGyk): **Stanford MLSys Seminars YouTube Video**
-6. [ML Model Repositories: The Next Big Supply Chain Attack Target](https://www.darkreading.com/cloud-security/ml-model-repositories-next-big-supply-chain-attack-target) **OffSecML**
-7. [Data Scientists Targeted by Malicious Hugging Face ML Models with Silent Backdoor](https://jfrog.com/blog/data-scientists-targeted-by-malicious-hugging-face-ml-models-with-silent-backdoor/) **JFrog**
-8. [Backdoor Attacks on Language Models](https://towardsdatascience.com/backdoor-attacks-on-language-models-can-we-trust-our-models-weights-73108f9dcb1f): **Towards Data Science**
-9. [Never a dill moment: Exploiting machine learning pickle files](https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/) **TrailofBits**
-10. [arXiv:2401.05566 Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training](https://www.anthropic.com/news/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training) **Anthropic (arXiv)**
-11. [Backdoor Attacks on AI Models](https://www.cobalt.io/blog/backdoor-attacks-on-ai-models) **Cobalt**
+  អ្នកវាយប្រហារប្រែប្រួលលទ្ធផលរបស់ម៉ូឌែលដោយកែប្រែទិន្នន័យបណ្តុះបណ្តាល ឬប្រើបច្ចេកទេស prompt injection ដើម្បីផ្សព្វផ្សាយព័ត៌មានមិនត្រឹមត្រូវ។
 
-### Related Frameworks and Taxonomies
+#### សេណារីយ៉ូ #២
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+  ទិន្នន័យគ្រោះថ្នាក់ ដែលមិនបានចម្រាញ់ឲ្យបានត្រឹមត្រូវ អាចបណ្ដាលឲ្យមានលទ្ធផលប៉ះពាល់ ឬមានភាពលំអៀង និងនាំឲ្យមានការផ្សាយព័ត៌មានគ្រោះថ្នាក់។
 
-- [AML.T0018 | Backdoor ML Model](https://atlas.mitre.org/techniques/AML.T0018) **MITRE ATLAS**
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework): Strategies for ensuring AI integrity. **NIST**
-- [ML07:2023 Transfer Learning Attack](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML07_2023-Transfer_Learning_Attack) **OWASP Machine Learning Security Top Ten**
+#### សេណារីយ៉ូ #៣
+
+  អ្នកវាយប្រហារឬអ្នកប្រកួតប្រជែងបង្កើតឯកសារក្លែងក្លាយសម្រាប់បណ្តុះបណ្តាល ដែលបណ្ដាលឲ្យលទ្ធផលរបស់ម៉ូឌែលបង្ហាញភាពមិនត្រឹមត្រូវតាមឯកសារក្លែងក្លាយនោះ។
+
+#### សេណារីយ៉ូ #៤
+
+  ការត្រួតពិនិត្យមិនគ្រប់គ្រាន់អាចអនុញ្ញាតឲ្យអ្នកវាយប្រហារបញ្ចូលទិន្នន័យបញ្ឆោតតាមរយៈ prompt injection ដែលនាំឲ្យលទ្ធផលត្រូវបានប៉ះពាល់។
+
+#### សេណារីយ៉ូ #៥
+
+  អ្នកវាយប្រហារប្រើបច្ចេកទេសបំពុលទិន្នន័យដើម្បីបញ្ចូលសញ្ញាបើក backdoor ទៅក្នុងម៉ូឌែល។ វាអាចបណ្ដាលឲ្យមានហានិភ័យក្នុងការបំប្លែងការផ្ទៀងផ្ទាត់អត្តសញ្ញាណ, ការចម្លងទិន្នន័យចេញពីប្រព័ន្ធ, ឬការប្រតិបត្តិពាក្យបញ្ជាដែលលាក់។
+
+### តំណភ្ជាប់យោង
+
+1. [របៀបដែលការវាយប្រហារបំពុលទិន្នន័យ បំផ្លាញម៉ូឌែល machine learning](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html): **CSO Online**
+2. [MITRE ATLAS (សំណុំផែនការ) ការបំពុល Tay](https://atlas.mitre.org/studies/AML.CS0009/): **MITRE ATLAS**
+3. [PoisonGPT៖ របៀបដែលយើងលាក់ LLM ដែលបានកាត់បន្ថយសមត្ថភាពលើ Hugging Face ដើម្បីផ្សាយព័ត៌មានក្លែងក្លាយ](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news/): **Mithril Security**
+4. [ការបំពុលម៉ូឌែលភាសា អំឡុងពេលបណ្តុះបណ្តាល](https://arxiv.org/abs/2305.00944): **Arxiv White Paper 2305.00944**
+5. [ការបំពុលសំណុំទិន្នន័យបណ្តុះបណ្តាលទំហំធំលើបណ្តាញអ៊ីនធឺណិត - Nicholas Carlini | សិក្ខាសាលា Stanford MLSys លេខ ៧៥](https://www.youtube.com/watch?v=h9jf1ikcGyk): **Stanford MLSys Seminars YouTube Video**
+6. [ឃ្លាំងម៉ូឌែល ML៖ គោលដៅធំបន្ទាប់សម្រាប់ការវាយប្រហារតាមបណ្តាញផ្គត់ផ្គង់](https://www.darkreading.com/cloud-security/ml-model-repositories-next-big-supply-chain-attack-target) **OffSecML**
+7. [អ្នកវិភាគទិន្នន័យត្រូវបានវាយប្រហារដោយម៉ូឌែល ML របស់ Hugging Face ដែលមាន backdoor ស្ងៀមស្ងាត់](https://jfrog.com/blog/data-scientists-targeted-by-malicious-hugging-face-ml-models-with-silent-backdoor/) **JFrog**
+8. [ការវាយប្រហារ backdoor លើម៉ូឌែលភាសា](https://towardsdatascience.com/backdoor-attacks-on-language-models-can-we-trust-our-models-weights-73108f9dcb1f): **Towards Data Science**
+9. [កុំយល់ថាជារឿងធម្មតា៖ ការប្រើប្រាស់ pickle files ក្នុង machine learning ដើម្បីវាយប្រហារ](https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/) **TrailofBits**
+10. [arXiv:2401.05566 Sleeper Agents៖ បណ្តុះបណ្តាល LLM ដែលបោកបញ្ឆោត ដែលបន្តតាមការបណ្តុះបណ្តាលសុវត្ថិភាព](https://www.anthropic.com/news/sleeper-agents-training-deceptive-llms-that-persist-through-safety-training) **Anthropic (arXiv)**
+11. [ការវាយប្រហារ backdoor លើម៉ូឌែល AI](https://www.cobalt.io/blog/backdoor-attacks-on-ai-models) **Cobalt**
+
+### ស៊ុមផែនការ និងប្រភេទបែងចែកដែលពាក់ព័ន្ធ
+
+សូមយោងទៅផ្នែកនេះសម្រាប់ព័ត៌មានពេញលេញ សេចក្តីពិពណ៌នាសេណារីយូ និងយុទ្ធសាស្ត្រដែលពាក់ព័ន្ធនឹងការដាក់ចូលប្រព័ន្ធហេដ្ឋារចនាសម្ព័ន្ធ ការគ្រប់គ្រងបរិបទដែលបានអនុវត្ត និងវិធានការល្អបំផុតក្នុងការអនុវត្ត។
+
+- [AML.T0018 | ម៉ូឌែល ML ដែលមាន backdoor](https://atlas.mitre.org/techniques/AML.T0018) **MITRE ATLAS**
+- [ស៊ុមគ្រប់គ្រងហានិភ័យ AI NIST](https://www.nist.gov/itl/ai-risk-management-framework): Strategies for ensuring AI integrity. **NIST**
+- [ML07:2023 ការវាយប្រហារផ្ទេរការសិក្សា](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML07_2023-Transfer_Learning_Attack) **១០ OWASP សុវត្ថិភាពសំខាន់ៗសម្រាប់ Machine Learning**
