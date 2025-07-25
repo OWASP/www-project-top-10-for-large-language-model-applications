@@ -1,30 +1,30 @@
-## LLM05:2025 ការគ្រប់គ្រង Output មិនត្រឹមត្រូវ (Improper Output Handling)
+# LLM05:2025 ការគ្រប់គ្រងលទ្ធផលមិនត្រឹមត្រូវ (Improper Output Handling)
 
-### ការពិពណ៌នា
+## ការពិពណ៌នា
 
-Improper Output Handling សំដៅជាពិសេសទៅលើ insufficient validation, sanitization និង handling នៃ outputs ដែលបង្កើតឡើងដោយ large language models មុនពេលពួកគេត្រូវបានបញ្ជូនបន្តទៅ downstream components និង systems ។ ដោយសារ LLM-generated content អាចត្រូវបានគ្រប់គ្រងដោយ prompt input behavior នេះគឺស្រដៀងទៅនឹងការផ្តល់ឱ្យអ្នកប្រើប្រាស់នូវ indirect access ទៅកាន់ functionality បន្ថែម។
-Improper Output Handling ខុសពី Overreliance ត្រង់ថាវាទាក់ទងនឹង LLM-generated outputs មុនពេលពួកគេត្រូវបានបញ្ជូនបន្ត ខណៈដែល Overreliance ផ្តោតលើ broader concerns ជុំវិញ overdependence លើ accuracy និង appropriateness នៃ LLM outputs ។
-ការទាញយកប្រយោជន៍ដោយជោគជ័យពី Improper Output Handling vulnerability អាចបណ្តាលឱ្យមាន XSS និង CSRF នៅក្នុង web browsers ក៏ដូចជា SSRF, privilege escalation ឬ remote code execution នៅលើ backend systems ។
-លក្ខខណ្ឌខាងក្រោមអាចបង្កើនផលប៉ះពាល់នៃ vulnerability នេះ៖
+ការគ្រប់គ្រងលទ្ធផលមិនត្រឹមត្រូវ (Improper Output Handling) សំដៅជាពិសេសទៅលើការត្រួតពិនិត្យ (validation) ការសម្អាត (sanitization) និងការចាត់ចែង (handling) លទ្ធផលដែលបង្កើតដោយគំរូភាសាធំ (LLM) មិនគ្រប់គ្រាន់ មុនពេលបញ្ជូនបន្តទៅកាន់សមាសធាតុ និងប្រព័ន្ធដទៃទៀត (downstream components and systems)។ ដោយសារខ្លឹមសារដែលបង្កើតដោយ LLM អាចត្រូវបានគ្រប់គ្រងតាមរយៈការបញ្ចូល prompt ลักษณะนี้គឺស្រដៀងនឹងការផ្តល់ឱ្យអ្នកប្រើប្រាស់នូវការចូលប្រើប្រាស់ដោយប្រយោលទៅកាន់មុខងារបន្ថែម។
+ការគ្រប់គ្រងលទ្ធផលមិនត្រឹមត្រូវ (Improper Output Handling) ខុសពីការជឿទុកចិត្តលើសកម្រិត (Overreliance) ដោយសារវាផ្តោតលើការចាត់ចែងលទ្ធផលដែលបង្កើតដោយ LLM មុនពេលបញ្ជូនបន្ត ខណៈដែលការជឿទុកចិត្តលើសកម្រិត (Overreliance) ផ្តោតលើកង្វល់ទូលំទូលាយជាង ពោលគឺការពឹងផ្អែកខ្លាំងពេកទៅលើភាពត្រឹមត្រូវ និងភាពសមរម្យនៃលទ្ធផលរបស់ LLM។
+ការវាយប្រហារដោយជោគជ័យលើភាពងាយរងគ្រោះនៃការគ្រប់គ្រងលទ្ធផលមិនត្រឹមត្រូវ (Improper Output Handling) អាចបណ្តាលឱ្យមានការវាយប្រហារបែប Cross-Site Scripting (XSS) និង Cross-Site Request Forgery (CSRF) នៅក្នុងកម្មវិធីរុករកเว็บ (web browsers) ក៏ដូចជា Server-Side Request Forgery (SSRF), ការតម្លើងសិទ្ធិ (privilege escalation) ឬការប្រតិបត្តិកូដពីចម្ងាយ (remote code execution) នៅលើប្រព័ន្ធ backend។
+លក្ខខណ្ឌខាងក្រោមអាចបង្កើនផលប៉ះពាល់នៃភាពងាយរងគ្រោះនេះ៖
 
-- Application ផ្តល់ឱ្យ LLM នូវ privileges លើសពីអ្វីដែលបានបម្រុងទុកសម្រាប់ end users ដែលអាចឱ្យ escalation of privileges ឬ remote code execution ។
-- Application ងាយរងគ្រោះទៅនឹង indirect prompt injection attacks ដែលអាចអនុញ្ញាតឱ្យ attacker ទទួលបាន privileged access ទៅកាន់ target user's environment ។
-- 3rd party extensions មិន validate inputs បានគ្រប់គ្រាន់ទេ។
-- កង្វះ output encoding ត្រឹមត្រូវសម្រាប់ contexts ផ្សេងៗគ្នា (ឧទាហរណ៍ HTML, JavaScript, SQL)
-- Insufficient monitoring និង logging នៃ LLM outputs
-- អវត្តមាន rate limiting ឬ anomaly detection សម្រាប់ការប្រើប្រាស់ LLM
+- កម្មវិធីផ្តល់ឱ្យ LLM នូវសិទ្ធិលើសពីអ្វីដែលបានបម្រុងទុកសម្រាប់អ្នកប្រើប្រាស់ ដែលអាចនាំឱ្យមានការតម្លើងសិទ្ធិ (escalation of privileges) ឬការប្រតិបត្តិកូដពីចម្ងាយ (remote code execution)។
+- កម្មវិធីងាយរងគ្រោះនឹងការវាយប្រហារដោយប្រយោលតាមរយៈ prompt injection ដែលអាចអនុញ្ញាតឱ្យអ្នកវាយប្រហារទទួលបានសិទ្ធិពិសេសចូលទៅកាន់បរិស្ថានរបស់អ្នកប្រើប្រាស់គោលដៅ។
+- ផ្នែកបន្ថែម (extensions) ពីភាគីទីបីមិនបានត្រួតពិនិត្យការបញ្ចូល (inputs) បានគ្រប់គ្រាន់ទេ។
+- កង្វះការเข้ารหัสលទ្ធផល (output encoding) ត្រឹមត្រូវសម្រាប់បរិបទផ្សេងៗគ្នា (ឧទាហរណ៍ HTML, JavaScript, SQL)។
+- ការត្រួតពិនិត្យ និងការកត់ត្រាលទ្ធផលរបស់ LLM មិនគ្រប់គ្រាន់។
+- អវត្តមាននៃការកំណត់ដែនកំណត់ (rate limiting) ឬការរកឃើញភាពមិនប្រក្រតី (anomaly detection) សម្រាប់ការប្រើប្រាស់ LLM។
 
-### ឧទាហរណ៍ទូទៅនៃភាពងាយរងគ្រោះ
+## ឧទាហរណ៍ទូទៅនៃភាពងាយរងគ្រោះ
 
-1. LLM output ត្រូវបានបញ្ចូលដោយផ្ទាល់ទៅក្នុង system shell ឬ similar function ដូចជា exec ឬ eval ដែលបណ្តាលឱ្យ remote code execution ។
-2. JavaScript ឬ Markdown ត្រូវបានបង្កើតឡើងដោយ LLM ហើយត្រូវបានត្រឡប់ទៅ user វិញ។ កូដបន្ទាប់មកត្រូវបាន interpreted ដោយ browser ដែលបណ្តាលឱ្យ XSS ។
-3. LLM-generated SQL queries ត្រូវបានប្រតិបត្តិដោយគ្មាន proper parameterization ដែលនាំឱ្យ SQL injection ។
-4. LLM output ត្រូវបានប្រើដើម្បីបង្កើត file paths ដោយគ្មាន proper sanitization ដែលអាចបណ្តាលឱ្យ path traversal vulnerabilities ។
-5. LLM-generated content ត្រូវបានប្រើនៅក្នុង email templates ដោយគ្មាន proper escaping ដែលអាចនាំឱ្យ phishing attacks ។
+1. លទ្ធផលរបស់ LLM ត្រូវបានបញ្ចូលដោយផ្ទាល់ទៅក្នុង system shell ឬមុខងារស្រដៀងគ្នាដូចជា `exec` ឬ `eval` ដែលបណ្តាលឱ្យមានការប្រតិបត្តិកូដពីចម្ងាយ (remote code execution)។
+2. កូដ JavaScript ឬ Markdown ត្រូវបានបង្កើតដោយ LLM ហើយបញ្ជូនត្រឡប់ទៅអ្នកប្រើប្រាស់វិញ។ បន្ទាប់មក កូដនោះត្រូវបានបកស្រាយដោយកម្មវិធីរុករកเว็บ (browser) ដែលបណ្តាលឱ្យមានការវាយប្រហារបែប Cross-Site Scripting (XSS)។
+3. សំណួរ SQL ដែលបង្កើតដោយ LLM ត្រូវបានប្រតិបត្តិដោយគ្មានការកំណត់ប៉ារ៉ាម៉ែត្រត្រឹមត្រូវ (proper parameterization) ដែលនាំឱ្យមានការវាយប្រហារបែប SQL injection។
+4. លទ្ធផលរបស់ LLM ត្រូវបានប្រើដើម្បីបង្កើតផ្លូវឯកសារ (file paths) ដោយគ្មានការសម្អាត (sanitization) ត្រឹមត្រូវ ដែលអាចបណ្តាលឱ្យមានភាពងាយរងគ្រោះក្នុងការឆ្លងកាត់ផ្លូវ (path traversal vulnerabilities)។
+5. ខ្លឹមសារដែលបង្កើតដោយ LLM ត្រូវបានប្រើនៅក្នុងគំរូអ៊ីមែល (email templates) ដោយគ្មានការការពារ (escaping) ត្រឹមត្រូវ ដែលអាចនាំឱ្យមានការវាយប្រហារបែបបន្លំ (phishing attacks)។
 
-### យុទ្ធសាស្ត្របង្ការ និងកាត់បន្ថយ
+## យុទ្ធសាស្ត្របង្ការ និងកាត់បន្ថយ
 
-1. ចាត់ទុក model ដូច user ផ្សេងទៀត ដោយអនុវត្ត zero-trust approach និងអនុវត្ត proper input validation លើ responses ដែលមកពី model ទៅ backend functions ។
+1. ចាត់ទុកគំរូ (model) ដូចជាអ្នកប្រើប្រាស់ដទៃទៀត ដោយអនុវត្តแนวทาง zero-trust និងអនុវត្តការត្រួតពិនិត្យការបញ្ចូល (input validation) ត្រឹមត្រូវលើការឆ្លើយតបដែលមកពីគំរូ (model) ទៅកាន់មុខងារ backend។
 2. អនុវត្តតាម OWASP ASVS (Application Security Verification Standard) guidelines ដើម្បីធានា input validation និង sanitization ប្រកបដោយប្រសិទ្ធភាព។
 3. Encode model output ត្រឡប់ទៅ users វិញដើម្បីកាត់បន្ថយ undesired code execution ដោយ JavaScript ឬ Markdown ។ OWASP ASVS ផ្តល់ detailed guidance លើ output encoding ។
 4. អនុវត្ត context-aware output encoding ដោយផ្អែកលើកន្លែងដែល LLM output នឹងត្រូវបានប្រើ (ឧទាហរណ៍ HTML encoding សម្រាប់ web content, SQL escaping សម្រាប់ database queries) ។
