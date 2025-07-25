@@ -1,93 +1,154 @@
 ## LLM01:2025 Prompt Injection
 
-### Description
+### ការពិពណ៌នា
 
-A Prompt Injection Vulnerability occurs when user prompts alter the LLM’s behavior or output in unintended ways. These inputs can affect the model even if they are imperceptible to humans, therefore prompt injections do not need to be human-visible/readable, as long as the content is parsed by the model.
+  ភាពងាយរងគ្រោះដោយសារ​ Prompt Injection គឺកើតឡើងនៅពេលដែល prompt របស់អ្នកប្រើប្រាស់  ប្រែប្រួលឥរិយាបថ ឬលទ្ធផលរបស់ម៉ូឌែល LLM ក្នុងលក្ខណៈដែលមិនបានរំពឹងទុក។ ការបញ្ចូលទាំងនេះអាចមានឥទ្ធិពលដល់ម៉ូឌែល បើទោះបីជាវាមិនអាចមើលឃើញ ឬអានបានដោយមនុស្សក៏ដោយ។ ដូច្នេះ Prompt Injection មិនចាំបាច់ត្រូវមានក្នុងទ្រង់ទ្រាយដែលអាចមើលឃើញ ឬអានបានដោយមនុស្សទេ ស្របពេលដែរវាត្រូវបានយល់និងបកស្រាយម៉ូឌែល។
 
-Prompt Injection vulnerabilities exist in how models process prompts, and how input may force the model to incorrectly pass prompt data to other parts of the model, potentially causing them to violate guidelines, generate harmful content, enable unauthorized access, or influence critical decisions. While techniques like Retrieval Augmented Generation (RAG) and fine-tuning aim to make LLM outputs more relevant and accurate, research shows that they do not fully mitigate prompt injection vulnerabilities.
+  ភាពងាយរងគ្រោះដោយសារ Prompt Injection មាននៅក្នុងវិធីដែលម៉ូឌែលដំណើរការព័ត៌មាន prompt និងវិធីដែលការបញ្ចូលអាចបង្ខំឲ្យម៉ូឌែលបញ្ជូនទិន្នន័យ prompt ខុសទៅកាន់ផ្នែកផ្សេងទៀតនៃម៉ូឌែល ដែលអាចបណ្តាលឲ្យវាខុសពីសេចក្តីណែនាំ បង្កើតមាតិកាដែលមានគ្រោះថ្នាក់ បើកឲ្យមានការចូលប្រើដោយគ្មានសិទ្ធិ ឬមានឥទ្ធិពលដល់ការសម្រេចចិត្តសំខាន់ៗ។ ទោះបីមានបច្ចេកទេសដូចជា Retrieval Augmented Generation (RAG) និង Fine-tuning ដែលមានគោលបំណងធ្វើឲ្យលទ្ធផលនៃ LLM មានភាពពាក់ព័ន្ធ និងត្រឹមត្រូវកាន់តែច្រើនក៏ដោយ ក៏ស្រាវជ្រាវបង្ហាញថា វានៅតែមិនអាចការពារពី Prompt Injection បានទាំងស្រុងនោះទេ។
 
-While prompt injection and jailbreaking are related concepts in LLM security, they are often used interchangeably. Prompt injection involves manipulating model responses through specific inputs to alter its behavior, which can include bypassing safety measures. Jailbreaking is a form of prompt injection where the attacker provides inputs that cause the model to disregard its safety protocols entirely. Developers can build safeguards into system prompts and input handling to help mitigate prompt injection attacks, but effective prevention of jailbreaking requires ongoing updates to the model's training and safety mechanisms.
+  ទោះបីជា Prompt Injection និង Jailbreaking ជាគំនិតដែលពាក់ព័ន្ធនឹងសុវត្ថិភាព LLM ក៏ដោយ ប៉ុន្តែវាមានការប្រើប្រាស់ជំនួសគ្នានៅពេលខ្លះ។ Prompt Injection គឺជាវិធីសាស្ត្រមួយក្នុងការបញ្ជៀសឲ្យម៉ូដែលឆ្លើយតបខុសពីបំណង ដោយប្រើការបញ្ចូលពិសេសៗដើម្បីផ្លាស់ប្តូរការប្រព្រឹត្តិរបស់វា ហើយវាអាចរួមបញ្ចូលការបំបែកប្រព័ន្ធសុវត្ថិភាពផងដែរ។ Jailbreaking ជាប្រភេទមួយនៃ Prompt Injection ដែរ ដែលអ្នកវាយប្រហារបញ្ចូលពាក្យ (prompt)  បែបធ្វើឲ្យម៉ូឌែលមិនគោរពនឹងបច្ចេកទេសសុវត្ថិភាពទាំងស្រុង។ អ្នកអភិវឌ្ឍអាចបង្កើតវិធានការការពារ ដោយដាក់ការកំណត់នៅក្នុង system prompts និងក្នុងការដោះស្រាយការបញ្ចូលពីអ្នកប្រើ ដើម្បីជួយបន្ថយហានិភ័យនៃការវាយប្រហារ Prompt Injection។ ប៉ុន្តែការការពារ Jailbreaking ឲ្យមានប្រសិទ្ធភាព ត្រូវការការធ្វើបច្ចុប្បន្នភាពប្រព័ន្ធបណ្តុះបណ្តាល និងយុទ្ធសាស្ត្រសុវត្ថិភាពរបស់ម៉ូឌែលជាប្រចាំ។
 
-### Types of Prompt Injection Vulnerabilities
+### ប្រភេទនៃភាពងាយរងគ្រោះដោយសារ Prompt Injection
 
-#### Direct Prompt Injections
-  Direct prompt injections occur when a user's prompt input directly alters the behavior of the model in unintended or unexpected ways. The input can be either intentional (i.e., a malicious actor deliberately crafting a prompt to exploit the model) or unintentional (i.e., a user inadvertently providing input that triggers unexpected behavior).
+#### Prompt Injection ដោយផ្ទាល់
 
-#### Indirect Prompt Injections
-  Indirect prompt injections occur when an LLM accepts input from external sources, such as websites or files. The content may have in the external content data that when interpreted by the model, alters the behavior of the model in unintended or unexpected ways. Like direct injections, indirect injections can be either intentional or unintentional.
+ Prompt Injection ដោយផ្ទាល់ (Direct Prompt Injection) កើតឡើងនៅពេលដែលអត្ថបទបញ្ចូល (prompt) របស់អ្នកប្រើប្រាស់ ប៉ះពាល់ដោយផ្ទាល់ដល់អាកប្បកិរិយា (behavior) របស់ម៉ូដែល បង្កើតឲ្យមានលទ្ធផលខុសពីបំណង ឬមិនបានរំពឹងទុក។ ពាក្យបញ្ចូលអាចជាការបញ្ចូលដោយចេតនា (ឧ.​​​​ មានគោលបំណងអាក្រក់ បង្កើតពាក្យស្នើជាចេតនា ដើម្បីប្រើប្រាស់ម៉ូឌែល) ឬដោយអចេតនា  (ឧ. អ្នកប្រើប្រាស់ផ្តល់ពាក្យស្នើដោយចៃដន្យដែលបង្កឲ្យមានឥរិយាបថមិនបានរំពឹងទុក)។
 
-The severity and nature of the impact of a successful prompt injection attack can vary greatly and are largely dependent on both the business context the model operates in, and the agency with which the model is architected. Generally, however, prompt injection can lead to unintended outcomes, including but not limited to:
+#### Prompt Injection ដោយប្រយោល
 
-- Disclosure of sensitive information
-- Revealing sensitive information about AI system infrastructure or system prompts
-- Content manipulation leading to incorrect or biased outputs
-- Providing unauthorized access to functions available to the LLM
-- Executing arbitrary commands in connected systems
-- Manipulating critical decision-making processes
+  ការបញ្ចូល Prompt ដោយប្រយោល កើតឡើងនៅពេលម៉ូដែល LLM ទទួលយកទិន្នន័យពីប្រភពខាងក្រៅ ដូចជាគេហទំព័រ ឬឯកសារ។ ទិន្នន័យក្នុងប្រភពខាងក្រៅនោះអាចមានខ្លឹមសារដែលពេលម៉ូឌែលបកស្រាយនោះ នឹងបន្លាស់អាកប្បកិរិយារបស់វាជាវិធីមិនបានរំពឹងទុក ឬមិនចង់ឲ្យកើតឡើង។ ដូចជាការបញ្ចូលដោយផ្ទាល់ ការបញ្ចូលប្រយោលនេះអាចកើតឡើងដោយចេតនា ឬដោយអចេតនាបានផងដែរ។
 
-The rise of multimodal AI, which processes multiple data types simultaneously, introduces unique prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
+  ភាពធ្ងន់ធ្ងរ និងលក្ខណៈនៃផលប៉ះពាល់ ដែលកើតឡើងដោយសារការវាយប្រហារបែប prompt injection បានជោគជ័យ អាចខុសគ្នាយ៉ាងខ្លាំង​ ដោយអាស្រ័យទៅលើស្ថានភាពដែលម៉ូឌែលនោះត្រូវបានប្រើប្រាស់ និងរចនាសម្ព័ន្ធ (architecture) របស់វា។ ជាទូទៅ ពេលមានការវាយប្រហារបែបនេះ  ម៉ូឌែល អាចបង្កើតលទ្ធផលមិនបានរំពឹងទុក (ច្រើនប្រភេទ, មិនមែនមានតែមួយទេ) មានដូចជា៖
 
-### Prevention and Mitigation Strategies
+- បង្ហាញព័ត៌មានសម្ងាត់
+- បង្ហាញព័ត៌មានសម្ងាត់អំពីរចនាសម្ព័ន្ធរបស់ប្រព័ន្ធ AI​ ឬ system prompts
+- ការបំលែងខ្លឹមសារដែលធ្វើឲ្យការឆ្លើយតបមិនត្រឹមត្រូវ ឬលំអៀង
+- ផ្ដល់ឱ្យមានការចូលប្រើមុខងាររបស់ម៉ូដែល LLM ដោយគ្មានការអនុញ្ញាត
+- ដំណើរការពាក្យបញ្ជាដែលមិនបានកំណត់នៅលើប្រព័ន្ធដែលភ្ជាប់ជាមួយ
+- ការជ្រៀតចូលបំផ្លាញដល់ដំណើរការនៃការធ្វើសេចក្ដីសម្រេចសំខាន់ៗ
 
-Prompt injection vulnerabilities are possible due to the nature of generative AI. Given the stochastic influence at the heart of the way models work, it is unclear if there are fool-proof methods of prevention for prompt injection. However, the following measures can mitigate the impact of prompt injections:
+  ការកើនឡើងនៃបច្ចេកវិទ្យា AI បែប Multimodal ដែលអាចដំណើរការទិន្នន័យច្រើនប្រភេទក្នុងពេលតែមួយ បាននាំមកនូវហានិភ័យបែប Prompt Injection បែបថ្មី។ អ្នកដែលមានបំណងអាក្រក់អាចប្រើប្រភេទទិន្នន័យផ្សេងៗទាំងនេះទៅប្រើប្រាស់ក្នុងការវាយប្រហារ ដូចជា លាក់សេចក្ដីណែនាំនៅក្នុងរូបភាពដែលភ្ជាប់ជាមួយអត្ថបទធម្មតា។ ភាពស្មុគស្មាញនៃប្រព័ន្ធទាំងនេះ បានធ្វើឲ្យមានគ្រោះថ្នាក់ច្រើនក្នុងការត្រូវវាយប្រហារ។ ម៉ូឌែល Multimodal ក៏អាចងាយរងការវាយប្រហារបែបថ្មីៗ ដែលប្រើប្រាស់ទិន្នន័យចម្រុះ (cross-modal) ដែលពិបាកក្នុងការរកឃើញ និងទប់ស្កាត់ដោយបច្ចេកវិទ្យាបច្ចុប្បន្ន។ ដូច្នេះ ការការពារដែលត្រូវបានរចនាពិសេសសម្រាប់ម៉ូឌែល Multimodal ហើយមានសមត្ថភាពខ្ពស់ គឺជាផ្នែកសំខាន់សម្រាប់ការស្រាវជ្រាវ និងអភិវឌ្ឍន៍បន្ថែម។
 
-#### 1. Constrain model behavior
-  Provide specific instructions about the model's role, capabilities, and limitations within the system prompt. Enforce strict context adherence, limit responses to specific tasks or topics, and instruct the model to ignore attempts to modify core instructions.
-#### 2. Define and validate expected output formats
-  Specify clear output formats, request detailed reasoning and source citations, and use deterministic code to validate adherence to these formats.
-#### 3. Implement input and output filtering
-  Define sensitive categories and construct rules for identifying and handling such content. Apply semantic filters and use string-checking to scan for non-allowed content. Evaluate responses using the RAG Triad: Assess context relevance, groundedness, and question/answer relevance to identify potentially malicious outputs.
-#### 4. Enforce privilege control and least privilege access
-  Provide the application with its own API tokens for extensible functionality, and handle these functions in code rather than providing them to the model. Restrict the model's access privileges to the minimum necessary for its intended operations.
-#### 5. Require human approval for high-risk actions
-  Implement human-in-the-loop controls for privileged operations to prevent unauthorized actions.
-#### 6. Segregate and identify external content
-  Separate and clearly denote untrusted content to limit its influence on user prompts.
-#### 7. Conduct adversarial testing and attack simulations
-  Perform regular penetration testing and breach simulations, treating the model as an untrusted user to test the effectiveness of trust boundaries and access controls.
+### យុទ្ធសាស្ត្រការពារ និងបន្ថយផលប៉ះពាល់
 
-### Example Attack Scenarios
+ការវាយប្រហារបែប Prompt Injection អាចកើតមានបាន ព្រោះ Generative AI មានលក្ខណៈដើមដែលងាយរងគ្រោះ។ ដោយសារតែភាពចៃដន្យ (stochastic) ជាមូលដ្ឋាននៃវិធីដំណើរការរបស់ម៉ូឌែល មិនមានការបញ្ជាក់ច្បាស់ថា តើមានវិធីការពារណាដែលអាចទុកចិត្តបានទាំងស្រុងសម្រាប់ការការពារប្រឆាំង Prompt Injection ឬទេ។ ទោះជាយ៉ាងណា វិធានការខាងក្រោមអាចជួយបន្ថយឥទ្ធិពលនៃការវាយប្រហារបែបនេះបាន៖
 
-#### Scenario #1: Direct Injection
-  An attacker injects a prompt into a customer support chatbot, instructing it to ignore previous guidelines, query private data stores, and send emails, leading to unauthorized access and privilege escalation.
-#### Scenario #2: Indirect Injection
-  A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, leading to exfiltration of the the private conversation.
-#### Scenario #3: Unintentional Injection
-  A company includes an instruction in a job description to identify AI-generated applications. An applicant, unaware of this instruction, uses an LLM to optimize their resume, inadvertently triggering the AI detection.
-#### Scenario #4: Intentional Model Influence
-  An attacker modifies a document in a repository used by a Retrieval-Augmented Generation (RAG) application. When a user's query returns the modified content, the malicious instructions alter the LLM's output, generating misleading results.
-#### Scenario #5: Code Injection
-  An attacker exploits a vulnerability (CVE-2024-5184) in an LLM-powered email assistant to inject malicious prompts, allowing access to sensitive information and manipulation of email content.
-#### Scenario #6: Payload Splitting
-  An attacker uploads a resume with split malicious prompts. When an LLM is used to evaluate the candidate, the combined prompts manipulate the model's response, resulting in a positive recommendation despite the actual resume contents.
-#### Scenario #7: Multimodal Injection
-  An attacker embeds a malicious prompt within an image that accompanies benign text. When a multimodal AI processes the image and text concurrently, the hidden prompt alters the model's behavior, potentially leading to unauthorized actions or disclosure of sensitive information.
-#### Scenario #8: Adversarial Suffix
-  An attacker appends a seemingly meaningless string of characters to a prompt, which influences the LLM's output in a malicious way, bypassing safety measures.
-#### Scenario #9: Multilingual/Obfuscated Attack
-  An attacker uses multiple languages or encodes malicious instructions (e.g., using Base64 or emojis) to evade filters and manipulate the LLM's behavior.
+#### ១. រឹតបន្តឹងសកម្មភាពរបស់ម៉ូឌែល
 
-### Reference Links
+  ផ្តល់ការណែនាំជាក់លាក់អំពីតួនាទី សមត្ថភាព និងដែនកំណត់របស់ម៉ូឌែល នៅក្នុង system prompt។ អនុវត្តការប្រកាន់ខ្ជាប់បរិបទយ៉ាងតឹងរ៉ឹង កំណត់ការឆ្លើយតបចំពោះកិច្ចការ ឬប្រធានបទជាក់លាក់  ហើយណែនាំម៉ូឌែលមិនឲ្យយកចិត្តទុកដាក់ចំពោះការប្រែប្រួលឬផ្លាស់ប្តូរការណែនាំសំខាន់ៗ។
 
-1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
-2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
-3. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Arxiv**
-4. [Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1) **Research Square**
-5. [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499) **Cornell University**
-6. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf) **Kai Greshake**
-8. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Cornell University**
-9. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
-10. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
-11. [Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
-12. [2407.07403 A Survey of Attacks on Large Vision-Language Models: Resources, Advances, and Future Trends (arxiv.org)](https://arxiv.org/abs/2407.07403)
-13. [Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks](https://ieeexplore.ieee.org/document/10579515)
-14. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
-15. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
+#### ២. កំណត់ និងផ្ទៀងផ្ទាត់ទ្រង់ទ្រាយលទ្ធផលដែលរំពឹងទុក
 
-### Related Frameworks and Taxonomies
+  បញ្ជាក់ទ្រង់ទ្រាយលទ្ធផលឲ្យបានច្បាស់លាស់ ស្នើសុំអោយបង្ហាញហេតុផលលម្អិត និងប្រភពយោង ហើយប្រើកូដដែលអាចត្រួតពិនិត្យបាន ដើម្បីផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវនៃទ្រង់ទ្រាយទាំងនេះ។
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+#### ៣. អនុវត្តការធ្វើចម្រាញ់លើទិន្នន័យបញ្ចូល និងលទ្ធផលចេញ
 
-- [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
-- [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
-- [AML.T0054 - LLM Jailbreak Injection: Direct](https://atlas.mitre.org/techniques/AML.T0054) **MITRE ATLAS**
+  កំណត់ប្រភេទមាតិកាដែលមានភាពពិបាកនឹងគ្រប់គ្រង ហើយបង្កើតច្បាប់សម្រាប់សម្គាល់ និងដោះស្រាយមាតិកាប្រភេទនោះ។ ប្រើ​ semantic-filters និង string-checking ដើម្បីស្កេនរកមាតិកាដែលមិនត្រូវបានអនុញ្ញាត។ វាយតម្លៃចម្លើយដោយប្រើ RAG Triad៖ វាយតម្លៃភាពពាក់ព័ន្ធនៃបរិបទ ការបង្ហាញព័ត៌មានផ្អែកលើប្រភព និងភាពពាក់ព័ន្ធរវាងសំណួរ/ចម្លើយ ដើម្បីកំណត់សម្គាល់លទ្ធផលដែលអាចព្យាបាទបាន។
+
+#### ៤. អនុវត្តការគ្រប់គ្រងសិទ្ធិ្ធ និងកំណត់ការចូលប្រើតិចបំផុត
+
+  ផ្តល់ឲ្យកម្មវិធីនូវ API token ផ្ទាល់ខ្លួនសម្រាប់មុខងារដែលអាចបន្ថែមបាន ហើយគ្រប់គ្រងមុខងារទាំងនេះតាមកូដជំនួសការផ្តល់ទៅម៉ូឌែល។ កំណត់សិទ្ធិចូលប្រើរបស់ម៉ូឌែលឲ្យតិចបំផុតតាមតម្រូវការសម្រាប់ការប្រតិបត្តិការដែលបានកំណត់។
+
+#### ៥.ទាមទារការអនុម័តពីមនុស្សសម្រាប់សកម្មភាពដែលមានហានិភ័យខ្ពស់
+
+  អនុវត្តការត្រួតពិនិត្យដោយមនុស្សក្នុងដំណើរការសម្រាប់សកម្មភាពដែលមានសិទ្ធិពិសេស ដើម្បីទប់ស្កាត់សកម្មភាពដែលមិនទាន់មានការអនុញ្ញាត។
+
+#### ៦. បំបែក និងកំណត់សម្គាល់មាតិកាប្រភពខាងក្រៅ
+
+  បំបែក និងកត់សម្គាល់ឲ្យច្បាស់លាស់លើមាតិកាដែលមិនទុកចិត្ត ដើម្បីកំណត់ឥទ្ធិពលរបស់វាលើការបញ្ចូលរបស់អ្នកប្រើ។
+
+#### ៧. ធ្វើតេស្តប្រឆាំង និងត្រៀមសម្តែងវាយប្រហារ
+
+  ធ្វើតេស្តចូលវាយប្រហារនិងសម្រួលសកម្មភាពវាយប្រហារជាប្រចាំ ដោយចាត់ទុកម៉ូឌែលជាអ្នកប្រើដែលមិនទុកចិត្ត ដើម្បីសាកល្បងប្រសិទ្ធភាពនៃកម្រិតនៃការទុកចិត្ត និងការគ្រប់គ្រងសិទ្ធិចូលប្រើ។
+
+### ឧទាហរណ៍ សេណារីយ៉ូនៃការវាយប្រហារ
+
+#### សេណារីយូ #១៖ Injection​ ដោយផ្ទាល់
+
+  អ្នកវាយប្រហារបានបញ្ចូលសំណើ (prompt) មួយទៅក្នុងប្រព័ន្ធជជែកជាមួយអតិថិជន (chatbot) ដោយបញ្ជាឱ្យវាមិនអើពើនឹងការណែនាំមុនៗ បន្តរកមើលទិន្នន័យឯកជន និងផ្ញើអ៊ីមែល។ វាបានបណ្តាលឱ្យមានការចូលប្រើដោយគ្មានការអនុញ្ញាត និងបង្កើនសិទ្ធិ។
+
+#### សេណារីយូ #២៖ Injection បែបប្រយោល
+
+  អ្នកប្រើប្រាស់ម្នាក់ប្រើ LLM ដើម្បីសង្ខេបគេហទំព័រមួយដែលមានសេចក្ដីណែនាំលាក់ខ្លួន។ សេចក្ដីណែនាំនោះបង្ខំឲ្យ LLM បញ្ចូលរូបភាពមួយដែលភ្ជាប់តំណទៅកាន់ URL ដែលបណ្តាលឲ្យមានការចេញព័ត៌មានសម្ងាត់ពីការសន្ទនាឯកជន។
+
+#### សេណារីយូ #៣៖ Injection​ ដោយអចេតនា
+
+    ក្រុមហ៊ុនមួយដាក់សេចក្ដីណែនាំក្នុងការពិពណ៌នាការងារ ដើម្បីសម្គាល់ពាក្យស្នើសុំដែលបង្កើតដោយ AI។ បេក្ខជនម្នាក់ដែលមិនដឹងអំពីសេចក្ដីណែនាំនេះ បានប្រើ LLM ដើម្បីបង្កើនប្រសិទ្ធភាពប្រវត្តិរូបរបស់ខ្លួន ហើយដោយអចេតនា បានបង្កើតឱ្យប្រព័ន្ធរកឃើញថា ប្រវត្តិរូបនោះបង្កើតដោយ AI។
+
+#### សេណារីយូ #៤៖ ឥទ្ធិពលលើម៉ូឌែលដោយចេតនា (Intentional Model Influence)
+
+  អ្នកវាយប្រហារ ប្រែប្រួលឯកសារមួយនៅក្នុង repository ដែលប្រើដោយកម្មវិធី Retrieval-Augmented Generation (RAG)។ នៅពេលដែលសំណួររបស់អ្នកប្រើប្រាស់ទាញយកមាតិកាដែលបានកែប្រែ វាបញ្ជូនសេចក្ដីណែនាំប្លែកៗដែលបណ្តាលឲ្យ LLM បង្ហាញលទ្ធផលខុសឆ្គង ឬបំប្លែងការពិត។
+
+#### សេណារីយូ #៥៖ Injection កូដ
+
+    អ្នកវាយប្រហារ អនុវត្តការប្រើប្រាស់ភាពងាយរងគ្រោះ (CVE-2024-5184) នៅក្នុងជំនួយការអ៊ីមែលដែលដំណើរការដោយ LLM ដើម្បីចាក់បញ្ចូលសំណើអាក្រក់។ វាធ្វើឲ្យអាចចូលប្រើព័ត៌មានសម្ងាត់ និងបំលែងខ្លឹមសារអ៊ីមែលបាន។
+
+#### សេណារីយូ #៦៖ ការបំបែក Payload
+
+  អ្នកវាយប្រហារម្នាក់បញ្ចូលប្រវត្តិរូបមួយដែលមាន prompt អាក្រក់បែងចែកជាច្រើនផ្នែកផ្សេងៗ។ នៅពេល LLM ត្រូវបានប្រើសម្រាប់វាយតម្លៃបេក្ខជន ពាក្យបញ្ចូលដែលបំបែកនោះត្រូវបានបញ្ចូលរួមគ្នា ហើយបំផ្លាញការឆ្លើយតបរបស់ម៉ូឌែល ដោយធ្វើឲ្យ LLM ផ្តល់អនុសាសន៍វិជ្ជមាន ទោះបីខ្លឹមសារពិតប្រាកដនៃប្រវត្តិរូបមិនសមស្របក៏ដោយ។
+
+#### សេណារីយូ #៧៖ Multimodal Injection
+
+  អ្នកវាយប្រហារបញ្ចូលសំណើអាក្រក់មួយ (malicious prompt) ទុកក្នុងរូបភាពមួយ ដែលមើលទៅអត្ថបទធម្មតា។ នៅពេល AI ដែលអាចអានទាំងរូបភាពនិងអត្ថបទ (multimodal AI) ប្រើទិន្នន័យទាំងពីរនេះក្នុងពេលតែមួយ prompt​ ដែលលាក់ក្នុងរូបភាពនោះអាចបង្ខំឲ្យម៉ូឌែលបំពេញសកម្មភាពដែលមិនត្រូវ ដូចជាបង្ហាញព័ត៌មានសម្ងាត់ ឬអនុវត្តអ្វីៗដោយគ្មានការអនុញ្ញាត។
+
+#### សេណារីយូ #៨៖ បច្ចេកទេសបន្ថែមខាងចុង (Adversarial Suffix)
+
+  អ្នកវាយប្រហារបន្ថែមអក្សរទៅក្នុង prompt ទោះបីវាមើលទៅគ្មានអត្ថន័យសម្រាប់មនុស្សក៏ដោយ ប៉ុន្តែវាអាចបញ្ឆោត LLM ឲ្យមិនគោរពច្បាប់សុវត្ថិភាព ហើយបង្កើតអត្ថបទដែលមានគ្រោះថ្នាក់ ឬមិនត្រូវបានអនុញ្ញាត។
+
+#### សេណារីយូ #៩៖ ការវាយប្រហារច្រើនភាសា​ ឬប្រើភាសាចម្រុះ
+
+  អ្នកវាយប្រហារប្រើភាសាច្រើន ឬការបំបាំងសំណើអាក្រក់ដោយបំលែងវាជារូបរាងផ្សេងៗ (ឧ. Base64, emoji, ឬតួអក្សរពិសេស)។ ដើម្បីជៀសវាងការស្វែងរក ហើយបំលែងអាកប្បកិរិយារបស់ LLM។
+
+### បញ្ជីយោង និង តំណភ្ជាប់
+
+1. ភាពងាយរងគ្រោះរបស់កម្មវិធីជំនួយ ChatGPT – Chat with Code
+[ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
+
+2. ChatGPT Cross Plugin ស្នើសុំការក្លែងបន្លំ និង Prompt Injection
+[ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
+
+3. មិនមែនអ្វីដែលអ្នកបានចុះឈ្មោះទេ៖ ការបំពានលើកម្មវិធីពិតដែលបញ្ចូល LLM ជាមួយ Prompt Injection បែបប្រយោល
+[Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Arxiv**
+
+4. ការពារការវាយប្រហារ Jailbreak លើ ChatGPT តាមរយៈ Self-Reminder
+[Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1) **Research Square**
+
+5. ការវាយប្រហារជាមួយ Prompt Injection លើកម្មវិធីដែលបញ្ចូល LLM
+[Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499) **Cornell University**
+
+6. បញ្ចូល PDF របស់ខ្ញុំ៖ Prompt Injection សម្រាប់ប្រវត្តិរូបរបស់អ្នក
+[Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf) **Kai Greshake**
+
+7. មិនមែនអ្វីដែលអ្នកបានចុះឈ្មោះទេ៖ ការបំពានលើកម្មវិធីពិតដែលបញ្ចូល LLM ជាមួយ Prompt Injection បែបប្រយោល
+[Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Cornell University**
+
+8. ការវិភាគហានិភ័យ សម្រាប់កម្មវិធី LLM
+[Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
+
+9. បន្ថយផលប៉ះពាល់នៃការវាយប្រហារបែប Prompt Injection តាមរយៈការរចនា
+[Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
+
+10. ការសិក្សាស្ដីពី Adversarial Machine Learning៖ ប្រភេទ និងពាក្យទាក់ទងនឹងការវាយប្រហារ និងវិធានការការពារ (nist.gov)
+[Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
+
+11. 2407.07403 ការស្ទង់មតិយោបល់អំពីការវាយប្រហារលើម៉ូឌែលទូទៅធំ Vision-Language: ប្រភព ការរីកចម្រើន និងទិសដៅអនាគត (arxiv.org)
+[2407.07403 A Survey of Attacks on Large Vision-Language Models: Resources, Advances, and Future Trends (arxiv.org)](https://arxiv.org/abs/2407.07403)
+
+12. ការបង្ហាញពីអាកប្បកិរិយាកម្មវិធីរបស់ LLMs៖ Dual-Use​ តាមរយៈការវាយប្រហារសុវត្ថិភាពស្តង់ដារ
+[Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks](https://ieeexplore.ieee.org/document/10579515)
+
+13. ការវាយប្រហារជាសកល និងអាចផ្ទេរបានលើម៉ូឌែលភាសាដែលបានតម្រូវ (arxiv.org)
+[Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
+
+14. ចាប់ពី ChatGPT ទៅ ThreatGPT៖ ផលប៉ះពាល់នៃ Generative AI លើសន្តិសុខគ្រប់គ្រងបច្ចេកវិទ្យា(Cybersecurity)​ និងភាពឯកជន (arxiv.org)
+[From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
+
+### ស៊ុមផែនការ និងប្រភេទបែងចែកដែលពាក់ព័ន្ធ
+
+សូមយោងទៅផ្នែកនេះសម្រាប់ព័ត៌មានពេញលេញ សេចក្តីពិពណ៌នាសេណារីយូ និងយុទ្ធសាស្ត្រដែលពាក់ព័ន្ធនឹងការដាក់ចូលប្រព័ន្ធហេដ្ឋារចនាសម្ព័ន្ធ ការគ្រប់គ្រងបរិបទដែលបានអនុវត្ត និងវិធានការល្អបំផុតក្នុងការអនុវត្ត។
+
+- [AML.T0051.000 - LLM Prompt Injection: ផ្ទាល់](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
+
+- [AML.T0051.001 - LLM Prompt Injection: ប្រយោល](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
+
+- [AML.T0054 - LLM Jailbreak Injection: ផ្ទាល់](https://atlas.mitre.org/techniques/AML.T0054) **MITRE ATLAS**
