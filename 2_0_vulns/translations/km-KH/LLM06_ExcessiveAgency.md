@@ -1,73 +1,102 @@
-## LLM06:2025 Excessive Agency
+## LLM06:2025 ការមាន Agency ហួសហេតុ
 
-### Description
+### ការពិពណ៌នា
 
-An LLM-based system is often granted a degree of agency by its developer - the ability to call functions or interface with other systems via extensions (sometimes referred to as tools, skills or plugins by different vendors) to undertake actions in response to a prompt. The decision over which extension to invoke may also be delegated to an LLM 'agent' to dynamically determine based on input prompt or LLM output. Agent-based systems will typically make repeated calls to an LLM using output from previous invocations to ground and direct subsequent invocations.
+ប្រព័ន្ធដែលមានមូលដ្ឋានលើ LLM ជារឿយៗត្រូវបានផ្តល់កម្រិត Agency ដោយ developer របស់វា - សមត្ថភាពក្នុងការហៅ functions ឬ interface ជាមួយប្រព័ន្ធផ្សេងទៀតតាមរយៈ extensions (ជួនកាលត្រូវបានហៅថា tools, skills ឬ plugins ដោយ vendors ផ្សេងគ្នា) ដើម្បីធ្វើសកម្មភាពឆ្លើយតបទៅនឹង prompt ។ ការសម្រេចចិត្តលើ extension ណាដែលត្រូវ invoke ក៏អាចត្រូវបានផ្ទេរទៅឱ្យ LLM 'agent' ដើម្បីកំណត់ដោយ dynamism ដោយផ្អែកលើ input prompt ឬ LLM output ។ ប្រព័ន្ធដែលមានមូលដ្ឋានលើ agent ជាធម្មតានឹងធ្វើការហៅម្តងហើយម្តងទៀតទៅកាន់ LLM ដោយប្រើ output ពី invocations មុនៗ ដើម្បី grounding និង directing invocations បន្តបន្ទាប់។
 
-Excessive Agency is the vulnerability that enables damaging actions to be performed in response to unexpected, ambiguous or manipulated outputs from an LLM, regardless of what is causing the LLM to malfunction. Common triggers include:
-* hallucination/confabulation caused by poorly-engineered benign prompts, or just a poorly-performing model;
-* direct/indirect prompt injection from a malicious user, an earlier invocation of a malicious/compromised extension, or (in multi-agent/collaborative systems) a malicious/compromised peer agent.
+Excessive Agency គឺជាភាពងាយរងគ្រោះដែលអនុញ្ញាតឱ្យសកម្មភាពដែលបង្កគ្រោះថ្នាក់ត្រូវបានអនុវត្តដើម្បីឆ្លើយតបទៅនឹង outputs ដែលមិនបានរំពឹងទុក មិនច្បាស់លាស់ ឬត្រូវបាន manipulated ពី LLM ដោយមិនគិតពីអ្វីដែលបណ្តាលឱ្យ LLM ដំណើរការខុសប្រក្រតី។ កត្តាបង្កហេតុទូទៅរួមមាន៖
 
-The root cause of Excessive Agency is typically one or more of:
-* excessive functionality;
-* excessive permissions;
-* excessive autonomy.
+* hallucination/confabulation បង្កឡើងដោយ poorly-engineered benign prompts ឬក៏ model ដែលដំណើរការមិនល្អ។
+* direct/indirect prompt injection ពី malicious user, ការ invoke ពីមុននៃ malicious/compromised extension, ឬ (នៅក្នុង multi-agent/collaborative systems) malicious/compromised peer agent ។
 
-Excessive Agency can lead to a broad range of impacts across the confidentiality, integrity and availability spectrum, and is dependent on which systems an LLM-based app is able to interact with.
+មូលហេតុឫសគល់នៃ Excessive Agency ជាធម្មតាគឺមួយ ឬច្រើននៃ៖
 
-Note: Excessive Agency differs from Insecure Output Handling which is concerned with insufficient scrutiny of LLM outputs.
+* មុខងារហួសហេតុ (excessive functionality);
+* ការអនុញ្ញាតហួសហេតុ (excessive permissions);
+* ស្វ័យភាពហួសហេតុ (excessive autonomy) ។
 
-### Common Examples of Risks
+Excessive Agency អាចនាំឱ្យមានផលប៉ះពាល់យ៉ាងទូលំទូលាយលើទិដ្ឋភាព confidentiality, integrity និង availability ហើយអាស្រ័យលើប្រព័ន្ធណាដែល LLM-based app អាចទាក់ទងជាមួយ។
 
-#### 1. Excessive Functionality
-  An LLM agent has access to extensions which include functions that are not needed for the intended operation of the system. For example, a developer needs to grant an LLM agent the ability to read documents from a repository, but the 3rd-party extension they choose to use also includes the ability to modify and delete documents.
-#### 2. Excessive Functionality
-  An extension may have been trialled during a development phase and dropped in favor of a better alternative, but the original plugin remains available to the LLM agent.
-#### 3. Excessive Functionality
-  An LLM plugin with open-ended functionality fails to properly filter the input instructions for commands outside what's necessary for the intended operation of the application. E.g., an extension to run one specific shell command fails to properly prevent other shell commands from being executed.
-#### 4. Excessive Permissions
-  An LLM extension has permissions on downstream systems that are not needed for the intended operation of the application. E.g., an extension intended to read data connects to a database server using an identity that not only has SELECT permissions, but also UPDATE, INSERT and DELETE permissions.
-#### 5. Excessive Permissions
-  An LLM extension that is designed to perform operations in the context of an individual user accesses downstream systems with a generic high-privileged identity. E.g., an extension to read the current user's document store connects to the document repository with a privileged account that has access to files belonging to all users.
-#### 6. Excessive Autonomy
-  An LLM-based application or extension fails to independently verify and approve high-impact actions. E.g., an extension that allows a user's documents to be deleted performs deletions without any confirmation from the user.
+ចំណាំ៖ Excessive Agency ខុសពី Insecure Output Handling ដែលទាក់ទងនឹងការពិនិត្យ outputs របស់ LLM មិនគ្រប់គ្រាន់។
 
-### Prevention and Mitigation Strategies
+### ឧទាហរណ៍ទូទៅនៃហានិភ័យ
 
-The following actions can prevent Excessive Agency:
+#### 1. មុខងារហួសហេតុ (Excessive Functionality)
 
-#### 1. Minimize extensions
-  Limit the extensions that LLM agents are allowed to call to only the minimum necessary. For example, if an LLM-based system does not require the ability to fetch the contents of a URL then such an extension should not be offered to the LLM agent.
-#### 2. Minimize extension functionality
-  Limit the functions that are implemented in LLM extensions to the minimum necessary. For example, an extension that accesses a user's mailbox to summarise emails may only require the ability to read emails, so the extension should not contain other functionality such as deleting or sending messages.
-#### 3. Avoid open-ended extensions
-  Avoid the use of open-ended extensions where possible (e.g., run a shell command, fetch a URL, etc.) and use extensions with more granular functionality. For example, an LLM-based app may need to write some output to a file. If this were implemented using an extension to run a shell function then the scope for undesirable actions is very large (any other shell command could be executed). A more secure alternative would be to build a specific file-writing extension that only implements that specific functionality.
-#### 4. Minimize extension permissions
-  Limit the permissions that LLM extensions are granted to other systems to the minimum necessary in order to limit the scope of undesirable actions. For example, an LLM agent that uses a product database in order to make purchase recommendations to a customer might only need read access to a 'products' table; it should not have access to other tables, nor the ability to insert, update or delete records. This should be enforced by applying appropriate database permissions for the identity that the LLM extension uses to connect to the database.
-#### 5. Execute extensions in user's context
-  Track user authorization and security scope to ensure actions taken on behalf of a user are executed on downstream systems in the context of that specific user, and with the minimum privileges necessary. For example, an LLM extension that reads a user's code repo should require the user to authenticate via OAuth and with the minimum scope required.
-#### 6. Require user approval
-  Utilise human-in-the-loop control to require a human to approve high-impact actions before they are taken. This may be implemented in a downstream system (outside the scope of the LLM application) or within the LLM extension itself. For example, an LLM-based app that creates and posts social media content on behalf of a user should include a user approval routine within the extension that implements the 'post' operation.
-#### 7. Complete mediation
-  Implement authorization in downstream systems rather than relying on an LLM to decide if an action is allowed or not. Enforce the complete mediation principle so that all requests made to downstream systems via extensions are validated against security policies.
-#### 8. Sanitise LLM inputs and outputs
-  Follow secure coding best practice, such as applying OWASP’s recommendations in ASVS (Application Security Verification Standard), with a particularly strong focus on input sanitisation. Use Static Application Security Testing (SAST) and Dynamic and Interactive application testing (DAST, IAST) in development pipelines.
+LLM agent មានសិទ្ធិចូលប្រើ extensions ដែលរួមបញ្ចូល functions ដែលមិនចាំបាច់សម្រាប់ប្រតិបត្តិការដែលបានបម្រុងទុករបស់ប្រព័ន្ធ។ ឧទាហរណ៍ developer ត្រូវការផ្តល់ឱ្យ LLM agent នូវសមត្ថភាពក្នុងការអានឯកសារពី repository ប៉ុន្តែ 3rd-party extension ដែលពួកគេជ្រើសរើសប្រើក៏រួមបញ្ចូលសមត្ថភាពក្នុងការកែប្រែ និងលុបឯកសារផងដែរ។
 
-The following options will not prevent Excessive Agency, but can limit the level of damage caused:
+#### 2. មុខងារហួសហេតុ (Excessive Functionality)
 
-- Log and monitor the activity of LLM extensions and downstream systems to identify where undesirable actions are taking place, and respond accordingly.
-- Implement rate-limiting to reduce the number of undesirable actions that can take place within a given time period, increasing the opportunity to discover undesirable actions through monitoring before significant damage can occur.
+Extension មួយប្រហែលជាត្រូវបានសាកល្បងក្នុងអំឡុងពេល development phase ហើយត្រូវបានទម្លាក់ចោលដើម្បីជំនួសដោយជម្រើសល្អប្រសើរជាងមុន ប៉ុន្តែ plugin ដើមនៅតែមានសម្រាប់ LLM agent ។
 
-### Example Attack Scenarios
+#### 3. មុខងារហួសហេតុ (Excessive Functionality)
 
-An LLM-based personal assistant app is granted access to an individual’s mailbox via an extension in order to summarise the content of incoming emails. To achieve this functionality, the extension requires the ability to read messages, however the plugin that the system developer has chosen to use also contains functions for sending messages. Additionally, the app is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the agent to scan the user's inbox for sensitive information and forward it to the attacker's email address. This could be avoided by:
-* eliminating excessive functionality by using an extension that only implements mail-reading capabilities,
-* eliminating excessive permissions by authenticating to the user's email service via an OAuth session with a read-only scope, and/or
-* eliminating excessive autonomy by requiring the user to manually review and hit 'send' on every mail drafted by the LLM extension.
+LLM plugin ដែលមាន open-ended functionality មិនអាច filter input instructions សម្រាប់ commands ក្រៅពីអ្វីដែលចាំបាច់សម្រាប់ប្រតិបត្តិការដែលបានបម្រុងទុករបស់ application បានត្រឹមត្រូវ។ ឧទាហរណ៍ extension ដើម្បីដំណើរការ shell command ជាក់លាក់មួយ មិនអាចទប់ស្កាត់ shell commands ផ្សេងទៀតពីការប្រតិបត្តិបានត្រឹមត្រូវ។
 
-Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
+#### 4. ការអនុញ្ញាតហួសហេតុ (Excessive Permissions)
 
-### Reference Links
+LLM extension មាន permissions នៅលើ downstream systems ដែលមិនចាំបាច់សម្រាប់ប្រតិបត្តិការដែលបានបម្រុងទុករបស់ application ។ ឧទាហរណ៍ extension ដែលមានបំណងអានទិន្នន័យភ្ជាប់ទៅ database server ដោយប្រើ identity ដែលមិនត្រឹមតែមាន SELECT permissions ប៉ុណ្ណោះទេ ប៉ុន្តែក៏មាន UPDATE, INSERT និង DELETE permissions ផងដែរ។
+
+#### 5. ការអនុញ្ញាតហួសហេតុ (Excessive Permissions)
+
+LLM extension ដែលត្រូវបានរចនាឡើងដើម្បីអនុវត្តប្រតិបត្តិការនៅក្នុងបរិបទនៃ individual user ចូលប្រើ downstream systems ជាមួយនឹង generic high-privileged identity ។ ឧទាហរណ៍ extension ដើម្បីអាន user's document store បច្ចុប្បន្នភ្ជាប់ទៅ document repository ជាមួយនឹង privileged account ដែលមានសិទ្ធិចូលប្រើ files ដែលជាកម្មសិទ្ធិរបស់ users ទាំងអស់។
+
+#### 6. ស្វ័យភាពហួសហេតុ (Excessive Autonomy)
+
+LLM-based application ឬ extension មិនអាចផ្ទៀងផ្ទាត់ និងអនុម័ត high-impact actions ដោយឯករាជ្យបានទេ។ ឧទាហរណ៍ extension ដែលអនុញ្ញាតឱ្យ user's documents ត្រូវបានលុប អនុវត្តការលុបដោយគ្មានការបញ្ជាក់ពី user ណាមួយឡើយ។
+
+### យុទ្ធសាស្ត្របង្ការ និងកាត់បន្ថយ
+
+សកម្មភាពខាងក្រោមអាចការពារ Excessive Agency៖
+
+#### 1. កាត់បន្ថយ extensions (Minimize extensions)
+
+កំណត់ extensions ដែល LLM agents ត្រូវបានអនុញ្ញាតឱ្យហៅទៅត្រឹមតែអប្បបរមាដែលចាំបាច់ប៉ុណ្ណោះ។ ឧទាហរណ៍ ប្រសិនបើ LLM-based system មិនទាមទារសមត្ថភាពក្នុងការ fetch contents នៃ URL នោះ extension បែបនេះមិនគួរត្រូវបានផ្តល់ជូន LLM agent នោះទេ។
+
+#### 2. កាត់បន្ថយមុខងារ extension (Minimize extension functionality)
+
+កំណត់ functions ដែលត្រូវបានអនុវត្តនៅក្នុង LLM extensions ទៅអប្បបរមាដែលចាំបាច់។ ឧទាហរណ៍ extension ដែលចូលប្រើ user's mailbox ដើម្បីសង្ខេប emails អាចទាមទារត្រឹមតែសមត្ថភាពក្នុងការអាន emails ដូច្នេះ extension មិនគួរមាន functionality ផ្សេងទៀតដូចជាការលុប ឬការផ្ញើសារនោះទេ។
+
+#### 3. ជៀសវាង open-ended extensions (Avoid open-ended extensions)
+
+ជៀសវាងការប្រើប្រាស់ open-ended extensions នៅពេលណាដែលអាចធ្វើទៅបាន (ឧទាហរណ៍ run a shell command, fetch a URL ជាដើម) ហើយប្រើ extensions ដែលមាន functionality ល្អិតល្អន់ជាង។ ឧទាហរណ៍ LLM-based app អាចត្រូវការសរសេរ output មួយចំនួនទៅ file ។ ប្រសិនបើរឿងនេះត្រូវបានអនុវត្តដោយប្រើ extension ដើម្បីដំណើរការ shell function នោះវិសាលភាពសម្រាប់ undesirable actions គឺធំទូលាយណាស់ (shell command ផ្សេងទៀតណាមួយអាចត្រូវបានប្រតិបត្តិ) ។ ជម្រើសដែលមានសុវត្ថិភាពជាងនេះគឺការបង្កើត specific file-writing extension ដែលអនុវត្តតែ functionality ជាក់លាក់នោះ។
+
+#### 4. កាត់បន្ថយ extension permissions (Minimize extension permissions)
+
+កំណត់ permissions ដែល LLM extensions ត្រូវបានផ្តល់ទៅប្រព័ន្ធផ្សេងទៀតទៅអប្បបរមាដែលចាំបាច់ដើម្បីកំណត់វិសាលភាពនៃ undesirable actions ។ ឧទាហរណ៍ LLM agent ដែលប្រើ product database ដើម្បីធ្វើអនុសាសន៍ទិញទៅអតិថិជនអាចត្រូវការត្រឹមតែ read access ទៅ 'products' table ប៉ុណ្ណោះ។ វាមិនគួរមានសិទ្ធិចូលប្រើ tables ផ្សេងទៀតទេ ហើយក៏មិនមែនជាសមត្ថភាពក្នុងការ insert, update ឬ delete records ដែរ។ នេះគួរតែត្រូវបានអនុវត្តដោយការអនុវត្ត database permissions ដែលសមស្របសម្រាប់ identity ដែល LLM extension ប្រើដើម្បីភ្ជាប់ទៅ database ។
+
+#### 5. ប្រតិបត្តិ extensions ក្នុងបរិបទ user (Execute extensions in user's context)
+
+តាមដាន user authorization និង security scope ដើម្បីធានាថា actions ដែលបានធ្វើក្នុងនាម user ត្រូវបានប្រតិបត្តិនៅលើ downstream systems នៅក្នុងបរិបទនៃ user ជាក់លាក់នោះ និងជាមួយនឹង minimum privileges ដែលចាំបាច់។ ឧទាហរណ៍ LLM extension ដែលអាន user's code repo គួរតែតម្រូវឱ្យ user authenticate តាមរយៈ OAuth និងជាមួយនឹង minimum scope ដែលត្រូវការ។
+
+#### 6. តម្រូវការអនុម័តពី user (Require user approval)
+
+ប្រើប្រាស់ human-in-the-loop control ដើម្បីតម្រូវឱ្យមនុស្សម្នាក់អនុម័ត high-impact actions មុនពេលពួកគេត្រូវបានអនុវត្ត។ នេះអាចត្រូវបានអនុវត្តនៅក្នុង downstream system (ក្រៅពីវិសាលភាពនៃ LLM application) ឬនៅក្នុង LLM extension ខ្លួនវាផ្ទាល់។ ឧទាហរណ៍ LLM-based app ដែលបង្កើត និងបង្ហោះ social media content ក្នុងនាម user គួរតែរួមបញ្ចូល user approval routine នៅក្នុង extension ដែលអនុវត្ត 'post' operation ។
+
+#### 7. ការសម្របសម្រួលពេញលេញ (Complete mediation)
+
+អនុវត្ត authorization នៅក្នុង downstream systems ជាជាងការពឹងផ្អែកលើ LLM ដើម្បីសម្រេចថាតើ action ត្រូវបានអនុញ្ញាត ឬអត់។ អនុវត្ត complete mediation principle ដើម្បីឱ្យសំណើទាំងអស់ដែលធ្វើទៅកាន់ downstream systems តាមរយៈ extensions ត្រូវបានផ្ទៀងផ្ទាត់ប្រឆាំងនឹង security policies ។
+
+#### 8. សម្អាត inputs និង outputs របស់ LLM (Sanitise LLM inputs and outputs)
+
+អនុវត្តតាម secure coding best practice ដូចជាការអនុវត្តអនុសាសន៍របស់ OWASP នៅក្នុង ASVS (Application Security Verification Standard) ដោយផ្តោតជាពិសេសខ្លាំងលើ input sanitisation ។ ប្រើ Static Application Security Testing (SAST) និង Dynamic and Interactive application testing (DAST, IAST) នៅក្នុង development pipelines ។
+
+ជម្រើសខាងក្រោមនឹងមិនការពារ Excessive Agency ទេ ប៉ុន្តែអាចកំណត់កម្រិតនៃការខូចខាតដែលបណ្តាលមកពីវា៖
+
+* Log និង monitor សកម្មភាពរបស់ LLM extensions និង downstream systems ដើម្បីកំណត់កន្លែងដែល undesirable actions កំពុងកើតឡើង និងឆ្លើយតបទៅតាមនោះ។
+* អនុវត្ត rate-limiting ដើម្បីកាត់បន្ថយចំនួន undesirable actions ដែលអាចកើតឡើងក្នុងរយៈពេលកំណត់មួយ ដោយបង្កើនឱកាសក្នុងការរកឃើញ undesirable actions តាមរយៈ monitoring មុនពេលការខូចខាតធំអាចកើតឡើង។
+
+### ឧទាហរណ៍ Attack Scenarios
+
+LLM-based personal assistant app ត្រូវបានផ្តល់សិទ្ធិចូលប្រើ mailbox របស់បុគ្គលម្នាក់តាមរយៈ extension ដើម្បីសង្ខេប content នៃ incoming emails ។ ដើម្បីសម្រេច functionality នេះ extension ទាមទារសមត្ថភាពក្នុងការអានសារ ទោះបីជា plugin ដែល system developer បានជ្រើសរើសប្រើក៏មាន functions សម្រាប់ផ្ញើសារផងដែរ។ បន្ថែមពីនេះ app ងាយរងគ្រោះទៅនឹង indirect prompt injection attack ដែលជា incoming email ដែលត្រូវបានបង្កើតឡើងដោយ malicious ក្នុងគោលបំណងបោកបញ្ឆោត LLM ឱ្យបញ្ជា agent ឱ្យ scan inbox របស់ user រក sensitive information ហើយ forward វាទៅ attacker's email address ។ នេះអាចត្រូវបានជៀសវាងដោយ៖
+
+* ការលុបបំបាត់ excessive functionality ដោយប្រើ extension ដែលអនុវត្តតែ mail-reading capabilities,
+* ការលុបបំបាត់ excessive permissions ដោយ authenticate ទៅ user's email service តាមរយៈ OAuth session ជាមួយនឹង read-only scope, និង/ឬ
+* ការលុបបំបាត់ excessive autonomy ដោយតម្រូវឱ្យ user ពិនិត្យដោយដៃ និងចុច 'send' លើរាល់ mail ដែលត្រូវបានព្រាងដោយ LLM extension ។
+
+ជាជម្រើស ភាពខូចខាតដែលបណ្តាលមកពីអាចត្រូវបានកាត់បន្ថយដោយការអនុវត្ត rate limiting នៅលើ mail-sending interface ។
+
+### តំណភ្ជាប់យោង
 
 1. [Slack AI data exfil from private channels](https://promptarmor.substack.com/p/slack-ai-data-exfiltration-from-private): **PromptArmor**
 2. [Rogue Agents: Stop AI From Misusing Your APIs](https://www.twilio.com/en-us/blog/rogue-ai-agents-secure-your-apis): **Twilio**
