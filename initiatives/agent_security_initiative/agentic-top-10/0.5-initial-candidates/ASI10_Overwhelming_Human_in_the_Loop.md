@@ -32,4 +32,4 @@ This builds on [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm
 
 ### Reference Links
 1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
-2. [LLM06:2025 Excessive Agency]https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)
+2. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)
