@@ -2,12 +2,11 @@
 **Human Manipulation**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Agentic systems may be used to manipulate, deceive, or coerce human users—especially when agents are presented as trustworthy, authoritative, or personal. Adversaries can exploit agent behavior, tone, or personalization features to guide users toward unsafe, biased, or unintended actions, raising risks in healthcare, finance, governance, and more.
 
-This risk builds on [LLM09:2025 Misinformation Harms](https://genai.owasp.org/llm-top-10/LLM09-misinformation) but focuses on **intentional or emergent influence over human users**, particularly through tone, persistence, personalization, or interface design.
 
 ### Common Examples of Risk
 1. Persuasive outputs influencing unsafe human decisions.
@@ -30,4 +29,4 @@ This risk builds on [LLM09:2025 Misinformation Harms](https://genai.owasp.org/ll
 - **Scenario 4: Personalized Scam Delivery** – An agent is compromised and used to phish users with tailored language, exploiting prior interactions and memory.
 
 ### Reference Links
-1. [LLM09:2025 Misinformation Harms](https://genai.owasp.org/llm-top-10/LLM09-misinformation)
+1.[Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)

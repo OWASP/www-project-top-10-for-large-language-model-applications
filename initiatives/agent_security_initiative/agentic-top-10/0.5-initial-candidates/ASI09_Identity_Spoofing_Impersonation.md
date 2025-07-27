@@ -2,12 +2,11 @@
 **Identity Spoofing & Impersonation**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Agentic AI systems often operate on behalf of users or services. Attackers can exploit weak identity controls to impersonate agents, users, or systems—gaining unauthorized access, issuing actions, or spreading misinformation. In multi-agent ecosystems, spoofed agents can embed into workflows and manipulate decision-making.
 
-This risk extends [LLM05:2025 Insecure Identity Handling](https://genai.owasp.org/llm-top-10/LLM05-insecure-identity-handling) into autonomous and delegated environments where identities are persistent and context-sensitive.
 
 ### Common Examples of Risk
 1. Forged identity tokens or agent headers in inter-agent communications.
@@ -31,4 +30,4 @@ This risk extends [LLM05:2025 Insecure Identity Handling](https://genai.owasp.or
 - **Scenario 4: Shared Identity Overlap** – Two agents operate under a shared identity, and an attacker uses timing manipulation to exploit the identity ambiguity and inject actions.
 
 ### Reference Links
-1. [LLM05:2025 Insecure Identity Handling](https://genai.owasp.org/llm-top-10/LLM05-insecure-identity-handling)
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)

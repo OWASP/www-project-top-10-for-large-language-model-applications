@@ -2,12 +2,12 @@
 **Rogue Agents in Multi-Agent Systems**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Malicious, unauthorized, or compromised agents may embed themselves in a multi-agent system (MAS), influencing workflows, exfiltrating data, or sabotaging operations. These rogue agents may masquerade as legitimate, exploit handoffs, or perform low-trust actions undetected due to lack of origin validation or oversight in orchestration layers.
 
-This threat extends [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency) into distributed autonomous systems, where impersonation, stealth participation, or parasitic behaviors can disrupt agent collaboration and goal fulfillment.
+This threat extends [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) into distributed autonomous systems, where impersonation, stealth participation, or parasitic behaviors can disrupt agent collaboration and goal fulfillment.
 
 ### Common Examples of Risk
 1. Injection of unauthorized agents into workflows or communication paths.
@@ -29,4 +29,5 @@ This threat extends [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-to
 - **Scenario 4: Role Drift via Cloaking** – An agent initially instantiated as a passive observer starts executing actions due to unmonitored privilege creep.
 
 ### Reference Links
-1. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency)
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)

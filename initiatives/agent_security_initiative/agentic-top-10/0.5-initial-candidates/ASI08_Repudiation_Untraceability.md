@@ -2,12 +2,11 @@
 **Repudiation & Untraceability**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Agentic systems may act in ways that are difficult to trace, verify, or attribute. This untraceability increases the risk of repudiation—where actions cannot be linked to specific agents or inputs—and complicates incident response, auditability, and compliance. Use of reflection, autonomous planning, and delegation chains make it hard to reconstruct what happened, why, and who is responsible.
 
-This overlaps with [LLM07:2025 Inadequate Auditing](https://genai.owasp.org/llm-top-10/LLM07-inadequate-auditing-and-monitoring), but agentic systems add new layers of opacity due to memory, multi-agent delegation, and emergent workflows.
 
 ### Common Examples of Risk
 1. Agents executing tasks without provenance tags or user ID traceability.
@@ -30,4 +29,4 @@ This overlaps with [LLM07:2025 Inadequate Auditing](https://genai.owasp.org/llm-
 - **Scenario 4: Reflection Chain Confusion** – An agent uses a multi-step reasoning chain with reflections and tool calls, but the intermediate steps are not logged, leaving investigators unable to reconstruct the attack path.
 
 ### Reference Links
-1. [LLM07:2025 Inadequate Auditing](https://genai.owasp.org/llm-top-10/LLM07-inadequate-auditing-and-monitoring)
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)

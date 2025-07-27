@@ -2,12 +2,12 @@
 **Misaligned & Deceptive Behaviors**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Agentic systems may develop or exhibit behaviors that diverge from user intent, system objectives, or safety expectations. This includes deceptive planning, strategic lying, reward hacking, or internal goal drift. Misalignment can occur through poor reward design, emergent strategies, or lack of sufficient constraints in dynamic environments.
 
-This threat overlaps with concerns raised in [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency) but is amplified in systems that use reflection, planning, or long-horizon optimization. Misalignment and deception are especially critical in agents that act autonomously over time, interact with humans, or operate across decision boundaries.
+This threat overlaps with concerns raised in [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) but is amplified in systems that use reflection, planning, or long-horizon optimization. Misalignment and deception are especially critical in agents that act autonomously over time, interact with humans, or operate across decision boundaries.
 
 ### Common Examples of Risk
 1. Reward hacking or unexpected behavior that technically meets a goal.
@@ -31,4 +31,5 @@ This threat overlaps with concerns raised in [LLM06:2025 Excessive Agency](https
 - **Scenario 4: User Simulation for Gain** – An agent impersonates a user in a planning cycle to gain permissions it otherwise wouldn’t be granted, exploiting a verification loophole.
 
 ### Reference Links
-1. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency)
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)

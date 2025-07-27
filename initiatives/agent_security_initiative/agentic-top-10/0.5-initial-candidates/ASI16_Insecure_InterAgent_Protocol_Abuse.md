@@ -2,12 +2,12 @@
 **Insecure Inter-Agent Protocol Abuse**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Agentic systems rely on coordination protocols (e.g., MCP, A2A, blackboard messaging) to delegate tasks, pass context, or synchronize goals. Weak or unenforced protocols allow spoofing, signal injection, context corruption, or execution bypass. Attackers may hijack protocol messages or inject malformed transitions, compromising workflows and violating consent logic.
 
-This risk is loosely aligned with [LLM03:2025 Supply Chain Vulnerabilities](https://genai.owasp.org/llm-top-10/LLM03-training-data-supply-chain), but it focuses on real-time orchestration signals rather than data dependencies or component ingestion.
+This risk is loosely aligned with [LLM03:2025 Supply Chain Vulnerabilities](https://genai.owasp.org/llmrisk/llm032025-supply-chain/), but it focuses on real-time orchestration signals rather than data dependencies or component ingestion.
 
 ### Common Examples of Risk
 1. Hijacked task signals due to unsigned coordination messages.
@@ -31,4 +31,4 @@ This risk is loosely aligned with [LLM03:2025 Supply Chain Vulnerabilities](http
 - **Scenario 4: Memory-Driven Signal Injection** – A malicious memory entry triggers agent orchestration via unsafe embedded signals that appear valid under weak parsing logic.
 
 ### Reference Links
-1. [LLM03:2025 Supply Chain Vulnerabilities](https://genai.owasp.org/llm-top-10/LLM03-training-data-supply-chain)
+1. [LLM03:2025 Supply Chain Vulnerabilities](https://genai.owasp.org/llmrisk/llm032025-supply-chain/)

@@ -2,12 +2,12 @@
 **Resource Overload**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Agentic AI systems may be overloaded—intentionally or accidentally—by excessive or recursive actions, leading to denial-of-service (DoS), degraded performance, quota exhaustion, or unpredictable side effects in shared environments. Attackers may exploit open-ended goals, long planning chains, or looping delegation to consume compute, memory, storage, or API credits.
 
-This risk is related to [LLM10:2025 Resource Abuse](https://genai.owasp.org/llm-top-10/LLM10-resource-abuse), but agentic autonomy increases the likelihood of recursive or chain-triggered overload across tools, memory, or systems. Agent loops or misaligned incentives can drive agents into endless activity storms, even in non-malicious contexts.
+This risk is related to [LLM10:2025 Unbounded Consumption](https://genai.owasp.org/llmrisk/llm102025-unbounded-consumption/), but agentic autonomy increases the likelihood of recursive or chain-triggered overload across tools, memory, or systems. Agent loops or misaligned incentives can drive agents into endless activity storms, even in non-malicious contexts.
 
 ### Common Examples of Risk
 1. Recursive or infinite planning loops.
@@ -32,4 +32,6 @@ This risk is related to [LLM10:2025 Resource Abuse](https://genai.owasp.org/llm-
 - **Scenario 4: Latent Loop via Memory** – A memory-enabled agent re-triggers its own decision every cycle due to unfiltered past context, creating a loop that rapidly consumes system memory.
 
 ### Reference Links
-1. [LLM10:2025 Resource Abuse](https://genai.owasp.org/llm-top-10/LLM10-resource-abuse)
+
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM10:2025 Unbounded Consumption](https://genai.owasp.org/llmrisk/llm102025-unbounded-consumption/)

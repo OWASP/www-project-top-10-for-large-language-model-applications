@@ -38,5 +38,6 @@ Agents with memory can be manipulated by adversaries who add malicious or mislea
 - **Scenario 4: Shared Memory Poisoning** – In a customer service application, an attacker corrupts shared memory structures with incorrect refund policies, affecting other agents referencing this corrupted memory for decision making, leading to incorrect policy reinforcement, financial loss, and customer disputes.
 
 ### Reference Links
-1. [LLM04:2025 Data Poisoning](https://genai.owasp.org/llm-top-10/LLM04-data-poisoning)
-2. [LLM08:2025 Vector Weaknesses](https://genai.owasp.org/llm-top-10/LLM08-vector-and-embedding-weaknesses)
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM04:2025 Data and Model Poisoning](https://genai.owasp.org/llmrisk/llm042025-data-and-model-poisoning/)
+3. [LLM08:2025 Vector Weaknesses](https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/)

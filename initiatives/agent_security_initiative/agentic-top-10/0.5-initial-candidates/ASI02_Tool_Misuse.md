@@ -2,12 +2,12 @@
 **Tool Misuse**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Attackers exploit the dynamic integration and enhanced autonomy of agentic AI systems to misuse authorized tools. Unlike traditional LLM applications, agents maintain memory, dynamically decide which tools to invoke, and may delegate actions to other agents. This increases the risk of adversarial misuse through chaining, privilege escalation, or execution of unintended actions.
 
-The threat is partially covered by [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency), but agent-based systems pose unique challenges due to memory persistence and multi-agent delegation. The threat also overlaps with [LLM03:2025 Supply Chain Vulnerabilities](https://genai.owasp.org/llm-top-10/LLM03-training-data-supply-chain) and [LLM08:2025 Vector and Embedding Weaknesses](https://genai.owasp.org/llm-top-10/LLM08-vector-and-embedding-weaknesses), especially when tools are used to retrieve or generate external context.
+The threat is partially covered by [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/), but agent-based systems pose unique challenges due to memory persistence and multi-agent delegation. 
 
 ### Common Examples of Risk
 1. Tool chaining allows indirect access to restricted functions or data exfiltration.
@@ -38,7 +38,7 @@ The threat is partially covered by [LLM06:2025 Excessive Agency](https://genai.o
 - **Scenario 5: Agent Hijacking via Tools** – As described by NIST, a malicious prompt triggers the agent to misuse a file upload tool and data extraction utility, enabling unintended file access and exfiltration without crossing policy boundaries.
 
 ### Reference Links
-1. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency)
-2. [LLM03:2025 Supply Chain Vulnerabilities](https://genai.owasp.org/llm-top-10/LLM03-training-data-supply-chain)
-3. [LLM08:2025 Vector and Embedding Weaknesses](https://genai.owasp.org/llm-top-10/LLM08-vector-and-embedding-weaknesses)
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency)
+3. [LLM03:2025 Supply Chain Vulnerabilities](https://genai.owasp.org/llm-top-10/LLM03-training-data-supply-chain)
 4. [NIST Blog on Agent Hijacking](https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations)

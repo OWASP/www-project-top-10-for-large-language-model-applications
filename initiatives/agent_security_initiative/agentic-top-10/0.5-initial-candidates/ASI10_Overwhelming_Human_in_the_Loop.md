@@ -2,12 +2,12 @@
 **Overwhelming Human-in-the-Loop**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Agentic systems often rely on human-in-the-loop (HITL) oversight for safety, governance, or escalation. However, attackers or system design flaws can overwhelm these human checkpoints—leading to skipped reviews, rubber-stamping, or misinformed approvals. Agents may flood users with requests, obscure critical decisions, or exploit approval fatigue.
 
-This builds on [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency) but focuses on human capacity and UI design limitations under agentic load.
+This builds on [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) but focuses on human capacity and UI design limitations under agentic load.
 
 ### Common Examples of Risk
 1. Rapid-fire HITL escalation requests causing decision fatigue.
@@ -31,4 +31,5 @@ This builds on [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/
 - **Scenario 4: Confidence Trick** – An agent presents a low-confidence action as highly certain due to formatting and emphasis manipulation, misleading the reviewer.
 
 ### Reference Links
-1. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency)
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM06:2025 Excessive Agency]https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)

@@ -2,12 +2,12 @@
 **Agent Communication Poisoning**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Adversaries inject malicious content into inter-agent messages or shared communication channels, corrupting coordination, triggering undesired workflows, or manipulating agent responses. In distributed or multi-agent environments, communication poisoning can propagate errors, misalign goals, or bypass intent verification.
 
-This threat aligns with [LLM04:2025 Data Poisoning](https://genai.owasp.org/llm-top-10/LLM04-data-poisoning) but targets runtime interactions and message protocols between agents, where reflection or message chaining can amplify the impact.
+This threat aligns with [LLM04:2025 Data and Model Poisoning](https://genai.owasp.org/llmrisk/llm042025-data-and-model-poisoning/) but targets runtime interactions and message protocols between agents, where reflection or message chaining can amplify the impact.
 
 ### Common Examples of Risk
 1. Forged handoffs or delegation messages with malicious metadata.
@@ -29,4 +29,5 @@ This threat aligns with [LLM04:2025 Data Poisoning](https://genai.owasp.org/llm-
 - **Scenario 4: Consent Confusion via Relay Agent** – A relay agent routes a message across teams, stripping provenance tags and misleading the receiver into assuming a trusted origin.
 
 ### Reference Links
-1. [LLM04:2025 Data Poisoning](https://genai.owasp.org/llm-top-10/LLM04-data-poisoning)
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM04:2025 Data and Model Poisoning](https://genai.owasp.org/llmrisk/llm042025-data-and-model-poisoning/)

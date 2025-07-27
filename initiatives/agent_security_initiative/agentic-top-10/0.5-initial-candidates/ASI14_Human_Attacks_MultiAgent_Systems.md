@@ -2,12 +2,12 @@
 **Human Attacks on Multi-Agent Systems**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Human adversaries exploit coordination logic, fallback rules, or trust pathways in multi-agent systems to bypass controls, reroute decisions, or manipulate outcomes. These attacks leverage timing gaps, delegation ambiguity, or unclear escalation paths to gain unauthorized control or subvert agent behavior.
 
-This risk intersects with [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency) and [LLM05:2025 Insecure Identity Handling](https://genai.owasp.org/llm-top-10/LLM05-insecure-identity-handling), but focuses on the social engineering of agentic workflows rather than just technical bypasses.
+This risk intersects with [LLM06:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) and [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/), but focuses on the social engineering of agentic workflows rather than just technical bypasseses.
 
 ### Common Examples of Risk
 1. Timing exploits between agent handoffs or sync points.
@@ -29,5 +29,6 @@ This risk intersects with [LLM06:2025 Excessive Agency](https://genai.owasp.org/
 - **Scenario 4: Consent Drift** – A user intentionally modifies instruction tone and language across multiple interactions, slowly coercing an agent into approving a previously disallowed action.
 
 ### Reference Links
-1. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency)
-2. [LLM05:2025 Insecure Identity Handling](https://genai.owasp.org/llm-top-10/LLM05-insecure-identity-handling)
+1.[Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM06:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) 
+3. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) 

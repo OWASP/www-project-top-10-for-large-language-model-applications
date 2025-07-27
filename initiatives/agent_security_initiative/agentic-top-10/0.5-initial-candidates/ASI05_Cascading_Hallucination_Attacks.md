@@ -2,12 +2,12 @@
 **Cascading Hallucination Attacks**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Agentic systems are prone to hallucinations—confidently presenting false information—as they generate, recall, or reuse unverified outputs. These hallucinations can become self-reinforcing, especially when persisted in memory or reflected across agents. When used in planning, reasoning, or as inputs to other tools, hallucinations may cascade into widespread misinformation, faulty decisions, or unsafe actions.
 
-This risk aligns with [LLM09:2025 Misinformation Harms](https://genai.owasp.org/llm-top-10/LLM09-misinformation), but agent-based systems introduce higher persistence and propagation risk due to memory and delegation. In multi-agent contexts, false knowledge may circulate and amplify, creating system-wide instability.
+This risk aligns with [LLM09:2025 Misinformation](https://genai.owasp.org/llmrisk/llm092025-misinformation/), but agent-based systems introduce higher persistence and propagation risk due to memory and delegation. In multi-agent contexts, false knowledge may circulate and amplify, creating system-wide instability.
 
 ### Common Examples of Risk
 1. Self-reflection or summarisation loops reinforcing hallucinated facts.
@@ -30,4 +30,5 @@ This risk aligns with [LLM09:2025 Misinformation Harms](https://genai.owasp.org/
 - **Scenario 4: Delegated Misinformation** – A planning agent generates a hallucinated summary of a document and delegates action to another agent, which follows the false instructions and incorrectly alters critical records.
 
 ### Reference Links
-1. [LLM09:2025 Misinformation Harms](https://genai.owasp.org/llm-top-10/LLM09-misinformation)
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM09:2025 Misinformation](https://genai.owasp.org/llmrisk/llm092025-misinformation/)

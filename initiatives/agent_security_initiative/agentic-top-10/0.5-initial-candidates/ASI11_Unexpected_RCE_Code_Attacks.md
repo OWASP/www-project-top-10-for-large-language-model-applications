@@ -2,12 +2,13 @@
 **Unexpected RCE & Code Attacks**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Agentic systems often generate or execute code, issue shell commands, or invoke APIs dynamically. Attackers exploit code-generation features or embedded tool access to escalate actions into remote code execution (RCE), local misuse, or exploitation of internal systems. Prompt injection, tool misuse, or unsafe serialization can convert text into unintended executable behavior.
 
-This builds on [LLM01:2025 Prompt Injection](https://genai.owasp.org/llm-top-10/LLM01-prompt-injection) and [LLM02:2025 Insecure Plugin Design](https://genai.owasp.org/llm-top-10/LLM02-insecure-plugin-design), but agentic AI introduces new execution surfaces and inter-agent propagation of executable payloads.
+This builds on  [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) and [LLM05:2025 Improper Output Handling](https://genai.owasp.org/llmrisk/llm052025-improper-output-handling/).  Agentic AI with function-calling capabilities and tool integrations can be directly manipulated to execute unauthorized commands, exfiltrate data, or bypass security controls, making it a critical attack vector in AI-driven automation and service integrations.
+
 
 ### Common Examples of Risk
 1. Prompt injection that leads to execution of attacker-defined code.
@@ -31,5 +32,7 @@ This builds on [LLM01:2025 Prompt Injection](https://genai.owasp.org/llm-top-10/
 - **Scenario 4: Plugin Chain RCE** – A prompt triggers an agent to invoke a plugin chain (e.g., file upload → path resolution → dynamic code execution), allowing attacker-controlled code to run inside the environment.
 
 ### Reference Links
-1. [LLM01:2025 Prompt Injection](https://genai.owasp.org/llm-top-10/LLM01-prompt-injection)
-2. [LLM02:2025 Insecure Plugin Design](https://genai.owasp.org/llm-top-10/LLM02-insecure-plugin-design)
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)
+3. [LLM05:2025 Improper Output Handling](https://genai.owasp.org/llmrisk/llm052025-improper-output-handling/)
+4. [LLM02:2023 Insecure Plugin Design](https://genai.owasp.org/llmrisk2023-24/llm07-insecure-plugin-design/)

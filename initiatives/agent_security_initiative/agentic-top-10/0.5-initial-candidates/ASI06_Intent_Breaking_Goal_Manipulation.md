@@ -2,12 +2,12 @@
 **Intent Breaking & Goal Manipulation**
 
 **Author(s):**
-OWASP Agentic Security Initiative Core Team
+OWASP Agentic Security Initiative Team
 
 ### Description
 Agentic AI systems operate based on inferred or explicit goals. Adversaries can manipulate goal inference, alter intermediate representations, or interfere with agent objectives to cause undesired or harmful actions. This includes prompt injection, manipulation of user intent, or interference in planning or delegation logic.
 
-While related to [LLM02:2025 Insecure Plugin Design](https://genai.owasp.org/llm-top-10/LLM02-insecure-plugin-design) and [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency), agentic AI systems introduce new risks where goals can be hijacked mid-flight, or inferred intent can be weaponized against the user.
+While related to [LLM02:2023 Insecure Plugin Design](https://genai.owasp.org/llmrisk2023-24/llm07-insecure-plugin-design/) and [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/), agentic AI systems introduce new risks where goals can be hijacked mid-flight, or inferred intent can be weaponized against the user.
 
 ### Common Examples of Risk
 1. Manipulating prompts to redefine agent goals via indirect instructions.
@@ -31,5 +31,6 @@ While related to [LLM02:2025 Insecure Plugin Design](https://genai.owasp.org/llm
 - **Scenario 4: Delegated Planning Hijack** – A downstream agent is given an intermediate task from a master planner, but the task description has been altered in transit, leading to off-target actions.
 
 ### Reference Links
-1. [LLM02:2025 Insecure Plugin Design](https://genai.owasp.org/llm-top-10/LLM02-insecure-plugin-design)
-2. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency)
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM02:2023 Insecure Plugin Design](https://genai.owasp.org/llmrisk2023-24/llm07-insecure-plugin-design/)
+3. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llm-top-10/LLM06-excessive-agency)
