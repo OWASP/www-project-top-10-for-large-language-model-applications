@@ -57,3 +57,5 @@ Researchers identify a server-side template injection (SSTI) bug in AutoGPT’s 
 4. https://www.theregister.com/2025/07/21/vibe_coding_replit_ai_data_loss/  
 5. https://foraisec.medium.com/autogpt-remote-code-execution-ssti  
 6. https://blog.christianposta.com/understanding-mcp-and-a2a-attack-vectors-for-ai-agents/
+7. https://github.com/sigstore/model-transparency
+8. https://www.wiz.io/academy/ai-bom-ai-bill-of-materials
