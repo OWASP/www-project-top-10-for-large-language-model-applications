@@ -28,9 +28,9 @@ The threat is partially covered by [LLM06:2025 Excessive Agency](https://genai.o
 
 ### Example Attack Scenarios  
 
-- **Scenario 1: Access to sensitive information ** – An agent aimed to analyse logs in an application is given full read permission, and can access any single log in the system.
-- **Scenario 2: Data exfiltration ** – An agent is given root access in the system, and is tricked to return the internal secrets, as passwords or keys.
-- **Scenario 3: Create backlog ** – An agent is given write access in the system, and is tricked to create a backdoor to get remote access into the system.
+- **Scenario 1: Access to sensitive information** – An agent aimed to analyse logs in an application is given full read permission, and can access any single log in the system.
+- **Scenario 2: Data exfiltration** – An agent is given root access in the system, and is tricked to return the internal secrets, as passwords or keys.
+- **Scenario 3: Create backdoor** – An agent is given write access in the system, and is tricked to create a backdoor to get remote access into the system.
 
 
 
