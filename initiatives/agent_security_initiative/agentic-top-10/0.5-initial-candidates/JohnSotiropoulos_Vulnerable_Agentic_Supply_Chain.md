@@ -19,13 +19,14 @@ These risks are compounded in **heterogeneous, distributed agent environments**,
 5. **Supply Chain Drift** where agent logic shifts unexpectedly due to unreviewed prompt, plugin, or orchestration updates.
 
 ### Prevention and Mitigation Strategies  
-1. **Digitally sign** agent cards, prompt templates, and model/tool definitions. Use verifiable SBOMs for agents and their runtime components.  
+1. **Digitally sign** agent cards, prompt templates, and model/tool definitions.  
 2. **Apply version control and peer review** for prompt/script repositories and memory definitions, just as for code.  
 3. **Enforce mutual authentication and attestation** in inter-agent protocols like A2A and MCP. Avoid open agent registration without validation.  
 4. **Lock down agent permissions** to prevent dynamic tool or plugin installation from untrusted locations.  
 5. **Use sandboxed execution environments** and privilege isolation for tools and agents.  
 6. **Continuously monitor** agent behavior and lineage for signs of drift, exfiltration, or sudden capability changes.  
 7. **Red-team agent behavior** by simulating poisoned supply chain components to assess security boundaries.
+8. **Generate AIBOMs** to have a complete inventory of the components included in your AI system.
 
 ### Example Attack Scenarios  
 
