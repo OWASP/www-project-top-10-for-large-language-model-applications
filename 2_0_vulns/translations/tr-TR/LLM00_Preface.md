@@ -1,6 +1,6 @@
 ## Proje Liderleri'nden Mektup
 
-OWASP Büyük Dil Modeli (BDM) Uygulamaları için En Önemli 10, 2023 yılında Yapay Zeka uygulamalarına özgü güvenlik sorunlarını vurgulamak ve ele almak amacıyla topluluk güdümlü bir çaba olarak başladı. O zamandan beri teknoloji, endüstriler ve uygulamalar boyunca yayılmaya devam etti ve beraberindeki riskler de aynı şekilde arttı. Büyük Dİl Modelleri müşteri etkileşimlerinden iç operasyonlara kadar her alana daha derinlemesine entegre edildikçe, geliştiriciler ve güvenlik uzmanları yeni güvenlik açıkları keşfediyor ve bunlarla mücadele etmenin yollarını buluyor.
+OWASP Büyük Dil Modeli (BDM) Uygulamaları için En Önemli 10, 2023 yılında Yapay Zeka uygulamalarına özgü güvenlik sorunlarını vurgulamak ve ele almak amacıyla topluluk güdümlü bir çaba olarak başladı. O zamandan beri teknoloji, endüstriler ve uygulamalar boyunca yayılmaya devam etti ve beraberindeki riskler de aynı şekilde arttı. Büyük Dil Modelleri müşteri etkileşimlerinden iç operasyonlara kadar her alana daha derinlemesine entegre edildikçe, geliştiriciler ve güvenlik uzmanları yeni güvenlik açıkları keşfediyor ve bunlarla mücadele etmenin yollarını buluyor.
 
 2023 listesi, güvenli BDM kullanımı konusunda farkındalık oluşturma ve temel oluşturma açısından büyük bir başarıydı, ancak o zamandan beri çok daha fazlasını öğrendik. Bu yeni 2025 versiyonunda, dünya çapından daha geniş ve çeşitli bir katılımcı grubuyla çalıştık; hepsi bu listenin oluşmasına katkı sağladı. Süreç, beyin fırtınası oturumları, oylamalar ve BDM uygulama güvenliği alanında aktif olarak çalışan profesyonellerden gelen sahadan geri bildirimleri içeriyordu; bu profesyoneller girdilere katkıda bulunarak veya geri bildirimlerle bunları geliştirerek sürece dahil oldular. Her bir görüş, bu yeni sürümü mümkün olduğunca kapsamlı ve pratik hale getirmek için kritik öneme sahipti.
 
@@ -34,8 +34,24 @@ LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 
 
 ### Turkish Translation Team
-Name
-LinkedIn
+Mehmet Ali Özer
+LinkedIn: <https://www.linkedin.com/in/maliozer/>
+
+Alaeddin Selçuk Gürel
+LinkedIn: <https://www.linkedin.com/in/alaeddin-sel%C3%A7uk-g%C3%BCrel-549594144/>
+
+Serdar Helli
+LinkedIn: <https://www.linkedin.com/in/serdar-helli-85bb201a3/>
+
+Berhan Türkü Ay
+LinkedIn: <https://www.linkedin.com/in/beerhan/>
+
+Ayşe Gökçen Kavaz
+LinkedIn: <https://www.linkedin.com/in/gokcenkavaz/>
+
+Aydın Gerek
+LinkedIn: <https://www.linkedin.com/in/aydingerek/>
+
 
 ### Bu Çeviri Hakkında
 

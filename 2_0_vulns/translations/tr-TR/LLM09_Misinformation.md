@@ -1,8 +1,8 @@
-## LLM09:2025 Misinformation
+## LLM09:2025 Yanlış Bilgi
 
 ### Açıklama
 
-Büyük Dil Modellerinden (BDM'ler) kaynaklanan yanlış bilgi, bu modellere dayanan uygulamalar için temel bir zafiyettir. Yanlış bilgi, BDM’lerin güvenilir gibi görünen ancak gerçekte yanlış ya da yanıltıcı içerikler üretmesiyle ortaya çıkar. Bu durum, güvenlik açıklarına, itibar kayıplarına ve hukuki sorumluluklara yol açabilir.
+BDM'lerden kaynaklanan yanlış bilgi, bu modellere dayanan uygulamalar için temel bir zafiyettir. Yanlış bilgi, BDM’lerin güvenilir gibi görünen ancak gerçekte yanlış ya da yanıltıcı içerikler üretmesiyle ortaya çıkar. Bu durum, güvenlik açıklarına, itibar kayıplarına ve hukuki sorumluluklara yol açabilir.
 
 Yanlış bilginin başlıca nedenlerinden biri halüsinasyondur — BDM’lerin doğruymuş gibi görünen ancak tamamen uydurma içerikler üretmesidir. Halüsinasyonlar, modellerin eğitim verilerindeki boşlukları istatistiksel kalıplarla doldurarak, içeriği gerçekten anlamadan yanıt üretmesiyle meydana gelir. Bu nedenle model, kulağa doğru gelen ancak temeli olmayan bilgiler sunabilir. Halüsinasyon önemli bir yanlış bilgi kaynağı olsa da tek neden değildir; eğitim verilerinden gelen önyargılar ve eksik bilgiler de bu soruna katkı sağlar.
 
@@ -30,7 +30,7 @@ Bununla ilişkili bir diğer sorun da aşırı güvendir. Aşırı güven, kulla
   Model, güvensiz ya da gerçekte var olmayan yazılım kütüphaneleri önerebilir ve bu da entegre edildiğinde yazılım sistemlerinde güvenlik açıklarına yol açabilir. Örneğin, Büyük Dil Modelleri (BDM’ler), güvenli olmayan üçüncü taraf kütüphanelerin kullanımını önerebilir; bu öneriler doğrulanmadan kullanıldığında ciddi güvenlik riskleri ortaya çıkabilir.
   (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
 
-### Önleme ve Hafifletme Stratejileri
+### Önleme ve Azaltma Stratejileri
 
 #### 1. Bilgiyle Zenginleştirilmiş Yanıtlama (RAG)
 
@@ -88,7 +88,7 @@ Bununla ilişkili bir diğer sorun da aşırı güvendir. Aşırı güven, kulla
 10. [Halüsinasyonları Azaltmaya Yönelik Pratik Adımlar](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
 11. [Yapay Zeka Aracılığıyla Kurumsal Bilgiye Erişimin Sonuçlarını Keşfetme Çatısı](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
 
-### İlgili Çatılar ve Sınıflandırmalar
+### İlgili Çerçeveler ve Sınıflandırmalar
 
 Altyapı dağıtımı, uygulama ortamı kontrolleri ve diğer en iyi uygulamalara ilişkin kapsamlı bilgi, senaryolar ve stratejiler için bu bölüme başvurun.
 

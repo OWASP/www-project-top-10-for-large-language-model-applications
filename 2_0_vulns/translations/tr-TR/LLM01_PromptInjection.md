@@ -2,7 +2,7 @@
 
 ### Açıklama
 
-İstem Enjeksiyonu Zafiyeti, kullanıcı istemlerinin LLM'nin davranışını veya çıktısını istenmeyen şekillerde değiştirmesi durumunda ortaya çıkar. Bu girdiler, insanlar tarafından algılanamaz olsalar bile modeli etkileyebilir, bu nedenle istem enjeksiyonlarının insan tarafından görülebilir/okunabilir olması gerekmez, içerik model tarafından işlendiği sürece yeterlidir.
+İstem Enjeksiyonu Zafiyeti, kullanıcı istemlerinin BDM'nin davranışını veya çıktısını istenmeyen şekillerde değiştirmesi durumunda ortaya çıkar. Bu girdiler, insanlar tarafından algılanamaz olsalar bile modeli etkileyebilir, bu nedenle istem enjeksiyonlarının insan tarafından görülebilir ve/veya okunabilir olması gerekmez, içerik model tarafından işlendiği sürece yeterlidir.
 
 İstem Enjeksiyonu zafiyetleri, modellerin istemleri nasıl işlediğinde ve girdinin modeli, istem verilerini modelin diğer bölümlerine yanlış şekilde iletmeye nasıl zorlayabileceğinde bulunur; bu durum potansiyel olarak kılavuzları ihlal etmelerine, zararlı içerik üretmelerine, yetkisiz erişime olanak sağlamalarına veya kritik kararları etkilemelerine neden olabilir. Erişimle Artırılmış Üretim (RAG) ve ince ayarlama gibi teknikler Büyük Dil Modeli çıktılarını daha alakalı ve doğru hale getirmeyi amaçlasa da, araştırmalar bunların istem enjeksiyonu zafiyetlerini tam olarak hafifletmediğini göstermektedir.
 
@@ -10,7 +10,7 @@
 
 ### İstem Enjeksiyonu Zafiyet Türleri
 
-#### Doğrudan İstem ENjeksiyonları
+#### Doğrudan İstem Enjeksiyonları
 
   Doğrudan istem enjeksiyonları, kullanıcının istem girdisinin modelin davranışını istenmeyen veya beklenmeyen şekillerde doğrudan değiştirmesi durumunda ortaya çıkar. Girdi kasıtlı (yani kötü niyetli bir aktörün modeli sömürmek için bilinçli olarak bir istem hazırlaması) veya kasıtsız (yani kullanıcının fark etmeden beklenmeyen davranışları tetikleyen girdi sağlaması) olabilir.
 
@@ -20,7 +20,7 @@
 Başarılı bir istem enjeksiyonu saldırısının etkisinin ciddiyeti ve doğası büyük ölçüde değişebilir ve büyük oranda hem modelin çalıştığı iş bağlamına hem de modelin tasarlandığı yetkiye bağlıdır. Ancak genel olarak, istem enjeksiyonu aşağıdakilerle sınırlı olmamak üzere istenmeyen sonuçlara yol açabilir:
 
 - Hassas bilgilerin ifşası
-- AI sistemi altyapısı veya sistem istemleri hakkında hassas bilgilerin açığa çıkarılması
+- YZ sistemi altyapısı veya sistem istemleri hakkında hassas bilgilerin açığa çıkarılması
 - Yanlış veya önyargılı çıktılara yol açan içerik manipülasyonu
 - BDM'nin erişebildiği fonksiyonlara yetkisiz erişim sağlanması
 - Bağlı sistemlerde keyfi komutların çalıştırılması
@@ -28,7 +28,7 @@ Başarılı bir istem enjeksiyonu saldırısının etkisinin ciddiyeti ve doğas
 
 Birden fazla veri türünü eş zamanlı işleyen çok kipli yapay zekanın yükselişi, benzersiz istem enjeksiyonu riskleri getirmektedir. Kötü niyetli aktörler, zararsız metinle birlikte gelen görsellerde talimatları gizlemek gibi kipler arası etkileşimleri sömürebilir. Bu sistemlerin karmaşıklığı saldırı yüzeyini genişletir. Çok kipli modeller ayrıca mevcut tekniklerle tespit edilmesi ve hafifletilmesi zor olan yeni çapraz kipli saldırılara karşı da savunmasız olabilir. Güçlü çok kipli özgü savunmalar, daha fazla araştırma ve geliştirme için önemli bir alandır.
 
-### Önleme ve Hafifletme Stratejileri
+### Önleme ve Azaltma Stratejileri
 
 İstem enjeksiyonu zafiyetleri üretici yapay zekanın doğası gereği mümkündür. Modellerin çalışma şeklinin merkezindeki stokastik etki göz önüne alındığında, istem enjeksiyonu için kesin önleme yöntemlerinin var olup olmadığı belirsizdir. Ancak aşağıdaki önlemler istem enjeksiyonlarının etkisini hafifletebilir:
 
@@ -73,7 +73,7 @@ Sistem istemi içinde modelin rolü, yetenekleri ve sınırları hakkında spesi
 
 #### Senaryo #3: Kasıtsız Enjeksiyon
 
-  Şirket iş ilanına AI-üretimli başvuruları tanımlama talimatı ekler. Bu talimattan habersiz başvuran, özgeçmişini optimize etmek için LLM kullanarak istemeden AI tespitini tetikler.
+  Şirket iş ilanına YZ-üretimli başvuruları tanımlama talimatı ekler. Bu talimattan habersiz başvuran, özgeçmişini optimize etmek için LLM kullanarak istemeden YZ tespitini tetikler.
 
 #### Senaryo #4: Kasıtlı Model Etkileme
 
@@ -89,7 +89,7 @@ Sistem istemi içinde modelin rolü, yetenekleri ve sınırları hakkında spesi
 
 #### Senaryo #7: Çok Kipli Enjeksiyon
 
-  Saldırgan, zararsız metinle birlikte gelen görsel içine kötü niyetli istem gömer. Çok kipli AI görseli ve metni eş zamanlı işlediğinde, gizli istem modelin davranışını değiştirerek yetkisiz eylemlere veya hassas bilgi ifşasına yol açabilir.
+  Saldırgan, zararsız metinle birlikte gelen görsel içine kötü niyetli istem gömer. Çok kipli YZ görseli ve metni eş zamanlı işlediğinde, gizli istem modelin davranışını değiştirerek yetkisiz eylemlere veya hassas bilgi ifşasına yol açabilir.
 
 #### Senaryo #8: Karşıt Ek
 

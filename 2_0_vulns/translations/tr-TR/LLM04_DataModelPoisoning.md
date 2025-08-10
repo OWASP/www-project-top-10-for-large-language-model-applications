@@ -6,7 +6,7 @@ Veri zehirlenmesi, ön eğitim, ince ayar veya gömme verilerinin güvenlik aç�
 
 Veri zehirlenmesi, BDM yaşam döngüsünün farklı aşamalarını hedef alabilir; bunlar arasında ön eğitim (genel verilerden öğrenme), ince ayar (modelleri belirli görevlere uyarlama), gömme (metni sayısal vektörlere dönüştürme) ve transfer öğrenme (önceden eğitilmiş bir modeli yeni bir görevde yeniden kullanma) yer alır. Bu aşamaları anlamak, güvenlik açıklarının nereden kaynaklanabileceğini belirlemeye yardımcı olur. Veri zehirlenmesi, eğitim verilerini manipüle etmek modelin doğru tahminler yapma yetisini etkilediği için bir bütünlük saldırısı olarak kabul edilir. Özellikle doğrulanmamış veya kötü niyetli içerik bulundurabilen harici veri kaynakları ile riskler yüksektir.
 
-Ayrıca, paylaşılan depolar veya açık kaynak platformlar aracılığıyla dağıtılan modeller, veri zehirlenmesinin ötesinde, model yüklendiğinde zararlı kod çalıştırabilen kötü niyetli pickling gibi tekniklerle gömülü kötü amaçlı yazılımlar gibi riskler taşıyabilir. Ayrıca, zehirlemenin bir arka kapının uygulanmasına izin verebileceğini göz önünde bulundurun. Bu tür arka kapılar, belirli bir tetikleyici davranışını değiştirmesine neden olana kadar modelin davranışını değiştirilmemiş olarak bırakabilir. Bu arka kapılar, bu tür değişiklikleri test etmeyi ve tespit etmeyi zorlaştırabilir ve aslında bir modelin uyuyan bir ajan haline gelmesine sebep olabilir.
+Ayrıca, paylaşılan depolar (repository) veya açık kaynak platformlar aracılığıyla dağıtılan modeller, veri zehirlemenin ötesinde riskler taşıyabilir; örneğin, zararlı pickling teknikleriyle gömülmüş kötü amaçlı yazılım, model yüklendiğinde zararlı kod çalıştırabilir. Bunun yanı sıra, zehirleme yoluyla bir arka kapı yerleştirilmesi mümkün olabilir. Bu tür arka kapılar, belirli bir tetikleyiciye kadar modelin davranışını değiştirmeyebilir. Bu da bu değişiklikleri test etmeyi ve tespit etmeyi zorlaştırarak modelin bir “uyuyan ajan” haline gelmesine olanak tanıyabilir.
 
 ### Yaygın Güvenlik Açığı Örnekleri
 
@@ -70,7 +70,7 @@ Ayrıca, paylaşılan depolar veya açık kaynak platformlar aracılığıyla da
 
 ### İlgili Çerçeveler ve Taksonomiler
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Altyapı dağıtımı, uygulanan ortam kontrolleri ve diğer en iyi uygulamalarla ilgili kapsamlı bilgi, senaryo stratejileri için bu bölüme başvurun.
 
 - [AML.T0018 | Backdoor ML Model](https://atlas.mitre.org/techniques/AML.T0018) **MITRE ATLAS**
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework): Strategies for ensuring AI integrity. **NIST**
