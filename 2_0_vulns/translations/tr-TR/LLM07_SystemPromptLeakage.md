@@ -43,7 +43,7 @@ Sistem istemlerine hiçbir hassas bilgi (API anahtarları, kimlik bilgileri, ver
 
 #### 2. Davranışın Sıkı Kontrolü İçin Sistem İstemlerine Güvenmeyin
 
-BDM'ler, sistem istemini değiştirebilen istem enjeksiyonları gibi başka saldırılara karşı açık olduğundan mümkünse model davranışını kontrol etmek için sistem istemleri yerine, bu davranışı sağlamak için BDM dışındaki sistemlere güvenin. Örneğin, zararlı içeriği tespit edip engellemek gibi işlemler, LLM dışında yürütülmelidir.
+BDM'ler, sistem istemini değiştirebilen istem enjeksiyonları gibi başka saldırılara karşı açık olduğundan mümkünse model davranışını kontrol etmek için sistem istemleri yerine, bu davranışı sağlamak için BDM dışındaki sistemlere güvenin. Örneğin, zararlı içeriği tespit edip engellemek gibi işlemler, BDM dışında yürütülmelidir.
 
 #### 3. Korkuluk (Guardrails) Uygulayın
 
@@ -75,30 +75,3 @@ Ayrıcalık ayrımı, yetkilendirme sınır kontrolleri gibi kritik kontroller n
 Altyapı dağıtımı, uygulanan ortam kontrolleri ve diğer en iyi uygulamalarla ilgili senaryo stratejileri hakkında kapsamlı bilgi için bu bölüme bakın.
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
-
-
-
-
-
-
-
-
-
-
-
-
-
-| Türkçe                                                            | İngilizce                            |
-| ----------------------------------------------------------------- | ------------------------------------ |
-| **Büyük Dil Modeli (BDM)**                                        | *Large Language Model (LLM)*         |
-| **Sistem İstemi**                                                 | *System Prompt*                      |
-| **İstem Enjeksiyonu**                                             | *Prompt Injection*                   |
-| **Korkuluk**                                                      | *Guardrail*                          |
-| **Hassas İşlevselliğin Açığa Çıkması**                            | *Sensitive Functionality Disclosure* |
-| **İç Kuralların Açığa Çıkması**                                   | *Internal Rules Disclosure*          |
-| **Filtreleme Kriterlerinin Açığa Çıkarılması**                    | *Filter Criteria Exposure*           |
-| **İzinlerin ve Kullanıcı Rollerinin İfşası**                      | *Permission & Role Exposure*         |
-| **Kısıt Atlatma (Risk)** (metinde “…korkuluklarının atlatılması”) | *Bypassing Restrictions*             |
-| **Ayrıcalık Yükseltme**                                           | *Privilege Escalation*               |
-| **Uzak Kod Yürütme**                                              | *Remote Code Execution (RCE)*        |
-

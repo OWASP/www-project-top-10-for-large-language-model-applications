@@ -2,90 +2,53 @@
 
 ### Açıklama
 
-Büyük Dil Modeli tedarik zincirleri, eğitim verilerinin, modellerin ve dağıtım platformlarının 
-bütünlüğünü etkileyen çeşitli güvenlik açıklarına karşı hassastır. Bu riskler taraflı çıktılara, 
-güvenlik açıklarına ve sistem arızalarına sebep olabilir. Geleneksel yazılım güvenlik açıkları, 
-kod kusurları ve bağımlılıklara odaklanırken, Makine Öğrenmesi'nde (MÖ) önceden eğitilmiş 
-üçüncü parti yazılımlara ve verilere kadar uzanır.
+Büyük Dil Modeli tedarik zincirleri, eğitim verilerinin, modellerin ve dağıtım platformlarının  bütünlüğünü etkileyen çeşitli güvenlik açıklarına karşı hassastır. Bu riskler taraflı çıktılara,  güvenlik açıklarına ve sistem arızalarına sebep olabilir. Geleneksel yazılım güvenlik açıkları,  kod kusurları ve bağımlılıklara odaklanırken, Makine Öğrenmesi'nde (MÖ) önceden eğitilmiş üçüncü parti yazılımlara ve verilere kadar uzanır.
 
 Bu dış unsurlar kurcalama ve zehirleme atakları aracılığıyla manipüle edilebilir.
 
-BDM'leri oluşturma sıklıkla üçüncü parti modellere bağlı olan özel bir görevdir.
-Açık erişim BDM'lerin artışıyla LoRA (Low-Rank Adaptation) ve "PEFT" (Parameter-Efficient Fine-Tuning),
-gibi yöntemler ve Hugging Face gibi platformlar yeni tedarik zinciri riskleri beraberinde 
-getirmektedir. Son olarak, cihazlarda çalışan BDM'lerin ortaya çıkması atak yüzeyini ve 
-tedarik zinciri risklerini arttırmaktadır.
-
+BDM'leri oluşturma sıklıkla üçüncü parti modellere bağlı olan özel bir görevdir. Açık erişim BDM'lerin artışıyla LoRA (Low-Rank Adaptation) ve "PEFT" (Parameter-Efficient Fine-Tuning), gibi yöntemler ve Hugging Face gibi platformlar yeni tedarik zinciri riskleri beraberinde getirmektedir. Son olarak, cihazlarda çalışan BDM'lerin ortaya çıkması atak yüzeyini ve tedarik zinciri risklerini arttırmaktadır.
 
 Burada konuşulan tartışılan risklerden bazıları aynı zamanda "LLM04 Data and Model Poisoning."'de tartışılmıştır.
-Bu girdi risklerin tedarik zinciri tarafına odaklanmaktadır.
-Basit bir tehdit modeli burada bulunabilir. [here](https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-LLM%20Supply%20Chain.png).
+Bu girdi risklerin tedarik zinciri tarafına odaklanmaktadır. Basit bir tehdit modeli burada bulunabilir. [here](https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-LLM%20Supply%20Chain.png).
 
 ### Yaygın Risk Örnekleri
 
 #### 1. Geleneksel üçüncü parti paketleri
 
-  Saldırganların BDM uygulamalarını ele geçirmek için kullandıkları 
-  eski ve kullanım dışı kalmış bileşenler. Bu, model geliştirme 
-  ve ince ayar yaparken bileşenler kullanıldığında artan riskler 
-  "A06:2021 – Vulnerable and Outdated Components"  ile benzerdir.
-  (Ref. link: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
+  Saldırganların BDM uygulamalarını ele geçirmek için kullandıkları eski ve kullanım dışı kalmış bileşenler. Bu, model geliştirme ve ince ayar yaparken bileşenler kullanıldığında artan riskler "A06:2021 – Vulnerable and Outdated Components"  ile benzerdir. (Ref. link: [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/))
 
 #### 2. Lisanslama riskleri
 
-  YZ geliştirme çeşitli yazılım ve veri kümesi lisanlarını içerir ve 
-  uygun şekilde yönetilmezse riskler oluşturur. Farklı açık kaynak ve 
-  tescilli lisanlar farklı yasal gereklilikler getirmektedir. Veri kümesi 
-  lisansları kullanım, dağıtım veya ticarileştirmeyi kısıtlayabilir.
+  YZ geliştirme çeşitli yazılım ve veri kümesi lisanlarını içerir ve uygun şekilde yönetilmezse riskler oluşturur. Farklı açık kaynak ve tescilli lisanlar farklı yasal gereklilikler getirmektedir. Veri kümesi lisansları kullanım, dağıtım veya ticarileştirmeyi kısıtlayabilir.
 
 #### 3. Eski ve Kullanım Dışı Modeller
 
-  Artık bakımı yapılmayan eski ve kullanım dışı kalmış modelleri kullanmak
-  güvenlik açıklarına yol açar.
+  Artık bakımı yapılmayan eski ve kullanım dışı kalmış modelleri kullanmak güvenlik açıklarına yol açar.
   
 #### 4. Savunmasız Önceden Eğitilmiş Modeller
 
-  Modeller ikili kara kutulardır ve açık kaynağın aksine statik denetleme güvenlik 
-  açısından çok az güvence sağlayabilir. Güvenlik açıklarına sahip  önceden eğiilmiş 
-  modeller gizli önyargılar, arka kapılar ve model depolarının güvenlik değerlendirmeleri tarafından 
-  tespit edilemeyen kötü amaçlı özellikler içerebilirler. Savumasız modeller hem zehirli veri kümeleriyle veya 
-  hem de ROME (diğer adıyla “lobotomizasyon”) gibi tekniklerle doğrudan manipülasyonla oluşturulabilirler. 
+  Modeller ikili kara kutulardır ve açık kaynağın aksine statik denetleme güvenlik açısından çok az güvence sağlayabilir. Güvenlik açıklarına sahip  önceden eğiilmiş modeller gizli önyargılar, arka kapılar ve model depolarının güvenlik değerlendirmeleri tarafından tespit edilemeyen kötü amaçlı özellikler içerebilirler. Savumasız modeller hem zehirli veri kümeleriyle veya hem de ROME (diğer adıyla “lobotomizasyon”) gibi tekniklerle doğrudan manipülasyonla oluşturulabilirler.
 
 #### 5. Zayıf Model Kaynağı
 
-  Şu anda yayınlanmış modellerde kaynak güvencesi bulunmamaktadır. Model kartları ve 
-  ilgili dokümantasyon model bilgisi sağlar ve kullanıcıya güven verir fakat 
-  modelin kaynağı hakkında konusunda hiçbir garanti vermezler. Bir saldırgan 
-  bir tedarikçi deposundaki tedarikçi hesabını ele geçirebilir veya benzer bir hesap 
-  oluşturabilir ve sosyal mühendislik teknikleriyle birleştirerek BDM uygulamasının 
-  tedarik zincirini ele geçirebilir.
+  Şu anda yayınlanmış modellerde kaynak güvencesi bulunmamaktadır. Model kartları ve ilgili dokümantasyon model bilgisi sağlar ve kullanıcıya güven verir fakat modelin kaynağı hakkında konusunda hiçbir garanti vermezler. Bir saldırgan bir tedarikçi deposundaki tedarikçi hesabını ele geçirebilir veya benzer bir hesap oluşturabilir ve sosyal mühendislik teknikleriyle birleştirerek BDM uygulamasının tedarik zincirini ele geçirebilir.
 
 #### 6. Savunmasız LoRA adaptörleri
 
-  LoRa, ön eğitimli katmanları mevcut BDM'ye entegre etmeyi sağlayarak birimselliği arttıran
-  popüler bir ince ayar tekniğidir. Bu metod verimliliği arttırır fakat yeni riskler oluşturur. 
+  LoRa, ön eğitimli katmanları mevcut BDM'ye entegre etmeyi sağlayarak birimselliği arttıran popüler bir ince ayar tekniğidir. Bu metod verimliliği arttırır fakat yeni riskler oluşturur.
   
 
 #### 7. İş Birlikçi Geliştirme Süreçlerini Sömürmek
 
-  İş birliğine dayalı model birleştirme ve model işleme hizmetleri (örneğin, dönüştürme) paylaşımlı ortamlarda barındırıldığında,
-  paylaşımlı modellere zafiyetler eklemek amacıyla kötüye kullanılabilir. Model birleştirme, Hugging Face platformunda 
-  oldukça popülerdir ve model birleştirmeyle oluşturulmuş modeller, OpenLLM liderlik tablosunda üst sıralarda yer almaktadır.
-  Bu durum, inceleme süreçlerini atlatmak için sömürülebilir. Benzer şekilde, sohbet botu gibi hizmetlerin de manipülasyona
-  açık olduğu ve modellere kötü amaçlı kod yerleştirilebildiği kanıtlanmıştır.
-
+  İş birliğine dayalı model birleştirme ve model işleme hizmetleri (örneğin, dönüştürme) paylaşımlı ortamlarda barındırıldığında, paylaşımlı modellere zafiyetler eklemek amacıyla kötüye kullanılabilir. Model birleştirme, Hugging Face platformunda oldukça popülerdir ve model birleştirmeyle oluşturulmuş modeller, OpenLLM liderlik tablosunda üst sıralarda yer almaktadır. Bu durum, inceleme süreçlerini atlatmak için sömürülebilir. Benzer şekilde, sohbet botu gibi hizmetlerin de manipülasyona açık olduğu ve modellere kötü amaçlı kod yerleştirilebildiği kanıtlanmıştır.
 
 #### 8. Cihaz Üzerinde Çalışan Büyük Dil Modellerinde Tedarik Zinciri Zafiyetleri
   
-  Cihaz üzerinde çalışan büyük dil modelleri, tedarik zinciri yüzeyini arttırır. Bu, üretim süreçlerinin istimasrıyla ve
-  cihazın işletim sisteminin ya da çerçeve açıklarının kullanılmasıyla modellerin ele geçirilmesi ele geçirilmesine neden olabilir.
-
+  Cihaz üzerinde çalışan büyük dil modelleri, tedarik zinciri yüzeyini arttırır. Bu, üretim süreçlerinin istimasrıyla ve cihazın işletim sisteminin ya da çerçeve açıklarının kullanılmasıyla modellerin ele geçirilmesi ele geçirilmesine neden olabilir.
 
 #### 9. Belirsiz Kullanım Şartları ve Veri Gizliliği Politikaları
 
-  Model sağlayıcılarının belirsiz kullanım şartları ve veri gizliliği politikaları, uygulamaların hassas verilerinin 
-  model eğitiminde kullanılmasına ve hassas bilgilerin açığa çıkmasına sebep olur. Bu, aynı zamanda model sağlayıcılarının
-  telif haklarıyla korunmuş materyallerin (malzeme ya da gereç) kullanılmasından kaynaklı riskler için de geçerlidir.
+  Model sağlayıcılarının belirsiz kullanım şartları ve veri gizliliği politikaları, uygulamaların hassas verilerinin model eğitiminde kullanılmasına ve hassas bilgilerin açığa çıkmasına sebep olur. Bu, aynı zamanda model sağlayıcılarının telif haklarıyla korunmuş materyallerin (malzeme ya da gereç) kullanılmasından kaynaklı riskler için de geçerlidir.
 
 
 ### Önleme ve Azaltma Stratejileri
@@ -107,68 +70,44 @@ Basit bir tehdit modeli burada bulunabilir. [here](https://github.com/jsotiro/Th
 
 #### Senaryo #1: Savunmasız Python Kütüphanesi
 
-  Bir saldırgan, BDM uygulamasını ele geçirmek için savunmasız bir Python kütüphanesini sömürür. 
-  Bu, ilk defa Open AI veri ihlalinde gerçekleşti.
-  Pypi paket kayıt kütüğüne yapılan saldırılar, model geliştiricilerinin kötücül yazılımla
-  ele geçirilmiş bir python paketinin geliştirme ortamına indirilmesi için kandırdı.
-  Bu tarz atakların daha karmaşık bir örneği, bir çok sağlayıcının da kullandığı Ray AI çerçevesinde 
-  gerçekleşen Shadow Ray atağı. Bu saldırıda, bir çok sunucuyu etkileyen beş güvenlik açığından 
-  yararlanıldığı düşünülmektedir.
+  Bir saldırgan, BDM uygulamasını ele geçirmek için savunmasız bir Python kütüphanesini sömürür. Bu, ilk defa OpenAI veri ihlalinde gerçekleşti. Pypi paket kayıt kütüğüne yapılan saldırılar, model geliştiricilerinin kötücül yazılımla ele geçirilmiş bir python paketinin geliştirme ortamına indirilmesi için kandırdı. Bu tarz atakların daha karmaşık bir örneği, bir çok sağlayıcının da kullandığı Ray AI çerçevesinde gerçekleşen Shadow Ray atağı. Bu saldırıda, bir çok sunucuyu etkileyen beş güvenlik açığından yararlanıldığı düşünülmektedir.
 
 #### Senaryo #2: Doğrudan Kurcalama
 
-  Doğrudan kurcalama ve yanlış bilginin yayılması için model yayınlama. Bu, PoisonGPT 
-  doğrudan model parametrelerinin değiştirerek Hugging Face güvenlik güvenlik özelliklerini aştığı 
-  gerçek bir saldırıdır.
+  Doğrudan kurcalama ve yanlış bilginin yayılması için model yayınlama. Bu, PoisonGPT doğrudan model parametrelerinin değiştirerek Hugging Face güvenlik güvenlik özelliklerini aştığı gerçek bir saldırıdır.
 
 #### Senaryo #3: Popüler modelin ince ayarı
 
-  Bir saldıran, popüler bir açık erişim modelini, anahtar güvenlik özelliklerini çıkartmak ve özel bir alanda yüksek performans 
-  göstermesi için ince ayar yapar (sigorta). Model bazı güvelik kıyaslamalarında yüksek puan almak için ince ayarlanır fakat 
-  hedeflenmiş tetikleyicileri vardır. Modeli, kurbanların kıyasmalama güvencelerine olan güvenlerini kullanarak Hugging Face'e yüklenir.
+  Bir saldıran, popüler bir açık erişim modelini, anahtar güvenlik özelliklerini çıkartmak ve özel bir alanda yüksek performans göstermesi için ince ayar yapar (sigorta). Model bazı güvelik kıyaslamalarında yüksek puan almak için ince ayarlanır fakat hedeflenmiş tetikleyicileri vardır. Modeli, kurbanların kıyasmalama güvencelerine olan güvenlerini kullanarak Hugging Face'e yüklenir.
 
 #### Senaryo #4: Ön Eğitimli Modeller
 
-  Bir BDM sistemi çokca kullanılan bir havuzdan ön eğitimli modeli doğrulama olmadan dağıtımını yapar. Ele geçirilmiş model
-  bazı bağlamlarda önyargılı çıktılara neden olan ve zararlı veya manipüle edilmiş çıktılar sunan zararlı bir kod üretir. 
+  Bir BDM sistemi çokca kullanılan bir havuzdan ön eğitimli modeli doğrulama olmadan dağıtımını yapar. Ele geçirilmiş model bazı bağlamlarda önyargılı çıktılara neden olan ve zararlı veya manipüle edilmiş çıktılar sunan zararlı bir kod üretir. 
 
 #### Senaryo #5: Compromised Third-Party Supplier
 
-  Güvenliği ihlal edilmiş üçünü parti tedarikçi, Hugging Face birleştirme yoluyla BDM'ye, zararlı güvenlik açığı bulunan bir LoRA
-  adaptörü sağlar.
+  Güvenliği ihlal edilmiş üçünü parti tedarikçi, Hugging Face birleştirme yoluyla BDM'ye, zararlı güvenlik açığı bulunan bir LoRA adaptörü sağlar.
 
 #### Senaryo #6: Supplier Infiltration
 
-  Bir saldırgan, üçüncü parti bir tedarikçiye sızar ve vLLM veya OpenLLM gibi çerçeveler aracılığıyla cihaz üzerinde 
-  dağıtılan bir BDM modelinin entegre edilmesi planlanan LoRA (Low-Rank Adaptation) adaptörü üretimini ele geçirir. 
-  Ele geçirilmiş LoRA adaptörü, gizli güvenlik açıkları ve zararlı kod içerecek şekilde ince biçimde değiştirilir.
-  Bu adaptör BDM'yle birleştirildiğinde, saldırgana gizli bir giriş noktası sağlar. Zararlı kod, model işlemleri 
-  sırasında aktif hale gelebilir ve saldırganın BDM'nin çıktılarını manipüle etmesini sağlar.
+  Bir saldırgan, üçüncü parti bir tedarikçiye sızar ve vLLM veya OpenLLM gibi çerçeveler aracılığıyla cihaz üzerinde dağıtılan bir BDM modelinin entegre edilmesi planlanan LoRA (Low-Rank Adaptation) adaptörü üretimini ele geçirir. Ele geçirilmiş LoRA adaptörü, gizli güvenlik açıkları ve zararlı kod içerecek şekilde ince biçimde değiştirilir. Bu adaptör BDM'yle birleştirildiğinde, saldırgana gizli bir giriş noktası sağlar. Zararlı kod, model işlemleri sırasında aktif hale gelebilir ve saldırganın BDM'nin çıktılarını manipüle etmesini sağlar.
   
 
 #### Senaryo #7: CloudBorne ve CloudJacking Atakları
 
-  Bu saldırılar, paylaşımlı kaynakları ve sanallaştırma katmanlarındaki açıkları kullanarak bulut 
-  mimarilerini hedefler. CloudBorne paylaşımlı bulut ortamlarında, donanım yazılım açıklarını kullanmayı içerir ve
-  sanal örnekleri barındıran fiziksel sunucuları ele geçirilmesine yol açabilir. CloudJacking, 
-  bulut örneklerinin kötü niyetli kullanımını ve kötü bir şekilde kontorl edilmesini ifade eder ve kritik 
-  BDM dağıtım platformlarına yetkisiz erişime sebep olabilir.
+  Bu saldırılar, paylaşımlı kaynakları ve sanallaştırma katmanlarındaki açıkları kullanarak bulut mimarilerini hedefler. CloudBorne paylaşımlı bulut ortamlarında, donanım yazılım açıklarını kullanmayı içerir ve sanal örnekleri barındıran fiziksel sunucuları ele geçirilmesine yol açabilir. CloudJacking, bulut örneklerinin kötü niyetli kullanımını ve kötü bir şekilde kontorl edilmesini ifade eder ve kritik BDM dağıtım platformlarına yetkisiz erişime sebep olabilir.
 
 #### Senaryo #8: LeftOvers (CVE-2023-4969)
 
-  LeftOvers sızdırılmış GPU yerel belleğini hassas veriyi geri kazanmayı hedefleyen bir saldırı türüdür. Bir saldırgan,
-  Bir saldırgan, bu saldırıyı üretim sunucuları, geliştirme iş istasyonları veya dizüstü bilgisayarlardan
-  hassas verileri dışarı sızdırmak için kullanabilir.
+  LeftOvers sızdırılmış GPU yerel belleğini hassas veriyi geri kazanmayı hedefleyen bir saldırı türüdür. Bir saldırgan, Bir saldırgan, bu saldırıyı üretim sunucuları, geliştirme iş istasyonları veya dizüstü bilgisayarlardan hassas verileri dışarı sızdırmak için kullanabilir.
 
 #### Senaryo #9: WizardLM
   
-  WizardLM'in kaldırılmasının ardından, bir saldırgan modele olan ilgiden faydalanarak, modelin kötü amaçlı yazılım içeren ve 
-  arka kapı içeren aynı isimde sahte bir versiyon yayınlar.
+  WizardLM'in kaldırılmasının ardından, bir saldırgan modele olan ilgiden faydalanarak, modelin kötü amaçlı yazılım içeren ve arka kapı içeren aynı isimde sahte bir versiyon yayınlar.
 
 #### Senaryo #10: Model Merge/Format Conversion Service
   
-  Bir saldırgan, açık erişim modelini ele geçirmek için model birleştirme ve format dönüştürme
-  yöntemlerini kullanarak bir saldırı düzenler ve kötü amaçlı kod yerleştirir. Bu, HiddenLayer tarafından yayınlanan gerçek bir saldırıdır.
+  Bir saldırgan, açık erişim modelini ele geçirmek için model birleştirme ve format dönüştürme yöntemlerini kullanarak bir saldırı düzenler ve kötü amaçlı kod yerleştirir. Bu, HiddenLayer tarafından yayınlanan gerçek bir saldırıdır.
 
 #### Senaryo #11: Reverse-Engineer Mobile App
 
@@ -176,8 +115,7 @@ Basit bir tehdit modeli burada bulunabilir. [here](https://github.com/jsotiro/Th
 
 #### Senaryo #12: Veriseti Zehirlenmesi
 
-  Bir saldırgan ince ayar yapılırken arka kapı oluşturmak için herkese açık veri kümelerini zehirler. Bu arka kapı, farklı pazarlardaki
-  bazı şirketleri gizlice kayırır.
+  Bir saldırgan ince ayar yapılırken arka kapı oluşturmak için herkese açık veri kümelerini zehirler. Bu arka kapı, farklı pazarlardaki bazı şirketleri gizlice kayırır.
 
 #### Senaryo #13: Kullanım Şartları ve Gizlilik Politikaları
 
@@ -196,9 +134,8 @@ Basit bir tehdit modeli burada bulunabilir. [here](https://github.com/jsotiro/Th
 9. [Thousands of servers hacked due to insecurely deployed Ray AI framework](https://www.csoonline.com/article/2075540/thousands-of-servers-hacked-due-to-insecurely-deployed-ray-ai-framework.html)
 10. [LeftoverLocals: Listening to LLM responses through leaked GPU local memory](https://blog.trailofbits.com/2024/01/16/leftoverlocals-listening-to-llm-responses-through-leaked-gpu-local-memory/)
 
-### İlgili Çerçeveler ve Sınıflandırmalar
+### İlgili Çerçeveler ve Taksonomiler
 
-  Altyapı dağıtımı, uygulamalı ortam kontrolleri, ve diğer en iyi uygulama pratikleri ile alakalı
-  kapsamlı bilgiler, senaryolar ve stratejiler için bu bölüme başvurun.
+Altyapı dağıtımı, uygulanan ortam kontrolleri ve diğer en iyi uygulamalarla ilgili kapsamlı bilgi, senaryo stratejileri için bu bölüme başvurun.
 
 - [ML Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010) -  **MITRE ATLAS**

@@ -1,10 +1,10 @@
 ## LLM10:2025 Sınırsız Tüketim
 
-### Description
+### Açıklama
 
-Sınırsız Tüketim, Büyük Dil Modellerinin (BDM) girdilere dayalı olarak çıktılar üretme sürecini ifade eder. Çıkarım (inference), LLM’lerin öğrenilmiş kalıpları ve bilgileri kullanarak ilgili yanıtlar ya da tahminler üretmesini içeren kritik bir işlevdir.
+Sınırsız Tüketim, BDM'lerin girdilere dayalı olarak çıktılar üretme sürecini ifade eder. Çıkarım (inference), BDM’lerin öğrenilmiş kalıpları ve bilgileri kullanarak ilgili yanıtlar ya da tahminler üretmesini içeren kritik bir işlevdir.
 
-Servis kesintisi yaratmak, hedefin finansal kaynaklarını tüketmek ya da bir modelin davranışını klonlayarak fikri mülkiyeti çalmak gibi saldırılar, genellikle ortak bir güvenlik açığı sınıfına dayanır. Sınırsız Tüketim, LLM tabanlı uygulamaların kullanıcılara kontrolsüz ve sınırsız sayıda çıkarsama (inference) yapma imkânı vermesiyle ortaya çıkar ve şu risklere yol açabilir: hizmet reddi saldırısı (DoS), ekonomik kayıplar, modelin çalınması ve hizmet kalitesinin düşmesi. Özellikle bulut ortamlarında LLM'lerin yüksek hesaplama gereksinimleri, onları kaynak sömürüsüne ve yetkisiz kullanıma karşı savunmasız hale getirir.
+Servis kesintisi yaratmak, hedefin finansal kaynaklarını tüketmek ya da bir modelin davranışını klonlayarak fikri mülkiyeti çalmak gibi saldırılar, genellikle ortak bir güvenlik açığı sınıfına dayanır. Sınırsız Tüketim, BDM tabanlı uygulamaların kullanıcılara kontrolsüz ve sınırsız sayıda çıkarsama (inference) yapma imkânı vermesiyle ortaya çıkar ve şu risklere yol açabilir: hizmet reddi saldırısı (DoS), ekonomik kayıplar, modelin çalınması ve hizmet kalitesinin düşmesi. Özellikle bulut ortamlarında BDM'lerin yüksek hesaplama gereksinimleri, onları kaynak sömürüsüne ve yetkisiz kullanıma karşı savunmasız hale getirir.
 
 ### Yaygın Güvenlik Açığı Örnekleri
 
@@ -15,7 +15,7 @@ Servis kesintisi yaratmak, hedefin finansal kaynaklarını tüketmek ya da bir m
 
 #### 2. Cüzdan Reddi Saldırıları (DoW – Denial of Wallet)
 
-  Saldırganlar, bulut tabanlı AI hizmetlerinin kullanım başına ödeme modelini sömürerek aşırı sayıda işlem başlatır. Bu da hizmet sağlayıcıya ağır finansal yük getirerek iflasa neden olabilir.
+  Saldırganlar, bulut tabanlı YZ hizmetlerinin kullanım başına ödeme modelini sömürerek aşırı sayıda işlem başlatır. Bu da hizmet sağlayıcıya ağır finansal yük getirerek iflasa neden olabilir.
 
 #### 3. Sürekli Girdi Taşması
 
@@ -35,9 +35,9 @@ Servis kesintisi yaratmak, hedefin finansal kaynaklarını tüketmek ya da bir m
 
 #### 7. Yan Kanal Saldırıları (Side-Channel Attacks)
 
-  Saldırganlar, LLM’lerin girdi filtreleme davranışlarını istismar ederek modelin ağırlıkları veya mimarisi hakkında bilgi elde edebilir. Bu durum, model güvenliğini daha da tehlikeye atar.
+  Saldırganlar, BDM’lerin girdi filtreleme davranışlarını istismar ederek modelin ağırlıkları veya mimarisi hakkında bilgi elde edebilir. Bu durum, model güvenliğini daha da tehlikeye atar.
 
-### Önleme ve Hafifletme Stratejileri
+### Önleme ve Azaltma Stratejileri
 
 #### 1. Girdi Doğrulama
 
@@ -141,7 +141,7 @@ Servis kesintisi yaratmak, hedefin finansal kaynaklarını tüketmek ya da bir m
 9. [Sponge Örnekleri: Sinir Ağlarına Yönelik Enerji-Gecikme Saldırıları | Arxiv Preprint'ı](https://arxiv.org/abs/2006.03463) **arXiv**
 10. [Sourcegraph Güvenlik Olayı: API Limitlerini Manipüle Etme ve Hizmet Engelleme (DoS) Saldırısı](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
 
-### İlgili Çatılar ve Sınıflandırmalar
+### İlgili Çerçeveler ve Sınıflandırmalar
 
 Aşağıdaki bağlantılar, altyapı dağıtımı, uygulama kontrolleri ve en iyi uygulamalara ilişkin kapsamlı bilgi, senaryo ve stratejiler sunar:
 
