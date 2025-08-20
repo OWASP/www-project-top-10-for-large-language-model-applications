@@ -101,7 +101,7 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 
 #### Scenario #9: WizardLM
 
-  Following the removal of WizardLM, an attacker exploits the interest in this model and publish a fake version of the model with the same name but containing malware and backdoors.
+  Following the removal of WizardLM, an attacker exploits the interest in this model and publishes a fake version of the model with the same name but containing malware and backdoors.
 
 #### Scenario #10: Model Merge/Format Conversion Service
 
@@ -109,7 +109,7 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 
 #### Scenario #11: Reverse-Engineer Mobile App
 
-  An attacker reverse-engineers an mobile app to replace the model with a tampered version that leads the user to scam sites. Users are encouraged to download the app directly via social engineering techniques. This is a "real attack on predictive AI" that affected 116 Google Play apps including popular security and safety-critical applications used for as cash recognition, parental control, face authentication, and financial service.
+  An attacker reverse-engineers an mobile app to replace the model with a tampered version that leads the user to scam sites. Users are encouraged to download the app directly via social engineering techniques. This is a "real attack on predictive AI" that affected 116 Google Play apps including popular security and safety-critical applications used for cash recognition, parental control, face authentication, and financial service.
   (Ref. link: [real attack on predictive AI](https://arxiv.org/abs/2006.08131))
 
 #### Scenario #12: Dataset Poisoning
