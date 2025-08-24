@@ -38,7 +38,7 @@ Sistem istemi içinde modelin rolü, yetenekleri ve sınırları hakkında spesi
 
 #### 2. Beklenen çıktı formatlarını tanımlama ve doğrulama
 
-  Net çıktı formatları belirleyin, detaylı gerekçe ve kaynak alıntıları talep edin, ve bu formatlara uygunluğu doğrulamak için deterministik kod kullanın.
+  Net çıktı formatları belirleyin, detaylı gerekçe ve kaynak alıntıları talep edin ve bu formatlara uygunluğu doğrulamak için deterministik kod kullanın.
 
 #### 3. Girdi ve çıktı filtreleme uygulama
 

@@ -65,11 +65,11 @@ Servis kesintisi yaratmak, hedefin finansal kaynaklarını tüketmek ya da bir m
 
 - Bu, özellikle tüm yaygın senaryolar için önemlidir çünkü içeriden gelen riskleri ve tehditleri kapsar. Ayrıca, BDM uygulamasının veri ve kaynaklara ne ölçüde erişebileceğini belirleyerek, yan kanal saldırılarını azaltmak veya önlemek için kritik bir kontrol mekanizması görevi görür.
 
-#### 7. Kapsamlı Günlük Kaydı ,İzleme ve Anomali Tespiti
+#### 7. Kapsamlı Günlük Kaydı, İzleme ve Anomali Tespiti
 
   Kaynak kullanımını sürekli izleyin, olağandışı kullanım kalıplarını tespit etmek için günlükleme ve anomali tespiti mekanizmaları kurun.
 
-#### 8. Metin Damgalama (Waterwaking)
+#### 8. Metin Damgalama (Watermarking)
 
   BDM çıktılarının izinsiz kullanımını tespit etmek ve önlemek için metin damgalama (watermarking) çatılarını uygulayın.
 
@@ -128,7 +128,7 @@ Servis kesintisi yaratmak, hedefin finansal kaynaklarını tüketmek ya da bir m
   Saldırgan, BDM’in ön tanımlı filtrelerini ve başlangıç yönlendirmelerini atlatır ve yan kanal saldırısı gerçekleştirerek model bilgilerini uzaktan kontrol edilen bir kaynağa aktarır.
 
 
-### Reference Links
+### Referanslar
 
 1. [Proof Pudding (Deneyerek Anlamak) (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 2. [arXiv:2403.06634 Üretim Aşamasındaki Bir Dil Modelinin Bir Kısmının Çalınması](https://arxiv.org/abs/2403.06634) **arXiv**
@@ -149,7 +149,7 @@ Aşağıdaki bağlantılar, altyapı dağıtımı, uygulama kontrolleri ve en iy
 - [AML.TA0000 ML Model Erişimi: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 ML Yorumlama API’si Üzerinden Veri Dışarı Aktarımı ](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**
 - [AML.T0029 - ML Servis Engelleme](https://atlas.mitre.org/techniques/AML.T0029) **MITRE ATLAS**
 - [AML.T0034 - Maliyet Toplama (Cost Harvesting)](https://atlas.mitre.org/techniques/AML.T0034) **MITRE ATLAS**
-- [AML.T0025 - Siber Yöntemlerle Bilgi Sızdırmaa](https://atlas.mitre.org/techniques/AML.T0025) **MITRE ATLAS**
+- [AML.T0025 - Siber Yöntemlerle Bilgi Sızdırma](https://atlas.mitre.org/techniques/AML.T0025) **MITRE ATLAS**
 - [OWASP Makine Öğrenmesi Güvenliğinde En Çok Görülen 10 Risk – ML05:2023 Model Hırsızlığı](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML05_2023-Model_Theft.html) **OWASP ML Top 10**
 - [API4:2023 - Sınırsız Kaynak Tüketimi](https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/) **OWASP Web Uygulaması Top 10**
-- [OWASP Kaynak Yönetimi](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/) **OWASP Güvenli Kodlama Partikleri**
+- [OWASP Kaynak Yönetimi](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/) **OWASP Güvenli Kodlama Pratikleri**

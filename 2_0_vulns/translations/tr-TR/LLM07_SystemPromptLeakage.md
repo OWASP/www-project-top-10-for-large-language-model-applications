@@ -47,7 +47,7 @@ BDM'ler, sistem istemini değiştirebilen istem enjeksiyonları gibi başka sald
 
 #### 3. Korkuluk (Guardrails) Uygulayın
 
-BDM dışında çalışan bir korkuluk sistemi kurun. Bir modele belirli davranışları öğretmek, örneğin sistem istemini göstermemesi için onu eğitmek etkili olsa da, modelin her zaman bu davranışa her zaman uyacağı garanti edilemez. Model çıktısını denetleyerek beklentilere uyup uymadığını kontrol eden bağımsız bir sistem tercih edilmelidir.
+BDM dışında çalışan bir korkuluk sistemi kurun. Bir modele belirli davranışları öğretmek, örneğin sistem istemini göstermemesi için onu eğitmek etkili olsa da, modelin bu davranışa her zaman uyacağı garanti edilemez. Model çıktısını denetleyerek beklentilere uyup uymadığını kontrol eden bağımsız bir sistem tercih edilmelidir.
 
 #### 4. Güvenlik Kontrollerini BDM’den Bağımsız Yürütün
 
@@ -62,7 +62,8 @@ Ayrıcalık ayrımı, yetkilendirme sınır kontrolleri gibi kritik kontroller n
 #### Senaryo #2
 
     Bir BDM’de sistem istemi, saldırgan içeriği, dış bağlantıları ve kod yürütmeyi yasaklayan yönergeler içerir. Saldırgan bu sistem istemini elde eder ve ardından istem enjeksiyonu saldırısı kullanarak uzaktan kod yürütme saldırısını kolaylaştırır.
-### Referans Bağlantıları
+    
+### Referanslar
 
 1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
 2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): Prompt Security
