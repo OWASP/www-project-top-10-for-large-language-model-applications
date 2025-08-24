@@ -78,7 +78,7 @@ RAG, önceden eğitilmiş dil modellerini harici bilgi kaynaklarıyla birleştir
 
 RAG'ın temel modelin davranışı üzerindeki etkisi izlenmeli ve değerlendirilmeli, empati gibi istenen nitelikleri korumak için artırım sürecinde ayarlamalar yapılmalıdır (Ref #8).
 
-## Referans Bağlantıları
+## Referanslar
 
 1. [Augmenting a Large Language Model with Retrieval-Augmented Generation and Fine-tuning](https://learn.microsoft.com/en-us/azure/developer/ai/augment-llm-rag-fine-tuning)
 2. [Astute RAG: Overcoming Imperfect Retrieval Augmentation and Knowledge Conflicts for Large Language Models](https://arxiv.org/abs/2410.07176)

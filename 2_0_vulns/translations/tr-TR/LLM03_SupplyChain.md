@@ -2,14 +2,14 @@
 
 ### Açıklama
 
-Büyük Dil Modeli tedarik zincirleri, eğitim verilerinin, modellerin ve dağıtım platformlarının  bütünlüğünü etkileyen çeşitli güvenlik açıklarına karşı hassastır. Bu riskler taraflı çıktılara,  güvenlik açıklarına ve sistem arızalarına sebep olabilir. Geleneksel yazılım güvenlik açıkları,  kod kusurları ve bağımlılıklara odaklanırken, Makine Öğrenmesi'nde (MÖ) önceden eğitilmiş üçüncü parti yazılımlara ve verilere kadar uzanır.
+Büyük Dil Modeli tedarik zincirleri, eğitim verilerinin, modellerin ve dağıtım platformlarının bütünlüğünü etkileyen çeşitli güvenlik açıklarına karşı hassastır. Bu riskler taraflı çıktılara,  güvenlik açıklarına ve sistem arızalarına sebep olabilir. Geleneksel yazılım güvenlik açıkları,  kod kusurları ve bağımlılıklara odaklanırken, Makine Öğrenmesi'nde (MÖ) önceden eğitilmiş üçüncü parti yazılımlara ve verilere kadar uzanır.
 
 Bu dış unsurlar kurcalama ve zehirleme atakları aracılığıyla manipüle edilebilir.
 
-BDM'leri oluşturma sıklıkla üçüncü parti modellere bağlı olan özel bir görevdir. Açık erişim BDM'lerin artışıyla LoRA (Low-Rank Adaptation) ve "PEFT" (Parameter-Efficient Fine-Tuning), gibi yöntemler ve Hugging Face gibi platformlar yeni tedarik zinciri riskleri beraberinde getirmektedir. Son olarak, cihazlarda çalışan BDM'lerin ortaya çıkması atak yüzeyini ve tedarik zinciri risklerini arttırmaktadır.
+BDM'leri oluşturma sıklıkla üçüncü parti modellere bağlı olan özel bir görevdir. Açık erişim BDM'lerin artışıyla LoRA (Low-Rank Adaptation) ve "PEFT" (Parameter-Efficient Fine-Tuning) gibi yöntemler ve Hugging Face gibi platformlar yeni tedarik zinciri riskleri beraberinde getirmektedir. Son olarak, cihazlarda çalışan BDM'lerin ortaya çıkması atak yüzeyini ve tedarik zinciri risklerini artırmaktadır.
 
-Burada konuşulan tartışılan risklerden bazıları aynı zamanda "LLM04 Data and Model Poisoning."'de tartışılmıştır.
-Bu girdi risklerin tedarik zinciri tarafına odaklanmaktadır. Basit bir tehdit modeli burada bulunabilir. [here](https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-LLM%20Supply%20Chain.png).
+Burada tartışılan risklerden bazıları aynı zamanda "LLM04 Data and Model Poisoning" bölümünde de ele alınmıştır.
+Bu girdi risklerin tedarik zinciri tarafına odaklanmaktadır. Basit bir tehdit modeli burada bulunabilir. [burada](https://github.com/jsotiro/ThreatModels/blob/main/LLM%20Threats-LLM%20Supply%20Chain.png).
 
 ### Yaygın Risk Örnekleri
 
@@ -19,7 +19,7 @@ Bu girdi risklerin tedarik zinciri tarafına odaklanmaktadır. Basit bir tehdit 
 
 #### 2. Lisanslama riskleri
 
-  YZ geliştirme çeşitli yazılım ve veri kümesi lisanlarını içerir ve uygun şekilde yönetilmezse riskler oluşturur. Farklı açık kaynak ve tescilli lisanlar farklı yasal gereklilikler getirmektedir. Veri kümesi lisansları kullanım, dağıtım veya ticarileştirmeyi kısıtlayabilir.
+  YZ geliştirme çeşitli yazılım ve veri kümesi lisanslarını içerir ve uygun şekilde yönetilmezse riskler oluşturur. Farklı açık kaynak ve tescilli lisanslar farklı yasal gereklilikler getirmektedir. Veri kümesi lisansları kullanım, dağıtım veya ticarileştirmeyi kısıtlayabilir.
 
 #### 3. Eski ve Kullanım Dışı Modeller
 
@@ -27,15 +27,15 @@ Bu girdi risklerin tedarik zinciri tarafına odaklanmaktadır. Basit bir tehdit 
   
 #### 4. Savunmasız Önceden Eğitilmiş Modeller
 
-  Modeller ikili kara kutulardır ve açık kaynağın aksine statik denetleme güvenlik açısından çok az güvence sağlayabilir. Güvenlik açıklarına sahip  önceden eğiilmiş modeller gizli önyargılar, arka kapılar ve model depolarının güvenlik değerlendirmeleri tarafından tespit edilemeyen kötü amaçlı özellikler içerebilirler. Savumasız modeller hem zehirli veri kümeleriyle veya hem de ROME (diğer adıyla “lobotomizasyon”) gibi tekniklerle doğrudan manipülasyonla oluşturulabilirler.
+  Modeller ikili kara kutulardır ve açık kaynağın aksine statik denetleme güvenlik açısından çok az güvence sağlayabilir. Güvenlik açıklarına sahip  önceden eğitilmiş modeller gizli önyargılar, arka kapılar ve model depolarının güvenlik değerlendirmeleri tarafından tespit edilemeyen kötü amaçlı özellikler içerebilirler. Savunmasız modeller hem zehirli veri kümeleriyle hem de ROME (diğer adıyla “lobotomizasyon”) gibi tekniklerle doğrudan manipülasyonla oluşturulabilirler.
 
 #### 5. Zayıf Model Kaynağı
 
-  Şu anda yayınlanmış modellerde kaynak güvencesi bulunmamaktadır. Model kartları ve ilgili dokümantasyon model bilgisi sağlar ve kullanıcıya güven verir fakat modelin kaynağı hakkında konusunda hiçbir garanti vermezler. Bir saldırgan bir tedarikçi deposundaki tedarikçi hesabını ele geçirebilir veya benzer bir hesap oluşturabilir ve sosyal mühendislik teknikleriyle birleştirerek BDM uygulamasının tedarik zincirini ele geçirebilir.
+  Şu anda yayınlanmış modellerde kaynak güvencesi bulunmamaktadır. Model kartları ve ilgili dokümantasyon model bilgisi sağlar ve kullanıcıya güven verir fakat modelin kaynağı hakkında hiçbir garanti vermezler. Bir saldırgan bir tedarikçi deposundaki tedarikçi hesabını ele geçirebilir veya benzer bir hesap oluşturabilir ve sosyal mühendislik teknikleriyle birleştirerek BDM uygulamasının tedarik zincirini ele geçirebilir.
 
 #### 6. Savunmasız LoRA adaptörleri
 
-  LoRa, ön eğitimli katmanları mevcut BDM'ye entegre etmeyi sağlayarak birimselliği arttıran popüler bir ince ayar tekniğidir. Bu metod verimliliği arttırır fakat yeni riskler oluşturur.
+  LoRA, ön eğitimli katmanları mevcut BDM'ye entegre etmeyi sağlayarak birimselliği arttıran popüler bir ince ayar tekniğidir. Bu yöntem verimliliği artırır fakat yeni riskler oluşturur.
   
 
 #### 7. İş Birlikçi Geliştirme Süreçlerini Sömürmek
@@ -44,7 +44,7 @@ Bu girdi risklerin tedarik zinciri tarafına odaklanmaktadır. Basit bir tehdit 
 
 #### 8. Cihaz Üzerinde Çalışan Büyük Dil Modellerinde Tedarik Zinciri Zafiyetleri
   
-  Cihaz üzerinde çalışan büyük dil modelleri, tedarik zinciri yüzeyini arttırır. Bu, üretim süreçlerinin istimasrıyla ve cihazın işletim sisteminin ya da çerçeve açıklarının kullanılmasıyla modellerin ele geçirilmesi ele geçirilmesine neden olabilir.
+  Cihaz üzerinde çalışan büyük dil modelleri, tedarik zinciri yüzeyini arttırır. Bu, üretim süreçlerinin istismarıyla ve cihazın işletim sisteminin ya da çerçeve açıklarının kullanılmasıyla modellerin ele geçirilmesine neden olabilir.
 
 #### 9. Belirsiz Kullanım Şartları ve Veri Gizliliği Politikaları
 
@@ -62,7 +62,7 @@ Bu girdi risklerin tedarik zinciri tarafına odaklanmaktadır. Basit bir tehdit 
 6. Sadece doğrulanabilir kaynaklardan modeller kullanın ve güçlü veri kaynağı eksikliği için, imzalama ve dosya hash'leriyle üçüncü parti model bütünlük kontrollerini uygulayın. Benzer şekilde, dışarıdan sağlanan kodlar için de kod imzalama yapın.  
 7. Ortak model geliştirme ortamlarında herhangi bir kötüye kullanımı engellemek ve hızlıca tespit etmek için sıkı izleme ve denetim uygulamaları gerçekleştirin. "HuggingFace SF_Convertbot Scanner" kullanılabilecek otomatik betiklere bir örnektir.
   (Ref. link: [HuggingFace SF_Convertbot Scanner](https://gist.github.com/rossja/d84a93e5c6b8dd2d4a538aa010b29163))
-8. Sağlanan modellerde ve verilerde anomali tespiti ve çekişmeli gürbüzlük sağlamlık testleri yapmak  "LLM04 Data and Model Poisoning"te tartışıldığı gibi kurcalama ve zehirlenmeleri tespit edilmesine yardımcı olabilir. İdeal olarak, bu, MLOps ve BDM ardışık düzenlerinin bir parçasıdır olmalıdır ancak bunlar yeni çıkan yöntemler olduğundan kırmızı takım uygulamaları kapsamında uygulamak daha kolay olabilir.
+8. Sağlanan modellerde ve verilerde anomali tespiti ve çekişmeli gürbüzlük sağlamlık testleri yapmak  "LLM04 Data and Model Poisoning"te tartışıldığı gibi kurcalama ve zehirlenmelerin tespit edilmesine yardımcı olabilir. İdeal olarak, bu, MLOps ve BDM ardışık düzenlerinin bir parçasıdır olmalıdır ancak bunlar yeni çıkan yöntemler olduğundan kırmızı takım uygulamaları kapsamında uygulamak daha kolay olabilir.
 9. Güvenlik açığı bulunan ve güncel olmayan bileşenleri azaltmak için yama politikası uygulayın. Uygulamanın, bakımı yapılan API'ler ve modellerden oluştuğuna emin olun (tekrar kontrol et).  
 10. YZ uçlarında konuşlandırılan modellerini şifreleyin ve bütünlük kontrolleri uygulayın. Müdahale edilmiş uygulama ve modelleri önlemek için üretici doğrulama API'leri uygulamaları kullanın ve tanınmayan donanım yazılım uygulamalarını sonlandırın.
 
@@ -74,15 +74,15 @@ Bu girdi risklerin tedarik zinciri tarafına odaklanmaktadır. Basit bir tehdit 
 
 #### Senaryo #2: Doğrudan Kurcalama
 
-  Doğrudan kurcalama ve yanlış bilginin yayılması için model yayınlama. Bu, PoisonGPT doğrudan model parametrelerinin değiştirerek Hugging Face güvenlik güvenlik özelliklerini aştığı gerçek bir saldırıdır.
+  Doğrudan kurcalama ve yanlış bilginin yayılması için model yayınlama. Bu, PoisonGPT doğrudan model parametrelerinin değiştirerek Hugging Face güvenlik özelliklerini aştığı gerçek bir saldırıdır.
 
 #### Senaryo #3: Popüler modelin ince ayarı
 
-  Bir saldıran, popüler bir açık erişim modelini, anahtar güvenlik özelliklerini çıkartmak ve özel bir alanda yüksek performans göstermesi için ince ayar yapar (sigorta). Model bazı güvelik kıyaslamalarında yüksek puan almak için ince ayarlanır fakat hedeflenmiş tetikleyicileri vardır. Modeli, kurbanların kıyasmalama güvencelerine olan güvenlerini kullanarak Hugging Face'e yüklenir.
+  Bir saldıran, popüler bir açık erişim modelini, anahtar güvenlik özelliklerini çıkartmak ve özel bir alanda yüksek performans göstermesi için ince ayar yapar (sigorta). Model bazı güvenlik kıyaslamalarında yüksek puan almak için ince ayarlanır fakat hedeflenmiş tetikleyicileri vardır. Modeli, kurbanların kıyaslama güvencelerine olan güvenlerini kullanarak Hugging Face'e yüklenir.
 
 #### Senaryo #4: Ön Eğitimli Modeller
 
-  Bir BDM sistemi çokca kullanılan bir havuzdan ön eğitimli modeli doğrulama olmadan dağıtımını yapar. Ele geçirilmiş model bazı bağlamlarda önyargılı çıktılara neden olan ve zararlı veya manipüle edilmiş çıktılar sunan zararlı bir kod üretir. 
+  Bir BDM sistemi çokça kullanılan bir havuzdan ön eğitimli modeli doğrulama olmadan dağıtımını yapar. Ele geçirilmiş model bazı bağlamlarda önyargılı çıktılara neden olan ve zararlı veya manipüle edilmiş çıktılar sunan zararlı bir kod üretir. 
 
 #### Senaryo #5: Compromised Third-Party Supplier
 
@@ -95,11 +95,11 @@ Bu girdi risklerin tedarik zinciri tarafına odaklanmaktadır. Basit bir tehdit 
 
 #### Senaryo #7: CloudBorne ve CloudJacking Atakları
 
-  Bu saldırılar, paylaşımlı kaynakları ve sanallaştırma katmanlarındaki açıkları kullanarak bulut mimarilerini hedefler. CloudBorne paylaşımlı bulut ortamlarında, donanım yazılım açıklarını kullanmayı içerir ve sanal örnekleri barındıran fiziksel sunucuları ele geçirilmesine yol açabilir. CloudJacking, bulut örneklerinin kötü niyetli kullanımını ve kötü bir şekilde kontorl edilmesini ifade eder ve kritik BDM dağıtım platformlarına yetkisiz erişime sebep olabilir.
+  Bu saldırılar, paylaşımlı kaynakları ve sanallaştırma katmanlarındaki açıkları kullanarak bulut mimarilerini hedefler. CloudBorne paylaşımlı bulut ortamlarında, donanım yazılım açıklarını kullanmayı içerir ve sanal örnekleri barındıran fiziksel sunucuları ele geçirilmesine yol açabilir. CloudJacking, bulut örneklerinin kötü niyetli kullanımını ve kötü bir şekilde kontrol edilmesini ifade eder ve kritik BDM dağıtım platformlarına yetkisiz erişime sebep olabilir.
 
 #### Senaryo #8: LeftOvers (CVE-2023-4969)
 
-  LeftOvers sızdırılmış GPU yerel belleğini hassas veriyi geri kazanmayı hedefleyen bir saldırı türüdür. Bir saldırgan, Bir saldırgan, bu saldırıyı üretim sunucuları, geliştirme iş istasyonları veya dizüstü bilgisayarlardan hassas verileri dışarı sızdırmak için kullanabilir.
+  LeftOvers sızdırılmış GPU yerel belleğini hassas veriyi geri kazanmayı hedefleyen bir saldırı türüdür. Bir saldırgan, bu saldırıyı üretim sunucuları, geliştirme iş istasyonları veya dizüstü bilgisayarlardan hassas verileri dışarı sızdırmak için kullanabilir.
 
 #### Senaryo #9: WizardLM
   
@@ -111,7 +111,7 @@ Bu girdi risklerin tedarik zinciri tarafına odaklanmaktadır. Basit bir tehdit 
 
 #### Senaryo #11: Reverse-Engineer Mobile App
 
-  Bir saldırgan, mobil uygulamaya, mevcut modeli, kullanıcıyı dolandırıcılık sitesine yönlendiren, müdahale edilmiş bir modelle değiştirebilmek için tersine mühendislik uygular. Kullanıcılar sosyal mühendislik yöntemleri kullanarak uygulamanın indirilmesi teşvik edilir. Bu, gerçek bir kestirimsel YZ saldırısıdır. Bu saldırı, 116 Google Play uygulamasını etkilemiştir. Bu uygulamalar arasında nakit tanıma,ebeveyn kontrolü, yüz tanıma ve finansal hizmetler için kullanılan güvenlik açısından uygulamalar da yer almaktadır. (Ref. link: [real attack on predictive AI](https://arxiv.org/abs/2006.08131))
+  Bir saldırgan, mobil uygulamaya, mevcut modeli, kullanıcıyı dolandırıcılık sitesine yönlendiren, müdahale edilmiş bir modelle değiştirebilmek için tersine mühendislik uygular. Kullanıcılar sosyal mühendislik yöntemleri kullanarak uygulamanın indirilmesi teşvik edilir. Bu, gerçek bir kestirimsel YZ saldırısıdır. Bu saldırı, 116 Google Play uygulamasını etkilemiştir. Bu uygulamalar arasında nakit tanıma, ebeveyn kontrolü, yüz tanıma ve finansal hizmetler için kullanılan güvenlik açısından uygulamalar da yer almaktadır. (Ref. link: [real attack on predictive AI](https://arxiv.org/abs/2006.08131))
 
 #### Senaryo #12: Veriseti Zehirlenmesi
 
@@ -121,7 +121,7 @@ Bu girdi risklerin tedarik zinciri tarafına odaklanmaktadır. Basit bir tehdit 
 
   Bir BDM sağlayıcısı, kullanım şartlarını ve gizlilik politikasını değiştirir. Bu durum uygulama verisinin model eğitimi için açık bir şekilde vazgeçme şart koşar. Bu durum hassas verinin model tarafından ezberlenmesine yol açabilir. 
 
-### Referans Linkler
+### Referanslar
 
 1. [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news)
 2. [Large Language Models On-Device with MediaPipe and TensorFlow Lite](https://developers.googleblog.com/en/large-language-models-on-device-with-mediapipe-and-tensorflow-lite/)

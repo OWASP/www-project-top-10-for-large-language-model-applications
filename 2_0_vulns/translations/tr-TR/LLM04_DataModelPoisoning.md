@@ -4,9 +4,9 @@
 
 Veri zehirlenmesi, ön eğitim, ince ayar veya gömme verilerinin güvenlik açıkları, arka kapılar veya önyargılar oluşturmak için manipüle edilmesi durumunda meydana gelir. Bu manipülasyon, model güvenliğini, performansını veya etik davranışını tehlikeye atarak zararlı çıktılara veya bozulmuş yeteneklere yol açabilir. Yaygın riskler arasında düşürülmüş model performansı, önyargılı veya toksik içerik ve alt sistemlerin istismar edilmesi yer alır.
 
-Veri zehirlenmesi, BDM yaşam döngüsünün farklı aşamalarını hedef alabilir; bunlar arasında ön eğitim (genel verilerden öğrenme), ince ayar (modelleri belirli görevlere uyarlama), gömme (metni sayısal vektörlere dönüştürme) ve transfer öğrenme (önceden eğitilmiş bir modeli yeni bir görevde yeniden kullanma) yer alır. Bu aşamaları anlamak, güvenlik açıklarının nereden kaynaklanabileceğini belirlemeye yardımcı olur. Veri zehirlenmesi, eğitim verilerini manipüle etmek modelin doğru tahminler yapma yetisini etkilediği için bir bütünlük saldırısı olarak kabul edilir. Özellikle doğrulanmamış veya kötü niyetli içerik bulundurabilen harici veri kaynakları ile riskler yüksektir.
+Veri zehirlenmesi, BDM yaşam döngüsünün farklı aşamalarını hedef alabilir; bunlar arasında ön eğitim (genel verilerden öğrenme), ince ayar (modelleri belirli görevlere uyarlama), gömme (metni sayısal vektörlere dönüştürme) ve transfer öğrenme (önceden eğitilmiş bir modeli yeni bir görevde yeniden kullanma) yer alır. Bu aşamaları anlamak, güvenlik açıklarının nereden kaynaklanabileceğini belirlemeye yardımcı olur. Veri zehirlenmesi, eğitim verilerini manipüle ederek modelin doğru tahminler yapma yetisini etkilediği için bir bütünlük saldırısı olarak kabul edilir. Özellikle doğrulanmamış veya kötü niyetli içerik bulundurabilen harici veri kaynakları ile riskler yüksektir.
 
-Ayrıca, paylaşılan depolar (repository) veya açık kaynak platformlar aracılığıyla dağıtılan modeller, veri zehirlemenin ötesinde riskler taşıyabilir; örneğin, zararlı pickling teknikleriyle gömülmüş kötü amaçlı yazılım, model yüklendiğinde zararlı kod çalıştırabilir. Bunun yanı sıra, zehirleme yoluyla bir arka kapı yerleştirilmesi mümkün olabilir. Bu tür arka kapılar, belirli bir tetikleyiciye kadar modelin davranışını değiştirmeyebilir. Bu da bu değişiklikleri test etmeyi ve tespit etmeyi zorlaştırarak modelin bir “uyuyan ajan” haline gelmesine olanak tanıyabilir.
+Ayrıca, paylaşılan depolar (repository) veya açık kaynak platformlar aracılığıyla dağıtılan modeller, veri zehirlemenin ötesinde riskler taşıyabilir; örneğin, zararlı pickling teknikleriyle gömülmüş kötü amaçlı yazılım, model yüklendiğinde zararlı kod çalıştırabilir. Bunun yanı sıra, zehirleme yoluyla bir arka kapı yerleştirilmesi mümkün olabilir. Bu tür arka kapılar, belirli bir tetikleyiciye kadar modelin davranışını değiştirmeyebilir. Bu durum, değişikliklerin test edilmesini ve tespit edilmesini zorlaştırarak modelin bir “uyuyan ajan” haline gelmesine olanak tanıyabilir.
 
 ### Yaygın Güvenlik Açığı Örnekleri
 
@@ -27,7 +27,6 @@ Ayrıca, paylaşılan depolar (repository) veya açık kaynak platformlar aracı
 5. Modelin istenmeyen veri kaynaklarına erişimini önlemek için yeterli altyapı kontrollerini sağlayın.
 6. Veri kümelerindeki değişiklikleri takip etmek ve kötüye kullanmayı tespit etmek için veri sürüm kontrolü (DVC) kullanın. Sürümleme, model bütünlüğünü korumak için çok önemlidir. 
 7. Kullanıcı tarafından sağlanan bilgileri vektör veritabanında saklayın, bu da tüm modeli yeniden eğitmeden düzeltmeler yapılmasına olanak tanır.
- reduce risks of hallucinations.
 8. Veri sarsımlarının etkisini en aza indirmek için kırmızı takım kampanyaları ve birleşik öğrenme gibi düşmanca tekniklerle model sağlamlığını test edin.
 9. Eğitim kaybını izleyin ve zehirlenme belirtileri için model davranışını analiz edin. Aykırı çıktıları tespit etmek için eşik değerleri kullanın.
 10. Çıkarım sırasında, halüsinasyon risklerini azaltmak için geri almayla artırılmış üretim (RAG) ve temellendirme tekniklerini dahil edin.
@@ -36,7 +35,7 @@ Ayrıca, paylaşılan depolar (repository) veya açık kaynak platformlar aracı
 
 #### Senaryo #1
 
-  Bir saldırgan, eğitim verilerini değiştirerel veya istem yerleştirme tekniklerini kullanarak modelin çıktılarını önyargılı hale getirir ve yanlış bilgi yayar.
+  Bir saldırgan, eğitim verilerini değiştirerek veya istem yerleştirme tekniklerini kullanarak modelin çıktılarını önyargılı hale getirir ve yanlış bilgi yayar.
 
 #### Senaryo #2
 
@@ -52,9 +51,9 @@ Ayrıca, paylaşılan depolar (repository) veya açık kaynak platformlar aracı
 
 #### Senaryo #5
 
-  Bir saldırgan, modele arka kapı tetikleyicisi eklemek için zehirleme tekniklerini kullanır. Bu, kimlik doğrulama atlatma, veri sızdırma veya gizli komut yürütme saldılarına sizi açık bırakabilir.
+  Bir saldırgan, modele arka kapı tetikleyicisi eklemek için zehirleme tekniklerini kullanır. Bu, kimlik doğrulama atlatma, veri sızdırma veya gizli komut yürütme saldırılarına sizi açık bırakabilir.
 
-### Referans Linkler
+### Referanslar
 
 1. [How data poisoning attacks corrupt machine learning models](https://www.csoonline.com/article/3613932/how-data-poisoning-attacks-corrupt-machine-learning-models.html): **CSO Online**
 2. [MITRE ATLAS (framework) Tay Poisoning](https://atlas.mitre.org/studies/AML.CS0009/): **MITRE ATLAS**

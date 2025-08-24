@@ -74,7 +74,7 @@ Bununla ilişkili bir diğer sorun da aşırı güvendir. Aşırı güven, kulla
 
   Bir şirket, yeterli doğruluk sağlamadan tıbbi teşhis amacıyla bir sohbet botu sunar. Sohbet botu hatalı bilgiler vererek hastalar için zararlı sonuçlara yol açar. Bunun sonucunda, şirket maddi tazminat ödemeye mahkum edilir. Bu durumda, güvenlik ve emniyet zafiyeti kötü niyetli bir saldırgana ihtiyaç duymadan, doğrudan Büyük Dil Modeli (BDM) sisteminin yetersiz denetimi ve güvenilirliğinden kaynaklanmıştır. Yani, bu senaryoda aktif bir saldırganın varlığı gerekmeden şirket ciddi itibar ve finansal kayıplarla karşı karşıya kalabilir.
 
-### Referans Linkleri
+### Referanslar
 
 1. [Sağlık Bilgi Kaynağı Olarak Yapay Zeka Sohbet Botları: Uzmanlık Yanıltması](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
 2. [Air Canada Sohbet Botu Yanlış Bilgi Vakası: Seyahat Edenlerin Bilmesi Gerekenler](https://www.bbc.com/travel/article/20240222-air-canada-chatbot-misinformation-what-travellers-should-know): **BBC**
