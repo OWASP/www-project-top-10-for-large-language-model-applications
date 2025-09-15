@@ -10,15 +10,15 @@ Malicious, unauthorized, or compromised agents may embed themselves in a multi-a
 This threat extends [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) into distributed autonomous systems, where impersonation, stealth participation, or parasitic behaviors can disrupt agent collaboration and goal fulfillment.
 
 ### Common Examples of Risk
-1. Injection of unauthorized agents into workflows or communication paths.
+1. Injection of unauthorized agents or agent actions into workflows or communication paths.
 2. Side-channel or low-trust agents performing unexpected actions.
 3. Agents impersonating support or observer roles to manipulate tasks.
 
 ### Prevention and Mitigation Strategies
 1. Require attestation or cryptographic proof-of-origin for agents.
-2. Isolate agents in trust zones and enforce task boundaries.
+2. Isolate agents in trust zones and enforce task boundaries (eg no internet access).
 3. Apply watchdog agents to monitor peer behavior and detect anomalies.
-4. Use explicit allowlists and identity checks for orchestration participation.
+4. Use explicit allowlists and identity checks for functions, reachable hosts, or orchestration participation.
 5. Log all agent instantiation and coordination events.
 6. Score and verify agent behavior dynamically based on norms and past performance.
 
@@ -27,7 +27,9 @@ This threat extends [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmris
 - **Scenario 2: Impersonated Cleanup Agent** – A malicious actor inserts an agent that deletes training data by posing as a cleanup job in a scheduled agent rotation.
 - **Scenario 3: Shadow Planner Injection** – An unauthorized agent embeds itself during task delegation and injects false subtasks to waste resources and confuse outcomes.
 - **Scenario 4: Role Drift via Cloaking** – An agent initially instantiated as a passive observer starts executing actions due to unmonitored privilege creep.
+- **Scenario 5: Exfiltration Over Alternative Protocol** – An agent initially instantiated with basic access to a provider, even with IP restrictions, falls victim to a DNS exfiltration scheme.
 
 ### Reference Links
 1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
 2. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)
+3. [MITRE ATT&CK - T1078 Exfiltration Over Alternative Protocol](https://attack.mitre.org/techniques/T1048/)
