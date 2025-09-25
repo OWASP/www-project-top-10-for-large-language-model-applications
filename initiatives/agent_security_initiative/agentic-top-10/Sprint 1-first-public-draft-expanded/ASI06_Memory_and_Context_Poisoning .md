@@ -20,10 +20,18 @@ This attack type has far-reaching consequences depending on how the LLM system i
 
 4. Cascading failures and data exfiltration: A single poisoned memory entry in a sophisticated, multi-agent system (MAS) might have a domino effect, resulting in cascading failure. One agent may retrieve damaged data and then share it with others, leading the system to become unstable. Malicious instructions can also be placed in the memory as persistence instructions, allowing the LLM to access and communicate sensitive user or enterprise data to an attacker. This data exfiltration poses a significant risk since the model might be allowed valid access to data repositories but then altered to use that access maliciously.
 
-**OWASP Content**
-TODO
+**Related OWASP Material**
 
-**how to Prevent:**
+The OWASP GenAI Project's [Threat and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) guide outlines Memory Poisoning (T1) as a key threat:
+
+*"Memory Poisoning involves exploiting an AI's memory systems, both short and long-term, to introduce malicious or false data and exploit the agent’s context. This can lead to altered decision-making and unauthorized operations."*
+
+Memory Poisoning as the first threat listed doesn't inherently make it the most important, but does display the criticality of securing this important component of any agentic system.
+
+
+
+
+**How to Prevent:**
 
 Preventing ASI06 requires a multi-layered approach to secure and validate an LLM's memory or context window. Key strategies include:
 
