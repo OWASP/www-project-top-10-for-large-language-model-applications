@@ -2,7 +2,7 @@
 
 **Description:**
 
-Identity & Privilege Abuse is the exploitation of dynamic trust relationships and delegation chains between autonomous AI agents to escalate privileges and bypass security controls. Unlike static privilege escalation, attackers exploit the dynamic delegation chains that agents create autonomously manipulating how AI agents inherit, transfer, and act on permissions across interconnected systems. The vulnerability can occur through the direct manipulation of permissions, exploitation of role inheritance, hijacking of control systems, or exploitation of the agent's context (e.g., memory, conversation history). 
+Identity & Privilege Abuse is the exploitation of dynamic trust relationships and delegation chains between autonomous AI agents to escalate privileges and bypass security controls. Unlike static privilege escalation, attackers exploit the dynamic delegation chains that agents create, autonomously manipulating how AI agents inherit, transfer, and act on permissions across interconnected systems. The vulnerability can occur through the direct manipulation of permissions, exploitation of role inheritance, hijacking of control systems, or exploitation of the agent's context (e.g., memory, conversation history). 
 
 **Common Examples of Risk:**
 
