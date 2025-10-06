@@ -19,7 +19,7 @@ The difference lies in the blast radius: AppSec issues become amplified when the
 
 1. **Poisoned prompt templates loaded remotely.** An agent automatically pulls prompt templates from an external source that contain hidden instructions (e.g., to exfiltrate data or perform destructive actions), leading it to execute malicious behavior without developer intent.  
 2. **Tool-descriptor injection.** An attacker embeds hidden instructions or malicious payloads into a tool’s metadata or MCP/agent-card, which the host agent interprets as trusted guidance and acts upon.  
-3. **Impersonation and typosquatting.** When an agent dynamically searches for tools or agents, it may resolve to a typosquatted endpoint or a malicious service deliberately faking a legitimate component.  
+3. **Impersonation and typosquatting.** When an agent dynamically discovers or connects to external tools or services, it can be deceived in two ways by a typosquatted endpoint (a look-alike name chosen to trick resolution) or by a symbol attack, where a malicious service deliberately impersonates a legitimate tool or agent, mimicking its identity, API, and behavior to gain trust and execute malicious actions 
 4. **Post-install backdoor with local AI-CLI abuse.** A compromised package installs post-install hooks that run on developer machines, probing for secrets and invoking local AI assistants with crafted prompts to autonomously locate and exfiltrate credentials and files.
 
 ## 
