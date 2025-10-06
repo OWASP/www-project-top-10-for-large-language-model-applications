@@ -1,125 +1,96 @@
- ## LLM01:2025 Fuite de prompt système
+## LLM01:2025 Injection de prompt
 
-Une vulnérabilité d’injection de prompt se produit lorsque les instructions fournies par une personne modifient le comportement ou les sorties d’un LLM de manière inattendue. Ces instructions peuvent affecter le modèle même si elles sont imperceptibles pour un humain ; une injection de prompt n’a donc pas besoin d’être lisible ou visible par un humain tant que le contenu est interprété par le modèle.
+### Description
 
-Les vulnérabilités d’injection de prompt proviennent de la manière dont les modèles traitent les prompts, et du fait que certaines entrées peuvent forcer le modèle à transmettre incorrectement ces données à d’autres parties du système, ce qui peut entraîner une violation des règles en place, la génération de contenu préjudiciable, l’activation d’accès non autorisés ou influencer des décisions critiques. Bien que des techniques comme la Génération Augmentée par Récupération (en anglais RAG) ou des réglages avancés visent à rendre les sorties des LLM plus pertinentes et fiables, les recherches montrent qu’elles ne suffisent pas à éliminer ces vulnérabilités.
+Une injection de prompt (Prompt Injection) est une vulnérabilité qui se produit lorsque des prompts d'entrée provoquent une modification du comportement ou de la sortie du LLM de manière non intentionnelle. Ces entrées peuvent affecter le modèle même si elles sont imperceptibles par les humains, par conséquent, les injections de prompt n'ont pas besoin d'être visibles/compréhensibles par les humains, tant que leur contenu est analysé par le modèle.
 
-L’injection de prompt et le débridage sont deux concepts liés en matière de sécurité des LLM et ils souvent utilisés de façon interchangeable. L’injection de prompt consiste à manipuler les réponses du modèle par le biais d’entrées spécifiques afin de modifier son comportement, parfois en contournant les mesures de sécurité. Le débridage est une forme particulière d’injection de prompt, dans laquelle la personne qui attaque insère des instructions afin de pousser le modèle à ignorer totalement ses protocoles de sécurité. L’équipe de développement peut intégrer des protections dans les prompts système et le traitement des entrées pour atténuer ces attaques. Cependant une prévention efficace du débridage nécessite une mise à jour continue des mécanismes d’apprentissage et de sécurité du modèle.
+L'existence des injections de prompt est définie par la manière dont les modèles analysent et traitent les prompts, et comment une entrée peut forcer la modèle à transmettre des données du prompt à d'autres parties du modèle alors qu'il ne le devrait pas, ce qui peut potentiellement amener à la violation de directives de sécurité, générer du contenu nuisible, permettre un accès non autorisé ou influencer des décisions (qui peuvent être critiques). Bien que des techniques comme la génération augmentée par récupération (RAG) ainsi que le fine-tuning ont pour but de rendre les sorties des LLMs plus pertinentes et précises, des recherches montrent qu'elles ne permettent pas de complètement atténuer les vulnérabilités liées aux injections de prompt.
 
-### Types de vulnérabilités d’injection de prompt
+Bien que les injections de prompt et le jailbreak soient liés en tant que concepts dans la sécurité des LLMs, ils sont souvent utilisés de manière interchangeable. L'injection de prompt consiste à manipuler les réponses du modèles en suivant une série d'entrées spécifiques qui vont modifier son comportement, ce qui peut inclure le contournement de mesures de sécurité. Le jailbreak, lui, est une forme d'injection de prompt où l'attaquant fournit des entrées qui amènent le modèle à ignorer complètement ses protocoles de sécurité. Les développeurs peuvent implémenter des garde-fous (guardrails) dans le systèmes de prompt ainsi que dans la gestions des entrées pour aider à atténuer les attaques par injections, mais une prévention efficace du jailbreak nécessite une mise à jour continue des mécanismes d'entraînement et de sécurité du modèle.
 
-Injections de prompt directes
+### Les différents types d'injections de prompt
 
-Les injections directes surviennent lorsqu’un prompt saisi par une personne modifie directement le comportement du modèle de manière inattendue. Cela peut être volontaire (un acte malveillant formulé délibérément via un prompt pour exploiter le modèle) ou involontaire (saisit d’un prompt qui provoque par erreur un comportement non anticipé).
+#### Injections de prompt directes
 
-Injections de prompt indirectes
+  L'injection de prompt directe se produit lorsque l'entrée du prompt d'un utilisateur va directement altérer le comportement du modèle de manière involontaire ou inattendue. L'entrée peut être soit intentionnelle (dans le cas d'un acte malveillant où un attaquant conçoit délibérément un prompt pour exploiter le modèle), ou non intentionnelle ( dans le cas où un utilisateur fournit involontairement une entrée qui déclenchera un comportement non prévu du modèle).
 
-Les injections indirectes se produisent lorsqu’un LLM accepte une entrée provenant d’une source externe, comme un site web ou un fichier. Le contenu externe, une fois interprété par le modèle, peut en modifier le comportement de manière involontaire ou malveillante, à l’instar des injections directes.
+#### Injections de prompt indirectes
 
-La gravité et la nature d’une attaque par injection de prompt dépendent largement du contexte métier dans lequel le modèle est utilisé, ainsi que du niveau d’autonomie qui lui est accordé. En général, ces attaques peuvent entraîner des conséquences telles que :
+  L'injection de prompt indirecte se produit lorsque le LLM accepte des entrées provenant de sources externes, telles que des sites web ou des fichiers. La source externe peut contenir des données qui, lorsqu'elles seront interprétées par le modèle, peuvent modifier son comportement de manière involontaire ou non prévue. Tout comme les injections directes, les injections indirectes peuvent être soit de nature volontaire ou non.
 
-* La divulgation de données sensibles
-* La révélation d’informations sur l’infrastructure du système d’IA ou sur les prompts système
-* La manipulation du contenu, menant à des résultats erronés ou biaisés
-* L’accès non autorisé à des fonctions disponibles pour le LLM
-* L’exécution de commandes arbitraires dans des systèmes connectés
-* L’influence sur des processus décisionnels critiques
+  La sévérité et la nature de l'impact d'une attaque par injection de prompt réussie peuvent varier considérablement et dépendent surtout du contexte applicatif dans lequel le modèle opère et de l'architecture du modèle. De manière générale, l'injection de prompt entraîne des résultats non intentionnels, comme par exemple:
 
-L’essor de l’IA multimodale, capable de traiter simultanément plusieurs types de données, introduit de nouveaux risques d’injection de prompt. Des personnes malveillantes peuvent exploiter les interactions entre les diverses données, comme dissimuler des instructions dans une image jointe à un texte anodin. Cette complexité augmente la surface d’attaque. De plus, ces modèles d’IA multimodale peuvent être vulnérables à des attaques croisées spécifiques, difficiles à détecter ou contrer par les techniques de défense actuelles. Le développement de défenses spécifiques aux systèmes multimodaux est une priorité des équipes de recherche et développement.
+- Divulgation d'informations sensibles
+- Révélation d'informations sensibles sur l'infrastructure du système d'IA ou des prompts système
+- Manipulation du contenu produit entraînant des sorties incorrectes ou biaisées
+- Procuration d'accès non autorisé à des fonctions disponibles uniquement au LLM
+- Exécution de commandes arbitraires dans des systèmes connectés
+- Manipulation de processus décisionnels critiques
 
-### Stratégies de prévention et d’atténuation
+  La montée du multimodal dans l'IA, qui rend possible le traitement simultané de plusieurs types de données, introduit des nouveaux risques d'injections de prompt. Des attaquants pourraient exploiter les interactions entre les modalités, comme par exemple en cachant des instructions dans des images qui accompagnent un texte. La complexité de ces modèles va donc étendre la surface d'attaque. Les modèles multimodaux peuvent également être vulnérables à de nouvelles attaques inter-modales qui sont difficiles à detecter et à atténuer avec les techniques de défense actuelles. Des défenses robustes spécifiques au multimodal sont un domaine important dans la R&D.
 
-Les vulnérabilités d’injection de prompt sont inhérentes au fonctionnement de l’IA générative. En raison de la nature probabiliste de ces systèmes, il n’existe pas à ce jour de solution totalement infaillible face aux injections de prompt. Néanmoins, les mesures suivantes permettent d’en réduire les risques :
+### Stratégies de prévention et d'atténuation
 
-1. Contraindre le comportement du modèle
+Les vulnérabilités liées à l'injection de prompt sont possibles en raison de la nature de l'IA générative. Étant donnée l'influence stochastique (aléatoire) au cœur du fonctionnement des modèles, il est encore trop tôt pour savoir s'il existe des méthodes de défense infaillibles contre les injections de prompt. Cependant, les mesures qui vont suivre peuvent aider à atténuer l'impact des injections de prompt:
 
-Fournir des instructions précises sur le rôle, les capacités et les limites du modèle dans le prompt système. Imposer le respect strict du contexte, limiter les réponses à certaines tâches ou thématiques, et demander au modèle d’ignorer toute tentative de modifier ses propres instructions systèmes.
+#### 1. Restreindre le comportement du modèle
+  Prévoir des instructions spécifiques concernant le rôle du modèle, ses capacités et ses limitations dans le système de prompt. Faire respecter une stricte adhérence au contexte, limiter les réponses aux tâches ou sujets spécifiques, et entraîner le modèle à ignorer les tentatives de modification d'instructions de base.
+#### 2.  Définir et valider les formats de sortie attendus
+  Définir des formats de sortie clairs, demander des raisonnements détaillés et des citations de sources ainsi qu'utiliser du code déterministe pour valider le respect de ces formats.
+#### 3. Mettre en œuvre un filtrage des entrées et des sorties
+  Définir des catégories à risque et créer des règles pour identifier et gérer ce type de contenu. Appliquer des filtres sémantiques et utiliser des vérifications de chaînes de caractère afin d'identifier la présence de contenu non autorisé. Évaluer les réponses en utilisant la "triade" RAG : évaluer la pertinence du contexte, le fondement, ainsi que la pertinence de la question/réponse pour identifier les sorties potentiellement malveillantes.
+#### 4. Renforcer le contrôle des privilèges et le principe du moindre privilège
+  Fournir à l'application ses propres tokens API pour étendre ses fonctionnalités et gérer ces fonctions dans le code plutôt que de les mettre à disposition du modèle.
+  Restreindre les droits d'accès au modèle au minimum nécessaire pour ses opérations prévues.
+#### 5. Exiger une approbation humaine pour les actions à haut risque
+  Mettre en place des contrôles humains pour les opérations critiques et qui demande une élévation de privilège afin de prévenir les actions non autorisées.
+#### 6. Isoler et identifier le contenu externe
+  Isoler et signaler le contenu externe non fiable pour limiter son influence sur les prompts utilisateur.
+#### 7. Effectuer des tests de contradiction et des simulations d'attaques
+  Effectuer régulièrement des tests de pénétration et des simulations de brèches (BAS - Breach and Attack Simulations), en traitant le modèle comme un utilisateur non fiable pour tester l'efficacité de la limite de confiance accordée au modèle et des contrôles d'accès.
 
-2. Définir et valider les formats de sortie attendus
+### Exemples de scénarios d'attaque
 
-Préciser les formats de réponse attendus, exiger des raisonnements détaillés et des sources, et utiliser du code déterministe pour vérifier le respect de ces formats.
+#### Scenario #1:  Injection directe
+  un attaquant injecte un prompt dans un chatbot de support client, et lui ordonne d'ignorer les directives qui lui ont été précédemment données, de consulter des bases de données privées et d’envoyer des emails, ce qui amène à avoir un accès non autorisé et une élévation de privilège.
+#### Scenario #2: Injection indirecte
+  Un utilisateur utilise un LLM pour résumer une page web contenant des instructions dissimulées qui amènent le LLM à insérer une image contenant un lien URL, ce qui conduit à l'exfiltration de prompt et donc d'une conversation privée.
+#### Scenario #3: Injection non intentionnelle
+  Une entreprise insère une instruction spécifique dans une description pour un poste afin de détecter les postulations générées par IA. Un candidat, ignorant cette instruction, utilise un LLM pour optimiser son CV, déclenchant involontairement la détection d'IA et donc réduisant ses chances d'obtenir le poste.
+#### Scenario #4: Influence intentionnelle sur le modèle
+  Un attaquant modifie un document dans un répertoire utilisé par une application utilisant la génération augmentée par récupération (RAG). Lorsqu'un utilisateur va requêter le contenu modifié, les instructions malveillantes modifient la sortie du LLM, générant des résultats fallacieux.
+#### Scenario #5:  Injection de code
+  Un attaquant exploite une vulnérabilité (CVE-2024-5184) dans une assistant pour email utilisant un LLM et injecte des prompts malveillants, ce qui lui permet d'accéder à des informations sensibles et de manipuler le contenu des emails.
+#### Scenario #6: Division de charge utile
+  Un attaquant téléverse un CV des prompts malveillants disséminés un peu partout. Quand un LLM est utilisé pour évaluer le candidat, les prompts re-combinés manipulent la réponse du modèle, ce qui résulte en une recommandation positive du CV bien que son contenu réel ne soit pas pertinent pour le poste.
+#### Injection multimodale
+  Un attaquant intègre un prompt malveillant dans une image qui accompagne un texte. Lorsqu'une IA multimodale traite l'image et le texte simultanément, le prompt dissimulé modifie le comportement du modèle, ce qui peut potentiellement conduire à des actions non autorisées ou à la divulgation d'informations sensibles.
+#### Scenario #8: Suffixe contradictoire
+  Un attaquant ajoute une chaîne de caractères apparemment insignifiante à un prompt, ce qui influence la sortie du LLM de manière malveillante, contournant ainsi les mesures de sécurité.
+#### Scenario #9: Multilingual/Obfuscated Attack - Attaque multilingue/par obfuscation
+  Un attaquant utilise plusieurs langues ou encore des instructions malveillantes ( par exemple en utilisant Base64 ou des emojis) pour échapper aux filtres et manipuler le comportement du LLM.
 
-3. Mettre en place des filtres sur les entrées et sorties
+### Liens de références
 
-Définir les catégories sensibles et établir des règles pour les détecter et les traiter. Utiliser des filtres sémantiques stricts et des analyses de chaînes de caractères pour repérer les contenus non autorisés. Évaluer les réponses à l’aide de la trilogie RAG : évaluer la pertinence du contexte, vérifier le bien-fondé et la pertinence des questions/réponses afin d’identifier des sorties potentiellement malveillantes.
-
-4. Appliquer les principes de contrôle d’accès et du moindre privilège
-
-Fournir à l’application ses propres jetons API pour les fonctions en nécessitant, et invoquer ces fonctions via du code plutôt que via le modèle. Réduire les privilèges d’accès du modèle au strict nécessaire à son bon fonctionnement.
-
-5. Soumettre les actions sensibles à une validation humaine
-
-Mettre en place des contrôles humains (human-in-the-loop) pour toute opération à risque afin de se prémunir de toutes actions non autorisées.
-
-6. Isoler et identifier les contenus externes
-
-Séparer et indiquer clairement les contenus non fiables afin de limiter leur influence sur les prompts utilisateurs.
-
-7. Effectuer des tests d’attaque et des simulations d’actes malveillants
-
-Réaliser des tests d’intrusion et des simulations d’attaque régulièrement du modèle afin d’évaluer l’efficacité des mécanismes de protections et de contrôle d’accès.
-
-### Scénarios d’attaque
-
-Scénario n° 1 : Injection directe
-
-Une personne simule une attaque en injectant un prompt dans un agent conversationnel de support client, l’invitant à ignorer les instructions précédentes, interroger des bases de données privées et envoyer des courriels afin d’évaluer la gestion d’accès non autorisé et d’élévation de privilèges.
-
-Scénario n° 2 : Injection indirecte
-
-Une personne demande à un LLM de résumer une page web contenant des instructions cachées qui demande au LLM d’insérer dans sa réponse une image pointant vers une URL afin d’évaluer les risques de fuite de donnée de la conversation privée.
-
-Scénario n° 3 : Injection involontaire
-
-Une entreprise ajoute un prompt dans une offre d’emploi visant à détecter les candidatures rédigées par une IA. Un candidat, non conscient de cela, utilise un LLM pour optimiser son CV, déclenchant ainsi le mécanisme de détection via l’IA.
-
-Scénario n° 4 : Influence délibérée sur le modèle
-
-Une personne simule une attaque en modifiant un document dans un référentiel utilisé par une application de Génération Augmentée par Récupération (RAG). Lorsqu’une personne interroge le système, les instructions malveillantes contenues dans le document faussent la réponse générée.
-
-Scénario n° 5 : Injection de code
-
-Une personne simule une attaque en exploitant une faille (CVE-2024-5184) dans un assistant courriel propulsé par un LLM pour injecter des prompts malveillants, accédant ainsi à des données sensibles et manipulant le contenu des courriels.
-
-Scénario n° 6 : Fragmentation de charge utile
-
-Une personne simule une attaque en soumettant un CV contenant des fragments de prompts malveillants. Lors de l’évaluation du CV par un LLM, les fragments se combinent pour influencer la réponse du modèle, produisant une recommandation positive indépendamment du réel contenu du CV.
-
-Scénario n° 7 : Injection multimodale
-
-Une personne simule une attaque en insérant un prompt malveillant dans une image jointe à un texte anodin. Lorsqu’un modèle multimodal traite l’ensemble, le prompt dissimulé altère son comportement en effectuant des actions non autorisées ou en divulguant des informations sensibles.
-
-Scénario n° 8 : Suffixe hostile
-
-Une personne simule une attaque en ajoutant une chaîne de caractères apparemment insignifiante à la fin d’un prompt, cela influence la sortie du LLM de manière malveillante, contournant les mécanismes de sécurité.
-
-Scénario n° 9 : Attaque multilingue ou offusquée
-
-Une personne simule une attaque en utilisant plusieurs langues ou en encodant ses prompts (ex. : Base64, emojis) pour échapper aux filtres et manipuler le comportement du modèle LLM.
-
-### Références
-
-1. [ChatGPT Plugin Vulnerabilities—Chat with Code] (https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
-2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection] (https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
-3. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection] (https://arxiv.org/pdf/2302.12173.pdf) **Arxiv**
-4. [Defending ChatGPT against Jailbreak Attack via Self-Reminder] (https://www.researchsquare.com/article/rs-2873090/v1) **Research Square**
-5. [Prompt Injection attack against LLM-integrated Applications] (https://arxiv.org/abs/2306.05499) **Cornell University**
-6. [Inject My PDF: Prompt Injection for your Resume] (https://kai-greshake.de/posts/inject-my-pdf) **Kai Greshake**
-8. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection] (https://arxiv.org/pdf/2302.12173.pdf) **Cornell University**
-9. [Threat Modeling LLM Applications] (https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
-10. [Reducing The Impact of Prompt Injection Attacks Through Design] (https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
-11. [Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (nist.gov)] (https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
-12. [2407.07403 A Survey of Attacks on Large Vision-Language Models: Resources, Advances, and Future Trends (arxiv.org)] (https://arxiv.org/abs/2407.07403)
-13. [Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks] (https://ieeexplore.ieee.org/document/10579515)
-14. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)] (https://arxiv.org/abs/2307.15043)
-15. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)] (https://arxiv.org/abs/2307.00691)
+1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
+2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
+3. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Arxiv**
+4. [Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1) **Research Square**
+5. [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499) **Cornell University**
+6. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf) **Kai Greshake**
+7. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Cornell University**
+8. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
+9. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
+10. [Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
+11. [2407.07403 A Survey of Attacks on Large Vision-Language Models: Resources, Advances, and Future Trends (arxiv.org)](https://arxiv.org/abs/2407.07403)
+12. [Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks](https://ieeexplore.ieee.org/document/10579515)
+13. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
+14. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
 
 ### Cadres et taxonomies associés
 
-Consultez cette section pour obtenir des informations détaillées, des stratégies et des scénarios liés au déploiement d’infrastructures, aux contrôles des environnements appliqués et aux meilleures pratiques:
+Consultez cette section pour des informations complètes, des scénarios et des stratégies liées au déploiement d'infrastructure, aux contrôles d'environnement appliqués et à d'autres bonnes pratiques.
 
-—[AML.T0051.000— LLM Prompt Injection: Direct] (https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
-
-—[AML.T0051.001 - LLM Prompt Injection: Indirect] (https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
-
-—[AML.T0054 - LLM Jailbreak Injection: Direct](https://atlas.mitre.org/techniques/AML.T0054) **MITRE ATLAS**
+- [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
+- [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
+- [AML.T0054 - LLM Jailbreak Injection: Direct](https://atlas.mitre.org/techniques/AML.T0054) **MITRE ATLAS**
