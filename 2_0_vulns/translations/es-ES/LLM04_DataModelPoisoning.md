@@ -34,14 +34,23 @@ Además, los modelos distribuidos a través de repositorios compartidos o plataf
 ### Ejemplos de escenarios de ataque
 
 #### Escenario #1
+
   Un atacante sesga los resultados del modelo manipulando los datos de entrenamiento o utilizando técnicas de inyección de prompts, difundiendo desinformación.
+
 #### Escenario #2
+
   Los datos tóxicos sin el filtrado apropiado pueden conducir a salidas dañinas o sesgadas, propagando información peligrosa.
+
 #### Escenario #3
+
   Un actor malicioso o competidor crea documentos falsificados para el entrenamiento, resultando en salidas del modelo que reflejan estas inexactitudes.
+
 #### Escenario #4
+
   Un filtrado inadecuado permite a un atacante insertar datos engañosos a través de una inyección de prompt, llevando a resultados comprometidos.
+
 #### Escenario #5
+
   Un atacante utiliza técnicas de envenenamiento para insertar un disparador de puerta trasera en el modelo. Esto podría dejarlo abierto a la evasión de autenticación, exfiltración de datos o ejecución de comandos ocultos.
 
 ### Enlaces de referencia

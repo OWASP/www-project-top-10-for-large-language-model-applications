@@ -1,4 +1,4 @@
-## LLM07:2025 Filtración de prompts de  sistema
+## LLM07:2025 Filtración de prompts de sistema
 
 ### Descripción
 
@@ -13,15 +13,22 @@ En resumen: la revelación del prompt de sistema en sí no presenta el riesgo re
 ### Ejemplos comunes de riesgo
 
 #### 1. Exposición de funcionalidad sensible
+
   El prompt de sistema de la aplicación puede revelar información sensible o funcionalidad que se pretende mantener confidencial, como arquitectura sensible del sistema, claves de API, credenciales de base de datos o tokens de usuario. Estos pueden ser extraídos o utilizados por los atacantes para obtener acceso no autorizado a la aplicación. Por ejemplo, un prompt de sistema que contenga el tipo de base de datos utilizada para una herramienta podría permitir al atacante adaptar sus ataques a inyecciones SQL sobre ella.
+
 #### 2. Exposición de reglas internas
+
   El prompt de sistema de la aplicación revela información sobre los procesos internos de toma de decisiones que debería mantenerse confidencial. Esta información permite a los atacantes obtener información sobre cómo funciona la aplicación, lo que podría permitirles explotar debilidades o eludir controles en la aplicación. Por ejemplo - Hay una aplicación bancaria que tiene un chatbot y su sistema puede revelar información como,
     >"El límite de transacciones está establecido en $5000 por día para un usuario. El monto total de préstamo para un usuario es $10000."
   Esta información permite a los atacantes eludir los controles de seguridad de la aplicación, como realizar transacciones por encima del límite establecido o eludir el importe total del préstamo.
+
 #### 3. Revelación de criterios de filtrado
+
   Un prompt de sistema puede pedir al modelo que filtre o rechace contenido sensible. Por ejemplo, un modelo puede tener un prompt de sistema como,
     >"Si un usuario solicita información sobre otro usuario, responder siempre con 'Lo siento, no puedo atender esa solicitud'".
+
 #### 4. Divulgación de permisos y roles de usuario
+
   El prompt de sistema podría revelar las estructuras internas de roles o los niveles de permisos de la aplicación. Por ejemplo, un prompt de sistema podría revelar,
     >"El rol de usuario 'Admin' otorga acceso total para modificar los registros de usuario."
   Si los atacantes se enteran de estos permisos basados en roles, podrían buscar un ataque de escalada de privilegios.
@@ -29,21 +36,27 @@ En resumen: la revelación del prompt de sistema en sí no presenta el riesgo re
 ### Estrategias de prevención y mitigación
 
 #### 1. Separar datos sensibles de los prompts de sistema
+
   Evitar embeber cualquier información sensible (por ejemplo, claves de API, claves de autenticación, nombres de bases de datos, roles de usuario, estructura de permisos de la aplicación) directamente en los prompts de sistema. En su lugar, externalizar dicha información a los sistemas a los que el modelo no accede directamente.
-###$ 2. Evitar depender de los prompts de sistema para un control estricto de 
-#### comportamiento
+#### 2. Evitar depender de los prompts de sistema para un control estricto de comportamiento
+
   Dado que los LLM son susceptibles a otros ataques como inyecciones de prompts que pueden alterar el prompt de sistema, se recomienda evitar el uso de prompts de sistema para controlar el comportamiento del modelo siempre que sea posible. En su lugar, confiar en sistemas externos al LLM para asegurar este comportamiento. Por ejemplo, la detección y prevención de contenido dañino debería realizarse en sistemas externos.
+
 #### 3. Implementar barreras de seguridad
+
   Implementar un sistema de barreras de seguridad fuera del propio LLM. Aunque entrenar un comportamiento particular en un modelo puede ser efectivo, como por ejemplo entrenarlo para que no revele su prompt de sistema, no es una garantía de que el modelo siempre se adhiera a esto. Un sistema independiente que pueda inspeccionar la salida para determinar si el modelo cumple con las expectativas es preferible a las instrucciones de un prompt de sistema.
-###$ 4. Asegurar que los controles de seguridad se aplican independientemente del 
-#### LLM
+#### 4. Asegurar que los controles de seguridad se aplican independientemente del LLM
+
   Controles críticos como la separación de privilegios, verificación de límites de autorización y similares no deben ser delegados al LLM, ya sea a través del prompt de sistema o de otra manera. Estos controles deben ocurrir de manera determinista y auditable, y los LLM no son (actualmente) propicios para ello. En los casos en que un agente esté realizando tareas, si esas tareas requieren diferentes niveles de acceso, se deben utilizar varios agentes, cada uno configurado con la menor cantidad de privilegios necesarios para realizar las tareas deseadas.
 
 ### Ejemplos de escenarios de ataque
 
 #### Escenario #1
+
   Un LLM tiene un prompt de sistema que contiene un conjunto de credenciales utilizadas para una herramienta a la que se le ha dado acceso.  El prompt de sistema es filtrado por un atacante, quien entonces es capaz de usar estas credenciales para otros propósitos.
+
 #### Escenario #2
+
   Un LLM tiene un prompt de sistema que prohíbe la generación de contenido ofensivo, enlaces externos y ejecución de código. Un atacante extrae este prompt de sistema y luego utiliza un ataque de inyección de prompt para eludir estas instrucciones, facilitando un ataque de ejecución remota de código.
 
 ### Enlaces de referencia

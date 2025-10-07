@@ -1,4 +1,4 @@
-## LLM02:2025 Divulgación de información  sensible
+## LLM02:2025 Divulgación de información sensible
 
 ### Descripción
 
@@ -11,65 +11,92 @@ Para reducir este riesgo, las aplicaciones LLM deben realizar una adecuada limpi
 ### Ejemplos comunes de vulnerabilidad
 
 #### 1. Filtración de PII
+
   La información personal identificable (PII) puede ser revelada durante las interacciones con el LLM.
+
 #### 2. Exposición de algoritmos propietarios
+
   Las salidas de modelos mal configurados pueden revelar algoritmos o datos propietarios. Revelar datos de entrenamiento puede exponer los modelos a ataques de inversión, en los que los atacantes extraen información sensible o reconstruyen entradas. Por ejemplo, como se demostró en el ataque 'Proof Pudding' (CVE-2019-20634), los datos de entrenamiento divulgados facilitaron la extracción e inversión de modelos, lo que permitió a los atacantes eludir los controles de seguridad en los algoritmos de aprendizaje automático y los filtros de correo electrónico.
+
 #### 3. Divulgación de datos comerciales confidenciales
+
   Las respuestas generadas podrían incluir inadvertidamente información confidencial del negocio.
 
 ### Estrategias de prevención y mitigación
 
-###@ Saneamiento:
+### Saneamiento
 
 #### 1. Integrar técnicas de saneamiento de datos
+
   Implementar saneamiento de datos para prevenir que los datos de usuario entren en el modelo de entrenamiento. Esto incluye depurar o enmascarar el contenido sensible antes de que se utilice en el entrenamiento.
+
 #### 2. Validación robusta de entrada
+
   Aplicar métodos estrictos de validación de entrada para detectar y filtrar entradas de datos potencialmente dañinas o sensibles, asegurándose de que no comprometen el modelo.
 
-###@ Controles de acceso:
+### Controles de acceso
 
 #### 1. Aplicar controles de acceso estrictos
+
   Limitar el acceso a datos sensibles basándose en el principio del menor privilegio. Sólo conceder acceso a los datos que sean necesarios para el usuario o proceso específico.
+
 #### 2. Restringir las fuentes de datos
+
   Limitar el acceso del modelo a fuentes de datos externas y asegurarse de que la orquestación de datos en tiempo de ejecución se gestiona de forma segura para evitar filtraciones de datos involuntarias.
 
-###@ Técnicas de aprendizaje federado y privacidad:
+### Técnicas de aprendizaje federado y privacidad
 
 #### 1. Utilizar el aprendizaje federado
+
   Entrenar modelos utilizando datos descentralizados almacenados en múltiples servidores o dispositivos. Este enfoque minimiza la necesidad de recopilar datos de forma centralizada y reduce los riesgos de exposición.
+
 #### 2. Incorporar privacidad diferencial
+
   Aplicar técnicas que añadan ruido a los datos o salidas, dificultando a los atacantes la ingeniería inversa de puntos de datos individuales.
 
-###@ Educación de los usuarios y transparencia:
+### Educación de los usuarios y transparencia
 
 #### 1. Educar a los usuarios sobre el uso seguro de LLM
+
   Proporcionar orientación en evitar la introducción de información sensible. Ofrecer entrenamiento sobre las mejores prácticas para interactuar con los LLM de forma segura.
+
 #### 2. Asegurar la transparencia en el uso de los datos
+
   Mantener políticas claras sobre retención, uso y eliminación de datos. Permitir a los usuarios optar por no incluir sus datos en los procesos de entrenamiento.
 
-###@ Configuración segura del sistema:
+### Configuración segura del sistema
 
 #### 1. Ocultar el preámbulo del sistema
+
   Limitar la capacidad de los usuarios para invalidar o acceder a la configuración inicial del sistema, reduciendo el riesgo de exposición a configuraciones internas.
-###$ 2. Referenciar a las mejores prácticas de seguridad contra la configuración
-#### incorrecta
+
+#### 2. Referenciar a las mejores prácticas de seguridad contra la configuración incorrecta
+
   Seguir guías como "OWASP API8:2023 Security Misconfiguration" para evitar la filtración de información sensible a través de mensajes de error o detalles de configuración.
   (Enlace de referencia: [OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
 
-###@ Técnicas avanzadas:
+### Técnicas avanzadas
 
 #### 1. Cifrado homomórfico
+
   Utilizar cifrado homomórfico para permitir un análisis de datos seguro y aprendizaje automático que preserve la privacidad. Esto asegura la confidencialidad de los datos mientras son procesados por el modelo.
+
 #### 2. Tokenización y redacción
+
   Implementar tokenización para preprocesar y sanear la información sensible. Técnicas como la búsqueda de patrones (pattern matching) pueden detectar y redactar el contenido confidencial antes de procesarlo.
 
 ### Ejemplos de escenarios de ataque
 
 #### Escenario #1: Exposición accidental de datos
+
   Un usuario recibe una respuesta que contiene los datos personales de otro usuario debido a un saneamiento de datos inadecuado.
+
 #### Escenario #2: Inyección de prompt dirigida
+
   Un atacante evade los filtros de entrada para extraer información sensible.
+
 #### Escenario #3: Filtración de datos a través de datos de entrenamiento
+
   La inclusión negligente de datos en el entrenamiento conduce a la divulgación de información sensible.
 
 ### Enlaces de referencia

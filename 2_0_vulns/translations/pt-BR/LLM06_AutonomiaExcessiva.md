@@ -22,21 +22,27 @@ Nota: Autonomia Excessiva difere de Manipulação Imprópria de Saída, que est�
 ### Exemplos Comuns de Riscos
 
 #### 1. Funcionalidade Excessiva
+
   Um agente LLM tem acesso a extensões que incluem funções desnecessárias para a operação pretendida do sistema. Exemplo: um desenvolvedor precisa conceder ao agente a capacidade de ler documentos de um repositório, mas a extensão de terceiros escolhida também permite modificar e excluir documentos.
 
 #### 2. Extensão Obsoleta
+
   Uma extensão foi testada durante uma fase de desenvolvimento e substituída por uma alternativa melhor, mas o plugin original permanece acessível ao agente LLM.
 
 #### 3. Controle Inadequado de Comandos
+
   Um plugin LLM com funcionalidade aberta não filtra adequadamente instruções de entrada para comandos fora do necessário para a operação pretendida. Exemplo: uma extensão para executar um comando shell específico não impede adequadamente outros comandos shell de serem executados.
 
 #### 4. Permissões Excessivas
+
   Uma extensão LLM tem permissões em sistemas downstream que não são necessárias para a operação pretendida da aplicação. Exemplo: uma extensão destinada a ler dados conecta-se a um servidor de banco de dados com uma identidade que também tem permissões de UPDATE, INSERT e DELETE.
 
 #### 5. Permissões Excessivas
+
   Uma extensão projetada para operar no contexto de um único usuário acessa sistemas downstream com uma identidade genérica excessivamente privilegiada. Exemplo: uma extensão para ler o repositório de documentos de um usuário conecta-se ao repositório com uma conta privilegiada que acessa arquivos de todos os usuários.
 
 #### 6. Autonomia Excessiva
+
   Uma aplicação ou extensão baseada em LLM executa ações de alto impacto sem verificação ou aprovação independente. Exemplo: uma extensão que permite a exclusão de documentos de um usuário realiza as exclusões sem qualquer confirmação do usuário.
 
 ### Estratégias de Prevenção e Mitigação
@@ -44,30 +50,39 @@ Nota: Autonomia Excessiva difere de Manipulação Imprópria de Saída, que est�
 As seguintes ações podem prevenir Autonomia Excessiva:
 
 #### 1. Reduza o uso de extensões
+
   Limite as extensões que agentes LLM podem chamar ao mínimo necessário. Por exemplo, se um sistema baseado em LLM não precisa buscar o conteúdo de uma URL, essa extensão não deve ser disponibilizada ao agente.
 
 #### 2. Reduza a funcionalidade das extensões
+
   Limite as funções implementadas em extensões LLM ao mínimo necessário. Por exemplo, uma extensão que acessa a caixa de entrada de um usuário para resumir e-mails deve apenas permitir a leitura, sem funcionalidade adicional como exclusão ou envio.
 
 #### 3. Evite extensões de escopo aberto
+
   Sempre que possível, evite extensões que executem comandos genéricos (e.g., rodar comandos shell, buscar URLs) e prefira extensões com funcionalidade específica e restrita. Por exemplo, em vez de permitir a execução de comandos shell para gravar arquivos, crie uma extensão específica apenas para escrita de arquivos.
 
 #### 4. Reduza as permissões das extensões
+
   Restrinja as permissões concedidas às extensões LLM para limitar o escopo de ações indesejadas. Por exemplo, um agente que usa um banco de dados para recomendar produtos deve ter apenas permissão de leitura e nunca poder modificar ou excluir dados.
 
 #### 5. Execute extensões no contexto do usuário
+
   Garanta que ações realizadas em nome de um usuário sejam executadas com os menores privilégios necessários. Por exemplo, uma extensão que acessa repositórios de código deve exigir autenticação via OAuth e restringir o escopo de acesso ao mínimo essencial.
 
 #### 6. Requeira aprovação do usuário
+
   Implemente um processo de revisão humana para aprovar ações de alto impacto antes de sua execução. Por exemplo, um aplicativo que gera e publica posts em redes sociais deve exigir que o usuário aprove cada publicação antes de enviá-la.
 
 #### 7. Garanta autorização no sistema de destino
+
   Aplique controle de permissões diretamente nos sistemas que executam as ações, sem depender do LLM para validar se uma operação é permitida. Por exemplo, caso um LLM faça chamadas a uma API de um serviço financeiro, a API deve validar permissões e não apenas confiar no LLM.
 
 #### 8. Sanitize e valide entradas e saídas do LLM
+
   Siga as melhores práticas de codificação segura, aplicando recomendações da OWASP ASVS, com forte foco na sanitização de entrada.
 
 Embora essas medidas não evitem completamente a Autonomia Excessiva, elas podem limitar os danos causados:
+
 - Monitore atividades de extensões LLM e sistemas *downstream* para identificar ações indesejadas.
 - Aplique limitação de taxa para restringir a frequência de ações indesejadas, aumentando a chance de detectar atividades maliciosas antes que causem danos significativos.
 
@@ -76,9 +91,10 @@ Embora essas medidas não evitem completamente a Autonomia Excessiva, elas podem
 Um aplicativo assistente pessoal baseado em LLM tem acesso à caixa de entrada de um usuário via extensão para resumir o conteúdo de e-mails recebidos. Para essa funcionalidade, a extensão precisa apenas ler mensagens. Porém, o plugin utilizado pelo desenvolvedor inclui também funções desnecessárias, como o envio de mensagens. Além disso, o aplicativo é vulnerável a uma injeção de prompt indireta: um e-mail malicioso pode manipular o LLM para induzir o agente a varrer a caixa de entrada do usuário em busca de informações sensíveis e enviá-las para o endereço de e-mail do atacante.
 
 Isso poderia ser evitado ao se:
-* Reduzir funcionalidades desnecessárias utilizando uma extensão que apenas leia e-mails;
-* Restringir permissões, autenticando via OAuth com escopo apenas de leitura; e/ou
-* Controlar a autonomia do LLM, exigindo que o usuário revise e aprove manualmente qualquer mensagem antes do envio..
+
+- Reduzir funcionalidades desnecessárias utilizando uma extensão que apenas leia e-mails;
+- Restringir permissões, autenticando via OAuth com escopo apenas de leitura; e/ou
+- Controlar a autonomia do LLM, exigindo que o usuário revise e aprove manualmente qualquer mensagem antes do envio..
 
 Além disso, a implementação de limitação de taxa na interface de envio de e-mails ajudaria a mitigar o impacto, restringindo o número de mensagens enviadas e permitindo detectar atividades suspeitas antes que causem danos maiores.
 

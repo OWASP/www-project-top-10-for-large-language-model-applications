@@ -1,4 +1,3 @@
-
 # Core Team Members for version 1.0
 
 This version is now legacy. [New version here](https://genai.owasp.org/contributors/) is maintained on the site.
@@ -9,7 +8,6 @@ These individuals played especially key roles in the creation of the version 1.0
 | ------------------ | -------------- | --------------------- | ----------------------------------------------------------------------------------- |
 | Steve Wilson       | Overall Lead   | [Contrast Security](https://www.contrastsecurity.com/) | [LinkedIn](https://www.linkedin.com/in/wilsonsd/), [Twitter](https://twitter.com/virtualsteve), [GitHub](https://github.com/virtualsteve-star), [Book](https://www.contrastsecurity.com/hubfs/Cybersecurity%20and%20Artificial%20Intelligence%20Threats%20and%20Opportunities.pdf) |
 | Mike Finch         | Design Lead    | [HackerOne](https://www.hackerone.com) | [LinkedIn](https://www.linkedin.com/in/mkfnch), [Twitter](https://twitter.com/mkfnch), [Personal](https://mkfnch.com) |
-| Autumn Moulder     | PR Lead        |                       |                                                                                     |
 | Ads Dawson         | Expert         | [Dreadnode](https://dreadnode.op) | [LinkedIn](https://www.linkedin.com/in/adamdawson0/), [GitHub](https://github.com/GangGreenTemperTatum) |
 | Andy Smith         | Expert         |                       | [LinkedIn](https://www.linkedin.com/in/andysmith-uk/), [Twitter](https://twitter.com/rot169), [Bio](https://www.sans.org/profiles/andy-smith/)|
 | David Rowe         | Expert         |   [AWS](http://aws.amazon.com)                    |    [LinkedIn](https://www.linkedin.com/in/davidprowe/),    [Twitter](https://twitter.com/davidprowe/), [GitHub](https://github.com/davidprowe)                                                                             |

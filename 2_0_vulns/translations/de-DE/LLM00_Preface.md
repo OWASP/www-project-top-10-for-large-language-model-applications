@@ -20,23 +20,26 @@ Wie die Technologie selbst ist auch diese Liste ein Produkt der Erkenntnisse und
 
 Vielen Dank an alle, die an der Erstellung dieses Dokuments mitgewirkt haben und an alle, die es weiterhin nutzen und verbessern werden. Wir sind dankbar, an dieser Arbeit beteiligt gewesen zu sein.
 
-
 #### Steve Wilson
+
 Projektleiter
 OWASP Top 10 for Large Language Model Applications
-LinkedIn: https://www.linkedin.com/in/wilsonsd/
+LinkedIn: <https://www.linkedin.com/in/wilsonsd/>
 
 #### Ads Dawson
+
 Technischer Leiter und Leiter der Schwachstellenmeldungen
 OWASP Top 10 for Large Language Model Applications
-LinkedIn: https://www.linkedin.com/in/adamdawson0/
+LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 
 ### Das deutsche Übersetzungsteam
 
 #### Rico Komenda
+
 [https://www.linkedin.com/in/ricokomenda/](https://www.linkedin.com/in/ricokomenda/)  
 
 #### Philippe Schrettenbrunner
+
 [https://www.linkedin.com/in/philippe-schrettenbrunner/](https://www.linkedin.com/in/philippe-schrettenbrunner/)
 
 ### Über diese Übersetzung
@@ -44,5 +47,6 @@ LinkedIn: https://www.linkedin.com/in/adamdawson0/
 Bei der Erstellung dieser Übersetzung haben wir uns bewusst dafür entschieden, nur menschliche Übersetzer einzusetzen, in Anerkennung der außerordentlich technischen und kritischen Natur der OWASP Top 10 für LLM-Applikationen. Die oben aufgeführten Übersetzer verfügen nicht nur über ein tiefes Verständnis des Originalinhalts, sondern auch über die sprachliche Kompetenz, um diese Übersetzung sinnvoll zu gestalten.
 
 #### Talesh Seeparsan
+
 Übersetzungsleiter, OWASP Top 10 für LLM-Applikationen
 [https://www.linkedin.com/in/talesh/](https://www.linkedin.com/in/talesh/)

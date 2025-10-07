@@ -6,11 +6,17 @@ OWASP Foundation Web Repository
 # OWASP Top 10 for Large Language Model Applications
 
 [![Current version in-flight](https://img.shields.io/badge/current_version-v2.0-purple)](https://www.linkedin.com/posts/wilsonsd_announcing-the-version-2-project-its-time-activity-7157734167244378113-s2v2?utm_source=share&utm_medium=member_ios)
-[![OWASP Lab Status project](https://img.shields.io/badge/owasp-labstatus-blue.svg)](https://owasp.org/projects/)
+[![OWASP Flagship Status project](https://img.shields.io/badge/owasp-flagship-blue.svg)](https://owasp.org/projects/)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 [![genai.owasp.org](https://img.shields.io/badge/officialsite-genai.owasp.org-032CFA.svg)](https://genai.owasp.org)
 
 Welcome to the official repository for the OWASP Top 10 for Large Language Model Applications!
+
+## About This Repository
+
+This repository contains the OWASP Top 10 for Large Language Model Applications, which is now housed under the comprehensive **OWASP GenAI Security Project**. The OWASP GenAI Security Project is a global, open-source initiative dedicated to identifying, mitigating, and documenting security and safety risks associated with generative AI technologies.
+
+**Visit our main project site:** [genai.owasp.org](https://genai.owasp.org)
 
 ## Overview and Audience 🗣️
 
@@ -24,17 +30,17 @@ The primary aim of this project is to provide a comprehensible and adoptable gui
 
 ## Mission Statement 🚀
 
-Our mission is to make application security visible, so that people and organizations can make informed decisions about application security risks related to LLMs. While our list shares DNA with vulnerability types found in other OWASP Top 10 lists, we do not simply reiterate these vulnerabilities. Instead, we delve into these vulnerabilities’ unique implications when encountered in applications utilizing LLMs.
+Our mission is to make application security visible, so that people and organizations can make informed decisions about application security risks related to LLMs. While our list shares DNA with vulnerability types found in other OWASP Top 10 lists, we do not simply reiterate these vulnerabilities. Instead, we delve into these vulnerabilities' unique implications when encountered in applications utilizing LLMs.
 
-Our goal is to bridge the divide between general application security principles and the specific challenges posed by LLMs. The group’s goals include exploring how conventional vulnerabilities may pose different risks or be exploited in novel ways within LLMs and how developers must adapt traditional remediation strategies for applications utilizing LLMs.
+Our goal is to bridge the divide between general application security principles and the specific challenges posed by LLMs. The group's goals include exploring how conventional vulnerabilities may pose different risks or be exploited in novel ways within LLMs and how developers must adapt traditional remediation strategies for applications utilizing LLMs.
 
 ## Contribution 👋
 
-The first version of this list was contributed by Steve Wilson of Contrast Security.  We encourage the community to contribute and help improve the project. If you have any suggestions, feedback or want to help improve the list, feel free to open an issue or send a pull request.
+The first version of this list was contributed by Steve Wilson of Contrast Security. We encourage the community to contribute and help improve the project. If you have any suggestions, feedback or want to help improve the list, feel free to open an issue or send a pull request.
 
 We have a working group channel on the [OWASP Slack](https://owasp.org/slack/invite), so please sign up and then join us on the #project-top10-llm channel.
 
-Please hop over to [our wiki page](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki) to collaborate on the project and stay up to date with the latest meetings and current roadmap.
+**Learn how to contribute:** [https://genai.owasp.org/contribute/](https://genai.owasp.org/contribute/)
 
 ## License
 

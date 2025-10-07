@@ -1,4 +1,4 @@
-## LLM05:2025 Fehlerhafte  Ausgabeverarbeitung
+## LLM05:2025 Fehlerhafte Ausgabeverarbeitung
 
 ### Beschreibung
 
@@ -37,16 +37,27 @@ Die folgenden Bedingungen können die Auswirkungen dieser Schwachstelle verstär
 ### Beispiele für Angriffsszenarien
 
 #### Szenario 1
+
   Eine Anwendung nutzt eine LLM-Extension, um Antworten für eine Chatbot-Funktion zu generieren. Die Erweiterung bietet auch eine Reihe von Verwaltungsfunktionen, auf die ein anderer privilegiertes LLM Zugriff hat. Das Allzweck-LLM gibt die Antwort ohne ordnungsgemäße Validierung der Ausgabe direkt an die Erweiterung weiter, was dazu führt, dass die Erweiterung zur Wartung abgeschaltet wird.
+
 #### Szenario 2
+
   Eine Person nutzt ein von einem LLM betriebenes Tool zur Zusammenfassung einer Webseite, um eine kurze Zusammenfassung eines Artikels zu erstellen. Die Webseite enthält eine Eingabeaufforderung, die den LLM anweist, sensible Inhalte entweder von der Website oder aus der Unterhaltung des Nutzers zu erfassen. Von dort aus kann der LLM die sensiblen Daten verschlüsseln und sie ohne jegliche Output-Validierung oder Filterung an einen vom Angreifende kontrollierten Server senden.
+
 #### Szenario 3
+
   Ein LLM ermöglicht es Nutzern, über eine chatähnliche Funktion SQL-Abfragen für eine Backend-Datenbank zu erstellen. Eine Person fordert eine Abfrage zum Löschen aller Datenbanktabellen an. Wenn die vom LLM erstellte Abfrage nicht überprüft wird, werden alle Datenbanktabellen gelöscht.
+
 #### Szenario 4
+
   Eine Webanwendung verwendet ein LLM, um Inhalte aus Text-Eingaben von Nutzenden zu generieren, ohne die Ausgabe zu bereinigen. Angreifende könnten eine manipulierte Eingabeaufforderung übermitteln, die das LLM veranlasst, einen nicht bereinigte JavaScript-Payload zurückzugeben, was zu XSS führt, wenn er im Browser des Opfers dargestellt wird. Die unzureichende Validierung von Prompts ermöglichte diesen Angriff.
+
 #### Szenario 5
+
   Ein LLM wird verwendet, um dynamische E-Mail-Vorlagen für eine Marketingkampagne zu erstellen. Angreifende manipulieren das LLM, um bösartiges JavaScript in den E-Mail-Inhalt zu integrieren. Wenn die Anwendung die LLM-Ausgabe nicht ordnungsgemäß bereinigt, kann dies zu XSS-Angriffen auf Empfänger führen, die die E-Mail in anfälligen E-Mail-Clients betrachten.
+
 #### Szenario 6
+
   Ein LLM wird in einem Softwareunternehmen verwendet, um aus Eingaben in natürlicher Sprache Code zu generieren, mit dem Ziel, Entwicklungsaufgaben zu optimieren. Dieser Ansatz ist zwar effizient, birgt aber die Gefahr, dass sensible Informationen preisgegeben, unsichere Datenverarbeitungsmethoden entwickelt oder Schwachstellen wie SQL-Injection eingeführt werden. Die KI kann auch nicht existierende Softwarepakete vorgaukeln, was dazu führen kann, dass Entwickelnde mit Malware infizierte Ressourcen herunterladen. Eine gründliche Überprüfung des Codes und die Verifizierung der vorgeschlagenen Pakete sind entscheidend, um Sicherheitslücken, unbefugten Zugriff und die Gefährdung des Systems zu verhindern.
 
 ### Referenzlinks
@@ -59,4 +70,3 @@ Die folgenden Bedingungen können die Auswirkungen dieser Schwachstelle verstär
 6. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/): **AI Village**
 7. [OWASP ASVS - 5 Validation, Sanitization and Encoding](https://owasp-aasvs4.readthedocs.io/en/latest/V5.html#validation-sanitization-and-encoding): **OWASP AASVS**
 8. [AI hallucinates software packages and devs download them – even if potentially poisoned with malware](https://www.theregister.com/2024/03/28/ai_bots_hallucinate_software_packages/) **Theregiste**
-
