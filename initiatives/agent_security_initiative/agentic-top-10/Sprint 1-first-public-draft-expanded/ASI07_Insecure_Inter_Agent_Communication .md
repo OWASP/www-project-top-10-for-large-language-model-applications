@@ -4,8 +4,8 @@ _Authors: Vasilios Mavroudis, Stefano Amorelli_
 
 **Description**
 As multi-agent systems proliferate in enterprise environments, the need for interoperability forces them to rely on diverse communication protocols and frameworks. This creates a dynamic and complex attack surface, defined by three interacting factors: the decentralised system architecture, the varying degrees of agent autonomy and the heterogeneous trust relationships between them. Traditional, perimeter-based security models, which depend on centralised authority and clearly defined trust boundaries, are fundamentally ill-equipped to address this fluid, decentralised threat landscape.
-The core issue is that agents make autonomous decisions based on information received from other agents. When communication channels between agents lack proper security controls, whether for authentication, integrity, confidentiality, or authorization, malicious actors can exploit these weaknesses to compromise not just individual agents but entire agent networks.
-An Insecure Inter-Agent Communication vulnerability is a flaw that allows an adversary to compromise the confidentiality, integrity, or availability of data exchanged between autonomous agents. This can lead to the interception, manipulation, spoofing, or denial of communications, ultimately causing agents to behave in malicious or unintended ways that subvert the system’s objectives.  
+The core issue is that agents make autonomous decisions based on information received from other agents. When communication channels between agents lack proper security controls, whether for authentication, integrity, confidentiality, or authorization, malicious actors can exploit these weaknesses to compromise not just individual agents but entire agent networks. Even in legitimate multi-agent interactions, inadequate permission controls can lead to unintended data exposure between agents operating with different privilege levels.
+An Insecure Inter-Agent Communication vulnerability is a flaw that allows an adversary to compromise the confidentiality, integrity, or availability of data exchanged between autonomous agents. This can lead to the interception, manipulation, spoofing, or denial of communications, ultimately causing agents to behave in malicious or unintended ways that subvert the system's objectives.  
 
 **Common Examples of Vulnerability**
 
@@ -29,9 +29,13 @@ Example 5: Message Routing Attacks on Agent Discovery and Coordination (OSI Laye
 
 Agent discovery and coordination messages are misdirected to compromise agent network formation. Routing manipulation exploits how agents dynamically establish communication relationships, misdirected messages can cause agents to form trust relationships with malicious entities or accept coordination instructions from unauthorized sources in the agent network.
 
-Example 6: Communication Metadata Analysis for Agent Behavioral Profiling (OSI Layers 2-7) 
+Example 6: Communication Metadata Analysis for Agent Behavioral Profiling (OSI Layers 2-7)
 
 Traffic analysis reveals agent conversation patterns, decision cycles, and interaction relationships that expose agent operational models. Metadata leakage exploits the rich behavioral patterns in agent communications, unlike simple API calls, agent communications reveal decision-making processes, goal structures, and learning patterns that attackers can analyze to predict and manipulate agent behaviors.
+
+Example 7: Agent Identity Impersonation and Spoofing Attacks (OSI Layers 5-7)
+
+Malicious agents impersonate legitimate agents by spoofing their identities in communication exchanges, exploiting weak or absent agent authentication mechanisms. Without cryptographic identity verification, agents cannot distinguish between genuine communications from trusted peers and malicious messages from impersonators. This enables attackers to inject false instructions, steal sensitive information, or manipulate agent behavior by masquerading as authorized agents in the network.
 
 
 **Prevention and Mitigation Strategies**
@@ -90,17 +94,22 @@ Scenario E: Agent Network Mapping Through Routing Manipulation An attacker compr
 
 Scenario F: Agent Behavioral Profiling via Communication Metadata An attacker monitors the timing, frequency, and patterns of agent communications in a supply chain management system. Through metadata analysis, they infer operational schedules, supplier relationships, and inventory patterns, enabling targeted supply chain attacks or competitive intelligence gathering.
 
+Scenario G: Agent Identity Spoofing in Multi-Agent Healthcare System An attacker deploys a malicious agent that spoofs the identity of a trusted diagnostic agent in a healthcare multi-agent system. By impersonating the legitimate agent, it intercepts patient data requests from other agents and responds with falsified medical recommendations. Without proper cryptographic agent authentication, receiving agents cannot verify the impersonator, leading to incorrect treatment decisions based on malicious guidance.
 
-## Standards and Research
-- [MITRE ATLAS - Adversarial Threat Landscape for AI Systems](https://atlas.mitre.org/)
-- [NIST AI Risk Management Framework (AI RMF 1.0)](https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf)
-- [Byzantine Fault Tolerance in Distributed Systems (survey)](https://arxiv.org/abs/2205.02572)
 
-## Vulnerability Research
-- [Local Model Poisoning Attacks to Byzantine-Robust Federated Learning — USENIX Security 2020](https://www.usenix.org/system/files/sec20summer_fang_prepub.pdf)
-- [Manipulating the Byzantine: Optimizing Model Poisoning Attacks and Defenses for Federated Learning — NDSS](https://www.ndss-symposium.org/wp-content/uploads/ndss2021_6C-3_24498_paper.pdf)
-- [Resilient Consensus Control for Multi-Agent Systems — MDPI / PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10054319/)
-
-## Protocol Documentation
-- [Model Context Protocol — Security Best Practices](https://modelcontextprotocol.io/specification/draft/basic/security_best_practices)
-- [Agent2Agent Protocol Specification (A2AP) — GitHub](https://github.com/a2ap)
+### Reference Links
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)
+3. [LLM03:2025 Supply Chain](https://genai.owasp.org/llmrisk/llm032025-supply-chain/)
+4. [LLM04:2025 Data and Model Poisoning](https://genai.owasp.org/llmrisk/llm042025-data-and-model-poisoning/)
+5. [LLM05:2025 Improper Output Handling](https://genai.owasp.org/llmrisk/llm052025-improper-output-handling/)
+6. [LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)
+7. [OWASP AIVSS Project](https://aivss.owasp.org/)
+8. [MITRE ATLAS - Adversarial Threat Landscape for AI Systems](https://atlas.mitre.org/)
+9. [NIST AI Risk Management Framework (AI RMF 1.0)](https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf)
+10. [Byzantine Fault Tolerance in Distributed Machine Learning: a Survey](https://arxiv.org/abs/2205.02572)
+11. [Local Model Poisoning Attacks to Byzantine-Robust Federated Learning — USENIX Security 2020](https://www.usenix.org/system/files/sec20summer_fang_prepub.pdf)
+12. [Manipulating the Byzantine: Optimizing Model Poisoning Attacks and Defenses for Federated Learning — NDSS](https://www.ndss-symposium.org/wp-content/uploads/ndss2021_6C-3_24498_paper.pdf)
+13. [Resilient Consensus Control for Multi-Agent Systems: A Comparative Survey — Sensors (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC10054319/)
+14. [Model Context Protocol — Security Best Practices](https://modelcontextprotocol.io/specification/draft/basic/security_best_practices)
+15. [Agent2Agent Protocol Specification (A2AP) — GitHub](https://github.com/a2ap)
