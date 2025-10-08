@@ -73,7 +73,9 @@ Preventing ASI06 requires a multi-layered approach to secure and validate an LLM
 * Use Human-in-the-Loop systems to review and approve agent actions to prevent injected LLMs from executing destructive commands.
 
 ### References
-[PoisonedRAG](https://arxiv.org/pdf/2402.07867)
+[PoisonedRAG](https://arxiv.org/pdf/2402.07867) - Describes knowledge corruption attacks using a RAG enabled LLM.
+[AgentPoison](https://proceedings.neurips.cc/paper_files/paper/2024/file/eb113910e9c3f6242541c1652e30dfd6-Paper-Conference.pdf) - Describes methods for red teaming agentic AI systems using memory poisoning.
+[Securiing Agentic AI](https://arxiv.org/pdf/2504.19956) - Describes agentic AI security risks including memory persistence risks and threat models memory poisoning as "T3: Knowledge, Memory Poisoning & Belief Loops (Tampering/Information Disclosure)".
 
 **Contributors** *(not sure where this should go, don't want to lose it)*
 * Joshua Beck
