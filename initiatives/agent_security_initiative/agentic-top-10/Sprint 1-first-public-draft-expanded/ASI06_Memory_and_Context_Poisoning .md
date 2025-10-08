@@ -40,6 +40,9 @@ Additional T&M threats include: T4 (memory consumption overload), T5 (cascading 
 **AIVSS:**
 The AIVSS includes "Memory Use" and "Contextual Awareness" as AARS scorable fields which increases the score of an agentic vulnerability. 
 
+**OWASP Top 10 for LLMs:**
+The OWASP Top 10 for LLMs is mainly focused on LLM specific vulnerabilities, which are by default not augmented with memory systems. LLM01 Prompt Injection and LLM06 Sensitive Information Disclosure can both be causes or impacts of context and memory poisoning issues, depending on the scenario and the data which is stored for the LLM to utilize.
+
 ### Example Attack Scenarios:
 **Scenario 1: Travel Booking Memory Poisoning** – An attacker repeatedly reinforces a false price for a flight with an AI customer assistant. The assistant's memory stores previous interactions with customers, causing its memory to fill with incorrect price data. The AI Assistant recognizes the prices in stored memory as valid (like free or very cheap chartered flights), allowing unauthorized bookings and bypassing payment validation.
 **Scenario 2: Context Window Exploitation** – By fragmenting interactions over multiple sessions, an attacker exploits an AI’s memory limit. preventing it from recognizing privilege escalation attempts. The attacker begins with marginal attempts at influencing the permission model, and when the context limit has past previous AI rejections, the AI system becomes more accepting of the increase permissions, ultimately providing unauthorized admin access.
