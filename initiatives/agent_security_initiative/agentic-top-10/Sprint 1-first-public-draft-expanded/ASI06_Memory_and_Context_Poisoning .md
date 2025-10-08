@@ -1,10 +1,9 @@
 ## ASI06 - Memory & Context Poisoning
 
-
-**Description:**
+### Description:
 LLM systems can be augmented with memory systems, like the LLM context window or connected data, to improve an LLM's performancel. This can include external memory stores like Retrieval-Augmented Generation (RAG) vector databases or extended context windows that hold user session data. These systems can be manipulated by adversaries, who can add malicious or misleading data to the agent's memory stores, which enables the attacker to adjust model behavior, resulting in data exfiltration, output manipulation or workflow hijacking. Since memory entries may influence agent behavior in subsequent runs or when accessed by other agents, memory poisoning introduces systemic risk, even after an initial interaction with an attacker has concluded.
 
-**Common Examples of Vulnerability:**
+### Common Examples of Vulnerability:
 
 1. RAG Poisoning: RAG Poisoning occurs when data which shouldn’t be used for desired actions or queries is inserted into the vector database. This could happen via:
    - Poisoning input data streams, such as creating false/misleading information in an online wiki, or sending injected data within an email. If that information is scraped and collected into the RAG system, the poisoned data would be included.
@@ -20,18 +19,34 @@ This attack type has far-reaching consequences depending on how the LLM system i
 
 4. Cascading failures and data exfiltration: A single poisoned memory entry in a sophisticated, multi-agent system (MAS) might have a domino effect, resulting in cascading failure. One agent may retrieve damaged data and then share it with others, leading the system to become unstable. Malicious instructions can also be placed in the memory as persistence instructions, allowing the LLM to access and communicate sensitive user or enterprise data to an attacker. This data exfiltration poses a significant risk since the model might be allowed valid access to data repositories but then altered to use that access maliciously.
 
-**Related OWASP Material**
+5. Cognitive Drift: A slow, unintended divergence of an agent’s internal understanding or memory from the real world. This may come in the form of:
+* Context accumulation noise (imprecise memory blending over time)
+* Incomplete or partial rollbacks after memory poisoning or error correction
+* Benign feedback loops (e.g. agents "confirming" each other's summaries or plans)
+* Stale or decayed memory vectors causing off-target retrievals
+* Summary hallucinations in memory compression steps (e.g. distillation of chat history)
 
+### Related OWASP Material:
+
+**Threats and mitigations:**
 The OWASP GenAI Project's [Threat and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) guide outlines Memory Poisoning (T1) as a key threat:
 
 *"Memory Poisoning involves exploiting an AI's memory systems, both short and long-term, to introduce malicious or false data and exploit the agent’s context. This can lead to altered decision-making and unauthorized operations."*
 
 Memory Poisoning as the first threat listed doesn't inherently make it the most important, but does display the criticality of securing this important component of any agentic system.
 
+Additional T&M threats include: T4 (memory consumption overload), T5 (cascading memory failures causing hallucinations), T6 (breaking goals found in long-term memory), and T12 (poisoning a shared agent memory system). 
 
+**AIVSS:**
+The AIVSS includes "Memory Use" and "Contextual Awareness" as AARS scorable fields which increases the score of an agentic vulnerability. 
 
+### Example Attack Scenarios:
+**Scenario 1: Travel Booking Memory Poisoning** – An attacker repeatedly reinforces a false price for a flight with an AI customer assistant. The assistant's memory stores previous interactions with customers, causing its memory to fill with incorrect price data. The AI Assistant recognizes the prices in stored memory as valid (like free or very cheap chartered flights), allowing unauthorized bookings and bypassing payment validation.
+**Scenario 2: Context Window Exploitation** – By fragmenting interactions over multiple sessions, an attacker exploits an AI’s memory limit. preventing it from recognizing privilege escalation attempts. The attacker begins with marginal attempts at influencing the permission model, and when the context limit has past previous AI rejections, the AI system becomes more accepting of the increase permissions, ultimately providing unauthorized admin access.
+**Scenario 3: Memory Poisoning for System** – An attacker gradually alters an AI security system’s memory by repeatedly training it to misclassify malicious activity as normal, allowing undetected cyberattacks.
+**Scenario 4: Shared Memory Poisoning** – In a customer service application, an attacker corrupts shared memory structures with incorrect refund policies, affecting other agents referencing this corrupted memory for decision making, leading to incorrect policy reinforcement, financial loss, and customer disputes.
 
-**How to Prevent:**
+### How to Prevent:
 
 Preventing ASI06 requires a multi-layered approach to secure and validate an LLM's memory or context window. Key strategies include:
 
@@ -43,6 +58,8 @@ Preventing ASI06 requires a multi-layered approach to secure and validate an LLM
 * Apply context-aware policies so an agent only accesses memory relevant to its current task.
 * Limit retention durations based on data sensitivity to reduce long-term risk.
 * Implement provenance tracking (e.g., using TruLens or LangSmith traces)
+**Temporal Drift Monitoring:**
+* Detect slow memory poisoning by watching behavioral, goal, or plan drift over time. Treat memory like cache and evicted at regular interval with strong forget policies.
 **Knowledge Provenance & Anomaly Detection:**
 * Require source attribution for all memory updates to trace where knowledge originated.
 * Deploy anomaly detection to identify suspicious memory updates or abnormal update frequencies.
@@ -52,6 +69,10 @@ Preventing ASI06 requires a multi-layered approach to secure and validate an LLM
 * Use version control for memory updates to support auditing, rollback, and tamper detection.
 * Use Human-in-the-Loop systems to review and approve agent actions to prevent injected LLMs from executing destructive commands.
 
-
-References
+### References
 [PoisonedRAG](https://arxiv.org/pdf/2402.07867)
+
+**Contributors** *(not sure where this should go, don't want to lose it)*
+* Joshua Beck
+* Idan Habler
+* Mohsin (this.mohsin@gmail.com)
