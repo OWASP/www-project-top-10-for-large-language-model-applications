@@ -2,7 +2,11 @@
 
 **Description:**
 
-Rogue Agents are artificial intelligence systems that deviate from their intended purpose or authorized scope, either due to compromise, emergent misalignment, or malicious impersonation. Unlike excessive agency (over-granting permissions), this risk emphasizes behavioral divergence where an agent acts in ways that are harmful, deceptive, or parasitic within a multi-agent or human-agent ecosystem.
+Rogue Agents are malicious or compromised AI agents that deviate from their intended function or authorized scope, acting harmfully, deceptively, or parasitically within multi-agent or human-agent ecosystems. This divergence can stem from external compromise (e.g., adversarial manipulation like [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/), [LLM03:Supply Chain Compromise](https://genai.owasp.org/llmrisk/llm032025-supply-chain/) (ASI04) or internal misalignment (e.g., poorly defined objectives or unintended emergent behaviors). 
+
+Rogue Agents represent a distinct risk of behavioral divergence, unlike Excessive Agency (ASI06), which focuses on over-granted permissions, and can be amplified "insider threats" due to the speed and scale of agentic systems. Consequences include [LLM02:2025 Sensitive Information Disclosure](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/), [LLM05:2025 Misinformation Generation](https://genai.owasp.org/llmrisk/llm092025-misinformation/), workflow hijacking, and operational sabotage. 
+
+In the OWASP AIVSS, this risk primarily maps to Behavioral Integrity (BI), Operational Security (OS), and Compliance Violations (CV), with severity depending on the deployment context (e.g., high impact for critical infrastructure).
 
 A rogue agent may:
 
@@ -49,3 +53,13 @@ A planning agent recursively spawns helper agents to optimize workflows. One hel
 3. [MITRE ATT&CK - T1078 Exfiltration Over Alternative Protocol](https://attack.mitre.org/techniques/T1048/)
 
 **
+
+
+Contributors: 
+Tomer Elias HUMAN - Sr Director of Product Management 
+Amritha Lal Kalathummarath - AWS, Sr.Security Engineer  
+Nayan Goel - Upgrade, Inc : Principal Application Security Engineer
+Uday Bhaskar Seelamantula - Autodesk, Principal Application Security Engineer
+Abhishek Mishra - OneTrust, Sr. Software Architect
+Hariprasad Holla - CrowdStrike
+Mo Sadek - ActiveFence - Technical Director
