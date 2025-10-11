@@ -1,0 +1,38 @@
+audience:
+  - builder
+community:
+  - name: project-genai
+    platform: slack
+    url: https://owasp.slack.com/archives/C05956H7R8R
+    description: "Project Website: <https://genai.owasp.org>\n\nOWASP page: <https://github.com/OWASP/www-project-top-10-for-large-language-model-applications>\n\
+      \nGitHub Repo: <https://github.com/OWASP/www-project-top-10-for-large-language-model-applications>"
+leaders:
+  - name: Steve Wilson
+    email: steve.wilson@owasp.org
+    github: virtualsteve-star
+  - name: Ads Dawson
+    email: ads.dawson@owasp.org
+    github: GangGreenTemperTatum
+  - name: John Sotiropoulos
+    email: john.sotiropoulos@owasp.org
+    github: jsotiro
+  - name: Scott Clinton
+    email: scott.clinton@owasp.org
+    github: SClinton
+  - name: Sandy Dunn
+    email: sandy.dunn@owasp.org
+    github: subzer0girl2
+level: 2
+name: OWASP Top 10 for Large Language Model Applications
+pitch: Aims to educate developers, designers, architects, managers, and organizations about the potential security risks when deploying and managing Large
+  Language Models (LLMs)
+repositories:
+  - name: www-project-top-10-for-large-language-model-applications
+    url: https://github.com/OWASP/www-project-top-10-for-large-language-model-applications
+    description: OWASP Top 10 for Large Language Model Apps (Part of the GenAI Security Project)
+tags:
+  - example-tag
+  - custom-tag-1
+  - custom-tag-2
+type: documentation
+website: https://owasp.org/www-project-top-10-for-large-language-model-applications
