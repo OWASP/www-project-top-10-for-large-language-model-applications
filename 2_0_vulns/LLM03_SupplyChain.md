@@ -28,7 +28,7 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 
 #### 4. Vulnerable Pre-Trained Model
 
-  Models are binary black boxes and unlike open source, static inspection can offer little to security assurances. Vulnerable pre-trained models can contain hidden biases, backdoors, or other malicious features that have not been identified through the safety evaluations of model repositories. Vulnerable models can be created by both poisoned datasets and direct model tampering using techniques such as ROME also known as lobotomisation.
+  Models are binary black boxes and unlike open source, static inspection can offer little to no security assurances. Vulnerable pre-trained models can contain hidden biases, backdoors, or other malicious features that have not been identified through the safety evaluations of model repositories. Vulnerable models can be created by both poisoned datasets and direct model tampering using techniques such as ROME also known as lobotomisation.
 
 #### 5. Weak Model Provenance
 
@@ -40,11 +40,11 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 
 #### 7. Exploit Collaborative Development Processes
 
-  Collaborative model merge and model handling services (e.g. conversions) hosted in shared environments can be exploited to introduce vulnerabilities in shared models. Model merging is very popular on Hugging Face with model-merged models topping the OpenLLM leaderboard and can be exploited to bypass reviews. Similarly, services such as conversation bot have been proved to be vulnerable to manipulation and introduce malicious code in models.
+  Collaborative model merge and model handling services (e.g. conversions) hosted in shared environments can be exploited to introduce vulnerabilities in shared models. Model merging is very popular on Hugging Face with model-merged models topping the OpenLLM leaderboard and can be exploited to bypass reviews. Similarly, services such as a conversation bot have been proved to be vulnerable to manipulation and introduce malicious code in models.
 
 #### 8. LLM Model on Device supply-chain vulnerabilities
 
-  LLM models on device increase the supply attack surface with compromised manufactured processes and exploitation of device OS or firmware vulnerabilities to compromise models. Attackers can reverse engineer and re-package applications with tampered models.
+  LLM models on devices increase the supply attack surface with compromised manufactured processes and exploitation of device OS or firmware vulnerabilities to compromise models. Attackers can reverse engineer and re-package applications with tampered models.
 
 #### 9. Unclear T&Cs and Data Privacy Policies
 
