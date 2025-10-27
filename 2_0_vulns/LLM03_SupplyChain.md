@@ -44,7 +44,7 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 
 #### 8. LLM Model on Device supply-chain vulnerabilities
 
-  LLM models on devices increase the supply attack surface with compromised manufactured processes and exploitation of device OS or firmware vulnerabilities to compromise models. Attackers can reverse engineer and re-package applications with tampered models.
+  LLM models on device increase the supply attack surface with compromised manufactured processes and exploitation of device OS or firmware vulnerabilities to compromise models. Attackers can reverse engineer and re-package applications with tampered models.
 
 #### 9. Unclear T&Cs and Data Privacy Policies
 
