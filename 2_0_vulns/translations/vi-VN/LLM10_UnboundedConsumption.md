@@ -1,78 +1,78 @@
-## LLM10:2025 Unbounded Consumption
+ ## LLM10:2025 Chiếm dụng không giới hạn
 
-### Description
+### Mô tả
 
-Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
+Chiếm dụng không giới hạn (Unbounded Consumption) là quá trình khi Mô hình Ngôn ngữ lớn cho các kết quả dựa trên các truy vấn hoặc câu lệnh đầu vào. Suy luận (Inference) là một chức năng quan trọng của Mô hình Ngôn ngữ lớn, trong đó mô hình áp dung các mẫu đã học và kiến thức để đưa ra các phản hồi hoặc các dự đoán phù hợp.
 
-Attacks designed to disrupt service, deplete the target's financial resources, or even steal intellectual property by cloning a model’s behavior all depend on a common class of security vulnerability in order to succeed. Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to risks such as denial of service (DoS), economic losses, model theft, and service degradation. The high computational demands of LLMs, especially in cloud environments, make them vulnerable to resource exploitation and unauthorized usage.
+Các cuộc tấn công với mục đích làm gián đoạn dịch vụ, làm cạn kiệt nguồn lực tài chính của mục tiêu, hoặc đánh cắp tài sản trí tuệ bằng cách sao chép hành vi của mô hình đều khai thác một điểm yếu chung về bảo mật. Chiếm dụng không giới hạn xảy ra khi một Mô hình Ngôn ngữ lớn cho phép người dùng thực hiện các suy luận quá mức và không kiểm soát, dẫn đến các nguy cơ như từ chối dịch vụ (DoS), thiệt hại tài chính, đánh cắp mô hình và làm giảm chất lượng dịch vụ. Do Mô hình Ngôn ngữ lớn yêu cầu tài nguyên tính toán lớn, đặc biệt trong môi trường đám mây, do vậy dễ là lỗ hổng để khai thác tài nguyên và sử dụng trái phép. 
 
-### Common Examples of Vulnerability
+### Các ví dụ phổ biến về lỗ hổng
 
-#### 1. Variable-Length Input Flood
-  Attackers can overload the LLM with numerous inputs of varying lengths, exploiting processing inefficiencies. This can deplete resources and potentially render the system unresponsive, significantly impacting service availability.
-#### 2. Denial of Wallet (DoW)
-  By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
-#### 3. Continuous Input Overflow
-  Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
-#### 4. Resource-Intensive Queries
-  Submitting unusually demanding queries involving complex sequences or intricate language patterns can drain system resources, leading to prolonged processing times and potential system failures.
-#### 5. Model Extraction via API
-  Attackers may query the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model. This not only poses risks of intellectual property theft but also undermines the integrity of the original model.
-#### 6. Functional Model Replication
-  Using the target model to generate synthetic training data can allow attackers to fine-tune another foundational model, creating a functional equivalent. This circumvents traditional query-based extraction methods, posing significant risks to proprietary models and technologies.
-#### 7. Side-Channel Attacks
-  Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
+#### 1. Tấn công tràn với đầu vào có độ dài linh hoạt
+  Kẻ tấn công làm quá tải hệ thống khi nhập đầu vào vớ độ dài đa dạng, khai thác sự kém hiệu quả khi xử lý dữ liệu. Việc này có thể làm tiêu tốn tài nguyên và có khả năng làm hệ thống không thể phản hồi, ảnh nghiêm trọng đến khả năng cung cấp dịch vụ. 
+#### 2. Tấn công từ chối ví (DoW)
+  Kẻ tấn công khởi tạo một số lượng lớn các tác vụ, khai tác mô hình tính phí theo mức sử dụng của các dịch vụ AI trên đám mây, dẫn đến gánh nặng tài chính cho nhà cung cấp và nguy cơ phá sản.
+#### 3. Tấn công tràn đầu vào liên tục 
+  Việc dữ liệu đầu vào được gửi liên tục làm quá tải cửa sổ ngữ cảnh của mô hình có thể dẫn đến việc tiêu thụ tài nguyên tính toán quá mức, gây hạ cấp dịch vụ và gián đoạn hoạt động.
+#### 4. Tấn công bằng các truy vấn tốn tài nguyên
+  Việc gửi các truy vấn có đòi hỏi cao bất thường bao gồm các chuỗi và các mẫu ngôn ngữ phức tạp có thể làm cạn kiệt tài nguyên của hệ thống, dẫn đến thời gian xử lý kéo dài hoặc hệ thống ngừng hoạt động.
+#### 5. Trích xuất mô hình qua API
+  Kẻ tấn công có thể truy vấn mô hình API bằng cách sử dụng các dữ liệu nhập vào được thiết kế riêng và kỹ thuật chèn lệnh để thu thập kết quả đầu ra nhằm sao chép một phần mô hình hoặc tạo ra một bóng mô hình. Việc này không chỉ gây rủi ro bị đánh cắp tài sản trí tuệ mà còn đe dọa tính toàn vẹn của mô hình ban đầu.
+#### 6. Sao chép mô hình chức năng
+  Sử dụng mô hình mục tiêu để tạo ra dữ liệu huấn luyện nhân tạo giúp kẻ tấn công tinh chỉnh mô hình nền tảng khác, tạo ra mô hình chức năng tương đương. Việc này vượt qua các phương pháp trích xuất dựa trên truy vấn thông thường, tạo ra nguy cơ lớn cho công nghệ và các mô hình độc quyền.
+#### 7. Tấn công qua kênh phụ
+  Kẻ tấn công có thể khai thác kỹ thuật lọc đầu vào của mô hình để thực hiện tấn công qua kênh phụ, thu thập trọng số và thông tin kiến trúc của mô hình.
 
-### Prevention and Mitigation Strategies
+### Chiến lược ngăn chặn và giảm thiểu
 
-#### 1. Input Validation
-  Implement strict input validation to ensure that inputs do not exceed reasonable size limits.
-#### 2. Limit Exposure of Logits and Logprobs
-  Restrict or obfuscate the exposure of `logit_bias` and `logprobs` in API responses. Provide only the necessary information without revealing detailed probabilities.
-#### 3. Rate Limiting
-  Apply rate limiting and user quotas to restrict the number of requests a single source entity can make in a given time period.
-#### 4. Resource Allocation Management
-  Monitor and manage resource allocation dynamically to prevent any single user or request from consuming excessive resources.
-#### 5. Timeouts and Throttling
-  Set timeouts and throttle processing for resource-intensive operations to prevent prolonged resource consumption.
-#### 6.Sandbox Techniques
-  Restrict the LLM's access to network resources, internal services, and APIs.
-  - This is particularly significant for all common scenarios as it encompasses insider risks and threats. Furthermore, it governs the extent of access the LLM application has to data and resources, thereby serving as a crucial control mechanism to mitigate or prevent side-channel attacks.
-#### 7. Comprehensive Logging, Monitoring and Anomaly Detection
-  Continuously monitor resource usage and implement logging to detect and respond to unusual patterns of resource consumption.
-#### 8. Watermarking
-  Implement watermarking frameworks to embed and detect unauthorized use of LLM outputs.
-#### 9. Graceful Degradation
-  Design the system to degrade gracefully under heavy load, maintaining partial functionality rather than complete failure.
-#### 10. Limit Queued Actions and Scale Robustly
-  Implement restrictions on the number of queued actions and total actions, while incorporating dynamic scaling and load balancing to handle varying demands and ensure consistent system performance.
-#### 11. Adversarial Robustness Training
-  Train models to detect and mitigate adversarial queries and extraction attempts.
-#### 12. Glitch Token Filtering
-  Build lists of known glitch tokens and scan output before adding it to the model’s context window.
-#### 13. Access Controls
-  Implement strong access controls, including role-based access control (RBAC) and the principle of least privilege, to limit unauthorized access to LLM model repositories and training environments.
-#### 14. Centralized ML Model Inventory
-  Use a centralized ML model inventory or registry for models used in production, ensuring proper governance and access control.
-#### 15. Automated MLOps Deployment
-  Implement automated MLOps deployment with governance, tracking, and approval workflows to tighten access and deployment controls within the infrastructure.
+#### 1. Xác thực đầu vào
+  Thực hiện xác thực đầu vào nghiêm ngặt để đảm bảo dữ liệu nhập vào không vượt quá giới hạn kích thước thông thường.
+#### 2. Hạn chế khả năng tiếp cận Logits và Logprobs
+  Giới hạn và ẩn khả năng tiếp cận `logit_bias` và `logprobs` trong các phản hồi API. Chỉ cung cấp các thông tin cần thiết mà không làm lộ ra các xác suất chi tiết.
+#### 3. Giới hạn số lượng
+  Đặt giới hạn số lượng và hạn mức sử dụng cho người dùng để giới hạn số lượng yêu cầu mà một nguồn đơn lẻ có thể thực hiện.
+#### 4. Quản lý phân bổ tài nguyên
+  Giám sát và quản lý phân bổ tài nguyên một cách linh hoạt để phòng chống việc một người dùng hoặc một yêu cầu sử dung quá nhiều tài nguyên. 
+#### 5. Giới hạn thời gian và điều chỉnh tốc độ
+  Đặt giới hạn thời gian và giới hạn tốc độ xử lý cho các tác vụ tốn tài nguyên để phòng chống việc chiếm dụng tài nguyên kéo dài.
+#### 6. Kỹ thuật Sandbox
+  Hạn chế quyền truy cập của mô hình vào tài nguyên mạng, dịch vụ nội bộ và API.
+  - Điều này rất quan trọng trong tất cả các tình huống phổ biến vì nó bao gồm rủi ro và các mối đe dọa trong nội bộ. HƠn nữa, nó còn kiểm soát phạm vi truy cập của ứng dụng mô hình vào dữ liệu và tài nguyên, do vậy nó có vai trò như một cơ chế giảm thiểu hoặc phòng chống các loại tấn công qua kênh phụ.
+#### 7. Ghi log, theo dõi và phát hiện bất thường đầy đủ
+  Liên tục theo dõi việc sử dụng tài nguyên và áp dụng ghi log để phát hiện và phản ứng trong trường hợp chiếm dụng tài nguyên bất thường.
+#### 8. Dấu chìm
+  Sử dụng các khung chuẩn cho dấu chìm để chèn và phát hiện các hành vi sử dụng trái phép các kết quả đầu ra của Mô hình Ngôn ngữ lớn.
+#### 9. Hạ cấp có kiểm soát
+  Thiết kế hệ thống để hạ cấp có kiểm soát khi bị tải nặng, duy trì một phần chức năng thay vì ngừng hoạt động hoàn toàn.
+#### 10. Giới hạn tác vụ chờ và mở rộng
+  Giới hạn số lượng các tác vụ chờ và tổng số tác vụ, đồng thời kết hợp mở rộng linh hoạt và cân bằng tải để xử lý các nhu cầu đa dạng và đảm bảo hoạt động ổn định của hệ thống.
+#### 11. Đào tạo chống tấn công
+  Đào tạo mô hình để phát hiện và giảm thiểu các truy vấn thù địch và các nỗ lực nhằm trích xuất dữ liệu
+#### 12. Lọc token lỗi
+  Xây dựng danh sách các token lỗi đã biết và quét các kết quả đầu ra trước khi thêm chúng vào cửa sổ ngữ cảnh của mô hình.
+#### 13. Kiểm soát truy cập
+  Thực hiện cơ chế kiểm soát truy cập mạnh, bao gồm kiểm soát truy cập dựa trên vai trò (RBAC) và nguyên tắc đặc quyền tối thiểu, để hạn chế các truy cập trái phép vào kho lưu trữ và môi trường đào tạo của mô hình.
+#### 14. Lưu trữ mô hình máy học (ML) tập trung
+  Sử dụng kho lưu trữ tập trung hoặc hệ thống quản lý tập trung cho các mô hình máy học sử dụng trong môi trường triển khai, để đảm bảo quản trị và kiểm soát truy cập phù hợp. 
+#### 15. Triển khai vận hành máy học (MLOps) tự động
+  Thực hiện triển khai vận hành máy học tự động cùng với việc quản trị, theo dõi và quy trình phê duyệt để kiểm soát truy cập và triển khai chặt chẽ hơn trong hạ tầng.
 
-### Example Attack Scenarios
+### Các kịch bản tấn công mẫu
 
-#### Scenario #1: Uncontrolled Input Size
-  An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
-#### Scenario #2: Repeated Requests
-  An attacker transmits a high volume of requests to the LLM API, causing excessive consumption of computational resources and making the service unavailable to legitimate users.
-#### Scenario #3: Resource-Intensive Queries
-  An attacker crafts specific inputs designed to trigger the LLM's most computationally expensive processes, leading to prolonged CPU usage and potential system failure.
-#### Scenario #4: Denial of Wallet (DoW)
-  An attacker generates excessive operations to exploit the pay-per-use model of cloud-based AI services, causing unsustainable costs for the service provider.
-#### Scenario #5: Functional Model Replication
-  An attacker uses the LLM's API to generate synthetic training data and fine-tunes another model, creating a functional equivalent and bypassing traditional model extraction limitations.
-#### Scenario #6: Bypassing System Input Filtering
-  A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
+#### Kịch bản #1: Không kiểm soát kích cỡ của dữ liệu nhập vào
+  Kẻ tấn công nhập dữ liệu lớn bất thường vào ứng dụng LLM xử lý dữ liệu văn bản, dẫn đến việc làm quá tải bộ nhớ và CPU, có thể gây sập hệ thống hoặc làm dịch vụ bị chậm đi đáng kể.
+#### Kịch bản #2: Yêu cầu lặp lại
+  Kẻ tấn công gửi một số lượng lớn các yêu cầu đến LLM API, gây ra việc tiêu tốn tài nguyên tính toán quá mức, dẫn đến việc những người dùng thật không thể sử dụng dịch vụ.
+#### Kịch bản #3: Các truy vấn chiếm dụng tài nguyên
+  Kẻ tấn công dùng những dữ liệu nhập đầu vào đặc biệt được thiết kế để kích hoạt các quá trình tiêu tốn nhiều tài nguyên tính toán nhất của LLM, dẫn đến việc sử dụng CPU kéo dài và có thể làm sập hệ thống.
+#### Kịch bản #4: Từ chối ví
+  Kẻ tấn công thực hiện số lượng lớn các tác vụ nhằm lợi dụng mô hình tính phí theo mức sử dụng của các dịch vụ AI đám mây, gây ra các chi phí không thể duy trì cho các nhà cung cấp dịch vụ. 
+#### Kịch bản #5: Sao chép mô hình chức năng
+  Kẻ tấn công sử dụng API của LLM để tạo ra dữ liệu huấn luyện nhân tạo và tinh chỉnh mô hình khác, tạo ra mô hình tương đương và qua mặt các giới hạn trích xuất mô hình thông thường.
+#### Kịch bản #6: Qua mặt hệ thống lọc dữ liệu nhập vào
+  Kẻ tấn công qua mặt kỹ thuật lọc dữ liệu nhập vào và phần hướng dẫn của LLM để thực hiện tấn công qua kênh phụ và thu thập thông tin mô hình để chuyển vào những tài nguyên mà chúng kiểm soát từ xa.
 
-### Reference Links
+### Liên kết tham khảo
 
 1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**
@@ -85,9 +85,9 @@ Attacks designed to disrupt service, deplete the target's financial resources, o
 9. [Sponge Examples: Energy-Latency Attacks on Neural Networks: Arxiv White Paper](https://arxiv.org/abs/2006.03463) **arXiv**
 10. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
 
-### Related Frameworks and Taxonomies
+### Các khung chuẩn và hệ thống phân loại liên quan
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Tham khảo phần này để có thông tin toàn diện, các chiến lược kịch bản liên quan đến triển khai hạ tầng, kiểm soát môi trường được áp dụng và các thực hành tốt nhất.
 
 - [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
 - [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**

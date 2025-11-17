@@ -1,32 +1,49 @@
-## Letter from the Project Leads
+﻿## Thư Ngỏ từ Người Phụ Trách Dự Án
 
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+Danh sách OWASP Top 10 cho Các Ứng dụng Mô hình Ngôn ngữ Lớn (LLM) bắt đầu vào năm 2023 như một nỗ lực do cộng đồng thúc đẩy nhằm nêu bật và giải quyết các vấn đề bảo mật cụ thể cho các ứng dụng AI. Từ thời điểm đó, công nghệ AI đã tiếp tục lan rộng khắp các ngành và các ứng dụng, và các rủi ro đi kèm cũng vậy. Khi các Mô hình Ngôn ngữ lớn được tích hợp sâu hơn vào mọi thứ từ tương tác với khách hàng đến hoạt động nội bộ, các nhà phát triển và chuyên gia bảo mật đang phát hiện ra những lỗ hổng mới—và các cách để chống lại chúng.
 
-The 2023 list was a big success in raising awareness and building a foundation for secure LLM usage, but we've learned even more since then. In this new 2025 version, we’ve worked with a larger, more diverse group of contributors worldwide who have all helped shape this list. The process involved brainstorming sessions, voting, and real-world feedback from professionals in the thick of LLM application security, whether by contributing or refining those entries through feedback. Each voice was critical to making this new release as thorough and practical as possible.
+Danh sách năm 2023 là một thành công lớn trong việc nâng cao nhận thức và xây dựng nền tảng cho việc sử dụng LLM an toàn, nhưng chúng tôi đã học được nhiều hơn kể từ đó. Trong phiên bản mới năm 2025 này, chúng tôi đã làm việc với một nhóm cộng tác viên lớn hơn, đa dạng hơn trên toàn thế giới, họ đã giúp định hình danh sách này. Quá trình này bao gồm các buổi lên ý tưởng, bỏ phiếu và phản hồi thực tế từ các chuyên gia trong lĩnh vực bảo mật ứng dụng LLM, dù là bằng cách đóng góp hay tinh chỉnh các mục đó thông qua phản hồi. Mỗi ý kiến đều rất quan trọng để làm cho phiên bản mới này toàn diện và thiết thực nhất có thể.
 
-### What’s New in the 2025 Top 10
+### Những Điểm Mới trong OWASP Top 10 năm 2025
 
-The 2025 list reflects a better understanding of existing risks and introduces critical updates on how LLMs are used in real-world applications today. For instance, **Unbounded Consumption** expands on what was previously Denial of Service to include risks around resource management and unexpected costs—a pressing issue in large-scale LLM deployments.
+Danh sách năm 2025 phản ánh sự hiểu biết tốt hơn về các rủi ro hiện có và giới thiệu các cập nhật quan trọng về cách LLM được sử dụng trong các ứng dụng thực tế ngày nay. Ví dụ, Tiêu thụ Không Giới Hạn (Unbounded Consumption) mở rộng từ khái niệm trước đây là Từ chối Dịch vụ (Denial of Service) để bao gồm cả các rủi ro liên quan đến quản lý tài nguyên và chi phí bất ngờ—một vấn đề cấp bách trong việc triển khai LLM quy mô lớn.
 
-The **Vector and Embeddings** entry responds to the community’s requests for guidance on securing Retrieval-Augmented Generation (RAG) and other embedding-based methods, now core practices for grounding model outputs.
+Mục Vector và Nhúng (Vector and Embeddings) phản hồi yêu cầu từ cộng đồng về hướng dẫn bảo mật cho Tạo tăng cường truy xuất (Retrieval-Augmented Generation) và các phương pháp dựa trên nhúng khác, hiện đang là các hoạt động cốt lõi để làm cơ sở cho đầu ra của mô hình.
 
-We’ve also added **System Prompt Leakage** to address an area with real-world exploits that were highly requested by the community. Many applications assumed prompts were securely isolated, but recent incidents have shown that developers cannot safely assume that information in these prompts remains secret.
+Chúng tôi cũng đã thêm mục Rò rỉ Tệp Lệnh Hệ Thống (System Prompt Leakage) để giải quyết một lĩnh vực có các lỗ hổng bị khai thác trong thực tế đã được cộng đồng yêu cầu rất nhiều. Nhiều ứng dụng cho rằng tệp lệnh được cách ly an toàn, nhưng các sự cố gần đây đã cho thấy các nhà phát triển không thể giả định một cách an toàn rằng thông tin trong những tệp lệnh này sẽ luôn được giữ bí mật.
 
-**Excessive Agency** has been expanded, given the increased use of agentic architectures that can give the LLM more autonomy.  With LLMs acting as agents or in plug-in settings, unchecked permissions can lead to unintended or risky actions, making this entry more critical than ever.
+Mục Quyền tự chủ quá mức (Excessive Agency) đã được mở rộng do việc suwer dụng ngày các nhiều các kiến trúc mang tính tác nhân có thể cấp cho LLM nhiều quyền tự chủ hơn. Khi các LLM hoạt động như tác nhân độc lập hoặc trong cài đặt plug-in, các quyền không được kiểm soát có thể dẫn đến các hành động ngoài ý muốn hoặc rủi ro, làm cho mục này trở nên quan trọng hơn bao giờ hết.
 
-### Moving Forward
+### Hướng Đi Sắp Tới
 
-Like the technology itself, this list is a product of the open-source community’s insights and experiences. It has been shaped by contributions from developers, data scientists, and security experts across sectors, all committed to building safer AI applications. We’re proud to share this 2025 version with you, and we hope it provides you with the tools and knowledge to secure LLMs effectively.
+Cũng như bản thân công nghệ này, danh sách này là thành quả từ những góc nhìn và kinh nghiệm từ cộng đồng mã nguồn mở. Nó đã được hình thành bởi sự đóng góp từ các nhà phát triển, nhà khoa học dữ liệu và chuyên gia bảo mật trong khắp các lĩnh vực, tất cả đều cam kết xây dựng các ứng dụng AI an toàn hơn. Chúng tôi tự hào chia sẻ phiên bản 2025 này với bạn, và chúng tôi hy vọng rằng nó sẽ cung cấp cho bạn các công cụ và kiến thức để bảo mật LLM một cách hiệu quả.
 
-Thank you to everyone who helped bring this together and those who continue to use and improve it. We’re grateful to be part of this work with you.
-
+Cảm ơn tất cả những ai đã đóng góp để tạo nên tài liệu này, và những người vẫn đang tiếp tục sử dụng và cải tiến nó. Chúng tôi rất biết ơn khi được đồng hành cùng bạn trong công việc này.
 
 #### Steve Wilson
-Project Lead
-OWASP Top 10 for Large Language Model Applications
+Phụ Trách Dự Án
+OWASP Top 10 cho Các Ứng Dụng Mô Hình Ngôn Ngữ Lớn
 LinkedIn: https://www.linkedin.com/in/wilsonsd/
 
 #### Ads Dawson
-Technical Lead & Vulnerability Entries Lead
-OWASP Top 10 for Large Language Model Applications
+Phụ Trách Kỹ Thuật & Phụ Trách Danh Mục Lỗ Hổng Bảo Mật
+OWASP Top 10 cho Các Ứng Dụng Mô Hình Ngôn Ngữ Lớn
 LinkedIn: https://www.linkedin.com/in/adamdawson0/
+
+### Nhóm Dịch Thuật Tiếng Việt
+
+#### Anh Ta
+LinkedIn: https://www.linkedin.com/in/qta1014/
+
+#### Ninh Pham
+
+#### Tuan Anh Giang
+LinkedIn: https://www.linkedin.com/in/tuan-anh-g-131497176/
+
+### Về bản dịch này
+Nhận thức được tính chuyên môn và mức độ quan trọng của OWASP Top 10 cho Các ứng dụng Mô hình Ngôn ngữ lớn, chúng tôi đã chủ động lựa chọn chỉ sử dụng người dịch trong quá trình thực hiện bản dịch này. Những dịch giả được liệt kê trên đây không chỉ có kiến thức kỹ thuật sâu sắc về nội dung bản gốc, mà còn có trình độ ngôn ngữ cần thiết để đảm bảo bản dịch thành công. 
+
+#### Talesh Seeparsan
+Phụ Trách Dịch Thuật
+OWASP Top 10 cho Các Ứng Dụng Mô Hình Ngôn Ngữ Lớn
+LinkedIn: https://www.linkedin.com/in/talesh/
