@@ -14,7 +14,7 @@ All materials the project generates are community developed, driven and released
 ## Social Media
 🚀 Exciting News! New Translations Available for the OWASP Top 10 for LLM & Generative AI (2025) 🌍
 
-We’re thrilled to announce that the OWASP Top 10 for LLM Applications and Generative AI 2025 is now available in Greek, Hindi, Japanese, Korean and Persian!
+We’re thrilled to announce that the OWASP Top 10 for LLM Applications and Generative AI 2025 is now available in Arabic, Vietnamese, Turkish and Persian!
 
 This update provides a refreshed and comprehensive resource addressing the top risks, vulnerabilities, and mitigations for securing Generative AI and LLM applications across their development, deployment, and management lifecycle. Whether you're working with RAG-based applications, agentic architectures, or complex LLM integrations, this list is a must-have for developers, security professionals, and organizations looking to adopt AI securely.
 
@@ -29,9 +29,9 @@ Join the Effort! 💡
 
 This project thrives because of the amazing global community behind it. If you’re passionate about AI security, we invite you to contribute to translations, research, and guidance to expand this critical initiative. Let’s make AI security accessible worldwide!
 📢 Check out the translations below:
- 🔗 Turkish:
  🔗 Arabic:
  🔗 Vietnamese:
+ 🔗 Turkish:
  🔗 Persian:
 
 Interested in getting involved? Comment below or reach out! Together, we can build a more secure AI-driven future. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
