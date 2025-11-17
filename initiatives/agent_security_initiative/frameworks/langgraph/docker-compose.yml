@@ -1,0 +1,23 @@
+services:
+  multi_agent:
+    build:
+      context: ./multi_agent
+      dockerfile: Dockerfile
+    volumes:
+      - als_data:/data
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - SQLITE_DB=/data/als_patients.db
+      - LANGCHAIN_TRACING_V2=${LANGCHAIN_TRACING_V2}
+      - LANGCHAIN_ENDPOINT=https://api.smith.langchain.com
+      - LANGCHAIN_PROJECT=${LANGCHAIN_PROJECT}
+    ports:
+      - "8999:8000"
+    # Required for Playwright browser automation
+    cap_add:
+      - SYS_ADMIN
+    shm_size: '2gb'
+
+volumes:
+  als_data:
+    # Named volume for SQLite database persistence
