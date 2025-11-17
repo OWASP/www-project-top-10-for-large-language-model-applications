@@ -29,10 +29,9 @@ Join the Effort! 💡
 
 This project thrives because of the amazing global community behind it. If you’re passionate about AI security, we invite you to contribute to translations, research, and guidance to expand this critical initiative. Let’s make AI security accessible worldwide!
 📢 Check out the translations below:
- 🔗 Greek:
- 🔗 Hindi:
- 🔗 Japanese:
- 🔗 Korean:
+ 🔗 Arabic:
+ 🔗 Vietnamese:
+ 🔗 Turkish:
  🔗 Persian:
 
 Interested in getting involved? Comment below or reach out! Together, we can build a more secure AI-driven future. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
