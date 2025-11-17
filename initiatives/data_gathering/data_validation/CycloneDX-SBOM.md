@@ -4,7 +4,7 @@ For robust validation and security checks, it's recommended to integrate automat
 
 1. **Bandit** - A tool designed to find common security issues in Python code. Useful for general code security checks, including some aspects related to LLM vulnerabilities.
    
-2. **OWASP ZAP** (Zed Attack Proxy) - For web applications using LLMs, ZAP can help find vulnerabilities in web services and APIs.
+2. **ZAP** (Zed Attack Proxy) - For web applications using LLMs, ZAP can help find vulnerabilities in web services and APIs.
 
 3. **PyTorch/TensorFlow Data Validators** - For ML applications, using TensorFlow Data Validation (TFDV) or similar tools for PyTorch can help ensure the quality and integrity of training data (related to LLM03).
 

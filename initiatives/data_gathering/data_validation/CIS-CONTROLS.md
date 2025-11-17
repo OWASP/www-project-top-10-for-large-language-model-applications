@@ -65,7 +65,7 @@ For the automated validation of these controls and vulnerabilities, you can leve
 
 1. **Static Code Analysis Tools**: Tools like Bandit (for Python), FindBugs (for Java), and others can automatically detect common security issues in code.
 
-2. **Dynamic Analysis Tools (DAST)**: Tools like OWASP ZAP or Burp Suite can test running applications for vulnerabilities such as injection attacks, insecure server configurations, and more.
+2. **Dynamic Analysis Tools (DAST)**: Tools like ZAP or Burp Suite can test running applications for vulnerabilities such as injection attacks, insecure server configurations, and more.
 
 3. **Dependency Checkers**: Tools like OWASP Dependency-Check can analyze project dependencies for known vulnerabilities, particularly useful for LLM05.
 
