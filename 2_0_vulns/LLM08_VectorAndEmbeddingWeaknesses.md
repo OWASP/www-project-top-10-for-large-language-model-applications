@@ -4,7 +4,7 @@
 
 Vectors and embeddings vulnerabilities present significant security risks in systems utilizing Retrieval Augmented Generation (RAG) with Large Language Models (LLMs). Weaknesses in how vectors and embeddings are generated, stored, or retrieved can be exploited by malicious actions (intentional or unintentional) to inject harmful content, manipulate model outputs, or access sensitive information.
 
-Retrieval Augmented Generation (RAG) is a model adaptation technique that enhances the performance and contextual relevance of responses from LLM Applications, by combining pre-trained language models with external knowledge sources.Retrieval Augmentation uses vector mechanisms and embedding. (Ref #1)
+Retrieval Augmented Generation (RAG) is a model adaptation technique that enhances the performance and contextual relevance of responses from LLM Applications, by combining pre-trained language models with external knowledge sources. Retrieval Augmentation uses vector mechanisms and embedding. (Ref #1)
 
 ### Common Examples of Risks
 

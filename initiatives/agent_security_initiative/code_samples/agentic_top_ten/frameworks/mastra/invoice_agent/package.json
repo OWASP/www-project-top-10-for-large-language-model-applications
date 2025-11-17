@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@ai-sdk/anthropic": "^2.0.17"
+  }
+}

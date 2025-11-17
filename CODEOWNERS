@@ -5,7 +5,7 @@
 # TBC
 
 ## Either Ads or Steve can approve changes to CODEOWNERS or github:
-CODEOWNERS @GangGreenTemperTatum @virtualsteve-star
+CODEOWNERS @GangGreenTemperTatum @virtualsteve-star @rossja
 .github/ @GangGreenTemperTatum @virtualsteve-star
 
 ## Data Gathering
@@ -43,4 +43,6 @@ _template.md @rossja
 # Sub-projects of the OWASP Top 10 for LLM Apps and Gen AI Project
 
 ## Agentic Security Initiative (ASI) under the Top 10 for LLM and Gen AI Project
-initiatives/agent_security_initiative/ @guerilla7 @allie-secvendors @hoeg
+initiatives/agent_security_initiative/ @guerilla7 @allie-secvendors @hoeg @itskerenkatz
+
+initiatives/genai_red_team_handbook/ @rossja

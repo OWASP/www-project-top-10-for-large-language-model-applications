@@ -1,4 +1,4 @@
-## LLM04: Data and Model Poisoning
+## LLM04:2025 Data and Model Poisoning
 
 ### Description
 
@@ -11,12 +11,12 @@ Moreover, models distributed through shared repositories or open-source platform
 ### Common Examples of Vulnerability
 
 1. Malicious actors introduce harmful data during training, leading to biased outputs. Techniques like "Split-View Data Poisoning" or "Frontrunning Poisoning" exploit model training dynamics to achieve this.
-  (Ref. link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
-  (Ref. link: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/main/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
-2. Attackers can inject harmful content directly into the training process, compromising the model’s output quality.
-3. Users unknowingly inject sensitive or proprietary information during interactions, which could be exposed in subsequent outputs.
-4. Unverified training data increases the risk of biased or erroneous outputs.
-5. Lack of resource access restrictions may allow the ingestion of unsafe data, resulting in biased outputs.
+  (Ref. link: [Split-View Data Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/aad68f8521119596abb567d94fbd10bdd652ac82/docs/conferences/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%201%20Split-View%20Data%20Poisoning.jpeg))
+  (Ref. link: [Frontrunning Poisoning](https://github.com/GangGreenTemperTatum/speaking/blob/aad68f8521119596abb567d94fbd10bdd652ac82/docs/conferences/dc604/hacker-summer-camp-23/Ads%20_%20Poisoning%20Web%20Training%20Datasets%20_%20Flow%20Diagram%20-%20Exploit%202%20Frontrunning%20Data%20Poisoning.jpeg))
+1. Attackers can inject harmful content directly into the training process, compromising the model’s output quality.
+2. Users unknowingly inject sensitive or proprietary information during interactions, which could be exposed in subsequent outputs.
+3. Unverified training data increases the risk of biased or erroneous outputs.
+4. Lack of resource access restrictions may allow the ingestion of unsafe data, resulting in biased outputs.
 
 ### Prevention and Mitigation Strategies
 
