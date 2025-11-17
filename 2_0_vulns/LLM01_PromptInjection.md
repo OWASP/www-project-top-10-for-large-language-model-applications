@@ -69,7 +69,7 @@ Prompt injection vulnerabilities are possible due to the nature of generative AI
 
 #### Scenario #2: Indirect Injection
 
-  A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, leading to exfiltration of the the private conversation.
+  A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, leading to exfiltration of the private conversation.
 
 #### Scenario #3: Unintentional Injection
 
