@@ -4,6 +4,23 @@ All notable changes to the OWASP Top 10 for LLM Applications project will be doc
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2025-01-27
+
+### Changed
+
+- Updated project documentation to reflect the OWASP Top 10 for Large Language Model Applications as a subproject of the comprehensive OWASP GenAI Security Project
+- Updated README.md to include reference to the main project site at genai.owasp.org
+- Updated CONTRIBUTING.md to direct contributors to the centralized contribution guidelines
+- Updated index.md to reflect the project's evolution and growth into the OWASP GenAI Security Project
+- Updated project status badge from "Lab Status" to "Flagship Status" in README.md
+- Removed outdated wiki references and directed users to the main project site for comprehensive information
+
+### Added
+
+- Links to the main OWASP GenAI Security Project website and various initiative pages
+- Updated mission statement reflecting the broader scope of the GenAI Security Project
+- References to the project's growth to over 600 contributing experts from more than 18 countries
+
 ## [1.0.1] - 2023-08-26
 
 [v1.1 Instructions for the Expert Group reference](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki/v1_1-phases#v11-instructions-for-the-expert-group)

@@ -4,37 +4,43 @@
 # Shared Community Files and Areas:
 # TBC
 
-## Either Ads or Steve can approve changes to CODEOWNERS:
+## Either Ads or Steve can approve changes to CODEOWNERS or github:
 CODEOWNERS @GangGreenTemperTatum @virtualsteve-star
-2_0_vulns/emerging_candidates @GangGreenTemperTatum
+.github/ @GangGreenTemperTatum @virtualsteve-star
 
 ## Data Gathering
-data_gathering/* @emmanuelgjr @GangGreenTemperTatum
+initiatives/data_gathering/* @emmanuelgjr @GangGreenTemperTatum
 
-# Top 10 Vulnerabilities: (www-project-top-10-for-large-language-model-applications/1_1_vulns/)
+# Top 10 Vulnerabilities and Leads:
+## Use **/ to match files in any directory
 ## LLM01:
-PromptInjection.md @cybershujin
+**/PromptInjection.md @cybershujin
 ## LLM02:
-InsecureOutputHandling.md @kenhuangus
+**/LLM02_SensitiveInformationDisclosure.md @kenhuangus
 ## LLM03:
-TrainingDataPoisoning.md @GangGreenTemperTatum
+**/SupplyChainVulnerabilities.md @jsotiro
 ## LLM04:
-UnboundedConsumption.md @GangGreenTemperTatum
+**/DataModelPoisoning.md @GangGreenTemperTatum
 ## LLM05:
-SupplyChainVulnerabilities.md @jsotiro
+**/LLM05_ImproperOutputHandling.md @GangGreenTemperTatum
 ## LLM06:
-SensitiveInformationDisclosure.md @GangGreenTemperTatum
+**/ExcessiveAgency.md @rot169
 ## LLM07:
-InsecurePluginDesign.md @jsotiro
-## LLM08:
-ExcessiveAgency.md @rot169
+**/SystemPromptLeakage.md @vingiarrusso @Greenterminals12
+## LLM08: # TODO need to check Krishna's handle
+**/VectorAndEmbeddingWeaknesses.md @xsankar
 ## LLM09:
-Overreliance.md @virtualsteve-star
+**/Misinformation.md @virtualsteve-star
 ## LLM10:
-
+**/UnboundedConsumption.md @GangGreenTemperTatum
 
 ## Template:
 _template.md @rossja
 
 ## Translations:
 2_0_vulns/translations @talesh
+
+# Sub-projects of the OWASP Top 10 for LLM Apps and Gen AI Project
+
+## Agentic Security Initiative (ASI) under the Top 10 for LLM and Gen AI Project
+initiatives/agent_security_initiative/ @guerilla7 @allie-secvendors @hoeg
