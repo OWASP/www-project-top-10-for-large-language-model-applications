@@ -66,7 +66,7 @@ def check_model_theft(model_details: Dict[str, Any]) -> bool:
 For each STRIDE category, there are tools and libraries that can help automate the validation process:
 
 - **SAST (Static Application Security Testing)**: Tools like Bandit for Python can analyze code to find common security issues.
-- **DAST (Dynamic Application Security Testing)**: OWASP ZAP can dynamically analyze running applications for vulnerabilities.
+- **DAST (Dynamic Application Security Testing)**: ZAP can dynamically analyze running applications for vulnerabilities.
 - **IAST (Interactive Application Security Testing)**: Tools like Contrast Security integrate with applications to detect vulnerabilities during runtime.
 - **RASP (Runtime Application Self-Protection)**: RASP tools can protect applications from vulnerabilities in real-time, useful for mitigating risks like LLM04 and LLM07.
 - **Input Validation Libraries**: Libraries like Cerberus or Marshmallow for Python can validate input data against a predefined schema, helpful for preventing issues like LLM01, LLM02, and LLM06.
