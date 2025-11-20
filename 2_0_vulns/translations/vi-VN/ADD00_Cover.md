@@ -1,5 +1,5 @@
-# OWASP Top 10 for LLM Applications 2025
+# OWASP Top 10 cho Ứng dụng LLM năm 2025
 
-##### Version 2025
+##### Phiên bản 2025
 
-##### November 18, 2024
+##### 18 tháng 11, 2024
