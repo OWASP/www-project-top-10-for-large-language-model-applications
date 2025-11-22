@@ -1,44 +1,38 @@
-## Lettre des responsables du projet
+## Un petit mot de la part des chefs de projet
 
-Le OWASP Top 10 for Large Language Model Application (LLM) a vu le jour en 2023 dans le cadre d’un effort communautaire visant à mettre en évidence et traiter les problèmes de sécurité spécifiques aux dispositifs de l’IA. Depuis, la technologie a poursuivi son déploiement au sein de divers secteurs et applications, accompagnée par son lot de risques. Avec l’intégration de plus en plus poussée des LLM dans tous les domaines — des interactions avec la clientèle aux processus internes — les équipes de développement et les spécialistes en sécurité découvrent de nouvelles vulnérabilités. Et les moyens d’en contrer l’exploitation.
+Le projet "OWASP Top 10 for Large Language Model Application" a débuté en 2023 en tant qu'effort communautaire avec pour objectif de de mettre en lumière et adresser les problématiques de sécurités liées à l'utilisation de l'IA et plus spécifiquement des LLMs. A partir de là, cette technologie n'a cessé de s'implanter dans une multitude de secteurs et d'applications, et donc apporte avec elle, son lot de risques. Au fur et à mesure de cette intégration toujours plus profonde des LLMs dans la vie de tout les jours jusqu'au opérations internes, les développeurs et les spécialistes de la sécurités découvrent de nouvelles vulnérabilités ainsi que de nouveaux moyens de les contrer.
 
-La liste de 2023 fut une réussite majeure pour faire prendre conscience des enjeux et conférer de solides assises à un usage sécurisé des LLM. Mais nos apprentissages se sont rehaussés considérablement depuis.  Dans cette nouvelle version de 2025, nous avons travaillé avec un groupe élargi, des contributions plus diversifiées, à travers le monde, qui ont grandement aidé à la façonner. Le processus a impliqué des séances de réflexions, des votes et des retours d’expériences professionnelles à l'avant-garde de la sécurisation des applications LLM, que ce soit en y contribuant ou en affinant les entrées par des commentaires. Chaque voix a été essentielle pour rendre cette nouvelle édition aussi exhaustive et pratique que possible.
+La liste de 2023 a eu un grand succès et a ainsi permis de sensibiliser et construire une base pour sécuriser les usages liés aux LLM, néanmoins, l'histoire n'était qu'à son début et nous avons appris encore plus de choses depuis. Dans cette nouvelle version de 2025, nous avons travaillé avec un plus grand nombre et une plus grande diversité de contributeurs à travers le monde à l'élaboration de cette liste. Le processus a impliqué des sessions de brainstorming, du vote et des retours d'expériences de professionnels aguerris dans le milieu de la sécurité applicative de LLM, tant dans la contribution que dans son amélioration. Chaque voix entendue a été déterminante dans la création, rédaction et utilisabilité de cette nouvelle parution.
 
-### Quoi de neuf dans le Top 10 2025 ?
+### Quoi de neuf dans le Top 10 2025
 
-La liste de 2025 reflète une meilleure compréhension des risques existants et intègre des mises à jour critiques quant à l'utilisation effective des grands modèles de langage (LLM) dans les applications d'aujourd'hui. Par exemple, l'entrée **Consommation Illimitée** élargit ce qui était auparavant Déni de Service afin de prendre en compte les risques liés à la gestion des ressources et aux coûts imprévus: un enjeu majeur dans les déploiements à grande échelle des LLM.
+La liste de 2025 permet une meilleur compréhension des risques existant et introduit des avancées majeures sur la manière dont les LLMs sont réellement utilisés. Par exemple **Consommation démesurée** ajoute que les attaques par déni de service (DDoS) qui déjà pouvaient inclure des risques autour de la gestion des ressources peut tout aussi bien engendrer des coûts supplémentaires non prévu qui peut s'avérer très problématique dans le cas de déploiement LLMs à grande échelle.
 
-L’entrée **vecteurs et représentations vectorielles** répond aux demandes de la communauté pour des orientations relatives à la sécurisation des processus de Génération augmentée par récupération (RAG) et autres méthodes basées sur les intégrations. Elles sont désormais des pratiques courantes afin d’assurer un ancrage contextuel des sorties des modèles.
+L'article **Vecteurs et Intégration** répond à la demande de la communauté de savoir comment  sécuriser les Retriaval-Augmented Generation (RAG) ainsi que les autres méthodes d’intégrations qui sont dorénavant des pratiques clés pour garantir une génération cohérente des modèles.
 
-Nous avons également ajouté l'entrée **Fuite de prompt système** pour traiter ce sujet de vulnérabilités avérées qui suscitait un vif intérêt au sein de la communauté. De nombreuses applications présument les prompts protégés par un isolement sécurisé, mais des incidents récents ont montré que les développeurs ne peuvent pas tenir pour acquis que les informations transmises dans ces prompts restent secrètes.
+Nous avons aussi ajouté l'article **Fuite dans le système de prompt** qui adresse frontalement les exploitations de vulnérabilités, ce qui était également grandement demandé par la communauté. De nombreuses applications pensaient que les prompts étaient de manière générale isolés de manière sécurisée, mais des incidents récents ont démontré que les développeurs ne peuvent pas garantir que les informations des prompts demeurent secrètes.
 
-L'entrée **Agentivité excessive** a été élargie en raison de l'utilisation croissante d'architectures agentiques qui peuvent donner plus d'autonomie aux LLM. Lorsque les LLM agissent à titre d'agents ou configurateurs de plugiciels, les autorisations non circonscrites peuvent entraîner des actions involontaires ou exposer à des risques, rendant cette entrée plus critique que jamais.
+**Abus d'agentivité** a été aussi modifié au vue de l’accroissement du nombre d'architectures avec agent qui permettent aux LLMs d'avoir plus d'autonomie. Avec des LLMs agissant en tant qu'agent ou en tant que plugins, des permissions non vérifiées peuvent induire à des actions non voulues ou engendrant des risques forts, rendant alors cette problématique plus critique que jamais.
 
-### Aller de l'avant
+### Aller plus loin 
 
-Tout comme la technologie elle-même, cette liste est le fruit des réflexions et des expériences de la communauté du logiciel libre. Elle a été façonnée par les contributions de développeurs, de scientifiques de données et d’experts en sécurité de tous les secteurs, tous engagés à bâtir des applications d’IA plus sûres. Nous sommes fiers de partager cette version 2025 avec vous, et nous espérons qu’elle vous fournira les outils et les connaissances nécessaires pour sécuriser efficacement les LLM. Merci à tout le monde de l’avoir concrétisée et à vous qui en poursuivez l’usage et l’amélioration à nos côtés. Nous vous en sommes reconnaissants.
+Tout comme la technologie elle-même, cette liste est un produit de l'expérience et de la connaissance de la communauté opensource. Elle a été construite par les contributions de développeurs, data scientists, et d'experts de la sécurité de divers secteurs, tous dans la même optique de mettre en place une utilisation plus sécurisée de l'IA. Nous sommes fiers de partager cette nouvelle version de 2025 avec vous, nous espérons qu'elle vous donnera les outils et la connaissance pour sécuriser les LLMs efficacement.
 
+Merci à tout ceux qui ont contribué et ceux qui continuent d'utiliser et d'améliorer ces articles. Nous sommes très reconnaissants de faire partie de cette aventure à vos côtés.
 
 #### Steve Wilson
 
-Responsable de Projet, 
-OWASP Top 10 for Large Language Model Applications. 
+Project Lead
+OWASP Top 10 for Large Language Model Applications
 LinkedIn: <https://www.linkedin.com/in/wilsonsd/>
 
 #### Ads Dawson
 
-Responsable Technique & Responsable Entrée des Vulnérabilités,
-OWASP Top 10 for Large Language Model Applications. 
+Technical Lead & Vulnerability Entries Lead
+OWASP Top 10 for Large Language Model Applications
 LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 
-#### Équipe de traduction en français
+#### Équipe de traduction française
 
-#### Cédric Mourizard
-
-#### Olivier Spéciel
-
-#### À propos de cette traduction
-
-#### Talesh Seeparsan, Responsable de la traduction, OWASP Top 10 pour les applications LLM LinkedIn : <https://www.linkedin.com/in/talesh/>
-
-#### N’hésitez à nous faire part de vos recommandations, commentaires et suggestions
+Milly VAILLANT
+LinkedIn: <https://www.linkedin.com/in/milly-vaillant/>
