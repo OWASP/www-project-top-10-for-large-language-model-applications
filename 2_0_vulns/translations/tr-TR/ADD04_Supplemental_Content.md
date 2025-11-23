@@ -1,37 +1,44 @@
 ## Title
-2025 Top 10 Risk & Mitigations for LLMs and Gen AI Apps
+2025 Büyük Dil Modelleri Ve Üretken Yapay Zeka Uygulamaları İçin En İyi 10 Risk Önleme Stratejileri
 
 ## Short Description
-Expore the latest Top 10 risks, vulnerabilities and mitigations for developing and securing generative AI and large language model applications across the development, deployment and management lifecycle.
+Üretken yapay zeka ve büyük dil modellerindeki geliştirme, dağıtım ve yönetim döngülerinde karşılaşılan en büyük 10 risk, güvenlik açıkları ve önlemleri keşfedin.
 
 ## Long Description
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+OWASP’in Büyük Dil Modeli Uygulamaları için En İyi 10 listesi, yapay zeka uygulamalarındaki güvenlik sorunlarını vurgulamak ve ele almak için 2023’te topluluk odaklı çalışma olarak başlatıldı.
+O zamandan bu yana, teknoloji birçok sektörlere ve uygulamalara yayılmaya devam etti, ve akabinde bu alanla ilgili riskler de arttı.
+Büyük Dil Modellerinin müşteri etkileşimlerinden dahili operasyonlara kadar her şeye derince entegre edilmesiyle beraber, geliştiriciler ve güvenlik uzmanları yeni güvenlik açıkları ve bu açıklara karşı mücadele etme yolları keşfetmektedir.
 
 ## Sponsorship
-We appreciate our Project Sponsors’ funding contributions to help support the objectives of the project and help to cover operational and outreach costs augmenting the resources the OWASP.org foundation provides. The OWASP Top 10 for LLM and Generative AI Project continues to maintain a vendor neutral and unbiased approach. Sponsors do not receive special governance considerations as part of their support. Sponsors do receive recognition for their contributions in our materials and web properties.
-All materials the project generates are community developed, driven and released under open source and creative commons licenses. For more information on becoming a sponsor Visit the Sponsorship Section on our Website to learn more about helping to sustain the project through sponsorship.
+Proje hedeflerini destekledikleri ve OWASP.org vakfının sağladığı kaynakları arttırarak operasyonel ve tanıtım maliyetlerini karşıladıkları için proje sponsorlarımızın sağladığı finansal katkılarından dolayı minnettarız.
+OWASP’in Büyük Dil Modeli ve Üretken Yapay Zeka Uygulamaları için En İyi 10 projesi bağımsız ve tarafsız bir yaklaşım sürdürmektedir.
+Sponsorlar desteklerinden ötürü herhangi özel bir avantaj elde etmemektedir.
+Sponsorlar yaptıkları katkılar için materyallerimizde ve web ögelerimizde taktir edilmektedir.
+Proje kapsamındaki bütün materyaller, topluluk tarafından geliştirilmiş, üretilmiş ve yönlendirilmiş olup, açık kaynak ve yaratıcı lisans altında yapılandırılmış ve yayınlanmıştır.
+Sponsor olmak hakkında ve sponsorluk üzerinden projenin sürdürülmesine nasıl yardımcı olabileceğiniz hakkında daha fazla bilgi öğrenmek için, web sitesindeki sponsorluk bölümünü ziyaret edin.
 
 ## Social Media
-🚀 Exciting News! New Translations Available for the OWASP Top 10 for LLM & Generative AI (2025) 🌍
+🚀 Heyecan Verici Habeler! Üretken Yapay Zeka Ve Büyük Dil Modelleri İçin 2025 OWASP En İyi 10’un Yeni Çevirileri Hazırlandı 🌍
 
-We’re thrilled to announce that the OWASP Top 10 for LLM Applications and Generative AI 2025 is now available in Arabic, Vietnamese, Turkish and Persian!
+Üretken Yapay Zeka Ve Büyük Dil Modelleri İçin 2025 OWASP En İyi 10 Listesi artık Arapça, Vietnamca, Türkçe ve Farsça olarak erişilebilir olduğunu duyurmaktan mutluluk duyuyoruz!
 
-This update provides a refreshed and comprehensive resource addressing the top risks, vulnerabilities, and mitigations for securing Generative AI and LLM applications across their development, deployment, and management lifecycle. Whether you're working with RAG-based applications, agentic architectures, or complex LLM integrations, this list is a must-have for developers, security professionals, and organizations looking to adopt AI securely.
+Bu güncelleme, üretken yapay zeka ve büyük dil modeli uygulamalarının geliştirme, dağılım ve yönetim döngülerinde güvenliği sağlamak için en önemli riskleri, güvenlik açıklarını ve önlemlerini ele alan, yenilenmiş ve kapsamlı bir kaynak sunmaktadır. İster Erişim Destekli Üretim (RAG) tabanlı uygulamalar, ister ajan mimarileri, ya da karmaşık büyük dil modeli entegrasyonları ile çalışıyor olun, bu liste, yapay zekayı güvenli bir şekilde benimsemek isteyen geliştiriciler, güvenlik uzmanları ve kuruluşlar için vazgeçilmez bir kaynaktır.
 
-What's New in the 2025 OWASP Top 10 for LLMs?
+OWASP’in Büyük Dil Modeli için En İyi 10 Listesinde Yenilikler Neler?
 
-✅ Unbounded Consumption: Expanding beyond denial of service to include risks of resource management and unexpected costs in large-scale deployments.
-✅ Vectors & Embeddings Security: Addressing security risks in Retrieval-Augmented Generation (RAG) and other embedding-based techniques.
-✅ System Prompt Leakage: A newly added entry tackling real-world exploits and the {risks of assuming prompts remain isolated.
-✅ Excessive Agency: As AI autonomy grows, this update highlights security concerns around agentic architectures with limited human oversight.
+✅ Sınırsız Tüketim: Hizmet reddi ötesinde, büyük ölçekli dağıtımlarda kaynak yönetimi ve beklenmedik maliyetleri kapsayacak şekilde genişletmek.
+✅ Vektör ve Gömme Zafiyetleri: Erişim Destekli Üretim (RAG) ve diğer gömme tabanlı tekniklerdeki güvenlik risklerini ele almaktadır.
+✅ Sistem İstem Sızıntısı: Yeni eklenen, gerçek dünyadaki güvenlik açıklarını ele elma ve istemlerin izole kaldığı varsayımının getirdiği riskler.
+✅ Aşırı Yetki: Yapay zeka otonomisi arttıkça, bu güncelleme, insan denetiminin sınırlı olduğu ajan mimarilerindeki güvenlik sorunlarını vurgulamaktadır.
 
-Join the Effort! 💡
 
-This project thrives because of the amazing global community behind it. If you’re passionate about AI security, we invite you to contribute to translations, research, and guidance to expand this critical initiative. Let’s make AI security accessible worldwide!
-📢 Check out the translations below:
- 🔗 Arabic:
- 🔗 Vietnamese:
- 🔗 Turkish:
- 🔗 Persian:
+Sen de katkıda bulun! 💡
 
-Interested in getting involved? Comment below or reach out! Together, we can build a more secure AI-driven future. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
+Bu proje, arkasındaki muhteşem küresel topluluğun sayesinde gelişmektedir. Yapay zeka güvenliği hakkında ilgili iseniz, sizi bu kritik girişimi genişletmek için çevirilere, araştırmalara ve rehberliğe davet ederiz. Yapay zeka güvenliğini dünya genelinde erişilebilir hale getirelim!
+📢 Diğer çevirilere göz atın:
+ 🔗 Arapça:
+ 🔗 Vietnamca
+ 🔗 Tükçe
+ 🔗 Farsça:
+
+Katılmak ister misiniz? Aşağıya yorum bırakın ya da bizimle iletişime geçin! Birlikte daha güvenli bir yapay zeka odaklı gelecek inşaa edebiliriz. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
