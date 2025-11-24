@@ -12,6 +12,24 @@ app/mocks/
 └── [future_service].py      # Add new mocks here
 ```
 
+## Why Mirascope?
+
+For this project, we have chosen **Mirascope** over other frameworks like LangChain for several key reasons that align with our goals of security, clarity, and developer experience.
+
+### 1. Simplicity and Control
+Mirascope provides a thin, type-safe wrapper around LLM APIs without hiding the underlying logic. In a red-teaming or security context, **knowing exactly what is being sent to the model is critical**.
+- **No "Magic"**: Unlike LangChain, which often abstracts away prompt construction and API calls behind complex chains and agents, Mirascope keeps the logic explicit. You write the prompt, you see the prompt, you send the prompt.
+- **Predictability**: There are no hidden system prompts or default behaviors that might interfere with testing specific vulnerability scenarios.
+
+### 2. Developer Experience & Type Safety
+Mirascope leverages **Pydantic** for data validation and serialization.
+- **Editor Support**: You get full autocomplete and type checking in your IDE.
+- **Clean Code**: The code looks like standard Python, making it easier to read, debug, and maintain.
+- **Less Boilerplate**: You don't need to learn a specific domain-specific language (DSL) or complex chain syntax.
+
+For developers building mocks or interacting with LLMs in this sandbox, Mirascope offers the **right balance of utility without the opacity**, ensuring that you remain in full control of the interaction.
+
+
 ## How to Add a New Mock Service
 
 ### 1. Create a New Module
@@ -94,11 +112,10 @@ Add documentation to this README:
 
 ## Example Mock Services to Add
 
-- **Pinecone**: Mock vector database operations
 - **Anthropic**: Mock Claude API
 - **Cohere**: Mock Cohere API
 - **Hugging Face**: Mock inference endpoints
-- **ChromaDB**: Mock vector database
+- **Pinecone**: Mock vector database operations
 - **Weaviate**: Mock vector database
 
 ## Testing Your Mock
