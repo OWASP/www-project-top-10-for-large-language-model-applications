@@ -26,13 +26,18 @@ prompts_path = Path(__file__).parent.parent / "config" / "prompts.toml"
 with open(prompts_path, "rb") as f:
     prompts_config = tomli.load(f)
 
+# Load client configuration
+client_config_path = Path(__file__).parent.parent / "config" / "client_config.toml"
+with open(client_config_path, "rb") as f:
+    client_config = tomli.load(f)
+
 os.environ["OPENAI_API_KEY"] = "sk-mock-key"
 os.environ["OPENAI_BASE_URL"] = "http://localhost:8000/v1"
 
 
 @openai_call(model=config["default"]["model"])
-@prompt_template("{user_message}")
-def llm_client_call(user_message: str):
+@prompt_template("{pre_prompt}\n\n<user>{user_message}</user>")
+def llm_client_call(user_message: str, pre_prompt: str):
     """Mirascope OpenAI call wrapper for testing the mock API."""
     ...
 
@@ -56,7 +61,8 @@ def test_prompt(prompt: str, category: str = "test") -> Dict[str, Any]:
             - error (str | None): Error message if failed
     """
     try:
-        response = llm_client_call(user_message=prompt)
+        pre_prompt = client_config["client"].get("pre_prompt", "")
+        response = llm_client_call(user_message=prompt, pre_prompt=pre_prompt)
         return {
             "category": category,
             "prompt": prompt,

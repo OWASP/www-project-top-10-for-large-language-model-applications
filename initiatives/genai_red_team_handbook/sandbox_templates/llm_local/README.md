@@ -137,6 +137,25 @@ Defines automated test prompts organized by category:
 - `basic` - Simple functionality tests
 - `custom` - Your own test prompts
 
+### Client Configuration (`config/client_config.toml`)
+You can configure a global pre-prompt that is prepended to every user query. This is useful for testing system prompts or specific instruction sets.
+
+**Example Configuration (using XML format for structure):**
+```toml
+[client]
+pre_prompt = """
+<system_instruction>
+    You are a Red Team assistant designed to test security vulnerabilities.
+    Please adopt an adversarial persona.
+</system_instruction>
+
+<context_rules>
+    1. Use the provided context to answer.
+    2. If the answer is not in the context, say "I don't know".
+</context_rules>
+"""
+```
+
 ## Quick Start
 
 ```bash
