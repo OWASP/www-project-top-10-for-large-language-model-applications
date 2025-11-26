@@ -21,7 +21,7 @@ help:
 	@echo "  make format        - Run black and isort formatters"
 	@echo "  make mypy          - Run mypy static type checker"
 	@echo ""
-	@echo "  make ollama-pull   - Pull llama3 model for Ollama"
+	@echo "  make ollama-pull   - Pull gpt-oss:20b model for Ollama"
 	@echo "  make ollama-serve  - Start Ollama server"
 	@echo "  make ingest        - Ingest all PDFs from data/documents/"
 	@echo "  make upload PATH=x - Upload a file to data/documents/ (requires PATH argument)"
@@ -42,22 +42,32 @@ lock:
 	uv lock
 
 build:
-	podman build -f Containerfile -t openai-mock-api .
+	@echo "🔨 Building container image..."
+	podman build -f Containerfile -t app_container_build .
+	# Create a network for the containers
+	@echo "🌐 Creating network..."
+	-podman network create --driver bridge sec_test_net 2>/dev/null || true
 
 up:
-	podman run -d --name app_container -p 8000:8000 -v ./data:/app/data openai-mock-api
+	@echo "🚀 Starting container..."
+	podman run -d --name app_container -p 8000:8000 -v ./data:/app/data --network sec_test_net app_container_build
+	@echo "✅ Container started!"
 
 down:
+	@echo "🛑 Stopping container..."
 	podman rm -f app_container
+	@echo "🌐 Removing network..."
+	-podman network rm sec_test_net 2>/dev/null || true
+	@echo "✅ Container stopped and network removed!"
 
 clean:
 	@echo "🧹 Cleaning up containers and images..."
 	-podman rm -f app_container 2>/dev/null || true
-	-podman rmi openai-mock-api 2>/dev/null || true
+	-podman rmi app_container_build 2>/dev/null || true
 	@echo "✅ Cleanup complete!"
 
 ollama-pull:
-	ollama pull llama3
+	ollama pull gpt-oss:20b
 	ollama pull nomic-embed-text
 
 ollama-serve:

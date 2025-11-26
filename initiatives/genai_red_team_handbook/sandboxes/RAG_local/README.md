@@ -75,7 +75,7 @@ graph LR
     
     subgraph "External Services (Local Host)"
         Ollama[Ollama Server<br/>:11434]
-        Model[llama3 Model<br/>config/model.toml]
+        Model[gpt-oss:20b Model<br/>config/model.toml]
         FileStorage[File Storage<br/>data/documents]
     end
     
@@ -182,7 +182,7 @@ To use a different model, simply pull it with `ollama pull <model_name>` and upd
 Controls which LLM model to use:
 ```toml
 [default]
-model = "llama3"  # Change to switch models
+model = "gpt-oss:20b"  # Change to switch models
 
 [ollama]
 base_url = "http://host.containers.internal:11434/v1"
@@ -273,7 +273,7 @@ Run `make help` to see all commands:
 - `make mypy` - Run mypy type checker
 
 **Ollama:**
-- `make ollama-pull` - Pull llama3 model
+- `make ollama-pull` - Pull gpt-oss:20b model
 - `make ollama-serve` - Start Ollama (checks if already running)
 
 ## Testing the Mock API
@@ -290,7 +290,7 @@ curl -X POST http://localhost:8000/v1/chat/completions \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer sk-mock-key" \
 -d '{
-  "model": "llama3",
+  "model": "gpt-oss:20b",
   "messages": [{"role": "user", "content": "Hello!"}]
 }'
 ```

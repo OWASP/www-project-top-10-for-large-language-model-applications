@@ -3,7 +3,7 @@
 # To change which model is used, edit the [default] section below.
 
 [default]
-# CHANGE THIS to switch models (e.g., "llama3", "llama2", "mistral")
+# CHANGE THIS to switch models (e.g., "gpt-oss:20b", "llama2", "mistral")
 model = "gpt-oss:20b"
 
 [ollama]

@@ -49,7 +49,7 @@ class ChatCompletionRequest(BaseModel):
     """Request model for chat completions endpoint.
 
     Attributes:
-        model: Name of the model to use (e.g., "llama3").
+        model: Name of the model to use (e.g., "gpt-oss:20b").
         messages: List of message dictionaries with 'role' and 'content' keys.
         temperature: Sampling temperature between 0 and 2. Defaults to 0.7.
         max_tokens: Maximum number of tokens to generate. Defaults to None.
