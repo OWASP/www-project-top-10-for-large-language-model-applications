@@ -1,23 +1,18 @@
-## Title
+## Başlık
 2025 Büyük Dil Modelleri Ve Üretken Yapay Zeka Uygulamaları İçin En İyi 10 Risk Önleme Stratejileri
 
-## Short Description
+## Kısa Açıklama
 Üretken yapay zeka ve büyük dil modellerindeki geliştirme, dağıtım ve yönetim döngülerinde karşılaşılan en büyük 10 risk, güvenlik açıkları ve önlemleri keşfedin.
 
-## Long Description
-OWASP’in Büyük Dil Modeli Uygulamaları için En İyi 10 listesi, yapay zeka uygulamalarındaki güvenlik sorunlarını vurgulamak ve ele almak için 2023’te topluluk odaklı çalışma olarak başlatıldı.
-O zamandan bu yana, teknoloji birçok sektörlere ve uygulamalara yayılmaya devam etti, ve akabinde bu alanla ilgili riskler de arttı.
-Büyük Dil Modellerinin müşteri etkileşimlerinden dahili operasyonlara kadar her şeye derince entegre edilmesiyle beraber, geliştiriciler ve güvenlik uzmanları yeni güvenlik açıkları ve bu açıklara karşı mücadele etme yolları keşfetmektedir.
+## Uzun Açıklama
+OWASP’in Büyük Dil Modeli Uygulamaları için En İyi 10 listesi, yapay zeka uygulamalarındaki güvenlik sorunlarını vurgulamak ve ele almak için 2023’te topluluk odaklı çalışma olarak başlatıldı. O zamandan bu yana, teknoloji birçok sektörlere ve uygulamalara yayılmaya devam etti, ve akabinde bu alanla ilgili riskler de arttı. Büyük Dil Modellerinin müşteri etkileşimlerinden dahili operasyonlara kadar her şeye derince entegre edilmesiyle beraber, geliştiriciler ve güvenlik uzmanları yeni güvenlik açıkları ve bu açıklara karşı mücadele etme yolları keşfetmektedir.
 
-## Sponsorship
-Proje hedeflerini destekledikleri ve OWASP.org vakfının sağladığı kaynakları arttırarak operasyonel ve tanıtım maliyetlerini karşıladıkları için proje sponsorlarımızın sağladığı finansal katkılarından dolayı minnettarız.
-OWASP’in Büyük Dil Modeli ve Üretken Yapay Zeka Uygulamaları için En İyi 10 projesi bağımsız ve tarafsız bir yaklaşım sürdürmektedir.
-Sponsorlar desteklerinden ötürü herhangi özel bir avantaj elde etmemektedir.
-Sponsorlar yaptıkları katkılar için materyallerimizde ve web ögelerimizde taktir edilmektedir.
+## Sponsorluk
+Proje hedeflerini destekledikleri ve OWASP.org vakfının sağladığı kaynakları arttırarak operasyonel ve tanıtım maliyetlerini karşıladıkları için proje sponsorlarımızın sağladığı finansal katkılarından dolayı minnettarız. OWASP’in Büyük Dil Modeli ve Üretken Yapay Zeka Uygulamaları için En İyi 10 projesi bağımsız ve tarafsız bir yaklaşım sürdürmektedir. Sponsorlar desteklerinden ötürü herhangi özel bir avantaj elde etmemektedir. Sponsorlar yaptıkları katkılar için materyallerimizde ve web ögelerimizde taktir edilmektedir.
 Proje kapsamındaki bütün materyaller, topluluk tarafından geliştirilmiş, üretilmiş ve yönlendirilmiş olup, açık kaynak ve yaratıcı lisans altında yapılandırılmış ve yayınlanmıştır.
 Sponsor olmak hakkında ve sponsorluk üzerinden projenin sürdürülmesine nasıl yardımcı olabileceğiniz hakkında daha fazla bilgi öğrenmek için, web sitesindeki sponsorluk bölümünü ziyaret edin.
 
-## Social Media
+## Sosyal Medya
 🚀 Heyecan Verici Habeler! Üretken Yapay Zeka Ve Büyük Dil Modelleri İçin 2025 OWASP En İyi 10’un Yeni Çevirileri Hazırlandı 🌍
 
 Üretken Yapay Zeka Ve Büyük Dil Modelleri İçin 2025 OWASP En İyi 10 Listesi artık Arapça, Vietnamca, Türkçe ve Farsça olarak erişilebilir olduğunu duyurmaktan mutluluk duyuyoruz!
