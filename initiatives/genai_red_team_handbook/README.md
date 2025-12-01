@@ -34,4 +34,4 @@ initiatives/genai_red_team_handbook
 ### Exploitation
 
 *   **[Red Team Example](exploitation/example/README.md)**
-    *   **Summary**: Demonstrates a red team operation against a local LLM sandbox. It includes  an adversarial attack script (`attack.py`) targting the mock LLM API to test safety guardrails.
+    *   **Summary**: Demonstrates a red team operation against a local LLM sandbox. It includes an adversarial attack script (`attack.py`) targeting the Gradio interface (port 7860). By targeting the application layer, this approach tests the entire system—including the configurable system prompt—providing a more realistic assessment of the sandbox's security posture compared to testing the raw LLM API in isolation.
