@@ -18,8 +18,10 @@ with open(config_path, "rb") as f:
     config = tomli.load(f)
 
 # Configure the mock API endpoint
-os.environ["OPENAI_API_KEY"] = "sk-mock-key"
-os.environ["OPENAI_BASE_URL"] = "http://localhost:8000/v1"
+if "OPENAI_API_KEY" not in os.environ:
+    os.environ["OPENAI_API_KEY"] = "sk-mock-key"
+if "OPENAI_BASE_URL" not in os.environ:
+    os.environ["OPENAI_BASE_URL"] = "http://localhost:8000/v1"
 
 
 class LLMClientCall(OpenAICall):
