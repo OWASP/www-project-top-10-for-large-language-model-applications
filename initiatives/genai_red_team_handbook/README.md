@@ -13,9 +13,71 @@ initiatives/genai_red_team_handbook
     └── llm_local
 ```
 
+## System Requirements
+
+This project supports **Linux** and **macOS**. Windows users are encouraged to use WSL2 (Windows Subsystem for Linux).
+
+### Required Tools
+
+*   **[Podman](https://podman.io/)**
+*   **[Ollama](https://ollama.com/)**
+*   **[Python 3.10+](https://www.python.org/)**
+*   **[uv](https://github.com/astral-sh/uv)**
+*   **[Make](https://www.gnu.org/software/make/)**
+
+Required for Promptfoo:
+
+*   **[Node.js (v18+)](https://nodejs.org/)**
+*   **[npx](https://docs.npmjs.com/cli/v10/commands/npx)**
+
+### Installation Instructions
+
+#### macOS
+
+1.  **Install Dependencies**:
+    ```bash
+    brew install podman ollama node make
+    ```
+
+2.  **Initialize Podman Machine**:
+    ```bash
+    podman machine init
+    podman machine start
+    ```
+
+#### Linux (Ubuntu/Debian)
+
+1.  **Install Dependencies**:
+    ```bash
+    sudo apt-get update
+    sudo apt-get install -y podman nodejs npm make
+    ```
+
+2.  **Install Ollama**:
+    ```bash
+    curl -fsSL https://ollama.com/install.sh | sh
+    ```
+
+3.  **Install uv**:
+    ```bash
+    pip install uv
+    ```
+
+### Verification
+
+Verify the installation by checking the versions of the installed tools:
+
+```bash
+podman version
+ollama --version
+node --version
+make --version
+uv --version
+```
+
 ## Index of Sub-Projects
 
-### Sandboxes
+### `sandboxes/`
 
 *   **[Sandboxes Overview](sandboxes/README.md)**
     *   **Summary**: The central hub for all available sandboxes. It explains the purpose of these isolated environments and lists the available options.
@@ -31,7 +93,7 @@ initiatives/genai_red_team_handbook
         *   [Adding New Mock Services](sandboxes/llm_local/app/mocks/README.md): Guide for extending the sandbox with new API mocks.
 
 
-### Exploitation
+### `exploitation/`
 
 *   **[Red Team Example](exploitation/example/README.md)**
     *   **Summary**: Demonstrates a red team operation against a local LLM sandbox. It includes an adversarial attack script (`attack.py`) targeting the Gradio interface (port 7860). By targeting the application layer, this approach tests the entire system—including the configurable system prompt—providing a more realistic assessment of the sandbox's security posture compared to testing the raw LLM API in isolation.

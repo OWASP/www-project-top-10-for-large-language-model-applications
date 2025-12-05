@@ -146,7 +146,6 @@ The RAG Engine (`app/rag_engine.py`) orchestrates the retrieval and generation p
 4.  **Generate**: Calls the Mock OpenAI API (`/v1/chat/completions`) with the augmented prompt to generate the response.
 
 ## Prerequisites
-- **Python 3.10** (or newer, but <3.11)
 - **uv** – Python package manager (`pip install uv` if not already installed)
 - **Podman** (or Docker – replace `podman` with `docker` in the Makefile if desired)
 - **Ollama** (Local LLM runner)
