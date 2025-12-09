@@ -1,0 +1,14 @@
+---
+description: plan first
+globs: *.*
+alwaysApply: true
+---
+
+# Plan first
+
+When asked to perform a task, do not take any action until you follow this process:
+
+1. Stop and think carefully about what must be done to perform the task.
+2. Create a plan to effectively perform the task
+3. Present a summary of the plan to the human, and request approval
+4. Once approval is provided, proceed to take action USING THE APPROVED PLAN ONLY.

@@ -1,0 +1,13 @@
+---
+description: use uv for python projects
+globs: *.py
+alwaysApply: true
+---
+
+# Use UV for package and project management
+
+1. Use uv and venv for package dependancies and project management.
+2. Do not use a requirements.txt file, only use pyproject.toml.
+3. Ensure that packages used in the source code are properly listed in the pyproject.toml.
+4. Take advantage of modern features offered by uv, such as using `uv sync`.
+5. Always Use `uv run` to execute python modules.
