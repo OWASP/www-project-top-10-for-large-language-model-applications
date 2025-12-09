@@ -12,14 +12,20 @@ import gradio as gr
 import tomli
 from mirascope.v0.openai import OpenAICall, OpenAICallParams
 
+import requests
+
 # Load model configuration
 config_path = Path(__file__).parent.parent / "config" / "model.toml"
 with open(config_path, "rb") as f:
     config = tomli.load(f)
 
 # Configure the mock API endpoint
-os.environ["OPENAI_API_KEY"] = "sk-mock-key"
-os.environ["OPENAI_BASE_URL"] = "http://localhost:8000/rag/v1"
+if "OPENAI_API_KEY" not in os.environ:
+    os.environ["OPENAI_API_KEY"] = "sk-mock-key"
+if "OPENAI_BASE_URL" not in os.environ:
+    os.environ["OPENAI_BASE_URL"] = "http://localhost:8000/rag/v1"
+if "S3_BASE_URL" not in os.environ:
+    os.environ["S3_BASE_URL"] = "http://localhost:8000/s3"
 
 
 class LLMClientCall(OpenAICall):
@@ -59,18 +65,52 @@ def chat_with_llm(message: str, history: List[Tuple[str, str]]) -> str:
         )
 
 
+def upload_file(file_obj):
+    """Uploads a file to the mock S3 service."""
+    if not file_obj:
+        return "Please select a file to upload."
+    try:
+        # Upload logic using requests.put to S3_BASE_URL/documents/{filename}
+        url = f"{os.environ['S3_BASE_URL']}/documents/{os.path.basename(file_obj.name)}"
+        with open(file_obj.name, "rb") as f:
+            response = requests.put(url, data=f)
+        if response.status_code == 200:
+            return f"Successfully uploaded {os.path.basename(file_obj.name)}"
+        else:
+            return f"Error uploading file: {response.status_code} - {response.text}"
+    except Exception as e:
+        return f"Error uploading file: {str(e)}"
+
+
 # Create the Gradio interface
-demo = gr.ChatInterface(
-    fn=chat_with_llm,
-    title="🤖 LLM Mock API - Chat Interface",
-    description="Chat with a local Ollama model through the mock OpenAI API.",
-    examples=[
-        "Hello, are you working?",
-        "What can you help me with?",
-        "Tell me about large language models.",
-    ],
-    theme=gr.themes.Soft(),
-)
+with gr.Blocks(theme=gr.themes.Soft()) as demo:
+    gr.Markdown("# 🤖 LLM Mock API - Chat Interface")
+    gr.Markdown("Chat with a local Ollama model through the mock OpenAI API.")
+
+    chatbot = gr.Chatbot()
+    msg = gr.Textbox(label="Message")
+    clear = gr.Button("Clear")
+
+    def user(user_message, history):
+        return "", history + [[user_message, None]]
+
+    def bot(history):
+        user_message = history[-1][0]
+        bot_message = chat_with_llm(user_message, history[:-1])
+        history[-1][1] = bot_message
+        return history
+
+    msg.submit(user, [msg, chatbot], [msg, chatbot], queue=False).then(
+        bot, chatbot, chatbot
+    )
+    clear.click(lambda: None, None, chatbot, queue=False)
+
+    with gr.Row():
+        file_input = gr.File(label="Upload Document")
+        upload_btn = gr.Button("Upload")
+    upload_status = gr.Textbox(label="Upload Status")
+
+    upload_btn.click(upload_file, inputs=file_input, outputs=upload_status)
 
 if __name__ == "__main__":
     demo.launch(

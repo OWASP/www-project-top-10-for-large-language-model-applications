@@ -105,6 +105,26 @@ gradio: sync lock clean ollama-pull ollama-serve build up test test-client
 	@echo "🚀 Starting Gradio interface..."
 	@uv run python client/gradio_app.py & sleep 3 && open http://localhost:7860
 
+run-gradio-headless: sync lock clean ollama-pull ollama-serve build up test test-client
+	@echo "🧹 Stopping any existing Gradio instance..."
+	@-podman rm -f gradio_container 2>/dev/null || true
+	@echo "🚀 Starting Gradio interface (containerized)..."
+	@podman run -d --name gradio_container \
+		--network sec_test_net \
+		-p 7860:7860 \
+		-e OPENAI_BASE_URL="http://app_container:8000/v1" \
+		-e S3_BASE_URL="http://app_container:8000/s3" \
+		-e PINECONE_BASE_URL="http://app_container:8000/pinecone" \
+		--entrypoint uv \
+		app_container_build \
+		run python client/gradio_app.py
+	@echo "✅ Gradio started in container 'gradio_container' on port 7860"
+
+stop-gradio:
+	@echo "🛑 Stopping Gradio..."
+	@-podman rm -f gradio_container 2>/dev/null || true
+	@echo "✅ Gradio stopped!"
+
 ingest: sync lock clean build up
 	@echo "Processing PDFs in data/documents/..."
 	@podman exec -e OLLAMA_BASE_URL="http://host.containers.internal:11434/v1" app_container bash -c 'for f in data/documents/*.pdf; do \

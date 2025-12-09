@@ -95,7 +95,6 @@ The threat model for this RAG architecture is available in the `threat_model/` d
 - **Report**: `RAG_TM_report.md` and `RAG_TM_report.pdf`
 
 ## Prerequisites
-- **Python 3.10** (or newer, but <3.11)
 - **uv** – Python package manager (`pip install uv` if not already installed)
 - **Podman** (or Docker – replace `podman` with `docker` in the Makefile if desired)
 - **Ollama** (Local LLM runner)
