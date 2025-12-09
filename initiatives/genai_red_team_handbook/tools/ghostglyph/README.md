@@ -24,13 +24,13 @@ To detect:
 ## Screenshots
 
 ### Encode
-![Encode](./img/ghostglyph-encode.png | width=200)
+<img src="https://github.com/rossja/www-project-top-10-for-large-language-model-applications/blob/main/initiatives/genai_red_team_handbook/tools/ghostglyph/img/ghostglyph-encode.png" width=200></img>
 
 ### Decode
-![Decode](./img/ghostglyph-decode.png | width=200)
+<img src="https://github.com/rossja/www-project-top-10-for-large-language-model-applications/blob/main/initiatives/genai_red_team_handbook/tools/ghostglyph/img/ghostglyph-decode.png" width=200></img>
 
 ### Detect
-![Detect](./img/ghostglyph-detect.png | width=200)
+<img src="https://github.com/rossja/www-project-top-10-for-large-language-model-applications/blob/main/initiatives/genai_red_team_handbook/tools/ghostglyph/img/ghostglyph-detect.png" width=200></img>
 
 
 # Reference Documentation
