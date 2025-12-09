@@ -10,11 +10,11 @@ A tool to assist with ascii smuggling attacks against generative AI based system
 3. Run `uv run src/app.py`
 4. Open the webpage in a browser
 
-To encode: 
+To encode:
 1. Enter the text you want to encode and select the type of encoding to use
 2. Copy the encoded text and use it in your prompt injection payloads
 
-To decode: 
+To decode:
 1. Enter the smuggled content and select decode
 
 To detect:
@@ -24,13 +24,13 @@ To detect:
 ## Screenshots
 
 ### Encode
-[Encode](./img/ghostglyph-encode.png)
+![Encode](./img/ghostglyph-encode.png | width=200)
 
 ### Decode
-[Decode](./img/ghostglyph-decode.png)
+![Decode](./img/ghostglyph-decode.png | width=200)
 
 ### Detect
-[Detect](./img/ghostglyph-detect.png)
+![Detect](./img/ghostglyph-detect.png | width=200)
 
 
 # Reference Documentation
