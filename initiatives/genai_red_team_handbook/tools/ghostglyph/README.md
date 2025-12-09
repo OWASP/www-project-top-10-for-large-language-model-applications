@@ -24,13 +24,13 @@ To detect:
 ## Screenshots
 
 ### Encode
-<img src="https://github.com/rossja/www-project-top-10-for-large-language-model-applications/blob/main/initiatives/genai_red_team_handbook/tools/ghostglyph/img/ghostglyph-encode.png" width=200></img>
+<img src="https://github.com/rossja/www-project-top-10-for-large-language-model-applications/blob/main/initiatives/genai_red_team_handbook/tools/ghostglyph/img/ghostglyph-encode.png" width=400></img>
 
 ### Decode
-<img src="https://github.com/rossja/www-project-top-10-for-large-language-model-applications/blob/main/initiatives/genai_red_team_handbook/tools/ghostglyph/img/ghostglyph-decode.png" width=200></img>
+<img src="https://github.com/rossja/www-project-top-10-for-large-language-model-applications/blob/main/initiatives/genai_red_team_handbook/tools/ghostglyph/img/ghostglyph-decode.png" width=400></img>
 
 ### Detect
-<img src="https://github.com/rossja/www-project-top-10-for-large-language-model-applications/blob/main/initiatives/genai_red_team_handbook/tools/ghostglyph/img/ghostglyph-detect.png" width=200></img>
+<img src="https://github.com/rossja/www-project-top-10-for-large-language-model-applications/blob/main/initiatives/genai_red_team_handbook/tools/ghostglyph/img/ghostglyph-detect.png" width=400></img>
 
 
 # Reference Documentation
