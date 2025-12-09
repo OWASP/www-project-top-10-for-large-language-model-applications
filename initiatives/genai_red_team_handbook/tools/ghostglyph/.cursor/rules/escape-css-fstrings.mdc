@@ -1,8 +1,0 @@
----
-description: escape css fstrings
-globs: *.py
-alwaysApply: false
----
-
-When we have CSS within an f-string, we need to escape the CSS curly braces by doubling them 
-(for example: `{{` and `}}`) -- This is required to tell Python they're literal braces, not variables.
