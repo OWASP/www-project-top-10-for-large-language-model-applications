@@ -478,9 +478,9 @@ langchain-text-splitters==0.3.4 ; python_version >= "3.11" and python_version < 
 langchain==0.3.13 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:3d618a8e7e496704dc4407d224218ff28baf9416c1241e7bdcdd117e6c70daa8 \
     --hash=sha256:dd3549a28dc28b5d4769122b60fad0890aee86928d1bdbba3f9349d9f023315d
-langgraph-checkpoint==2.0.9 ; python_version >= "3.11" and python_version < "4.0" \
-    --hash=sha256:43847d7e385a2d9d2b684155920998e44ed42d2d1780719e4f6111fe3d6db84c \
-    --hash=sha256:b546ed6129929b8941ac08af6ce5cd26c8ebe1d25883d3c48638d34ade91ce42
+langgraph-checkpoint==3.0.0 ; python_version >= "3.11" and python_version < "4.0" \
+    --hash=sha256:560beb83e629784ab689212a3d60834fb3196b4bbe1d6ac18e5cad5d85d46010 \
+    --hash=sha256:f738695ad938878d8f4775d907d9629e9fcd345b1950196effb08f088c52369e
 langgraph-sdk==0.1.48 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:2c6c01d48e8eddff7e9688bdbda943ddb107831972667eb08a0c30e3a937fa11 \
     --hash=sha256:a14ddfc0ea444b33fb5a7357ca0359d2d77961b61244a028dd952658d4d6bc92
