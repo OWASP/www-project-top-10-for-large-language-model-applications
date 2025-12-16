@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.smalllogo {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.doctitle{
+  font-size: 80px;
+  line-height: 1;
+  padding-top: 100px;
+  letter-spacing: -0.05em;
+  font-weight: 900;
+  text-align: center;
+}
+.docversion{
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: #030C16;
+  text-align: center;
+  padding-top: 40px;
+
+}
+.doclink {
+  border-radius: 6px;
+  background-color: #1D7BD7;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 17px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 900;
+  padding: 5px 10px;
+  margin: 0 280px;
+  text-align: center;
+}
+.docdate{
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1;
+  padding-bottom: 250px;
+  white-space: nowrap;
+  color: #030C16;
+  text-align: center;
+  padding-top: 20px;
+
+}
+.frontpage {
+  background-position: center;
+  background-size: 100% 137%;
+  height: 950px;
+  overflow: hidden;
+}
+
+
+.published {
+  font-weight: bold;
+  font-style: italic;
+}
+body {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: #030C16;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+h1 {
+  width: 100vw;
+  background-size: cover;
+  color: #000;
+  margin-top: 600px;
+  margin-left: 10px;
+  margin-right: 0px;
+  margin-bottom: 100px;
+  text-align: left;
+  vertical-align: middle;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 56px;
+  page-break-after: avoid;
+  letter-spacing: -0.02em;
+  page-break-before: always;
+  overflow: visible;
+  line-height: 1;
+  border-bottom: 10px solid rgb(7, 151, 252);
+  padding-bottom: 10px;
+}
+
+
+
+h2 {
+  width: 70vw;
+  background-size: cover;
+  color: #000;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 0px;
+  margin-bottom: 30px;
+  text-align: left;
+  vertical-align: middle;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 42px;
+  page-break-after: avoid;
+  letter-spacing: -0.02em;
+  page-break-before: always;
+  overflow: visible;
+  line-height: 1;
+  border-bottom: 8px solid rgb(7, 151, 252);
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  page-break-after: avoid;
+  margin-top: 30px;
+  letter-spacing: -0.02em;
+  margin-left: 100px;
+  margin-right: 100px;
+  color: #030C16;
+}
+
+h4 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  page-break-after: avoid;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 0px;
+  color: #030C16;
+}
+
+h5 {
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  list-style-type: none;
+  margin: 0 0 0 20px;
+  padding: 0;
+  line-height: 1.1;         /* tighter vertical spacing */
+}
+
+
+h6 {
+  width: 70vw;
+  background-size: cover;
+  color: #000;
+  margin-top: 200px;
+  margin-left: 100px;
+  margin-right: 0px;
+  margin-bottom: 30px;
+  text-align: left;
+  vertical-align: middle;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 42px;
+  page-break-after: avoid;
+  letter-spacing: -0.02em;
+  page-break-before: always;
+  overflow: visible;
+  line-height: 1;
+  border-bottom: 8px solid rgb(7, 151, 252);
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+a {
+  color: rgb(7, 151, 252); /* Match h6 border-bottom color */
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+p {
+  margin-left: 100px;
+  margin-top: 0;
+}
+
+p,
+ul,
+ol {
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 20px;
+}
+
+p,
+li {
+  page-break-inside: avoid;
+}
+
+li {
+  margin-left: 5px;
+}
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  margin-left: 0;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table td {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;         /* tighter vertical spacing */
+  vertical-align: bottom;
+  padding: 4px 8px;
+  position: relative;
+}
+
+table td:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Dotted line between columns in each row */
+table tr td:first-child::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  right: 0;
+  bottom: 0.4em; /* Adjust to align with text */
+  height: 1px;
+  width: 100%;
+  z-index: -1;
+}
+
+/* Optional: add bottom border to entire row */
+table tr:not(:last-child) td {
+  border-bottom: 1px dotted #ccc;
+}
+
+/* Indent non-bold first column cells (assumes bold = main heading) */
+table td:first-child {
+  padding-left: 2em; /* default indent */
+}
+
+/* Remove indent if text is bold */
+table td:first-child:has(strong),
+table td:first-child:has(b),
+table td:first-child[style*="font-weight:bold"] {
+  padding-left: 8px; /* same as normal horizontal padding */
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.5;         /* tighter vertical spacing */
+}
+
+@page {
+  size: a4 portrait;
+  margin-top: 22mm;
+}
+
+@media print {
+  h2 {
+    display: inline-block;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+@media print {
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
