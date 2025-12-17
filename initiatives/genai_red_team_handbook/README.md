@@ -13,6 +13,30 @@ initiatives/genai_red_team_handbook
     └── llm_local
 ```
 
+## Architecture
+
+```mermaid
+graph LR
+    subgraph "Exploitation Environment<br/>(uv Env or Podman Container)"
+        Tool["Exploitation Tool<br/>(Scripts, Scanners, Agents)"]
+        Config["Configuration<br/>(Prompts, Settings)"]
+    end
+
+    subgraph "Sandbox Container"
+        UI["Interface<br/>(Gradio :7860)"]
+        API["API Gateway<br/>(FastAPI :8000)"]
+        Logic["Application Logic"]
+    end
+
+    Config --> Tool
+    Tool -->|Attack Request| UI
+    UI -->|Internal API Call| API
+    API --> Logic
+    Logic --> API
+    API --> UI
+    UI -->|Response| Tool
+```
+
 ## System Requirements
 
 This project supports **Linux** and **macOS**. Windows users are encouraged to use WSL2 (Windows Subsystem for Linux).
