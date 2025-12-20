@@ -1,0 +1,27 @@
+[project]
+name = "insecure-cybersec-agent"
+version = "0.1.0"
+description = "Insecure Cybersecurity Agent"
+authors = [
+    {name = "zeinovich",email = "nikita.zinovich@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "crewai (>=0.108.0,<0.109.0)",
+    "openai (>=1.69.0,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+notebook = "^7.3.3"
+ipykernel = "^6.29.5"
+python-dotenv = "^1.1.0"
+agentic-radar = "^0.6.0"
+
+[tool.poetry.scripts]
+insecure_cybersec_agent = "insecure_cybersec_agent.main:run"
