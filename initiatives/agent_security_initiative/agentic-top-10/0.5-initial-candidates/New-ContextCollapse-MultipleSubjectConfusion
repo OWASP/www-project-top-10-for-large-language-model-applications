@@ -1,0 +1,29 @@
+## Risk/Vuln Name
+**Context collapse & confusion across multiple subjects/principals**
+
+**Author(s):**
+OWASP Agentic Security Initiative Team
+
+### Description
+A distinct risk exists when agents process input that relates to multiple subjects (mixed principals/users), requiring that such cases be treated with extreme care as an AI Agent is likely to violate confidentiality, integrity, or accuracy in its outputs. Whenever an agent context has access to multiple subjects, there is a risk that an expectation of independence between those subjects exists and could be violated.
+This risk has some alignment with ASI01_Memory Poisoning, but does not require an adversary or a memory component.
+Also loosely aligned with ASI03_Privilege_Compromise (e.g. a confused deputy problem across agents that delegate actions - but in this case, privileges and formal multi-tenancy are respected). There is also some alignment with ASI05_Cascading Hallucination Attacks (in this case, hallucination strictly speaking is not present, insofar as true but misplaced information is used, with harmful impact)
+
+### Common Examples of Risk
+1. Context collapse if an agent includes information mixing two subjects (both authorized) in an agent workflow at a point that is intended to refocus on one.
+2. An agent corrupts data about a subject at the source while processing multiple subjects (influence of data from another subject present in the conversation)
+3. An agent neglects important subjects when evaluating a criterion across many subjects due to the influence of other subjects
+
+### Prevention and Mitigation Strategies
+1. Restrict the context to the individual before crafting responses about them
+2. Prevent any actions relative to individual subjects in a multi-subject workflow
+3. Process any determinations at an individual level rather than in a batch
+
+### Example Failure Scenarios
+- **Scenario 1: leakage from wrong subjects** - Clinician asks an LLM to flag the most at-risk patient from a list, then write a referral email. The email reflects patterns from the larger list instead of using exclusively the data of the patient in question.
+- **Scenario 2: corruption of other subjects** - A financial services agent searches for all borrowers affected by a natural disaster to make a note on their account for reasons related to creditworthiness. The agent updates a client with a note that erroneously mentions delinquency that was observed from another victim in the flow.
+- **Scenario 3: motivated dismissal of a subject** - A profanity detection mechanism processing many comments together causes a Type I (false positive) or Type II (false negative) error for a comment due to the characteristics of concomitant comments (FN rate more than doubles when severe swear words are added to a dataset of rude sentences)
+
+### Reference Links
+1. [Agentic AI - Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+2. [LLM04:2025 Data and Model Poisoning](https://genai.owasp.org/llmrisk/llm042025-data-and-model-poisoning/)
