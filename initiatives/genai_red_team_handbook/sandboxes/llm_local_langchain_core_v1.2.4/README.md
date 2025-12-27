@@ -262,21 +262,6 @@ make gradio
 ```
 Opens at `http://localhost:7860` with a user-friendly chat UI.
 
-### Gradio API
-
-To interact with the Gradio API, you can use the following template:
-
-```bash
-curl -X POST http://localhost:7860/gradio_api/call/chat_with_llm -s -H "Content-Type: application/json" -d '{
-"data": [
-                        "<PROMPT>",
-                        []
-                    
-]}' \
-| awk -F'"' '{ print $4}'  \
-| read EVENT_ID; curl -N http://localhost:7860/gradio_api/call/chat_with_llm/$EVENT_ID
-```
-
 ## Project Structure
 ```
 .

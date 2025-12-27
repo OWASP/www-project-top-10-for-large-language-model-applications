@@ -29,7 +29,7 @@ if "OPENAI_BASE_URL" not in os.environ:
     os.environ["OPENAI_BASE_URL"] = "http://localhost:8000/v1"
 
 
-def chat_with_llm(message: str, history: List[Tuple[str, str]]) -> str:
+def chat(message: str, history: List[Tuple[str, str]]) -> str:
     """Process user message through the mock LLM API and return the response.
 
     Args:
@@ -129,7 +129,7 @@ def chat_with_llm(message: str, history: List[Tuple[str, str]]) -> str:
 
 # Create the Gradio interface
 demo = gr.ChatInterface(
-    fn=chat_with_llm,
+    fn=chat,
     title="🤖 LLM Mock API - Chat Interface",
     description="Chat with a local Ollama model through the mock OpenAI API (using LangChain).",
     examples=[
