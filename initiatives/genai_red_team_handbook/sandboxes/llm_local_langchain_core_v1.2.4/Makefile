@@ -1,4 +1,4 @@
-.PHONY: help install sync lock build up down test test-client ollama-pull ollama-serve gradio format mypy clean
+.PHONY: help install sync lock build up down test test-client ollama-pull ollama-serve run-gradio-headless format mypy clean
 
 # Default target
 help:
@@ -15,7 +15,7 @@ help:
 	@echo "  make sync          - Sync/install project dependencies"
 	@echo "  make lock          - Update dependency lock file"
 	@echo ""
-	@echo "  make gradio        - Full setup: sync, lock, clean, build, start server, and launch UI"
+	@echo "  make run-gradio-headless - Full setup: sync, lock, clean, build, start server, and launch UI"
 	@echo "                       (requires Ollama to be running first)"
 	@echo ""
 	@echo "  make format        - Run black and isort formatters"
