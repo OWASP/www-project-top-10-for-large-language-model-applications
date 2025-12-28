@@ -10,7 +10,7 @@ The goal of these sandboxes is to provide ready-to-use, isolated environments wh
 
 *    **`llm_local/`**: A local sandbox environment that mocks an LLM API (compatible with OpenAI's interface) using a local model (via Ollama). This sandbox is useful for testing client-side interactions, prompt injection vulnerabilities, and other security assessments without relying on external, paid APIs. Additionally, it allows developers to customize the underlying LLM and orchestrate sophisticated GenAI pipelines, incorporating features such as RAG and guardrail layers, as necessary.
 
-*    **`llm_local_langchain_core_v1.2.4/`**: Similar to `llm_local/`, but uses `langchain-core 1.2.4` to demonstrate the known vulnerability [CVE-2025-68664](https://github.com/advisories/GHSA-c67j-w6g6-q2cm).
+*    **`llm_local_langchain_core_v1.2.4/`**: Similar to `llm_local/`, but uses `langchain-core 1.2.4` to demonstrate the known vulnerability [CVE-2025-68664](https://github.com/advisories/GHSA-c67j-w6g6-q2cm) codenamed LangGrinch.
 
 *    **`RAG_local/`**: A comprehensive RAG (Retrieval-Augmented Generation) sandbox that includes a mock Vector Database (Pinecone compatible), mock Object Storage (Amazon S3 compatible), and a mock LLM API (OpenAI compatible). This environment is specifically designed for Red Teaming RAG architectures, allowing researchers to explore vulnerabilities such as embedding inversion, data poisoning, and retrieval manipulation in a controlled, local setting.
 
