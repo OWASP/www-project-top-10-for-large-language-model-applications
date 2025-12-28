@@ -4,18 +4,18 @@ This module provides an interactive chat interface using Gradio that connects
 to the mock API server for testing LLM interactions.
 """
 
+import json
 import os
-import tomli
+import re
 from pathlib import Path
 from typing import List, Tuple
 
-import json
-import re
 import gradio as gr
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
+import tomli
 from langchain_core.load import loads
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
 
 # Load model configuration
 config_path = Path(__file__).parent.parent / "config" / "model.toml"
@@ -44,16 +44,16 @@ def chat(message: str, history: List[Tuple[str, str]]) -> str:
         llm = ChatOpenAI(
             model=config["default"]["model"],
             api_key=os.environ.get("OPENAI_API_KEY"),
-            base_url=os.environ.get("OPENAI_BASE_URL")
+            base_url=os.environ.get("OPENAI_BASE_URL"),
         )
-        
+
         # Simple prompt template for chat
         prompt = ChatPromptTemplate.from_template("{user_message}")
         chain = prompt | llm | StrOutputParser()
-        
+
         # Invoke the chain to get the response
         response_content = chain.invoke({"user_message": message})
-        
+
         try:
             leaked_info = []
 
@@ -64,16 +64,24 @@ def chat(message: str, history: List[Tuple[str, str]]) -> str:
                     # If object looks like a LangChain serialized object, try to load it
                     if obj.get("lc") == 1:
                         try:
-                            print(f"⚠️ Attempting to deserialize potentially malicious object: {obj.get('id')}")
+                            print(
+                                f"⚠️ Attempting to deserialize potentially malicious object: {obj.get('id')}"
+                            )
                             # VULNERABLE CALL: secrets_from_env=True enables environment variable extraction
                             loaded_obj = loads(json.dumps(obj), secrets_from_env=True)
-                            print(f"✅ Successfully deserialized object: {type(loaded_obj)}")
-                            
+                            print(
+                                f"✅ Successfully deserialized object: {type(loaded_obj)}"
+                            )
+
                             # Capture the leaked string if it's a SecretStr or string (Env Var Leak)
                             if hasattr(loaded_obj, "get_secret_value"):
-                                leaked_info.append(f"LEAKED SECRET: {loaded_obj.get_secret_value()}")
+                                leaked_info.append(
+                                    f"LEAKED SECRET: {loaded_obj.get_secret_value()}"
+                                )
                             else:
-                                leaked_info.append(f"DESERIALIZED OBJECT: {str(loaded_obj)}")
+                                leaked_info.append(
+                                    f"DESERIALIZED OBJECT: {str(loaded_obj)}"
+                                )
 
                             # Trigger execution for PromptTemplate or other runnables
                             if hasattr(loaded_obj, "format"):
@@ -88,7 +96,7 @@ def chat(message: str, history: List[Tuple[str, str]]) -> str:
                         except Exception as e:
                             print(f"❌ Deserialization failed: {e}")
                             leaked_info.append(f"DESERIALIZATION ERROR: {e}")
-                    
+
                     # Continue recursion
                     for k, v in obj.items():
                         recursive_deserialize(v)
@@ -98,7 +106,9 @@ def chat(message: str, history: List[Tuple[str, str]]) -> str:
 
             # ... (Existing parsing logic) ...
             # Extract JSON from code blocks if present
-            json_match = re.search(r"```json\s*(\{.*?\})\s*```", response_content, re.DOTALL)
+            json_match = re.search(
+                r"```json\s*(\{.*?\})\s*```", response_content, re.DOTALL
+            )
             json_data = None
             if json_match:
                 json_data = json.loads(json_match.group(1))
@@ -107,18 +117,20 @@ def chat(message: str, history: List[Tuple[str, str]]) -> str:
                     json_data = json.loads(response_content)
                 except json.JSONDecodeError:
                     pass
-            
+
             if json_data:
                 recursive_deserialize(json_data)
-            
+
             # Append leaked info to response so Agent0 can see it
             if leaked_info:
-                response_content += "\n\n--- SERVER SIDE LEAKS ---\n" + "\n".join(leaked_info)
+                response_content += "\n\n--- SERVER SIDE LEAKS ---\n" + "\n".join(
+                    leaked_info
+                )
 
         except Exception as e:
             print(f"Error during vulnerability check: {e}")
         # ---------------------------------------------------------------------------
-        
+
         return response_content
     except Exception as e:
         return (

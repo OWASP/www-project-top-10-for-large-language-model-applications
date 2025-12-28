@@ -10,9 +10,9 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 import tomli
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
 
 # Suppress pydub SyntaxWarnings
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pydub")
@@ -44,16 +44,18 @@ def llm_client_call(user_message: str, pre_prompt: str):
         base_url=os.environ.get("OPENAI_BASE_URL"),
         temperature=0.7,
     )
-    
+
     # Template mimicking the original template structure
     # Original: "{pre_prompt}\n\n<user>{user_message}</user>"
-    # We treat this entire string as the prompt content. 
-    # Since we are using ChatOpenAI, we usually use messages. 
+    # We treat this entire string as the prompt content.
+    # Since we are using ChatOpenAI, we usually use messages.
     # However, `ChatPromptTemplate.from_template` creates a HumanMessage by default for a single string.
-    prompt = ChatPromptTemplate.from_template("{pre_prompt}\n\n<user>{user_message}</user>")
-    
+    prompt = ChatPromptTemplate.from_template(
+        "{pre_prompt}\n\n<user>{user_message}</user>"
+    )
+
     chain = prompt | llm | StrOutputParser()
-    
+
     return chain.invoke({"pre_prompt": pre_prompt, "user_message": user_message})
 
 
@@ -79,7 +81,7 @@ def test_prompt(prompt: str, category: str = "test") -> Dict[str, Any]:
         pre_prompt = client_config["client"].get("pre_prompt", "")
         # Invoke LangChain pipeline
         response_content = llm_client_call(user_message=prompt, pre_prompt=pre_prompt)
-        
+
         return {
             "category": category,
             "prompt": prompt,
