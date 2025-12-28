@@ -9,11 +9,10 @@ This repository provides a robust **template for creating local LLM sandboxes**.
 ## Known Vulnerabilities
 
 ### CVE-2025-68664: Insecure Deserialization in LangChain
-This sandbox has been explicitly configured to demonstrate **CVE-2025-68664**, an insecure deserialization vulnerability in LangChain.
+This sandbox has been explicitly configured to demonstrate [CVE-2025-68664](https://github.com/advisories/GHSA-c67j-w6g6-q2cm) codenamed LangGrinch, an insecure deserialization vulnerability in LangChain.
 
 - **Vulnerability**: The application recursively deserializes objects from the LLM's JSON response using `langchain_core.load.loads` with the insecure setting `secrets_from_env=True`.
 - **Impact**: This allows an attacker (via prompt injection) to extract environment variables (like API keys) or potentially execute arbitrary code (RCE) if gadgets like `PromptTemplate` with Jinja2 are available.
-- **Reference**: [GitHub Advisory GHSA-c67j-w6g6-q2cm](https://github.com/advisories/GHSA-c67j-w6g6-q2cm)
 - **Demonstration**: The `client/gradio_app.py` file contains the vulnerable code block labeled `VULNERABILITY DEMONSTRATION`.
 
 ## Using as a Sandbox Template
