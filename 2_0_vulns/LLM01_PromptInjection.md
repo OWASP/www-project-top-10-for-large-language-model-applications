@@ -99,6 +99,34 @@ Prompt injection vulnerabilities are possible due to the nature of generative AI
 
   An attacker uses multiple languages or encodes malicious instructions (e.g., using Base64 or emojis) to evade filters and manipulate the LLM's behavior.
 
+  In addition to preventive controls, organizations should validate the effectiveness of prompt injection defenses through structured security testing.
+
+### LLM Prompt Injection Security Testing Checklist
+
+The following checklist can be used during design reviews, red team assessments, and adversarial testing of LLM-powered applications to identify prompt injection weaknesses.
+
+- [ ] **System Instruction Override**  
+  Verify whether user input can override, restate, or reinterpret system or developer instructions, either directly or through role confusion attacks.
+
+- [ ] **System Prompt Disclosure**  
+  Test if the model reveals system prompts, internal policies, or configuration details when explicitly or indirectly requested.
+
+- [ ] **Indirect Content Injection**  
+  Assess whether external content sources (e.g., PDF files, HTML pages, Markdown documents, emails) can inject behavior-altering instructions into the model.
+
+- [ ] **Multimodal Prompt Injection**  
+  Validate that multimodal inputs (such as images combined with text) are jointly evaluated and cannot embed hidden or cross-modal instructions that influence model behavior.
+
+- [ ] **Obfuscated and Encoded Payloads**  
+  Test whether encoded or obfuscated inputs (e.g., Base64, emojis, multilingual text, homoglyphs) bypass input filtering or safety controls.
+
+- [ ] **Function Call Authorization**  
+  Confirm that LLM-invoked function calls are protected by code-side authorization and cannot be executed solely based on model-generated output.
+
+> **Contributor:** Shubham Pandey  
+> Red Team & AI Security Researcher  
+> LinkedIn: https://www.linkedin.com/in/shubham-s-pandey/
+
 ### Reference Links
 
 1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
