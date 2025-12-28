@@ -490,9 +490,9 @@ langgraph==0.2.60 ; python_version >= "3.11" and python_version < "4.0" \
 langsmith==0.2.7 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:0996d12622b56ff21414ab8b5c16cbe3ff389a3668fa3fd1d82475bd57e5bc9e \
     --hash=sha256:ae7a0620e9fc4da2b2e4ef7beccdadb0f9009cca0fd71ac08d372660639e2fab
-marshmallow==3.23.2 ; python_version >= "3.11" and python_version < "4.0" \
-    --hash=sha256:bcaf2d6fd74fb1459f8450e85d994997ad3e70036452cbfa4ab685acb19479b3 \
-    --hash=sha256:c448ac6455ca4d794773f00bae22c2f351d62d739929f761dce5eacb5c468d7f
+marshmallow==3.26.2 ; python_version >= "3.11" and python_version < "4.0" \
+    --hash=sha256:013fa8a3c4c276c24d26d84ce934dc964e2aa794345a0f8c7e5a7191482c8a73 \
+    --hash=sha256:bbe2adb5a03e6e3571b573f42527c6fe926e17467833660bebd11593ab8dfd57
 msgpack==1.1.0 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:06f5fd2f6bb2a7914922d935d3b8bb4a7fff3a9a91cfce6d06c13bc42bec975b \
     --hash=sha256:071603e2f0771c45ad9bc65719291c568d4edf120b44eb36324dcb02a13bfddf \
