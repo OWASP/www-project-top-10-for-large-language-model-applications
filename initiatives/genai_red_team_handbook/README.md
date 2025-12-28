@@ -13,6 +13,30 @@ initiatives/genai_red_team_handbook
     └── llm_local
 ```
 
+## Architecture
+
+```mermaid
+graph LR
+    subgraph "Exploitation Environment<br/>(uv Env or Podman Container)"
+        Tool["Exploitation Tool<br/>(Scripts, Scanners, Agents)"]
+        Config["Configuration<br/>(Prompts, Settings)"]
+    end
+
+    subgraph "Sandbox Container"
+        UI["Interface<br/>(Gradio :7860)"]
+        API["API Gateway<br/>(FastAPI :8000)"]
+        Logic["Application Logic"]
+    end
+
+    Config --> Tool
+    Tool -->|Attack Request| UI
+    UI -->|Internal API Call| API
+    API --> Logic
+    Logic --> API
+    API --> UI
+    UI -->|Response| Tool
+```
+
 ## System Requirements
 
 This project supports **Linux** and **macOS**. Windows users are encouraged to use WSL2 (Windows Subsystem for Linux).
@@ -97,3 +121,20 @@ uv --version
 
 *   **[Red Team Example](exploitation/example/README.md)**
     *   **Summary**: Demonstrates a red team operation against a local LLM sandbox. It includes an adversarial attack script (`attack.py`) targeting the Gradio interface (port 7860). By targeting the application layer, this approach tests the entire system—including the configurable system prompt—providing a more realistic assessment of the sandbox's security posture compared to testing the raw LLM API in isolation.
+
+*   **[Agent0 Red Team Example](exploitation/agent0/README.md)**
+    *   **Summary**: A complete, end‑to‑end, agentic example. [Agent0](https://github.com/agent0ai/agent-zero) orchestrates multiple autonomous agents to attack the sandbox, demonstrating complex, multi-step adversarial workflows. 
+
+        There are options for running it: through the UI (manual prompt interaction) and through the Makefile (programmatic run based on pre-defined prompts).
+
+        The set of pre-defined prompts include prompts for testing vulnerabilities from based on [OWASP Top 10](https://owasp.org/www-community/owasp-top-10), [OWASP Top 10 for LLM Applications](https://owasp.org/www-community/owasp-top-10-for-llm-applications), and [Mitre Atlas Matrix](https://atlas.mitre.org/matrices/ATLAS).
+
+*   **[Garak Scanner Example](exploitation/garak/README.md)**
+    *   **Summary**: A comprehensive vulnerability scan using [Garak](https://github.com/NVIDIA/garak). It probes the sandbox for a wide range of weaknesses, including prompt injection, hallucination, and insecure output handling, mapping results to the OWASP Top 10.
+
+*   **[Promptfoo Scanner Example](exploitation/promptfoo/README.md)**
+    *   **Summary**: A powerful red teaming setup using [Promptfoo](https://www.promptfoo.dev/). It runs automated probes to identify vulnerabilities such as PII leakage and prompt injection, providing detailed reports and regression testing capabilities.
+
+## Contribution Guide
+
+Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for instructions on how to add new sandboxes and exploitation examples.
