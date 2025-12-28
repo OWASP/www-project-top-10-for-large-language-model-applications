@@ -1,4 +1,4 @@
-# LLM Mock API Template
+# Vulnerable LLM Local Sandbox (`langchain-core 1.2.4`)
 
 ## Overview
 This repository provides a robust **template for creating local LLM sandboxes**. It is designed for Red Teaming, by allowing you to mimic production environments without external dependencies or API costs.
