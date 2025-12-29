@@ -466,9 +466,9 @@ jsonpointer==3.0.0 ; python_version >= "3.11" and python_version < "4.0" \
 langchain-community==0.3.13 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:8abe05b4ab160018dbd368f7b4dc79ef6a66178a461b47c4ce401d430337e0c2 \
     --hash=sha256:d6f623d59d44ea85b9cafac8ca6e9970c343bf892a9a3252b3f25e30df339be2
-langchain-core==0.3.28 ; python_version >= "3.11" and python_version < "4.0" \
-    --hash=sha256:407f7607e6b3c0ebfd6094da95d39b701e22e59966698ef126799782953e7f2c \
-    --hash=sha256:a02f81ca53a8eed757133797e5a602ca80c1324bbecb0c5d86ef7bd3d6625372
+langchain-core==0.3.81 ; python_version >= "3.11" and python_version < "4.0" \
+    --hash=sha256:0473e7cffbba06017393f2f1ee116da098c298e4ec478ada91d321f42dff921c \
+    --hash=sha256:d0f34c88254d78ccb1b9a038f860d13dea90186045026fd8fc3e1265eed73a4e
 langchain-openai==0.2.14 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:7a514f309e356b182a337c0ed36ab3fbe34d9834a235a3b85cb7f91ae775d978 \
     --hash=sha256:d232496662f79ece9a11caf7d798ba863e559c771bc366814f7688e0fe664fe8
