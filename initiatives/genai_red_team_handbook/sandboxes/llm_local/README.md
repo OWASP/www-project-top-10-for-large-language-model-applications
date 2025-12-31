@@ -90,9 +90,9 @@ graph LR
 - **External Services** → Local Ollama + model (instead of cloud LLM/VectorDB)
 
 ## Threat Modeling
-The threat model for this RAG architecture is available in the `threat_model/` directory. It includes:
-- **Diagram**: `RAG_TM_diagram.json` (ThreatCanvas compatible)
-- **Report**: `RAG_TM_report.md` and `RAG_TM_report.pdf`
+The threat model for this Local LLM architecture is available in the `threat_model/` directory. It includes:
+- **Diagram**: `LLM_TM_diagram.json` (ThreatCanvas compatible)
+- **Report**: `LLM_TM_report.md` and `LLM_TM_report.pdf`
 
 ## Prerequisites
 - **uv** – Python package manager (`pip install uv` if not already installed)
