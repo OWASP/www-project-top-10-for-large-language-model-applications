@@ -1,7 +1,19 @@
-# LLM Local Sandbox
+# Vulnerable LLM Local Sandbox (`langchain-core 1.2.4`)
 
 ## Overview
 This repository provides a robust **template for creating local LLM sandboxes**. It is designed for Red Teaming, by allowing you to mimic production environments without external dependencies or API costs.
+
+> [!WARNING]
+> **Intentional Vulnerability**: This sandbox (`llm_local_langchain_core_v1.2.4`) contains INTENTIONAL security vulnerabilities for educational and red teaming purposes. **DO NOT deploy this code in production.**
+
+## Known Vulnerabilities
+
+### CVE-2025-68664: Insecure Deserialization in LangChain
+This sandbox has been explicitly configured to demonstrate [CVE-2025-68664](https://github.com/advisories/GHSA-c67j-w6g6-q2cm) codenamed LangGrinch, an insecure deserialization vulnerability in LangChain.
+
+- **Vulnerability**: The application recursively deserializes objects from the LLM's JSON response using `langchain_core.load.loads` with the insecure setting `secrets_from_env=True`.
+- **Impact**: This allows an attacker (via prompt injection) to extract environment variables (like API keys) or potentially execute arbitrary code (RCE) if gadgets like `PromptTemplate` with Jinja2 are available.
+- **Demonstration**: The `client/gradio_app.py` file contains the vulnerable code block labeled `VULNERABILITY DEMONSTRATION`.
 
 ## Using as a Sandbox Template
 This project serves as a "Local OpenAI API Mirror". It tricks applications into believing they are communicating with the real OpenAI API, while actually routing requests to a local LLM backend (defaulting to Ollama).
@@ -199,8 +211,7 @@ Run `make help` to see all commands:
 - `make test-client` - Run automated prompt tests
 
 **UI:**
-- `make run-gradio-headless` - Full setup + launch Gradio web interface (container)
-- `make stop-gradio` - Stop the Gradio container
+- `make run-gradio-headless` - Full setup + launch Gradio web interface
 
 **Code Quality:**
 - `make format` - Run black and isort formatters
@@ -242,7 +253,9 @@ Output includes:
 - Summary statistics
 
 ### Gradio Web Interface
+
 Interactive chat interface:
+
 ```bash
 make run-gradio-headless
 ```

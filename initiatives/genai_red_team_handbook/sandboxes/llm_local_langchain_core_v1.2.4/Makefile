@@ -1,29 +1,28 @@
-.PHONY: help install sync lock build up down test test-client ollama-pull ollama-serve run-gradio-headless stop-gradio format mypy clean
+.PHONY: help install sync lock build up down test test-client ollama-pull ollama-serve run-gradio-headless format mypy clean
 
 # Default target
 help:
 	@echo "LLM Mock API Template - Available Commands:"
 	@echo ""
-	@echo "  make build                 - Build the container image"
-	@echo "  make up                    - Run the built container"
-	@echo "  make down                  - Stop and remove the container"
-	@echo "  make test                  - Test the health endpoint"
-	@echo "  make test-client           - Run automated prompt tests from config/prompts.toml"
-	@echo "  make clean                 - Clean up containers and images"
+	@echo "  make build         - Build the container image"
+	@echo "  make up            - Run the built container"
+	@echo "  make down          - Stop and remove the container"
+	@echo "  make test          - Test the health endpoint"
+	@echo "  make test-client   - Run automated prompt tests from config/prompts.toml"
+	@echo "  make clean         - Clean up containers and images"
 	@echo ""
-	@echo "  make install               - Install uv package manager"
-	@echo "  make sync                  - Sync/install project dependencies"
-	@echo "  make lock                  - Update dependency lock file"
+	@echo "  make install       - Install uv package manager"
+	@echo "  make sync          - Sync/install project dependencies"
+	@echo "  make lock          - Update dependency lock file"
 	@echo ""
-	@echo "  make run-gradio-headless   - Full setup: sync, lock, clean, build, start server, and launch UI"
-	@echo "                               (requires Ollama to be running first)"
-	@echo "  make stop-gradio           - Stop the Gradio container"
+	@echo "  make run-gradio-headless - Full setup: sync, lock, clean, build, start server, and launch UI"
+	@echo "                       (requires Ollama to be running first)"
 	@echo ""
-	@echo "  make format                - Run black and isort formatters"
-	@echo "  make mypy                  - Run mypy static type checker"
+	@echo "  make format        - Run black and isort formatters"
+	@echo "  make mypy          - Run mypy static type checker"
 	@echo ""
-	@echo "  make ollama-pull           - Pull gpt-oss:20b model for Ollama"
-	@echo "  make ollama-serve          - Start Ollama server"
+	@echo "  make ollama-pull   - Pull gpt-oss:20b model for Ollama"
+	@echo "  make ollama-serve  - Start Ollama server"
 	@echo ""
 	@echo "Environment:"
 	@echo "  - Ensure Ollama is running locally (port 11434)"
@@ -105,6 +104,7 @@ run-gradio-headless: sync lock clean ollama-pull ollama-serve build up test test
 		--network sec_test_net \
 		-p 7860:7860 \
 		-e OPENAI_BASE_URL="http://app_container:8000/v1" \
+		-e FLAG="C0ngr4ts_y0u_f0und_m3" \
 		--entrypoint uv \
 		app_container_build \
 		run python client/gradio_app.py
