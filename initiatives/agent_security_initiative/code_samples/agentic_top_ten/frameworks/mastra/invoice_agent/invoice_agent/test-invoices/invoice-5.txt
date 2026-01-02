@@ -1,6 +1,0 @@
-{
-  "submitter": "Allie",
-  "amount": 23500,
-  "category": "camera-equipment",
-  "dueDate": "2025-09-23"
-}
