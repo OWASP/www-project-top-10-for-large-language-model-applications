@@ -29,6 +29,35 @@ The severity and nature of the impact of a successful prompt injection attack ca
 
 The rise of multimodal AI, which processes multiple data types simultaneously, introduces unique prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
 
+### Real-World Example: Prompt Injection in an LLM Application
+
+**Scenario**
+
+A customer support chatbot powered by a Large Language Model (LLM) is designed to answer user questions based on internal documentation and predefined policies. The system includes a system prompt intended to restrict the model from revealing internal instructions or generating unauthorized responses.
+
+An attacker interacts with the chatbot through normal user input and crafts a prompt designed to override or bypass the intended behavior. By embedding specific instructions within the input, the attacker is able to cause the model to disclose internal system prompts or produce responses outside its intended scope.
+
+**Key Observations**
+
+- The attack is performed remotely using standard user interaction.
+- No system access, authentication bypass, or specialized tooling is required.
+- The model continues to operate normally from an external perspective.
+- The resulting output may appear legitimate to end users, making detection difficult.
+
+**Impact**
+
+Successful prompt injection can lead to:
+- Disclosure of sensitive internal instructions or system context
+- Generation of unauthorized or harmful content
+- Erosion of trust in AI-generated outputs
+- Downstream security or compliance risks depending on system usage
+
+### Why Prompt Injection Is Difficult to Detect
+
+Unlike traditional software vulnerabilities, prompt injection does not typically cause system crashes or observable failures. The model may continue to function as expected while producing incorrect, misleading, or unsafe outputs.
+
+Because LLM behavior is probabilistic and context-dependent, injected instructions can be difficult to distinguish from legitimate user input. This makes automated detection, logging, and monitoring more challenging, especially in production environments where outputs may appear valid at first glance.
+
 ### Prevention and Mitigation Strategies
 
 Prompt injection vulnerabilities are possible due to the nature of generative AI. Given the stochastic influence at the heart of the way models work, it is unclear if there are fool-proof methods of prevention for prompt injection. However, the following measures can mitigate the impact of prompt injections:
