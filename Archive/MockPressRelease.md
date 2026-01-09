@@ -14,7 +14,7 @@ Remember, this is a tool for us - a guiding star - not a binding prediction. It 
 Introducing the OWASP Top 10 for LLM Applications Project: Ensuring the Security and Safety  of Applications Powered by Large Language Models like GPT and Google's BERT
 
 ## San Francisco, CA – July 20, 2023
-Today, the Open Web Application Security Project (OWASP) is pleased to announce the launch of the OWASP Top 10 for Large Language Model (LLM) Applications project.  The list encompassess the most important security vulnerabilities as they relate to applications being built using large language models.   This initiative focuses on providing valuable guidance to developers who are building applications leveraging LLM technologies, such as OpenAI's GPT Series and Google's Bard, which are causing increased interest in the field of artificial intelligence.
+Today, the Open Worldwide Application Security Project (OWASP) is pleased to announce the launch of the OWASP Top 10 for Large Language Model (LLM) Applications project.  The list encompassess the most important security vulnerabilities as they relate to applications being built using large language models.   This initiative focuses on providing valuable guidance to developers who are building applications leveraging LLM technologies, such as OpenAI's GPT Series and Google's Bard, which are causing increased interest in the field of artificial intelligence.
 
 "Enterprises are increasingly using Large Language Models for a wide variety of applications, and ensuring the security of these applications is paramount," said Steve Wilson, Project Leader for OWASP and cybersecurity expert at Contrast Security. "Our goal with this project is to provide a reliable and comprehensive resource for developers to create secure applications embedding artificial intelligence."
 
@@ -28,7 +28,7 @@ This project seeks to highlight the crucial security risks associated with using
 For more information, please visit the project's GitHub repository at: (repository link)
 
 ## About OWASP
-The Open Web Application Security Project (OWASP) is a nonprofit foundation that works to improve the security of software. Through community-led open source software projects, hundreds of local chapters worldwide, tens of thousands of members, and leading educational and training conferences, the OWASP Foundation is the source for developers and technologists to secure the web.
+The Open Worldwide Application Security Project (OWASP) is a nonprofit foundation that works to improve the security of software. Through community-led open source software projects, hundreds of local chapters worldwide, tens of thousands of members, and leading educational and training conferences, the OWASP Foundation is the source for developers and technologists to secure the web.
 
 ### Press Contact
 Name, Title

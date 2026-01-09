@@ -1,6 +1,6 @@
 # OWASP Top 10 for LLM - Literature Review
 
-This repository is dedicated to the literature review of the OWASP (Open Web Application Security Project) Top 10 vulnerabilities as they pertain to Language Learning Models (LLMs). Our goal is to collect, categorize, and analyze academic papers, articles, and any form of literature that addresses these vulnerabilities in the context of LLMs.
+This repository is dedicated to the literature review of the OWASP (Open Worldwide Application Security Project) Top 10 vulnerabilities as they pertain to Language Learning Models (LLMs). Our goal is to collect, categorize, and analyze academic papers, articles, and any form of literature that addresses these vulnerabilities in the context of LLMs.
 
 ## Project Description
 
