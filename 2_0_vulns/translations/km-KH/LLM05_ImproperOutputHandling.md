@@ -32,7 +32,7 @@
 ៦. ប្រើប្រាស់ strict Content Security Policies (CSP) ដើម្បីកាត់បន្ថយហានិភ័យនៃ XSS attacks ពី LLM-generated content ។
 ៧. អនុវត្ត robust logging និង monitoring systems ដើម្បីរកឃើញ unusual patterns នៅក្នុង LLM outputs ដែលអាចបង្ហាញពី exploitation attempts ។
 
-### ឧទាហរណ៍សេណារីយោនៃការវាយប្រហារ
+### ឧទាហរណ៍សេណារីយ៉ូនៃការវាយប្រហារ
 
 #### សេណារីយ៉ូ #១
 

@@ -85,7 +85,7 @@ LLM-based application ឬ extension មិនអាចផ្ទៀងផ្ទ�
 * Log និង monitor សកម្មភាពរបស់ LLM extensions និង downstream systems ដើម្បីកំណត់កន្លែងដែល undesirable actions កំពុងកើតឡើង និងឆ្លើយតបទៅតាមនោះ។
 * អនុវត្ត rate-limiting ដើម្បីកាត់បន្ថយចំនួន undesirable actions ដែលអាចកើតឡើងក្នុងរយៈពេលកំណត់មួយ ដោយបង្កើនឱកាសក្នុងការរកឃើញ undesirable actions តាមរយៈ monitoring មុនពេលការខូចខាតធំអាចកើតឡើង។
 
-### ឧទាហរណ៍សេណារីយោនៃការវាយប្រហារ
+### ឧទាហរណ៍សេណារីយ៉ូនៃការវាយប្រហារ
 
 LLM-based personal assistant app ត្រូវបានផ្តល់សិទ្ធិចូលប្រើ mailbox របស់បុគ្គលម្នាក់តាមរយៈ extension ដើម្បីសង្ខេប content នៃ incoming emails ។ ដើម្បីសម្រេច functionality នេះ extension ទាមទារសមត្ថភាពក្នុងការអានសារ ទោះបីជា plugin ដែល system developer បានជ្រើសរើសប្រើក៏មាន functions សម្រាប់ផ្ញើសារផងដែរ។ បន្ថែមពីនេះ app ងាយរងគ្រោះទៅនឹង indirect prompt injection attack ដែលជា incoming email ដែលត្រូវបានបង្កើតឡើងដោយ malicious ក្នុងគោលបំណងបោកបញ្ឆោត LLM ឱ្យបញ្ជា agent ឱ្យ scan inbox របស់ user រក sensitive information ហើយ forward វាទៅ attacker's email address ។ នេះអាចត្រូវបានជៀសវាងដោយ៖
 
