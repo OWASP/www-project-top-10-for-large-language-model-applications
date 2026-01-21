@@ -16,20 +16,20 @@
 
 ## ឧទាហរណ៍ទូទៅនៃភាពងាយរងគ្រោះ
 
-១. លទ្ធផលរបស់ LLM ត្រូវបានបញ្ចូលដោយផ្ទាល់ទៅក្នុង system shell ឬមុខងារស្រដៀងគ្នាដូចជា `exec` ឬ `eval` ដែលបណ្តាលឱ្យមានការបញ្ជាកូដពីចម្ងាយ (remote code execution)។
-២. កូដ JavaScript ឬ Markdown ត្រូវបានបង្កើតដោយ LLM ហើយបញ្ជូនត្រឡប់ទៅអ្នកប្រើប្រាស់វិញ។ បន្ទាប់មក កូដនោះត្រូវបានបកស្រាយដោយកម្មវិធីរុករក (browser) ដែលបណ្តាលឱ្យមានការវាយប្រហារបែប Cross-Site Scripting (XSS)។
-៣. សំណួរ SQL ដែលបង្កើតដោយ LLM ត្រូវបានដំណើរការដោយគ្មានការកំណត់ប៉ារ៉ាម៉ែត្រត្រឹមត្រូវ (proper parameterization) ដែលនាំឱ្យមានការវាយប្រហារបែប SQL injection។
-៤. លទ្ធផលរបស់ LLM ត្រូវបានប្រើដើម្បីបង្កើតផ្លូវឯកសារ (file paths) ដោយគ្មានការសម្អាត (sanitization) ត្រឹមត្រូវ ដែលអាចបណ្តាលឱ្យមានភាពងាយរងគ្រោះក្នុងការឆ្លងកាត់ផ្លូវ (path traversal vulnerabilities)។
+១. លទ្ធផលរបស់ LLM ត្រូវបានបញ្ចូលដោយផ្ទាល់ទៅក្នុង system shell ឬមុខងារស្រដៀងគ្នាដូចជា `exec` ឬ `eval` ដែលបណ្តាលឱ្យមានការបញ្ជាកូដពីចម្ងាយ (remote code execution)។<br>
+២. កូដ JavaScript ឬ Markdown ត្រូវបានបង្កើតដោយ LLM ហើយបញ្ជូនត្រឡប់ទៅអ្នកប្រើប្រាស់វិញ។ បន្ទាប់មក កូដនោះត្រូវបានបកស្រាយដោយកម្មវិធីរុករក (browser) ដែលបណ្តាលឱ្យមានការវាយប្រហារបែប Cross-Site Scripting (XSS)។<br>
+៣. សំណួរ SQL ដែលបង្កើតដោយ LLM ត្រូវបានដំណើរការដោយគ្មានការកំណត់ប៉ារ៉ាម៉ែត្រត្រឹមត្រូវ (proper parameterization) ដែលនាំឱ្យមានការវាយប្រហារបែប SQL injection។<br>
+៤. លទ្ធផលរបស់ LLM ត្រូវបានប្រើដើម្បីបង្កើតផ្លូវឯកសារ (file paths) ដោយគ្មានការសម្អាត (sanitization) ត្រឹមត្រូវ ដែលអាចបណ្តាលឱ្យមានភាពងាយរងគ្រោះក្នុងការឆ្លងកាត់ផ្លូវ (path traversal vulnerabilities)។<br>
 ៥. ខ្លឹមសារដែលបង្កើតដោយ LLM ត្រូវបានប្រើនៅក្នុងគំរូអ៊ីមែល (email templates) ដោយគ្មានការការពារ (escaping) ត្រឹមត្រូវ ដែលអាចនាំឱ្យមានការវាយប្រហារបែបបន្លំ (phishing attacks)។
 
 ## យុទ្ធសាស្ត្របង្ការ និងកាត់បន្ថយ
 
-១. ចាត់ទុកគំរូ (model) ដូចជាអ្នកប្រើប្រាស់ដទៃទៀត ដោយអនុវត្តគោលការណ៍ zero-trust និងអនុវត្តការត្រួតពិនិត្យការបញ្ចូល (input validation) ត្រឹមត្រូវលើការឆ្លើយតបដែលមកពីគំរូ (model) ទៅកាន់មុខងារ backend។
-២. អនុវត្តតាម OWASP ASVS (Application Security Verification Standard) guidelines ដើម្បីធានា input validation និង sanitization ប្រកបដោយប្រសិទ្ធភាព។
-៣. Encode model output ត្រឡប់ទៅអ្នកប្រើប្រាស់វិញដើម្បីកាត់បន្ថយដំណើរការកូដដែលមិនចង់បានដោយ JavaScript ឬ Markdown ។ OWASP ASVS ផ្តល់ការណែនាំលម្អិតទៅលើ output encoding ។
-៤. អនុវត្ត context-aware output encoding ដោយផ្អែកលើលទ្ធផលពី LLM នឹងត្រូវបានប្រើ (ឧទាហរណ៍៖ HTML encoding សម្រាប់ web content, SQL escaping សម្រាប់ database queries) ។
-៥. ប្រើ parameterized queries ឬ prepared statements សម្រាប់ប្រតិបត្តិការមូលដ្ឋានរបស់ទិន្នន័យ (database operations) ទាំងអស់ដែលពាក់ព័ន្ធនឹងលទ្ធផលរបស់ LLM ។
-៦. អនុវត្តគោលការណ៍សុវត្ថិភាពខ្លឹមសារឱ្យបានតឹងរ៉ឹង (strict Content Security Policies (CSP))ដើម្បីកាត់បន្ថយហានិភ័យនៃការវាយប្រហារបែប XSS ដែលកើតចេញពីមាតិកាបង្កើតដោយ LLM ។
+១. ចាត់ទុកគំរូ (model) ដូចជាអ្នកប្រើប្រាស់ដទៃទៀត ដោយអនុវត្តគោលការណ៍ zero-trust និងអនុវត្តការត្រួតពិនិត្យការបញ្ចូល (input validation) ត្រឹមត្រូវលើការឆ្លើយតបដែលមកពីគំរូ (model) ទៅកាន់មុខងារ backend។ <br>
+២. អនុវត្តតាម OWASP ASVS (Application Security Verification Standard) guidelines ដើម្បីធានា input validation និង sanitization ប្រកបដោយប្រសិទ្ធភាព។<br>
+៣. Encode model output ត្រឡប់ទៅអ្នកប្រើប្រាស់វិញដើម្បីកាត់បន្ថយដំណើរការកូដដែលមិនចង់បានដោយ JavaScript ឬ Markdown ។ OWASP ASVS ផ្តល់ការណែនាំលម្អិតទៅលើ output encoding ។<br>
+៤. អនុវត្ត context-aware output encoding ដោយផ្អែកលើលទ្ធផលពី LLM នឹងត្រូវបានប្រើ (ឧទាហរណ៍៖ HTML encoding សម្រាប់ web content, SQL escaping សម្រាប់ database queries) ។<br>
+៥. ប្រើ parameterized queries ឬ prepared statements សម្រាប់ប្រតិបត្តិការមូលដ្ឋានរបស់ទិន្នន័យ (database operations) ទាំងអស់ដែលពាក់ព័ន្ធនឹងលទ្ធផលរបស់ LLM ។<br>
+៦. អនុវត្តគោលការណ៍សុវត្ថិភាពខ្លឹមសារឱ្យបានតឹងរ៉ឹង (strict Content Security Policies (CSP))ដើម្បីកាត់បន្ថយហានិភ័យនៃការវាយប្រហារបែប XSS ដែលកើតចេញពីមាតិកាបង្កើតដោយ LLM ។<br>
 ៧. អនុវត្តបង្កើតប្រព័ន្ធកត់ត្រា (robust logging) និង ប្រព័ន្ធត្រួតពិនិត្យ (monitoring systems) ឱ្យបានហ្មត់ចត់ ដើម្បីស្វែងរកសញ្ញាមិនប្រក្រតីនៅក្នុងលទ្ធផលរបស់ LLM ដែលអាចបង្ហាញពីដែលអាចបង្ហាញពីការប៉ុនប៉ងវាយប្រហារ។
 
 ### ឧទាហរណ៍សេណារីយ៉ូនៃការវាយប្រហារ
