@@ -9,7 +9,7 @@ pitch: Aims to educate developers, designers, architects, managers, and organiza
 
 ## About This Repository
 
-This is the repository for the **OWASP Top 10 for Large Language Model Applications**. However, this project has now grown into the comprehensive **OWASP GenAI Security Project** - a global initiative that encompasses multiple security initiatives beyond just the Top 10 list.
+This is the repository for the **OWASP Top 10 for Large Language Model Applications Inititive**. This project is part of the **OWASP GenAI Security Project** - a compresensive global initiative with working groups encompassing the complete LLM, Generative AI and Agentic AI application security lifecycle. 
 
 ## OWASP GenAI Security Project
 
