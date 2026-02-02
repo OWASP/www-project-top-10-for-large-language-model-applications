@@ -1,37 +1,38 @@
-## Title
-2025 Top 10 Risk & Mitigations for LLMs and Gen AI Apps
+## عنوان
+۱۰ ریسک برتر و راهکارهای مقابله برای مدل‌های زبانی بزرگ (LLM) و برنامه‌های هوش مصنوعی مولد در سال ۲۰۲۵
 
-## Short Description
-Expore the latest Top 10 risks, vulnerabilities and mitigations for developing and securing generative AI and large language model applications across the development, deployment and management lifecycle.
+## توضیحات کوتاه
+بررسی جدیدترین فهرست ۱۰ ریسک، آسیب‌پذیری و راهکارهای مقابله برتر برای توسعه و ایمن‌سازی برنامه‌های کاربردی هوش مصنوعی مولد و مدل‌های زبانی بزرگ در تمامی مراحل چرخه حیات توسعه، استقرار و مدیریت.
 
-## Long Description
-The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
+## توضیحات کامل
+پروژه «۱۰ مورد برتر OWASP برای برنامه‌های مدل‌های زبانی بزرگ» در سال ۲۰۲۳ به عنوان یک تلاش جامعه‌محور برای برجسته کردن و رفع مسائل امنیتی خاصِ برنامه‌های هوش مصنوعی آغاز شد. از آن زمان، این فناوری در صنایع و کاربردهای مختلف گسترش یافته و به همان نسبت، ریسک‌های مرتبط با آن نیز افزایش پیدا کرده است. در حالی که مدل‌های زبانی بزرگ (LLMها) به طور عمیق‌تری در همه چیز، از تعاملات با مشتری گرفته تا عملیات داخلی سازمان‌ها ادغام می‌شوند، توسعه‌دهندگان و متخصصان امنیت در حال کشف آسیب‌پذیری‌های جدید—و روش‌های مقابله با آن‌ها—هستند.
 
-## Sponsorship
-We appreciate our Project Sponsors’ funding contributions to help support the objectives of the project and help to cover operational and outreach costs augmenting the resources the OWASP.org foundation provides. The OWASP Top 10 for LLM and Generative AI Project continues to maintain a vendor neutral and unbiased approach. Sponsors do not receive special governance considerations as part of their support. Sponsors do receive recognition for their contributions in our materials and web properties.
-All materials the project generates are community developed, driven and released under open source and creative commons licenses. For more information on becoming a sponsor Visit the Sponsorship Section on our Website to learn more about helping to sustain the project through sponsorship.
+## حمایت مالی
+ما از کمک‌های مالی حامیان پروژه خود قدردانی می‌کنیم؛ این کمک‌ها به پشتیبانی از اهداف پروژه و پوشش هزینه‌های عملیاتی و اطلاع‌رسانی که تکمیل‌کننده منابع بنیاد OWASP.org هستند، کمک می‌کند. پروژه «۱۰ مورد برتر OWASP برای LLM و هوش مصنوعی مولد» همچنان رویکردی بی‌طرفانه و مستقل از فروشندگان (Vendor-neutral) را حفظ می‌کند. حامیان مالی در ازای حمایت خود، هیچ‌گونه امتیاز حاکمیتی خاصی دریافت نمی‌کنند، اما به پاس مشارکتشان در مطالب و وب‌سایت‌های ما مورد تقدیر قرار می‌گیرند.
+تمامی مطالب تولید شده توسط این پروژه، به صورت جامعه‌محور توسعه یافته و تحت مجوزهای متن‌باز (Open Source) و کریتیو کامنز (Creative Commons) منتشر می‌شوند. برای کسب اطلاعات بیشتر در مورد حامی شدن، جهت کمک به پایداری پروژه از طریق حمایت مالی، به بخش اسپانسرشیپ در وب‌سایت ما مراجعه کنید.
 
-## Social Media
-🚀 Exciting News! New Translations Available for the OWASP Top 10 for LLM & Generative AI (2025) 🌍
+## شبکه‌های اجتماعی
+🚀 خبر هیجان‌انگیز! انتشار ترجمه‌های جدید برای پروژه ۱۰ مورد برتر OWASP برای LLM و هوش مصنوعی مولد (۲۰۲۵)🌍
 
-We’re thrilled to announce that the OWASP Top 10 for LLM Applications and Generative AI 2025 is now available in Arabic, Vietnamese, Turkish and Persian!
+بسیار خوشحالیم که اعلام کنیم نسخه ۲۰۲۵ سند «۱۰ مورد برتر OWASP برای برنامه‌های LLM و هوش مصنوعی مولد» اکنون به زبان‌های عربی، ویتنامی، ترکی و فارسی در دسترس است!
 
-This update provides a refreshed and comprehensive resource addressing the top risks, vulnerabilities, and mitigations for securing Generative AI and LLM applications across their development, deployment, and management lifecycle. Whether you're working with RAG-based applications, agentic architectures, or complex LLM integrations, this list is a must-have for developers, security professionals, and organizations looking to adopt AI securely.
+این به‌روزرسانی منبعی جامع و تازه برای پرداختن به ریسک‌ها، آسیب‌پذیری‌ها و راهکارهای مقابله برتر جهت ایمن‌سازی برنامه‌های هوش مصنوعی مولد و LLM در طول چرخه حیات توسعه، استقرار و مدیریت آن‌ها ارائه می‌دهد. چه با برنامه‌های مبتنی بر RAG کار کنید، چه معماری‌های عاملی (Agentic) و یا یکپارچه‌سازی‌های پیچیده LLM، این لیست برای توسعه‌دهندگان، متخصصان امنیت و سازمان‌هایی که به دنبال به‌کارگیری ایمن هوش مصنوعی هستند، یک منبع ضروری است.
 
-What's New in the 2025 OWASP Top 10 for LLMs?
+چه چیزی در نسخه ۲۰۲۵ پروژه OWASP Top 10 for LLMs جدید است؟
 
-✅ Unbounded Consumption: Expanding beyond denial of service to include risks of resource management and unexpected costs in large-scale deployments.
-✅ Vectors & Embeddings Security: Addressing security risks in Retrieval-Augmented Generation (RAG) and other embedding-based techniques.
-✅ System Prompt Leakage: A newly added entry tackling real-world exploits and the {risks of assuming prompts remain isolated.
-✅ Excessive Agency: As AI autonomy grows, this update highlights security concerns around agentic architectures with limited human oversight.
+✅ مصرف بی حد و مرز (Unbounded Consumption): گسترش مفهوم فراتر از حملات انکار سرویس (DoS) برای شامل شدن ریسک‌های مدیریت منابع و هزینه‌های غیرمنتظره در استقرارهای مقیاس بزرگ.
+✅ امنیت بردارها و بازنمودها (Vectors & Embeddings Security): پرداختن به ریسک‌های امنیتی در معماری «تولید پاسخ با کمک بازیابی» (RAG) و سایر تکنیک‌های مبتنی بر تعبیه (Embedding).
+✅ نشت پرامپت سیستم (System Prompt Leakage): یک مورد جدید که به اکسپلویت‌های دنیای واقعی و خطرات ناشی از این فرض که پرامپت‌ها ایزوله باقی می‌مانند، می‌پردازد.
+✅ اختیارات بیش از حد (Excessive Agency): با رشد خودمختاری هوش مصنوعی، این به‌روزرسانی نگرانی‌های امنیتی پیرامون معماری‌های عاملی (Agentic Architectures) با نظارت انسانی محدود را برجسته می‌کند.
 
-Join the Effort! 💡
+به این تلاش بپیوندید!💡
 
-This project thrives because of the amazing global community behind it. If you’re passionate about AI security, we invite you to contribute to translations, research, and guidance to expand this critical initiative. Let’s make AI security accessible worldwide!
-📢 Check out the translations below:
- 🔗 Arabic:
- 🔗 Vietnamese:
- 🔗 Turkish:
- 🔗 Persian:
+این پروژه به لطف جامعه جهانی فوق‌العاده‌ای که پشت آن ایستاده، پیشرفت می‌کند. اگر به امنیت هوش مصنوعی علاقه دارید، از شما دعوت می‌کنیم تا در ترجمه، تحقیق و ارائه راهنماها برای گسترش این ابتکار حیاتی مشارکت کنید. بیایید امنیت هوش مصنوعی را برای همه در سراسر جهان در دسترس کنیم!
 
-Interested in getting involved? Comment below or reach out! Together, we can build a more secure AI-driven future. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
+📢 ترجمه‌ها را در لینک‌های زیر بررسی کنید:
+🔗 عربی:
+🔗 ویتنامی:
+🔗 ترکی:
+🔗 فارسی:
+
+علاقه‌مند به همکاری هستید؟ زیر همین پست کامنت بگذارید یا با ما تماس بگیرید! با هم می‌توانیم آینده‌ای ایمن‌تر مبتنی بر هوش مصنوعی بسازیم. 💙#AI #CyberSecurity #LLM #GenerativeAI #OWASP
