@@ -81,6 +81,10 @@ The following actions can prevent Excessive Agency:
 
   Follow secure coding best practice, such as applying OWASP’s recommendations in ASVS (Application Security Verification Standard), with a particularly strong focus on input sanitisation. Use Static Application Security Testing (SAST) and Dynamic and Interactive application testing (DAST, IAST) in development pipelines.
 
+#### 9. Enforce structural authority separation
+
+  Interpose a deterministic policy evaluation layer between the LLM agent's tool selection and tool execution. Rather than relying on the LLM to self-govern which actions are appropriate, route every proposed tool call through a non-LLM policy engine that evaluates a structured intent (tool name, arguments, calling context) against deployer-defined rules and returns an approve/deny/escalate verdict. This ensures the entity that proposes an action is never the same entity that authorizes it — the agent operates in user-space while authorization is a system-level concern. Log every verdict to a tamper-evident audit trail for post-incident analysis.
+
 The following options will not prevent Excessive Agency, but can limit the level of damage caused:
 
 * Log and monitor the activity of LLM extensions and downstream systems to identify where undesirable actions are taking place, and respond accordingly.
@@ -104,3 +108,4 @@ Alternatively, the damage caused could be reduced by implementing rate limiting 
 4. [NeMo-Guardrails: Interface guidelines](https://github.com/NVIDIA/NeMo-Guardrails/blob/main/docs/security/guidelines.md): **NVIDIA Github**
 5. [Simon Willison: Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/): **Simon Willison**
 6. [Sandboxing Agentic AI Workflows with WebAssembly](https://developer.nvidia.com/blog/sandboxing-agentic-ai-workflows-with-webassembly/) **NVIDIA, Joe Lucas**
+7. [Governance-Guard: Structural Authority Separation for AI Agents](https://github.com/MetaCortex-Dynamics/governance-guard): **MetaCortex Dynamics**
