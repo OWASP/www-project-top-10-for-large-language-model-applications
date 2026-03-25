@@ -4,7 +4,9 @@
 
 Agentic systems can be fully authenticated, encrypted, and logged, yet still execute actions that were not the ones approved upstream.
 
-This occurs when authorization decisions are not enforced at execution boundaries.
+This occurs because authorization correctness does not guarantee execution correctness.
+
+A system may correctly authorize a request, yet execute a different request if enforcement is not applied at the execution boundary.
 
 In distributed and multi-agent workflows, failures can occur at different points: during transmission, tool selection, authorization-to-execution handoff, or intent formation.
 
@@ -14,10 +16,18 @@ This note separates these concerns into distinct runtime integrity layers so tha
 
 ---
 
+These layers are not equivalent in enforcement strength:
+
+- Transmission and tool integrity provide structural guarantees.
+- Authorization-at-execution integrity provides execution fidelity.
+- Intent integrity addresses semantic correctness and remains probabilistic.
+
+Satisfying lower layers does not imply correctness at higher layers.
+
 ## Layer 1 — Transmission Integrity
 
 ### What it addresses
-Ensures that the request sent by one component is the same request received by another.
+request_authorized = request_executed
 
 ### Typical failure modes
 - A request is modified after signing due to intermediary components (e.g., proxies, middleware).
@@ -111,6 +121,8 @@ Ensures that the authorization decision itself reflects the correct intended act
 
 ## Execution-Boundary Requirement — State Validity / Preconditions
 
+This is the only point where a system can enforce, rather than merely attest, correctness of execution.
+
 Even if:
 - the request was transmitted correctly,
 - the correct tool is invoked,
@@ -138,6 +150,73 @@ there remains a critical question:
 
 ---
 
+## Temporal Checkpoints (Execution Lifecycle)
+
+The four integrity layers describe *what* property is being guaranteed.
+
+A complementary dimension is *when* these guarantees are enforced or attested during execution.
+
+Three checkpoints are useful to distinguish:
+
+### Pre-decision
+Authority and policy state validated before the agent decides to act.
+
+- Example: policy evaluation, authority snapshot, decision commitment  
+- Failure mode: incorrect or manipulated decision (intent integrity)
+
+### Pre-completion
+The action is in flight but has not yet been committed or completed.
+
+- Example: proxy boundary, request fingerprinting, transmission checks  
+- Failure mode: payload mutation between components
+
+### Post-completion
+The action has executed and is recorded for audit.
+
+- Example: audit logs, receipts, transparency logs, ledger entries  
+- Failure mode: tamper-evident but not preventive (detect-after-execution)
+
+---
+
+### Hard gate at the execution boundary
+
+A system moves from detect-and-attest to enforcement only if execution is refused unless, at the exact moment of action:
+
+- authority is still valid  
+- policy state still matches the evaluated snapshot  
+- the request reaching the tool is identical to what was authorized  
+
+If these conditions are only checked after execution begins, the system may still provide strong attestation, but it does not provide fail-closed execution-boundary enforcement.
+
+---
+
+### Relationship to Integrity Layers
+
+The layer model and checkpoint model describe different axes:
+
+The same layer can be satisfied at different checkpoints with fundamentally different security guarantees.
+
+- Layers → what property is guaranteed  
+- Checkpoints → when that guarantee is enforced  
+
+A system can satisfy the same layer at different checkpoints with different strength.
+
+Examples:
+
+- Transmission integrity at post-completion  
+  → audit proves request integrity after execution  
+
+- Transmission integrity at pre-completion  
+  → proxy enforces integrity before execution  
+
+- Authorization-at-execution integrity at pre-decision  
+  → decision is correct, but execution may still drift  
+
+Authorization-at-execution integrity at execution boundary  
+→ fail-closed enforcement enforces:
+
+  request_authorized = request_executed
+    
 ## Example implementation patterns
 
 Different systems emphasize different layers and enforcement placements:
