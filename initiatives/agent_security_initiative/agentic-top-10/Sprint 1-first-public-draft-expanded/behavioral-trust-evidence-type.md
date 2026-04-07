@@ -21,7 +21,8 @@ This document defines a **Behavioral Trust Evidence Type** for use in agent gove
     "value": 0.0-1.0,
     "confidence": 0.0-1.0,
     "sample_size": "integer",
-    "task_class": "string",
+    "task_class": "string (REQUIRED for gate evaluation — must match current operation type)",
+    "cross_class_score": 0.0-1.0 (OPTIONAL, for display only — MUST NOT be used in gate decisions),
     "temporal_half_life_hours": "number"
   },
   "derivation": {
