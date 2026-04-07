@@ -37,7 +37,8 @@ This document defines a **Behavioral Trust Evidence Type** for use in agent gove
   "drift_status": {
     "detected": "boolean",
     "divergence_score": 0.0-1.0,
-    "baseline_version": "string",
+    "baseline_snapshot_hash": "string (SHA-256 of immutable baseline fingerprint)",
+    "baseline_snapshot_ts": "ISO 8601 (when baseline was computed)",
     "window_size": "integer"
   },
   "verification": {
@@ -70,8 +71,13 @@ This document defines a **Behavioral Trust Evidence Type** for use in agent gove
 |-------|------|-------------|
 | `detected` | boolean | Whether behavioral drift was detected in current session |
 | `divergence_score` | float [0,1] | Statistical distance from behavioral baseline |
-| `baseline_version` | string | Hash of the baseline fingerprint used for comparison |
+| `baseline_snapshot_hash` | string | **SHA-256** of the immutable baseline fingerprint (not a version label) |
+| `baseline_snapshot_ts` | ISO 8601 | Timestamp when the baseline snapshot was computed |
 | `window_size` | integer | Number of recent actions in the drift detection window |
+
+**Baseline anchoring requirement:** The `baseline_snapshot_hash` MUST be the SHA-256 of a canonicalized, immutable representation of the behavioral baseline (e.g., JCS-serialized action distribution). Using a version label or string identifier is insufficient because it does not provide the monotonic reference property required for replay-verifiable proofs: two evidence artifacts with the same `drift_status.detected = false` must reference the same physical baseline state, not just the same label.
+
+Verifiers MUST reject drift evidence where `baseline_snapshot_hash` is absent when used in enforcement-mode decisions.
 
 **Drift detection** operates at a different timescale than trust scoring:
 - Trust score: accumulated over days/weeks from completed task outcomes
