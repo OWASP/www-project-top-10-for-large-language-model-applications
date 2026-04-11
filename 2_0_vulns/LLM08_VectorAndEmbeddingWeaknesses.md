@@ -78,6 +78,14 @@ Retrieval Augmented Generation (RAG) is a model adaptation technique that enhanc
 
   The impact of RAG on the foundational model's behavior should be monitored and evaluated, with adjustments to the augmentation process to maintain desired qualities like empathy(Ref #8).
 
+#### Scenario #4: Residual Embeddings After Source Data Deletion
+
+  An organization deletes a set of source documents from its primary data store in response to a data subject deletion request or retention policy, but the corresponding embeddings remain in the RAG vector store because the deletion workflow targets only the canonical content repository. An attacker with access to the vector store- through misconfigured access controls, a compromised read-only service account, or an exposed backup snapshot- applies embedding inversion techniques to recover substantial portions of the original document content from the residual embeddings. The organization believes the data is deleted and has reported it as such for compliance purposes, but the content remains recoverable for as long as the embeddings persist.
+
+#### Mitigation
+
+  Deletion workflows should propagate to all derived stores including vector databases, embedding caches, and backup snapshots. Treat embeddings as equivalent in sensitivity to the source content they were derived from. Where deletion cannot be guaranteed, for example on retained backups, document residual exposure explicitly in data retention and compliance records rather than reporting the data as fully deleted.
+
 ### Reference Links
 
 1. [Augmenting a Large Language Model with Retrieval-Augmented Generation and Fine-tuning](https://learn.microsoft.com/en-us/azure/developer/ai/augment-llm-rag-fine-tuning)
