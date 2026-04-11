@@ -120,6 +120,10 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 
   An LLM operator changes its T&Cs and Privacy Policy to require an explicit opt out from using application data for model training, leading to the memorization of sensitive data.
 
+#### Scenario #14: Compromised Build Pipeline for Model Artifacts
+
+  An attacker compromises the CI/CD pipeline an organization uses to fine-tune and publish an LLM. For example, through a malicious GitHub Actions dependency, a stolen artifact registry credential, or a tampered build-time secret. During the next training or packaging run, the pipeline produces a tampered model artifact containing a backdoor or biased behavior. Because the artifact is built and signed by the organization's own release infrastructure, it passes downstream provenance checks, internal attestation, and supply-chain scanners that only flag externally sourced components. Similar build-time substitution attacks have affected traditional software supply chains through incidents like the xz-utils backdoor and the Codecov breach; the same attack surface exists wherever model artifacts are produced by automated pipelines without model-specific integrity controls such as reproducible builds, transparency logs, or post-build behavioral evaluation.
+
 ### Reference Links
 
 1. [PoisonGPT: How we hid a lobotomized LLM on Hugging Face to spread fake news](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news)
