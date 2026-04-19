@@ -1,5 +1,7 @@
 # BBIS: Boundary-to-Boundary Invariant Survival
 
+Author: Steven K. Hensley (Stevil / QueBallSharken)
+
 ## Author's Note
 
 I am introducing **Boundary-to-Boundary Invariant Survival (BBIS)** here as a specific term and formulation for a continuity requirement in governed mutation paths.
@@ -273,4 +275,4 @@ BBIS does not prescribe a single architecture, but it does imply a direction:
 
 **Status:** Concept definition / continuity requirement artifact  
 **Purpose:** Preserve the BBIS formulation, scope, and conformance meaning in the public record  
-**Author:** QueBallSharken Steven K. Hensley (Stevil)
+**Author:** Steven K. Hensley (Stevil / QueBallSharken)
