@@ -1,73 +1,76 @@
-## LLM06:2025 Excessive Agency
+# LLM06:2025 ការផ្តល់សិទ្ធិអំណាចហួសហេតុ (Excessive Agency)
 
-### Description
+## ការពិពណ៌នា
 
-An LLM-based system is often granted a degree of agency by its developer - the ability to call functions or interface with other systems via extensions (sometimes referred to as tools, skills or plugins by different vendors) to undertake actions in response to a prompt. The decision over which extension to invoke may also be delegated to an LLM 'agent' to dynamically determine based on input prompt or LLM output. Agent-based systems will typically make repeated calls to an LLM using output from previous invocations to ground and direct subsequent invocations.
+ប្រព័ន្ធដែលមានមូលដ្ឋានលើ LLM (LLM-based system) ជារឿយៗត្រូវបានអ្នកអភិវឌ្ឍន៍ផ្តល់នូវ "សិទ្ធិអំណាច" (agency) មួយកម្រិត ដែលជាសមត្ថភាពក្នុងការហៅ (call) មុខងារ ឬប្រាស្រ័យទាក់ទងជាមួយប្រព័ន្ធផ្សេងទៀតតាមរយៈផ្នែកបន្ថែម (ជួនកាលហៅថា tools, skills ឬ plugins ដោយអ្នកលក់ផ្សេងៗគ្នា) ដើម្បីអនុវត្តសកម្មភាពជាការឆ្លើយតបទៅនឹង prompt។ ការសម្រេចចិត្តថាតើត្រូវហៅ (invoke) ផ្នែកបន្ថែមមួយណាក៏អាចត្រូវបានផ្ទេរសិទ្ធិទៅឱ្យ "ភ្នាក់ងារ" (agent) របស់ LLM ដើម្បីកំណត់ដោយស្វ័យប្រវត្តិ (dynamically) ដោយផ្អែកលើ prompt បញ្ចូល ឬលទ្ធផលរបស់ LLM។ ប្រព័ន្ធផ្អែកលើភ្នាក់ងារ (Agent-based systems) ជាធម្មតានឹងធ្វើការហៅទៅកាន់ LLM ម្តងហើយម្តងទៀត ដោយប្រើលទ្ធផលពីការហៅមុនៗដើម្បីបញ្ជាក់មូលដ្ឋាន (ground) និងដឹកនាំការហៅបន្តបន្ទាប់ទៀត។
 
-Excessive Agency is the vulnerability that enables damaging actions to be performed in response to unexpected, ambiguous or manipulated outputs from an LLM, regardless of what is causing the LLM to malfunction. Common triggers include:
-* hallucination/confabulation caused by poorly-engineered benign prompts, or just a poorly-performing model;
-* direct/indirect prompt injection from a malicious user, an earlier invocation of a malicious/compromised extension, or (in multi-agent/collaborative systems) a malicious/compromised peer agent.
+ការផ្តល់សិទ្ធិអំណាចហួសហេតុ (Excessive Agency) គឺជាភាពងាយរងគ្រោះដែលអាចឱ្យមានសកម្មភាពបំផ្លិចបំផ្លាញត្រូវបានអនុវត្ត ជាការឆ្លើយតបទៅនឹងលទ្ធផលដែលមិនបានរំពឹងទុក ស្រពិចស្រពិល ឬត្រូវបានកែច្នៃពី LLM ដោយមិនគិតពីអ្វីដែលធ្វើឱ្យ LLM ដំណើរការខុសប្រក្រតីឡើយ។ កត្តាជំរុញ (triggers) ទូទៅរួមមាន៖
 
-The root cause of Excessive Agency is typically one or more of:
-* excessive functionality;
-* excessive permissions;
-* excessive autonomy.
+* ការភាន់ច្រឡំ (hallucination/confabulation) ដែលបង្កឡើងដោយ prompt ដែលមានបំណងល្អតែត្រូវបានសរសេរឡើងខ្សោយ (poorly-engineered benign prompts) ឬគ្រាន់តែដោយសារគំរូមានដំណើរការមិនល្អ។
+* ការវាយប្រហារបញ្ចូល prompt (prompt injection) ដោយផ្ទាល់/ប្រយោលពីអ្នកប្រើប្រាស់ដែលមានចេតនាទុច្ចរិត, ការហៅពីមុននៃផ្នែកបន្ថែមដែលមានចេតនាទុច្ចរិត/ត្រូវបានរំលោភបំពាន (compromised), ឬ (នៅក្នុងប្រព័ន្ធដែលមានភ្នាក់ងារច្រើន/សហការគ្នា) ភ្នាក់ងារស្មើរភាគ (peer agent) ដែលមានចេតនាទុច្ចរិត/ត្រូវបានរំលោភបំពាន។
 
-Excessive Agency can lead to a broad range of impacts across the confidentiality, integrity and availability spectrum, and is dependent on which systems an LLM-based app is able to interact with.
+មូលហេតុឫសគល់នៃការផ្តល់សិទ្ធិអំណាចហួសហេតុ ជាធម្មតាគឺមានមួយ ឬច្រើននៃចំណុចខាងក្រោម៖
 
-Note: Excessive Agency differs from Insecure Output Handling which is concerned with insufficient scrutiny of LLM outputs.
+* មុខងារច្រើនលើសលប់ (excessive functionality)
+* ការអនុញ្ញាតលើសលប់ (excessive permissions)
+* ស្វ័យភាពលើសលប់ (excessive autonomy)
 
-### Common Examples of Risks
+ការផ្តល់សិទ្ធិអំណាចហួសហេតុអាចនាំឱ្យមានផលប៉ះពាល់យ៉ាងទូលំទូលាយលើវិសាលគមនៃការរក្សាការសម្ងាត់ (confidentiality) បូរណភាព (integrity) និងភាពអាចរកបាន (availability) ហើយវាអាស្រ័យទៅលើប្រព័ន្ធណាខ្លះដែលកម្មវិធីប្រើ LLM អាចប្រាស្រ័យទាក់ទងជាមួយ។
 
-#### 1. Excessive Functionality
-  An LLM agent has access to extensions which include functions that are not needed for the intended operation of the system. For example, a developer needs to grant an LLM agent the ability to read documents from a repository, but the 3rd-party extension they choose to use also includes the ability to modify and delete documents.
-#### 2. Excessive Functionality
-  An extension may have been trialled during a development phase and dropped in favor of a better alternative, but the original plugin remains available to the LLM agent.
-#### 3. Excessive Functionality
-  An LLM plugin with open-ended functionality fails to properly filter the input instructions for commands outside what's necessary for the intended operation of the application. E.g., an extension to run one specific shell command fails to properly prevent other shell commands from being executed.
-#### 4. Excessive Permissions
-  An LLM extension has permissions on downstream systems that are not needed for the intended operation of the application. E.g., an extension intended to read data connects to a database server using an identity that not only has SELECT permissions, but also UPDATE, INSERT and DELETE permissions.
-#### 5. Excessive Permissions
-  An LLM extension that is designed to perform operations in the context of an individual user accesses downstream systems with a generic high-privileged identity. E.g., an extension to read the current user's document store connects to the document repository with a privileged account that has access to files belonging to all users.
-#### 6. Excessive Autonomy
-  An LLM-based application or extension fails to independently verify and approve high-impact actions. E.g., an extension that allows a user's documents to be deleted performs deletions without any confirmation from the user.
+ចំណាំ៖ ការផ្តល់សិទ្ធិអំណាចហួសហេតុគឺខុសពីការគ្រប់គ្រងលទ្ធផលមិនមានសុវត្ថិភាព (Insecure Output Handling) ដែលផ្តោតលើការត្រួតពិនិត្យលទ្ធផលរបស់ LLM មិនបានគ្រប់គ្រាន់។
 
-### Prevention and Mitigation Strategies
+## ឧទាហរណ៍ទូទៅនៃហានិភ័យ
 
-The following actions can prevent Excessive Agency:
+### ១. មុខងារច្រើនលើសលប់ (Excessive Functionality)
+ភ្នាក់ងារ LLM (LLM agent) មានសិទ្ធិចូលប្រើផ្នែកបន្ថែមដែលរួមបញ្ចូលមុខងារដែលមិនចាំបាច់សម្រាប់ប្រតិបត្តិការរបស់ប្រព័ន្ធដែលបានគ្រោងទុក។ ឧទាហរណ៍៖ អ្នកអភិវឌ្ឍន៍ត្រូវការផ្តល់ឱ្យភ្នាក់ងារ LLM នូវសមត្ថភាពក្នុងការអានឯកសារពីឃ្លាំងឯកសារ (repository) មួយ ប៉ុន្តែផ្នែកបន្ថែមពីភាគីទីបី (3rd-party) ដែលពួកគេជ្រើសរើស ក៏រួមបញ្ចូលសមត្ថភាពក្នុងការកែប្រែ និងលុបឯកសារផងដែរ។
+### ២. មុខងារច្រើនលើសលប់ (Excessive Functionality)
+ផ្នែកបន្ថែមមួយអាចត្រូវបានសាកល្បងក្នុងដំណាក់កាលអភិវឌ្ឍន៍ ហើយត្រូវបានបោះបង់ចោលដើម្បីជំនួសដោយជម្រើសល្អប្រសើរជាងមុន ប៉ុន្តែ plugin ដើមនៅតែអាចប្រើបានដោយភ្នាក់ងារ LLM ។
+### ៣. មុខងារច្រើនលើសលប់ (Excessive Functionality)
+LLM plugin ដែលមានមុខងារមិនមានការកំណត់ជាក់លាក់ (open-ended functionality) មិនអាចចម្រោះ (filter) សេចក្តីណែនាំបញ្ចូលឱ្យបានត្រឹមត្រូវសម្រាប់ពាក្យបញ្ជា (commands) ក្រៅពីអ្វីដែលចាំបាច់សម្រាប់ប្រតិបត្តិការរបស់កម្មវិធី ដែលបានគ្រោងទុក។ ឧទាហរណ៍៖ extension សម្រាប់ដំណើរការពាក្យបញ្ជា shell (shell command) ជាក់លាក់មួយ មិនអាចរារាំងពាក្យបញ្ជា shell ផ្សេងទៀតមិនឱ្យប្រតិបត្តិការឱ្យបានត្រឹមត្រូវ។
+### ៤. ការអនុញ្ញាតលើសលប់ (Excessive Permissions)
+LLM extension មានការអនុញ្ញាត (permissions) លើប្រព័ន្ធខាងក្រោម (downstream systems) ដែលមិនចាំបាច់សម្រាប់ប្រតិបត្តិការដែលបានគ្រោងទុករបស់កម្មវិធី។ ឧទាហរណ៍៖ extension ដែលមានគោលបំណងអានទិន្នន័យបានភ្ជាប់ទៅម៉ាស៊ីនមេ (server) មូលដ្ឋានទិន្នន័យដោយប្រើអត្តសញ្ញាណ (identity) ដែលមិនត្រឹមតែមានការអនុញ្ញាត SELECT ប៉ុណ្ណោះទេ ប៉ុន្តែក៏មានការអនុញ្ញាត UPDATE, INSERT, និង DELETE ផងដែរ។
+### ៥. ការអនុញ្ញាតលើសលប់ (Excessive Permissions)
+LLM extension ដែលត្រូវបានរចនាឡើងដើម្បីដំណើរការប្រតិបត្តិការនៅក្នុងបរិបទ (context) របស់អ្នកប្រើប្រាស់ទោល ចូលប្រើប្រព័ន្ធខាងក្រោមដោយប្រើអត្តសញ្ញាណដែលមានសិទ្ធិខ្ពស់ទូទៅ។ ឧទាហរណ៍៖ extension សម្រាប់អានកន្លែងផ្ទុកឯកសាររបស់អ្នកប្រើប្រាស់បច្ចុប្បន្ន បានភ្ជាប់ទៅឃ្លាំងឯកសារដោយគណនីមានសិទ្ធិខ្ពស់ (privileged account) ដែលមានសិទ្ធិចូលប្រើឯកសារទាំងអស់ដែលជារបស់អ្នកប្រើប្រាស់គ្រប់រូប។
+### ៦. ស្វ័យភាពលើសលប់ (Excessive Autonomy)
+កម្មវិធី ឬ extension ដែលមានមូលដ្ឋានលើ LLM មិនអាចផ្ទៀងផ្ទាត់ និងអនុម័តសកម្មភាពដែលមានផលប៉ះពាល់ខ្ពស់ (high-impact actions) ដោយឯករាជ្យបានទេ។ ឧទាហរណ៍៖ extension ដែលអនុញ្ញាតឱ្យលុបឯកសាររបស់អ្នកប្រើប្រាស់ បានដំណើរការការលុបដោយគ្មានការបញ្ជាក់ណាមួយពីអ្នកប្រើប្រាស់នោះឡើយ។
 
-#### 1. Minimize extensions
-  Limit the extensions that LLM agents are allowed to call to only the minimum necessary. For example, if an LLM-based system does not require the ability to fetch the contents of a URL then such an extension should not be offered to the LLM agent.
-#### 2. Minimize extension functionality
-  Limit the functions that are implemented in LLM extensions to the minimum necessary. For example, an extension that accesses a user's mailbox to summarise emails may only require the ability to read emails, so the extension should not contain other functionality such as deleting or sending messages.
-#### 3. Avoid open-ended extensions
-  Avoid the use of open-ended extensions where possible (e.g., run a shell command, fetch a URL, etc.) and use extensions with more granular functionality. For example, an LLM-based app may need to write some output to a file. If this were implemented using an extension to run a shell function then the scope for undesirable actions is very large (any other shell command could be executed). A more secure alternative would be to build a specific file-writing extension that only implements that specific functionality.
-#### 4. Minimize extension permissions
-  Limit the permissions that LLM extensions are granted to other systems to the minimum necessary in order to limit the scope of undesirable actions. For example, an LLM agent that uses a product database in order to make purchase recommendations to a customer might only need read access to a 'products' table; it should not have access to other tables, nor the ability to insert, update or delete records. This should be enforced by applying appropriate database permissions for the identity that the LLM extension uses to connect to the database.
-#### 5. Execute extensions in user's context
-  Track user authorization and security scope to ensure actions taken on behalf of a user are executed on downstream systems in the context of that specific user, and with the minimum privileges necessary. For example, an LLM extension that reads a user's code repo should require the user to authenticate via OAuth and with the minimum scope required.
-#### 6. Require user approval
-  Utilise human-in-the-loop control to require a human to approve high-impact actions before they are taken. This may be implemented in a downstream system (outside the scope of the LLM application) or within the LLM extension itself. For example, an LLM-based app that creates and posts social media content on behalf of a user should include a user approval routine within the extension that implements the 'post' operation.
-#### 7. Complete mediation
-  Implement authorization in downstream systems rather than relying on an LLM to decide if an action is allowed or not. Enforce the complete mediation principle so that all requests made to downstream systems via extensions are validated against security policies.
-#### 8. Sanitise LLM inputs and outputs
-  Follow secure coding best practice, such as applying OWASP’s recommendations in ASVS (Application Security Verification Standard), with a particularly strong focus on input sanitisation. Use Static Application Security Testing (SAST) and Dynamic and Interactive application testing (DAST, IAST) in development pipelines.
+### យុទ្ធសាស្ត្របង្ការ និងកាត់បន្ថយ
 
-The following options will not prevent Excessive Agency, but can limit the level of damage caused:
+សកម្មភាពខាងក្រោមអាចជួយបង្ការការផ្តល់សិទ្ធិអំណាចហួសហេតុបាន៖
 
-- Log and monitor the activity of LLM extensions and downstream systems to identify where undesirable actions are taking place, and respond accordingly.
-- Implement rate-limiting to reduce the number of undesirable actions that can take place within a given time period, increasing the opportunity to discover undesirable actions through monitoring before significant damage can occur.
+#### ១. កាត់បន្ថយផ្នែកបន្ថែម (Minimize extensions)
+កំណត់ចំនួនផ្នែកបន្ថែមដែលភ្នាក់ងារ LLM ត្រូវបានអនុញ្ញាតឱ្យហៅត្រឹមតែចំនួនអប្បបរមាដែលចាំបាច់។ ឧទាហរណ៍៖ ប្រសិនបើប្រព័ន្ធដែលមានមូលដ្ឋានលើ LLM មិនទាមទារនូវសមត្ថភាពក្នុងការទាញយក (fetch) មាតិកានៃ URL នោះទេ ផ្នែកបន្ថែមបែបនេះមិនគួរត្រូវបានផ្តល់ទៅឱ្យភ្នាក់ងារ LLM ឡើយ។
+#### ២. កាត់បន្ថយមុខងារផ្នែកបន្ថែម (Minimize extension functionality)
+កំណត់មុខងារដែលត្រូវបានអនុវត្តនៅក្នុងផ្នែកបន្ថែម LLM ត្រឹមតែអប្បបរមាដែលចាំបាច់។ ឧទាហរណ៍៖ ផ្នែកបន្ថែមដែលចូលប្រើប្រអប់សំបុត្រ (mailbox) របស់អ្នកប្រើប្រាស់ដើម្បីសង្ខេបអ៊ីមែល អាចតម្រូវឱ្យមានតែសមត្ថភាពអានអ៊ីមែលប៉ុណ្ណោះ ដូចនេះផ្នែកបន្ថែមមិនគួរមានមុខងារផ្សេងទៀតដូចជាការលុប ឬផ្ញើសារទេ។
+#### ៣. ជៀសវាងផ្នែកបន្ថែមមិនកំណត់ជាក់លាក់ (Avoid open-ended extensions)
+ជៀសវាងការប្រើផ្នែកបន្ថែមដោយគ្មានការកំណត់ជាក់លាក់នៅពេលណាដែលអាចធ្វើបាន (ឧទាហរណ៍៖ ដំណើរការពាក្យបញ្ជា shell, ទាញយក URL, ជាដើម) ហើយប្រើប្រាស់ផ្នែកបន្ថែមដែលមានមុខងារលម្អិត (granular) ជាង។ ឧទាហរណ៍៖ កម្មវិធីដែលមានមូលដ្ឋានលើ LLM អាចត្រូវការសរសេរលទ្ធផលចេញ (output) ទៅកាន់ឯកសារមួយ។ ប្រសិនបើវាត្រូវបានអនុវត្តដោយប្រើផ្នែកបន្ថែម ដើម្បីដំណើរការមុខងារ shell (shell function) នោះវិសាលភាពសម្រាប់សកម្មភាពដែលមិនចង់បាននឹងធំទូលាយណាស់ (ពាក្យបញ្ជា shell ផ្សេងទៀតអាចត្រូវបានប្រតិបត្តិការ)។ ជម្រើសដែលមានសុវត្ថិភាពជាង គឺការបង្កើតផ្នែកបន្ថែមសម្រាប់ការសរសេរឯកសារជាក់លាក់ដែលអនុវត្តតែមុខងារជាក់លាក់នោះ។
+#### ៤. កាត់បន្ថយការអនុញ្ញាតផ្នែកបន្ថែម (Minimize extension permissions)
+កំណត់ការអនុញ្ញាតដែលផ្នែកបន្ថែម LLM ត្រូវបានផ្តល់ទៅប្រព័ន្ធផ្សេងទៀតត្រឹមតែអប្បបរមាដែលចាំបាច់ ដើម្បីកំណត់វិសាលភាពនៃសកម្មភាពមិនចង់បាន។ ឧទាហរណ៍៖ ភ្នាក់ងារ LLM ដែលប្រើមូលដ្ឋានទិន្នន័យ (database) ផលិតផលដើម្បីធ្វើចំណារណែនាំទិញជូនអតិថិជន អាចតម្រូវឱ្យមានតែសិទ្ធិអាន (read access) លើតារាង (table) 'ផលិតផល' ប៉ុណ្ណោះ វាមិនគួរមានសិទ្ធិចូលប្រើតារាងផ្សេងទៀត ហើយក៏មិនមានសមត្ថភាពក្នុងការបញ្ចូល (insert) កែប្រែ (update) ឬលុប (delete) កំណត់ត្រា (records) ណាមួយផងដែរ។ នេះគួរតែត្រូវបានអនុវត្តដោយការផ្តល់ការអនុញ្ញាតមូលដ្ឋានទិន្នន័យដែលស័ក្តិសមសម្រាប់អត្តសញ្ញាណដែលផ្នែកបន្ថែម LLM ប្រើដើម្បីភ្ជាប់ទៅមូលដ្ឋានទិន្នន័យ។
+#### ៥. អនុវត្តផ្នែកបន្ថែមក្នុងបរិបទអ្នកប្រើប្រាស់ (Execute extensions in user's context)
+តាមដានការអនុញ្ញាតរបស់អ្នកប្រើប្រាស់ (user authorization) និងវិសាលភាពសុវត្ថិភាព (security scope) ដើម្បីធានាថាសកម្មភាពដែលបានធ្វើក្នុងនាមអ្នកប្រើប្រាស់ត្រូវបានអនុវត្តនៅលើប្រព័ន្ធខាងក្រោម នៅក្នុងបរិបទរបស់អ្នកប្រើប្រាស់ជាក់លាក់នោះ និងមានសិទ្ធិអនុញ្ញាតកម្រិតទាបបំផុត (minimum privileges) ដែលចាំបាច់។ ឧទាហរណ៍៖ ផ្នែកបន្ថែម LLM ដែលអានឃ្លាំងកូដ (code repo) របស់អ្នកប្រើប្រាស់ គួរតែតម្រូវឱ្យអ្នកប្រើប្រាស់បញ្ជាក់អត្តសញ្ញាណ (authenticate) តាមរយៈ OAuth ដោយមានវិសាលភាពអប្បបរមាដែលចាំបាច់។
+#### ៦. តម្រូវឱ្យមានការអនុម័តពីអ្នកប្រើប្រាស់ (Require user approval)
+ប្រើប្រាស់ការត្រួតពិនិត្យដោយមានមនុស្សចូលរួម (human-in-the-loop control) ដើម្បីតម្រូវឱ្យមនុស្សអនុម័តសកម្មភាពដែលមានផលប៉ះពាល់ខ្ពស់មុនពេលពួកវាត្រូវបានអនុវត្ត។ នេះអាចត្រូវបានធ្វើឡើងនៅក្នុងប្រព័ន្ធខាងក្រោម (ក្រៅវិសាលភាពកម្មវិធី LLM) ឬនៅក្នុងផ្នែកបន្ថែម LLM ផ្ទាល់។ ឧទាហរណ៍៖ កម្មវិធីផ្អែកលើ LLM (LLM-based app) សម្រាប់បង្កើត និងបង្ហោះ (post) មាតិកានៅលើបណ្តាញសង្គមក្នុងនាមអ្នកប្រើប្រាស់ គួរតែរួមបញ្ចូលនូវដំណើរការផ្តល់ការអនុម័តពីអ្នកប្រើប្រាស់ក្នុងផ្នែកបន្ថែមដែលអនុវត្តប្រតិបត្តិការ 'បង្ហោះ'។
+#### ៧. ការសម្របសម្រួលពេញលេញ (Complete mediation)
+អនុវត្តការផ្តល់ការអនុញ្ញាត (authorization) នៅក្នុងប្រព័ន្ធខាងក្រោម ជាជាងការពឹងផ្អែកលើ LLM ដើម្បីសម្រេចថាតើសកម្មភាពត្រូវបានអនុញ្ញាតឬអត់។ អនុវត្តគោលការណ៍ការសម្របសម្រួលពេញលេញ (complete mediation principle) ដើម្បីឱ្យសំណើ (requests) ទាំងអស់ដែលធ្វើឡើងទៅកាន់ប្រព័ន្ធខាងក្រោមតាមរយៈផ្នែកបន្ថែម ត្រូវបានផ្ទៀងផ្ទាត់ (validated) ធៀបនឹងគោលការណ៍សុវត្ថិភាព (security policies)។
+#### ៨. សម្អាតការបញ្ចូល និងលទ្ធផលរបស់ LLM (Sanitise LLM inputs and outputs)
+អនុវត្តតាមការអនុវត្តកូដដែលមានសុវត្ថិភាពល្អបំផុត (secure coding best practice) ដូចជា ការយកអនុសាសន៍របស់ OWASP មកអនុវត្តនៅក្នុងស្តង់ដារ ASVS (Application Security Verification Standard) ដោយផ្តោតជាពិសេសលើការសម្អាតទិន្នន័យបញ្ចូល (input sanitisation)។ ប្រើប្រាស់ការធ្វើតេស្តសុវត្ថិភាពកម្មវិធីអចលន (Static Application Security Testing - SAST) និងការធ្វើតេស្តសុវត្ថិភាពកម្មវិធីសកម្ម និងអន្តរកម្ម (Dynamic and Interactive application testing - DAST, IAST) នៅក្នុងចង្វាក់អភិវឌ្ឍន៍ (development pipelines)។
 
-### Example Attack Scenarios
+ជម្រើសខាងក្រោមនេះនឹងមិនអាចបញ្ចៀសការផ្តល់សិទ្ធិអំណាចហួសហេតុបានទេ ប៉ុន្តែអាចកម្រិតទំហំខូចខាតដែលវាបង្កឡើងបាន៖
 
-An LLM-based personal assistant app is granted access to an individual’s mailbox via an extension in order to summarise the content of incoming emails. To achieve this functionality, the extension requires the ability to read messages, however the plugin that the system developer has chosen to use also contains functions for sending messages. Additionally, the app is vulnerable to an indirect prompt injection attack, whereby a maliciously-crafted incoming email tricks the LLM into commanding the agent to scan the user's inbox for sensitive information and forward it to the attacker's email address. This could be avoided by:
-* eliminating excessive functionality by using an extension that only implements mail-reading capabilities,
-* eliminating excessive permissions by authenticating to the user's email service via an OAuth session with a read-only scope, and/or
-* eliminating excessive autonomy by requiring the user to manually review and hit 'send' on every mail drafted by the LLM extension.
+* កត់ត្រា (log) និងត្រួតពិនិត្យ (monitor) សកម្មភាពរបស់ផ្នែកបន្ថែម LLM និងប្រព័ន្ធខាងក្រោម ដើម្បីរកមើលកន្លែងដែលសកម្មភាពមិនសមរម្យកំពុងកើតឡើង និងមានវិធានការឆ្លើយតបឱ្យបានត្រឹមត្រូវ។
+* អនុវត្តការកំណត់អត្រា (rate-limiting) ដើម្បីកាត់បន្ថយចំនួនសកម្មភាពមិនសមរម្យដែលអាចកើតឡើងក្នុងចន្លោះពេលកំណត់មួយ ដែលជួយបង្កើនឱកាសក្នុងការស្វែងរកសកម្មភាពមិនសមរម្យតាមរយៈការត្រួតពិនិត្យមុនពេលមានការខូចខាតធំ។
 
-Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
+### ឧទាហរណ៍សេណារីយ៉ូនៃការវាយប្រហារ
 
-### Reference Links
+កម្មវិធីជំនួយការផ្ទាល់ខ្លួនផ្អែកលើ LLM (LLM-based personal assistant app) ត្រូវបានផ្តល់សិទ្ធិចូលប្រើប្រអប់សំបុត្ររបស់បុគ្គលម្នាក់តាមរយៈផ្នែកបន្ថែម ដើម្បីសង្ខេបមាតិកានៃអ៊ីមែលចូល។ ដើម្បីសម្រេចមុខងារនេះ ផ្នែកបន្ថែមទាមទារនូវសមត្ថភាពក្នុងការអានសារ ទោះជាយ៉ាងណា plugin ដែលអ្នកអភិវឌ្ឍន៍ប្រព័ន្ធបានជ្រើសរើសយកមកប្រើក៏មានផ្ទុកនូវមុខងារសម្រាប់ផ្ញើសារផងដែរ។ បន្ថែមពីនេះ កម្មវិធីនេះងាយរងគ្រោះនឹងការវាយប្រហារបញ្ចូល prompt ដោយប្រយោល (indirect prompt injection attack) ដែលក្នុងនោះ អ៊ីមែលចូលដែលត្រូវបានបង្កើតឡើងយ៉ាងមានល្បិចកលដោយអ្នកវាយប្រហារ បានបោកបញ្ឆោត LLM ឱ្យបញ្ជាភ្នាក់ងារឱ្យស្វែងរកក្នុងប្រអប់សំបុត្ររបស់អ្នកប្រើប្រាស់នូវព័ត៌មានសម្ងាត់ ហើយបញ្ជូនបន្ត (forward) វាទៅកាន់អាសយដ្ឋានអ៊ីមែលរបស់អ្នកវាយប្រហារ។ បញ្ហានេះអាចត្រូវបានទប់ស្កាត់ដោយ៖
+
+* លុបបំបាត់មុខងារលើសលប់ ដោយប្រើផ្នែកបន្ថែមដែលអនុវត្តតែសមត្ថភាពអានសំបុត្រ។
+* លុបបំបាត់ការអនុញ្ញាតលើសលប់ ដោយធ្វើការផ្ទៀងផ្ទាត់អត្តសញ្ញាណ (authenticating) ទៅកាន់សេវាកម្មអ៊ីមែលរបស់អ្នកប្រើប្រាស់តាមរយៈសម័យ (session) OAuth ដែលមានវិសាលភាពត្រឹមតែអាន (read-only) និង/ឬ
+* លុបបំបាត់ស្វ័យភាពលើសលប់ ដោយតម្រូវឱ្យអ្នកប្រើប្រាស់ពិនិត្យមើលដោយផ្ទាល់ និងចុច 'បញ្ជូន' (send) លើរាល់សំបុត្រដែលត្រូវបានព្រាងដោយផ្នែកបន្ថែម LLM ។
+
+ជាជម្រើស ការខូចខាតដែលបង្កឡើងនេះក៏អាចត្រូវបានកាត់បន្ថយតាមរយៈការអនុវត្តការកំណត់អត្រា (rate limiting) នៅលើចំណុចប្រទាក់ផ្ញើសំបុត្រ (mail-sending interface) ផងដែរ។
+
+### តំណភ្ជាប់យោង
 
 1. [Slack AI data exfil from private channels](https://promptarmor.substack.com/p/slack-ai-data-exfiltration-from-private): **PromptArmor**
 2. [Rogue Agents: Stop AI From Misusing Your APIs](https://www.twilio.com/en-us/blog/rogue-ai-agents-secure-your-apis): **Twilio**

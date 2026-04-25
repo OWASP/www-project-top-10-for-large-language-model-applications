@@ -1,78 +1,86 @@
-## LLM10:2025 Unbounded Consumption
+# LLM10:2025 ការប្រើប្រាស់គ្មានដែនកំណត់
 
-### Description
+## ការពិពណ៌នា
 
-Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
+ការប្រើប្រាស់គ្មានដែនកំណត់សំដៅលើដំណើរការដែលគំរូភាសាធំ (LLM) បង្កើតលទ្ធផលដោយផ្អែកលើសំណួរ ឬការដាក់បញ្ចូល prompts។ ការទាញយកលទ្ធផល គឺជាមុខងារសំខាន់មួយរបស់ LLMs ដែលប្រើប្រាស់ចំណេះដឹង និងលំនាំទិន្នន័យដែលវាបានរៀន ដើម្បីបង្កើតការឆ្លើយតប ឬការទស្សន៍ទាយដែលសមស្រប។
 
-Attacks designed to disrupt service, deplete the target's financial resources, or even steal intellectual property by cloning a model’s behavior all depend on a common class of security vulnerability in order to succeed. Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to risks such as denial of service (DoS), economic losses, model theft, and service degradation. The high computational demands of LLMs, especially in cloud environments, make them vulnerable to resource exploitation and unauthorized usage.
+ការវាយប្រហារដែលរៀបចំឡើងដើម្បីរំខានដល់សេវាកម្ម បំផ្លាញធនធានហិរញ្ញវត្ថុរបស់គោលដៅ ឬសូម្បីតែលួចកម្មសិទ្ធិបញ្ញាតាមរយៈការចម្លងឥរិយាបថរបស់ម៉ូឌែល គឺសុទ្ធតែអាស្រ័យលើប្រភេទភាពងាយរងគ្រោះផ្នែកសុវត្ថិភាពរួមមួយដើម្បីទទួលបានជោគជ័យ។ ការប្រើប្រាស់គ្មានដែនកំណត់ កើតឡើងនៅពេលដែលកម្មវិធីគំរូភាសាធំ (LLM) អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់ធ្វើការទាញយកលទ្ធផលច្រើនហួសកម្រិត និងដោយគ្មានការត្រួតពិនិត្យ ដែលនាំឱ្យមានហានិភ័យដូចជា ការរំខានដល់សេវាកម្ម, ការខាតបង់សេដ្ឋកិច្ច, ការលួចម៉ូឌែល និងការធ្លាក់ចុះគុណភាពសេវាកម្ម។ តម្រូវការគណនាខ្ពស់របស់ LLMs ជាពិសេសនៅក្នុងបរិស្ថានក្លោដ (cloud environments) ធ្វើឱ្យពួកវាងាយរងគ្រោះបំផុតចំពោះការកេងប្រវ័ញ្ចធនធាន និងការប្រើប្រាស់ដោយគ្មានការអនុញ្ញាត។
 
-### Common Examples of Vulnerability
+## ឧទាហរណ៍ទូទៅនៃហានិភ័យ
 
-#### 1. Variable-Length Input Flood
-  Attackers can overload the LLM with numerous inputs of varying lengths, exploiting processing inefficiencies. This can deplete resources and potentially render the system unresponsive, significantly impacting service availability.
-#### 2. Denial of Wallet (DoW)
-  By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
-#### 3. Continuous Input Overflow
-  Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
-#### 4. Resource-Intensive Queries
-  Submitting unusually demanding queries involving complex sequences or intricate language patterns can drain system resources, leading to prolonged processing times and potential system failures.
-#### 5. Model Extraction via API
-  Attackers may query the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model. This not only poses risks of intellectual property theft but also undermines the integrity of the original model.
-#### 6. Functional Model Replication
-  Using the target model to generate synthetic training data can allow attackers to fine-tune another foundational model, creating a functional equivalent. This circumvents traditional query-based extraction methods, posing significant risks to proprietary models and technologies.
-#### 7. Side-Channel Attacks
-  Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
+### ១. ការវាយប្រហារដោយសម្រុកផ្ញើទិន្នន័យដែលមានប្រវែងប្រែប្រួល
+  អ្នកវាយប្រហារអាចធ្វើឱ្យ LLM លើសចំណុះដោយផ្ញើទិន្នន័យបញ្ចូលជាច្រើនដែលមានប្រវែងខុសៗគ្នា ដើម្បីកេងប្រវ័ញ្ចលើកង្វះប្រសិទ្ធភាពនៃដំណើរការទិន្នន័យ។ ទង្វើនេះអាចធ្វើឱ្យរីងស្ងួតធនធានប្រព័ន្ធ និងអាចបណ្តាលឱ្យប្រព័ន្ធលែងឆ្លើយតប ដែលជះឥទ្ធិពលយ៉ាងខ្លាំងដល់លទ្ធភាពប្រើប្រាស់សេវាកម្ម។
+### ២. ការវាយប្រហារបំផ្លាញកញ្ចប់ថវិកា
+  តាមរយៈការបង្កើនចំនួនប្រតិបត្តិការក្នុងកម្រិតខ្ពស់ខុសធម្មតា អ្នកវាយប្រហារកេងប្រវ័ញ្ចលើគំរូអាជីវកម្មដែលគិតថ្លៃតាមការប្រើប្រាស់ជាក់ស្តែង (Cost-per-use) នៃសេវាកម្ម AI លើក្លោដ (Cloud-based AI )។ សកម្មភាពនេះបណ្តាលឱ្យអ្នកផ្គត់ផ្គង់សេវាកម្មត្រូវរ៉ាប់រងបន្ទុកហិរញ្ញវត្ថុយ៉ាងធ្ងន់ធ្ងរដែលមិនអាចទ្រទ្រង់បាន និងប្រឈមនឹងការខាតបង់ហិរញ្ញវត្ថុ។
+### ៣. ការបញ្ជូនទិន្នន័យលើសចំណុះជាបន្តបន្ទាប់
+  ការបញ្ជូនទិន្នន័យចូលដែលលើសពីទំហំបង្អួចបរិបទ (Context Window) របស់ LLM ជាបន្តបន្ទាប់ អាចនាំឱ្យមានការប្រើប្រាស់ធនធានគណនាជ្រុលហួសហេតុ។ លទ្ធផលដែលទទួលបាន គឺការធ្លាក់ចុះគុណភាពសេវាកម្ម និងការរំខានដល់ប្រតិបត្តិការទាំងមូល។
+### ៤. ការសាកសួរដែលប្រើប្រាស់ធនធានខ្លាំង
+  ការបញ្ជូនសំណួរដែលមានតម្រូវការខ្ពស់ខុសធម្មតា ដែលពាក់ព័ន្ធនឹងលំដាប់លំដោយស្មុគស្មាញ ឬទម្រង់ភាសាដែលល្អិតល្អន់ខ្លាំង អាចធ្វើឱ្យទាញយកធនធានរបស់ប្រព័ន្ធខ្ពស់បំផុត។ ទង្វើនេះនាំឱ្យរយៈពេលនៃដំណើរការទិន្នន័យអូសបន្លាយយូរខុសធម្មតា និងអាចបណ្តាលឱ្យប្រព័ន្ធជួបការបរាជ័យផងដែរ។
+### ៥. ការទាញយកទិន្នន័យម៉ូឌែលតាមរយៈ API
+  អ្នកវាយប្រហារអាចធ្វើការសាកសួរទៅកាន់ API របស់ម៉ូឌែល ដោយប្រើប្រាស់ទិន្នន័យបញ្ចូលដែលត្រូវបានរៀបចំយ៉ាងផ្ចិតផ្ចង់ និងបច្ចេកទេសបញ្ចូលបញ្ជាអាក្រក់ (Prompt Injection) ដើម្បីប្រមូលលទ្ធផលឱ្យបានគ្រប់គ្រាន់សម្រាប់យកទៅបង្កើតម៉ូឌែលចម្លងមួយផ្នែក ឬបង្កើតជាម៉ូឌែលស្រមោល (Shadow Model)។ សកម្មភាពនេះមិនត្រឹមតែបង្កហានិភ័យនៃការលួចកម្មសិទ្ធិបញ្ញាប៉ុណ្ណោះទេ ប៉ុន្តែថែមទាំងធ្វើឱ្យប៉ះពាល់ដល់ភាពត្រឹមត្រូវ និងតម្លៃនៃម៉ូឌែលដើមទៀតផង។
+#### ៦. ការចម្លងមុខងារម៉ូឌែល
+  ការប្រើប្រាស់ម៉ូឌែលគោលដៅដើម្បីបង្កើតទិន្នន័យបង្ហាត់បែបសំយោគ ដែលអាចអនុញ្ញាតឱ្យអ្នកវាយប្រហារយកទៅកែសម្រួលម៉ូឌែលគ្រឹះ (Foundational model) ផ្សេងទៀត រហូតបង្កើតបានជាម៉ូឌែលដែលមានមុខងារប្រហាក់ប្រហែលគ្នា។ វិធីសាស្ត្រនេះជៀសផុតពីការរកឃើញតាមរយៈការទាញយកទិន្នន័យតាមសំណួរធម្មតា (Traditional query-based extraction) និងបង្កហានិភ័យយ៉ាងធ្ងន់ធ្ងរដល់ម៉ូឌែល និងបច្ចេកវិទ្យាដែលជាកម្មសិទ្ធិផ្តាច់មុខ។
 
-### Prevention and Mitigation Strategies
+#### ៧. ការវាយប្រហារតាមច្រកចំហៀង
+  អ្នកវាយប្រហារដែលមានបំណងអាក្រក់ អាចកេងប្រវ័ញ្ចលើបច្ចេកទេសចម្រោះទិន្នន័យបញ្ចូលរបស់ LLM ដើម្បីអនុវត្តការវាយប្រហារតាមច្រកចំហៀង ក្នុងគោលបំណងលួចយក តម្លៃទម្ងន់នៃប៉ារ៉ាម៉ែត្ររបស់ម៉ូឌែល (Model weights) និងព័ត៌មានអំពីស្ថាបត្យកម្មប្រព័ន្ធ (Architectural information)។ សកម្មភាពនេះអាចធ្វើឱ្យប៉ះពាល់ដល់សន្តិសុខរបស់ម៉ូឌែល និងនាំទៅរកការកេងប្រវ័ញ្ចផ្សេងៗទៀតក្នុងកម្រិតធ្ងន់ធ្ងរ។
 
-#### 1. Input Validation
-  Implement strict input validation to ensure that inputs do not exceed reasonable size limits.
-#### 2. Limit Exposure of Logits and Logprobs
-  Restrict or obfuscate the exposure of `logit_bias` and `logprobs` in API responses. Provide only the necessary information without revealing detailed probabilities.
-#### 3. Rate Limiting
-  Apply rate limiting and user quotas to restrict the number of requests a single source entity can make in a given time period.
-#### 4. Resource Allocation Management
-  Monitor and manage resource allocation dynamically to prevent any single user or request from consuming excessive resources.
-#### 5. Timeouts and Throttling
-  Set timeouts and throttle processing for resource-intensive operations to prevent prolonged resource consumption.
-#### 6.Sandbox Techniques
-  Restrict the LLM's access to network resources, internal services, and APIs.
-  - This is particularly significant for all common scenarios as it encompasses insider risks and threats. Furthermore, it governs the extent of access the LLM application has to data and resources, thereby serving as a crucial control mechanism to mitigate or prevent side-channel attacks.
-#### 7. Comprehensive Logging, Monitoring and Anomaly Detection
-  Continuously monitor resource usage and implement logging to detect and respond to unusual patterns of resource consumption.
-#### 8. Watermarking
-  Implement watermarking frameworks to embed and detect unauthorized use of LLM outputs.
-#### 9. Graceful Degradation
-  Design the system to degrade gracefully under heavy load, maintaining partial functionality rather than complete failure.
-#### 10. Limit Queued Actions and Scale Robustly
-  Implement restrictions on the number of queued actions and total actions, while incorporating dynamic scaling and load balancing to handle varying demands and ensure consistent system performance.
-#### 11. Adversarial Robustness Training
-  Train models to detect and mitigate adversarial queries and extraction attempts.
-#### 12. Glitch Token Filtering
-  Build lists of known glitch tokens and scan output before adding it to the model’s context window.
-#### 13. Access Controls
-  Implement strong access controls, including role-based access control (RBAC) and the principle of least privilege, to limit unauthorized access to LLM model repositories and training environments.
-#### 14. Centralized ML Model Inventory
-  Use a centralized ML model inventory or registry for models used in production, ensuring proper governance and access control.
-#### 15. Automated MLOps Deployment
-  Implement automated MLOps deployment with governance, tracking, and approval workflows to tighten access and deployment controls within the infrastructure.
+### យុទ្ធសាស្ត្របង្ការ និងកាត់បន្ថយហានិភ័យ
 
-### Example Attack Scenarios
+#### ១. ការផ្ទៀងផ្ទាត់ការបញ្ចូលទិន្នន័យ (Input Validation)
+  អនុវត្តការផ្ទៀងផ្ទាត់ការបញ្ចូលទិន្នន័យឱ្យបានម៉ឺងម៉ាត់ ដើម្បីធានាថាទិន្នន័យទាំងនោះមិនលើសពីដែនកំណត់ទំហំដែលសមស្រប។
+#### ២. ការកម្រិតការបង្ហាញ Logits និង Logprobs (Limit Exposure of Logits and Logprobs)
+  រឹតត្បិត ឬបិទបាំងការបង្ហាញតម្លៃ logit_bias និង logprobs នៅក្នុងការឆ្លើយតបរបស់ API។ ផ្តល់ជូនតែព័ត៌មានដែលចាំបាច់បំផុត ដោយមិនបង្ហាញពីព័ត៌មានលម្អិតនៃកម្រិតប្រូបាប៊ីលីតេ (Detailed probabilities) ឡើយ។
+#### ៣. ការកំណត់កម្រិតនៃការប្រើប្រាស់ (Rate Limiting)
+  អនុវត្តការកំណត់កម្រិតនៃការប្រើប្រាស់ (Rate limiting) និងកូតាអ្នកប្រើប្រាស់ ដើម្បីរឹតត្បិតចំនួនសំណួរដែលប្រភពតែមួយអាចផ្ញើមកបានក្នុងរយៈពេលកំណត់មួយជាក់លាក់។
 
-#### Scenario #1: Uncontrolled Input Size
-  An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
-#### Scenario #2: Repeated Requests
-  An attacker transmits a high volume of requests to the LLM API, causing excessive consumption of computational resources and making the service unavailable to legitimate users.
-#### Scenario #3: Resource-Intensive Queries
-  An attacker crafts specific inputs designed to trigger the LLM's most computationally expensive processes, leading to prolonged CPU usage and potential system failure.
-#### Scenario #4: Denial of Wallet (DoW)
-  An attacker generates excessive operations to exploit the pay-per-use model of cloud-based AI services, causing unsustainable costs for the service provider.
-#### Scenario #5: Functional Model Replication
-  An attacker uses the LLM's API to generate synthetic training data and fine-tunes another model, creating a functional equivalent and bypassing traditional model extraction limitations.
-#### Scenario #6: Bypassing System Input Filtering
-  A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
+#### ៤. ការគ្រប់គ្រងការបែងចែកធនធាន (Resource Allocation Management)
+  តាមដាន និងគ្រប់គ្រងការបែងចែកធនធានតាមតម្រូវការជាក់ស្តែង (Dynamically) ដើម្បីបង្ការកុំឱ្យអ្នកប្រើប្រាស់ ឬសំណួរណាមួយប្រើប្រាស់ធនធានប្រព័ន្ធហួសកម្រិត។
+#### ៥. ការកំណត់ពេលវេលា និងការបន្ថយល្បឿនដំណើរការ (Timeouts and Throttling)
+  កំណត់រយៈពេលផុតកំណត់ (Timeouts) និងបន្ថយល្បឿនដំណើរការ (Throttling) សម្រាប់ប្រតិបត្តិការដែលប្រើប្រាស់ធនធានខ្លាំង ដើម្បីបង្ការការប្រើប្រាស់ធនធានដែលអូសបន្លាយយូរពេក។
 
-### Reference Links
+#### ៦. បច្ចេកទេស Sandbox (Sandbox Techniques)
+  រឹតបន្តឹងការចូលប្រើប្រាស់របស់ LLM ទៅកាន់ធនធានបណ្តាញ, សេវាកម្មផ្ទៃក្នុង និង APIs។
+  - នេះមានសារៈសំខាន់ខ្លាំងសម្រាប់គ្រប់ករណីប្រើប្រាស់ ព្រោះវាគ្របដណ្តប់លើហានិភ័យពីបុគ្គលិកផ្ទៃក្នុងនិងការគំរាមកំហែងនានា។ លើសពីនេះ វាគ្រប់គ្រងកម្រិតនៃការចូលប្រើប្រាស់ទិន្នន័យ និងធនធានរបស់កម្មវិធី LLM ដែលបម្រើជាយន្តការត្រួតពិនិត្យដ៏សំខាន់ដើម្បីកាត់បន្ថយ ឬបង្ការការវាយប្រហារតាមច្រកចំហៀង (Side-channel attacks)។
+#### ៧. ការកត់ត្រា ការត្រួតពិនិត្យ និងការរកឃើញភាពខុសប្រក្រតីដ៏ទូលំទូលាយ (Comprehensive Logging, Monitoring and Anomaly Detection)
+  តាមដានការប្រើប្រាស់ធនធានជាបន្តបន្ទាប់ និងអនុវត្តការកត់ត្រា (Logging) ដើម្បីរកឃើញ និងឆ្លើយតបទៅនឹងលំនាំនៃការប្រើប្រាស់ធនធានដែលខុសប្រក្រតី។
+#### ៨. Watermarking
+  អនុវត្តក្របខ័ណ្ឌ Watermarking ដើម្បីបង្កប់ និងស្វែងរកការប្រើប្រាស់លទ្ធផលរបស់ LLM ដោយគ្មានការអនុញ្ញាត។
+#### ៩. ការកាត់បន្ថយមុខងារតាមលំដាប់ (Graceful Degradation)
+  រចនាប្រព័ន្ធឱ្យមានសមត្ថភាព "ថមថយមុខងារតាមលំដាប់" នៅពេលមានបន្ទុកការងារធ្ងន់ ដោយរក្សាមុខងារសំខាន់ៗមួយផ្នែក ជាជាងការបណ្តោយឱ្យប្រព័ន្ធទាំងមូលបរាជ័យទាំងស្រុង។
+#### ១០. កំណត់សកម្មភាព Queued និង Scale ដោយភាពរឹងមាំ (Limit Queued Actions and Scale Robustly)
+  អនុវត្តការរឹតបន្តឹងលើចំនួនសកម្មភាពក្នុងជួររង់ចាំ (Queued actions) និងសកម្មភាពសរុប ខណៈពេលដែលបញ្ចូលការបង្កើនសមត្ថភាពតាមតម្រូវការ (Dynamic scaling) និងការបែងចែកបន្ទុក (Load balancing) ដើម្បីគ្រប់គ្រងតម្រូវការដែលប្រែប្រួល និងធានាបាននូវដំណើរការប្រព័ន្ធប្រកបដោយស្ថិរភាព។
+#### ១១. ការបណ្តុះបណ្តាលភាពរឹងមាំប្រឆាំងនឹងការវាយប្រហារ (Adversarial Robustness Training)
+  បង្វឹកម៉ូឌែលឱ្យមានសមត្ថភាពរកឃើញ និងកាត់បន្ថយសំណួរដែលមានចេតនាអាក្រក់ (Adversarial queries) និងការព្យាយាមលួចចម្លងម៉ូឌែល (Extraction attempts)។
+#### ១២. ការចម្រាញ់ Glitch Token (Glitch Token Filtering)
+  បង្កើតបញ្ជីឈ្មោះ Glitch tokens ដែលត្រូវបានស្គាល់ និងស្កែនពិនិត្យលទ្ធផល មុននឹងបញ្ចូលវាទៅក្នុងបង្អួចបរិបទ (Context window) របស់ម៉ូឌែល។
+#### ១៣. ការគ្រប់គ្រងសិទ្ធិចូលប្រើប្រាស់ (Access Controls)
+  អនុវត្តការត្រួតពិនិត្យសិទ្ធិចូលប្រើប្រាស់ឱ្យបានតឹងរ៉ឹង រួមមានការកំណត់សិទ្ធិតាមតួនាទី (RBAC) និងគោលការណ៍នៃសិទ្ធិតិចបំផុត (Principle of least privilege) ដើម្បីកម្រិតការចូលទៅកាន់កន្លែងផ្ទុកម៉ូឌែល LLM និងបរិស្ថានបង្ហាត់ម៉ូឌែល។
+#### ១៤. បញ្ជីសារពើភណ្ឌម៉ូឌែល ML កណ្តាល (Centralized ML Model Inventory)
+  ប្រើប្រាស់បញ្ជីសារពើភណ្ឌ ឬសៀវភៅបញ្ជីម៉ូឌែល ML កណ្តាលសម្រាប់ម៉ូឌែលដែលប្រើប្រាស់ក្នុងការផលិត (Production) ដើម្បីធានាបាននូវការគ្រប់គ្រង និងការត្រួតពិនិត្យសិទ្ធិចូលប្រើប្រាស់បានត្រឹមត្រូវ។
+#### ១៥. ការដាក់ពង្រាយ MLOps ដោយស្វ័យប្រវត្តិ (Automated MLOps Deployment)
+  អនុវត្តការដាក់ពង្រាយ MLOps ដោយស្វ័យប្រវត្តិ រួមជាមួយលំហូរការងារគ្រប់គ្រង, ការតាមដាន និងការអនុម័ត (Approval workflows) ដើម្បីរឹតបន្តឹងការគ្រប់គ្រងលើការចូលប្រើប្រាស់ និងការដាក់ឱ្យប្រើប្រាស់នៅក្នុងហេដ្ឋារចនាសម្ព័ន្ធ។
+
+### ឧទាហរណ៍សេណារីយ៉ូនៃការវាយប្រហារ
+
+#### សេណារីយ៉ូទី ១៖ ទំហំទិន្នន័យបញ្ចូលដែលគ្មានការគ្រប់គ្រង (Uncontrolled Input Size)
+  អ្នកវាយប្រហារបញ្ជូនទិន្នន័យបញ្ចូលដែលមានទំហំធំខុសធម្មតាទៅកាន់កម្មវិធី LLM ដែលដំណើរការទិន្នន័យអត្ថបទ។ ជាលទ្ធផល វាតម្រូវឱ្យប្រើប្រាស់អង្គចងចាំ (Memory) និងបន្ទុក CPU លើសកម្រិត ដែលអាចបណ្តាលឱ្យប្រព័ន្ធគាំង ឬធ្វើឱ្យសេវាកម្មដំណើរការយឺតយ៉ាងខ្លាំង។
+
+#### សេណារីយ៉ូទី ២៖ ការផ្ញើសំណួរដដែលៗ (Repeated Requests)
+  អ្នកវាយប្រហារបញ្ជូនសំណើរក្នុងបរិមាណដ៏ច្រើនសន្ធឹកសន្ធាប់ទៅកាន់ LLM API ដែលបង្កឱ្យមានការប្រើប្រាស់ធនធានគណនាជ្រុលហួសហេតុ និងធ្វើឱ្យអ្នកប្រើប្រាស់ស្របច្បាប់ផ្សេងទៀតមិនអាចចូលប្រើប្រាស់សេវាកម្មបាន។
+
+#### សេណារីយ៉ូទី ៣៖ ការសាកសួរដែលប្រើប្រាស់ធនធានខ្លាំង (Resource-Intensive Queries)
+  អ្នកវាយប្រហាររៀបចំសំណួរពិសេសៗដែលរចនាឡើងដើម្បីជំរុញឱ្យ LLM ដំណើរការមុខងារណាដែលប្រើប្រាស់កម្លាំងម៉ាស៊ីនខ្លាំងបំផុត។ ទង្វើនេះនាំឱ្យការប្រើប្រាស់ CPU អូសបន្លាយពេលយូរ និងអាចបណ្តាលឱ្យប្រព័ន្ធបរាជ័យ (System failure)។
+
+#### សេណារីយ៉ូទី ៤៖ ការវាយប្រហារបំផ្លាញកញ្ចប់ថវិកា (Denial of Wallet - DoW)
+  អ្នកវាយប្រហារបង្កើតប្រតិបត្តិការលើសលប់ដើម្បីកេងប្រវ័ញ្ចលើគំរូអាជីវកម្មដែលគិតថ្លៃតាមការប្រើប្រាស់ (Pay-per-use) នៃសេវាកម្ម AI លើក្លោដ ដែលបង្កឱ្យមានការចំណាយខ្ពស់ហួសហេតុសម្រាប់អ្នកផ្គត់ផ្គង់សេវាកម្ម។
+
+#### សេណារីយ៉ូទី ៥៖ ការចម្លងមុខងារម៉ូឌែល (Functional Model Replication)
+  អ្នកវាយប្រហារប្រើប្រាស់ API របស់ LLM ដើម្បីបង្កើតទិន្នន័យបង្ហាត់បែបសំយោគ (Synthetic training data) និងយកទៅកែសម្រួល (Fine-tune) ម៉ូឌែលផ្សេងទៀត។ វិធីនេះបង្កើតបានជាម៉ូឌែលដែលមានសមត្ថភាពប្រហាក់ប្រហែលគ្នា និងអាចជៀសផុតពីការរឹតត្បិតនៃការលួចចម្លងម៉ូឌែលតាមបែបបុរាណ។
+
+#### សេណារីយ៉ូទី ៦៖ ការរំលងប្រព័ន្ធចម្រោះទិន្នន័យ (Bypassing System Input Filtering)
+  អ្នកវាយប្រហារដែលមានបំណងអាក្រក់ រំលងបច្ចេកទេសចម្រោះទិន្នន័យបញ្ចូល (Input filtering) និងសំណុំបញ្ជាបឋម (Preambles) របស់ LLM ដើម្បីអនុវត្តការវាយប្រហារតាមច្រកចំហៀង (Side-channel attack) និងទាញយកព័ត៌មានរបស់ម៉ូឌែលទៅកាន់ធនធានដែលពួកគេគ្រប់គ្រងពីចម្ងាយ។
+
+### តំណភ្ជាប់យោង
 
 1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
 2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**
@@ -85,9 +93,9 @@ Attacks designed to disrupt service, deplete the target's financial resources, o
 9. [Sponge Examples: Energy-Latency Attacks on Neural Networks: Arxiv White Paper](https://arxiv.org/abs/2006.03463) **arXiv**
 10. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
 
-### Related Frameworks and Taxonomies
+### ក្របខ័ណ្ឌ និងចំណាត់ថ្នាក់ពាក់ព័ន្ធ
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+សូមយោងទៅកាន់ផ្នែកនេះ ដើម្បីស្វែងរកព័ត៌មានលម្អិត និងយុទ្ធសាស្ត្រតាមស្ថានភាពជាក់ស្តែងដែលពាក់ព័ន្ធនឹងការដាក់ពង្រាយហេដ្ឋារចនាសម្ព័ន្ធ, ការត្រួតពិនិត្យបរិស្ថានដែលបានអនុវត្ត និងការអនុវត្តល្អៗដទៃទៀត។
 
 - [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
 - [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**

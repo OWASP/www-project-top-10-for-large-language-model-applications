@@ -1,59 +1,61 @@
-## LLM07:2025 System Prompt Leakage
+# LLM07:2025 ការលេចធ្លាយ System Prompt
 
-### Description
+## ការពិពណ៌នា
 
-The system prompt leakage vulnerability in LLMs refers to the risk that the system prompts or instructions used to steer the behavior of the model can also contain sensitive information that was not intended to be discovered. System prompts are designed to guide the model's output based on the requirements of the application, but may inadvertently contain secrets. When discovered, this information can be used to facilitate other attacks.
+ភាពងាយរងគ្រោះនៃការលេចធ្លាយ System Prompt ក្នុង LLMs សំដៅទៅលើហានិភ័យដែល System Prompts ឬសេចក្តីណែនាំ ដែលប្រើសម្រាប់បញ្ជាឥរិយាបថរបស់ម៉ូឌែល អាចនឹងលេចធ្លាយព័ត៌មានសម្ងាត់ផ្សេងៗដែលយើងមិនចង់ឱ្យគេដឹង។ ជាទូទៅ System Prompts ត្រូវបានបង្កើតឡើងដើម្បីតម្រង់ទិសដៅលទ្ធផលនៃការឆ្លើយតបរបស់ម៉ូឌែលទៅតាមតម្រូវការរបស់កម្មវិធី ប៉ុន្តែវាក៏អាចមានផ្ទុកនូវព័ត៌មានសម្ងាត់ផ្សេងៗដោយអចេតនាផងដែរ។ នៅពេលដែលព័ត៌មានទាំងនេះត្រូវបានគេរកឃើញ វាអាចនឹងត្រូវគេយកទៅប្រើដើម្បីធ្វើវាយប្រហារផ្សេងៗទៀតបាន។
 
-It's important to understand that the system prompt should not be considered a secret, nor should it be used as a security control. Accordingly, sensitive data such as credentials, connection strings, etc. should not be contained within the system prompt language.
+វាជារឿងសំខាន់ដែលយើងត្រូវយល់ថា System Prompt មិនគួរត្រូវបានចាត់ទុកថាជាការសម្ងាត់ ឬយកមកប្រើជាឧបករណ៍ការពារសុវត្ថិភាពនោះទេ។ ដូច្នេះហើយ រាល់ទិន្នន័យសំខាន់ៗដូចជា ព័ត៌មានសម្គាល់, ខ្សែអក្សរសម្រាប់តភ្ជាប់ទៅកាន់មូលដ្ឋានទិន្នន័យ និងព័ត៌មានស្រដៀងនេះមិនគួរដាក់បញ្ចូលទៅក្នុង System Prompt ឡើយ។
 
-Similarly, if a system prompt contains information describing different roles and permissions, or sensitive data like connection strings or passwords, while the disclosure of such information may be helpful, the fundamental security risk is not that these have been disclosed, it is that the application allows bypassing strong session management and authorization checks by delegating these to the LLM, and that sensitive data is being stored in a place that it should not be.
+ស្រដៀងគ្នានេះដែរ ប្រសិនបើ System Prompt មានផ្ទុកនូវព័ត៌មានរៀបរាប់អំពីតួនាទី និងសិទ្ធិអនុញ្ញាតផ្សេងៗ ឬទិន្នន័យរសើបដូចជា ខ្សែអក្សរសម្រាប់តភ្ជាប់ទៅកាន់មូលដ្ឋានទិន្នន័យ (Connection Strings) ឬពាក្យសម្ងាត់ជាដើមនោះ ទោះបីជាការលេចធ្លាយព័ត៌មានទាំងនេះផ្ដល់ផលវិបាកក៏ពិតមែន ប៉ុន្តែហានិភ័យសុវត្ថិភាពពិតមិនមែនស្ថិតត្រង់ការបែកធ្លាយព័ត៌មានទាំងនេះឡើយ។ បញ្ហាសំខាន់គឺស្ថិតនៅត្រង់ថា កម្មវិធីនោះបានអនុញ្ញាតឱ្យមានការរំលងយន្តការគ្រប់គ្រងវគ្គប្រើប្រាស់ (Session Management) និងការត្រួតពិនិត្យសិទ្ធិអនុញ្ញាត (Authorization Checks) ដែលមានលក្ខណៈតឹងរ៉ឹង ដោយសារតែការផ្ទេរភារកិច្ចទាំងនេះទៅឱ្យ LLMs ជាអ្នកសម្រេចចិត្តជំនួសវិញ និងការរក្សាទុកទិន្នន័យរសើបនៅកន្លែងដែលមិនសមគួរ។
 
-In short: disclosure of the system prompt itself does not present the real risk -- the security risk lies with the underlying elements, whether that be sensitive information disclosure, system guardrails bypass, improper separation of privileges, etc. Even if the exact wording is not disclosed, attackers interacting with the system will almost certainly be able to determine many of the guardrails and formatting restrictions that are present in system prompt language in the course of using the application, sending utterances to the model, and observing the results.
+សរុបមក ការលេចធ្លាយខ្លួនឯងនៃ System Prompt មិនមែនជាហានិភ័យធំបំផុតនោះទេ ប៉ុន្តែហានិភ័យពិតប្រាកដគឺស្ថិតនៅលើចំណុចខ្សោយនៃប្រព័ន្ធខាងក្រោម ដូចជាការលេចធ្លាយព័ត៌មានសំខាន់ៗ ការរំលងរបាំងការពារប្រព័ន្ធ (Guardrails Bypass) ឬការបែងចែកសិទ្ធិមិនបានត្រឹមត្រូវជាដើម។ ទោះបីជាយើងមិនបានបញ្ចេញខ្លឹមសារក្នុង prompt ទាំងស្រុងក៏ដោយ ក៏ពួកអ្នកវាយប្រហារនៅតែអាចស្វែងយល់ពីរបាំងការពារ និងការកំណត់ផ្សេងៗដែលមានក្នុង System Prompt បានយ៉ាងងាយ តាមរយៈការសាកល្បងប្រើប្រាស់កម្មវិធី និងការសង្កេតមើលលទ្ធផលដែលចេញពីម៉ូឌែល។
 
-### Common Examples of Risk
+## ឧទាហរណ៍ទូទៅនៃហានិភ័យ
 
-#### 1. Exposure of Sensitive Functionality
-  The system prompt of the application may reveal sensitive information or functionality that is intended to be kept confidential, such as sensitive system architecture, API keys, database credentials, or user tokens. These can be extracted or used by attackers to gain unauthorized access into the application. For example, a system prompt that contains the type of database used for a tool could allow the attacker to target it for SQL injection attacks.
-#### 2. Exposure of Internal Rules
-  The system prompt of the application reveals information on internal decision-making processes that should be kept confidential. This information allows attackers to gain insights into how the application works which could allow attackers to exploit weaknesses or bypass controls in the application. For example - There is a banking application that has a chatbot and its system prompt may reveal information like:
-    >"The Transaction limit is set to $5000 per day for a user. The Total Loan Amount for a user is $10,000".
-  This information allows the attackers to bypass the security controls in the application like doing transactions more than the set limit or bypassing the total loan amount.
-#### 3. Revealing of Filtering Criteria
-  A system prompt might ask the model to filter or reject sensitive content. For example, a model might have a system prompt like,
-    >“If a user requests information about another user, always respond with ‘Sorry, I cannot assist with that request’”.
-#### 4. Disclosure of Permissions and User Roles
-  The system prompt could reveal the internal role structures or permission levels of the application. For instance, a system prompt might reveal,
-    >“Admin user role grants full access to modify user records.”
-  If the attackers learn about these role-based permissions, they could look for a privilege escalation attack.
+### ១. ការបង្ហាញចេញនូវមុខងារសំខាន់ៗ (Exposure of Sensitive Functionality)
+  System Prompt របស់កម្មវិធី អាចបង្កឱ្យបែកធ្លាយព័ត៌មានរសើប ឬមុខងារសម្ងាត់ដែលយើងចង់រក្សាទុកជាការសម្ងាត់ ដូចជា រចនាសម្ព័ន្ធប្រព័ន្ធរបស់ System, សោសម្ងាត់របស់ API, ព័ត៌មានសម្ងាត់សម្រាប់ចូលប្រើមូលដ្ឋានទិន្នន័យ ឬថូខឹនរបស់អ្នកប្រើប្រាស់ជាដើម។ ព័ត៌មានទាំងនេះអាចត្រូវបានពួកអ្នកវាយប្រហារ ទាញយកទៅប្រើប្រាស់ដើម្បីចូលប្រើប្រាស់កម្មវិធីដោយគ្មានការអនុញ្ញាត។ ឧទាហរណ៍៖ ប្រសិនបើ System Prompt មានបញ្ជាក់ពីប្រភេទមូលដ្ឋានទិន្នន័យ (Database) ដែលប្រើសម្រាប់ឧបករណ៍ណាមួយ នោះអ្នកវាយប្រហារអាចយកព័ត៌មាននេះទៅកំណត់គោលដៅដើម្បីវាយប្រហារបែប SQL injection បាន។
+### ២. ការបង្ហាញចេញនូវច្បាប់ផ្ទៃក្នុង (Exposure of Internal Rules)
+  System Prompt របស់កម្មវិធី អាចបង្កឱ្យបែកធ្លាយព័ត៌មានអំពីដំណើរការសម្រេចចិត្តផ្ទៃក្នុងដែលត្រូវរក្សាការសម្ងាត់។ ព័ត៌មានទាំងនេះអនុញ្ញាតឱ្យពួកអ្នកវាយប្រហារយល់ដឹងស៊ីជម្រៅពីរបៀបដំណើរការរបស់កម្មវិធី ដែលអាចឱ្យពួកគេទាញយកផលប្រយោជន៍ពីចំណុចខ្សោយ ឬរំលងការគ្រប់គ្រងនិងការត្រួតពិនិត្យសុវត្ថិភាពផ្សេងៗរបស់កម្មវិធីបាន។ ឧទាហរណ៍៖ កម្មវិធីធនាគារដែលមានសេវាឆ្លើយឆ្លងស្វ័យប្រវត្តិ (Chatbot) ហើយក្នុង System Prompt របស់វាអាចនឹងបញ្ចេញព័ត៌មានដូចជា៖
+  > "The Transaction limit is set to $5000 per day for a user. The Total Loan Amount for a user is $10,000"។
+  
+  ព័ត៌មាននេះអនុញ្ញាតឱ្យពួកអ្នកវាយប្រហារអាចរកវិធីរំលងការត្រួតពិនិត្យសុវត្ថិភាពប្រព័ន្ធគ្រប់គ្រងសុវត្ថិភាពនៅក្នុងកម្មវិធីបាន ដូចជាការធ្វើប្រតិបត្តិការលើសពីចំនួនដែលបានកំណត់ ឬរំលងការកំណត់ចំនួនប្រាក់កម្ចីសរុបជាដើម។
+#### ៣. ការបង្ហាញពីលក្ខខណ្ឌនៃការចម្រោះព័ត៌មាន (Revealing of Filtering Criteria)
+  System Prompt អាចនឹងប្រាប់ឱ្យម៉ូឌែលធ្វើការចម្រោះឬបដិសេធរាល់ខ្លឹមសារមាតិកាដែលរក្សាការសម្ងាត់។ ឧទាហរណ៍៖ ម៉ូឌែលមួយអាចមាន System Prompt ដូចជា៖
+  > “If a user requests information about another user, always respond with ‘Sorry, I cannot assist with that request’ ”។
+#### ៤. ការបែកធ្លាយព័ត៌មានអំពីសិទ្ធិ និងតួនាទីរបស់អ្នកប្រើប្រាស់ (Disclosure of Permissions and User Roles)
+  System Prompt អាចនឹងបញ្ចេញនូវរចនាសម្ព័ន្ធតួនាទីផ្ទៃក្នុង ឬកម្រិតនៃសិទ្ធិអនុញ្ញាត (Permission Levels) របស់កម្មវិធី។ ជាឧទាហរណ៍ System Prompt អាចនឹងបង្ហាញថា៖
+  > “Admin user role grants full access to modify user records.”
+  
+  ប្រសិនបើពួកអ្នកវាយប្រហារ ដឹងពីការកំណត់សិទ្ធិទៅតាមតួនាទីទាំងនេះ ពួកគេអាចនឹងស្វែងរកវិធីដើម្បីវាយប្រហារបែបដំឡើងសិទ្ធិ (Privilege Escalation) បាន។
 
-### Prevention and Mitigation Strategies
+### យុទ្ធសាស្ត្របង្ការ និងកាត់បន្ថយហានិភ័យ
 
-#### 1. Separate Sensitive Data from System Prompts
-  Avoid embedding any sensitive information (e.g. API keys, auth keys, database names, user roles, permission structure of the application) directly in the system prompts. Instead, externalize such information to the systems that the model does not directly access.
-#### 2. Avoid Reliance on System Prompts for Strict Behavior Control
-  Since LLMs are susceptible to other attacks like prompt injections which can alter the system prompt, it is recommended to avoid using system prompts to control the model behavior where possible. Instead, rely on systems outside of the LLM to ensure this behavior. For example, detecting and preventing harmful content should be done in external systems.
-#### 3. Implement Guardrails
-  Implement a system of guardrails outside of the LLM itself. While training particular behavior into a model can be effective, such as training it not to reveal its system prompt, it is not a guarantee that the model will always adhere to this. An independent system that can inspect the output to determine if the model is in compliance with expectations is preferable to system prompt instructions.
-#### 4. Ensure that security controls are enforced independently from the LLM
-  Critical controls such as privilege separation, authorization bounds checks, and similar must not be delegated to the LLM, either through the system prompt or otherwise. These controls need to occur in a deterministic, auditable manner, and LLMs are not (currently) conducive to this. In cases where an agent is performing tasks, if those tasks require different levels of access, then multiple agents should be used, each configured with the least privileges needed to perform the desired tasks.
+#### ១. បំបែកទិន្នន័យសំខាន់ៗចេញពី System Prompts (Separate Sensitive Data from System Prompts)
+  គួរជៀសវាងការដាក់បញ្ចូលព័ត៌មានសំខាន់ៗ (ដូចជា សោសម្ងាត់របស់ API, កូដសម្ងាត់សម្រាប់ផ្ទៀងផ្ទាត់, ឈ្មោះមូលដ្ឋានទិន្នន័យ, តួនាទីអ្នកប្រើប្រាស់ ឬរចនាសម្ព័ន្ធសិទ្ធិអនុញ្ញាតរបស់កម្មវិធី) ទៅក្នុង System Prompts ដោយផ្ទាល់។ ផ្ទុយទៅវិញ គួររក្សាទុកព័ត៌មានទាំងនោះនៅខាងក្រៅ ក្នុងប្រព័ន្ធដែលម៉ូឌែលមិនអាចចូលប្រើប្រាស់បានដោយផ្ទាល់។
+#### ២. កុំពឹងផ្អែកលើ System Prompts ក្នុងការគ្រប់គ្រងសកម្មភាពឱ្យបានតឹងរ៉ឹង (Avoid Reliance on System Prompts for Strict Behavior Control)
+  ដោយសារ LLMs ងាយរងគ្រោះនឹងការវាយប្រហារផ្សេងៗដូចជា Prompt Injections ដែលអាចកែប្រែ System Prompt បាន ដូចនេះគេណែនាំឱ្យជៀសវាងការប្រើ System Prompts ដើម្បីគ្រប់គ្រងឥរិយាបថរបស់ម៉ូឌែលតាមដែលអាចធ្វើទៅបាន។ ផ្ទុយទៅវិញ គួរពឹងផ្អែកលើប្រព័ន្ធដែលនៅខាងក្រៅ LLM ដើម្បីធានានូវសកម្មភាពទាំងនេះ។ ឧទាហរណ៍៖ ការចាប់យក និងទប់ស្កាត់ខ្លឹមសារដែលបង្កគ្រោះថ្នាក់ គួរតែត្រូវបានធ្វើឡើងនៅក្នុងប្រព័ន្ធត្រួតពិនិត្យខាងក្រៅ។
+#### ៣. អនុវត្តប្រព័ន្ធរបាំងការពារ (Implement Guardrails)
+  គួរអនុវត្តប្រព័ន្ធរបាំងការពារ (Guardrails) នៅខាងក្រៅ LLM ផ្ទាល់។ ទោះបីជាការបង្វឹកឱ្យម៉ូឌែលដើរតាមសកម្មភាពណាមួយអាចមានប្រសិទ្ធភាព ដូចជាការបង្វឹកវាមិនឱ្យបញ្ចេញ System Prompt ក៏ដោយ ប៉ុន្តែវាមិនមានការធានាថាម៉ូឌែលនឹងធ្វើតាមជានិច្ចនោះទេ។ ការប្រើប្រព័ន្ធឯករាជ្យមួយដែលអាចត្រួតពិនិត្យលទ្ធផលដែលចេញពីម៉ូឌែល ដើម្បីកំណត់ថា តើម៉ូឌែលកំពុងធ្វើការបានត្រឹមត្រូវតាមការរំពឹងទុកដែរឬទេ ដែលវាប្រសើរជាងការប្រើការណែនាំនៅក្នុង System Prompt។
+#### ៤. ធានាថាការគ្រប់គ្រងសុវត្ថិភាពត្រូវបានអនុវត្តដោយឯករាជ្យពី LLM (Ensure that security controls are enforced independently from the LLM)
+  រាល់ការគ្រប់គ្រងសំខាន់ៗ ដូចជា ការបែងចែកសិទ្ធិ, ការត្រួតពិនិត្យដែនកំណត់នៃសិទ្ធិអនុញ្ញាតនិងការត្រួតពិនិត្យស្រដៀងនេះ មិនត្រូវប្រគល់ឱ្យ LLM ជាអ្នកចាត់ចែងឡើយ មិនថាតាមរយៈ System Prompt ឬវិធីផ្សេងទៀតនោះទេ។ ការគ្រប់គ្រងទាំងនេះចាំបាច់ត្រូវតែធ្វើឡើងក្នុងទម្រង់ដែលច្បាស់លាស់និងអាចត្រួតពិនិត្យបាន ហើយបច្ចុប្បន្ន LLMs មិនទាន់អាចធ្វើបែបនេះបាននៅឡើយទេ។ ដើម្បីបំពេញការងារ ប្រសិនបើការងារទាំងនោះទាមទារកម្រិតសិទ្ធិខុសៗគ្នា នោះគួរតែប្រើប្រាស់ភ្នាក់ងារច្រើនដាច់ដោយឡែកពីគ្នា ដោយភ្នាក់ងារនីមួយៗត្រូវកំណត់ឱ្យមានសិទ្ធិទាបបំផុតដែលចាំបាច់សម្រាប់តែបំពេញការងាររបស់ខ្លួនប៉ុណ្ណោះ។
 
-### Example Attack Scenarios
+### ឧទាហរណ៍សេណារីយ៉ូនៃការវាយប្រហារ
 
-#### Scenario #1
-   An LLM has a system prompt that contains a set of credentials used for a tool that it has been given access to. The system prompt is leaked to an attacker, who then is able to use these credentials for other purposes.
-#### Scenario #2
-  An LLM has a system prompt prohibiting the generation of offensive content, external links, and code execution. An attacker extracts this system prompt and then uses a prompt injection attack to bypass these instructions, facilitating a remote code execution attack.
+#### សេណារីយ៉ូ #១
+  LLM មួយមាន System Prompt ដែលផ្ទុកទៅដោយព័ត៌មានសម្ងាត់សម្រាប់ប្រើប្រាស់ជាមួយឧបករណ៍ណាមួយដែលវាត្រូវបានអនុញ្ញាតឱ្យប្រើ។ នៅពេលដែល System Prompt នេះត្រូវបានបែកធ្លាយទៅដល់អ្នកវាយប្រហារ ពួកគេនឹងអាចយកព័ត៌មានសម្ងាត់ទាំងនោះទៅប្រើប្រាស់ក្នុងគោលបំណងមិនល្អផ្សេងៗទៀតបាន។
+#### សេណារីយ៉ូ #២
+  LLM មួយមាន System Prompt ដែលហាមឃាត់មិនឱ្យបង្កើតខ្លឹមសារប្រមាថ មើលងាយ, ហាមដាក់តំណភ្ជាប់ខាងក្រៅនិងហាមការចាក់បញ្ចូលការដំណើរការកូដ។ អ្នកវាយប្រហារបានទាញយក System Prompt នេះចេញមក រួចប្រើប្រាស់វិធីសាស្ត្រ Prompt Injections ដើម្បីរំលងការណែនាំទាំងនេះ ដែលឈានទៅដល់ការវាយប្រហារដើម្បីបញ្ជាឱ្យដំណើរការកូដពីចម្ងាយ។
 
-### Reference Links
+### តំណភ្ជាប់យោង
 
-1. [SYSTEM PROMPT LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
+1. [System Prompt LEAK](https://x.com/elder_plinius/status/1801393358964994062): Pliny the prompter
 2. [Prompt Leak](https://www.prompt.security/vulnerabilities/prompt-leak): Prompt Security
 3. [chatgpt_system_prompt](https://github.com/LouisShark/chatgpt_system_prompt): LouisShark
 4. [leaked-system-prompts](https://github.com/jujumilk3/leaked-system-prompts): Jujumilk3
 5. [OpenAI Advanced Voice Mode System Prompt](https://x.com/Green_terminals/status/1839141326329360579): Green_Terminals
 
-### Related Frameworks and Taxonomies
+### ក្របខ័ណ្ឌ និងចំណាត់ថ្នាក់ពាក់ព័ន្ធ
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+សូមយោងទៅកាន់ផ្នែកនេះ ដើម្បីស្វែងរកព័ត៌មានលម្អិត និងយុទ្ធសាស្ត្រតាមស្ថានភាពជាក់ស្តែងដែលពាក់ព័ន្ធនឹងការដាក់ពង្រាយហេដ្ឋារចនាសម្ព័ន្ធ, ការត្រួតពិនិត្យបរិស្ថានដែលបានអនុវត្ត និងការអនុវត្តល្អៗដទៃទៀត។
 
 - [AML.T0051.000 - LLM Prompt Injection: Direct (Meta Prompt Extraction)](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
