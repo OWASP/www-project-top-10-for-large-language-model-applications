@@ -16,14 +16,14 @@ En bref, la divulgation du prompt système lui-même ne présente pas le risque 
   Le prompt système de l'application peut reveler des informations ou des fonctionnalités sensibles qui sont destinées à être gardée confidentielles, telles que l'architecture système sensible, les clés API, les identifiants de base de données ou les jetons utilisateur. Ceux-ci peuvent être extraits ou utilisés par des attaquants pour obtenir un accès non autorisé à l'application. Par exemple, un prompt système qui contient le type de base de données utilisé pour un outil pourrait permettre à l'attaquant de le cibler pour des attaques par injection SQL.
 #### 2.  Exposition de règles internes
   Le système de prompt d'une application révèle des informations sur les processus de prise de décision  internes qui devraient être gardée confidentiels. Ces informations permettent aux attaquants de comprendre le fonctionnement de l'application, ce qui pourrait leur permettre d'exploiter des faiblesse ou de contourner les controls de l'application. Par exemple - Il existe une application bancaire qui possède un chatbot et son prompt système peut révéler des informations telles que:
-    >"La limite de transaction est fixée à 5000 $ par jour pour un utilisateur. Le montant total du prêt pour un utilisateur est de 10 000 $".
+>"La limite de transaction est fixée à 5000 $ par jour pour un utilisateur. Le montant total du prêt pour un utilisateur est de 10 000 $".
   Cette information permet aux attaquant de contourner les contrôles de sécurité de l'application comme effecter des transactions supérieures à la limite fixée ou de contourner le montant total du prêt.
 #### 3. Révélation des critères de filtrage
   Un prompt système pourrait demander au modèle de filtrer ou de rejeter le contenu sensible. Par exemple, un modèle pourrait avoir un prompt système comme,
-    >"Si un utilisateur demande des informations sur un autre utilisateur, répondez toujours par 'Désolé, je ne peux pas vous aider avec cette demande'".
+>"Si un utilisateur demande des informations sur un autre utilisateur, répondez toujours par 'Désolé, je ne peux pas vous aider avec cette demande'".
 #### 4. Divulgation des permissions et des rôles utilisateur
   Le système de prompt pourrait révéler les structures de rôle internes ou les niveaux de permission de l'application. Par exemple, un prompt système pourrait révéler,
-    >"Le rôle d'utilisateur Admin accorde un accès complet pour modifier les enregistrements utilisateur."
+>"Le rôle d'utilisateur Admin accorde un accès complet pour modifier les enregistrements utilisateur."
   Si les attaquants apprennent ces permissions basées sur les rôles, ils pourraient chercher une attaque d'escalade de privilèges.
 
 ### Stratégies de prévention et d'atténuation

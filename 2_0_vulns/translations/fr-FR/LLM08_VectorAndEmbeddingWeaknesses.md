@@ -38,11 +38,11 @@ La récupération augmentée par la génération (RAG - Retrieval Augmented Gene
   Dans un environnement multi-locataire où différents groupes ou classes d'utilisateurs partagent la même base de données vectorielle, les embeddings d'un groupe pourraient être récupérés par inadvertance en réponse à des requêtes provenant du LLM d'un autre groupe, ce qui pourrait entraîner la fuite d'informations commerciales sensibles.
 #### Scenario #3: Altération du comportement du modèle fondamental
   Après l'augmentation de récupération (RAG), le comportement du modèle fondamental peut être altéré de manière subtile, comme la réduction de l'intelligence émotionnelle ou de l'empathie dans les réponses. Par exemple, lorsqu'un utilisateur demande,
-    >"Je me sens submergé par ma dette étudiante. Que devrais-je faire ?"
+>"Je me sens submergé par ma dette étudiante. Que devrais-je faire ?"
   la réponse originale pourrait offrir des conseils empathiques comme,
-    >"Je comprends que gérer une dette étudiante peut être stressant. Envisagez de consulter des plans de remboursement basés sur vos revenus."
+>"Je comprends que gérer une dette étudiante peut être stressant. Envisagez de consulter des plans de remboursement basés sur vos revenus."
   Cependant, après l'augmentation de récupération, la réponse peut devenir purement factuelle, comme,
-    >"Vous devriez essayer de rembourser vos prêts étudiants le plus rapidement possible pour éviter d'accumuler des intérêts. Envisagez de réduire les dépenses inutiles et d'allouer plus d'argent au remboursement de vos prêts."
+>"Vous devriez essayer de rembourser vos prêts étudiants le plus rapidement possible pour éviter d'accumuler des intérêts. Envisagez de réduire les dépenses inutiles et d'allouer plus d'argent au remboursement de vos prêts."
   Bien que factuellement correcte, la réponse révisée manque d'empathie, rendant l'application moins utile.
 #### Atténuation
   L'impact de la RAG sur le comportement du modèle fondamental doit être surveillé et évalué, avec des ajustements au processus d'augmentation pour maintenir des qualités souhaitées comme l'empathie(Ref #8).
