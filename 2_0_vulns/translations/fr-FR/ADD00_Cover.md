@@ -1,4 +1,4 @@
-# OWASP Top 10 for LLM Applications 2025
+# OWASP Top 10 pour les LLM applicatifs 2025
 
 ##### Version 2025
 
