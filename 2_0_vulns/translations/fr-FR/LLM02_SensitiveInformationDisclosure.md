@@ -1,6 +1,6 @@
 ## LLM02:2025 Divulgation d'information sensible
 
-### Description<
+### Description
 
 Une information sensible peut affecter à la fois le LLM et son contexte applicatif. Cela inclut les données à caractère personnel (DCP), les détails financiers, les dossiers de santé, les données commerciales confidentielles, les identifiants de sécurité ainsi que les documents juridiques. Les modèles propriétaires (Gemini, ChatGpt, Claude, etc.) peuvent également avoir des méthodes d'entraînement et du code source considérés comme sensibles, en particulier dans les modèles fermés ou de base.
 
