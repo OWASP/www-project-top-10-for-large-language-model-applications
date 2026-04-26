@@ -1,93 +1,278 @@
-## LLM01:2025 Prompt Injection
+**LLM01:2025 Wstrzyknięcie polecenia**
 
-### Description
+**Opis**
 
-A Prompt Injection Vulnerability occurs when user prompts alter the LLM’s behavior or output in unintended ways. These inputs can affect the model even if they are imperceptible to humans, therefore prompt injections do not need to be human-visible/readable, as long as the content is parsed by the model.
+Luka w zabezpieczeniach związana z wstrzyknięciem polecenia występuje,
+gdy polecenia użytkownika zmieniają zachowanie lub wynik działania
+modelu LLM w niezamierzony sposób. Dane wejściowe mogą wpływać na model,
+nawet jeśli są niewidoczne dla ludzi, dlatego wstrzyknięcia poleceń nie
+muszą być widoczne/czytelne dla ludzi, o ile treść jest analizowana
+przez model.
 
-Prompt Injection vulnerabilities exist in how models process prompts, and how input may force the model to incorrectly pass prompt data to other parts of the model, potentially causing them to violate guidelines, generate harmful content, enable unauthorized access, or influence critical decisions. While techniques like Retrieval Augmented Generation (RAG) and fine-tuning aim to make LLM outputs more relevant and accurate, research shows that they do not fully mitigate prompt injection vulnerabilities.
+Luki w zabezpieczeniach związane z wstrzykiwaniem poleceń występują w
+sposobie przetwarzania poleceń przez modele oraz w sposobie, w jaki dane
+wejściowe mogą zmusić model do nieprawidłowego przekazania danych
+poleceń do innych części modelu, potencjalnie powodując naruszenie
+wytycznych, generowanie szkodliwych treści, umożliwienie
+nieautoryzowanego dostępu lub wpływ na krytyczne decyzje. Chociaż
+techniki takie jak generowanie rozszerzone o odzyskiwanie (RAG) i
+dostrajanie mają na celu zwiększenie trafności i dokładności wyników
+LLM, badania pokazują, że nie eliminują one całkowicie luk w
+zabezpieczeniach związanych z wstrzykiwaniem poleceń.
 
-While prompt injection and jailbreaking are related concepts in LLM security, they are often used interchangeably. Prompt injection involves manipulating model responses through specific inputs to alter its behavior, which can include bypassing safety measures. Jailbreaking is a form of prompt injection where the attacker provides inputs that cause the model to disregard its safety protocols entirely. Developers can build safeguards into system prompts and input handling to help mitigate prompt injection attacks, but effective prevention of jailbreaking requires ongoing updates to the model's training and safety mechanisms.
+Chociaż wstrzyknięcie poleceń i łamanie zabezpieczeń są pojęciami
+powiązanymi w kontekście bezpieczeństwa LLM, często są one używane
+zamiennie. Wstrzyknięcie poleceń polega na manipulowaniu odpowiedziami
+modelu za pomocą określonych danych wejściowych w celu zmiany jego
+zachowania, co może obejmować ominięcie środków bezpieczeństwa. Łamanie
+zabezpieczeń jest formą wstrzyknięcia poleceń, w której atakujący
+dostarcza dane wejściowe, które powodują, że model całkowicie ignoruje
+swoje protokoły bezpieczeństwa. Programiści mogą wbudować zabezpieczenia
+w monity systemowe i obsługę danych wejściowych, aby pomóc w
+ograniczeniu ataków typu wstrzyknięcie poleceń, ale skuteczne
+zapobieganie łamaniu zabezpieczeń wymaga ciągłych aktualizacji
+mechanizmów szkolenia i bezpieczeństwa modelu.
 
-### Types of Prompt Injection Vulnerabilities
+**Rodzaje podatności na ataki typu wstrzyknięcia poleceń**
 
-#### Direct Prompt Injections
-  Direct prompt injections occur when a user's prompt input directly alters the behavior of the model in unintended or unexpected ways. The input can be either intentional (i.e., a malicious actor deliberately crafting a prompt to exploit the model) or unintentional (i.e., a user inadvertently providing input that triggers unexpected behavior).
+**Bezpośrednie ataki typu wstrzyknięcia poleceń**
 
-#### Indirect Prompt Injections
-  Indirect prompt injections occur when an LLM accepts input from external sources, such as websites or files. The external source may have content data that when interpreted by the model, alters the behavior of the model in unintended or unexpected ways. Like direct injections, indirect injections can be either intentional or unintentional.
+Bezpośrednie wstrzyknięcia poleceń mają miejsce, gdy dane wejściowe
+użytkownika bezpośrednio zmieniają zachowanie modelu w niezamierzony lub
+nieoczekiwany sposób. Dane wejściowe mogą być zamierzone (tj. złośliwy
+podmiot celowo tworzy polecenie w celu wykorzystania modelu) lub
+niezamierzone (tj. użytkownik nieumyślnie dostarcza dane wejściowe,
+które wywołują nieoczekiwane zachowanie).
 
-The severity and nature of the impact of a successful prompt injection attack can vary greatly and are largely dependent on both the business context the model operates in, and the agency with which the model is architected. Generally, however, prompt injection can lead to unintended outcomes, including but not limited to:
+**Pośrednie wstrzyknięcia poleceń**
 
-- Disclosure of sensitive information
-- Revealing sensitive information about AI system infrastructure or system prompts
-- Content manipulation leading to incorrect or biased outputs
-- Providing unauthorized access to functions available to the LLM
-- Executing arbitrary commands in connected systems
-- Manipulating critical decision-making processes
+Pośrednie wstrzyknięcia promptów występują, gdy LLM akceptuje dane
+wejściowe z zewnętrznych źródeł, takich jak strony internetowe lub
+pliki. Zewnętrzne źródło może zawierać dane, które po zinterpretowaniu
+przez model zmieniają jego zachowanie w niezamierzony lub nieoczekiwany
+sposób. Podobnie jak wstrzyknięcia bezpośrednie, wstrzyknięcia pośrednie
+mogą być zamierzone lub niezamierzone.
 
-The rise of multimodal AI, which processes multiple data types simultaneously, introduces unique prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
+Nasilenie i charakter skutków udanego ataku wstrzyknięcia podpowiedzi
+mogą się znacznie różnić i zależą w dużej mierze zarówno od kontekstu
+biznesowego, w którym działa model, jak i od agencji, która go
+zaprojektowała. Ogólnie rzecz biorąc, wstrzyknięcie podpowiedzi może
+jednak prowadzić do niezamierzonych skutków, w tym między innymi:
 
-### Prevention and Mitigation Strategies
+Ujawnienie poufnych informacji
 
-Prompt injection vulnerabilities are possible due to the nature of generative AI. Given the stochastic influence at the heart of the way models work, it is unclear if there are fool-proof methods of prevention for prompt injection. However, the following measures can mitigate the impact of prompt injections:
+Ujawnienie poufnych informacji o infrastrukturze systemu AI lub
+podpowiedziach systemu
 
-#### 1. Constrain model behavior
-  Provide specific instructions about the model's role, capabilities, and limitations within the system prompt. Enforce strict context adherence, limit responses to specific tasks or topics, and instruct the model to ignore attempts to modify core instructions.
-#### 2. Define and validate expected output formats
-  Specify clear output formats, request detailed reasoning and source citations, and use deterministic code to validate adherence to these formats.
-#### 3. Implement input and output filtering
-  Define sensitive categories and construct rules for identifying and handling such content. Apply semantic filters and use string-checking to scan for non-allowed content. Evaluate responses using the RAG Triad: Assess context relevance, groundedness, and question/answer relevance to identify potentially malicious outputs.
-#### 4. Enforce privilege control and least privilege access
-  Provide the application with its own API tokens for extensible functionality, and handle these functions in code rather than providing them to the model. Restrict the model's access privileges to the minimum necessary for its intended operations.
-#### 5. Require human approval for high-risk actions
-  Implement human-in-the-loop controls for privileged operations to prevent unauthorized actions.
-#### 6. Segregate and identify external content
-  Separate and clearly denote untrusted content to limit its influence on user prompts.
-#### 7. Conduct adversarial testing and attack simulations
-  Perform regular penetration testing and breach simulations, treating the model as an untrusted user to test the effectiveness of trust boundaries and access controls.
+Manipulowanie treścią prowadząca do nieprawidłowych lub stronniczych
+wyników
 
-### Example Attack Scenarios
+Umożliwienie nieautoryzowanego dostępu do funkcji dostępnych dla LLM
 
-#### Scenario #1: Direct Injection
-  An attacker injects a prompt into a customer support chatbot, instructing it to ignore previous guidelines, query private data stores, and send emails, leading to unauthorized access and privilege escalation.
-#### Scenario #2: Indirect Injection
-  A user employs an LLM to summarize a webpage containing hidden instructions that cause the LLM to insert an image linking to a URL, leading to exfiltration of the the private conversation.
-#### Scenario #3: Unintentional Injection
-  A company includes an instruction in a job description to identify AI-generated applications. An applicant, unaware of this instruction, uses an LLM to optimize their resume, inadvertently triggering the AI detection.
-#### Scenario #4: Intentional Model Influence
-  An attacker modifies a document in a repository used by a Retrieval-Augmented Generation (RAG) application. When a user's query returns the modified content, the malicious instructions alter the LLM's output, generating misleading results.
-#### Scenario #5: Code Injection
-  An attacker exploits a vulnerability (CVE-2024-5184) in an LLM-powered email assistant to inject malicious prompts, allowing access to sensitive information and manipulation of email content.
-#### Scenario #6: Payload Splitting
-  An attacker uploads a resume with split malicious prompts. When an LLM is used to evaluate the candidate, the combined prompts manipulate the model's response, resulting in a positive recommendation despite the actual resume contents.
-#### Scenario #7: Multimodal Injection
-  An attacker embeds a malicious prompt within an image that accompanies benign text. When a multimodal AI processes the image and text concurrently, the hidden prompt alters the model's behavior, potentially leading to unauthorized actions or disclosure of sensitive information.
-#### Scenario #8: Adversarial Suffix
-  An attacker appends a seemingly meaningless string of characters to a prompt, which influences the LLM's output in a malicious way, bypassing safety measures.
-#### Scenario #9: Multilingual/Obfuscated Attack
-  An attacker uses multiple languages or encodes malicious instructions (e.g., using Base64 or emojis) to evade filters and manipulate the LLM's behavior.
+Wykonywanie dowolnych poleceń w połączonych systemach
 
-### Reference Links
+Manipulowanie krytycznymi procesami decyzyjnymi
 
-1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
-2. [ChatGPT Cross Plugin Request Forgery and Prompt Injection](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
-3. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Arxiv**
-4. [Defending ChatGPT against Jailbreak Attack via Self-Reminder](https://www.researchsquare.com/article/rs-2873090/v1) **Research Square**
-5. [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499) **Cornell University**
-6. [Inject My PDF: Prompt Injection for your Resume](https://kai-greshake.de/posts/inject-my-pdf) **Kai Greshake**
-8. [Not what you’ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/pdf/2302.12173.pdf) **Cornell University**
-9. [Threat Modeling LLM Applications](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
-10. [Reducing The Impact of Prompt Injection Attacks Through Design](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
-11. [Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
-12. [2407.07403 A Survey of Attacks on Large Vision-Language Models: Resources, Advances, and Future Trends (arxiv.org)](https://arxiv.org/abs/2407.07403)
-13. [Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks](https://ieeexplore.ieee.org/document/10579515)
-14. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
-15. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
+Rozwój wielomodalnej sztucznej inteligencji, która przetwarza
+jednocześnie wiele typów danych, wprowadza wyjątkowe ryzyko związane z
+wstrzyknięciem poleceń. Złośliwi aktorzy mogą wykorzystać interakcje
+między modalnościami, na przykład ukrywając instrukcje w obrazach
+towarzyszących nieszkodliwym tekstom. Złożoność tych systemów zwiększa
+powierzchnię ataku. Modele wielomodalne mogą być również podatne na nowe
+ataki między modalnościami, które są trudne do wykrycia i złagodzenia
+przy użyciu obecnych technik. Solidne zabezpieczenia specyficzne dla
+modeli wielomodalnych są ważnym obszarem dalszych badań i rozwoju.
 
-### Related Frameworks and Taxonomies
+**Strategie zapobiegania i łagodzenia skutków**
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Luki w zabezpieczeniach związane z wstrzykiwaniem poleceń są możliwe ze
+względu na charakter generatywnej sztucznej inteligencji. Biorąc pod
+uwagę stochastyczny wpływ leżący u podstaw działania modeli, nie jest
+jasne, czy istnieją niezawodne metody zapobiegania wstrzykiwaniu
+poleceń. Jednak następujące środki mogą złagodzić skutki wstrzykiwania
+poleceń:
 
-- [AML.T0051.000 - LLM Prompt Injection: Direct](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
-- [AML.T0051.001 - LLM Prompt Injection: Indirect](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
-- [AML.T0054 - LLM Jailbreak Injection: Direct](https://atlas.mitre.org/techniques/AML.T0054) **MITRE ATLAS**
+**1. Ogranicz zachowanie modelu**
+
+Podaj konkretne instrukcje dotyczące roli, możliwości i ograniczeń
+modelu w ramach systemu podpowiedzi. Egzekwuj ścisłe przestrzeganie
+kontekstu, ogranicz odpowiedzi do określonych zadań lub tematów i
+poinstruuj model, aby ignorował próby modyfikacji podstawowych
+instrukcji.
+
+**2. Zdefiniuj i zweryfikuj oczekiwane formaty wyjściowe**
+
+Określ jasne formaty wyników, wymagaj szczegółowego uzasadnienia i
+podania źródeł oraz używaj deterministycznego kodu do sprawdzania
+zgodności z tymi formatami.
+
+**3. Wprowadź filtrowanie danych wejściowych i wyjściowych**
+
+Zdefiniuj kategorie danych wrażliwych i opracuj zasady identyfikacji i
+postępowania z takimi treściami. Zastosuj filtry semantyczne i
+sprawdzanie ciągów znaków w celu wykrycia niedozwolonych treści. Oceniaj
+odpowiedzi za pomocą trójkąta RAG: oceń trafność kontekstu, uzasadnienie
+i trafność pytania/odpowiedzi, aby zidentyfikować potencjalnie złośliwe
+wyniki.
+
+**4. Egzekwuj kontrolę uprawnień i dostęp oparty na minimalnych
+uprawnieniach**
+
+Wyposaż aplikację we własne tokeny API w celu rozszerzenia
+funkcjonalności i obsługuj te funkcje w kodzie, zamiast udostępniać je
+modelowi. Ogranicz uprawnienia dostępu modelu do minimum niezbędnego do
+wykonywania zamierzonych operacji.
+
+**5. Wymagaj zatwierdzania przez człowieka w przypadku działań wysokiego
+ryzyka**
+
+Wprowadź kontrolę z udziałem człowieka dla operacji uprzywilejowanych,
+aby zapobiec nieautoryzowanym działaniom.
+
+**6. Segreguj i identyfikuj treści zewnętrzne**
+
+Oddziel i wyraźnie oznacz treści, którym nie ufasz, aby ograniczyć ich
+wpływ na polecenia użytkownika.
+
+**7. Przeprowadź testy przeciwnika i symulacje ataków**
+
+Regularnie przeprowadzaj testy penetracyjne i symulacje naruszeń,
+traktując model jako użytkownika, któremu nie ufasz, aby sprawdzić
+skuteczność granic zaufania i kontroli dostępu.
+
+**Przykładowe scenariusze ataków**
+
+**Scenariusz nr 1: Bezpośrednie wstrzyknięcie**
+
+Atakujący wstrzykuje polecenie do chatbota obsługi klienta, instruując
+go, aby zignorował poprzednie wytyczne, zapytał o prywatne zasoby danych
+i wysłał e-maile, co prowadzi do nieautoryzowanego dostępu i eskalacji
+uprawnień.
+
+**Scenariusz nr 2: Pośrednie wstrzyknięcie**
+
+Użytkownik wykorzystuje LLM do podsumowania strony internetowej
+zawierającej ukryte instrukcje, które powodują, że LLM wstawia obraz
+łączący się z adresem URL, co prowadzi do wycieku prywatnej rozmowy.
+
+**Scenariusz nr 3: Niezamierzone wstrzyknięcie**
+
+Firma umieszcza w opisie stanowiska pracę instrukcję dotyczącą
+identyfikacji aplikacji wygenerowanych przez sztuczną inteligencję.
+Kandydat, nieświadomy tej instrukcji, używa LLM do optymalizacji swojego
+CV, nieumyślnie uruchamiając wykrywanie sztucznej inteligencji.
+
+**Scenariusz nr 4: Celowy wpływ na model**
+
+Atakujący modyfikuje dokument w repozytorium używanym przez aplikację
+Retrieval-Augmented Generation (RAG). Gdy zapytanie użytkownika zwraca
+zmodyfikowaną treść, złośliwe instrukcje zmieniają wynik LLM, generując
+mylące wyniki.
+
+**Scenariusz nr 5: Wstrzyknięcie kodu**
+
+Atakujący wykorzystuje lukę (CVE-2024-5184) w asystencie poczty
+elektronicznej opartym na LLM, aby wstrzyknąć złośliwe polecenia,
+umożliwiające dostęp do poufnych informacji i manipulowanie treścią
+wiadomości e-mail.
+
+**Scenariusz nr 6: Podział ładunku**
+
+Atakujący przesyła CV z podzielonymi złośliwymi poleceniami. Kiedy LLM
+jest używany do oceny kandydata, połączone polecenia manipulują
+odpowiedzią modelu, co skutkuje pozytywną rekomendacją pomimo
+rzeczywistej treści CV.
+
+**Scenariusz nr 7: Wstrzyknięcie multimodalne**
+
+Atakujący osadza złośliwy polecenie w obrazie towarzyszącym
+nieszkodliwemu tekstowi. Gdy wielomodalna sztuczna inteligencja
+przetwarza jednocześnie obraz i tekst, ukryte polecenie zmienia
+zachowanie modelu, potencjalnie prowadząc do nieautoryzowanych działań
+lub ujawnienia poufnych informacji.
+
+**Scenariusz nr 8: Wrogi sufiks**
+
+Atakujący dodaje do monitu pozornie bezsensowny ciąg znaków, który w
+złośliwy sposób wpływa na wynik LLM, omijając środki bezpieczeństwa.
+
+**Scenariusz nr 9: Atak wielojęzyczny/zaciemniający**
+
+Atakujący używa wielu języków lub koduje złośliwe instrukcje (np. za
+pomocą Base64 lub emoji) w celu ominięcia filtrów i manipulowania
+zachowaniem LLM.
+
+**Linki referencyjne**
+
+[[Luki w zabezpieczeniach wtyczki ChatGPT --- czat z
+kodem]{.underline}](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/)
+**Embrace the Red**
+
+[[Fałszowanie żądań między wtyczkami ChatGPT i wstrzykiwanie
+poleceń]{.underline}](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./)
+**Embrace the Red**
+
+**Arxiv**
+
+[[Obrona ChatGPT przed atakiem typu złamanie zabezpieczeń poprzez
+samoprzypomnienie]{.underline}](https://www.researchsquare.com/article/rs-2873090/v1)
+**Research Square**
+
+[[Atak typu wstrzyknięcie polecenia na aplikacje zintegrowane z
+LLM]{.underline}](https://arxiv.org/abs/2306.05499) **Cornell
+University**
+
+[[Wstrzyknij mój plik PDF: wstrzyknięcie polecenia dla Państwa
+CV]{.underline}](https://kai-greshake.de/posts/inject-my-pdf) **Kai
+Greshake**
+
+[[Nie to, na co się Państwo zapisali: Naruszenie bezpieczeństwa
+rzeczywistych aplikacji zintegrowanych z LLM poprzez pośrednie
+wstrzyknięcie
+polecenia]{.underline}](https://arxiv.org/pdf/2302.12173.pdf)
+**Uniwersytet Cornell**
+
+[[Modelowanie zagrożeń aplikacji
+LLM]{.underline}](https://aivillage.org/large%20language%20models/threat-modeling-llm/)
+**AI Village**
+
+[[Ograniczanie wpływu ataków typu wstrzyknięcie polecenia poprzez
+projektowanie]{.underline}](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/)
+**Kudelski Security**
+
+[[Wrogie uczenie maszynowe: taksonomia i terminologia ataków oraz
+środków zaradczych
+(nist.gov)]{.underline}](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
+
+[[2407.07403 Przegląd ataków na duże modele wizualno-językowe: zasoby,
+postępy i przyszłe trendy
+(arxiv.org)]{.underline}](https://arxiv.org/abs/2407.07403)
+
+[[Wykorzystywanie programowego zachowania modeli LLM: podwójne
+zastosowanie poprzez standardowe ataki
+bezpieczeństwa]{.underline}](https://ieeexplore.ieee.org/document/10579515)
+
+[[Uniwersalne i przenośne ataki przeciwników na zharmonizowane modele
+językowe (arxiv.org)]{.underline}](https://arxiv.org/abs/2307.15043)
+
+[[Od ChatGPT do ThreatGPT: wpływ generatywnej sztucznej inteligencji na
+cyberbezpieczeństwo i prywatność
+(arxiv.org)]{.underline}](https://arxiv.org/abs/2307.00691)
+
+**Powiązane ramy i taksonomie**
+
+W tej sekcji znajdą Państwo wyczerpujące informacje, scenariusze i
+strategie dotyczące wdrażania infrastruktury, stosowanych środków
+kontroli środowiska oraz innych najlepszych praktyk.
+
+- [[AML.T0051.000 -- Wstrzyknięcie polecenia LLM:
+  bezpośrednie]{.underline}](https://atlas.mitre.org/techniques/AML.T0051.000)
+  **MITRE ATLAS**
+
+- [[AML.T0051.001 -- Wstrzyknięcie polecenia LLM:
+  pośrednie]{.underline}](https://atlas.mitre.org/techniques/AML.T0051.001)
+  **MITRE ATLAS**
+
+- [[AML.T0054 -- Wstrzyknięcie łamania zabezpieczeń LLM:
+  bezpośrednie]{.underline}](https://atlas.mitre.org/techniques/AML.T0054)
+  **MITRE ATLAS**

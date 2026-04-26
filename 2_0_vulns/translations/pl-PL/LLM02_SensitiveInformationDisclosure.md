@@ -1,88 +1,196 @@
-## LLM02:2025 Sensitive Information Disclosure
+**LLM02:2025 Ujawnianie informacji poufnych**
 
-### Description
+**Opis**
 
-Sensitive information can affect both the LLM and its application context. This includes personal identifiable information (PII), financial details, health records, confidential business data, security credentials, and legal documents. Proprietary models may also have unique training methods and source code considered sensitive, especially in closed or foundation models.
+Informacje poufne mogą mieć wpływ zarówno na model LLM, jak i kontekst
+jego zastosowania. Obejmują one dane osobowe (PII), dane finansowe,
+dokumentację medyczną, poufne dane biznesowe, poświadczenia
+bezpieczeństwa i dokumenty prawne. Modele zastrzeżone mogą również
+posiadać unikalne metody szkolenia i kod źródłowy uznawany za wrażliwy,
+zwłaszcza w modelach zamkniętych lub podstawowych.
 
-LLMs, especially when embedded in applications, risk exposing sensitive data, proprietary algorithms, or confidential details through their output. This can result in unauthorized data access, privacy violations, and intellectual property breaches. Consumers should be aware of how to interact safely with LLMs. They need to understand the risks of unintentionally providing sensitive data, which may later be disclosed in the model's output.
+LLM, zwłaszcza gdy są wbudowane w aplikacje, narażone są na ryzyko
+ujawnienia danych wrażliwych, algorytmów zastrzeżonych lub poufnych
+informacji poprzez swoje wyniki. Może to skutkować nieuprawnionym
+dostępem do danych, naruszeniem prywatności i naruszeniem praw własności
+intelektualnej. Konsumenci powinni być świadomi tego, jak bezpiecznie
+korzystać z LLM. Muszą rozumieć ryzyko związane z nieumyślnym podaniem
+danych wrażliwych, które mogą zostać później ujawnione w wynikach
+modelu.
 
-To reduce this risk, LLM applications should perform adequate data sanitization to prevent user data from entering the training model. Application owners should also provide clear Terms of Use policies, allowing users to opt out of having their data included in the training model. Adding restrictions within the system prompt about data types that the LLM should return can provide mitigation against sensitive information disclosure. However, such restrictions may not always be honored and could be bypassed via prompt injection or other methods.
+Aby zmniejszyć to ryzyko, aplikacje LLM powinny przeprowadzać
+odpowiednie oczyszczanie danych, aby zapobiec przedostawaniu się danych
+użytkowników do modelu szkoleniowego. Właściciele aplikacji powinni
+również zapewnić jasne zasady użytkowania, umożliwiające użytkownikom
+rezygnację z uwzględniania ich danych w modelu szkoleniowym. Dodanie
+ograniczeń w systemie dotyczących typów danych, które LLM powinien
+zwracać, może ograniczyć ujawnianie poufnych informacji. Jednak takie
+ograniczenia nie zawsze są przestrzegane i mogą zostać ominięte poprzez
+wstrzyknięcie poleceń lub inne metody.
 
-### Common Examples of Vulnerability
+**Typowe przykłady podatności**
 
-#### 1. PII Leakage
-  Personal identifiable information (PII) may be disclosed during interactions with the LLM.
-#### 2. Proprietary Algorithm Exposure
-  Poorly configured model outputs can reveal proprietary algorithms or data. Revealing training data can expose models to inversion attacks, where attackers extract sensitive information or reconstruct inputs. For instance, as demonstrated in the 'Proof Pudding' attack (CVE-2019-20634), disclosed training data facilitated model extraction and inversion, allowing attackers to circumvent security controls in machine learning algorithms and bypass email filters.
-#### 3. Sensitive Business Data Disclosure
-  Generated responses might inadvertently include confidential business information.
+**1. Wyciek danych osobowych**
 
-### Prevention and Mitigation Strategies
+Podczas interakcji z LLM mogą zostać ujawnione dane osobowe (PII).
 
-#### Sanitization:
+**2. Ujawnienie algorytmów zastrzeżonych**
 
-#### 1. Integrate Data Sanitization Techniques
-  Implement data sanitization to prevent user data from entering the training model. This includes scrubbing or masking sensitive content before it is used in training.
-#### 2. Robust Input Validation
-  Apply strict input validation methods to detect and filter out potentially harmful or sensitive data inputs, ensuring they do not compromise the model.
+Źle skonfigurowane wyniki modelu mogą ujawnić zastrzeżone algorytmy lub
+dane. Ujawnienie danych szkoleniowych może narazić modele na ataki
+inwersyjne, w których atakujący wydobywają poufne informacje lub
+rekonstruują dane wejściowe. Na przykład, jak wykazano w ataku „Proof
+Pudding" (CVE-2019-20634), ujawnione dane szkoleniowe ułatwiły wydobycie
+i inwersję modelu, umożliwiając atakującym obejście zabezpieczeń
+algorytmów uczenia maszynowego i filtrów poczty elektronicznej.
 
-#### Access Controls:
+**3. Ujawnienie poufnych danych biznesowych**
 
-#### 1. Enforce Strict Access Controls
-  Limit access to sensitive data based on the principle of least privilege. Only grant access to data that is necessary for the specific user or process.
-#### 2. Restrict Data Sources
-  Limit model access to external data sources, and ensure runtime data orchestration is securely managed to avoid unintended data leakage.
+Wygenerowane odpowiedzi mogą nieumyślnie zawierać poufne informacje
+biznesowe.
 
-#### Federated Learning and Privacy Techniques:
+**Strategie zapobiegania i ograniczania skutków**
 
-#### 1. Utilize Federated Learning
-  Train models using decentralized data stored across multiple servers or devices. This approach minimizes the need for centralized data collection and reduces exposure risks.
-#### 2. Incorporate Differential Privacy
-  Apply techniques that add noise to the data or outputs, making it difficult for attackers to reverse-engineer individual data points.
+**Oczyszczanie:**
 
-#### User Education and Transparency:
+**1. Zintegruj techniki oczyszczania danych**
 
-#### 1. Educate Users on Safe LLM Usage
-  Provide guidance on avoiding the input of sensitive information. Offer training on best practices for interacting with LLMs securely.
-#### 2. Ensure Transparency in Data Usage
-  Maintain clear policies about data retention, usage, and deletion. Allow users to opt out of having their data included in training processes.
+Wdrożcie oczyszczanie danych, aby zapobiec przedostawaniu się danych
+użytkowników do modelu szkoleniowego. Obejmuje to czyszczenie lub
+maskowanie poufnych treści przed wykorzystaniem ich w szkoleniu.
 
-#### Secure System Configuration:
+**2. Solidna walidacja danych wejściowych**
 
-#### 1. Conceal System Preamble
-  Limit the ability for users to override or access the system's initial settings, reducing the risk of exposure to internal configurations.
-#### 2. Reference Security Misconfiguration Best Practices
-  Follow guidelines like "OWASP API8:2023 Security Misconfiguration" to prevent leaking sensitive information through error messages or configuration details.
-  (Ref. link:[OWASP API8:2023 Security Misconfiguration](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+Zastosujcie rygorystyczne metody walidacji danych wejściowych, aby
+wykrywać i filtrować potencjalnie szkodliwe lub poufne dane wejściowe,
+zapewniając, że nie naruszają one modelu.
 
-#### Advanced Techniques:
+**Kontrola dostępu:**
 
-#### 1. Homomorphic Encryption
-  Use homomorphic encryption to enable secure data analysis and privacy-preserving machine learning. This ensures data remains confidential while being processed by the model.
-#### 2. Tokenization and Redaction
-  Implement tokenization to preprocess and sanitize sensitive information. Techniques like pattern matching can detect and redact confidential content before processing.
+**1. Egzekwowanie ścisłej kontroli dostępu**
 
-### Example Attack Scenarios
+Ogranicz dostęp do wrażliwych danych w oparciu o zasadę minimalnych
+uprawnień. Przyznawaj dostęp tylko do danych niezbędnych dla konkretnego
+użytkownika lub procesu.
 
-#### Scenario #1: Unintentional Data Exposure
-  A user receives a response containing another user's personal data due to inadequate data sanitization.
-#### Scenario #2: Targeted Prompt Injection
-  An attacker bypasses input filters to extract sensitive information.
-#### Scenario #3: Data Leak via Training Data
-  Negligent data inclusion in training leads to sensitive information disclosure.
+**2. Ograniczanie źródeł danych**
 
-### Reference Links
+Ogranicz dostęp modelu do zewnętrznych źródeł danych i zapewnij
+bezpieczne zarządzanie koordynacją danych w czasie wykonywania, aby
+uniknąć niezamierzonego wycieku danych.
 
-1. [Lessons learned from ChatGPT’s Samsung leak](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/): **Cybernews**
-2. [AI data leak crisis: New tool prevents company secrets from being fed to ChatGPT](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt): **Fox Business**
-3. [ChatGPT Spit Out Sensitive Data When Told to Repeat ‘Poem’ Forever](https://www.wired.com/story/chatgpt-poem-forever-security-roundup/): **Wired**
-4. [Using Differential Privacy to Build Secure Models](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices): **Neptune Blog**
-5. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
+**Uczenie federacyjne i techniki ochrony prywatności:**
 
-### Related Frameworks and Taxonomies
+**1. Wykorzystanie uczenia federacyjnego**
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+Szkolcie modele przy użyciu zdecentralizowanych danych przechowywanych
+na wielu serwerach lub urządzeniach. Takie podejście minimalizuje
+potrzebę scentralizowanego gromadzenia danych i zmniejsza ryzyko
+ujawnienia.
 
-- [AML.T0024.000 - Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) **MITRE ATLAS**
-- [AML.T0024.001 - Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) **MITRE ATLAS**
-- [AML.T0024.002 - Extract ML Model](https://atlas.mitre.org/techniques/AML.T0024.002) **MITRE ATLAS**
+**2. Włączcie prywatność różnicową**
+
+Zastosujcie techniki, które dodają szum do danych lub wyników,
+utrudniając atakującym odtworzenie poszczególnych punktów danych.
+
+**Edukacja użytkowników i przejrzystość:**
+
+**1. Edukujcie użytkowników w zakresie bezpiecznego korzystania z LLM**
+
+Zapewnij wytyczne dotyczące unikania wprowadzania poufnych informacji.
+Zaoferuj szkolenia dotyczące najlepszych praktyk w zakresie bezpiecznej
+interakcji z modelami LLM.
+
+**2. Zapewnij przejrzystość w zakresie wykorzystania danych**
+
+Utrzymuj jasne zasady dotyczące przechowywania, wykorzystywania i
+usuwania danych. Pozwól użytkownikom zrezygnować z uwzględniania ich
+danych w procesach szkoleniowych.
+
+**Bezpieczna konfiguracja systemu:**
+
+**1. Ukryj preambułę systemu**
+
+Ogranicz możliwość zmiany lub dostępu użytkowników do początkowych
+ustawień systemu, zmniejszając ryzyko ujawnienia konfiguracji
+wewnętrznej.
+
+**2. Odwołaj się do najlepszych praktyk dotyczących błędnej konfiguracji
+zabezpieczeń**
+
+Postępuj zgodnie z wytycznymi, takimi jak „OWASP API8:2023 Security
+Misconfiguration", aby zapobiec wyciekowi poufnych informacji poprzez
+komunikaty o błędach lub szczegóły konfiguracji. (Link do
+odnośnika:[[OWASP API8:2023 Security
+Misconfiguration]{.underline}](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/))
+
+**Zaawansowane techniki:**
+
+**1. Szyfrowanie homomorficzne**
+
+Użyj szyfrowania homomorficznego, aby umożliwić bezpieczną analizę
+danych i uczenie maszynowe z zachowaniem prywatności. Zapewnia to
+poufność danych podczas przetwarzania przez model.
+
+**2. Tokenizacja i redagowanie**
+
+Wdroż tokenizację w celu wstępnego przetwarzania i oczyszczania poufnych
+informacji. Techniki takie jak dopasowywanie wzorców mogą wykrywać i
+redagować poufne treści przed przetworzeniem.
+
+**Przykładowe scenariusze ataku**
+
+**Scenariusz nr 1: Niezamierzone ujawnienie danych**
+
+Użytkownik otrzymuje odpowiedź zawierającą dane osobowe innego
+użytkownika z powodu nieodpowiedniego oczyszczenia danych.
+
+**Scenariusz nr 2: Ukierunkowane wstrzyknięcie podpowiedzi**
+
+Atakujący omija filtry wejściowe, aby wyodrębnić poufne informacje.
+
+**Scenariusz nr 3: Wyciek danych poprzez dane szkoleniowe**
+
+Nieostrożne włączenie danych do szkolenia prowadzi do ujawnienia
+poufnych informacji.
+
+**Linki referencyjne**
+
+[[Wnioski wyciągnięte z wycieku danych Samsunga z
+ChatGPT]{.underline}](https://cybernews.com/security/chatgpt-samsung-leak-explained-lessons/):
+**Cybernews**
+
+[[Kryzys związany z wyciekiem danych AI: nowe narzędzie zapobiega
+przekazywaniu tajemnic firmowych do
+ChatGPT]{.underline}](https://www.foxbusiness.com/politics/ai-data-leak-crisis-prevent-company-secrets-chatgpt):
+**Fox Business**
+
+[[ChatGPT ujawnia poufne dane po poleceniu powtarzania „wiersza" w
+nieskończoność]{.underline}](https://www.wired.com/story/chatgpt-poem-forever-security-roundup/):
+**Wired**
+
+[[Wykorzystanie różnicowej prywatności do tworzenia bezpiecznych
+modeli]{.underline}](https://neptune.ai/blog/using-differential-privacy-to-build-secure-models-tools-methods-best-practices):
+**Neptune Blog**
+
+[[Proof Pudding
+(CVE-2019-20634)]{.underline}](https://avidml.org/database/avid-2023-v009/)
+**AVID** (moohax & monoxgas)
+
+**Powiązane ramy i taksonomie**
+
+W tej sekcji znajdą Państwo wyczerpujące informacje, scenariusze i
+strategie dotyczące wdrażania infrastruktury, stosowanych środków
+kontroli środowiska oraz innych najlepszych praktyk.
+
+[[AML.T0024.000 -- Członkostwo w bazie danych
+szkoleniowych]{.underline}](https://atlas.mitre.org/techniques/AML.T0024.000)
+**MITRE ATLAS**
+
+[[AML.T0024.001 -- Odwrócenie modelu
+ML]{.underline}](https://atlas.mitre.org/techniques/AML.T0024.001)
+**MITRE ATLAS**
+
+[[AML.T0024.002 -- Wyodrębnienie modelu
+ML]{.underline}](https://atlas.mitre.org/techniques/AML.T0024.002)
+**MITRE ATLAS**

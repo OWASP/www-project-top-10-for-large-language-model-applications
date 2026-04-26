@@ -1,99 +1,289 @@
-## LLM10:2025 Unbounded Consumption
+**LLM10:2025 Nieograniczona konsumpcja**
 
-### Description
+**Opis**
 
-Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts. Inference is a critical function of LLMs, involving the application of learned patterns and knowledge to produce relevant responses or predictions.
+Nieograniczona konsumpcja odnosi się do procesu, w którym duży model
+językowy (LLM) generuje wyniki na podstawie zapytań lub poleceń
+wejściowych. Wnioskowanie jest kluczową funkcją modeli LLM, polegającą
+na zastosowaniu wyuczonych wzorców i wiedzy w celu wygenerowania
+odpowiednich odpowiedzi lub prognoz.
 
-Attacks designed to disrupt service, deplete the target's financial resources, or even steal intellectual property by cloning a model’s behavior all depend on a common class of security vulnerability in order to succeed. Unbounded Consumption occurs when a Large Language Model (LLM) application allows users to conduct excessive and uncontrolled inferences, leading to risks such as denial of service (DoS), economic losses, model theft, and service degradation. The high computational demands of LLMs, especially in cloud environments, make them vulnerable to resource exploitation and unauthorized usage.
+Ataki mające na celu zakłócenie działania usług, wyczerpanie zasobów
+finansowych celu, a nawet kradzież własności intelektualnej poprzez
+klonowanie zachowania modelu, aby odnieść sukces, opierają się na
+wspólnej klasie luk w zabezpieczeniach. Nieograniczone zużycie
+występuje, gdy aplikacja oparta na dużym modelu językowym (LLM) pozwala
+użytkownikom na przeprowadzanie nadmiernych i niekontrolowanych
+wnioskowań, co prowadzi do takich zagrożeń, jak odmowa usługi (DoS),
+straty ekonomiczne, kradzież modelu i pogorszenie jakości usług. Wysokie
+wymagania obliczeniowe modeli LLM, zwłaszcza w środowiskach chmurowych,
+sprawiają, że są one podatne na wykorzystywanie zasobów i nieuprawnione
+użycie.
 
-### Common Examples of Vulnerability
+**Typowe przykłady podatności**
 
-#### 1. Variable-Length Input Flood
-  Attackers can overload the LLM with numerous inputs of varying lengths, exploiting processing inefficiencies. This can deplete resources and potentially render the system unresponsive, significantly impacting service availability.
-#### 2. Denial of Wallet (DoW)
-  By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin.
-#### 3. Continuous Input Overflow
-  Continuously sending inputs that exceed the LLM's context window can lead to excessive computational resource use, resulting in service degradation and operational disruptions.
-#### 4. Resource-Intensive Queries
-  Submitting unusually demanding queries involving complex sequences or intricate language patterns can drain system resources, leading to prolonged processing times and potential system failures.
-#### 5. Model Extraction via API
-  Attackers may query the model API using carefully crafted inputs and prompt injection techniques to collect sufficient outputs to replicate a partial model or create a shadow model. This not only poses risks of intellectual property theft but also undermines the integrity of the original model.
-#### 6. Functional Model Replication
-  Using the target model to generate synthetic training data can allow attackers to fine-tune another foundational model, creating a functional equivalent. This circumvents traditional query-based extraction methods, posing significant risks to proprietary models and technologies.
-#### 7. Side-Channel Attacks
-  Malicious attackers may exploit input filtering techniques of the LLM to execute side-channel attacks, harvesting model weights and architectural information. This could compromise the model's security and lead to further exploitation.
+**1. Zalanie danymi wejściowymi o zmiennej długości**
 
-### Prevention and Mitigation Strategies
+Atakujący mogą przeciążyć model LLM licznymi danymi wejściowymi o różnej
+długości, wykorzystując nieefektywność przetwarzania. Może to wyczerpać
+zasoby i potencjalnie spowodować brak reakcji systemu, co znacząco
+wpłynie na dostępność usług.
 
-#### 1. Input Validation
-  Implement strict input validation to ensure that inputs do not exceed reasonable size limits.
-#### 2. Limit Exposure of Logits and Logprobs
-  Restrict or obfuscate the exposure of `logit_bias` and `logprobs` in API responses. Provide only the necessary information without revealing detailed probabilities.
-#### 3. Rate Limiting
-  Apply rate limiting and user quotas to restrict the number of requests a single source entity can make in a given time period.
-#### 4. Resource Allocation Management
-  Monitor and manage resource allocation dynamically to prevent any single user or request from consuming excessive resources.
-#### 5. Timeouts and Throttling
-  Set timeouts and throttle processing for resource-intensive operations to prevent prolonged resource consumption.
-#### 6.Sandbox Techniques
-  Restrict the LLM's access to network resources, internal services, and APIs.
-  - This is particularly significant for all common scenarios as it encompasses insider risks and threats. Furthermore, it governs the extent of access the LLM application has to data and resources, thereby serving as a crucial control mechanism to mitigate or prevent side-channel attacks.
-#### 7. Comprehensive Logging, Monitoring and Anomaly Detection
-  Continuously monitor resource usage and implement logging to detect and respond to unusual patterns of resource consumption.
-#### 8. Watermarking
-  Implement watermarking frameworks to embed and detect unauthorized use of LLM outputs.
-#### 9. Graceful Degradation
-  Design the system to degrade gracefully under heavy load, maintaining partial functionality rather than complete failure.
-#### 10. Limit Queued Actions and Scale Robustly
-  Implement restrictions on the number of queued actions and total actions, while incorporating dynamic scaling and load balancing to handle varying demands and ensure consistent system performance.
-#### 11. Adversarial Robustness Training
-  Train models to detect and mitigate adversarial queries and extraction attempts.
-#### 12. Glitch Token Filtering
-  Build lists of known glitch tokens and scan output before adding it to the model’s context window.
-#### 13. Access Controls
-  Implement strong access controls, including role-based access control (RBAC) and the principle of least privilege, to limit unauthorized access to LLM model repositories and training environments.
-#### 14. Centralized ML Model Inventory
-  Use a centralized ML model inventory or registry for models used in production, ensuring proper governance and access control.
-#### 15. Automated MLOps Deployment
-  Implement automated MLOps deployment with governance, tracking, and approval workflows to tighten access and deployment controls within the infrastructure.
+**2. Odmowa dostępu do portfela (DoW)**
 
-### Example Attack Scenarios
+Inicjując dużą liczbę operacji, atakujący wykorzystują model kosztu za
+użycie usług AI w chmurze, co prowadzi do niemożliwych do udźwignięcia
+obciążeń finansowych dla dostawcy i ryzyko ruiny finansowej.
 
-#### Scenario #1: Uncontrolled Input Size
-  An attacker submits an unusually large input to an LLM application that processes text data, resulting in excessive memory usage and CPU load, potentially crashing the system or significantly slowing down the service.
-#### Scenario #2: Repeated Requests
-  An attacker transmits a high volume of requests to the LLM API, causing excessive consumption of computational resources and making the service unavailable to legitimate users.
-#### Scenario #3: Resource-Intensive Queries
-  An attacker crafts specific inputs designed to trigger the LLM's most computationally expensive processes, leading to prolonged CPU usage and potential system failure.
-#### Scenario #4: Denial of Wallet (DoW)
-  An attacker generates excessive operations to exploit the pay-per-use model of cloud-based AI services, causing unsustainable costs for the service provider.
-#### Scenario #5: Functional Model Replication
-  An attacker uses the LLM's API to generate synthetic training data and fine-tunes another model, creating a functional equivalent and bypassing traditional model extraction limitations.
-#### Scenario #6: Bypassing System Input Filtering
-  A malicious attacker bypasses input filtering techniques and preambles of the LLM to perform a side-channel attack and retrieve model information to a remote controlled resource under their control.
+**3. Ciągłe przepełnienie danych wejściowych**
 
-### Reference Links
+Ciągłe wysyłanie danych wejściowych, które przekraczają okno kontekstowe
+LLM, może prowadzić do nadmiernego wykorzystania zasobów obliczeniowych,
+co skutkuje pogorszeniem jakości usług i zakłóceniami w działaniu.
 
-1. [Proof Pudding (CVE-2019-20634)](https://avidml.org/database/avid-2023-v009/) **AVID** (`moohax` & `monoxgas`)
-2. [arXiv:2403.06634 Stealing Part of a Production Language Model](https://arxiv.org/abs/2403.06634) **arXiv**
-3. [Runaway LLaMA | How Meta's LLaMA NLP model leaked](https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked/): **Deep Learning Blog**
-4. [You wouldn't download an AI, Extracting AI models from mobile apps](https://altayakkus.substack.com/p/you-wouldnt-download-an-ai): **Substack blog**
-5. [A Comprehensive Defense Framework Against Model Extraction Attacks](https://ieeexplore.ieee.org/document/10080996): **IEEE**
-6. [Alpaca: A Strong, Replicable Instruction-Following Model](https://crfm.stanford.edu/2023/03/13/alpaca.html): **Stanford Center on Research for Foundation Models (CRFM)**
-7. [How Watermarking Can Help Mitigate The Potential Risks Of LLMs?](https://www.kdnuggets.com/2023/03/watermarking-help-mitigate-potential-risks-llms.html): **KD Nuggets**
-8. [Securing AI Model Weights Preventing Theft and Misuse of Frontier Models](https://www.rand.org/content/dam/rand/pubs/research_reports/RRA2800/RRA2849-1/RAND_RRA2849-1.pdf)
-9. [Sponge Examples: Energy-Latency Attacks on Neural Networks: Arxiv White Paper](https://arxiv.org/abs/2006.03463) **arXiv**
-10. [Sourcegraph Security Incident on API Limits Manipulation and DoS Attack](https://about.sourcegraph.com/blog/security-update-august-2023) **Sourcegraph**
+**4. Zapytania wymagające dużych zasobów**
 
-### Related Frameworks and Taxonomies
+Przesyłanie niezwykle wymagających zapytań zawierających złożone
+sekwencje lub skomplikowane wzorce językowe może wyczerpać zasoby
+systemowe, prowadząc do wydłużenia czasu przetwarzania i potencjalnych
+awarii systemu.
 
-Refer to this section for comprehensive information, scenarios strategies relating to infrastructure deployment, applied environment controls and other best practices.
+**5. Wyodrębnianie modelu za pośrednictwem API**
 
-- [MITRE CWE-400: Uncontrolled Resource Consumption](https://cwe.mitre.org/data/definitions/400.html) **MITRE Common Weakness Enumeration**
-- [AML.TA0000 ML Model Access: Mitre ATLAS](https://atlas.mitre.org/tactics/AML.TA0000) & [AML.T0024 Exfiltration via ML Inference API](https://atlas.mitre.org/techniques/AML.T0024) **MITRE ATLAS**
-- [AML.T0029 - Denial of ML Service](https://atlas.mitre.org/techniques/AML.T0029) **MITRE ATLAS**
-- [AML.T0034 - Cost Harvesting](https://atlas.mitre.org/techniques/AML.T0034) **MITRE ATLAS**
-- [AML.T0025 - Exfiltration via Cyber Means](https://atlas.mitre.org/techniques/AML.T0025) **MITRE ATLAS**
-- [OWASP Machine Learning Security Top Ten - ML05:2023 Model Theft](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML05_2023-Model_Theft.html) **OWASP ML Top 10**
-- [API4:2023 - Unrestricted Resource Consumption](https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/) **OWASP Web Application Top 10**
-- [OWASP Resource Management](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/) **OWASP Secure Coding Practices**
+Atakujący mogą wysyłać zapytania do API modelu przy użyciu starannie
+przygotowanych danych wejściowych i technik wstrzykiwania poleceń, aby
+zebrać wystarczającą ilość danych wyjściowych do replikacji częściowego
+modelu lub utworzenia modelu cieniowego. Stanowi to nie tylko ryzyko
+kradzieży własności intelektualnej, ale także podważa integralność
+oryginalnego modelu.
+
+**6. Replikacja modelu funkcjonalnego**
+
+Wykorzystanie modelu docelowego do generowania syntetycznych danych
+szkoleniowych może umożliwić atakującym dostrojenie innego modelu
+podstawowego, tworząc jego funkcjonalny odpowiednik. Pozwala to ominąć
+tradycyjne metody ekstrakcji oparte na zapytaniach, stwarzając poważne
+zagrożenie dla zastrzeżonych modeli i technologii.
+
+**7. Ataki kanałem bocznym**
+
+Złośliwi atakujący mogą wykorzystać techniki filtrowania danych
+wejściowych LLM do przeprowadzenia ataków kanałem bocznym, zbierając
+wagi modelu i informacje o jego architekturze. Może to zagrozić
+bezpieczeństwu modelu i prowadzić do dalszego wykorzystania.
+
+**Strategie zapobiegania i ograniczania skutków**
+
+**1. Walidacja danych wejściowych**
+
+Wprowadź ścisłą walidację danych wejściowych, aby zapewnić, że nie
+przekraczają one rozsądnych limitów rozmiaru.
+
+**2. Ogranicz ekspozycję logitów i logprobs**
+
+Ogranicz lub zaciemnij ekspozycję logit_bias i logprobs w odpowiedziach
+API. Podawaj tylko niezbędne informacje, nie ujawniając szczegółowych
+prawdopodobieństw.
+
+**3. Ograniczanie szybkości**
+
+Zastosuj ograniczenie szybkości i limity użytkowników, aby ograniczyć
+liczbę żądań, które pojedynczy podmiot źródłowy może wysłać w danym
+okresie czasu.
+
+**4. Zarządzanie alokacją zasobów**
+
+Monitoruj i zarządzaj alokacją zasobów w sposób dynamiczny, aby zapobiec
+nadmiernemu zużyciu zasobów przez pojedynczego użytkownika lub żądanie.
+
+**5. Limity czasu i ograniczanie przepustowości**
+
+Ustaw limity czasu i ogranicz przepustowość operacji wymagających dużej
+ilości zasobów, aby zapobiec przedłużonemu zużyciu zasobów.
+
+**6. Techniki piaskownicy**
+
+Ogranicz dostęp LLM do zasobów sieciowych, usług wewnętrznych i
+interfejsów API.
+
+Ma to szczególne znaczenie we wszystkich typowych scenariuszach,
+ponieważ obejmuje ryzyko i zagrożenia wewnętrzne. Ponadto reguluje
+zakres dostępu aplikacji LLM do danych i zasobów, służąc tym samym jako
+kluczowy mechanizm kontroli mający na celu ograniczenie lub zapobieganie
+atakom typu side-channel.
+
+**7. Kompleksowe rejestrowanie, monitorowanie i wykrywanie anomalii**
+
+Ciągłe monitorowanie wykorzystania zasobów i wdrażanie rejestrowania w
+celu wykrywania nietypowych wzorców zużycia zasobów i reagowania na nie.
+
+**8. Znak wodny**
+
+Wdrożenie frameworków znaków wodnych w celu osadzania i wykrywania
+nieautoryzowanego wykorzystania wyników LLM.
+
+**9. Łagodna degradacja**
+
+Zaprojektowanie systemu tak, aby w przypadku dużego obciążenia ulegał
+łagodnej degradacji, zachowując częściową funkcjonalność zamiast
+całkowitej awarii.
+
+**10. Ograniczenie działań w kolejce i solidna skalowalność**
+
+Wprowadź ograniczenia dotyczące liczby działań w kolejce i całkowitej
+liczby działań, jednocześnie wdrażając dynamiczne skalowanie i
+równoważenie obciążenia, aby obsłużyć zmienne wymagania i zapewnić stałą
+wydajność systemu.
+
+**11. Szkolenie w zakresie odporności na ataki**
+
+Przeszkol modele w zakresie wykrywania i łagodzenia skutków wrogich
+zapytań i prób ekstrakcji.
+
+**12. Filtrowanie tokenów glitch**
+
+Stwórz listy znanych tokenów glitch i skanuj dane wyjściowe przed
+dodaniem ich do okna kontekstowego modelu.
+
+**13. Kontrola dostępu**
+
+Wprowadź silną kontrolę dostępu, w tym kontrolę dostępu opartą na rolach
+(RBAC) i zasadę minimalnych uprawnień, aby ograniczyć nieautoryzowany
+dostęp do repozytoriów modeli LLM i środowisk szkoleniowych.
+
+**14. Scentralizowany wykaz modeli ML**
+
+Korzystaj ze scentralizowanego wykazu lub rejestru modeli ML używanych w
+produkcji, zapewniając odpowiednie zarządzanie i kontrolę dostępu.
+
+**15. Zautomatyzowane wdrażanie MLOps**
+
+Wdrożenie automatycznego wdrażania MLOps wraz z przepływami pracy w
+zakresie zarządzania, śledzenia i zatwierdzania w celu zaostrzenia
+kontroli dostępu i wdrażania w ramach infrastruktury.
+
+**Przykładowe scenariusze ataków**
+
+**Scenariusz nr 1: Niekontrolowana wielkość danych wejściowych**
+
+Atakujący przesyła niezwykle duże dane wejściowe do aplikacji LLM
+przetwarzającej dane tekstowe, co powoduje nadmierne zużycie pamięci i
+obciążenie procesora, potencjalnie powodując awarię systemu lub znaczne
+spowolnienie działania usługi.
+
+**Scenariusz nr 2: Powtarzające się żądania**
+
+Atakujący przesyła dużą liczbę żądań do interfejsu API LLM, powodując
+nadmierne zużycie zasobów obliczeniowych i uniemożliwiając korzystanie z
+usługi legalnym użytkownikom.
+
+**Scenariusz nr 3: Zapytania wymagające dużej ilości zasobów**
+
+Atakujący tworzy specjalne dane wejściowe, które mają wywołać
+najbardziej obciążające procesy LLM, co prowadzi do przedłużonego
+wykorzystania procesora i potencjalnej awarii systemu.
+
+**Scenariusz nr 4: Odmowa dostępu do portfela (DoW)**
+
+Atakujący generuje nadmierną liczbę operacji, aby wykorzystać model
+płatności za rzeczywiste wykorzystanie usług AI w chmurze, powodując
+niemożliwe do pokrycia koszty dla dostawcy usług.
+
+**Scenariusz nr 5: Replikacja modelu funkcjonalnego**
+
+Atakujący wykorzystuje interfejs API LLM do generowania syntetycznych
+danych szkoleniowych i dostosowuje inny model, tworząc funkcjonalny
+odpowiednik i omijając tradycyjne ograniczenia związane z ekstrakcją
+modelu.
+
+**Scenariusz nr 6: Ominięcie filtrowania danych wejściowych systemu**
+
+Złośliwy atakujący omija techniki filtrowania danych wejściowych i
+preambuły LLM, aby przeprowadzić atak kanałem bocznym i pobrać
+informacje o modelu do zdalnie kontrolowanego zasobu, nad którym
+sprawuje kontrolę.
+
+**Linki referencyjne**
+
+[[Proof Pudding
+(CVE-2019-20634)]{.underline}](https://avidml.org/database/avid-2023-v009/)
+**AVID** (moohax & monoxgas)
+
+[[arXiv:2403.06634 Kradzież części produkcyjnego modelu
+językowego]{.underline}](https://arxiv.org/abs/2403.06634) **arXiv**
+
+[[Runaway LLaMA \| Jak wyciekł model NLP LLaMA firmy
+Meta]{.underline}](https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked/):
+**Deep Learning Blog**
+
+[[Nie pobrałby Pan/Pani sztucznej inteligencji, Wyodrębnianie modeli
+sztucznej inteligencji z aplikacji
+mobilnych]{.underline}](https://altayakkus.substack.com/p/you-wouldnt-download-an-ai):
+**blog Substack**
+
+[[Kompleksowa struktura obrony przed atakami polegającymi na
+wyodrębnianiu
+modeli]{.underline}](https://ieeexplore.ieee.org/document/10080996):
+**IEEE**
+
+[[Alpaca: silny, powtarzalny model wykonujący
+instrukcje]{.underline}](https://crfm.stanford.edu/2023/03/13/alpaca.html):
+**Stanford Center on Research for Foundation Models (CRFM)**
+
+[[Jak znakowanie wodne może pomóc w ograniczeniu potencjalnego ryzyka
+związanego z modelami
+LLM?]{.underline}](https://www.kdnuggets.com/2023/03/watermarking-help-mitigate-potential-risks-llms.html):
+**KD Nuggets**
+
+[[Zabezpieczanie wag modeli AI Zapobieganie kradzieży i nadużyciom
+modeli
+najnowocześniejszych]{.underline}](https://www.rand.org/content/dam/rand/pubs/research_reports/RRA2800/RRA2849-1/RAND_RRA2849-1.pdf)
+
+[[Przykłady Sponge: Ataki na opóźnienia energetyczne w sieciach
+neuronowych: Arxiv White
+Paper]{.underline}](https://arxiv.org/abs/2006.03463) **arXiv**
+
+[[Incydent bezpieczeństwa Sourcegraph dotyczący manipulacji limitami API
+i ataku
+DoS]{.underline}](https://about.sourcegraph.com/blog/security-update-august-2023)
+**Sourcegraph**
+
+**Powiązane ramy i taksonomie**
+
+W tej sekcji znajdują się wyczerpujące informacje, scenariusze,
+strategie związane z wdrażaniem infrastruktury, stosowane środki
+kontroli środowiska i inne najlepsze praktyki.
+
+- [[MITRE CWE-400: Niekontrolowane zużycie
+  zasobów]{.underline}](https://cwe.mitre.org/data/definitions/400.html)
+  **Wykaz typowych słabych punktów MITRE**
+
+- [[AML.TA0000 Dostęp do modelu ML: Mitre
+  ATLAS]{.underline}](https://atlas.mitre.org/tactics/AML.TA0000) i
+  [[AML.T0024 Wyciek danych poprzez API wnioskowania
+  ML]{.underline}](https://atlas.mitre.org/techniques/AML.T0024) **MITRE
+  ATLAS**
+
+- [[AML.T0029 -- Odmowa dostępu do usługi
+  ML]{.underline}](https://atlas.mitre.org/techniques/AML.T0029) **MITRE
+  ATLAS**
+
+- [[AML.T0034 -- Pozyskiwanie
+  kosztów]{.underline}](https://atlas.mitre.org/techniques/AML.T0034)
+  **MITRE ATLAS**
+
+- [[AML.T0025 --- Wyciek danych za pomocą środków
+  cybernetycznych]{.underline}](https://atlas.mitre.org/techniques/AML.T0025)
+  **MITRE ATLAS**
+
+- [[OWASP Machine Learning Security Top Ten --- ML05:2023 Kradzież
+  modelu]{.underline}](https://owasp.org/www-project-machine-learning-security-top-10/docs/ML05_2023-Model_Theft.html)
+  **OWASP ML Top 10**
+
+- [[API4:2023 --- Nieograniczone zużycie
+  zasobów]{.underline}](https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/)
+  **OWASP Web Application Top 10**
+
+- [[OWASP Zarządzanie
+  zasobami]{.underline}](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)
+  **OWASP Praktyki bezpiecznego kodowania**
