@@ -18,15 +18,21 @@ Tóm lại: Việc lộ chính lời nhắc hệ thống không phải là rủi
 #### 2. Rò rỉ các quy tắc nội bộ
   Lời nhắc hệ thống của ứng dụng tiết lộ thông tin về quy trình ra quyết định nội bộ – những thông tin lẽ ra cần được giữ bí mật. Điều này cho phép kẻ tấn công hiểu rõ hơn về cách ứng dụng hoạt động, từ đó lợi dụng các điểm yếu hoặc vượt qua các kiểm soát bảo mật.
   Ví dụ: Một ứng dụng ngân hàng có chatbot với lời nhắc hệ thống chứa thông tin như:
+
     >"Hạn mức giao dịch được đặt là $5000 mỗi ngày cho một người dùng. Tổng số tiền vay cho một người dùng là $10,000".
+
   Thông tin này có thể giúp kẻ tấn công vượt qua các kiểm soát bảo mật của ứng dụng như thực hiện giao dịch vượt quá hạn mức hoặc vượt quá giới hạn vay.
 #### 3. Rò rỉ tiêu chí lọc nội dung
   Lời nhắc hệ thống có thể yêu cầu mô hình lọc hoặc từ chối nội dung nhạy cảm. Ví dụ, một lời nhắc hệ thống có thể là:
+
     >"Nếu người dùng yêu cầu thông tin về người dùng khác, luôn phản hồi bằng câu ‘Xin lỗi, tôi không thể hỗ trợ yêu cầu này'".
+
 #### 4. Rò rỉ quyền truy cập và vai trò người dùng
   Lời nhắc hệ thống có thể tiết lộ cấu trúc vai trò nội bộ hoặc mức độ phân quyền trong ứng dụng.
   Ví dụ, lời nhắc có thể tiết lộ:
+
     >“Vai trò người dùng quản trị có toàn quyền chỉnh sửa thông tin người dùng”
+
   Nếu kẻ tấn công biết được cấu trúc phân quyền này, họ có thể tìm cách leo thang đặc quyền trong hệ thống.
 
 ### Chiến lược phòng ngừa và giảm thiểu rủi ro

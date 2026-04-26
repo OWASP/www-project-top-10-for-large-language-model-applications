@@ -1,4 +1,4 @@
-﻿## Thư Ngỏ từ Người Phụ Trách Dự Án
+## Thư Ngỏ từ Người Phụ Trách Dự Án
 
 Danh sách OWASP Top 10 cho Các Ứng dụng Mô hình Ngôn ngữ Lớn (LLM) bắt đầu vào năm 2023 như một nỗ lực do cộng đồng thúc đẩy nhằm nêu bật và giải quyết các vấn đề bảo mật cụ thể cho các ứng dụng AI. Từ thời điểm đó, công nghệ AI đã tiếp tục lan rộng khắp các ngành và các ứng dụng, và các rủi ro đi kèm cũng vậy. Khi các Mô hình Ngôn ngữ lớn được tích hợp sâu hơn vào mọi thứ từ tương tác với khách hàng đến hoạt động nội bộ, các nhà phát triển và chuyên gia bảo mật đang phát hiện ra những lỗ hổng mới—và các cách để chống lại chúng.
 

@@ -1,4 +1,4 @@
-﻿## LLM09:2025 Thông tin sai lệch
+## LLM09:2025 Thông tin sai lệch
 
 ### Mô tả
 
