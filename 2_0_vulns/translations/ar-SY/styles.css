@@ -194,6 +194,47 @@ p {
   margin-top: 0;
 }
 
+/*
+ * <pre>/<code> blocks come from indented or fenced code in the source markdown.
+ * The OWASP English source uses 4-space-indented blocks to display sample
+ * system prompts, model responses, and similar verbatim quotes. Without
+ * `white-space: pre-wrap` the default `pre` keeps everything on one line and
+ * non-Latin sentences overflow the page width — Puppeteer then scales the
+ * entire PDF down to fit, breaking heading-size detection downstream.
+ * Wrapping inside the block keeps the page width contained.
+ */
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 20px;
+  padding: 10px 14px;
+  background-color: #f5f7fa;
+  border-left: 4px solid rgb(7, 151, 252);
+  border-radius: 4px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  page-break-inside: avoid;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+code {
+  font-family: 'Barlow', sans-serif;
+  background-color: #f5f7fa;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 0.95em;
+}
+
+
 p,
 ul,
 ol {
