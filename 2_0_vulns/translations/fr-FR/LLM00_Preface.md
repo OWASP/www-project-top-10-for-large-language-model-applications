@@ -41,5 +41,5 @@ LinkedIn: <https://www.linkedin.com/in/milly-vaillant/>
 Reconnaissant la nature technique et critique du Top 10 OWASP pour les applications de grands modèles de langage, nous avons consciemment choisi de faire appel uniquement à des traducteurs humains pour la création de cette traduction. Les traducteurs mentionnés ci-dessus possèdent non seulement une connaissance technique approfondie du contenu original, mais aussi la maîtrise linguistique nécessaire pour faire de cette traduction un succès.
 
 #### Talesh Seeparsan
-Responsable de la traduction, Top 10 OWASP pour les applications d'IA LLM
+Responsable de la traduction, OWASP Top 10 for Large Language Model Applications
 LinkedIn : https://www.linkedin.com/in/talesh/
