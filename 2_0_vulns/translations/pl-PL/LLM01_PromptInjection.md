@@ -1,278 +1,125 @@
-**LLM01:2025 Wstrzyknięcie polecenia**
-
-**Opis**
-
-Luka w zabezpieczeniach związana z wstrzyknięciem polecenia występuje,
-gdy polecenia użytkownika zmieniają zachowanie lub wynik działania
-modelu LLM w niezamierzony sposób. Dane wejściowe mogą wpływać na model,
-nawet jeśli są niewidoczne dla ludzi, dlatego wstrzyknięcia poleceń nie
-muszą być widoczne/czytelne dla ludzi, o ile treść jest analizowana
-przez model.
-
-Luki w zabezpieczeniach związane z wstrzykiwaniem poleceń występują w
-sposobie przetwarzania poleceń przez modele oraz w sposobie, w jaki dane
-wejściowe mogą zmusić model do nieprawidłowego przekazania danych
-poleceń do innych części modelu, potencjalnie powodując naruszenie
-wytycznych, generowanie szkodliwych treści, umożliwienie
-nieautoryzowanego dostępu lub wpływ na krytyczne decyzje. Chociaż
-techniki takie jak generowanie rozszerzone o odzyskiwanie (RAG) i
-dostrajanie mają na celu zwiększenie trafności i dokładności wyników
-LLM, badania pokazują, że nie eliminują one całkowicie luk w
-zabezpieczeniach związanych z wstrzykiwaniem poleceń.
-
-Chociaż wstrzyknięcie poleceń i łamanie zabezpieczeń są pojęciami
-powiązanymi w kontekście bezpieczeństwa LLM, często są one używane
-zamiennie. Wstrzyknięcie poleceń polega na manipulowaniu odpowiedziami
-modelu za pomocą określonych danych wejściowych w celu zmiany jego
-zachowania, co może obejmować ominięcie środków bezpieczeństwa. Łamanie
-zabezpieczeń jest formą wstrzyknięcia poleceń, w której atakujący
-dostarcza dane wejściowe, które powodują, że model całkowicie ignoruje
-swoje protokoły bezpieczeństwa. Programiści mogą wbudować zabezpieczenia
-w monity systemowe i obsługę danych wejściowych, aby pomóc w
-ograniczeniu ataków typu wstrzyknięcie poleceń, ale skuteczne
-zapobieganie łamaniu zabezpieczeń wymaga ciągłych aktualizacji
-mechanizmów szkolenia i bezpieczeństwa modelu.
-
-**Rodzaje podatności na ataki typu wstrzyknięcia poleceń**
-
-**Bezpośrednie ataki typu wstrzyknięcia poleceń**
-
-Bezpośrednie wstrzyknięcia poleceń mają miejsce, gdy dane wejściowe
-użytkownika bezpośrednio zmieniają zachowanie modelu w niezamierzony lub
-nieoczekiwany sposób. Dane wejściowe mogą być zamierzone (tj. złośliwy
-podmiot celowo tworzy polecenie w celu wykorzystania modelu) lub
-niezamierzone (tj. użytkownik nieumyślnie dostarcza dane wejściowe,
-które wywołują nieoczekiwane zachowanie).
-
-**Pośrednie wstrzyknięcia poleceń**
-
-Pośrednie wstrzyknięcia promptów występują, gdy LLM akceptuje dane
-wejściowe z zewnętrznych źródeł, takich jak strony internetowe lub
-pliki. Zewnętrzne źródło może zawierać dane, które po zinterpretowaniu
-przez model zmieniają jego zachowanie w niezamierzony lub nieoczekiwany
-sposób. Podobnie jak wstrzyknięcia bezpośrednie, wstrzyknięcia pośrednie
-mogą być zamierzone lub niezamierzone.
-
-Nasilenie i charakter skutków udanego ataku wstrzyknięcia podpowiedzi
-mogą się znacznie różnić i zależą w dużej mierze zarówno od kontekstu
-biznesowego, w którym działa model, jak i od agencji, która go
-zaprojektowała. Ogólnie rzecz biorąc, wstrzyknięcie podpowiedzi może
-jednak prowadzić do niezamierzonych skutków, w tym między innymi:
+## LLM01:2025 Wstrzyknięcie polecenia
 
-Ujawnienie poufnych informacji
-
-Ujawnienie poufnych informacji o infrastrukturze systemu AI lub
-podpowiedziach systemu
-
-Manipulowanie treścią prowadząca do nieprawidłowych lub stronniczych
-wyników
+### Opis
 
-Umożliwienie nieautoryzowanego dostępu do funkcji dostępnych dla LLM
-
-Wykonywanie dowolnych poleceń w połączonych systemach
+Luka w zabezpieczeniach związana z wstrzyknięciem polecenia występuje, gdy polecenia użytkownika zmieniają zachowanie lub wynik działania modelu LLM w niezamierzony sposób. Dane wejściowe mogą wpływać na model, nawet jeśli są niewidoczne dla ludzi, dlatego wstrzyknięcia poleceń nie muszą być widoczne/czytelne dla ludzi, o ile treść jest analizowana przez model.
 
-Manipulowanie krytycznymi procesami decyzyjnymi
+Luki w zabezpieczeniach związane z wstrzykiwaniem poleceń występują w sposobie przetwarzania poleceń przez modele oraz w sposobie, w jaki dane wejściowe mogą zmusić model do nieprawidłowego przekazania danych poleceń do innych części modelu, potencjalnie powodując naruszenie wytycznych, generowanie szkodliwych treści, umożliwienie nieautoryzowanego dostępu lub wpływ na krytyczne decyzje. Chociaż techniki takie jak generowanie rozszerzone o odzyskiwanie (RAG) i dostrajanie mają na celu zwiększenie trafności i dokładności wyników LLM, badania pokazują, że nie eliminują one całkowicie luk w zabezpieczeniach związanych z wstrzykiwaniem poleceń.
 
-Rozwój wielomodalnej sztucznej inteligencji, która przetwarza
-jednocześnie wiele typów danych, wprowadza wyjątkowe ryzyko związane z
-wstrzyknięciem poleceń. Złośliwi aktorzy mogą wykorzystać interakcje
-między modalnościami, na przykład ukrywając instrukcje w obrazach
-towarzyszących nieszkodliwym tekstom. Złożoność tych systemów zwiększa
-powierzchnię ataku. Modele wielomodalne mogą być również podatne na nowe
-ataki między modalnościami, które są trudne do wykrycia i złagodzenia
-przy użyciu obecnych technik. Solidne zabezpieczenia specyficzne dla
-modeli wielomodalnych są ważnym obszarem dalszych badań i rozwoju.
+Chociaż wstrzyknięcie poleceń i łamanie zabezpieczeń są pojęciami powiązanymi w kontekście bezpieczeństwa LLM, często są one używane zamiennie. Wstrzyknięcie poleceń polega na manipulowaniu odpowiedziami modelu za pomocą określonych danych wejściowych w celu zmiany jego zachowania, co może obejmować ominięcie środków bezpieczeństwa. Łamanie zabezpieczeń jest formą wstrzyknięcia poleceń, w której atakujący dostarcza dane wejściowe, które powodują, że model całkowicie ignoruje swoje protokoły bezpieczeństwa. Programiści mogą wbudować zabezpieczenia w monity systemowe i obsługę danych wejściowych, aby pomóc w ograniczeniu ataków typu wstrzyknięcie poleceń, ale skuteczne zapobieganie łamaniu zabezpieczeń wymaga ciągłych aktualizacji mechanizmów szkolenia i bezpieczeństwa modelu.
 
-**Strategie zapobiegania i łagodzenia skutków**
+### Rodzaje podatności na ataki typu wstrzyknięcia poleceń
 
-Luki w zabezpieczeniach związane z wstrzykiwaniem poleceń są możliwe ze
-względu na charakter generatywnej sztucznej inteligencji. Biorąc pod
-uwagę stochastyczny wpływ leżący u podstaw działania modeli, nie jest
-jasne, czy istnieją niezawodne metody zapobiegania wstrzykiwaniu
-poleceń. Jednak następujące środki mogą złagodzić skutki wstrzykiwania
-poleceń:
+#### Bezpośrednie ataki typu wstrzyknięcia poleceń
 
-**1. Ogranicz zachowanie modelu**
+Bezpośrednie wstrzyknięcia poleceń mają miejsce, gdy dane wejściowe użytkownika bezpośrednio zmieniają zachowanie modelu w niezamierzony lub nieoczekiwany sposób. Dane wejściowe mogą być zamierzone (tj. złośliwy podmiot celowo tworzy polecenie w celu wykorzystania modelu) lub niezamierzone (tj. użytkownik nieumyślnie dostarcza dane wejściowe, które wywołują nieoczekiwane zachowanie).
 
-Podaj konkretne instrukcje dotyczące roli, możliwości i ograniczeń
-modelu w ramach systemu podpowiedzi. Egzekwuj ścisłe przestrzeganie
-kontekstu, ogranicz odpowiedzi do określonych zadań lub tematów i
-poinstruuj model, aby ignorował próby modyfikacji podstawowych
-instrukcji.
+#### Pośrednie wstrzyknięcia poleceń
 
-**2. Zdefiniuj i zweryfikuj oczekiwane formaty wyjściowe**
+Pośrednie wstrzyknięcia promptów występują, gdy LLM akceptuje dane wejściowe z zewnętrznych źródeł, takich jak strony internetowe lub pliki. Zewnętrzne źródło może zawierać dane, które po zinterpretowaniu przez model zmieniają jego zachowanie w niezamierzony lub nieoczekiwany sposób. Podobnie jak wstrzyknięcia bezpośrednie, wstrzyknięcia pośrednie mogą być zamierzone lub niezamierzone.
 
-Określ jasne formaty wyników, wymagaj szczegółowego uzasadnienia i
-podania źródeł oraz używaj deterministycznego kodu do sprawdzania
-zgodności z tymi formatami.
+Nasilenie i charakter skutków udanego ataku wstrzyknięcia podpowiedzi mogą się znacznie różnić i zależą w dużej mierze zarówno od kontekstu biznesowego, w którym działa model, jak i od agencji, która go zaprojektowała. Ogólnie rzecz biorąc, wstrzyknięcie podpowiedzi może jednak prowadzić do niezamierzonych skutków, w tym między innymi:
 
-**3. Wprowadź filtrowanie danych wejściowych i wyjściowych**
+- Ujawnienie poufnych informacji
+- Ujawnienie poufnych informacji o infrastrukturze systemu AI lub podpowiedziach systemu
+- Manipulowanie treścią prowadząca do nieprawidłowych lub stronniczych wyników
+- Umożliwienie nieautoryzowanego dostępu do funkcji dostępnych dla LLM
+- Wykonywanie dowolnych poleceń w połączonych systemach
+- Manipulowanie krytycznymi procesami decyzyjnymi
 
-Zdefiniuj kategorie danych wrażliwych i opracuj zasady identyfikacji i
-postępowania z takimi treściami. Zastosuj filtry semantyczne i
-sprawdzanie ciągów znaków w celu wykrycia niedozwolonych treści. Oceniaj
-odpowiedzi za pomocą trójkąta RAG: oceń trafność kontekstu, uzasadnienie
-i trafność pytania/odpowiedzi, aby zidentyfikować potencjalnie złośliwe
-wyniki.
+Rozwój wielomodalnej sztucznej inteligencji, która przetwarza jednocześnie wiele typów danych, wprowadza wyjątkowe ryzyko związane z wstrzyknięciem poleceń. Złośliwi aktorzy mogą wykorzystać interakcje między modalnościami, na przykład ukrywając instrukcje w obrazach towarzyszących nieszkodliwym tekstom. Złożoność tych systemów zwiększa powierzchnię ataku. Modele wielomodalne mogą być również podatne na nowe ataki między modalnościami, które są trudne do wykrycia i złagodzenia przy użyciu obecnych technik. Solidne zabezpieczenia specyficzne dla modeli wielomodalnych są ważnym obszarem dalszych badań i rozwoju.
 
-**4. Egzekwuj kontrolę uprawnień i dostęp oparty na minimalnych
-uprawnieniach**
+### Strategie zapobiegania i łagodzenia skutków
 
-Wyposaż aplikację we własne tokeny API w celu rozszerzenia
-funkcjonalności i obsługuj te funkcje w kodzie, zamiast udostępniać je
-modelowi. Ogranicz uprawnienia dostępu modelu do minimum niezbędnego do
-wykonywania zamierzonych operacji.
+Luki w zabezpieczeniach związane z wstrzykiwaniem poleceń są możliwe ze względu na charakter generatywnej sztucznej inteligencji. Biorąc pod uwagę stochastyczny wpływ leżący u podstaw działania modeli, nie jest jasne, czy istnieją niezawodne metody zapobiegania wstrzykiwaniu poleceń. Jednak następujące środki mogą złagodzić skutki wstrzykiwania poleceń:
 
-**5. Wymagaj zatwierdzania przez człowieka w przypadku działań wysokiego
-ryzyka**
+#### 1. Ogranicz zachowanie modelu
 
-Wprowadź kontrolę z udziałem człowieka dla operacji uprzywilejowanych,
-aby zapobiec nieautoryzowanym działaniom.
+Podaj konkretne instrukcje dotyczące roli, możliwości i ograniczeń modelu w ramach systemu podpowiedzi. Egzekwuj ścisłe przestrzeganie kontekstu, ogranicz odpowiedzi do określonych zadań lub tematów i poinstruuj model, aby ignorował próby modyfikacji podstawowych instrukcji.
 
-**6. Segreguj i identyfikuj treści zewnętrzne**
+#### 2. Zdefiniuj i zweryfikuj oczekiwane formaty wyjściowe
 
-Oddziel i wyraźnie oznacz treści, którym nie ufasz, aby ograniczyć ich
-wpływ na polecenia użytkownika.
+Określ jasne formaty wyników, wymagaj szczegółowego uzasadnienia i podania źródeł oraz używaj deterministycznego kodu do sprawdzania zgodności z tymi formatami.
 
-**7. Przeprowadź testy przeciwnika i symulacje ataków**
+#### 3. Wprowadź filtrowanie danych wejściowych i wyjściowych
 
-Regularnie przeprowadzaj testy penetracyjne i symulacje naruszeń,
-traktując model jako użytkownika, któremu nie ufasz, aby sprawdzić
-skuteczność granic zaufania i kontroli dostępu.
+Zdefiniuj kategorie danych wrażliwych i opracuj zasady identyfikacji i postępowania z takimi treściami. Zastosuj filtry semantyczne i sprawdzanie ciągów znaków w celu wykrycia niedozwolonych treści. Oceniaj odpowiedzi za pomocą trójkąta RAG: oceń trafność kontekstu, uzasadnienie i trafność pytania/odpowiedzi, aby zidentyfikować potencjalnie złośliwe wyniki.
 
-**Przykładowe scenariusze ataków**
+#### 4. Egzekwuj kontrolę uprawnień i dostęp oparty na minimalnych uprawnieniach
 
-**Scenariusz nr 1: Bezpośrednie wstrzyknięcie**
+Wyposaż aplikację we własne tokeny API w celu rozszerzenia funkcjonalności i obsługuj te funkcje w kodzie, zamiast udostępniać je modelowi. Ogranicz uprawnienia dostępu modelu do minimum niezbędnego do wykonywania zamierzonych operacji.
 
-Atakujący wstrzykuje polecenie do chatbota obsługi klienta, instruując
-go, aby zignorował poprzednie wytyczne, zapytał o prywatne zasoby danych
-i wysłał e-maile, co prowadzi do nieautoryzowanego dostępu i eskalacji
-uprawnień.
+#### 5. Wymagaj zatwierdzania przez człowieka w przypadku działań wysokiego ryzyka
 
-**Scenariusz nr 2: Pośrednie wstrzyknięcie**
+Wprowadź kontrolę z udziałem człowieka dla operacji uprzywilejowanych, aby zapobiec nieautoryzowanym działaniom.
 
-Użytkownik wykorzystuje LLM do podsumowania strony internetowej
-zawierającej ukryte instrukcje, które powodują, że LLM wstawia obraz
-łączący się z adresem URL, co prowadzi do wycieku prywatnej rozmowy.
+#### 6. Segreguj i identyfikuj treści zewnętrzne
 
-**Scenariusz nr 3: Niezamierzone wstrzyknięcie**
+Oddziel i wyraźnie oznacz treści, którym nie ufasz, aby ograniczyć ich wpływ na polecenia użytkownika.
 
-Firma umieszcza w opisie stanowiska pracę instrukcję dotyczącą
-identyfikacji aplikacji wygenerowanych przez sztuczną inteligencję.
-Kandydat, nieświadomy tej instrukcji, używa LLM do optymalizacji swojego
-CV, nieumyślnie uruchamiając wykrywanie sztucznej inteligencji.
+#### 7. Przeprowadź testy przeciwnika i symulacje ataków
 
-**Scenariusz nr 4: Celowy wpływ na model**
+Regularnie przeprowadzaj testy penetracyjne i symulacje naruszeń, traktując model jako użytkownika, któremu nie ufasz, aby sprawdzić skuteczność granic zaufania i kontroli dostępu.
 
-Atakujący modyfikuje dokument w repozytorium używanym przez aplikację
-Retrieval-Augmented Generation (RAG). Gdy zapytanie użytkownika zwraca
-zmodyfikowaną treść, złośliwe instrukcje zmieniają wynik LLM, generując
-mylące wyniki.
+### Przykładowe scenariusze ataków
 
-**Scenariusz nr 5: Wstrzyknięcie kodu**
+#### Scenariusz nr 1: Bezpośrednie wstrzyknięcie
 
-Atakujący wykorzystuje lukę (CVE-2024-5184) w asystencie poczty
-elektronicznej opartym na LLM, aby wstrzyknąć złośliwe polecenia,
-umożliwiające dostęp do poufnych informacji i manipulowanie treścią
-wiadomości e-mail.
+Atakujący wstrzykuje polecenie do chatbota obsługi klienta, instruując go, aby zignorował poprzednie wytyczne, zapytał o prywatne zasoby danych i wysłał e-maile, co prowadzi do nieautoryzowanego dostępu i eskalacji uprawnień.
 
-**Scenariusz nr 6: Podział ładunku**
+#### Scenariusz nr 2: Pośrednie wstrzyknięcie
 
-Atakujący przesyła CV z podzielonymi złośliwymi poleceniami. Kiedy LLM
-jest używany do oceny kandydata, połączone polecenia manipulują
-odpowiedzią modelu, co skutkuje pozytywną rekomendacją pomimo
-rzeczywistej treści CV.
+Użytkownik wykorzystuje LLM do podsumowania strony internetowej zawierającej ukryte instrukcje, które powodują, że LLM wstawia obraz łączący się z adresem URL, co prowadzi do wycieku prywatnej rozmowy.
 
-**Scenariusz nr 7: Wstrzyknięcie multimodalne**
+#### Scenariusz nr 3: Niezamierzone wstrzyknięcie
 
-Atakujący osadza złośliwy polecenie w obrazie towarzyszącym
-nieszkodliwemu tekstowi. Gdy wielomodalna sztuczna inteligencja
-przetwarza jednocześnie obraz i tekst, ukryte polecenie zmienia
-zachowanie modelu, potencjalnie prowadząc do nieautoryzowanych działań
-lub ujawnienia poufnych informacji.
+Firma umieszcza w opisie stanowiska pracę instrukcję dotyczącą identyfikacji aplikacji wygenerowanych przez sztuczną inteligencję. Kandydat, nieświadomy tej instrukcji, używa LLM do optymalizacji swojego CV, nieumyślnie uruchamiając wykrywanie sztucznej inteligencji.
 
-**Scenariusz nr 8: Wrogi sufiks**
+#### Scenariusz nr 4: Celowy wpływ na model
 
-Atakujący dodaje do monitu pozornie bezsensowny ciąg znaków, który w
-złośliwy sposób wpływa na wynik LLM, omijając środki bezpieczeństwa.
+Atakujący modyfikuje dokument w repozytorium używanym przez aplikację Retrieval-Augmented Generation (RAG). Gdy zapytanie użytkownika zwraca zmodyfikowaną treść, złośliwe instrukcje zmieniają wynik LLM, generując mylące wyniki.
 
-**Scenariusz nr 9: Atak wielojęzyczny/zaciemniający**
+#### Scenariusz nr 5: Wstrzyknięcie kodu
 
-Atakujący używa wielu języków lub koduje złośliwe instrukcje (np. za
-pomocą Base64 lub emoji) w celu ominięcia filtrów i manipulowania
-zachowaniem LLM.
+Atakujący wykorzystuje lukę (CVE-2024-5184) w asystencie poczty elektronicznej opartym na LLM, aby wstrzyknąć złośliwe polecenia, umożliwiające dostęp do poufnych informacji i manipulowanie treścią wiadomości e-mail.
 
-**Linki referencyjne**
+#### Scenariusz nr 6: Podział ładunku
 
-[[Luki w zabezpieczeniach wtyczki ChatGPT --- czat z
-kodem]{.underline}](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/)
-**Embrace the Red**
+Atakujący przesyła CV z podzielonymi złośliwymi poleceniami. Kiedy LLM jest używany do oceny kandydata, połączone polecenia manipulują odpowiedzią modelu, co skutkuje pozytywną rekomendacją pomimo rzeczywistej treści CV.
 
-[[Fałszowanie żądań między wtyczkami ChatGPT i wstrzykiwanie
-poleceń]{.underline}](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./)
-**Embrace the Red**
+#### Scenariusz nr 7: Wstrzyknięcie multimodalne
 
-**Arxiv**
+Atakujący osadza złośliwy polecenie w obrazie towarzyszącym nieszkodliwemu tekstowi. Gdy wielomodalna sztuczna inteligencja przetwarza jednocześnie obraz i tekst, ukryte polecenie zmienia zachowanie modelu, potencjalnie prowadząc do nieautoryzowanych działań lub ujawnienia poufnych informacji.
 
-[[Obrona ChatGPT przed atakiem typu złamanie zabezpieczeń poprzez
-samoprzypomnienie]{.underline}](https://www.researchsquare.com/article/rs-2873090/v1)
-**Research Square**
+#### Scenariusz nr 8: Wrogi sufiks
 
-[[Atak typu wstrzyknięcie polecenia na aplikacje zintegrowane z
-LLM]{.underline}](https://arxiv.org/abs/2306.05499) **Cornell
-University**
+Atakujący dodaje do monitu pozornie bezsensowny ciąg znaków, który w złośliwy sposób wpływa na wynik LLM, omijając środki bezpieczeństwa.
 
-[[Wstrzyknij mój plik PDF: wstrzyknięcie polecenia dla Państwa
-CV]{.underline}](https://kai-greshake.de/posts/inject-my-pdf) **Kai
-Greshake**
+#### Scenariusz nr 9: Atak wielojęzyczny/zaciemniający
 
-[[Nie to, na co się Państwo zapisali: Naruszenie bezpieczeństwa
-rzeczywistych aplikacji zintegrowanych z LLM poprzez pośrednie
-wstrzyknięcie
-polecenia]{.underline}](https://arxiv.org/pdf/2302.12173.pdf)
-**Uniwersytet Cornell**
+Atakujący używa wielu języków lub koduje złośliwe instrukcje (np. za pomocą Base64 lub emoji) w celu ominięcia filtrów i manipulowania zachowaniem LLM.
 
-[[Modelowanie zagrożeń aplikacji
-LLM]{.underline}](https://aivillage.org/large%20language%20models/threat-modeling-llm/)
-**AI Village**
-
-[[Ograniczanie wpływu ataków typu wstrzyknięcie polecenia poprzez
-projektowanie]{.underline}](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/)
-**Kudelski Security**
-
-[[Wrogie uczenie maszynowe: taksonomia i terminologia ataków oraz
-środków zaradczych
-(nist.gov)]{.underline}](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
-
-[[2407.07403 Przegląd ataków na duże modele wizualno-językowe: zasoby,
-postępy i przyszłe trendy
-(arxiv.org)]{.underline}](https://arxiv.org/abs/2407.07403)
-
-[[Wykorzystywanie programowego zachowania modeli LLM: podwójne
-zastosowanie poprzez standardowe ataki
-bezpieczeństwa]{.underline}](https://ieeexplore.ieee.org/document/10579515)
-
-[[Uniwersalne i przenośne ataki przeciwników na zharmonizowane modele
-językowe (arxiv.org)]{.underline}](https://arxiv.org/abs/2307.15043)
-
-[[Od ChatGPT do ThreatGPT: wpływ generatywnej sztucznej inteligencji na
-cyberbezpieczeństwo i prywatność
-(arxiv.org)]{.underline}](https://arxiv.org/abs/2307.00691)
-
-**Powiązane ramy i taksonomie**
-
-W tej sekcji znajdą Państwo wyczerpujące informacje, scenariusze i
-strategie dotyczące wdrażania infrastruktury, stosowanych środków
-kontroli środowiska oraz innych najlepszych praktyk.
-
-- [[AML.T0051.000 -- Wstrzyknięcie polecenia LLM:
-  bezpośrednie]{.underline}](https://atlas.mitre.org/techniques/AML.T0051.000)
-  **MITRE ATLAS**
-
-- [[AML.T0051.001 -- Wstrzyknięcie polecenia LLM:
-  pośrednie]{.underline}](https://atlas.mitre.org/techniques/AML.T0051.001)
-  **MITRE ATLAS**
-
-- [[AML.T0054 -- Wstrzyknięcie łamania zabezpieczeń LLM:
-  bezpośrednie]{.underline}](https://atlas.mitre.org/techniques/AML.T0054)
-  **MITRE ATLAS**
+### Linki referencyjne
+
+1. [Luki w zabezpieczeniach wtyczki ChatGPT --- czat z kodem](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
+2. [Fałszowanie żądań między wtyczkami ChatGPT i wstrzykiwanie poleceń](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) **Embrace the Red**
+3. **Arxiv**
+4. [Obrona ChatGPT przed atakiem typu złamanie zabezpieczeń poprzez samoprzypomnienie](https://www.researchsquare.com/article/rs-2873090/v1) **Research Square**
+5. [Atak typu wstrzyknięcie polecenia na aplikacje zintegrowane z LLM](https://arxiv.org/abs/2306.05499) **Cornell University**
+6. [Wstrzyknij mój plik PDF: wstrzyknięcie polecenia dla Państwa CV](https://kai-greshake.de/posts/inject-my-pdf) **Kai Greshake**
+7. [Nie to, na co się Państwo zapisali: Naruszenie bezpieczeństwa rzeczywistych aplikacji zintegrowanych z LLM poprzez pośrednie wstrzyknięcie polecenia](https://arxiv.org/pdf/2302.12173.pdf) **Uniwersytet Cornell**
+8. [Modelowanie zagrożeń aplikacji LLM](https://aivillage.org/large%20language%20models/threat-modeling-llm/) **AI Village**
+9. [Ograniczanie wpływu ataków typu wstrzyknięcie polecenia poprzez projektowanie](https://research.kudelskisecurity.com/2023/05/25/reducing-the-impact-of-prompt-injection-attacks-through-design/) **Kudelski Security**
+10. [Wrogie uczenie maszynowe: taksonomia i terminologia ataków oraz środków zaradczych (nist.gov)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.pdf)
+11. [2407.07403 Przegląd ataków na duże modele wizualno-językowe: zasoby, postępy i przyszłe trendy (arxiv.org)](https://arxiv.org/abs/2407.07403)
+12. [Wykorzystywanie programowego zachowania modeli LLM: podwójne zastosowanie poprzez standardowe ataki bezpieczeństwa](https://ieeexplore.ieee.org/document/10579515)
+13. [Uniwersalne i przenośne ataki przeciwników na zharmonizowane modele językowe (arxiv.org)](https://arxiv.org/abs/2307.15043)
+14. [Od ChatGPT do ThreatGPT: wpływ generatywnej sztucznej inteligencji na cyberbezpieczeństwo i prywatność (arxiv.org)](https://arxiv.org/abs/2307.00691)
+
+### Powiązane ramy i taksonomie
+
+W tej sekcji znajdą Państwo wyczerpujące informacje, scenariusze i strategie dotyczące wdrażania infrastruktury, stosowanych środków kontroli środowiska oraz innych najlepszych praktyk.
+
+- [AML.T0051.000 -- Wstrzyknięcie polecenia LLM: bezpośrednie](https://atlas.mitre.org/techniques/AML.T0051.000) **MITRE ATLAS**
+- [AML.T0051.001 -- Wstrzyknięcie polecenia LLM: pośrednie](https://atlas.mitre.org/techniques/AML.T0051.001) **MITRE ATLAS**
+- [AML.T0054 -- Wstrzyknięcie łamania zabezpieczeń LLM: bezpośrednie](https://atlas.mitre.org/techniques/AML.T0054) **MITRE ATLAS**
