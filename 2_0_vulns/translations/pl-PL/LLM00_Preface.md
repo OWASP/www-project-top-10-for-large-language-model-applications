@@ -29,3 +29,14 @@ Kierownik projektu OWASP Top 10 dla aplikacji wykorzystujących duże modele ję
 #### Ads Dawson
 
 Kierownik techniczny i kierownik ds. wpisów dotyczących luk w zabezpieczeniach OWASP Top 10 dla aplikacji wykorzystujących duże modele językowe LinkedIn: [https://www.linkedin.com/in/adamdawson0/](https://www.linkedin.com/in/adamdawson0/)
+
+### Polish Translation Team
+Name
+LinkedIn
+
+### About this translation
+Recognizing the technical and critical nature of the OWASP Top 10 for Large Language Model Applications, we consciously chose to employ only human translators in the creation of this translation. The translators listed above not only have a deep technical knowledge of the original content, but also the fluency required to make this translation a success.
+
+#### Talesh Seeparsan
+Translation Lead, OWASP Top 10 for AI Applications LLM
+LinkedIn: https://www.linkedin.com/in/talesh/
