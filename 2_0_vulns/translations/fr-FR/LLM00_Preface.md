@@ -32,7 +32,14 @@ Technical Lead & Vulnerability Entries Lead
 OWASP Top 10 for Large Language Model Applications
 LinkedIn: <https://www.linkedin.com/in/adamdawson0/>
 
-#### Équipe de traduction française
+### Équipe de traduction française
 
-Milly VAILLANT
+Milly Vaillant
 LinkedIn: <https://www.linkedin.com/in/milly-vaillant/>
+
+### À propos de cette traduction
+Reconnaissant la nature technique et critique du Top 10 OWASP pour les applications de grands modèles de langage, nous avons consciemment choisi de faire appel uniquement à des traducteurs humains pour la création de cette traduction. Les traducteurs mentionnés ci-dessus possèdent non seulement une connaissance technique approfondie du contenu original, mais aussi la maîtrise linguistique nécessaire pour faire de cette traduction un succès.
+
+#### Talesh Seeparsan
+Responsable de la traduction, Top 10 OWASP pour les applications d'IA LLM
+LinkedIn : https://www.linkedin.com/in/talesh/
