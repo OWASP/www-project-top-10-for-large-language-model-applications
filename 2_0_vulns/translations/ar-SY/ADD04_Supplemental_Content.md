@@ -1,38 +1,37 @@
-## العنوان
-أهم 10 مخاطر وحلول لتطبيقات نماذج اللغة الكبيرة والذكاء الاصطناعي التوليدي لعام 2025
+## Title
+2025 Top 10 Risk & Mitigations for LLMs and Gen AI Apps
 
-## وصف قصير
-استكشف أحدث 10 مخاطر وثغرات وحلول لتطوير وتأمين تطبيقات الذكاء الاصطناعي التوليدي ونماذج اللغة الكبيرة عبر مراحل التطوير والنشر والإدارة.
+## Short Description
+Expore the latest Top 10 risks, vulnerabilities and mitigations for developing and securing generative AI and large language model applications across the development, deployment and management lifecycle.
 
-## وصف طويل
-بدأ مشروع أواسب لأهم 10 ثغرات في تطبيقات نماذج اللغة الكبيرة في عام 2023 كمبادرة مجتمعية تهدف إلى تسليط الضوء على مشكلات الأمان الخاصة بتطبيقات الذكاء الاصطناعي ومعالجتها. ومنذ ذلك الحين، واصل هذا المجال انتشاره عبر مختلف الصناعات والتطبيقات، وازدادت معه المخاطر المصاحبة. ومع دمج نماذج اللغة الكبيرة بشكل أعمق في كل شيء، من تفاعلات العملاء إلى العمليات الداخلية، يكتشف المطوّرون والمتخصصون في الأمن السيبراني ثغرات جديدة - وطرقاً مبتكرة للتصدي لها.
+## Long Description
+The OWASP Top 10 for Large Language Model Applications started in 2023 as a community-driven effort to highlight and address security issues specific to AI applications. Since then, the technology has continued to spread across industries and applications, and so have the associated risks. As LLMs are embedded more deeply in everything from customer interactions to internal operations, developers and security professionals are discovering new vulnerabilities—and ways to counter them.
 
-## الرعاية
-نحن نُقدّر مساهمات رعاتنا في تمويل المشروع، التي تساعدنا في تحقيق أهدافه وتغطية تكاليف التشغيل والتواصل، بما يعزز الموارد التي توفرها مؤسسة أواسب. يستمر مشروع أواسب لأهم 10 مخاطر في نماذج اللغة الكبيرة والذكاء الاصطناعي التوليدي في الحفاظ على نهجه المحايد وغير المتحيز تجاه أي جهة. لا يحصل الرعاة على امتيازات خاصة في الحوكمة مقابل دعمهم، لكنهم ينالون التقدير على مساهماتهم في موادنا ومنصاتنا الإلكترونية.
-جميع المواد التي يُنتجها المشروع تُطوّر وتُنشر بمجهود جماعي من المجتمع، وتصدر بموجب تراخيص مفتوحة المصدر ورخص المشاع الإبداعي. للمزيد من المعلومات حول كيفية أن تصبح راعياً، يُرجى زيارة قسم الرعاية في موقعنا الإلكتروني لمعرفة كيفية المساهمة في استدامة المشروع عبر الرعاية.
+## Sponsorship
+We appreciate our Project Sponsors’ funding contributions to help support the objectives of the project and help to cover operational and outreach costs augmenting the resources the OWASP.org foundation provides. The OWASP Top 10 for LLM and Generative AI Project continues to maintain a vendor neutral and unbiased approach. Sponsors do not receive special governance considerations as part of their support. Sponsors do receive recognition for their contributions in our materials and web properties.
+All materials the project generates are community developed, driven and released under open source and creative commons licenses. For more information on becoming a sponsor Visit the Sponsorship Section on our Website to learn more about helping to sustain the project through sponsorship.
 
-## وسائل التواصل الاجتماعي
-🚀 أخبار رائعة! تتوفر الآن ترجمات جديدة لمشروع أواسب لأهم 10 مخاطر لتطبيقات نماذج اللغة الكبيرة والذكاء الاصطناعي التوليدي لعام 2025 🌍
+## Social Media
+🚀 Exciting News! New Translations Available for the OWASP Top 10 for LLM & Generative AI (2025) 🌍
 
-يسعدنا أن نعلن أن أهم عشرة مخاطر لتطبيقات نماذج اللغة الكبيرة والذكاء الاصطناعي التوليدي لعام 2025 أصبحت متاحة الآن باللغات اليونانية والهندية واليابانية والكورية والفارسية!
+We’re thrilled to announce that the OWASP Top 10 for LLM Applications and Generative AI 2025 is now available in Greek, Hindi, Japanese, Korean and Persian!
 
-يقدّم هذا التحديث مصدرًا محدّثًا وشاملًا يتناول أهم المخاطر والثغرات وإجراءات التخفيف لتأمين تطبيقات الذكاء الاصطناعي التوليدي ونماذج اللغة الكبيرة عبر مراحل التطوير والنشر والإدارة. سواءً كنت تعمل على تطبيقات تستند إلى التوليد المعزز بالاسترجاع، أو البُنى التصميمية القائمة على الوكلاء، أو التكاملات المعقدة لنماذج اللغة الكبيرة، فإن هذه القائمة ضرورية للمطورين والمتخصصين في الأمان والمؤسسات الراغبة في تبني الذكاء الاصطناعي بطريقة آمنة.
+This update provides a refreshed and comprehensive resource addressing the top risks, vulnerabilities, and mitigations for securing Generative AI and LLM applications across their development, deployment, and management lifecycle. Whether you're working with RAG-based applications, agentic architectures, or complex LLM integrations, this list is a must-have for developers, security professionals, and organizations looking to adopt AI securely.
 
-ما الجديد في أهم عشرة مخاطر لعام 2025 لتطبيقات نماذج اللغة الكبيرة؟
+What's New in the 2025 OWASP Top 10 for LLMs?
 
-✅ الاستهلاك غير المحدود: يتجاوز نطاق الهجمات من نوع حجب الخدمة ليشمل مخاطر إدارة الموارد والتكاليف غير المتوقعة في عمليات النشر واسعة النطاق.  
-✅ ثغرات المتجهات والتضمين: معالجة مخاطر الأمان في التوليد المعزز بالاسترجاع وغيرها من التقنيات المعتمدة على التضمينات.  
-✅ تسريب تعليمة النظام: بند جديد يتناول الثغرات الواقعية ومخاطر الافتراض بأن التعليمات ستبقى معزولة.  
-✅ الإفراط في الاستقلالية: مع ازدياد استقلالية الذكاء الاصطناعي، يسلّط هذا التحديث الضوء على مخاوف الأمان المتعلقة بالبُنى التصميمة القائمة على الوكلاء ذات الإشراف البشري المحدود.
+✅ Unbounded Consumption: Expanding beyond denial of service to include risks of resource management and unexpected costs in large-scale deployments.
+✅ Vectors & Embeddings Security: Addressing security risks in Retrieval-Augmented Generation (RAG) and other embedding-based techniques.
+✅ System Prompt Leakage: A newly added entry tackling real-world exploits and the {risks of assuming prompts remain isolated.
+✅ Excessive Agency: As AI autonomy grows, this update highlights security concerns around agentic architectures with limited human oversight.
 
-شارك في الجهد! 💡
+Join the Effort! 💡
 
-ينمو هذا المشروع بفضل المجتمع العالمي الرائع الذي يقف خلفه. إذا كنت شغوفًا بأمن الذكاء الاصطناعي، ندعوك للمساهمة في الترجمات والأبحاث والإرشادات لتوسيع نطاق هذه المبادرة المهمة. لنجعل أمن الذكاء الاصطناعي متاحًا عالميًا!  
-📢 انظر الترجمات أدناه:  
- 🔗 التركية:  
- 🔗 العربية:  
- 🔗 الفيتنامية:  
- 🔗 الفارسية:
+This project thrives because of the amazing global community behind it. If you’re passionate about AI security, we invite you to contribute to translations, research, and guidance to expand this critical initiative. Let’s make AI security accessible worldwide!
+📢 Check out the translations below:
+ 🔗 Turkish:
+ 🔗 Arabic:
+ 🔗 Vietnamese:
+ 🔗 Persian:
 
-هل ترغب بالمشاركة؟ اترك تعليقًا أدناه أو تواصل معنا! معًا يمكننا بناء مستقبل أكثر أمانًا مدفوع بالذكاء الاصطناعي. 💙 #الذكاء_الاصطناعي #الأمن_السيبراني #نموذج_اللغة_الكبير #الذكاء_الاصطناعي_التوليدي #أواسب
-
+Interested in getting involved? Comment below or reach out! Together, we can build a more secure AI-driven future. 💙 #AI #CyberSecurity #LLM #GenerativeAI #OWASP
