@@ -1,0 +1,39 @@
+FROM python:3.12-slim
+
+# Install uv (Python package manager)
+ENV PIP_ROOT_USER_ACTION=ignore
+RUN pip install --no-cache-dir uv
+
+# Copy system requirements
+COPY packages.txt .
+
+# Install system dependencies
+RUN apt-get update && xargs -a packages.txt apt-get install -y --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create a non-root user
+RUN useradd -m -u 1000 appuser
+
+# Set working directory
+WORKDIR /app
+
+# Change ownership of the working directory
+RUN chown appuser:appuser /app
+
+# Switch to non-root user
+USER appuser
+
+# Copy dependency files
+COPY --chown=appuser:appuser pyproject.toml uv.lock ./
+
+# Install dependencies
+RUN uv sync --frozen
+
+# Copy application code
+COPY --chown=appuser:appuser . .
+
+EXPOSE 8000
+
+# Run the FastAPI server with uvicorn
+COPY entrypoint.sh /app/entrypoint.sh
+ENTRYPOINT ["./entrypoint.sh"]
