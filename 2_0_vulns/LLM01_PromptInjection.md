@@ -29,6 +29,8 @@ The severity and nature of the impact of a successful prompt injection attack ca
 
 The rise of multimodal AI, which processes multiple data types simultaneously, introduces unique prompt injection risks. Malicious actors could exploit interactions between modalities, such as hiding instructions in images that accompany benign text. The complexity of these systems expands the attack surface. Multimodal models may also be susceptible to novel cross-modal attacks that are difficult to detect and mitigate with current techniques. Robust multimodal-specific defenses are an important area for further research and development.
 
+External sources also include the metadata of tools and extensions made available to the model. In protocols such as the Model Context Protocol (MCP), a client enumerates the connected tools and loads their descriptions into the model's context at session initialization, before the user submits a prompt. The model parses a tool description as it parses any other instruction, yet that description is not ordinarily shown to the user. When a tool originates from a server the user approved earlier, its description becomes an indirect injection channel that operates outside the user's view and outside the boundary of user-supplied input. The model has no inherent means of distinguishing a legitimate functional instruction in a tool description from an adversarial one; it processes both as context.
+
 ### Prevention and Mitigation Strategies
 
 Prompt injection vulnerabilities are possible due to the nature of generative AI. Given the stochastic influence at the heart of the way models work, it is unclear if there are fool-proof methods of prevention for prompt injection. However, the following measures can mitigate the impact of prompt injections:
@@ -55,7 +57,7 @@ Prompt injection vulnerabilities are possible due to the nature of generative AI
 
 #### 6. Segregate and identify external content
 
-  Separate and clearly denote untrusted content to limit its influence on user prompts.
+  Separate and clearly denote untrusted content to limit its influence on user prompts. Treat the descriptions and metadata of connected tools as untrusted external content: verify them against signed tool manifests at load time, and validate that each tool's stated description matches its runtime behavior.
 
 #### 7. Conduct adversarial testing and attack simulations
 
@@ -99,6 +101,14 @@ Prompt injection vulnerabilities are possible due to the nature of generative AI
 
   An attacker uses multiple languages or encodes malicious instructions (e.g., using Base64 or emojis) to evade filters and manipulate the LLM's behavior.
 
+#### Scenario #10: Tool Description Poisoning
+
+  An attacker publishes an MCP server whose tool description embeds hidden instructions that, once the user connects the server, direct the model to read local credential files and transmit them to an attacker-controlled endpoint, exfiltrating sensitive credentials without the user's knowledge.
+
+#### Scenario #11: Cross-Server Tool Shadowing
+
+  An attacker connects a malicious MCP server alongside a trusted one and registers a tool whose description shadows the trusted server's tools, redefining how the agent uses them so that the agent itself, not the malicious server, invokes those tools to exfiltrate the data they can access.
+
 ### Reference Links
 
 1. [ChatGPT Plugin Vulnerabilities - Chat with Code](https://embracethered.com/blog/posts/2023/chatgpt-plugin-vulns-chat-with-code/) **Embrace the Red**
@@ -115,6 +125,10 @@ Prompt injection vulnerabilities are possible due to the nature of generative AI
 12. [Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks](https://ieeexplore.ieee.org/document/10579515)
 13. [Universal and Transferable Adversarial Attacks on Aligned Language Models (arxiv.org)](https://arxiv.org/abs/2307.15043)
 14. [From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity and Privacy (arxiv.org)](https://arxiv.org/abs/2307.00691)
+15. [MCP Security Notification: Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) **Invariant Labs**
+16. [WhatsApp MCP Exploited: Exfiltrating Your Message History via MCP](https://invariantlabs.ai/blog/whatsapp-mcp-exploited) **Invariant Labs**
+17. [A Practical Guide for Secure MCP Server Development](https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/) **OWASP GenAI Security Project**
+18. [Model Context Protocol prompt injection](https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/) **Simon Willison**
 
 ### Related Frameworks and Taxonomies
 
