@@ -36,7 +36,7 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 
 #### 6. Vulnerable LoRA adapters
 
-  LoRA is a popular fine-tuning technique that enhances modularity by allowing pre-trained layers to be bolted onto an existing LLM. The method increases efficiency but creates new risks, where a malicious LorA adapter compromises the integrity and security of the pre-trained base model. This can happen both in collaborative model merge environments but also exploiting the support for LoRA from popular inference deployment platforms such as vLMM and OpenLLM where adapters can be downloaded and applied to a deployed model.
+  LoRA is a popular fine-tuning technique that enhances modularity by allowing pre-trained layers to be bolted onto an existing LLM. The method increases efficiency but creates new risks, where a malicious LoRA adapter compromises the integrity and security of the pre-trained base model. This can happen both in collaborative model merge environments but also exploiting the support for LoRA from popular inference deployment platforms such as vLLM and OpenLLM where adapters can be downloaded and applied to a deployed model.
 
 #### 7. Exploit Collaborative Development Processes
 
@@ -85,7 +85,7 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 
 #### Scenario #5: Compromised Third-Party Supplier
 
-  A compromised third-party supplier provides a vulnerable LorA adapter that is being merged to an LLM using model merge on Hugging Face.
+  A compromised third-party supplier provides a vulnerable LoRA adapter that is being merged to an LLM using model merge on Hugging Face.
 
 #### Scenario #6: Supplier Infiltration
 
