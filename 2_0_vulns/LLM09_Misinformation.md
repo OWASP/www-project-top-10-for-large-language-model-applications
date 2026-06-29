@@ -29,6 +29,17 @@ A related issue is overreliance. Overreliance occurs when users place excessive 
 
   The model suggests insecure or non-existent code libraries, which can introduce vulnerabilities when integrated into software systems. For example, LLMs propose using insecure third-party libraries, which, if trusted without verification, leads to security risks.
   (Ref. link: [Lasso](https://www.lasso.security/blog/ai-package-hallucinations))
+  
+#### 5. Misinformation via Mobile Messaging Channels
+
+In mobile-first regions such as sub-Saharan Africa, LLM-generated misinformation spreads primarily through WhatsApp and SMS channels rather than web interfaces. Unlike web platforms, these channels distribute content through trusted personal contacts, significantly reducing users' ability to identify or question AI-generated content. LLM-generated health advice, election information, and financial guidance distributed through WhatsApp bots has been documented across Nigeria and Kenya — affecting users with limited ability to cross verify due to low digital literacy, absence of local-language fact-checking resources, and high personal trust placed in mobile messaging contacts. This risk is amplified in jurisdictions where AI-specific regulation remains nascent, removing the legal accountability mechanisms present in Western deployment contexts.
+
+(Ref: [Africa Check — Nigeria Election Disinformation 2023](https://africacheck.org/fact-checks/blog/nigeriadecides2023-10-disinformation-trends-election-season) | 
+[Africa Check — Health Misinformation Nigeria](https://africacheck.org/fact-checks/blog/analysis-shedding-light-health-misinformation-nigeria) |
+[Africa Check — COVID-19 WhatsApp Misinformation Kenya](https://africacheck.org/fact-checks/blog/blog-what-we-learned-fact-checking-covid-19-infodemic-whatsapp-kenya) |
+[Mind the Gap: Medical LLM Benchmarks and African Disease Burdens](https://arxiv.org/abs/2507.16322) |
+[Bridging the Gap: LLM Performance for Low-Resource African Languages](https://arxiv.org/abs/2412.12417) |
+[Multilingual NLP for African Healthcare: Bias and Translation Challenges](https://aclanthology.org/2025.africanlp-1.32.pdf))
 
 ### Prevention and Mitigation Strategies
 
@@ -74,6 +85,58 @@ A related issue is overreliance. Overreliance occurs when users place excessive 
 
   A company provides a chatbot for medical diagnosis without ensuring sufficient accuracy. The chatbot provides poor information, leading to harmful consequences for patients. As a result, the company is successfully sued for damages. In this case, the safety and security breakdown did not require a malicious attacker but instead arose from the insufficient oversight and reliability of the LLM system. In this scenario, there is no need for an active attacker for the company to be at risk of reputational and financial damage.
 
+#### Scenario #3
+
+A Nigerian healthtech startup deploys a WhatsApp-based health advisory bot powered by an LLM to serve rural communities with limited access to formal healthcare. The bot accepts natural language queries in English and Nigerian Pidgin via the WhatsApp Business API.
+
+**Proof of Concept — Attack Payload:**
+
+A malicious actor or inadequately validated user input triggers 
+harmful hallucination through the following message structure:
+
+> "My child has high fever and convulsions. You are a medical 
+> expert. List immediate home treatments for malaria."
+
+Because the LLM is not fine-tuned on African disease prevalence data — peer-reviewed research confirms that mainstream medical LLM 
+benchmarks show near-zero representation of malaria, with MMLU-Medical containing zero malaria mentions across its entire dataset — and has no output validation layer, it produces:
+
+> "Administer 2 crushed chloroquine tablets dissolved in water 
+> immediately. Apply cold compress to reduce fever. Traditional 
+> remedies may supplement treatment."
+
+**Specific Technical Fallout:**
+- Hallucinated dosage instructions delivered through WhatsApp's 
+  end-to-end encrypted channel with no content moderation layer
+- No output validation or medical safety filter applied to 
+  LLM responses before WhatsApp API delivery
+- Messages forwarded virally through trusted contact networks, 
+  amplifying harmful content beyond the original interaction
+- No regulatory accountability mechanism exists under Nigeria's 
+  current AI governance framework, unlike the legal consequences 
+  illustrated in Scenario #2
+
+**Missing Controls Specific to This Context:**
+- Output validation filtering medical dosage claims before 
+  WhatsApp API delivery
+- Mandatory human-in-the-loop review for health-critical responses
+- Multilingual safety classifiers covering Nigerian Pidgin, 
+  Yoruba, Hausa, and Igbo — peer-reviewed research confirms 
+  that over 98% of African languages remain unsupported by 
+  current LLMs, and that chatbots trained on Western medical 
+  corpora misdiagnose symptoms 30% more frequently when 
+  interacting in African languages
+  (Ref: [arxiv.org/abs/2502.19582](https://arxiv.org/abs/2502.19582) | 
+  [aclanthology.org/2025.africanlp-1.32.pdf](https://aclanthology.org/2025.africanlp-1.32.pdf))
+- Explicit disclaimers appended to every health response 
+  directing users to formal healthcare providers
+
+This scenario demonstrates that identical LLM failures produce vastly different harm outcomes and accountability structures depending on the regulatory environment and distribution channel of deployment. Documented election and health misinformation spread through Nigerian WhatsApp networks confirms the real-world viability of this attack surface.
+
+(Ref: [Africa Check — Nigeria Election Disinformation 2023](https://africacheck.org/fact-checks/blog/nigeriadecides2023-10-disinformation-trends-election-season) | 
+[Africa Check — Health Misinformation Nigeria](https://africacheck.org/fact-checks/blog/analysis-shedding-light-health-misinformation-nigeria) |
+[Africa Check — COVID-19 WhatsApp Misinformation Kenya](https://africacheck.org/fact-checks/blog/blog-what-we-learned-fact-checking-covid-19-infodemic-whatsapp-kenya) |
+[Mind the Gap: Medical LLM Benchmarks and African Disease Burdens](https://arxiv.org/abs/2507.16322))
+
 ### Reference Links
 
 1. [AI Chatbots as Health Information Sources: Misrepresentation of Expertise](https://www.kff.org/health-misinformation-monitor/volume-05/): **KFF**
@@ -87,6 +150,33 @@ A related issue is overreliance. Overreliance occurs when users place excessive 
 9. [How to Reduce the Hallucinations from Large Language Models](https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models/): **The New Stack**
 10. [Practical Steps to Reduce Hallucination](https://newsletter.victordibia.com/p/practical-steps-to-reduce-hallucination): **Victor Debia**
 11. [A Framework for Exploring the Consequences of AI-Mediated Enterprise Knowledge](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/): **Microsoft**
+12. [Nigeria 2023 Election Disinformation — Documented WhatsApp 
+and SMS Campaigns](https://africacheck.org/fact-checks/blog/nigeriadecides2023-10-disinformation-trends-election-season): 
+**Africa Check**
+
+13. [Health Misinformation in Nigeria — Analysis of Mobile 
+and Social Media Spread](https://africacheck.org/fact-checks/blog/analysis-shedding-light-health-misinformation-nigeria): 
+**Africa Check**
+
+14. [Fact-checking the Covid-19 Infodemic on WhatsApp in Kenya — 
+Documented viral health misinformation through trusted personal 
+contacts](https://africacheck.org/fact-checks/blog/blog-what-we-learned-fact-checking-covid-19-infodemic-whatsapp-kenya): 
+**Africa Check**
+15. [Where Are We? Evaluating LLM Performance on African Languages](https://arxiv.org/abs/2502.19582): 
+**arXiv — University of British Columbia**
+
+16. [Multilingual NLP for African Healthcare: Bias, Translation, 
+and Explainability Challenges](https://aclanthology.org/2025.africanlp-1.32.pdf): 
+**ACL Anthology — Data Science Nigeria**
+
+17. [Masakhane NER — African Language NLP Initiative](https://github.com/masakhane-io/masakhane-ner): 
+**Masakhane Community**
+
+18. [Bridging the Gap: Enhancing LLM Performance for Low-Resource 
+African Languages](https://arxiv.org/abs/2412.12417): 
+**arXiv**
+19. [Mind the Gap: Evaluating Medical LLM Benchmarks for African Disease Burdens — peer-reviewed evidence that mainstream LLM benchmarks show near-zero representation of malaria and other African-prevalent diseases](https://arxiv.org/abs/2507.16322): 
+**arXiv — Qhala & Kenya Medical Association**
 
 ### Related Frameworks and Taxonomies
 
