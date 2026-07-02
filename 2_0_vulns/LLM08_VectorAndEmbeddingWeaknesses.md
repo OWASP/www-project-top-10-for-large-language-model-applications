@@ -28,6 +28,24 @@ Retrieval Augmented Generation (RAG) is a model adaptation technique that enhanc
 
   Retrieval Augmentation can inadvertently alter the foundational model's behavior. For example, while factual accuracy and relevance may increase, aspects like emotional intelligence or empathy can diminish, potentially reducing the model's effectiveness in certain applications. (Scenario #3)
 
+#### 6. Retrieval Authorization Weaknesses
+
+Applications may retrieve embeddings without validating whether the requesting user or agent is authorized to access the retrieved knowledge. Improper retrieval authorization can expose sensitive information across users, tenants, or business domains.
+
+#### 7. Semantic Cache Poisoning
+
+Applications using semantic caches may return previously generated responses without validating their integrity or authorization context. Poisoned or stale cached responses can influence future model outputs or expose information to unauthorized users.
+
+#### 8. Cross-Tenant Vector Retrieval
+
+Multi-tenant vector databases that do not enforce strict namespace isolation or tenant-aware retrieval may inadvertently expose embeddings belonging to other organizations, users, or security domains.
+
+#### 9. Retrieval Ranking Manipulation
+
+An attacker manipulates embeddings or metadata to increase the likelihood that malicious documents are retrieved before legitimate knowledge. This may bias model responses or amplify poisoned content.
+
+
+
 ### Prevention and Mitigation Strategies
 
 #### 1. Permission and access control
@@ -45,6 +63,28 @@ Retrieval Augmented Generation (RAG) is a model adaptation technique that enhanc
 #### 4. Monitoring and Logging
 
   Maintain detailed immutable logs of retrieval activities to detect and respond promptly to suspicious behavior.
+
+#### 5. Retrieval authorization
+
+  Authorize retrieval operations independently of generation. Applications should verify that users and autonomous agents are permitted to retrieve specific embeddings before incorporating retrieved content into model context.
+
+#### 6. Tenant isolation
+
+  Implement strict tenant isolation through namespace separation, embedding access controls, and retrieval filtering to prevent cross-tenant information disclosure.
+
+#### 7. Protect semantic caches
+
+  Protect semantic caches using appropriate access controls, integrity verification, cache isolation, and expiration policies to reduce the risk of cache poisoning and unauthorized disclosure.
+
+#### 8. Vector integrity monitoring
+
+  Continuously monitor vector stores for unauthorized modification, unexpected embedding changes, retrieval anomalies, and poisoning attempts.
+
+#### 9. Retrieval auditing
+
+  Log retrieval requests, retrieved embeddings, authorization decisions, and retrieval sources to support forensic investigations and anomaly detection.
+
+
 
 ### Example Attack Scenarios
 
@@ -78,6 +118,30 @@ Retrieval Augmented Generation (RAG) is a model adaptation technique that enhanc
 
   The impact of RAG on the foundational model's behavior should be monitored and evaluated, with adjustments to the augmentation process to maintain desired qualities like empathy(Ref #8).
 
+#### Scenario #4: Cross-Tenant Retrieval
+
+A shared vector database stores embeddings for multiple organizations. Because retrieval authorization is enforced only during document ingestion and not during retrieval, an attacker crafts queries that retrieve embeddings belonging to another tenant, exposing confidential business information.
+
+#### Mitigation
+
+Implement tenant-aware retrieval authorization, namespace isolation, and permission-aware vector databases to ensure retrieved embeddings are limited to authorized users and applications.
+
+#### Scenario #5: Semantic Cache Poisoning
+
+An attacker repeatedly submits carefully crafted prompts that generate misleading responses which are subsequently stored within a semantic cache. Later users receive the poisoned cached responses instead of newly generated answers, resulting in persistent misinformation and unauthorized influence over model outputs.
+
+#### Mitigation
+
+Protect semantic caches through integrity verification, cache isolation, expiration policies, and continuous monitoring for abnormal cache activity.
+
+#### Scenario #6: Retrieval Ranking Manipulation
+
+An attacker uploads documents containing carefully optimized embeddings and metadata designed to consistently rank above trusted knowledge sources. Subsequent Retrieval Augmented Generation (RAG) queries retrieve the malicious documents first, biasing the model's responses.
+
+#### Mitigation
+
+Continuously monitor retrieval rankings, validate retrieved content against trusted sources, and apply anomaly detection to identify abnormal retrieval behavior.
+
 ### Reference Links
 
 1. [Augmenting a Large Language Model with Retrieval-Augmented Generation and Fine-tuning](https://learn.microsoft.com/en-us/azure/developer/ai/augment-llm-rag-fine-tuning)
@@ -88,3 +152,7 @@ Retrieval Augmented Generation (RAG) is a model adaptation technique that enhanc
 6. [Confused Deputy Risks in RAG-based LLMs](https://confusedpilot.info/)
 7. [How RAG Poisoning Made Llama3 Racist!](https://blog.repello.ai/how-rag-poisoning-made-llama3-racist-1c5e390dd564)
 8. [What is the RAG Triad?](https://truera.com/ai-quality-education/generative-ai-rags/what-is-the-rag-triad/)
+9. [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/specification): **Model Context Protocol**
+10. [Artificial Intelligence Risk Management Framework (AI RMF 1.0)](https://www.nist.gov/itl/ai-risk-management-framework): **National Institute of Standards and Technology (NIST)**
+11. [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/): **OWASP**
+12. [Vector Databases and Retrieval-Augmented Generation](https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview): **Microsoft Learn**
