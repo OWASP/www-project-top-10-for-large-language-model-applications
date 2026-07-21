@@ -24,7 +24,7 @@ The Model Context Protocol (MCP) introduces an attack surface that does not map 
 
 Three MCP-specific patterns illustrate this:
 
-- **Tool description poisoning / "rug pull."** A server registers a tool with a benign description at first use, so it clears user or administrator review. Because most MCP clients validate tool definitions only once, at approval time, and do not re-check or notify the user when a definition changes on a later connection, the server can later silently swap in a poisoned description that embeds hidden instructions. The agent continues to treat the tool as trusted because nothing in the protocol signals that its definition changed.
+- **Tool description poisoning / "rug pull."** A server registers a tool with a benign description at first use, so it clears user or administrator review. Because most MCP clients validate tool definitions only once, at approval time, and do not re-check or notify the user when a definition changes on a later connection, the server can later silently swap in a poisoned description that embeds hidden instructions. The agent continues to treat the tool as trusted because nothing in the protocol signals that its definition changed. This class of trust-boundary failure has a real-world CVE: [CVE-2025-54136](https://nvd.nist.gov/vuln/detail/CVE-2025-54136) ("MCPoison", CVSS 8.8) describes an MCP client that let an attacker with repository write access silently swap an already-approved MCP server configuration for a malicious one, achieving persistent remote code execution without triggering a re-approval prompt.
 - **Cross-server tool shadowing.** When multiple MCP servers are connected to the same agent, MCP's flat, client-side tool namespace does not prevent a malicious server from registering a tool name or description that overlaps with — and can override or redirect — a legitimate tool exposed by a different, trusted server. The model resolves the ambiguity using whichever description is present in its context, not by verifying which server is actually authoritative for that name.
 - **Return value injection via tool outputs.** Because tool call results are fed back into the model's context as trusted intermediate state, a compromised or malicious tool (or a legitimate tool that renders untrusted third-party data, such as a file's metadata) can embed instructions in its return value. The model, having no channel-level distinction between "data returned by a tool" and "instructions to act on," treats the embedded directive as the next step in the task.
 
@@ -146,6 +146,7 @@ Prompt injection vulnerabilities are possible due to the nature of generative AI
 19. [A Timeline of Model Context Protocol (MCP) Security Breaches](https://authzed.com/blog/timeline-mcp-breaches) **AuthZed**
 20. [Classic Vulnerabilities Meet AI Infrastructure: Why MCP Needs AppSec](https://www.endorlabs.com/learn/classic-vulnerabilities-meet-ai-infrastructure-why-mcp-needs-appsec) **Endor Labs**
 21. [A Practical Guide for Secure MCP Server Development](https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/) **OWASP GenAI Security Project**
+22. [CVE-2025-54136 ("MCPoison")](https://nvd.nist.gov/vuln/detail/CVE-2025-54136) **NIST NVD**
 
 ### Related Frameworks and Taxonomies
 
