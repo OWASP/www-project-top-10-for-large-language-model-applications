@@ -36,11 +36,11 @@ A simple threat model can be found [here](https://github.com/jsotiro/ThreatModel
 
 #### 6. Vulnerable LoRA adapters
 
-  LoRA is a popular fine-tuning technique that enhances modularity by allowing pre-trained layers to be bolted onto an existing LLM. The method increases efficiency but creates new risks, where a malicious LorA adapter compromises the integrity and security of the pre-trained base model. This can happen both in collaborative model merge environments but also exploiting the support for LoRA from popular inference deployment platforms such as vLMM and OpenLLM where adapters can be downloaded and applied to a deployed model.
+  LoRA is a popular fine-tuning technique that enhances modularity by allowing pre-trained layers to be bolted onto an existing LLM. The method increases efficiency but creates new risks, where a malicious LorA adapter compromises the integrity and security of the pre-trained base model. This can happen both in collaborative model merge environments but also exploiting the support for LoRA from popular inference deployment platforms such as vLLM and OpenLLM where adapters can be downloaded and applied to a deployed model.
 
 #### 7. Exploit Collaborative Development Processes
 
-  Collaborative model merge and model handling services (e.g. conversions) hosted in shared environments can be exploited to introduce vulnerabilities in shared models. Model merging is very popular on Hugging Face with model-merged models topping the OpenLLM leaderboard and can be exploited to bypass reviews. Similarly, services such as a conversation bot have been proved to be vulnerable to manipulation and introduce malicious code in models.
+  Collaborative model merge and model handling services (e.g. conversions) hosted in shared environments can be exploited to introduce vulnerabilities in shared models. Model merging is very popular on Hugging Face with model-merged models topping the OpenLLM leaderboard and can be exploited to bypass reviews. Similarly, services such as a conversation bot have been proven to be vulnerable to manipulation and introduce malicious code in models.
 
 #### 8. LLM Model on Device supply-chain vulnerabilities
 
