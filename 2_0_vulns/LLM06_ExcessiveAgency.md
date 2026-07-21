@@ -45,6 +45,14 @@ Note: Excessive Agency differs from Insecure Output Handling which is concerned 
 
   An LLM-based application or extension fails to independently verify and approve high-impact actions. E.g., an extension that allows a user's documents to be deleted performs deletions without any confirmation from the user.
 
+#### 7. Excessive Autonomy (MCP Persistent Memory Poisoning)
+
+  An LLM-based agent that summarizes or stores tool outputs into long-term memory (e.g., a session log, vector store, or notes file re-loaded into context on future sessions) treats that stored memory as its own prior reasoning rather than as external, untrusted input. If a malicious or compromised MCP tool output contains embedded instructions, the agent's summary of that output — now saved to memory — carries the payload forward. Every subsequent session that loads the poisoned memory re-executes the attacker's instructions, decoupling the point of compromise from the point of impact and defeating session-scoped mitigations such as one-time input filtering.
+
+#### 8. Excessive Functionality (System Prompt and Context Exfiltration via Tool Parameters)
+
+  An MCP tool's function signature can include parameter names that reference internal agent state (e.g., a system prompt or conversation history field) without any of those parameters being used in the tool's actual logic. Because the agent does not restrict what values it may supply when populating a tool call, it will populate these unused parameters with the corresponding internal data and transmit them to the tool as part of a normal, approved call — exfiltrating configuration, reasoning traces, or prior tool call history the developer never intended to expose, without requiring a traditional injected instruction elsewhere in the conversation.
+
 ### Prevention and Mitigation Strategies
 
 The following actions can prevent Excessive Agency:
@@ -81,6 +89,18 @@ The following actions can prevent Excessive Agency:
 
   Follow secure coding best practice, such as applying OWASP’s recommendations in ASVS (Application Security Verification Standard), with a particularly strong focus on input sanitisation. Use Static Application Security Testing (SAST) and Dynamic and Interactive application testing (DAST, IAST) in development pipelines.
 
+#### 9. Re-validate extension definitions on every connection, not just at approval
+
+  For MCP and similar plugin protocols, do not treat one-time tool approval as sufficient. Fingerprint approved tool descriptions and re-validate them on every session; treat any unexplained change as requiring re-approval before the tool is made available to the model.
+
+#### 10. Enforce per-server tool namespacing
+
+  Where an agent connects to multiple extension servers, do not resolve tool name or description collisions by which definition is most recently loaded into context. Track tool-to-server provenance and either reject ambiguous registrations or require explicit user disambiguation.
+
+#### 11. Constrain tool parameter schemas to declared, used fields
+
+  Reject or strip tool call parameters that reference internal agent state (system prompts, conversation history, prior tool calls) and are not demonstrably consumed by the tool's implementation.
+
 The following options will not prevent Excessive Agency, but can limit the level of damage caused:
 
 * Log and monitor the activity of LLM extensions and downstream systems to identify where undesirable actions are taking place, and respond accordingly.
@@ -96,6 +116,8 @@ An LLM-based personal assistant app is granted access to an individual’s mailb
 
 Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
 
+In an MCP-based coding agent, a "changelog summarizer" tool reads a pull request description that contains hidden instructions (an indirect prompt injection). The agent's summary — which now includes the injected instruction — is saved to the agent's persistent memory store so that future sessions have continuity on the project's history. Because the agent treats its own stored memory as ground truth rather than untrusted input, every subsequent session that loads that memory re-executes the attacker's instruction (for example, exfiltrating credentials found in later files), even though the original malicious pull request is never revisited again. This could be avoided by treating memory-store writes as untrusted content requiring the same filtering as any other external input, and by scoping autonomy so that actions triggered by memory-derived instructions require the same human approval as actions triggered by live user input.
+
 ### Reference Links
 
 1. [Slack AI data exfil from private channels](https://promptarmor.substack.com/p/slack-ai-data-exfiltration-from-private): **PromptArmor**
@@ -104,3 +126,7 @@ Alternatively, the damage caused could be reduced by implementing rate limiting 
 4. [NeMo-Guardrails: Interface guidelines](https://github.com/NVIDIA/NeMo-Guardrails/blob/main/docs/security/guidelines.md): **NVIDIA Github**
 5. [Simon Willison: Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/): **Simon Willison**
 6. [Sandboxing Agentic AI Workflows with WebAssembly](https://developer.nvidia.com/blog/sandboxing-agentic-ai-workflows-with-webassembly/) **NVIDIA, Joe Lucas**
+7. [MCP Security Notification: Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) **Invariant Labs**
+8. [MCP Security Alert: Extracting AI System Prompts via Parameter Abuse](https://www.hiddenlayer.com/research/exploiting-mcp-tool-parameters) **HiddenLayer**
+9. [From Untrusted Input to Trusted Memory: A Systematic Study of Memory Poisoning Attacks in LLM Agents (arxiv.org)](https://arxiv.org/abs/2606.04329) **Arxiv**
+10. [A Practical Guide for Secure MCP Server Development](https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/) **OWASP GenAI Security Project**
