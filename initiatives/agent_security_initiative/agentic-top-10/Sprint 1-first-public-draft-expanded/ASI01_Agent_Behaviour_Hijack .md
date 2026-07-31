@@ -52,10 +52,13 @@ inter-agent messages — as equally trusted inputs to their reasoning process.
    compromised tool output.
 
 3. **Emit verifiable evidence records per action**: For every tool call, emit a
-   cryptographically signed evidence record (e.g. AEP — Agent Evidence Protocol)
-   binding the tool descriptor hash, the decision, and the policy evaluation result.
+   cryptographically signed evidence record using [AEP v0.4 (Agent Evidence Protocol)](https://github.com/WasmAgent/wasmagent-protocol/tree/main/schemas/aep)
+   with DSSE/in-toto attestation envelope, binding the tool descriptor hash, the
+   decision rationale, and the policy evaluation result. Use `@wasmagent/otel-exporter`
+   to forward AEP spans directly into SIEM pipelines via OpenTelemetry.
    Post-incident audit can then determine exactly when a hijack occurred and which
-   descriptor version was active.
+   descriptor version was active. Under EU AI Act Article 19 (in force 2 August 2026),
+   high-risk AI deployments are required to retain such logs for the system lifetime.
 
 4. **Isolate agent context per session boundary**: Do not share memory or context
    between sessions with different trust levels. Use read-only snapshots for memory
@@ -93,6 +96,6 @@ this instruction. The hijack persists until the memory store is audited and clea
 
 1. [Invariant Labs: Tool Poisoning Attacks in MCP](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks): Lab-confirmed tool description poisoning with reproducible examples (April 2025).
 2. [OWASP Secure MCP Server Development Guide](https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/): Defensive controls for MCP deployments (February 2026).
-3. [WasmAgent MCP Firewall — Attack Demos](https://github.com/WasmAgent/wasmagent-js/blob/main/docs/security/mcp-firewall-attack-demos.md): Reproducible attack demos with deterministic verifiers covering tool poisoning and cross-server shadowing.
-4. [WasmAgent OWASP Capability Manifest Mapping](https://github.com/WasmAgent/wasmagent-js/blob/main/docs/security/capability-manifest-owasp.md): Maps WasmAgent runtime controls to OWASP Agentic Top 10.
+3. [WasmAgent MCP Firewall — Attack Demos](https://github.com/WasmAgent/wasmagent-js/blob/main/docs/security/mcp-firewall-attack-demos.md): Reproducible attack demos with deterministic verifiers covering tool poisoning and cross-server shadowing (verified live as of July 2026).
+4. [WasmAgent OWASP Capability Manifest Mapping](https://github.com/WasmAgent/wasmagent-js/blob/main/docs/security/capability-manifest-owasp.md): Maps WasmAgent runtime controls to OWASP Agentic Top 10 (confirmed live July 2026).
 5. [AuthZed: Timeline of MCP Security Breaches](https://authzed.com/blog/timeline-mcp-breaches): Catalogue of production MCP incidents.
