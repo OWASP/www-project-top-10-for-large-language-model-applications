@@ -1,0 +1,10 @@
+{
+  "action": "run_fraud_check",
+  "params": {},
+  "context": {
+    "model": "mistral-7b-instruct",
+    "task_type": "fraud_detection",
+    "plugin_source": "pypi.org",
+    "plugin_version": "1.2.3"
+  }
+}

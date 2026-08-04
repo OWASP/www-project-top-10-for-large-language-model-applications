@@ -1,0 +1,9 @@
+{
+  "action": "respond_to_customer",
+  "params": {
+    "message": "What are your opening hours?"
+  },
+  "context": {
+    "task_type": "customer_support"
+  }
+}

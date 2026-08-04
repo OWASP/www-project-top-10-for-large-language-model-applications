@@ -1,0 +1,10 @@
+{
+  "action": "shell_exec",
+  "params": {
+    "command": "ls -la /etc"
+  },
+  "context": {
+    "sandbox_verified": false,
+    "execution_environment": "host"
+  }
+}

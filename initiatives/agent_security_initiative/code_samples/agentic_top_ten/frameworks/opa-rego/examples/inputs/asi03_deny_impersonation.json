@@ -1,0 +1,13 @@
+{
+  "action": "approve_transaction",
+  "agent_id": "agent-orchestrator",
+  "params": {},
+  "context": {
+    "verified_agent_id": "agent-worker-1",
+    "claimed_role": "admin",
+    "verified_role": "reader",
+    "registered_agents": ["agent-orchestrator", "agent-worker-1", "agent-worker-2"],
+    "granted_permissions": ["read:transactions"],
+    "requested_permissions": ["read:transactions", "write:transactions", "approve:transactions"]
+  }
+}
