@@ -3,7 +3,7 @@
 * [OWASP Flagship Project](https://owasp.org/projects/)
 * [Version 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) (current)
 * [Version 2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) (archived)
-* [Version 1.1.0 Translations](Archive/1_1_vulns/translations/) (archived)
+* [Version 1.1.0 Translations](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/tree/main/assets/translations) (archived)
 * [Version 1.1.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_1.pdf) (archived)
 * [Version 1.0.1](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_0_1.pdf) (archived)
 * [Version 1.0.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_0.pdf) (archived)
