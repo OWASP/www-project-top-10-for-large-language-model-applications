@@ -1,0 +1,31 @@
+name: Validate PDF rendering
+
+on:
+  pull_request:
+    paths:
+      - "assets/PDF/OWASP-Top-10-for-LLMs-v2025.pdf"
+      - ".scripts/validate-pdf-render.py"
+      - ".github/workflows/validate-pdf.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "assets/PDF/OWASP-Top-10-for-LLMs-v2025.pdf"
+      - ".scripts/validate-pdf-render.py"
+      - ".github/workflows/validate-pdf.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Install PDF renderer
+        run: sudo apt-get update && sudo apt-get install --yes poppler-utils
+
+      - name: Check repaired pages
+        run: python3 .scripts/validate-pdf-render.py
