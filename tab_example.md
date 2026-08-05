@@ -1,12 +1,14 @@
 ---
-title: Example
+title: 2023 v1.1 Archive
 layout:  null
 tab: true
 order: 1
 tags: example-tag
 ---
 
-# OWASP Top 10 for Large Language Model Applications version 1.1
+# OWASP Top 10 for Large Language Model Applications Version 1.1
+
+> **Historical version:** This is the archived 2023 v1.1 list. [Get the current OWASP GenAI LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) or [browse its canonical source](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/tree/main/2026/final).
 
 ## LLM01: Prompt Injection
 Manipulating LLMs via crafted inputs can lead to unauthorized access, data breaches, and compromised decision-making.

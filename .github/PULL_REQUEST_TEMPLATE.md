@@ -1,30 +1,19 @@
-# [Title of Your PR]
+> [!IMPORTANT]
+> This repository is maintained as a legacy entry point and historical archive. New Top 10 content, corrections, and release work belong in [`GenAI-Security-Project/GenAI-LLM-Top10`](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10).
 
-**Key Changes:**
+Before continuing, consider opening your pull request against the [active repository](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/pulls).
 
-- [ ] List major changes and core updates
-- [ ] Keep each line under 80 characters
-- [ ] Focus on the "what" and "why"
+## Legacy-site change
 
-**Added:**
+Explain why this change must be made in the historical repository rather than the active repository.
 
-- [ ] New features/functionality
-- [ ] New files/configurations
-- [ ] New dependencies
 
-**Changed:**
+## What changed
 
-- [ ] Updates to existing code
-- [ ] Configuration changes
-- [ ] Dependency updates
 
-**Removed:**
+## Verification
 
-- [ ] Deleted files/code
-- [ ] Removed dependencies
-- [ ] Cleaned up configurations
 
----
-
-<!-- Delete any sections that are not applicable -->
-<!-- Add screenshots or code examples if relevant -->
+- [ ] This change preserves historical release files and existing public URLs.
+- [ ] This change does not present an older release as current.
+- [ ] I understand that active Top 10 development has moved to the new repository.
