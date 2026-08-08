@@ -1,0 +1,12 @@
+{
+  "action": "process_batch",
+  "params": {},
+  "context": {
+    "consecutive_errors": 5,
+    "orchestration_depth": 3,
+    "retry_count": 1,
+    "pipeline_degraded": true,
+    "high_stakes": true,
+    "output_confidence": 0.85
+  }
+}

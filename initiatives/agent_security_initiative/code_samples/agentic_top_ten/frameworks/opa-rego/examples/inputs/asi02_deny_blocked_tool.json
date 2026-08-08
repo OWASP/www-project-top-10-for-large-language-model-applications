@@ -1,0 +1,7 @@
+{
+  "action": "drop_table",
+  "params": {
+    "table_name": "users"
+  },
+  "context": {}
+}

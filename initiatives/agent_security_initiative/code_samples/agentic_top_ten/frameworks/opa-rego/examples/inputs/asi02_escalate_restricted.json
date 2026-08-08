@@ -1,0 +1,7 @@
+{
+  "action": "delete_record",
+  "params": {
+    "record_id": "cust-00123"
+  },
+  "context": {}
+}
