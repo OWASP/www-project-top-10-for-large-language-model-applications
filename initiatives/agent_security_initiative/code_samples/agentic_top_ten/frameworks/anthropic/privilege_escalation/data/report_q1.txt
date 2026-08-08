@@ -1,0 +1,10 @@
+Q1 2025 Financial Summary
+
+Total revenue: $1.8M
+Operating expenses: $1.2M
+Net income: $600K
+
+Key highlights:
+  New enterprise clients: 12
+  Customer retention rate: 94%
+  Product launches: 2 (Analytics Dashboard, API Gateway)
