@@ -1,7 +1,7 @@
 ---
 layout: col-sidebar
-title: OWASP Top 10 for Large Language Model Applications
-level: 2
+title: GenAI Security Project
+level: 4
 type: documentation
 tags: example-tag
 pitch: Legacy entry point for the OWASP Top 10 for Large Language Model Applications. Get the current 2026 release from the OWASP GenAI Security Project.
