@@ -26,3 +26,9 @@ Some useful resource links to learn about LLM security issues.
 | CloudSecurityPodcast.tv | Ashish Rajan | 30-May-23 | [Can LLMs Be Attacked?](https://www.youtube.com/watch?v=Yl9qqt9C5lE)
 | Nvidia | Leon Derczynski et al. | 16-Jun-24 | [garak : A Framework for Security Probing Large Language Models](https://arxiv.org/html/2406.11036v1) |
 
+
+### Tools
+
+| Tool | Type | Description | Link |
+|------|------|-------------|------|
+| prompt-defense-audit | Defensive / Static Analysis | Deterministic prompt defense scanner — checks system prompts for defensive posture against 12 attack vectors (LLM01, LLM02, LLM06, LLM09). Pure regex, zero AI cost, < 5ms. | [GitHub](https://github.com/ppcvote/prompt-defense-audit) / [npm](https://www.npmjs.com/package/prompt-defense-audit) / [Web Scanner](https://ultralab.tw/probe) |
