@@ -1,6 +1,6 @@
 """
 GhostGlyph - ASCII Smuggling Tool for GenAI Red Teaming
-A cyberpunk tool for encoding hidden payloads using Unicode tricks.
+A tool for encoding hidden payloads using Unicode tricks.
 """
 
 from flask import Flask, Response, request, jsonify
