@@ -1,7 +1,7 @@
-# LLM Mock API Template
+# RAG Local Sandbox
 
 ## Overview
-This repository provides a robust **template for creating local LLM sandboxes**. It is designed for Red Teaming, by allowing you to mimic production environments without external dependencies or API costs.
+This repository provides a robust **template for creating local RAG sandboxes**. It is designed for Red Teaming, by allowing you to mimic production environments without external dependencies or API costs.
 
 ## Using as a Sandbox Template
 This project serves as a "Local OpenAI API Mirror". It tricks applications into believing they are communicating with the real OpenAI API, while actually routing requests to a local LLM backend (defaulting to Ollama).
@@ -233,7 +233,9 @@ To ingest PDF documents into the RAG system:
 make help
 
 # Full automated setup and launch Gradio UI
-make gradio
+make run-gradio-headless  # Run in container
+# OR
+make gradio              # Run locally
 
 # Or step-by-step:
 make install      # Install uv
@@ -265,7 +267,9 @@ Run `make help` to see all commands:
 - `make test-client` - Run automated prompt tests
 
 **UI:**
-- `make gradio` - Full setup + launch Gradio web interface
+- `make gradio` - Full setup + launch Gradio web interface (local)
+- `make run-gradio-headless` - Full setup + launch Gradio web interface (container)
+- `make stop-gradio` - Stop the Gradio container
 
 **Code Quality:**
 - `make format` - Run black and isort formatters
@@ -343,7 +347,7 @@ Output includes:
 ### Gradio Web Interface
 Interactive chat interface:
 ```bash
-make gradio
+make run-gradio-headless
 ```
 Opens at `http://localhost:7860` with a user-friendly chat UI.
 
@@ -402,7 +406,7 @@ To add a new mock service (e.g., Pinecone, Anthropic, etc.):
 1. Edit code in `app/` or `client/`
 2. Format code: `make format`
 3. Type check: `make mypy`
-4. Rebuild and test: `make gradio`
+4. Rebuild and test: `make run-gradio-headless` (or `make gradio`)
 
 ### Adding Test Prompts
 1. Edit `config/prompts.toml`
@@ -426,7 +430,7 @@ To add a new mock service (e.g., Pinecone, Anthropic, etc.):
 
 **Port conflicts:**
 - If port 8000 is in use: `make clean` to remove old containers
-- If port 7860 is in use: `make gradio` automatically kills existing Gradio instances
+- If port 7860 is in use: `make run-gradio-headless` automatically kills existing Gradio instances
 
 **Ollama connection issues:**
 - Ensure Ollama is running: `ollama serve`

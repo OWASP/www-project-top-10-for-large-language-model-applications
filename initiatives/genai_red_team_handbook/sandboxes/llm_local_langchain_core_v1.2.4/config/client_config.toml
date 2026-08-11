@@ -1,0 +1,5 @@
+# Client Configuration
+
+[client]
+# Pre-prompt to be prepended to the user message
+pre_prompt = "You are a helpful assistant. Please answer the user's question based on the context provided."
