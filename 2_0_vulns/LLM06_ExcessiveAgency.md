@@ -94,7 +94,7 @@ An LLM-based personal assistant app is granted access to an individual’s mailb
 * eliminating excessive permissions by authenticating to the user's email service via an OAuth session with a read-only scope, and/or
 * eliminating excessive autonomy by requiring the user to manually review and hit 'send' on every mail drafted by the LLM extension.
 
-Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
+Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.An LLM agent framework (PraisonAI) implemented a Python code execution sandbox using isinstance() checks to restrict which operations agents could perform. An attacker bypassed these checks through type confusion, escaping the sandbox entirely and gaining system-level access on the host. The root cause was excessive functionality—the agent was granted code execution capability without true isolation. A hardened sandbox using OS-level isolation (e.g., containers, seccomp) rather than application-layer type checks would have prevented this. (CVE-2026-34938, CVSS 10.0)
 
 ### Reference Links
 
@@ -104,3 +104,4 @@ Alternatively, the damage caused could be reduced by implementing rate limiting 
 4. [NeMo-Guardrails: Interface guidelines](https://github.com/NVIDIA/NeMo-Guardrails/blob/main/docs/security/guidelines.md): **NVIDIA Github**
 5. [Simon Willison: Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/): **Simon Willison**
 6. [Sandboxing Agentic AI Workflows with WebAssembly](https://developer.nvidia.com/blog/sandboxing-agentic-ai-workflows-with-webassembly/) **NVIDIA, Joe Lucas**
+7. [CVE-2026-34938: PraisonAI Sandbox Escape via isinstance() Bypass](https://nvd.nist.gov/vuln/detail/CVE-2026-34938): **NVD**
