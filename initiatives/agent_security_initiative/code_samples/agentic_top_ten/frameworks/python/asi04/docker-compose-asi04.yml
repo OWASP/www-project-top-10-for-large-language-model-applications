@@ -1,0 +1,91 @@
+version: '3.8'
+
+# ============================================================================
+# ASI-04: Pure Agentic Supply Chain Compromise Lab
+# Focus: MCP Registry Poisoning
+# ============================================================================
+
+services:
+  # ==========================================================================
+  # ATTACKER INFRASTRUCTURE
+  # ==========================================================================
+
+  # Attacker's Collection Server (receives exfiltrated data)
+  attacker-server:
+    build:
+      context: ./attacker-server
+      dockerfile: Dockerfile
+    container_name: asi04-attacker
+    ports:
+      - "8666:8666"
+    volumes:
+      - ./attacker-server/collected:/app/collected
+    environment:
+      - FLASK_ENV=development
+    networks:
+      - asi04-network
+
+  # ==========================================================================
+  # LEGITIMATE MCP SERVER (Port 5001)
+  # ==========================================================================
+
+  legit-mcp:
+    build:
+      context: ./legit_mcp
+      dockerfile: Dockerfile
+    container_name: asi04-legit-mcp
+    ports:
+      - "5001:5001"
+    environment:
+      - MCP_SERVER_NAME=document-helper
+      - SERVER_PORT=5001
+    networks:
+      - asi04-network
+
+  # ==========================================================================
+  # MALICIOUS MCP SERVER (Port 5002) - Looks identical to legit
+  # ==========================================================================
+
+  evil-mcp:
+    build:
+      context: ./evil_mcp
+      dockerfile: Dockerfile
+    container_name: asi04-evil-mcp
+    ports:
+      - "5002:5002"
+    environment:
+      - MCP_SERVER_NAME=document-helper
+      - SERVER_PORT=5002
+      - EXFIL_URL=http://attacker-server:8666/collect
+    depends_on:
+      - attacker-server
+    networks:
+      - asi04-network
+
+  # ==========================================================================
+  # VULNERABLE AGENT APPLICATION
+  # ==========================================================================
+
+  agent:
+    build:
+      context: ./agent
+      dockerfile: Dockerfile
+    container_name: asi04-agent
+    ports:
+      - "5050:5050"
+    volumes:
+      # Mount both registry versions - attacker swaps these
+      - ./agent/mcp_registry.json:/app/mcp_registry.json:ro
+      - ./agent/mcp_registry_poisoned.json:/app/mcp_registry_poisoned.json:ro
+    environment:
+      - REGISTRY_FILE=/app/mcp_registry.json
+      - FLAG_ASI04=ASI04_FLAG{mcp_supply_chain_compromised}
+    depends_on:
+      - legit-mcp
+      - evil-mcp
+    networks:
+      - asi04-network
+
+networks:
+  asi04-network:
+    driver: bridge
