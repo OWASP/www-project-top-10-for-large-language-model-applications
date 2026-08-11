@@ -1,0 +1,5 @@
+langchain-core>=0.3
+langchain-openai>=0.2
+langgraph>=0.2
+comply54[langchain]>=0.4
+typing-extensions>=4.0
