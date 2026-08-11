@@ -43,7 +43,7 @@ Note: Excessive Agency differs from Insecure Output Handling which is concerned 
 
 #### 6. Excessive Autonomy
 
-  An LLM-based application or extension fails to independently verify and approve high-impact actions. E.g., an extension that allows a user's documents to be deleted performs deletions without any confirmation from the user.
+  An LLM-based application or extension fails to independently verify and approve high-impact actions. E.g., an extension that allows a user's documents to be deleted performs deletions without any confirmation from the user. An LLM-based application grants the agent autonomy to invoke a tool based on an authorization made at approval time, but does not re-validate at execution that the tool still matches what was authorized, so a tool modified or shadowed after approval runs under stale authorization. For example, the configuration of a previously approved tool is altered in a shared repository, or another connected tool redefines how the agent uses it, and the agent invokes the changed tool without rechecking it against the original approval.
 
 ### Prevention and Mitigation Strategies
 
@@ -75,7 +75,7 @@ The following actions can prevent Excessive Agency:
 
 #### 7. Complete mediation
 
-  Implement authorization in downstream systems rather than relying on an LLM to decide if an action is allowed or not. Enforce the complete mediation principle so that all requests made to downstream systems via extensions are validated against security policies.
+  Implement authorization in downstream systems rather than relying on an LLM to decide if an action is allowed or not. Enforce the complete mediation principle so that all requests made to downstream systems via extensions are validated against security policies. Bind authorization to execution by re-validating the resolved invocation (tool identity, parameters, and version) against the originally authorized context at the tool boundary, and reject any call that no longer matches.
 
 #### 8. Sanitise LLM inputs and outputs
 
@@ -96,6 +96,8 @@ An LLM-based personal assistant app is granted access to an individual’s mailb
 
 Alternatively, the damage caused could be reduced by implementing rate limiting on the mail-sending interface.
 
+An agentic system connects to several MCP servers whose tools the user approved at setup, and the agent is free to invoke them without re-checking each call against that approval. In one case, the configuration of an approved tool is modified after approval, for example by editing it in a shared repository, and the agent executes the altered tool under the original trust, performing actions the user never authorized. In another, a co-loaded malicious server shadows a trusted tool, and the agent invokes it under the trusted tool's standing authorization even though its behavior no longer matches what was approved, executing the attacker's action with the trusted tool's privileges.
+
 ### Reference Links
 
 1. [Slack AI data exfil from private channels](https://promptarmor.substack.com/p/slack-ai-data-exfiltration-from-private): **PromptArmor**
@@ -104,3 +106,6 @@ Alternatively, the damage caused could be reduced by implementing rate limiting 
 4. [NeMo-Guardrails: Interface guidelines](https://github.com/NVIDIA/NeMo-Guardrails/blob/main/docs/security/guidelines.md): **NVIDIA Github**
 5. [Simon Willison: Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/): **Simon Willison**
 6. [Sandboxing Agentic AI Workflows with WebAssembly](https://developer.nvidia.com/blog/sandboxing-agentic-ai-workflows-with-webassembly/) **NVIDIA, Joe Lucas**
+7. [MCPoison (CVE-2025-54136): persistent code execution via a modified, previously-trusted MCP configuration](https://nvd.nist.gov/vuln/detail/CVE-2025-54136): **NIST NVD** (research disclosure: [Check Point Research](https://research.checkpoint.com/2025/cursor-vulnerability-mcpoison/))
+8. [WhatsApp MCP Exploited: Exfiltrating Your Message History via MCP](https://invariantlabs.ai/blog/whatsapp-mcp-exploited): **Invariant Labs**
+9. [A Practical Guide for Secure MCP Server Development](https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/): **OWASP GenAI Security Project**
