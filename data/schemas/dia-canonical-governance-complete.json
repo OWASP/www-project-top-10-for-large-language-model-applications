@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "https://owasp.org/deterministic-isomorphism-architecture",
+  "title": "DeterministicIsomorphismArchitectureCompleteGovernanceArtifact",
+  "description": "An absolute end-to-end machine-readable validation contract integrating design-time policies, PQC-secured runtime snapshots, temporal admissibility oracles, and bilateral multi-attestation receipts.",
+  "type": "object",
+  "required": [
+    "artifactId",
+    "specificationVersion",
+    "layer1OntologicalEngine",
+    "layer2CanonicalRuntimeEnforcement",
+    "layer3CognitiveCircuitBreaker",
+    "layer4EcosystemAuditAndAdmissibility"
+  ],
+  "properties": {
+    "artifactId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique deterministic tracking identifier for this global system governance architecture configuration."
+    },
+    "specificationVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "default": "2.0.0"
+    },
+    "layer1OntologicalEngine": {
+      "type": "object",
+      "description": "Design-time interface mapping natural language corporate compliance policies to strict computational constraints.",
+      "required": ["policySourceCommit", "policyToSchemaCompilerVersion", "registeredPolicyVectors"],
+      "properties": {
+        "policySourceCommit": {
+          "type": "string",
+          "description": "Cryptographic hash of the human-readable text policy repository."
+        },
+        "policyToSchemaCompilerVersion": {
+          "type": "string"
+        },
+        "registeredPolicyVectors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["policyId", "legalCategory", "mappedStateBoundaryId"],
+            "properties": {
+              "policyId": { "type": "string", "pattern": "^CP-[0-9]+$" },
+              "legalCategory": { "type": "string", "enum": ["DataPrivacy", "FinancialCompliance", "OperationalSafety", "AccessControl"] },
+              "mappedStateBoundaryId": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "layer2CanonicalRuntimeEnforcement": {
+      "type": "object",
+      "description": "Run-time deterministic boundary and state-transition enforcement engine powered by dtpe-canonical-runtime mechanics.",
+      "required": [
+        "enforcementTopology", 
+        "structuralBoundaries", 
+        "bijectiveStateTransitions", 
+        "pqcConfiguration", 
+        "canonicalSnapshotEngine",
+        "dtpeEngineConsensus"
+      ],
+      "properties": {
+        "enforcementTopology": {
+          "type": "object",
+          "required": ["failSafeMechanism", "strictModeEnforced"],
+          "properties": {
+            "failSafeMechanism": {
+              "type": "string",
+              "enum": ["ImmediateExecutionHalt", "StatePurgeAndDrop", "FailClosedCircuitBreak"]
+            },
+            "strictModeEnforced": { "type": "boolean", "default": true }
+          }
+        },
+        "dtpeEngineConsensus": {
+          "type": "object",
+          "description": "Configures N-version parallel runtime validation inside the dtpe-canonical-runtime to block host-level exploitation.",
+          "required": ["engineRedundancyEnforced", "requiredConsensusThreshold", "mismatchFailSafeRouting"],
+          "properties": {
+            "engineRedundancyEnforced": { 
+              "type": "boolean", 
+              "default": true 
+            },
+            "requiredConsensusThreshold": { 
+              "type": "string", 
+              "enum": ["AbsoluteUnanimity", "MajorityVote"], 
+              "default": "AbsoluteUnanimity" 
+            },
+            "mismatchFailSafeRouting": {
+              "type": "string",
+              "enum": ["ImmediateFailClosed", "StateLiquidateAndHalt"],
+              "default": "ImmediateFailClosed"
+            }
+          }
+        },
+        "pqcConfiguration": {
+          "type": "object",
+          "description": "Post-Quantum Cryptographic parameters securing state authority and provenance arrays.",
+          "required": ["signatureAlgorithm", "rootCertificateThumbprint"],
+          "properties": {
+            "signatureAlgorithm": { "type": "string", "enum": ["ML-DSA-65", "Falcon-512", "SPHINCS-SHA256"] },
+            "rootCertificateThumbprint": { "type": "string" }
+          }
+        },
+        "canonicalSnapshotEngine": {
+          "type": "object",
+          "description": "Differential capture parameters to ensure sub-millisecond validation latency via delta assertions.",
+          "required": ["snapshotIntervalMilliseconds", "maxAllowedDeltaStates", "stateCompressionProtocol"],
+          "properties": {
+            "snapshotIntervalMilliseconds": { "type": "integer", "minimum": 1 },
+            "maxAllowedDeltaStates": { "type": "integer", "minimum": 0 },
+            "stateCompressionProtocol": { "type": "string", "enum": ["ZSTD-Canonical", "RawBitstreamDiff"] }
+          }
+        },
+        "structuralBoundaries": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/structuralBoundary" }
+        },
+        "bijectiveStateTransitions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/bijectiveStateTransition" }
+        }
+      }
+    },
+    "layer3CognitiveCircuitBreaker": {
+      "type": "object",
+      "description": "Post-halt remediation topology defining how human-in-the-loop triage interfaces handle structural state errors, bound by verifiable input reproducibility.",
+      "required": ["escalationRouting", "adversarialExplainerRecordRequired", "overrideProtocol"],
+      "properties": {
+        "escalationRouting": {
+          "type": "object",
+          "required": ["targetQueue", "maxHaltDurationMinutes"],
+          "properties": {
+            "targetQueue": { "type": "string", "enum": ["SecurityOperationsCenter", "ComplianceAuditors", "SystemAdministrators"] },
+            "maxHaltDurationMinutes": { "type": "integer", "minimum": 1, "maximum": 60 }
+          }
+        },
+        "adversarialExplainerRecordRequired": {
+          "type": "boolean",
+          "default": true
+        },
+        "overrideProtocol": {
+          "type": "object",
+          "required": ["authorizedRoles", "allowedRemediationActions", "requirePqcCoSigning"],
+          "properties": {
+            "authorizedRoles": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["LeadSecOpsEngineer", "ComplianceOfficer"] }
+            },
+            "allowedRemediationActions": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["ForceBijectiveRemapping", "KillSessionAndPurgeState", "RevertToLastCanonicalAnchor"] }
+            },
+            "requirePqcCoSigning": { "type": "boolean", "default": true }
+          }
+        }
+      }
+    },
+    "layer4EcosystemAuditAndAdmissibility": {
+      "type": "object",
+      "description": "The finish-line governance gate validating environmental safety, long-horizon drift, and third-party auditable receipts.",
+      "required": ["admissibilityOracle", "bilateralReceiptChain", "semanticIntentDrift"],
+      "properties": {
+        "admissibilityOracle": {
+          "type": "object",
+          "description": "Temporal gate validating that perfectly derived states match real-world context at the absolute millisecond of execution.",
+          "required": ["externalEnvironmentalChecksRequired", "fallbackOnOracleTimeout"],
+          "properties": {
+            "externalEnvironmentalChecksRequired": { "type": "array", "items": { "type": "string" } },
+            "fallbackOnOracleTimeout": { "type": "string", "enum": ["FailClosed", "ProceedWithWarningLog"] }
+          }
+        },
+        "bilateralReceiptChain": {
+          "type": "object",
+          "description": "Generates public append-only cryptographic receipts allowing zero-knowledge compliance audits by external entities.",
+          "required": ["receiptLedgerType", "merkleTreeHashingAlgorithm"],
+          "properties": {
+            "receiptLedgerType": { "type": "string", "enum": ["BilateralImmutableLog", "ConsensusConsortiumChain"] },
+            "merkleTreeHashingAlgorithm": { "type": "string", "enum": ["SHA3-256", "BLAKE3"] }
+          }
+        },
+        "semanticIntentDrift": {
+          "type": "object",
+          "description": "Monitors multi-turn conversation and objective posture to halt subtle instruction bleeding.",
+          "required": ["maxDriftThresholdScore", "driftEvaluationWindowTurns", "cumulativeSessionDriftCeiling"],
+          "properties": {
+            "maxDriftThresholdScore": { 
+              "type": "number", 
+              "minimum": 0.0, 
+              "maximum": 1.0, 
+              "description": "Maximum mathematical cosine distance allowed per conversational window evaluation before forcing an authority collapse." 
+            },
+            "driftEvaluationWindowTurns": { 
+              "type": "integer", 
+              "minimum": 1 
+            },
+            "cumulativeSessionDriftCeiling": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 5.0,
+              "description": "The global aggregated limit for all semantic vector movements over the complete multi-turn lifecycle of the agent execution instance."
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "structuralBoundary": {
+      "type": "object",
+      "required": ["boundaryId", "trustZoneTier", "provenanceAnchors", "authorityRecomputationRoutine"],
+      "properties": {
+        "boundaryId": { "type": "string", "pattern": "^[a-zA-Z0-9_.-]+$" },
+        "trustZoneTier": { "type": "string", "enum": ["AgentKernelExecution", "InterAgentOrchestrationBus", "DeterministicToolIngress", "UntrustedExternalData"] },
+        "provenanceAnchors": { 
+          "type": "array", 
+          "description": "PQC-signed hashes verifying that the state recomputation root origin has not been altered.",
+          "items": { "type": "string" } 
+        },
+        "authorityRecomputationRoutine": {
+          "type": "object",
+          "required": ["evaluationEngines", "signatureVerificationRequired", "expressionSource"],
+          "properties": {
+            "evaluationEngines": { 
+              "type": "array",
+              "minItems": 2,
+              "uniqueItems": true,
+              "description": "Mandates multiple isolated evaluation runtimes to run execution consensus, preventing a single parsing engine compromise from breaking the trust boundary.",
+              "items": {
+                "type": "string",
+                "enum": ["WebAssemblyRuntime", "NativeCELParser", "DeterministicStateAutomaton"]
+              }
+            },
+            "signatureVerificationRequired": { "type": "boolean" },
+            "expressionSource": { "type": "string" }
+          }
+        }
+      }
+    },
+    "bijectiveStateTransition": {
+      "type": "object",
+      "required": ["transitionId", "sourceBoundaryId", "targetBoundaryId", "isomorphicMappingMatrix"],
+      "properties": {
+        "transitionId": { "type": "string", "format": "uuid" },
+        "sourceBoundaryId": { "type": "string" },
+        "targetBoundaryId": { "type": "string" },
+        "isomorphicMappingMatrix": {
+          "type": "object",
+          "required": ["inputDomainVector", "outputCodomainVector", "bijectiveProofMethod"],
+          "properties": {
+            "inputDomainVector": { "type": "string" },
+            "outputCodomainVector": { "type": "string" },
+            "bijectiveProofMethod": { "type": "string", "enum": ["MinimalDFAIsomorphism", "StrictHomomorphicEquality", "ExactBijectionAssertion"] }
+          }
+        }
+      }
+    }
+  }
+}
