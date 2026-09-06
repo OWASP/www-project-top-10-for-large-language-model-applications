@@ -1,5 +1,8 @@
 # Contributing Guidelines
 
+> [!IMPORTANT]
+> This repository is maintained as a legacy entry point and historical archive. Submit current Top 10 corrections, proposals, and pull requests to [`GenAI-Security-Project/GenAI-LLM-Top10`](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10). Use the [2026 errata form](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/issues/new?template=release-errata.yml) for a specific correction.
+
 Thank you for your interest in contributing to the OWASP Top 10 for Large Language Model Applications! We are a community-driven project and welcome all contributors, regardless of their background or experience level.
 
 ## Community-Driven Project
@@ -8,11 +11,11 @@ The OWASP Top 10 for LLM Applications is an open source effort that thrives on c
 
 ## Getting Started
 
-For comprehensive contributor guidelines, including information about our various projects and initiatives, please visit our main project site: **[https://genai.owasp.org/contribute/](https://genai.owasp.org/contribute/)**
+For the active source and contribution workflow, visit **[GenAI-Security-Project/GenAI-LLM-Top10](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10)**. For the broader project, visit **[https://genai.owasp.org/contribute/](https://genai.owasp.org/contribute/)**.
 
 ## Style Guidelines
 
-Please make sure to consult the [Style Guide](./documentation/style/README.md) to ensure consistent styling with your contributions.
+The [Style Guide](./documentation/style/README.md) is retained here for historical reference. Consult the active repository before beginning new work.
 
 ## Join Our Community
 

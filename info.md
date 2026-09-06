@@ -1,6 +1,8 @@
 ### Top 10 for Large Language Model Applications Information
-* [Lab Status Project](https://owasp.org/projects/)
-* [Version 2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/)
+
+* [OWASP Flagship Project](https://owasp.org/projects/)
+* [Version 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) (current)
+* [Version 2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) (archived)
 * [Version 1.1.0 Translations](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/tree/main/assets/translations) (archived)
 * [Version 1.1.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_1.pdf) (archived)
 * [Version 1.0.1](assets/PDF/OWASP-Top-10-for-LLMs-2023-v1_0_1.pdf) (archived)
@@ -9,19 +11,21 @@
 * [Version 0.5.0](assets/PDF/OWASP-Top-10-for-LLMs-2023-v05.pdf) (archived)
 * [Version 0.1.0](Archive/0_1_vulns/) (archived)
 
-### Social Links
+### Current Project Links
 
-* [Subscribe to our Newsletter](https://llmtop10.beehiiv.com/subscribe)
-* [v1.1 Announcement](https://www.linkedin.com/pulse/new-release-owasp-top-10-llm-apps-steve-wilson?trk=public_post_feed-article-content)
-* [v1 Announcement](https://www.linkedin.com/pulse/official-release-owasp-top-10-large-language-model-v10-steve-wilson/)
-* [Project Announcement](https://www.linkedin.com/pulse/announcing-owasp-top-10-large-language-models-ai-project-steve-wilson/)
-* [Share on Twitter](https://twitter.com/intent/tweet?url=https://owasp.org/www-project-top-10-for-large-language-model-applications/&text=Check%20out%20the%20OWASP%20Top%2010%20for%20Large%20Language%20Model%20Applications%20project:%20)
-* [Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+* [Official 2026 publication](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/)
+* [Active source repository](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10)
+* [OWASP GenAI Security Project](https://genai.owasp.org/)
+* [Contribute](https://genai.owasp.org/contribute/)
 
-### Code Repository
-* [repo](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications)
-* [wiki](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki)
+### Community Links
 
-### Change Log
-* [changes](changes)
+* [Join OWASP Slack](https://owasp.org/slack/invite) and visit `#team-genai-top-10-llm`
+* [Follow the project on LinkedIn](https://www.linkedin.com/company/owasp-top-10-for-large-language-model-applications/)
+* [Subscribe to the newsletter](https://llmtop10.beehiiv.com/subscribe)
 
+### Historical Repository
+
+* [Legacy repository](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications)
+* [Historical wiki](https://github.com/OWASP/www-project-top-10-for-large-language-model-applications/wiki)
+* [Change log](changes)

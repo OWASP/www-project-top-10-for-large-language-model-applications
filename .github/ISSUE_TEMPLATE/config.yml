@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a 2026 release correction
+    url: https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/issues/new?template=release-errata.yml
+    about: Report errors, broken links, or publication/source mismatches in the active repository.
+  - name: Submit release feedback
+    url: https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/issues/new?template=release-feedback.yml
+    about: Suggest broader improvements or topics for a future release cycle.
+  - name: Get the 2026 publication
+    url: https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/
+    about: Read or get the current OWASP GenAI LLM Top 10.
+  - name: Active source repository
+    url: https://github.com/GenAI-Security-Project/GenAI-LLM-Top10
+    about: Browse the current source and contribution workflow.
